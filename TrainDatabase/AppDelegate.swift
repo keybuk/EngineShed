@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CoreData
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -15,10 +16,111 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+        //let importer = Importer(directory: "/Users/scott/Downloads/Model Railway Export", into: persistentContainer.viewContext)
+        //importer.start()
+
+        let fetchRequest: NSFetchRequest<ModelManagedObject> = ModelManagedObject.fetchRequest()
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "modelClass", ascending: true),
+            NSSortDescriptor(key: "number", ascending: true),
+            NSSortDescriptor(key: "name", ascending: true),
+            NSSortDescriptor(key: "dispositionRawValue", ascending: true)
+        ]
+        
+        //fetchRequest.predicate = NSPredicate(format: "ANY tasks.title =[c] %@", "decoder", "dcc conversion")
+        //fetchRequest.predicate = NSPredicate(format: "ANY tasks.title =[c] %@ AND ANY tasks.title =[c] %@", "decoder", "dcc conversion")
+        
+        // NONE field = value get translated to ANY field != value, which is totally wrong;
+        // so we use SUBQUERY
+        //fetchRequest.predicate = NSPredicate(format: "ANY tasks.title =[c] %@ AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count = 0", "decoder", "dcc conversion")
+
+        //fetchRequest.predicate = NSPredicate(format: "(ANY tasks.title =[c] %@ OR ANY tasks.title =[c] %@) AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count = 0", "speaker", "examine speaker", "decoder")
+        
+        // probably check for pass through in couplings:
+        //fetchRequest.predicate = NSPredicate(format: "dispositionRawValue = %@ AND lightings.@count > 0 AND decoder = NULL AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count = 0", ModelDisposition.normal.rawValue, "decoder")
+
+        // usually zero:
+        //fetchRequest.predicate = NSPredicate(format: "dispositionRawValue = %@ AND motor != '' AND motor != NULL AND decoder = NULL AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count = 0", ModelDisposition.normal.rawValue, "decoder")
+        //fetchRequest.predicate = NSPredicate(format: "dispositionRawValue = %@ AND socket != '' AND socket != NULL AND lightings.@count = 0 AND motor != '' AND motor != NULL AND decoder = NULL AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count = 0", ModelDisposition.normal.rawValue, "decoder")
+
+        // Order Sound File:
+        fetchRequest.predicate = NSPredicate(format: "ANY tasks.title =[c] %@ AND decoder != NULL AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count == 0", "sound file", "decoder")
+        
+
+        
+
+        
+        let modelObjects = try! persistentContainer.viewContext.fetch(fetchRequest)
+        for modelObject in modelObjects {
+            let model = Model(managedObject: modelObject)
+            print("\(model) \(model.tasks) \(model.decoder!.serialNumber)")
+        }
+        
+        print("")
+        print(modelObjects.count)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+    }
+    
+    func backup() throws {
+        print("Backing up...")
+        let fileManager = FileManager.default
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd HH-mm-ss"
+        let backupName = dateFormatter.string(from: Date())
+        
+        let backupURL = fileManager.temporaryDirectory.appendingPathComponent(backupName, isDirectory: true)
+        try fileManager.createDirectory(at: backupURL, withIntermediateDirectories: true, attributes: nil)
+        
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        
+        let decoderTypes = try! DecoderType.all(in: persistentContainer.viewContext)
+        try encoder.encode(decoderTypes).write(to: backupURL.appendingPathComponent("Decoders.json"))
+        print("Decoders encoded")
+
+        let purchases = try! Purchase.all(in: persistentContainer.viewContext)
+        try encoder.encode(purchases).write(to: backupURL.appendingPathComponent("Purchases.json"))
+        print("Purchases encoded")
+
+        let trains = try! Train.all(in: persistentContainer.viewContext)
+        try encoder.encode(trains).write(to: backupURL.appendingPathComponent("Trains.json"))
+        print("Trains done")
+
+        let imagesURL = backupURL.appendingPathComponent("Images", isDirectory: true)
+        try fileManager.createDirectory(at: imagesURL, withIntermediateDirectories: true, attributes: nil)
+
+        for purchase in purchases {
+            for model in purchase.models {
+                if let imageFilename = model.imageFilename, let imageURL = model.imageURL {
+                    try fileManager.copyItem(at: imageURL, to: imagesURL.appendingPathComponent(imageFilename))
+                }
+            }
+        }
+        print("Images done")
+        
+        let downloadsURL = fileManager.urls(for: .downloadsDirectory, in: .userDomainMask).first!
+        let backupFile = downloadsURL.appendingPathComponent("Backup \(backupName).zip")
+        
+        let coordinator = NSFileCoordinator()
+        var error: NSError?
+        coordinator.coordinate(readingItemAt: backupURL, options: .forUploading, error: &error) { zippedURL in
+            do {
+                try fileManager.copyItem(at: zippedURL, to: backupFile)
+            } catch let err {
+                error = err as NSError
+            }
+        }
+        print("Zip done")
+        
+        if let error = error { throw error }
+        try fileManager.removeItem(at: backupURL)
+
+        print("Backup complete")
     }
 
     // MARK: - Core Data stack
@@ -118,5 +220,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return .terminateNow
     }
 
-}
+    @IBAction func selectSearchField(_ sender: Any) {
+        guard let windowController = NSApplication.shared.mainWindow?.windowController as? WindowController else { return }
+        windowController.window?.makeFirstResponder(windowController.searchField)
+    }
+    
 
+}
