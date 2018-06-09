@@ -504,9 +504,9 @@ struct Model : ManagedObjectBacked {
         guard let similarModels = try purchaseModels ?? similar() else { return false }
 
         if exactMatch {
-            if let image = similarModels.flatMap({ $0.image }).mostFrequent() { self.image = image }
+            if let image = similarModels.compactMap({ $0.image }).mostFrequent() { self.image = image }
         }
-        if let classification = similarModels.flatMap({ $0.classification }).mostFrequent() { self.classification = classification }
+        if let classification = similarModels.compactMap({ $0.classification }).mostFrequent() { self.classification = classification }
         if let modelClass = similarModels.map({ $0.modelClass }).mostFrequent() { self.modelClass = modelClass }
         if exactMatch {
             if let number = similarModels.map({ $0.number }).mostFrequent() { self.number = number }
@@ -516,7 +516,7 @@ struct Model : ManagedObjectBacked {
         if let _ = purchaseModels {
             if let livery = similarModels.map({ $0.livery }).mostFrequent() { self.livery = livery }
             if let details = similarModels.map({ $0.details }).mostFrequent() { self.details = details }
-            if let era = similarModels.flatMap({ $0.era }).mostFrequent() { self.era = era }
+            if let era = similarModels.compactMap({ $0.era }).mostFrequent() { self.era = era }
         }
         // disposition is omitted because that's chosen on a per-model basis.
         

@@ -219,7 +219,7 @@ struct Purchase : ManagedObjectBacked {
             if let limitedEdition = similarPurchases.map({ $0.limitedEdition }).mostFrequent() { self.limitedEdition = limitedEdition }
             // limitedEditionNumber is omitted because that should always differ between individual models.
             if let limitedEditionCount = similarPurchases.map({ $0.limitedEditionCount }).mostFrequent() { self.limitedEditionCount = limitedEditionCount }
-            if let valuation = similarPurchases.flatMap({ $0.valuation }).mostFrequent() { self.valuation = valuation }
+            if let valuation = similarPurchases.compactMap({ $0.valuation }).mostFrequent() { self.valuation = valuation }
         }
         
         // Don't do model copying if they're already filled out, since we wipe it.
@@ -231,7 +231,7 @@ struct Purchase : ManagedObjectBacked {
         // Right now this simply ignores missing models, or extra models, but keeps looking at the rest of the box rather than excluding the purchase altogether; can change that with the flatMap below to check the count matches, rather than checking against index.
         guard let count = similarPurchases.map({ $0.models.count }).mostFrequent() else { return exactMatch }
         for index in 0..<count {
-            let similarModels = Set(similarPurchases.flatMap({ $0.models.count > index ? $0.models[index] : nil }))
+            let similarModels = Set(similarPurchases.compactMap({ $0.models.count > index ? $0.models[index] : nil }))
             
             var model: Model = addModel()
             let _ = try model.fillFromSimilar(models: similarModels, exactMatch: exactMatch)
