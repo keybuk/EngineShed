@@ -171,11 +171,19 @@ struct Purchase : ManagedObjectBacked {
         guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
         guard !manufacturer.isEmpty && !catalogNumber.isEmpty else { return nil }
 
-        // This only works for Bachmann and Hornby, but it's a good approximtation and we can add more later.
         var catalogNumberBase = catalogNumber
-        while ("A"..."Z").contains(catalogNumberBase.suffix(1)) {
-            catalogNumberBase.removeLast()
+        if catalogNumberBase.filter({ $0 == "-" }).count > 1 {
+            // XX-XX-999Z style (Dapol, Hattons)
+            while catalogNumberBase.suffix(1) != "-" {
+                catalogNumberBase.removeLast()
+            }
+        } else {
+            // XXXXZ style (Bachmann and Hornby)
+            while ("A"..."Z").contains(catalogNumberBase.suffix(1)) {
+                catalogNumberBase.removeLast()
+            }
         }
+
 
         let fetchRequest: NSFetchRequest<PurchaseManagedObject> = PurchaseManagedObject.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "SELF != %@ && manufacturer == %@ && catalogNumber BEGINSWITH[c] %@", managedObject, manufacturer, catalogNumberBase)
@@ -198,8 +206,8 @@ struct Purchase : ManagedObjectBacked {
                 matches.append(purchaseObject)
             } else if !exactOnly {
                 let suffix = purchaseObject.catalogNumber!.dropFirst(catalogNumberBase.count)
-                guard suffix.drop(while: ("A"..."Z").contains).isEmpty else { continue }
-                
+                guard suffix.drop(while: ("A"..."Z").contains).isEmpty || purchaseObject.catalogNumber!.filter({ $0 == "-" }).count > 1 else { continue }
+
                 matches.append(purchaseObject)
             }
             
