@@ -42,10 +42,10 @@
 		D215BEAB20D4B53A0054FDCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D215BEAD20D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D215BEAE20D4B53A0054FDCC /* EngineShed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EngineShed.entitlements; sourceTree = "<group>"; };
-		D215BEB320D4B53A0054FDCC /* EngineShedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineShedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D215BEB320D4B53A0054FDCC /* EngineShed macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D215BEB720D4B53A0054FDCC /* EngineShedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedTests.swift; sourceTree = "<group>"; };
 		D215BEB920D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D215BEBE20D4B53A0054FDCC /* EngineShedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineShedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D215BEBE20D4B53A0054FDCC /* EngineShed macOS UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed macOS UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
 		D215BEC420D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,9 +78,9 @@
 		D215BE9520D4B5380054FDCC = {
 			isa = PBXGroup;
 			children = (
-				D215BEA020D4B5380054FDCC /* EngineShed */,
-				D215BEB620D4B53A0054FDCC /* EngineShedTests */,
-				D215BEC120D4B53A0054FDCC /* EngineShedUITests */,
+				D215BEA020D4B5380054FDCC /* EngineShed macOS */,
+				D215BEB620D4B53A0054FDCC /* EngineShed macOS Tests */,
+				D215BEC120D4B53A0054FDCC /* EngineShed macOS UI Tests */,
 				D215BE9F20D4B5380054FDCC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,13 +89,13 @@
 			isa = PBXGroup;
 			children = (
 				D215BE9E20D4B5380054FDCC /* EngineShed.app */,
-				D215BEB320D4B53A0054FDCC /* EngineShedTests.xctest */,
-				D215BEBE20D4B53A0054FDCC /* EngineShedUITests.xctest */,
+				D215BEB320D4B53A0054FDCC /* EngineShed macOS Tests.xctest */,
+				D215BEBE20D4B53A0054FDCC /* EngineShed macOS UI Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D215BEA020D4B5380054FDCC /* EngineShed */ = {
+		D215BEA020D4B5380054FDCC /* EngineShed macOS */ = {
 			isa = PBXGroup;
 			children = (
 				D215BEA120D4B5380054FDCC /* AppDelegate.swift */,
@@ -106,33 +106,33 @@
 				D215BEAE20D4B53A0054FDCC /* EngineShed.entitlements */,
 				D215BEA520D4B5380054FDCC /* EngineShed.xcdatamodeld */,
 			);
-			path = EngineShed;
+			path = "EngineShed macOS";
 			sourceTree = "<group>";
 		};
-		D215BEB620D4B53A0054FDCC /* EngineShedTests */ = {
+		D215BEB620D4B53A0054FDCC /* EngineShed macOS Tests */ = {
 			isa = PBXGroup;
 			children = (
 				D215BEB720D4B53A0054FDCC /* EngineShedTests.swift */,
 				D215BEB920D4B53A0054FDCC /* Info.plist */,
 			);
-			path = EngineShedTests;
+			path = "EngineShed macOS Tests";
 			sourceTree = "<group>";
 		};
-		D215BEC120D4B53A0054FDCC /* EngineShedUITests */ = {
+		D215BEC120D4B53A0054FDCC /* EngineShed macOS UI Tests */ = {
 			isa = PBXGroup;
 			children = (
 				D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */,
 				D215BEC420D4B53A0054FDCC /* Info.plist */,
 			);
-			path = EngineShedUITests;
+			path = "EngineShed macOS UI Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D215BE9D20D4B5380054FDCC /* EngineShed */ = {
+		D215BE9D20D4B5380054FDCC /* EngineShed macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D215BEC720D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShed" */;
+			buildConfigurationList = D215BEC720D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShed macOS" */;
 			buildPhases = (
 				D215BE9A20D4B5380054FDCC /* Sources */,
 				D215BE9B20D4B5380054FDCC /* Frameworks */,
@@ -142,14 +142,14 @@
 			);
 			dependencies = (
 			);
-			name = EngineShed;
+			name = "EngineShed macOS";
 			productName = EngineShed;
 			productReference = D215BE9E20D4B5380054FDCC /* EngineShed.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D215BEB220D4B53A0054FDCC /* EngineShedTests */ = {
+		D215BEB220D4B53A0054FDCC /* EngineShed macOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D215BECA20D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShedTests" */;
+			buildConfigurationList = D215BECA20D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShed macOS Tests" */;
 			buildPhases = (
 				D215BEAF20D4B53A0054FDCC /* Sources */,
 				D215BEB020D4B53A0054FDCC /* Frameworks */,
@@ -160,14 +160,14 @@
 			dependencies = (
 				D215BEB520D4B53A0054FDCC /* PBXTargetDependency */,
 			);
-			name = EngineShedTests;
+			name = "EngineShed macOS Tests";
 			productName = EngineShedTests;
-			productReference = D215BEB320D4B53A0054FDCC /* EngineShedTests.xctest */;
+			productReference = D215BEB320D4B53A0054FDCC /* EngineShed macOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D215BEBD20D4B53A0054FDCC /* EngineShedUITests */ = {
+		D215BEBD20D4B53A0054FDCC /* EngineShed macOS UI Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D215BECD20D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShedUITests" */;
+			buildConfigurationList = D215BECD20D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShed macOS UI Tests" */;
 			buildPhases = (
 				D215BEBA20D4B53A0054FDCC /* Sources */,
 				D215BEBB20D4B53A0054FDCC /* Frameworks */,
@@ -178,9 +178,9 @@
 			dependencies = (
 				D215BEC020D4B53A0054FDCC /* PBXTargetDependency */,
 			);
-			name = EngineShedUITests;
+			name = "EngineShed macOS UI Tests";
 			productName = EngineShedUITests;
-			productReference = D215BEBE20D4B53A0054FDCC /* EngineShedUITests.xctest */;
+			productReference = D215BEBE20D4B53A0054FDCC /* EngineShed macOS UI Tests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -219,9 +219,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D215BE9D20D4B5380054FDCC /* EngineShed */,
-				D215BEB220D4B53A0054FDCC /* EngineShedTests */,
-				D215BEBD20D4B53A0054FDCC /* EngineShedUITests */,
+				D215BE9D20D4B5380054FDCC /* EngineShed macOS */,
+				D215BEB220D4B53A0054FDCC /* EngineShed macOS Tests */,
+				D215BEBD20D4B53A0054FDCC /* EngineShed macOS UI Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -284,12 +284,12 @@
 /* Begin PBXTargetDependency section */
 		D215BEB520D4B53A0054FDCC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D215BE9D20D4B5380054FDCC /* EngineShed */;
+			target = D215BE9D20D4B5380054FDCC /* EngineShed macOS */;
 			targetProxy = D215BEB420D4B53A0054FDCC /* PBXContainerItemProxy */;
 		};
 		D215BEC020D4B53A0054FDCC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D215BE9D20D4B5380054FDCC /* EngineShed */;
+			target = D215BE9D20D4B5380054FDCC /* EngineShed macOS */;
 			targetProxy = D215BEBF20D4B53A0054FDCC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -423,17 +423,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = EngineShed/EngineShed.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "EngineShed macOS/EngineShed.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = EngineShed/Info.plist;
+				INFOPLIST_FILE = "EngineShed macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EngineShed;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -442,17 +442,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = EngineShed/EngineShed.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "EngineShed macOS/EngineShed.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = EngineShed/Info.plist;
+				INFOPLIST_FILE = "EngineShed macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EngineShed;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -465,7 +465,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = EngineShedTests/Info.plist;
+				INFOPLIST_FILE = "EngineShed macOS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -486,7 +486,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = EngineShedTests/Info.plist;
+				INFOPLIST_FILE = "EngineShed macOS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -506,7 +506,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = EngineShedUITests/Info.plist;
+				INFOPLIST_FILE = "EngineShed macOS UI Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -514,8 +514,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 4.2;
-				TEST_TARGET_NAME = EngineShed;
+				TEST_TARGET_NAME = "EngineShed macOS";
 			};
 			name = Debug;
 		};
@@ -526,7 +527,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = EngineShedUITests/Info.plist;
+				INFOPLIST_FILE = "EngineShed macOS UI Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -534,8 +535,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 4.2;
-				TEST_TARGET_NAME = EngineShed;
+				TEST_TARGET_NAME = "EngineShed macOS";
 			};
 			name = Release;
 		};
@@ -551,7 +553,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D215BEC720D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShed" */ = {
+		D215BEC720D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShed macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D215BEC820D4B53A0054FDCC /* Debug */,
@@ -560,7 +562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D215BECA20D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShedTests" */ = {
+		D215BECA20D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShed macOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D215BECB20D4B53A0054FDCC /* Debug */,
@@ -569,7 +571,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D215BECD20D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShedUITests" */ = {
+		D215BECD20D4B53A0054FDCC /* Build configuration list for PBXNativeTarget "EngineShed macOS UI Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D215BECE20D4B53A0054FDCC /* Debug */,
