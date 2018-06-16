@@ -4,10 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EngineShed iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>EngineShed macOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>D2B7C95020D4BA30001B51B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D2B7C96820D4BA31001B51B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D2B7C97320D4BA31001B51B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

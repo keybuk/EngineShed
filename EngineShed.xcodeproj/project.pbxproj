@@ -14,6 +14,15 @@
 		D215BEAC20D4B53A0054FDCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D215BEAA20D4B53A0054FDCC /* Main.storyboard */; };
 		D215BEB820D4B53A0054FDCC /* EngineShedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEB720D4B53A0054FDCC /* EngineShedTests.swift */; };
 		D215BEC320D4B53A0054FDCC /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */; };
+		D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */; };
+		D2B7C95720D4BA30001B51B1 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95520D4BA30001B51B1 /* EngineShed.xcdatamodeld */; };
+		D2B7C95920D4BA30001B51B1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */; };
+		D2B7C95B20D4BA30001B51B1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95A20D4BA30001B51B1 /* DetailViewController.swift */; };
+		D2B7C95E20D4BA30001B51B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95C20D4BA30001B51B1 /* Main.storyboard */; };
+		D2B7C96020D4BA31001B51B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */; };
+		D2B7C96320D4BA31001B51B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */; };
+		D2B7C96E20D4BA31001B51B1 /* EngineShedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C96D20D4BA31001B51B1 /* EngineShedTests.swift */; };
+		D2B7C97920D4BA31001B51B1 /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C97820D4BA31001B51B1 /* EngineShedUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +38,20 @@
 			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D215BE9D20D4B5380054FDCC;
+			remoteInfo = EngineShed;
+		};
+		D2B7C96A20D4BA31001B51B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2B7C95020D4BA30001B51B1;
+			remoteInfo = EngineShed;
+		};
+		D2B7C97520D4BA31001B51B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2B7C95020D4BA30001B51B1;
 			remoteInfo = EngineShed;
 		};
 /* End PBXContainerItemProxy section */
@@ -48,6 +71,21 @@
 		D215BEBE20D4B53A0054FDCC /* EngineShed macOS UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed macOS UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
 		D215BEC420D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B7C95120D4BA30001B51B1 /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D2B7C95620D4BA30001B51B1 /* EngineShed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EngineShed.xcdatamodel; sourceTree = "<group>"; };
+		D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		D2B7C95A20D4BA30001B51B1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D2B7C95D20D4BA30001B51B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2B7C96220D4BA31001B51B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D2B7C96420D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B7C96920D4BA31001B51B1 /* EngineShed iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7C96D20D4BA31001B51B1 /* EngineShedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedTests.swift; sourceTree = "<group>"; };
+		D2B7C96F20D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B7C97420D4BA31001B51B1 /* EngineShed IOS UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed IOS UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7C97820D4BA31001B51B1 /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
+		D2B7C97A20D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +110,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2B7C94E20D4BA30001B51B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C96620D4BA31001B51B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C97120D4BA31001B51B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,6 +140,9 @@
 				D215BEA020D4B5380054FDCC /* EngineShed macOS */,
 				D215BEB620D4B53A0054FDCC /* EngineShed macOS Tests */,
 				D215BEC120D4B53A0054FDCC /* EngineShed macOS UI Tests */,
+				D2B7C95220D4BA30001B51B1 /* EngineShed iOS */,
+				D2B7C96C20D4BA31001B51B1 /* EngineShed iOS Tests */,
+				D2B7C97720D4BA31001B51B1 /* EngineShed iOS UI Tests */,
 				D215BE9F20D4B5380054FDCC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,6 +153,9 @@
 				D215BE9E20D4B5380054FDCC /* EngineShed.app */,
 				D215BEB320D4B53A0054FDCC /* EngineShed macOS Tests.xctest */,
 				D215BEBE20D4B53A0054FDCC /* EngineShed macOS UI Tests.xctest */,
+				D2B7C95120D4BA30001B51B1 /* EngineShed.app */,
+				D2B7C96920D4BA31001B51B1 /* EngineShed iOS Tests.xctest */,
+				D2B7C97420D4BA31001B51B1 /* EngineShed IOS UI Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +190,39 @@
 				D215BEC420D4B53A0054FDCC /* Info.plist */,
 			);
 			path = "EngineShed macOS UI Tests";
+			sourceTree = "<group>";
+		};
+		D2B7C95220D4BA30001B51B1 /* EngineShed iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */,
+				D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */,
+				D2B7C95A20D4BA30001B51B1 /* DetailViewController.swift */,
+				D2B7C95C20D4BA30001B51B1 /* Main.storyboard */,
+				D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */,
+				D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */,
+				D2B7C96420D4BA31001B51B1 /* Info.plist */,
+				D2B7C95520D4BA30001B51B1 /* EngineShed.xcdatamodeld */,
+			);
+			path = "EngineShed iOS";
+			sourceTree = "<group>";
+		};
+		D2B7C96C20D4BA31001B51B1 /* EngineShed iOS Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7C96D20D4BA31001B51B1 /* EngineShedTests.swift */,
+				D2B7C96F20D4BA31001B51B1 /* Info.plist */,
+			);
+			path = "EngineShed iOS Tests";
+			sourceTree = "<group>";
+		};
+		D2B7C97720D4BA31001B51B1 /* EngineShed iOS UI Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7C97820D4BA31001B51B1 /* EngineShedUITests.swift */,
+				D2B7C97A20D4BA31001B51B1 /* Info.plist */,
+			);
+			path = "EngineShed iOS UI Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +281,59 @@
 			productReference = D215BEBE20D4B53A0054FDCC /* EngineShed macOS UI Tests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D2B7C95020D4BA30001B51B1 /* EngineShed iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2B7C97B20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed iOS" */;
+			buildPhases = (
+				D2B7C94D20D4BA30001B51B1 /* Sources */,
+				D2B7C94E20D4BA30001B51B1 /* Frameworks */,
+				D2B7C94F20D4BA30001B51B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "EngineShed iOS";
+			productName = EngineShed;
+			productReference = D2B7C95120D4BA30001B51B1 /* EngineShed.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2B7C96820D4BA31001B51B1 /* EngineShed iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2B7C97E20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed iOS Tests" */;
+			buildPhases = (
+				D2B7C96520D4BA31001B51B1 /* Sources */,
+				D2B7C96620D4BA31001B51B1 /* Frameworks */,
+				D2B7C96720D4BA31001B51B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2B7C96B20D4BA31001B51B1 /* PBXTargetDependency */,
+			);
+			name = "EngineShed iOS Tests";
+			productName = EngineShedTests;
+			productReference = D2B7C96920D4BA31001B51B1 /* EngineShed iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D2B7C97320D4BA31001B51B1 /* EngineShed IOS UI Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2B7C98120D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed IOS UI Tests" */;
+			buildPhases = (
+				D2B7C97020D4BA31001B51B1 /* Sources */,
+				D2B7C97120D4BA31001B51B1 /* Frameworks */,
+				D2B7C97220D4BA31001B51B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2B7C97620D4BA31001B51B1 /* PBXTargetDependency */,
+			);
+			name = "EngineShed IOS UI Tests";
+			productName = EngineShedUITests;
+			productReference = D2B7C97420D4BA31001B51B1 /* EngineShed IOS UI Tests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -204,6 +355,17 @@
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = D215BE9D20D4B5380054FDCC;
 					};
+					D2B7C95020D4BA30001B51B1 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					D2B7C96820D4BA31001B51B1 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = D2B7C95020D4BA30001B51B1;
+					};
+					D2B7C97320D4BA31001B51B1 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = D2B7C95020D4BA30001B51B1;
+					};
 				};
 			};
 			buildConfigurationList = D215BE9920D4B5380054FDCC /* Build configuration list for PBXProject "EngineShed" */;
@@ -222,6 +384,9 @@
 				D215BE9D20D4B5380054FDCC /* EngineShed macOS */,
 				D215BEB220D4B53A0054FDCC /* EngineShed macOS Tests */,
 				D215BEBD20D4B53A0054FDCC /* EngineShed macOS UI Tests */,
+				D2B7C95020D4BA30001B51B1 /* EngineShed iOS */,
+				D2B7C96820D4BA31001B51B1 /* EngineShed iOS Tests */,
+				D2B7C97320D4BA31001B51B1 /* EngineShed IOS UI Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -244,6 +409,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D215BEBC20D4B53A0054FDCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C94F20D4BA30001B51B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B7C96320D4BA31001B51B1 /* LaunchScreen.storyboard in Resources */,
+				D2B7C96020D4BA31001B51B1 /* Assets.xcassets in Resources */,
+				D2B7C95E20D4BA30001B51B1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C96720D4BA31001B51B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C97220D4BA31001B51B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -279,6 +468,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2B7C94D20D4BA30001B51B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */,
+				D2B7C95720D4BA30001B51B1 /* EngineShed.xcdatamodeld in Sources */,
+				D2B7C95920D4BA30001B51B1 /* MasterViewController.swift in Sources */,
+				D2B7C95B20D4BA30001B51B1 /* DetailViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C96520D4BA31001B51B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B7C96E20D4BA31001B51B1 /* EngineShedTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C97020D4BA31001B51B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B7C97920D4BA31001B51B1 /* EngineShedUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -292,6 +508,16 @@
 			target = D215BE9D20D4B5380054FDCC /* EngineShed macOS */;
 			targetProxy = D215BEBF20D4B53A0054FDCC /* PBXContainerItemProxy */;
 		};
+		D2B7C96B20D4BA31001B51B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2B7C95020D4BA30001B51B1 /* EngineShed iOS */;
+			targetProxy = D2B7C96A20D4BA31001B51B1 /* PBXContainerItemProxy */;
+		};
+		D2B7C97620D4BA31001B51B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2B7C95020D4BA30001B51B1 /* EngineShed iOS */;
+			targetProxy = D2B7C97520D4BA31001B51B1 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -301,6 +527,22 @@
 				D215BEAB20D4B53A0054FDCC /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D2B7C95C20D4BA30001B51B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2B7C95D20D4BA30001B51B1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2B7C96220D4BA31001B51B1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -541,6 +783,147 @@
 			};
 			name = Release;
 		};
+		D2B7C97C20D4BA31001B51B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "EngineShed iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed;
+				PRODUCT_NAME = EngineShed;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2B7C97D20D4BA31001B51B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "EngineShed iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed;
+				PRODUCT_NAME = EngineShed;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D2B7C97F20D4BA31001B51B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "EngineShed iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
+			};
+			name = Debug;
+		};
+		D2B7C98020D4BA31001B51B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "EngineShed iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D2B7C98220D4BA31001B51B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "EngineShed iOS UI Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "EngineShed iOS";
+			};
+			name = Debug;
+		};
+		D2B7C98320D4BA31001B51B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "EngineShed iOS UI Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "EngineShed iOS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -580,6 +963,33 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		D2B7C97B20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2B7C97C20D4BA31001B51B1 /* Debug */,
+				D2B7C97D20D4BA31001B51B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2B7C97E20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2B7C97F20D4BA31001B51B1 /* Debug */,
+				D2B7C98020D4BA31001B51B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2B7C98120D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed IOS UI Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2B7C98220D4BA31001B51B1 /* Debug */,
+				D2B7C98320D4BA31001B51B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
@@ -589,6 +999,16 @@
 				D215BEA620D4B5380054FDCC /* EngineShed.xcdatamodel */,
 			);
 			currentVersion = D215BEA620D4B5380054FDCC /* EngineShed.xcdatamodel */;
+			path = EngineShed.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		D2B7C95520D4BA30001B51B1 /* EngineShed.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D2B7C95620D4BA30001B51B1 /* EngineShed.xcdatamodel */,
+			);
+			currentVersion = D2B7C95620D4BA30001B51B1 /* EngineShed.xcdatamodel */;
 			path = EngineShed.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
