@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!

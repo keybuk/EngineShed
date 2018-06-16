@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+import Database
+
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var detailViewController: DetailViewController? = nil
