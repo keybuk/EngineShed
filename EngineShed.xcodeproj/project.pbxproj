@@ -23,6 +23,16 @@
 		D2B7C96320D4BA31001B51B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */; };
 		D2B7C96E20D4BA31001B51B1 /* EngineShedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C96D20D4BA31001B51B1 /* EngineShedTests.swift */; };
 		D2B7C97920D4BA31001B51B1 /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C97820D4BA31001B51B1 /* EngineShedUITests.swift */; };
+		D2B7C99220D4BE2F001B51B1 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7C98920D4BE2F001B51B1 /* Database.framework */; };
+		D2B7C99920D4BE2F001B51B1 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C99820D4BE2F001B51B1 /* DatabaseTests.swift */; };
+		D2B7C99B20D4BE2F001B51B1 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = D2B7C98B20D4BE2F001B51B1 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D2B7C99E20D4BE2F001B51B1 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7C98920D4BE2F001B51B1 /* Database.framework */; };
+		D2B7C99F20D4BE2F001B51B1 /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7C98920D4BE2F001B51B1 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2B7C9B520D4BEF4001B51B1 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7C9AC20D4BEF3001B51B1 /* Database.framework */; };
+		D2B7C9BC20D4BEF4001B51B1 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9BB20D4BEF4001B51B1 /* DatabaseTests.swift */; };
+		D2B7C9BE20D4BEF4001B51B1 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = D2B7C9AE20D4BEF3001B51B1 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D2B7C9C120D4BEF4001B51B1 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7C9AC20D4BEF3001B51B1 /* Database.framework */; };
+		D2B7C9C220D4BEF4001B51B1 /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7C9AC20D4BEF3001B51B1 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +64,74 @@
 			remoteGlobalIDString = D2B7C95020D4BA30001B51B1;
 			remoteInfo = EngineShed;
 		};
+		D2B7C99320D4BE2F001B51B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2B7C98820D4BE2F001B51B1;
+			remoteInfo = Database;
+		};
+		D2B7C99520D4BE2F001B51B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D215BE9D20D4B5380054FDCC;
+			remoteInfo = "EngineShed macOS";
+		};
+		D2B7C99C20D4BE2F001B51B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2B7C98820D4BE2F001B51B1;
+			remoteInfo = Database;
+		};
+		D2B7C9B620D4BEF4001B51B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2B7C9AB20D4BEF3001B51B1;
+			remoteInfo = Database;
+		};
+		D2B7C9B820D4BEF4001B51B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2B7C95020D4BA30001B51B1;
+			remoteInfo = "EngineShed iOS";
+		};
+		D2B7C9BF20D4BEF4001B51B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2B7C9AB20D4BEF3001B51B1;
+			remoteInfo = Database;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D2B7C9A320D4BE2F001B51B1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D2B7C99F20D4BE2F001B51B1 /* Database.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C9C620D4BEF4001B51B1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D2B7C9C220D4BEF4001B51B1 /* Database.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D215BE9E20D4B5380054FDCC /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +163,18 @@
 		D2B7C97420D4BA31001B51B1 /* EngineShed IOS UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed IOS UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C97820D4BA31001B51B1 /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
 		D2B7C97A20D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B7C98920D4BE2F001B51B1 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7C98B20D4BE2F001B51B1 /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		D2B7C98C20D4BE2F001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B7C99120D4BE2F001B51B1 /* Database macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Database macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7C99820D4BE2F001B51B1 /* DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
+		D2B7C99A20D4BE2F001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B7C9AC20D4BEF3001B51B1 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7C9AE20D4BEF3001B51B1 /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		D2B7C9AF20D4BEF3001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B7C9B420D4BEF3001B51B1 /* Database iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Database iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7C9BB20D4BEF4001B51B1 /* DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
+		D2B7C9BD20D4BEF4001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B7C99E20D4BE2F001B51B1 /* Database.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B7C9C120D4BEF4001B51B1 /* Database.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +222,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2B7C98620D4BE2F001B51B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C98E20D4BE2F001B51B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B7C99220D4BE2F001B51B1 /* Database.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C9A920D4BEF3001B51B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C9B120D4BEF3001B51B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B7C9B520D4BEF4001B51B1 /* Database.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -143,6 +264,10 @@
 				D2B7C95220D4BA30001B51B1 /* EngineShed iOS */,
 				D2B7C96C20D4BA31001B51B1 /* EngineShed iOS Tests */,
 				D2B7C97720D4BA31001B51B1 /* EngineShed iOS UI Tests */,
+				D2B7C98A20D4BE2F001B51B1 /* Database macOS */,
+				D2B7C99720D4BE2F001B51B1 /* Database macOS Tests */,
+				D2B7C9AD20D4BEF3001B51B1 /* Database iOS */,
+				D2B7C9BA20D4BEF4001B51B1 /* Database iOS Tests */,
 				D215BE9F20D4B5380054FDCC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,6 +281,10 @@
 				D2B7C95120D4BA30001B51B1 /* EngineShed.app */,
 				D2B7C96920D4BA31001B51B1 /* EngineShed iOS Tests.xctest */,
 				D2B7C97420D4BA31001B51B1 /* EngineShed IOS UI Tests.xctest */,
+				D2B7C98920D4BE2F001B51B1 /* Database.framework */,
+				D2B7C99120D4BE2F001B51B1 /* Database macOS Tests.xctest */,
+				D2B7C9AC20D4BEF3001B51B1 /* Database.framework */,
+				D2B7C9B420D4BEF3001B51B1 /* Database iOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,7 +354,62 @@
 			path = "EngineShed iOS UI Tests";
 			sourceTree = "<group>";
 		};
+		D2B7C98A20D4BE2F001B51B1 /* Database macOS */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7C98B20D4BE2F001B51B1 /* Database.h */,
+				D2B7C98C20D4BE2F001B51B1 /* Info.plist */,
+			);
+			path = "Database macOS";
+			sourceTree = "<group>";
+		};
+		D2B7C99720D4BE2F001B51B1 /* Database macOS Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7C99820D4BE2F001B51B1 /* DatabaseTests.swift */,
+				D2B7C99A20D4BE2F001B51B1 /* Info.plist */,
+			);
+			path = "Database macOS Tests";
+			sourceTree = "<group>";
+		};
+		D2B7C9AD20D4BEF3001B51B1 /* Database iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7C9AE20D4BEF3001B51B1 /* Database.h */,
+				D2B7C9AF20D4BEF3001B51B1 /* Info.plist */,
+			);
+			path = "Database iOS";
+			sourceTree = "<group>";
+		};
+		D2B7C9BA20D4BEF4001B51B1 /* Database iOS Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D2B7C9BB20D4BEF4001B51B1 /* DatabaseTests.swift */,
+				D2B7C9BD20D4BEF4001B51B1 /* Info.plist */,
+			);
+			path = "Database iOS Tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2B7C98420D4BE2F001B51B1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B7C99B20D4BE2F001B51B1 /* Database.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C9A720D4BEF3001B51B1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B7C9BE20D4BEF4001B51B1 /* Database.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		D215BE9D20D4B5380054FDCC /* EngineShed macOS */ = {
@@ -235,10 +419,12 @@
 				D215BE9A20D4B5380054FDCC /* Sources */,
 				D215BE9B20D4B5380054FDCC /* Frameworks */,
 				D215BE9C20D4B5380054FDCC /* Resources */,
+				D2B7C9A320D4BE2F001B51B1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D2B7C99D20D4BE2F001B51B1 /* PBXTargetDependency */,
 			);
 			name = "EngineShed macOS";
 			productName = EngineShed;
@@ -288,10 +474,12 @@
 				D2B7C94D20D4BA30001B51B1 /* Sources */,
 				D2B7C94E20D4BA30001B51B1 /* Frameworks */,
 				D2B7C94F20D4BA30001B51B1 /* Resources */,
+				D2B7C9C620D4BEF4001B51B1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D2B7C9C020D4BEF4001B51B1 /* PBXTargetDependency */,
 			);
 			name = "EngineShed iOS";
 			productName = EngineShed;
@@ -334,6 +522,80 @@
 			productReference = D2B7C97420D4BA31001B51B1 /* EngineShed IOS UI Tests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D2B7C98820D4BE2F001B51B1 /* Database macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2B7C9A020D4BE2F001B51B1 /* Build configuration list for PBXNativeTarget "Database macOS" */;
+			buildPhases = (
+				D2B7C98420D4BE2F001B51B1 /* Headers */,
+				D2B7C98520D4BE2F001B51B1 /* Sources */,
+				D2B7C98620D4BE2F001B51B1 /* Frameworks */,
+				D2B7C98720D4BE2F001B51B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Database macOS";
+			productName = Database;
+			productReference = D2B7C98920D4BE2F001B51B1 /* Database.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D2B7C99020D4BE2F001B51B1 /* Database macOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2B7C9A420D4BE2F001B51B1 /* Build configuration list for PBXNativeTarget "Database macOS Tests" */;
+			buildPhases = (
+				D2B7C98D20D4BE2F001B51B1 /* Sources */,
+				D2B7C98E20D4BE2F001B51B1 /* Frameworks */,
+				D2B7C98F20D4BE2F001B51B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2B7C99420D4BE2F001B51B1 /* PBXTargetDependency */,
+				D2B7C99620D4BE2F001B51B1 /* PBXTargetDependency */,
+			);
+			name = "Database macOS Tests";
+			productName = DatabaseTests;
+			productReference = D2B7C99120D4BE2F001B51B1 /* Database macOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D2B7C9AB20D4BEF3001B51B1 /* Database iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2B7C9C320D4BEF4001B51B1 /* Build configuration list for PBXNativeTarget "Database iOS" */;
+			buildPhases = (
+				D2B7C9A720D4BEF3001B51B1 /* Headers */,
+				D2B7C9A820D4BEF3001B51B1 /* Sources */,
+				D2B7C9A920D4BEF3001B51B1 /* Frameworks */,
+				D2B7C9AA20D4BEF3001B51B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Database iOS";
+			productName = Database;
+			productReference = D2B7C9AC20D4BEF3001B51B1 /* Database.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D2B7C9B320D4BEF3001B51B1 /* Database iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2B7C9C720D4BEF4001B51B1 /* Build configuration list for PBXNativeTarget "Database iOS Tests" */;
+			buildPhases = (
+				D2B7C9B020D4BEF3001B51B1 /* Sources */,
+				D2B7C9B120D4BEF3001B51B1 /* Frameworks */,
+				D2B7C9B220D4BEF3001B51B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2B7C9B720D4BEF4001B51B1 /* PBXTargetDependency */,
+				D2B7C9B920D4BEF4001B51B1 /* PBXTargetDependency */,
+			);
+			name = "Database iOS Tests";
+			productName = DatabaseTests;
+			productReference = D2B7C9B420D4BEF3001B51B1 /* Database iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -366,6 +628,20 @@
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = D2B7C95020D4BA30001B51B1;
 					};
+					D2B7C98820D4BE2F001B51B1 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					D2B7C99020D4BE2F001B51B1 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = D215BE9D20D4B5380054FDCC;
+					};
+					D2B7C9AB20D4BEF3001B51B1 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					D2B7C9B320D4BEF3001B51B1 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = D2B7C95020D4BA30001B51B1;
+					};
 				};
 			};
 			buildConfigurationList = D215BE9920D4B5380054FDCC /* Build configuration list for PBXProject "EngineShed" */;
@@ -387,6 +663,10 @@
 				D2B7C95020D4BA30001B51B1 /* EngineShed iOS */,
 				D2B7C96820D4BA31001B51B1 /* EngineShed iOS Tests */,
 				D2B7C97320D4BA31001B51B1 /* EngineShed IOS UI Tests */,
+				D2B7C98820D4BE2F001B51B1 /* Database macOS */,
+				D2B7C99020D4BE2F001B51B1 /* Database macOS Tests */,
+				D2B7C9AB20D4BEF3001B51B1 /* Database iOS */,
+				D2B7C9B320D4BEF3001B51B1 /* Database iOS Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -433,6 +713,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D2B7C97220D4BA31001B51B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C98720D4BE2F001B51B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C98F20D4BE2F001B51B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C9AA20D4BEF3001B51B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C9B220D4BEF3001B51B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -495,6 +803,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D2B7C98520D4BE2F001B51B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C98D20D4BE2F001B51B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B7C99920D4BE2F001B51B1 /* DatabaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C9A820D4BEF3001B51B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B7C9B020D4BEF3001B51B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2B7C9BC20D4BEF4001B51B1 /* DatabaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -517,6 +855,36 @@
 			isa = PBXTargetDependency;
 			target = D2B7C95020D4BA30001B51B1 /* EngineShed iOS */;
 			targetProxy = D2B7C97520D4BA31001B51B1 /* PBXContainerItemProxy */;
+		};
+		D2B7C99420D4BE2F001B51B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2B7C98820D4BE2F001B51B1 /* Database macOS */;
+			targetProxy = D2B7C99320D4BE2F001B51B1 /* PBXContainerItemProxy */;
+		};
+		D2B7C99620D4BE2F001B51B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D215BE9D20D4B5380054FDCC /* EngineShed macOS */;
+			targetProxy = D2B7C99520D4BE2F001B51B1 /* PBXContainerItemProxy */;
+		};
+		D2B7C99D20D4BE2F001B51B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2B7C98820D4BE2F001B51B1 /* Database macOS */;
+			targetProxy = D2B7C99C20D4BE2F001B51B1 /* PBXContainerItemProxy */;
+		};
+		D2B7C9B720D4BEF4001B51B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2B7C9AB20D4BEF3001B51B1 /* Database iOS */;
+			targetProxy = D2B7C9B620D4BEF4001B51B1 /* PBXContainerItemProxy */;
+		};
+		D2B7C9B920D4BEF4001B51B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2B7C95020D4BA30001B51B1 /* EngineShed iOS */;
+			targetProxy = D2B7C9B820D4BEF4001B51B1 /* PBXContainerItemProxy */;
+		};
+		D2B7C9C020D4BEF4001B51B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2B7C9AB20D4BEF3001B51B1 /* Database iOS */;
+			targetProxy = D2B7C9BF20D4BEF4001B51B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -924,6 +1292,212 @@
 			};
 			name = Release;
 		};
+		D2B7C9A120D4BE2F001B51B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Database macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.Database;
+				PRODUCT_NAME = Database;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D2B7C9A220D4BE2F001B51B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Database macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.Database;
+				PRODUCT_NAME = Database;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D2B7C9A520D4BE2F001B51B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "Database macOS Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DatabaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/Contents/MacOS/EngineShed";
+			};
+			name = Debug;
+		};
+		D2B7C9A620D4BE2F001B51B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "Database macOS Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DatabaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/Contents/MacOS/EngineShed";
+			};
+			name = Release;
+		};
+		D2B7C9C420D4BEF4001B51B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Database iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.Database;
+				PRODUCT_NAME = Database;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D2B7C9C520D4BEF4001B51B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Database iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.Database;
+				PRODUCT_NAME = Database;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D2B7C9C820D4BEF4001B51B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "Database iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DatabaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
+			};
+			name = Debug;
+		};
+		D2B7C9C920D4BEF4001B51B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "Database iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DatabaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -986,6 +1560,42 @@
 			buildConfigurations = (
 				D2B7C98220D4BA31001B51B1 /* Debug */,
 				D2B7C98320D4BA31001B51B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2B7C9A020D4BE2F001B51B1 /* Build configuration list for PBXNativeTarget "Database macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2B7C9A120D4BE2F001B51B1 /* Debug */,
+				D2B7C9A220D4BE2F001B51B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2B7C9A420D4BE2F001B51B1 /* Build configuration list for PBXNativeTarget "Database macOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2B7C9A520D4BE2F001B51B1 /* Debug */,
+				D2B7C9A620D4BE2F001B51B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2B7C9C320D4BEF4001B51B1 /* Build configuration list for PBXNativeTarget "Database iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2B7C9C420D4BEF4001B51B1 /* Debug */,
+				D2B7C9C520D4BEF4001B51B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2B7C9C720D4BEF4001B51B1 /* Build configuration list for PBXNativeTarget "Database iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2B7C9C820D4BEF4001B51B1 /* Debug */,
+				D2B7C9C920D4BEF4001B51B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

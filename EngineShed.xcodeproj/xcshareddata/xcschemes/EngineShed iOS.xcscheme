@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2B7C95020D4BA30001B51B1"
-               BuildableName = "EngineShed iOS.app"
+               BuildableName = "EngineShed.app"
                BlueprintName = "EngineShed iOS"
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
@@ -48,12 +48,22 @@
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D2B7C9B320D4BEF3001B51B1"
+               BuildableName = "Database iOS Tests.xctest"
+               BlueprintName = "Database iOS Tests"
+               ReferencedContainer = "container:EngineShed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2B7C95020D4BA30001B51B1"
-            BuildableName = "EngineShed iOS.app"
+            BuildableName = "EngineShed.app"
             BlueprintName = "EngineShed iOS"
             ReferencedContainer = "container:EngineShed.xcodeproj">
          </BuildableReference>
@@ -76,7 +86,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2B7C95020D4BA30001B51B1"
-            BuildableName = "EngineShed iOS.app"
+            BuildableName = "EngineShed.app"
             BlueprintName = "EngineShed iOS"
             ReferencedContainer = "container:EngineShed.xcodeproj">
          </BuildableReference>
@@ -95,7 +105,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2B7C95020D4BA30001B51B1"
-            BuildableName = "EngineShed iOS.app"
+            BuildableName = "EngineShed.app"
             BlueprintName = "EngineShed iOS"
             ReferencedContainer = "container:EngineShed.xcodeproj">
          </BuildableReference>
