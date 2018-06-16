@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2B7C9AB20D4BEF3001B51B1"
-               BuildableName = "Database_iOS.framework"
+               BuildableName = "Database.framework"
                BlueprintName = "Database iOS"
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2B7C9AB20D4BEF3001B51B1"
-            BuildableName = "Database_iOS.framework"
+            BuildableName = "Database.framework"
             BlueprintName = "Database iOS"
             ReferencedContainer = "container:EngineShed.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2B7C9AB20D4BEF3001B51B1"
-            BuildableName = "Database_iOS.framework"
+            BuildableName = "Database.framework"
             BlueprintName = "Database iOS"
             ReferencedContainer = "container:EngineShed.xcodeproj">
          </BuildableReference>
