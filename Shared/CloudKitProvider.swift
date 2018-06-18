@@ -12,9 +12,9 @@ import CoreData
 
 public final class CloudKitProvider {
 
-    public let containerID = "iCloud.com.netsplit.TrainDatabase"
+    public let containerID = "iCloud.com.netsplit.EngineShed"
     public let subscriptionID = "private-changes"
-    public let zoneID = CKRecordZone.ID(zoneName: "TrainDatabase")
+    public let zoneID = CKRecordZone.ID(zoneName: "EngineShed")
 
     public var container: CKContainer
     public var database: CKDatabase
