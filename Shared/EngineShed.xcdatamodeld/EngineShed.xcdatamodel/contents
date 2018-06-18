@@ -47,9 +47,9 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="features" inverseEntity="Model" syncable="YES"/>
     </entity>
-    <entity name="Lighting" representedClassName="Lighting" syncable="YES" codeGenerationType="class">
+    <entity name="Light" representedClassName="Light" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="lightings" inverseEntity="Model" syncable="YES"/>
+        <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="lights" inverseEntity="Model" syncable="YES"/>
     </entity>
     <entity name="Model" representedClassName="Model" syncable="YES" codeGenerationType="class">
         <attribute name="classificationRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -74,7 +74,7 @@
         <relationship name="decoder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Decoder" inverseName="model" inverseEntity="Decoder" syncable="YES"/>
         <relationship name="detailParts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPart" inverseName="model" inverseEntity="DetailPart" syncable="YES"/>
         <relationship name="features" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Feature" inverseName="model" inverseEntity="Feature" syncable="YES"/>
-        <relationship name="lightings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Lighting" inverseName="model" inverseEntity="Lighting" syncable="YES"/>
+        <relationship name="lights" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Light" inverseName="model" inverseEntity="Light" syncable="YES"/>
         <relationship name="modifications" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Modification" inverseName="model" inverseEntity="Modification" syncable="YES"/>
         <relationship name="purchase" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Purchase" inverseName="models" inverseEntity="Purchase" syncable="YES"/>
         <relationship name="speakerFittings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SpeakerFitting" inverseName="model" inverseEntity="SpeakerFitting" syncable="YES"/>
@@ -136,8 +136,8 @@
         <element name="DetailPart" positionX="342" positionY="270" width="128" height="90"/>
         <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
         <element name="Feature" positionX="306" positionY="234" width="128" height="75"/>
-        <element name="Lighting" positionX="315" positionY="243" width="128" height="75"/>
-        <element name="Model" positionX="270" positionY="207" width="128" height="30"/>
+        <element name="Light" positionX="315" positionY="243" width="128" height="75"/>
+        <element name="Model" positionX="270" positionY="207" width="128" height="465"/>
         <element name="Modification" positionX="360" positionY="288" width="128" height="75"/>
         <element name="Purchase" positionX="324" positionY="252" width="128" height="30"/>
         <element name="SpeakerFitting" positionX="261" positionY="198" width="128" height="75"/>
