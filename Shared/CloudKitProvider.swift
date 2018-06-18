@@ -84,8 +84,11 @@ public final class CloudKitProvider {
         let operation = CKFetchDatabaseChangesOperation(previousServerChangeToken: serverChangeToken)
         operation.fetchAllChanges = true
 
+        var changedZoneIDs: Set<CKRecordZone.ID> = []
+
         operation.recordZoneWithIDChangedBlock = { zoneID in
             print("Zone changed \(zoneID)")
+            changedZoneIDs.insert(zoneID)
 
             // We always fetch changes for all zones since we track their change tokens; but if
             // this is a new zone, store `nil` for the key to ensure we fetch the contents of the
@@ -120,12 +123,15 @@ public final class CloudKitProvider {
                 completionHandler(error)
             } else {
                 print("Fetch changes completed \(serverChangeToken!)")
-                self.serverChangeToken = serverChangeToken
 
                 // TODO: Flush zone deletions for this database to disk
                 // TODO: Save the server change token
 
-                self.fetchZoneChanges(completionHandler: completionHandler)
+                self.serverChangeToken = serverChangeToken
+
+                if !changedZoneIDs.isEmpty {
+                    self.fetchZoneChanges(changedZoneIDs, completionHandler: completionHandler)
+                }
             }
         }
 
@@ -137,14 +143,14 @@ public final class CloudKitProvider {
     /// Fetch zone changes from the database.
     ///
     /// - Parameters:
+    ///   - changedZoneIDs: IDs of zones that have changed.
     ///   - completionHandler: called on completion.
     ///    - error: `nil` on success, error that occurred on failure.
-    public func fetchZoneChanges(completionHandler: @escaping (_ error: Error?) -> Void) {
-        // On first run we won't have any zones, which would be an error.
-        guard !zoneServerChangeToken.isEmpty else {
-            completionHandler(nil)
-            return
-        }
+    public func fetchZoneChanges(_ changedZoneIDs: Set<CKRecordZone.ID>, completionHandler: @escaping (_ error: Error?) -> Void) {
+        // Perform updates on a background context.
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.undoManager = nil
 
         // Create a single operation to fetch changes to all zones, providing the appropriate
         // change token to each. In theory we only ever have one zone, but this should future-proof
@@ -155,7 +161,7 @@ public final class CloudKitProvider {
                 CKFetchRecordZoneChangesOperation.ZoneConfiguration(previousServerChangeToken: $0, resultsLimit: nil, desiredKeys: nil)
             }
 
-            operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: Array(zoneServerChangeToken.keys), configurationsByRecordZoneID: configurations)
+            operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: Array(changedZoneIDs), configurationsByRecordZoneID: configurations)
         } else {
             let options = zoneServerChangeToken.mapValues { (serverChangeToken: CKServerChangeToken?) -> CKFetchRecordZoneChangesOperation.ZoneOptions in
                 let zoneOptions = CKFetchRecordZoneChangesOperation.ZoneOptions()
@@ -163,7 +169,7 @@ public final class CloudKitProvider {
                 return zoneOptions
             }
 
-            operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: Array(zoneServerChangeToken.keys), optionsByRecordZoneID: options)
+            operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: Array(changedZoneIDs), optionsByRecordZoneID: options)
         }
         operation.fetchAllChanges = true
 
