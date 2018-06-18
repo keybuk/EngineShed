@@ -40,6 +40,7 @@
 		D28A4BDE1FD67523000768D8 /* TrainDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BDD1FD67523000768D8 /* TrainDatabaseTests.swift */; };
 		D28A4BE91FD67523000768D8 /* TrainDatabaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */; };
 		D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */; };
+		D2B2AF5320D8661300BEFC15 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2AF5220D8661300BEFC15 /* CloudKit.framework */; };
 		D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */; };
 		D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */; };
 		D2B548381FEEFEEF00FE7ED0 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548371FEEFEEF00FE7ED0 /* PickerViewController.swift */; };
@@ -117,6 +118,7 @@
 		D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDatabaseUITests.swift; sourceTree = "<group>"; };
 		D28A4BEA1FD67523000768D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+CountedElements.swift"; sourceTree = "<group>"; };
+		D2B2AF5220D8661300BEFC15 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboBoxControllers.swift; sourceTree = "<group>"; };
 		D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFieldDelegates.swift; sourceTree = "<group>"; };
 		D2B548371FEEFEEF00FE7ED0 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B2AF5320D8661300BEFC15 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +193,7 @@
 				D28A4BDC1FD67523000768D8 /* TrainDatabaseTests */,
 				D28A4BE71FD67523000768D8 /* TrainDatabaseUITests */,
 				D28A4BC51FD67523000768D8 /* Products */,
+				D2B2AF5120D8661300BEFC15 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -249,6 +253,14 @@
 				D28A4BEA1FD67523000768D8 /* Info.plist */,
 			);
 			path = TrainDatabaseUITests;
+			sourceTree = "<group>";
+		};
+		D2B2AF5120D8661300BEFC15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2B2AF5220D8661300BEFC15 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D2DFF4BB200A9A0C00259284 /* Cocoa Extensions */ = {
@@ -357,6 +369,14 @@
 					D28A4BC31FD67523000768D8 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					D28A4BD81FD67523000768D8 = {
 						CreatedOnToolsVersion = 9.2;
@@ -644,12 +664,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TrainDatabase/TrainDatabase.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
 				INFOPLIST_FILE = TrainDatabase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.TrainDatabase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -659,12 +682,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TrainDatabase/TrainDatabase.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
 				INFOPLIST_FILE = TrainDatabase/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.TrainDatabase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
