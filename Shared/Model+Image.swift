@@ -27,7 +27,14 @@ extension Model {
 
         set {
             if let imageURL = imageURL {
-                try! FileManager.default.removeItem(at: imageURL)
+                do {
+                    try FileManager.default.removeItem(at: imageURL)
+                } catch CocoaError.fileNoSuchFile {
+                    // Ignore, no matter how strange that is.
+                    print("Failed to delete file that wasn't there: \(imageURL.lastPathComponent)")
+                } catch {
+                    fatalError("Unhandled error \(error)")
+                }
             }
 
             imageFilename = nil
@@ -44,10 +51,8 @@ extension Model {
     public override func prepareForDeletion() {
         super.prepareForDeletion()
 
-        if let imageURL = imageURL {
-            try! FileManager.default.removeItem(at: imageURL)
-            imageFilename = nil
-        }
+        // Trigger removal of the existing image file.
+        image = nil
     }
 
 }
