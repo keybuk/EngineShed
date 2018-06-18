@@ -33,7 +33,7 @@
         <relationship name="decoders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Decoder" inverseName="type" inverseEntity="Decoder" syncable="YES"/>
     </entity>
     <entity name="DetailPart" representedClassName="DetailPart" syncable="YES" codeGenerationType="class">
-        <attribute name="fitted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isFitted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="detailParts" inverseEntity="Model" syncable="YES"/>
     </entity>
