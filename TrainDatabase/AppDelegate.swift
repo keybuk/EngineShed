@@ -8,6 +8,7 @@
 
 import Cocoa
 import CoreData
+import CloudKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -122,6 +123,195 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         print("Backup complete")
     }
+
+    func upload(callback: @escaping () -> Void) throws {
+        print("Uploading to iCloud...")
+
+        let container = CKContainer(identifier: "iCloud.com.netsplit.EngineShed")
+        let database = container.privateCloudDatabase
+        let zoneID = CKRecordZoneID(zoneName: "EngineShed", ownerName: CKCurrentUserDefaultName)
+        let zone = CKRecordZone(zoneID: zoneID)
+
+        var records: [CKRecord] = []
+        var trainMemberRecords: [TrainMember : CKRecord] = [:]
+
+        for train in try! Train.all(in: persistentContainer.viewContext) {
+            let trainRecord = CKRecord(recordType: "Train", zoneID: zoneID)
+            trainRecord["name"] = train.name as NSString
+            trainRecord["notes"] = train.notes as NSString
+            records.append(trainRecord)
+
+            for trainMember in train.members {
+                let trainMemberRecord = CKRecord(recordType: "TrainMember", zoneID: zoneID)
+                trainMemberRecord["train"] = CKReference(record: trainRecord, action: .deleteSelf)
+                trainMemberRecord["title"] = trainMember.title as NSString
+                trainMemberRecord["isFlipped"] = trainMember.isFlipped as NSNumber
+                records.append(trainMemberRecord)
+
+                trainMemberRecords[trainMember] = trainMemberRecord
+            }
+        }
+
+        var decoderRecords: [Decoder : CKRecord] = [:]
+
+        for decoderType in try! DecoderType.all(in: persistentContainer.viewContext) {
+            let decoderTypeRecord = CKRecord(recordType: "DecoderType", zoneID: zoneID)
+            decoderTypeRecord["manufacturer"] = decoderType.manufacturer as NSString
+            decoderTypeRecord["productCode"] = decoderType.productCode as NSString
+            decoderTypeRecord["productFamily"] = decoderType.productFamily as NSString
+            decoderTypeRecord["productDescription"] = decoderType.productDescription as NSString
+            decoderTypeRecord["socket"] = decoderType.socket as NSString
+            decoderTypeRecord["isProgrammable"] = decoderType.isProgrammable as NSNumber
+            decoderTypeRecord["hasSound"] = decoderType.hasSound as NSNumber
+            decoderTypeRecord["hasRailCom"] = decoderType.hasRailCom as NSNumber
+            decoderTypeRecord["minimumStock"] = decoderType.minimumStock as NSNumber
+            records.append(decoderTypeRecord)
+
+            for decoder in decoderType.decoders {
+                let decoderRecord = CKRecord(recordType: "Decoder", zoneID: zoneID)
+                decoderRecord["type"] = CKReference(record: decoderTypeRecord, action: .deleteSelf)
+                decoderRecord["serialNumber"] = decoder.serialNumber as NSString
+                decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
+                decoderRecord["firmwareDate"] = decoder.firmwareDate as NSDate?
+                decoderRecord["address"] = decoder.address as NSNumber
+                decoderRecord["soundAuthor"] = decoder.soundAuthor as NSString
+                decoderRecord["soundFile"] = decoder.soundFile as NSString
+                records.append(decoderRecord)
+
+                decoderRecords[decoder] = decoderRecord
+            }
+        }
+
+        for purchase in try! Purchase.all(in: persistentContainer.viewContext) {
+            let purchaseRecord = CKRecord(recordType: "Purchase", zoneID: zoneID)
+            purchaseRecord["manufacturer"] = purchase.manufacturer as NSString
+            purchaseRecord["catalogNumber"] = purchase.catalogNumber as NSString
+            purchaseRecord["catalogDescription"] = purchase.catalogDescription as NSString
+            purchaseRecord["catalogYear"] = purchase.catalogYear as NSNumber
+            purchaseRecord["limitedEdition"] = purchase.limitedEdition as NSString
+            purchaseRecord["limitedEditionNumber"] = purchase.limitedEditionNumber as NSNumber
+            purchaseRecord["limitedEditionCount"] = purchase.limitedEditionCount as NSNumber
+            purchaseRecord["date"] = purchase.date as NSDate?
+            purchaseRecord["store"] = purchase.store as NSString
+            purchaseRecord["price"] = purchase.price as NSNumber?
+            purchaseRecord["condition"] = purchase.condition?.rawValue as NSNumber?
+            purchaseRecord["valuation"] = purchase.valuation as NSNumber?
+            purchaseRecord["notes"] = purchase.notes as NSString
+            records.append(purchaseRecord)
+
+            for model in purchase.models {
+                let modelRecord = CKRecord(recordType: "Model", zoneID: zoneID)
+                modelRecord["purchase"] = CKReference(record: purchaseRecord, action: .deleteSelf)
+                modelRecord["classification"] = model.classification?.rawValue as NSNumber?
+                modelRecord["image"] = model.imageURL.flatMap({ CKAsset(fileURL: $0) })
+                modelRecord["class"] = model.modelClass as NSString
+                modelRecord["number"] = model.number as NSString
+                modelRecord["name"] = model.name as NSString
+                modelRecord["livery"] = model.livery as NSString
+                modelRecord["details"] = model.details as NSString
+                modelRecord["era"] = model.era?.rawValue as NSNumber?
+                modelRecord["disposition"] = model.disposition?.rawValue as NSNumber?
+                modelRecord["motor"] = model.motor as NSString
+                if !model.lighting.isEmpty { modelRecord["lights"] = Array(model.lighting) as NSArray }
+                modelRecord["socket"] = model.socket as NSString
+                modelRecord["speaker"] = model.speaker as NSString
+                if !model.speakerFitting.isEmpty { modelRecord["speakerFittings"] = Array(model.speakerFitting) as NSArray }
+                if !model.couplings.isEmpty { modelRecord["couplings"] = Array(model.couplings) as NSArray }
+                if !model.features.isEmpty { modelRecord["features"] = Array(model.features) as NSArray }
+                if !model.detailParts.isEmpty {
+                    modelRecord["detailParts"] = model.detailParts.map({ $0.title }) as NSArray
+                    let fitted = model.detailParts.filter({ $0.isFitted })
+                    if !fitted.isEmpty { modelRecord["detailPartsFitted"] = fitted.map({ $0.title }) as NSArray }
+                }
+                if !model.modifications.isEmpty {
+                    modelRecord["modifications"] = Array(model.modifications) as NSArray }
+                modelRecord["lastRun"] = model.lastRun as NSDate?
+                modelRecord["lastOil"] = model.lastOil as NSDate?
+                if !model.tasks.isEmpty { modelRecord["tasks"] = Array(model.tasks) as NSArray }
+                modelRecord["notes"] = model.notes as NSString
+                records.append(modelRecord)
+
+                if let decoder = model.decoder {
+                    if let decoderRecord = decoderRecords[decoder] {
+                        decoderRecord["model"] = CKReference(record: modelRecord, action: .none)
+                    } else {
+                        let decoderRecord = CKRecord(recordType: "Decoder", zoneID: zoneID)
+                        decoderRecord["model"] = CKReference(record: modelRecord, action: .none)
+                        decoderRecord["serialNumber"] = decoder.serialNumber as NSString
+                        decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
+                        decoderRecord["firmwareDate"] = decoder.firmwareDate as NSDate?
+                        decoderRecord["address"] = decoder.address as NSNumber
+                        decoderRecord["soundAuthor"] = decoder.soundAuthor as NSString
+                        decoderRecord["soundFile"] = decoder.soundFile as NSString
+                        records.append(decoderRecord)
+
+                        decoderRecords[decoder] = decoderRecord
+                    }
+                }
+
+                if let trainMember = model.trainMember {
+                    if let trainMemberRecord = trainMemberRecords[trainMember] {
+                        trainMemberRecord["model"] = CKReference(record: modelRecord, action: .none)
+                    } else {
+                        fatalError("Train member without train")
+                    }
+                }
+            }
+        }
+
+        print("\(records.count) records to upload")
+
+        let callbackOperation = BlockOperation(block: callback)
+
+        // Create the zone.
+        let zoneOperation = CKModifyRecordZonesOperation(recordZonesToSave: [zone], recordZoneIDsToDelete: nil)
+        zoneOperation.qualityOfService = .utility
+
+        zoneOperation.modifyRecordZonesCompletionBlock = { savedRecordZones, deletedRecordZoneIDs, error in
+            if let error = error {
+                fatalError("Couldn't update zone \(error)")
+            }
+        }
+
+        callbackOperation.addDependency(zoneOperation)
+        database.add(zoneOperation)
+
+        for i in stride(from: 0, to: records.count, by: 400) {
+            let j = min(i + 400, records.endIndex)
+
+            let slice = records[i..<j]
+            let saveOperation = CKModifyRecordsOperation(recordsToSave: Array(slice), recordIDsToDelete: nil)
+            saveOperation.qualityOfService = .utility
+            saveOperation.addDependency(zoneOperation)
+            saveOperation.savePolicy = .allKeys
+
+            saveOperation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
+                if let error = error as? CKError {
+                    //                print("!!")
+                    //                if let retryAfter = error.retryAfterSeconds {
+                    //                    print("\(error.code): Will retry in \(retryAfter)")
+                    //                    let newSaveOperation = saveOperationFor(records: saveOperation.recordsToSave!)
+                    //                    DispatchQueue.main.asyncAfter(deadline: .now() + retryAfter) {
+                    //                        print("Retrying")
+                    //                        database.add(newSaveOperation)
+                    //                    }
+                    //                } else {
+                    fatalError("Couldn't save records \(error)")
+                    //                }
+                } else if let error = error {
+                    fatalError("Couldn't save records \(error)")
+                } else {
+                    print("Saved \(savedRecords?.count ?? -1) records")
+                }
+            }
+
+            callbackOperation.addDependency(saveOperation)
+            database.add(saveOperation)
+        }
+
+        OperationQueue.main.addOperation(callbackOperation)
+    }
+
 
     // MARK: - Core Data stack
 

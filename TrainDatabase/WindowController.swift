@@ -112,7 +112,39 @@ class WindowController : NSWindowController, RecordController {
 
         alert.runModal()
     }
-    
+
+    @IBAction func uploadAction(_ sender: NSButton) {
+        let context = persistentContainer.viewContext
+
+        if !context.commitEditing() {
+            NSLog("Unable to commit editing before uploading")
+        }
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                NSApplication.shared.presentError(nserror)
+                return
+            }
+        }
+
+        do {
+            try (NSApplication.shared.delegate! as! AppDelegate).upload() {
+                let alert = NSAlert()
+                alert.alertStyle = .informational
+                alert.messageText = "Upload complete."
+                alert.addButton(withTitle: "OK")
+
+                alert.runModal()
+            }
+        } catch {
+            let nserror = error as NSError
+            NSApplication.shared.presentError(nserror)
+            return
+        }
+    }
+
     @IBAction func showFilter(_ sender: NSButton) {
         guard let searchViewController = storyboard?.instantiateController(withIdentifier: .searchViewController) as? SearchViewController else { return }
 
