@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D20E5FFD1FF37CCD00A896F4 /* Array+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20E5FFC1FF37CCD00A896F4 /* Array+Protocols.swift */; };
 		D25B47E91FEFA994008A7EB1 /* TrainMemberItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */; };
 		D25B47EA1FEFA994008A7EB1 /* TrainMemberItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D25B47E81FEFA994008A7EB1 /* TrainMemberItem.xib */; };
 		D25B47EC1FEFB6B0008A7EB1 /* TrainMember+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B47EB1FEFB6B0008A7EB1 /* TrainMember+NSImage.swift */; };
@@ -40,6 +39,7 @@
 		D28A4BD21FD67523000768D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A4BD01FD67523000768D8 /* Main.storyboard */; };
 		D28A4BDE1FD67523000768D8 /* TrainDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BDD1FD67523000768D8 /* TrainDatabaseTests.swift */; };
 		D28A4BE91FD67523000768D8 /* TrainDatabaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */; };
+		D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */; };
 		D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */; };
 		D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */; };
 		D2B548381FEEFEEF00FE7ED0 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548371FEEFEEF00FE7ED0 /* PickerViewController.swift */; };
@@ -77,7 +77,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D20E5FFC1FF37CCD00A896F4 /* Array+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Protocols.swift"; sourceTree = "<group>"; };
 		D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberItem.swift; sourceTree = "<group>"; };
 		D25B47E81FEFA994008A7EB1 /* TrainMemberItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainMemberItem.xib; sourceTree = "<group>"; };
 		D25B47EB1FEFB6B0008A7EB1 /* TrainMember+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+NSImage.swift"; sourceTree = "<group>"; };
@@ -117,6 +116,7 @@
 		D28A4BE41FD67523000768D8 /* TrainDatabaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainDatabaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDatabaseUITests.swift; sourceTree = "<group>"; };
 		D28A4BEA1FD67523000768D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+CountedElements.swift"; sourceTree = "<group>"; };
 		D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboBoxControllers.swift; sourceTree = "<group>"; };
 		D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFieldDelegates.swift; sourceTree = "<group>"; };
 		D2B548371FEEFEEF00FE7ED0 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 			children = (
 				D26673C41FE99E1D0069F9C7 /* EnumeratableEnum.swift */,
 				D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */,
-				D20E5FFC1FF37CCD00A896F4 /* Array+Protocols.swift */,
+				D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */,
 				D26673C31FE90B8D0069F9C7 /* Data Model */,
 				D2DFF4BB200A9A0C00259284 /* Cocoa Extensions */,
 				D28A4BC71FD67523000768D8 /* AppDelegate.swift */,
@@ -424,7 +424,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D20E5FFD1FF37CCD00A896F4 /* Array+Protocols.swift in Sources */,
 				D276FF2D1FE5D40300EA087F /* PurchaseViewController.swift in Sources */,
 				D2B6168B1FE0A6DE0065A84F /* ModelEra.swift in Sources */,
 				D2DFF4C3200A9C2E00259284 /* SimpleTokenFieldDelegate.swift in Sources */,
@@ -467,6 +466,7 @@
 				D2B616871FE0A4E40065A84F /* ModelClassification.swift in Sources */,
 				D26673C21FE905950069F9C7 /* ModelDisposition.swift in Sources */,
 				D26673C51FE99E1D0069F9C7 /* EnumeratableEnum.swift in Sources */,
+				D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
