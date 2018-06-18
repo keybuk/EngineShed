@@ -15,14 +15,14 @@ extension TrainMember : CloudStorable {
         isFlipped = record["isFlipped"] ?? false
         title = record["title"]
 
-        if let _ = record["train"] as? CKRecord.Reference {
-            // TODO: train from CKReference
+        if let reference = record["train"] as? CKRecord.Reference {
+            train = try Train.forRecordID(reference.recordID, in: managedObjectContext!)
         } else {
             train = nil
         }
 
-        if let _ = record["model"] as? CKRecord.Reference {
-            // TODO: model from CKReference
+        if let reference = record["model"] as? CKRecord.Reference {
+            model = try Model.forRecordID(reference.recordID, in: managedObjectContext!)
         } else {
             model = nil
         }

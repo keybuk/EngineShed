@@ -149,8 +149,8 @@ extension Model : CloudStorable {
         addToDetailParts(insertDetailParts)
         removeFromDetailParts(removeDetailParts)
 
-        if let _ = record["purchase"] as? CKRecord.Reference {
-            // TODO: purchase from CKReference
+        if let reference = record["purchase"] as? CKRecord.Reference {
+            purchase = try Purchase.forRecordID(reference.recordID, in: managedObjectContext!)
         } else {
             purchase = nil
         }

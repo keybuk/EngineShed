@@ -32,3 +32,32 @@ extension CloudStorable {
     }
 
 }
+
+extension CloudStorable where Self : NSManagedObject {
+
+    /// Return record for a stored CloudKit object.
+    ///
+    /// If a record already exists, it will be returned, otherwise a new record is created and
+    /// inserted into the context.
+    ///
+    /// - Parameters:
+    ///   - recordID: CloudKit record identifier.
+    ///   - context: `NSManagedObjectContext` for the query and to create the record in.
+    ///
+    /// - Returns: existing or new record.
+    static func forRecordID(_ recordID: CKRecord.ID, in context: NSManagedObjectContext) throws -> Self {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "recordName == %@ AND zoneID == %@", recordID.recordName, recordID.zoneID)
+
+        let results = try context.fetch(fetchRequest)
+        if let result = results.first as? Self { return result }
+
+        let result = Self(context: context)
+
+        result.recordName = recordID.recordName
+        result.zoneID = recordID.zoneID
+
+        return result
+    }
+
+}

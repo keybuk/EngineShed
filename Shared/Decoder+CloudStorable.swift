@@ -19,14 +19,14 @@ extension Decoder : CloudStorable {
         soundAuthor = record["soundAuthor"]
         soundFile = record["soundFile"]
 
-        if let _ = record["model"] as? CKRecord.Reference {
-            // TODO: model from CKReference
+        if let reference = record["model"] as? CKRecord.Reference {
+            model = try Model.forRecordID(reference.recordID, in: managedObjectContext!)
         } else {
             model = nil
         }
 
-        if let _ = record["type"] as? CKRecord.Reference {
-            // TODO: type from CKReference
+        if let reference = record["type"] as? CKRecord.Reference {
+            type = try DecoderType.forRecordID(reference.recordID, in: managedObjectContext!)
         } else {
             type = nil
         }
