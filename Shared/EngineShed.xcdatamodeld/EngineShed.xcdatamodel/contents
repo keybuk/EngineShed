@@ -8,9 +8,12 @@
         <attribute name="address" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="firmwareDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="firmwareVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="serialNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="soundAuthor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="soundFile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="decoder" inverseEntity="Model" syncable="YES"/>
         <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DecoderType" inverseName="decoders" inverseEntity="DecoderType" syncable="YES"/>
     </entity>
@@ -23,7 +26,10 @@
         <attribute name="productCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productFamily" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="socket" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="decoders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Decoder" inverseName="type" inverseEntity="Decoder" syncable="YES"/>
     </entity>
     <entity name="DetailPart" representedClassName="DetailPart" syncable="YES" codeGenerationType="class">
@@ -59,8 +65,11 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="socket" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speaker" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="couplings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Coupling" inverseName="model" inverseEntity="Coupling" syncable="YES"/>
         <relationship name="decoder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Decoder" inverseName="model" inverseEntity="Decoder" syncable="YES"/>
         <relationship name="detailParts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPart" inverseName="model" inverseEntity="DetailPart" syncable="YES"/>
@@ -88,8 +97,11 @@
         <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Decimal" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="store" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="valuation" optional="YES" attributeType="Decimal" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="models" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Model" inverseName="purchase" inverseEntity="Model" syncable="YES"/>
     </entity>
     <entity name="SpeakerFitting" representedClassName="SpeakerFitting" syncable="YES" codeGenerationType="class">
@@ -103,28 +115,34 @@
     <entity name="Train" representedClassName="Train" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TrainMember" inverseName="train" inverseEntity="TrainMember" syncable="YES"/>
     </entity>
     <entity name="TrainMember" representedClassName="TrainMember" syncable="YES" codeGenerationType="class">
         <attribute name="isFlipped" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="recordName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="trainMember" inverseEntity="Model" syncable="YES"/>
         <relationship name="train" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Train" inverseName="members" inverseEntity="Train" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
-        <element name="SpeakerFitting" positionX="261" positionY="198" width="128" height="75"/>
-        <element name="Model" positionX="270" positionY="207" width="128" height="420"/>
-        <element name="Task" positionX="288" positionY="216" width="128" height="75"/>
-        <element name="Feature" positionX="306" positionY="234" width="128" height="75"/>
-        <element name="Decoder" positionX="324" positionY="252" width="128" height="165"/>
-        <element name="DecoderType" positionX="342" positionY="270" width="128" height="195"/>
-        <element name="Train" positionX="360" positionY="288" width="128" height="90"/>
-        <element name="Lighting" positionX="315" positionY="243" width="128" height="75"/>
-        <element name="Purchase" positionX="324" positionY="252" width="128" height="255"/>
         <element name="Coupling" positionX="333" positionY="261" width="128" height="75"/>
+        <element name="Decoder" positionX="324" positionY="252" width="128" height="30"/>
+        <element name="DecoderType" positionX="342" positionY="270" width="128" height="30"/>
         <element name="DetailPart" positionX="342" positionY="270" width="128" height="90"/>
-        <element name="TrainMember" positionX="351" positionY="279" width="128" height="105"/>
+        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="Feature" positionX="306" positionY="234" width="128" height="75"/>
+        <element name="Lighting" positionX="315" positionY="243" width="128" height="75"/>
+        <element name="Model" positionX="270" positionY="207" width="128" height="30"/>
         <element name="Modification" positionX="360" positionY="288" width="128" height="75"/>
+        <element name="Purchase" positionX="324" positionY="252" width="128" height="30"/>
+        <element name="SpeakerFitting" positionX="261" positionY="198" width="128" height="75"/>
+        <element name="Task" positionX="288" positionY="216" width="128" height="75"/>
+        <element name="Train" positionX="360" positionY="288" width="128" height="30"/>
+        <element name="TrainMember" positionX="351" positionY="279" width="128" height="30"/>
     </elements>
 </model>
