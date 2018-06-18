@@ -18,4 +18,4 @@ internal extension UIImage {
 
 }
 
-typealias ModelImage = UIImage
+public typealias ModelImage = UIImage

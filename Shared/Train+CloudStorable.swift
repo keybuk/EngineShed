@@ -11,7 +11,7 @@ import CoreData
 
 extension Train : CloudStorable {
 
-    func update(from record: CKRecord) throws {
+    internal func update(from record: CKRecord) throws {
         name = record["name"]
         notes = record["notes"]
     }

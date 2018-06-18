@@ -25,7 +25,7 @@ protocol CloudStorable : class {
 
 extension CloudStorable {
 
-    func encodeSystemFields(from record: CKRecord) {
+    internal func encodeSystemFields(from record: CKRecord) {
         let archiver = NSKeyedArchiver(requiringSecureCoding: true)
         record.encodeSystemFields(with: archiver)
         systemFields = archiver.encodedData

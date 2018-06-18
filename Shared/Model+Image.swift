@@ -14,12 +14,12 @@ extension Model {
         return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appendingPathComponent("ModelImages", isDirectory: true)
     }
 
-    var imageURL: URL? {
+    internal var imageURL: URL? {
         guard let imageFilename = imageFilename else { return nil }
         return imagesURL.appendingPathComponent(imageFilename)
     }
 
-    var image: ModelImage? {
+    public var image: ModelImage? {
         get {
             guard let imageURL = imageURL else { return nil }
             return ModelImage(contentsOf: imageURL)

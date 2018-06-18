@@ -11,7 +11,7 @@ import CoreData
 
 extension Purchase : CloudStorable {
 
-    func update(from record: CKRecord) throws {
+    internal func update(from record: CKRecord) throws {
         catalogDescription = record["catalogDescription"]
         catalogNumber = record["catalogNumber"]
         catalogYear = record["catalogYear"] ?? 0

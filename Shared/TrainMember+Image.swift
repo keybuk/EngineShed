@@ -8,7 +8,7 @@
 
 extension TrainMember {
 
-    var image: ModelImage? {
+    public var image: ModelImage? {
         guard let originalImage = model?.image else { return nil }
         return isFlipped ? originalImage.withHorizontallyFlippedOrientation() : originalImage
     }

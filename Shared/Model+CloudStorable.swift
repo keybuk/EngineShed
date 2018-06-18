@@ -11,7 +11,7 @@ import CoreData
 
 extension Model : CloudStorable {
 
-    func update(from record: CKRecord) throws {
+    internal func update(from record: CKRecord) throws {
         modelClass = record["class"]
         classificationRawValue = record["classification"] ?? 0
         details = record["details"]

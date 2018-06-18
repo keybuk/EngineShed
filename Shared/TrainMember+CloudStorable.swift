@@ -11,7 +11,7 @@ import CoreData
 
 extension TrainMember : CloudStorable {
 
-    func update(from record: CKRecord) throws {
+    internal func update(from record: CKRecord) throws {
         isFlipped = record["isFlipped"] ?? false
         title = record["title"]
 

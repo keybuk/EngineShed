@@ -11,7 +11,7 @@ import CoreData
 
 extension Decoder : CloudStorable {
 
-    func update(from record: CKRecord) throws {
+    internal func update(from record: CKRecord) throws {
         address = record["address"] ?? 0
         firmwareDate = record["firmwareDate"]
         firmwareVersion = record["firmwareVersion"]

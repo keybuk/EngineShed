@@ -8,7 +8,7 @@
 
 import Cocoa
 
-internal extension NSImage {
+extension NSImage {
 
     internal func withHorizontallyFlippedOrientation() -> NSImage {
         let flipped = NSImage(size: size)

@@ -9,9 +9,9 @@
 import Foundation
 import Cocoa
 
-internal extension NSImage {
+extension NSImage {
 
-    func pngData() -> Data? {
+    internal func pngData() -> Data? {
         guard let imageData = self.tiffRepresentation else { return nil }
         guard let imageRep = NSBitmapImageRep(data: imageData) else { return nil }
         return imageRep.representation(using: .png, properties: [:])
@@ -19,4 +19,4 @@ internal extension NSImage {
 
 }
 
-typealias ModelImage = NSImage
+public typealias ModelImage = NSImage
