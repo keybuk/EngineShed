@@ -1059,7 +1059,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.macOS;
 				PRODUCT_NAME = EngineShed;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.2;
@@ -1080,7 +1080,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.macOS;
 				PRODUCT_NAME = EngineShed;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.2;
@@ -1188,7 +1188,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.iOS;
 				PRODUCT_NAME = EngineShed;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.2;
@@ -1208,7 +1208,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.iOS;
 				PRODUCT_NAME = EngineShed;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.2;
