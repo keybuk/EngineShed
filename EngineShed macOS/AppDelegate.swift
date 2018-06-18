@@ -13,16 +13,56 @@ import Database
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        // Set up the CloudKit Provider.
+        cloudKitProvider.subscribeToChanges { error in
+            if let error = error {
+                print("Failed! \(error)")
+            } else {
+                print("Susbcribed!")
+            }
+        }
+        cloudKitProvider.fetchChanges { error in
+            if let error = error {
+                print("Failed! \(error)")
+            } else {
+                print("Fetched!")
+            }
+        }
 
+        // Register for remote notifications of changes to the iCloud database.
+        if #available(macOS 10.14, *) {
+            NSApplication.shared.registerForRemoteNotifications()
+        } else {
+            NSApplication.shared.registerForRemoteNotifications(matching: [])
+        }
+
+        // Insert code here to initialize your application
         debugPrint(persistentContainer.viewContext)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+    }
+
+    // MARK: - Remote notifications
+
+    func application(_ application: NSApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("Remote notifications registered \(deviceToken)")
+    }
+
+    func application(_ application: NSApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Registration failed \(error)")
+    }
+
+    func application(_ application: NSApplication, didReceiveRemoteNotification userInfo: [String : Any]) {
+        print("Remote Notification")
+
+        cloudKitProvider.handleRemoteNotification(userInfo) { error in
+            if let error = error {
+                print("Error handling notification \(error)")
+            }
+        }
     }
 
     // MARK: - Core Data stack
@@ -121,6 +161,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // If we got here, it is time to quit.
         return .terminateNow
     }
+
+    // MARK: - CloudKit stack
+    lazy var cloudKitProvider: CloudKitProvider = {
+        let provider = CloudKitProvider()
+        return provider
+    }()
 
 }
 

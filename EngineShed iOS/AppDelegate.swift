@@ -16,8 +16,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Set up the CloudKit Provider.
+        cloudKitProvider.subscribeToChanges { error in
+            if let error = error {
+                print("Failed! \(error)")
+            } else {
+                print("Susbcribed!")
+            }
+        }
+        
+        cloudKitProvider.fetchChanges { error in
+            if let error = error {
+                print("Failed! \(error)")
+            } else {
+                print("Fetched!")
+            }
+        }
+
+        // Register for remote notifications of changes to the iCloud database.
+        application.registerForRemoteNotifications()
+
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
@@ -52,6 +71,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+
+    // MARK: - Remote notifications
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("Remote notifications registered \(deviceToken)")
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Registration failed \(error)")
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("Remote Notification")
+        
+        cloudKitProvider.handleRemoteNotification(userInfo) { error in
+            if let _ = error {
+                completionHandler(.failed)
+            } else {
+                completionHandler(.newData)
+            }
+        }
     }
 
     // MARK: - Split view
@@ -109,6 +150,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         }
     }
+
+    // MARK: - CloudKit stack
+    lazy var cloudKitProvider: CloudKitProvider = {
+        let provider = CloudKitProvider()
+        return provider
+    }()
 
 }
 

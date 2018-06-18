@@ -17,6 +17,8 @@
 		D298CAEF20D7148900827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAEE20D7148900827F68 /* CloudKit.framework */; };
 		D298CAF020D7149200827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAE820D7109900827F68 /* CloudKit.framework */; };
 		D298CAF120D7326700827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAEE20D7148900827F68 /* CloudKit.framework */; };
+		D298CAF320D737C800827F68 /* CloudKitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAF220D737C800827F68 /* CloudKitProvider.swift */; };
+		D298CAF420D737C800827F68 /* CloudKitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAF220D737C800827F68 /* CloudKitProvider.swift */; };
 		D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */; };
 		D2B7C95920D4BA30001B51B1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */; };
 		D2B7C95B20D4BA30001B51B1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95A20D4BA30001B51B1 /* DetailViewController.swift */; };
@@ -156,6 +158,7 @@
 		D298CAE820D7109900827F68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		D298CAEA20D7118A00827F68 /* EngineShed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EngineShed.entitlements; sourceTree = "<group>"; };
 		D298CAEE20D7148900827F68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D298CAF220D737C800827F68 /* CloudKitProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitProvider.swift; sourceTree = "<group>"; };
 		D2B7C95120D4BA30001B51B1 /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -418,6 +421,7 @@
 			children = (
 				D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */,
 				D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */,
+				D298CAF220D737C800827F68 /* CloudKitProvider.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -860,6 +864,7 @@
 			files = (
 				D2B7C9CC20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
 				D2B7C9D220D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
+				D298CAF320D737C800827F68 /* CloudKitProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,6 +882,7 @@
 			files = (
 				D2B7C9CD20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
+				D298CAF420D737C800827F68 /* CloudKitProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
