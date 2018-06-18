@@ -13,6 +13,10 @@
 		D215BEAC20D4B53A0054FDCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D215BEAA20D4B53A0054FDCC /* Main.storyboard */; };
 		D215BEB820D4B53A0054FDCC /* EngineShedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEB720D4B53A0054FDCC /* EngineShedTests.swift */; };
 		D215BEC320D4B53A0054FDCC /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */; };
+		D298CAE920D7109900827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAE820D7109900827F68 /* CloudKit.framework */; };
+		D298CAEF20D7148900827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAEE20D7148900827F68 /* CloudKit.framework */; };
+		D298CAF020D7149200827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAE820D7109900827F68 /* CloudKit.framework */; };
+		D298CAF120D7326700827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAEE20D7148900827F68 /* CloudKit.framework */; };
 		D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */; };
 		D2B7C95920D4BA30001B51B1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */; };
 		D2B7C95B20D4BA30001B51B1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95A20D4BA30001B51B1 /* DetailViewController.swift */; };
@@ -149,6 +153,9 @@
 		D215BEBE20D4B53A0054FDCC /* EngineShed macOS UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed macOS UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
 		D215BEC420D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D298CAE820D7109900827F68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		D298CAEA20D7118A00827F68 /* EngineShed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EngineShed.entitlements; sourceTree = "<group>"; };
+		D298CAEE20D7148900827F68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D2B7C95120D4BA30001B51B1 /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B7C99E20D4BE2F001B51B1 /* Database.framework in Frameworks */,
+				D298CAF120D7326700827F68 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B7C9C120D4BEF4001B51B1 /* Database.framework in Frameworks */,
+				D298CAE920D7109900827F68 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D298CAEF20D7148900827F68 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D298CAF020D7149200827F68 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +283,7 @@
 				D2B7C99720D4BE2F001B51B1 /* Database macOS Tests */,
 				D2B7C9BA20D4BEF4001B51B1 /* Database iOS Tests */,
 				D215BE9F20D4B5380054FDCC /* Products */,
+				D298CAE720D7109900827F68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,6 +335,15 @@
 			path = "EngineShed macOS UI Tests";
 			sourceTree = "<group>";
 		};
+		D298CAE720D7109900827F68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D298CAEE20D7148900827F68 /* CloudKit.framework */,
+				D298CAE820D7109900827F68 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D2B7C95220D4BA30001B51B1 /* EngineShed iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +354,7 @@
 				D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */,
 				D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */,
 				D2B7C96420D4BA31001B51B1 /* Info.plist */,
+				D298CAEA20D7118A00827F68 /* EngineShed.entitlements */,
 			);
 			path = "EngineShed iOS";
 			sourceTree = "<group>";
@@ -618,6 +640,14 @@
 				TargetAttributes = {
 					D215BE9D20D4B5380054FDCC = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					D215BEB220D4B53A0054FDCC = {
 						CreatedOnToolsVersion = 10.0;
@@ -629,6 +659,17 @@
 					};
 					D2B7C95020D4BA30001B51B1 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					D2B7C96820D4BA31001B51B1 = {
 						CreatedOnToolsVersion = 10.0;
@@ -1180,6 +1221,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "EngineShed iOS/EngineShed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
@@ -1190,6 +1232,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.iOS;
 				PRODUCT_NAME = EngineShed;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.2;
 			};
@@ -1200,6 +1243,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "EngineShed iOS/EngineShed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
@@ -1210,6 +1254,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.iOS;
 				PRODUCT_NAME = EngineShed;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
