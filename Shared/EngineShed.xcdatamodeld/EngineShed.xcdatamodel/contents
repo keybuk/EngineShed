@@ -80,6 +80,7 @@
         <attribute name="catalogDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="catalogNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="catalogYear" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="conditionRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="limitedEdition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="limitedEditionCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -87,7 +88,6 @@
         <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Decimal" syncable="YES"/>
-        <attribute name="purchaseConditionRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="store" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="valuation" optional="YES" attributeType="Decimal" syncable="YES"/>
         <relationship name="models" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Model" inverseName="purchase" inverseEntity="Model" syncable="YES"/>
