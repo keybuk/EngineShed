@@ -157,7 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     // MARK: - CloudKit stack
     lazy var cloudKitProvider: CloudKitProvider = {
-        let provider = CloudKitProvider(persistentContainer: PersistentContainer)
+        let provider = CloudKitProvider(persistentContainer: persistentContainer)
         return provider
     }()
 
