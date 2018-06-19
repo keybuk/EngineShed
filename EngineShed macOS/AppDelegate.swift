@@ -91,6 +91,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 fatalError("Unresolved error \(error)")
             }
         })
+
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        
         return container
     }()
 
@@ -164,7 +168,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: - CloudKit stack
     lazy var cloudKitProvider: CloudKitProvider = {
-        let provider = CloudKitProvider()
+        let provider = CloudKitProvider(persistentContainer: persistentContainer)
         return provider
     }()
 

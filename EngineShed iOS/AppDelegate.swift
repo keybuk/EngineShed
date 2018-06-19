@@ -132,6 +132,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+
         return container
     }()
 
@@ -153,7 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     // MARK: - CloudKit stack
     lazy var cloudKitProvider: CloudKitProvider = {
-        let provider = CloudKitProvider()
+        let provider = CloudKitProvider(persistentContainer: PersistentContainer)
         return provider
     }()
 

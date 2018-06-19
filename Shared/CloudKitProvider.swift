@@ -23,9 +23,68 @@ public final class CloudKitProvider {
     public var serverChangeToken: CKServerChangeToken?
     public var zoneServerChangeToken: [CKRecordZone.ID: CKServerChangeToken?] = [:]
 
-    public init() {
+    public var persistentContainer: NSPersistentContainer
+
+    public init(persistentContainer: NSPersistentContainer) {
         container = CKContainer(identifier: containerID)
         database = container.privateCloudDatabase
+
+        self.persistentContainer = persistentContainer
+
+        loadDefaults()
+    }
+
+    /// Load cached fields from UserDefaults.
+    private func loadDefaults() {
+        let defaults = UserDefaults.standard
+
+        hasSubscription = defaults.bool(forKey: "HasSubscription")
+
+        if let data = defaults.data(forKey: "ServerChangeToken") {
+            do {
+                serverChangeToken = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? CKServerChangeToken
+            } catch {}
+        }
+
+        if let datas = defaults.array(forKey: "ZoneServerChangeToken") as? [Data] {
+            for data in datas {
+                guard let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data) else { continue }
+                guard let zoneID = unarchiver.decodeObject(of: CKRecordZone.ID.self, forKey: "ZoneID") else { continue }
+
+                let serverChangeToken = unarchiver.decodeObject(of: CKServerChangeToken.self, forKey: "ServerChangeToken")
+                unarchiver.finishDecoding()
+
+                zoneServerChangeToken.updateValue(serverChangeToken, forKey: zoneID)
+            }
+        }
+    }
+
+    /// Save cached fields from UserDefaults.
+    internal func saveDefaults() {
+        let defaults = UserDefaults.standard
+
+        defaults.set(hasSubscription, forKey: "HasSubscription")
+
+        if let serverChangeToken = serverChangeToken,
+            let data = try? NSKeyedArchiver.archivedData(withRootObject: serverChangeToken, requiringSecureCoding: true) {
+
+            defaults.set(data, forKey: "ServerChangeToken")
+        } else {
+            defaults.removeObject(forKey: "ServerChangeToken")
+        }
+
+        let datas = zoneServerChangeToken.compactMap { (item) -> Data in
+            let archiver = NSKeyedArchiver(requiringSecureCoding: false)
+
+            archiver.encode(item.key, forKey: "ZoneID")
+            if let serverChangeToken = item.value {
+                archiver.encode(serverChangeToken, forKey: "ServerChangeToken")
+            }
+            archiver.finishEncoding()
+
+            return archiver.encodedData
+        }
+        defaults.set(datas, forKey: "ZoneServerChangeToken")
     }
 
     /// Subscribe to changes in the zone.
@@ -97,8 +156,11 @@ public final class CloudKitProvider {
                 self.zoneServerChangeToken.updateValue(nil, forKey: zoneID)
             }
         }
+
         operation.recordZoneWithIDWasDeletedBlock = { zoneID in
             print("Zone deleted \(zoneID)")
+
+            fatalError("Not yet implemented")
 
             // TODO: delete the images from Models in this zone
             // TODO: delete all records in this zone
@@ -108,13 +170,14 @@ public final class CloudKitProvider {
             }
 
         }
+
         operation.changeTokenUpdatedBlock = { serverChangeToken in
             print("New change token \(serverChangeToken)")
 
             // TODO: Flush zone deletions for this database to disk
-            // TODO: Save the server change token
 
             self.serverChangeToken = serverChangeToken
+            self.saveDefaults()
         }
 
         operation.fetchDatabaseChangesCompletionBlock = { serverChangeToken, _, error in
@@ -125,9 +188,9 @@ public final class CloudKitProvider {
                 print("Fetch changes completed \(serverChangeToken!)")
 
                 // TODO: Flush zone deletions for this database to disk
-                // TODO: Save the server change token
 
                 self.serverChangeToken = serverChangeToken
+                self.saveDefaults()
 
                 if !changedZoneIDs.isEmpty {
                     self.fetchZoneChanges(changedZoneIDs, completionHandler: completionHandler)
@@ -177,11 +240,18 @@ public final class CloudKitProvider {
             print("Record changed \(record)")
             print(record.changedKeys())
 
-            // TODO: create or update the record
+            do {
+                try self.updateManagedObject(from: record, in: context)
+            } catch {
+                // FIXME: abort this operation.
+                fatalError("Failed \(error)")
+            }
         }
 
         operation.recordWithIDWasDeletedBlock = { recordID, recordType in
             print("Record deleted \(recordID) - \(recordType)")
+
+            fatalError("Not yet implemented")
 
             // TODO: delete the image if this is a Model
             // TODO: delete the record
@@ -190,10 +260,15 @@ public final class CloudKitProvider {
         operation.recordZoneChangeTokensUpdatedBlock = { zoneID, serverChangeToken, _ in
             print("New zone change token \(zoneID) \(serverChangeToken!)")
 
-            // TODO: Flush record changes and deletions for this zone to disk
-            // TODO: Save the zone change token
+            do {
+                try context.save()
+            } catch {
+                // FIXME: abort this operation.
+                fatalError("Save failed \(error)")
+            }
 
             self.zoneServerChangeToken[zoneID] = serverChangeToken
+            self.saveDefaults()
         }
 
         operation.recordZoneFetchCompletionBlock = { zoneID, serverChangeToken, _, _, error in
@@ -202,10 +277,15 @@ public final class CloudKitProvider {
             } else {
                 print("Zone fetch completed \(zoneID) \(serverChangeToken!)")
 
-                // TODO: Flush record changes and deletions for this zone to disk
-                // TODO: Save the zone change token
+                do {
+                    try context.save()
+                } catch {
+                    // FIXME: abort this operation.
+                    fatalError("Save failed \(error)")
+                }
 
                 self.zoneServerChangeToken[zoneID] = serverChangeToken
+                self.saveDefaults()
             }
         }
 
@@ -221,6 +301,41 @@ public final class CloudKitProvider {
 
         operation.qualityOfService = .utility
         database.add(operation)
+    }
+
+    /// Return the NSManagedObject for a record, creating if necessary.
+    ///
+    /// - Parameters:
+    ///   - record: CKRecord for the matching managed object.
+    ///   - context: managed object context to search in, or create the object in.
+    ///
+    /// - Returns: existing or newly created `NSManagedObject` of the correct type for the record;
+    ///   the returned object conforms to `CloudStorable`.
+    private func managedObject(forRecord record: CKRecord, in context: NSManagedObjectContext) throws -> CloudStorable? {
+        switch record.recordType {
+        case "Purchase": return try Purchase.forRecordID(record.recordID, in: context)
+        case "Model": return try Model.forRecordID(record.recordID, in: context)
+        case "DecoderType": return try DecoderType.forRecordID(record.recordID, in: context)
+        case "Decoder": return try Decoder.forRecordID(record.recordID, in: context)
+        case "Train": return try Train.forRecordID(record.recordID, in: context)
+        case "TrainMember": return try TrainMember.forRecordID(record.recordID, in: context)
+        default: return nil
+        }
+    }
+
+    /// Update the NSManagaedObject for a record, creating if necessary.
+    ///
+    /// All fields in the managed object are set to the current values in `record`, and the system
+    /// fields saved to it.
+    ///
+    /// - Parameters:
+    ///   - record: CKRecord for the matching managed object.
+    ///   - context: managed object context to search in, or create the object in.
+    private func updateManagedObject(from record: CKRecord, in context: NSManagedObjectContext) throws {
+        guard let object = try managedObject(forRecord: record, in: context) else { return }
+
+        try object.update(from: record)
+        object.encodeSystemFields(from: record)
     }
 
 }
