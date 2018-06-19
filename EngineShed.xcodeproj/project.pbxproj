@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D215BEA220D4B5380054FDCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEA120D4B5380054FDCC /* AppDelegate.swift */; };
 		D215BEA420D4B5380054FDCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEA320D4B5380054FDCC /* ViewController.swift */; };
-		D215BEA920D4B53A0054FDCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D215BEA820D4B53A0054FDCC /* Assets.xcassets */; };
 		D215BEAC20D4B53A0054FDCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D215BEAA20D4B53A0054FDCC /* Main.storyboard */; };
 		D215BEB820D4B53A0054FDCC /* EngineShedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEB720D4B53A0054FDCC /* EngineShedTests.swift */; };
 		D215BEC320D4B53A0054FDCC /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */; };
@@ -62,6 +61,7 @@
 		D2B7C9CD20D4D722001B51B1 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */; };
 		D2B7C9D220D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */; };
 		D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */; };
+		D2E014E120D8DDD900FF8940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D215BEA820D4B53A0054FDCC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -786,7 +786,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D215BEA920D4B53A0054FDCC /* Assets.xcassets in Resources */,
+				D2E014E120D8DDD900FF8940 /* Assets.xcassets in Resources */,
 				D215BEAC20D4B53A0054FDCC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1170,7 +1170,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon macOS";
 				CODE_SIGN_ENTITLEMENTS = "EngineShed macOS/EngineShed.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1191,7 +1191,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon macOS";
 				CODE_SIGN_ENTITLEMENTS = "EngineShed macOS/EngineShed.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1300,7 +1300,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon iOS";
 				CODE_SIGN_ENTITLEMENTS = "EngineShed iOS/EngineShed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1322,7 +1322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon iOS";
 				CODE_SIGN_ENTITLEMENTS = "EngineShed iOS/EngineShed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
