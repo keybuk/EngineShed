@@ -65,9 +65,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MasterTableViewCell
         let model = fetchedResultsController.object(at: indexPath)
-        configureCell(cell, withModel: model)
+        cell.model = model
         return cell
     }
 
@@ -92,9 +92,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
 
-    func configureCell(_ cell: UITableViewCell, withModel model: Model) {
-        cell.textLabel?.text = model.number ?? ""
-        cell.detailTextLabel?.text = model.name ?? ""
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return fetchedResultsController.sections?[section].name
     }
 
     // MARK: - Fetched results controller
@@ -119,7 +118,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: "modelClass", cacheName: "Master")
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
@@ -158,9 +157,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             case .delete:
                 tableView.deleteRows(at: [indexPath!], with: .fade)
             case .update:
-                configureCell(tableView.cellForRow(at: indexPath!)!, withModel: anObject as! Model)
+                let cell = tableView.cellForRow(at: indexPath!)! as! MasterTableViewCell
+                cell.model = anObject as? Model
             case .move:
-                configureCell(tableView.cellForRow(at: indexPath!)!, withModel: anObject as! Model)
+                let cell = tableView.cellForRow(at: indexPath!)! as! MasterTableViewCell
+                cell.model = anObject as? Model
                 tableView.moveRow(at: indexPath!, to: newIndexPath!)
         }
     }
@@ -180,3 +181,25 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
 }
 
+class MasterTableViewCell : UITableViewCell {
+
+    @IBOutlet var modelImageView: UIImageView!
+    @IBOutlet var modelNumberLabel: UILabel!
+    @IBOutlet var modelNameLabel: UILabel!
+
+    var model: Model? {
+        didSet {
+            configureView()
+        }
+    }
+
+    func configureView() {
+        // Update the user interface for the detail item.
+        if let model = model {
+            modelImageView?.image = model.image
+            modelNumberLabel?.text = model.number
+            modelNameLabel?.text = model.name
+        }
+    }
+
+}
