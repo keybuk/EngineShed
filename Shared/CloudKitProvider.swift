@@ -192,6 +192,12 @@ public final class CloudKitProvider {
                 self.serverChangeToken = serverChangeToken
                 self.saveDefaults()
 
+                // We can't use the actual set of changedZoneIDs because there is no connection
+                // from database changes to zone changes. This means in case of a zone fetch error
+                // we wouldn't know to try to refetch the zone. We also can't persist this, since
+                // we don't know for a given zone fetch which database token it corresponds to.
+                // So always just fetch changes for all zones. rdar://41256574
+                let changedZoneIDs = Array(self.zoneServerChangeToken.keys)
                 if !changedZoneIDs.isEmpty {
                     self.fetchZoneChanges(changedZoneIDs, completionHandler: completionHandler)
                 }
@@ -209,7 +215,7 @@ public final class CloudKitProvider {
     ///   - changedZoneIDs: IDs of zones that have changed.
     ///   - completionHandler: called on completion.
     ///    - error: `nil` on success, error that occurred on failure.
-    public func fetchZoneChanges(_ changedZoneIDs: Set<CKRecordZone.ID>, completionHandler: @escaping (_ error: Error?) -> Void) {
+    public func fetchZoneChanges(_ changedZoneIDs: Array<CKRecordZone.ID>, completionHandler: @escaping (_ error: Error?) -> Void) {
         // Perform updates on a background context.
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
@@ -224,7 +230,7 @@ public final class CloudKitProvider {
                 CKFetchRecordZoneChangesOperation.ZoneConfiguration(previousServerChangeToken: $0, resultsLimit: nil, desiredKeys: nil)
             }
 
-            operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: Array(changedZoneIDs), configurationsByRecordZoneID: configurations)
+            operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: changedZoneIDs, configurationsByRecordZoneID: configurations)
         } else {
             let options = zoneServerChangeToken.mapValues { (serverChangeToken: CKServerChangeToken?) -> CKFetchRecordZoneChangesOperation.ZoneOptions in
                 let zoneOptions = CKFetchRecordZoneChangesOperation.ZoneOptions()
@@ -232,7 +238,7 @@ public final class CloudKitProvider {
                 return zoneOptions
             }
 
-            operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: Array(changedZoneIDs), optionsByRecordZoneID: options)
+            operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: changedZoneIDs, optionsByRecordZoneID: options)
         }
         operation.fetchAllChanges = true
 
