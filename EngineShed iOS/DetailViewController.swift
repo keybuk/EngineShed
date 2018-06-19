@@ -7,20 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
 import Database
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    var managedObjectContext: NSManagedObjectContext?
 
+    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet var notesTextView: UITextView!
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = detailItem {
-            if let label = detailDescriptionLabel {
-                label.text = detail.number ?? ""
-            }
+        if let model = model {
+            detailDescriptionLabel?.text = model.number ?? ""
+            notesTextView?.text = model.notes ?? ""
         }
     }
 
@@ -30,13 +32,22 @@ class DetailViewController: UIViewController {
         configureView()
     }
 
-    var detailItem: Model? {
+    var model: Model? {
         didSet {
             // Update the view.
             configureView()
         }
     }
 
+    @IBAction func saveChanges(_ sender: UIButton) {
+        model?.notes = notesTextView?.text
+
+        do {
+            try managedObjectContext?.save()
+        } catch {
+            print("Attempt to save failed")
+        }
+    }
 
 }
 
