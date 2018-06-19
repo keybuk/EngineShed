@@ -37,12 +37,6 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="detailParts" inverseEntity="Model" syncable="YES"/>
     </entity>
-    <entity name="Event" representedClassName="Event" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date">
-            <userInfo/>
-        </attribute>
-        <userInfo/>
-    </entity>
     <entity name="Feature" representedClassName="Feature" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="features" inverseEntity="Model" syncable="YES"/>
@@ -134,7 +128,6 @@
         <element name="Decoder" positionX="324" positionY="252" width="128" height="30"/>
         <element name="DecoderType" positionX="342" positionY="270" width="128" height="30"/>
         <element name="DetailPart" positionX="342" positionY="270" width="128" height="90"/>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
         <element name="Feature" positionX="306" positionY="234" width="128" height="75"/>
         <element name="Light" positionX="315" positionY="243" width="128" height="75"/>
         <element name="Model" positionX="270" positionY="207" width="128" height="465"/>
