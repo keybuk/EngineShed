@@ -11,6 +11,9 @@ import CoreData
 
 extension Train : CloudStorable {
 
+    /// CloudKit record type.
+    static let recordType = "Train"
+
     internal func update(from record: CKRecord) throws {
         name = record["name"]
         notes = record["notes"]

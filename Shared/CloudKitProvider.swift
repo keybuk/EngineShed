@@ -309,26 +309,6 @@ public final class CloudKitProvider {
         database.add(operation)
     }
 
-    /// Return the NSManagedObject for a record, creating if necessary.
-    ///
-    /// - Parameters:
-    ///   - record: CKRecord for the matching managed object.
-    ///   - context: managed object context to search in, or create the object in.
-    ///
-    /// - Returns: existing or newly created `NSManagedObject` of the correct type for the record;
-    ///   the returned object conforms to `CloudStorable`.
-    private func managedObject(forRecord record: CKRecord, in context: NSManagedObjectContext) throws -> CloudStorable? {
-        switch record.recordType {
-        case "Purchase": return try Purchase.forRecordID(record.recordID, in: context)
-        case "Model": return try Model.forRecordID(record.recordID, in: context)
-        case "DecoderType": return try DecoderType.forRecordID(record.recordID, in: context)
-        case "Decoder": return try Decoder.forRecordID(record.recordID, in: context)
-        case "Train": return try Train.forRecordID(record.recordID, in: context)
-        case "TrainMember": return try TrainMember.forRecordID(record.recordID, in: context)
-        default: return nil
-        }
-    }
-
     /// Update the NSManagaedObject for a record, creating if necessary.
     ///
     /// All fields in the managed object are set to the current values in `record`, and the system
@@ -338,7 +318,7 @@ public final class CloudKitProvider {
     ///   - record: CKRecord for the matching managed object.
     ///   - context: managed object context to search in, or create the object in.
     private func updateManagedObject(from record: CKRecord, in context: NSManagedObjectContext) throws {
-        guard let object = try managedObject(forRecord: record, in: context) else { return }
+        guard let object = try managedObjectType[record.recordType]?.forRecordID(record.recordID, in: context) else { return }
 
         try object.update(from: record)
         object.encodeSystemFields(from: record)

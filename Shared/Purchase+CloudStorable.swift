@@ -11,6 +11,9 @@ import CoreData
 
 extension Purchase : CloudStorable {
 
+    /// CloudKit record type.
+    static let recordType = "Purchase"
+
     internal func update(from record: CKRecord) throws {
         catalogDescription = record["catalogDescription"]
         catalogNumber = record["catalogNumber"]

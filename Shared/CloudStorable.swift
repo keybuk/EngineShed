@@ -11,6 +11,9 @@ import CoreData
 
 protocol CloudStorable : class {
 
+    /// CloudKit record type.
+    static var recordType: CKRecord.RecordType { get }
+
     var recordName: String? { get set }
     var zoneID: NSObject? { get set }
     var systemFields: Data? { get set }

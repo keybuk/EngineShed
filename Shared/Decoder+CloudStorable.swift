@@ -11,6 +11,9 @@ import CoreData
 
 extension Decoder : CloudStorable {
 
+    /// CloudKit record type.
+    static let recordType = "Decoder"
+
     internal func update(from record: CKRecord) throws {
         address = record["address"] ?? 0
         firmwareDate = record["firmwareDate"]

@@ -11,6 +11,9 @@ import CoreData
 
 extension Model : CloudStorable {
 
+    /// CloudKit record type.
+    static let recordType = "Model"
+
     /// Identify the differences from relationship objects to a `CKRecord` list.
     ///
     /// Since Core Data has no concept of a string list, and to reduce the model burden on the

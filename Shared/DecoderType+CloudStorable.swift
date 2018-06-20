@@ -11,6 +11,9 @@ import CoreData
 
 extension DecoderType : CloudStorable {
 
+    /// CloudKit record type.
+    static let recordType = "DecoderType"
+
     internal func update(from record: CKRecord) throws {
         hasRailCom = record["hasRailCom"] ?? false
         hasSound = record["hasSound"] ?? false
