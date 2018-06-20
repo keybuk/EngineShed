@@ -58,6 +58,10 @@ extension Model : CloudStorable {
         }
     }
 
+    /// Update the managed object from a CloudKit record.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update from.
     internal func update(from record: CKRecord) throws {
         modelClass = record["class"]
         classificationRawValue = record["classification"] ?? 0

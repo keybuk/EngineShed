@@ -14,6 +14,10 @@ extension DecoderType : CloudStorable {
     /// CloudKit record type.
     static let recordType = "DecoderType"
 
+    /// Update the managed object from a CloudKit record.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update from.
     internal func update(from record: CKRecord) throws {
         hasRailCom = record["hasRailCom"] ?? false
         hasSound = record["hasSound"] ?? false

@@ -14,6 +14,10 @@ extension Train : CloudStorable {
     /// CloudKit record type.
     static let recordType = "Train"
 
+    /// Update the managed object from a CloudKit record.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update from.
     internal func update(from record: CKRecord) throws {
         name = record["name"]
         notes = record["notes"]

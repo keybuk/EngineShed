@@ -14,6 +14,10 @@ extension Purchase : CloudStorable {
     /// CloudKit record type.
     static let recordType = "Purchase"
 
+    /// Update the managed object from a CloudKit record.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update from.
     internal func update(from record: CKRecord) throws {
         catalogDescription = record["catalogDescription"]
         catalogNumber = record["catalogNumber"]

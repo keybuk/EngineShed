@@ -14,11 +14,26 @@ protocol CloudStorable : class {
     /// CloudKit record type.
     static var recordType: CKRecord.RecordType { get }
 
+    /// CloudKit record name.
+    ///
+    /// Used in combination with `zoneID` to lookup the managed object for a record.
     var recordName: String? { get set }
+
+    /// CloudKit record zone.
+    ///
+    /// Store as the `CKRecordZone.ID` type directly. Used in combination with `recordName` to
+    /// lookup the managed object for a record, and used when a zone is deleted.
     var zoneID: NSObject? { get set }
+
+    /// CloudKit system fields.
+    ///
+    /// Access through `record`.
     var systemFields: Data? { get set }
 
-    /// Update record fields from CloudKit record.
+    /// Update the managed object from a CloudKit record.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update from.
     func update(from record: CKRecord) throws
 
     /// Encode the CloudKit system fields into `systemFields`.
@@ -38,7 +53,7 @@ extension CloudStorable {
 
 extension CloudStorable where Self : NSManagedObject {
 
-    /// Return record for a stored CloudKit object.
+    /// Return or create record for a stored CloudKit object.
     ///
     /// If a record already exists, it will be returned, otherwise a new record is created and
     /// inserted into the context.

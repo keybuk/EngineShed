@@ -14,6 +14,10 @@ extension Decoder : CloudStorable {
     /// CloudKit record type.
     static let recordType = "Decoder"
 
+    /// Update the managed object from a CloudKit record.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update from.
     internal func update(from record: CKRecord) throws {
         address = record["address"] ?? 0
         firmwareDate = record["firmwareDate"]

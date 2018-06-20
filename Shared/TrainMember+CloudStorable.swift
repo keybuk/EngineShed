@@ -14,6 +14,10 @@ extension TrainMember : CloudStorable {
     /// CloudKit record type.
     static let recordType = "TrainMember"
 
+    /// Update the managed object from a CloudKit record.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update from.
     internal func update(from record: CKRecord) throws {
         isFlipped = record["isFlipped"] ?? false
         title = record["title"]
