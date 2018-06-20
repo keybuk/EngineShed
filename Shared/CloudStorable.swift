@@ -36,17 +36,33 @@ protocol CloudStorable : class {
     ///   - record: CloudKit record to update from.
     func update(from record: CKRecord) throws
 
-    /// Encode the CloudKit system fields into `systemFields`.
-    func encodeSystemFields(from record: CKRecord)
+    /// Returns a CKRecord from the CloudKit system fields.
+    var record: CKRecord? { get set }
 
 }
 
 extension CloudStorable {
 
-    internal func encodeSystemFields(from record: CKRecord) {
-        let archiver = NSKeyedArchiver(requiringSecureCoding: true)
-        record.encodeSystemFields(with: archiver)
-        systemFields = archiver.encodedData
+    /// Returns a CKRecord from the CloudKit system fields.
+    var record: CKRecord? {
+        get {
+            guard let systemFields = systemFields else { return nil }
+            guard let archiver = try? NSKeyedUnarchiver(forReadingFrom: systemFields) else { return nil }
+            archiver.requiresSecureCoding = true
+
+            guard let record = CKRecord(coder: archiver) else { return nil }
+            return record
+        }
+
+        set {
+            if let newValue = newValue {
+                let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                newValue.encodeSystemFields(with: archiver)
+                systemFields = archiver.encodedData
+            } else {
+                systemFields = nil
+            }
+        }
     }
 
 }

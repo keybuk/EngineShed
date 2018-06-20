@@ -321,7 +321,7 @@ public final class CloudKitProvider {
         guard let object = try managedObjectType[record.recordType]?.forRecordID(record.recordID, in: context) else { return }
 
         try object.update(from: record)
-        object.encodeSystemFields(from: record)
+        object.record = record
     }
 
 }
