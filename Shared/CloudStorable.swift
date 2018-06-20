@@ -39,6 +39,10 @@ protocol CloudStorable : class {
     /// Returns a CKRecord from the CloudKit system fields.
     var record: CKRecord? { get set }
 
+    /// Create a CKRecord and save to the CloudKit system fields.
+    @discardableResult
+    func createRecordInZoneID(_ zoneID: CKRecordZone.ID) -> CKRecord
+
 }
 
 extension CloudStorable {
@@ -63,6 +67,22 @@ extension CloudStorable {
                 systemFields = nil
             }
         }
+    }
+
+    /// Create a CKRecord and save to the CloudKit system fields.
+    @discardableResult
+    func createRecordInZoneID(_ zoneID: CKRecordZone.ID) -> CKRecord {
+        guard self.record == nil else { fatalError("Managed object already has a CKRecord") }
+
+        let recordName = UUID().uuidString
+        let recordID = CKRecord.ID(recordName: recordName, zoneID: zoneID)
+        let record = CKRecord(recordType: Self.recordType, recordID: recordID)
+
+        self.recordName = recordName
+        self.zoneID = zoneID
+        self.record = record
+
+        return record
     }
 
 }
