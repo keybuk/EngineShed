@@ -32,6 +32,11 @@ public final class CloudProvider {
         self.persistentContainer = persistentContainer
 
         loadDefaults()
+
+        // Subscribe to Core Data notifications to watch for changes.
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsWillSave(notification:)), name: NSNotification.Name.NSManagedObjectContextWillSave, object: persistentContainer.viewContext)
+        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidSave(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: persistentContainer.viewContext)
     }
 
     /// Load cached fields from UserDefaults.
@@ -322,6 +327,170 @@ public final class CloudProvider {
 
         try object.update(from: record)
         object.record = record
+    }
+
+    // MARK: Core Data notifications
+
+    var pendingUpdates: [CKRecord.ID: Set<String>]? = nil
+
+    @objc
+    func managedObjectContextObjectsWillSave(notification: NSNotification) {
+        guard let context = notification.object as? NSManagedObjectContext else { return }
+
+        var pendingUpdates: [CKRecord.ID: Set<String>] = [:]
+
+        for object in context.insertedObjects {
+            // Generate CloudKit records for storable objects, and use this opportunity to set that
+            // in the database.
+            guard let storable = object as? CloudStorable else { continue }
+            storable.createRecordInZoneID(zoneID)
+        }
+
+        for object in context.updatedObjects {
+            // Keep track of the set of keys we will need to send to the Cloud.
+            // We don't save the values here because validation etc. can still change them;
+            // but here is our only chance to see which keys were actually updated.
+            guard let storable = object as? CloudStorable else { continue }
+            guard let record = storable.record else { fatalError("Storable without record") }
+
+            let changedKeys = object.changedValues().keys
+            pendingUpdates[record.recordID, default: Set()].formUnion(changedKeys)
+        }
+
+        self.pendingUpdates = pendingUpdates
+    }
+
+    @objc
+    func managedObjectContextObjectsDidSave(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let pendingUpdates = pendingUpdates else { fatalError("DidSave without WillSave") }
+
+        var saveRecords: [CKRecord] = []
+        var deleteRecordIDs: [CKRecord.ID] = []
+
+        if let insertedObjects = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+            for object in insertedObjects {
+                // Save all of the keys of newly inserted storable objects. Inserted mappable
+                // objects show up as an update to their storable automatically due to the
+                // relationship.
+                guard let storable = object as? CloudStorable else { continue }
+                guard let record = storable.record else { fatalError("Storable without record") }
+
+                storable.updateRecord(record, forKeys: nil)
+                saveRecords.append(record)
+            }
+        }
+
+        if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> {
+            for object in updatedObjects {
+                if let storable = object as? CloudStorable {
+                    // Retrieve the set of changed keys record in the WillSave notification, and
+                    // only update the record with those.
+                    guard let record = storable.record else { fatalError("Storable without record") }
+
+                    let changedKeys = pendingUpdates[record.recordID]
+                    storable.updateRecord(record, forKeys: changedKeys)
+                    saveRecords.append(record)
+
+                } else if let mappable = object as? CloudMappable {
+                    // Special-case where the object is represented in CloudKit by the keys of
+                    // another object; map the update to that other object's keys.
+                    guard let storable = mappable.mappedObject else { fatalError("Mappable without object") }
+                    guard let record = storable.record else { fatalError("Storable without record") }
+
+                    storable.updateRecord(record, forKeys: mappable.mappedKeys)
+                    saveRecords.append(record)
+                }
+            }
+        }
+
+        if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject> {
+            for object in deletedObjects {
+                // Save all of the keys of deleted storable objects. Deleted mappable objects
+                // show up as an update to their storable automatically due to the relationship.
+                guard let storable = object as? CloudStorable else { continue }
+                guard let record = storable.record else { fatalError("Storable without record") }
+
+                deleteRecordIDs.append(record.recordID)
+            }
+        }
+
+        modifyRecords(recordsToSave: !saveRecords.isEmpty ? saveRecords : nil,
+                      recordIDsToDelete: !deleteRecordIDs.isEmpty ? deleteRecordIDs : nil)
+
+        self.pendingUpdates = nil
+    }
+
+
+    // MARK: Zone and record creation/updating
+
+    var hasZone: Bool {
+        return zoneServerChangeToken.index(forKey: zoneID) != nil
+    }
+
+    private func createZoneOperation() -> CKDatabaseOperation? {
+        guard !hasZone else { return nil }
+
+        let zone = CKRecordZone(zoneID: zoneID)
+        let operation = CKModifyRecordZonesOperation(recordZonesToSave: [zone], recordZoneIDsToDelete: nil)
+        operation.modifyRecordZonesCompletionBlock = {
+            savedZones, deletedZoneIDs, error in
+            if let error = error {
+                fatalError("Couldn't modify zone \(error)")
+            }
+//            completionHandler(error)
+        }
+
+        operation.qualityOfService = .utility
+        database.add(operation)
+
+        return operation
+    }
+
+    private func modifyRecords(recordsToSave: [CKRecord]?, recordIDsToDelete: [CKRecord.ID]?) {
+        // Perform system field updates on a background context.
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.undoManager = nil
+
+        let operation = CKModifyRecordsOperation(recordsToSave: recordsToSave, recordIDsToDelete: recordIDsToDelete)
+        operation.savePolicy = .ifServerRecordUnchanged
+
+        operation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
+            if let error = error {
+                fatalError("Couldn't modify records: \(error)")
+            }
+
+            if let savedRecords = savedRecords {
+                debugPrint(savedRecords)
+                do {
+                    try self.updateSystemFields(records: savedRecords, in: context)
+                } catch {
+                    fatalError("Failed to write back: \(error)")
+                }
+            }
+
+            if let deletedRecordIDs = deletedRecordIDs {
+                debugPrint(deletedRecordIDs)
+            }
+        }
+
+        if let zoneOperatation = createZoneOperation() {
+            operation.addDependency(zoneOperatation)
+        }
+
+        operation.qualityOfService = .utility
+        database.add(operation)
+    }
+
+    private func updateSystemFields(records: [CKRecord], in context: NSManagedObjectContext) throws {
+        for record in records {
+            guard let object = try managedObjectType[record.recordType]?.fetchRecordID(record.recordID, in: context) else { continue }
+
+            object.record = record
+        }
+
+        try context.save()
     }
 
 }
