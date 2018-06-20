@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Set up the CloudKit Provider.
-        cloudKitProvider.subscribeToChanges { error in
+        cloudProvider.subscribeToChanges { error in
             if let error = error {
                 print("Failed! \(error)")
             } else {
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         }
         
-        cloudKitProvider.fetchChanges { error in
+        cloudProvider.fetchChanges { error in
             if let error = error {
                 print("Failed! \(error)")
             } else {
@@ -86,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Remote Notification")
         
-        cloudKitProvider.handleRemoteNotification(userInfo) { error in
+        cloudProvider.handleRemoteNotification(userInfo) { error in
             if let _ = error {
                 completionHandler(.failed)
             } else {
@@ -156,8 +156,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     // MARK: - CloudKit stack
-    lazy var cloudKitProvider: CloudKitProvider = {
-        let provider = CloudKitProvider(persistentContainer: persistentContainer)
+    lazy var cloudProvider: CloudProvider = {
+        let provider = CloudProvider(persistentContainer: persistentContainer)
         return provider
     }()
 

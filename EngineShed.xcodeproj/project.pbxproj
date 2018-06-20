@@ -16,8 +16,8 @@
 		D298CAEF20D7148900827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAEE20D7148900827F68 /* CloudKit.framework */; };
 		D298CAF020D7149200827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAE820D7109900827F68 /* CloudKit.framework */; };
 		D298CAF120D7326700827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAEE20D7148900827F68 /* CloudKit.framework */; };
-		D298CAF320D737C800827F68 /* CloudKitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAF220D737C800827F68 /* CloudKitProvider.swift */; };
-		D298CAF420D737C800827F68 /* CloudKitProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAF220D737C800827F68 /* CloudKitProvider.swift */; };
+		D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAF220D737C800827F68 /* CloudProvider.swift */; };
+		D298CAF420D737C800827F68 /* CloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAF220D737C800827F68 /* CloudProvider.swift */; };
 		D298CB1A20D8143A00827F68 /* Model+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1920D8143900827F68 /* Model+Image.swift */; };
 		D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1920D8143900827F68 /* Model+Image.swift */; };
 		D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1C20D814D700827F68 /* NSImage+PNGData.swift */; };
@@ -185,7 +185,7 @@
 		D298CAE820D7109900827F68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		D298CAEA20D7118A00827F68 /* EngineShed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EngineShed.entitlements; sourceTree = "<group>"; };
 		D298CAEE20D7148900827F68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		D298CAF220D737C800827F68 /* CloudKitProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitProvider.swift; sourceTree = "<group>"; };
+		D298CAF220D737C800827F68 /* CloudProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudProvider.swift; sourceTree = "<group>"; };
 		D298CB1920D8143900827F68 /* Model+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Image.swift"; sourceTree = "<group>"; };
 		D298CB1C20D814D700827F68 /* NSImage+PNGData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+PNGData.swift"; sourceTree = "<group>"; };
 		D298CB1E20D8150600827F68 /* UIImage+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+URL.swift"; sourceTree = "<group>"; };
@@ -483,7 +483,7 @@
 			children = (
 				D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */,
 				D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */,
-				D298CAF220D737C800827F68 /* CloudKitProvider.swift */,
+				D298CAF220D737C800827F68 /* CloudProvider.swift */,
 				D2B2AF4420D816CF00BEFC15 /* CloudStorable.swift */,
 				D2B50B9B20D9C5530040A41F /* CloudMappable.swift */,
 				D2B2AF4920D8180300BEFC15 /* Model */,
@@ -938,7 +938,7 @@
 				D2B50B9F20D9C59B0040A41F /* DetailPart+CloudMappable.swift in Sources */,
 				D2B50B9C20D9C5530040A41F /* CloudMappable.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
-				D298CAF320D737C800827F68 /* CloudKitProvider.swift in Sources */,
+				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
 				D298CB1A20D8143A00827F68 /* Model+Image.swift in Sources */,
 				D298CB2D20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */,
 				D298CB2B20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */,
@@ -969,7 +969,7 @@
 				D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
 				D2B50BA320D9D79A0040A41F /* ManagedObjectType.swift in Sources */,
 				D298CB2820D8163A00827F68 /* Train+CloudStorable.swift in Sources */,
-				D298CAF420D737C800827F68 /* CloudKitProvider.swift in Sources */,
+				D298CAF420D737C800827F68 /* CloudProvider.swift in Sources */,
 				D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */,
 				D298CB2E20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */,
 				D298CB2C20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  CloudKitProvider.swift
+//  CloudProvider.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/17/18.
@@ -10,7 +10,7 @@ import Foundation
 import CloudKit
 import CoreData
 
-public final class CloudKitProvider {
+public final class CloudProvider {
 
     public let containerID = "iCloud.com.netsplit.EngineShed"
     public let subscriptionID = "private-changes"
