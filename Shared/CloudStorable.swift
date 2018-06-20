@@ -14,15 +14,14 @@ protocol CloudStorable : class {
     /// CloudKit record type.
     static var recordType: CKRecord.RecordType { get }
 
-    /// CloudKit record name.
+    /// CloudKit record ID.
     ///
-    /// Used in combination with `zoneID` to lookup the managed object for a record.
-    var recordName: String? { get set }
+    /// Store as the `CKRecord.ID` type directly. Used to lookup the managed object for a record.
+    var recordID: NSObject? { get set }
 
-    /// CloudKit record zone.
+    /// CloudKit zone ID.
     ///
-    /// Store as the `CKRecordZone.ID` type directly. Used in combination with `recordName` to
-    /// lookup the managed object for a record, and used when a zone is deleted.
+    /// Store as the `CKRecordZone.ID` type directly. Used when a zone is deleted.
     var zoneID: NSObject? { get set }
 
     /// CloudKit system fields.
@@ -85,7 +84,7 @@ extension CloudStorable {
         let recordID = CKRecord.ID(recordName: recordName, zoneID: zoneID)
         let record = CKRecord(recordType: Self.recordType, recordID: recordID)
 
-        self.recordName = recordName
+        self.recordID = recordID
         self.zoneID = zoneID
         self.record = record
 
@@ -112,7 +111,7 @@ extension CloudStorable where Self : NSManagedObject {
         } else {
             let result = Self(context: context)
 
-            result.recordName = recordID.recordName
+            result.recordID = recordID
             result.zoneID = recordID.zoneID
 
             return result
@@ -128,7 +127,7 @@ extension CloudStorable where Self : NSManagedObject {
     /// - Returns: existing record or `nil` if none exists.
     static func fetchRecordID(_ recordID: CKRecord.ID, in context: NSManagedObjectContext) throws -> Self? {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "recordName == %@ AND zoneID == %@", recordID.recordName, recordID.zoneID)
+        fetchRequest.predicate = NSPredicate(format: "recordID == %@", recordID)
 
         let results = try context.fetch(fetchRequest)
         return results.first as? Self
