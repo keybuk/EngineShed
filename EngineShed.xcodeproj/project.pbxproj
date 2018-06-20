@@ -39,6 +39,8 @@
 		D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */; };
 		D2B2AF4F20D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
 		D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
+		D2B50BA220D9D79A0040A41F /* ManagedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50BA120D9D79A0040A41F /* ManagedObjectType.swift */; };
+		D2B50BA320D9D79A0040A41F /* ManagedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50BA120D9D79A0040A41F /* ManagedObjectType.swift */; };
 		D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */; };
 		D2B7C95920D4BA30001B51B1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */; };
 		D2B7C95B20D4BA30001B51B1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95A20D4BA30001B51B1 /* DetailViewController.swift */; };
@@ -192,6 +194,7 @@
 		D2B2AF4420D816CF00BEFC15 /* CloudStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorable.swift; sourceTree = "<group>"; };
 		D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Flipped.swift"; sourceTree = "<group>"; };
 		D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+Image.swift"; sourceTree = "<group>"; };
+		D2B50BA120D9D79A0040A41F /* ManagedObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectType.swift; sourceTree = "<group>"; };
 		D2B7C95120D4BA30001B51B1 /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -383,6 +386,7 @@
 		D2B2AF4920D8180300BEFC15 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2B50BA120D9D79A0040A41F /* ManagedObjectType.swift */,
 				D298CB2620D8163A00827F68 /* Purchase+CloudStorable.swift */,
 				D298CB2520D8163A00827F68 /* Model+CloudStorable.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
@@ -921,6 +925,7 @@
 				D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */,
 				D298CB2920D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */,
 				D298CB3120D8163A00827F68 /* Model+CloudStorable.swift in Sources */,
+				D2B50BA220D9D79A0040A41F /* ManagedObjectType.swift in Sources */,
 				D298CB2720D8163A00827F68 /* Train+CloudStorable.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudKitProvider.swift in Sources */,
@@ -951,6 +956,7 @@
 				D298CB2A20D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */,
 				D298CB3220D8163A00827F68 /* Model+CloudStorable.swift in Sources */,
 				D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
+				D2B50BA320D9D79A0040A41F /* ManagedObjectType.swift in Sources */,
 				D298CB2820D8163A00827F68 /* Train+CloudStorable.swift in Sources */,
 				D298CAF420D737C800827F68 /* CloudKitProvider.swift in Sources */,
 				D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */,
