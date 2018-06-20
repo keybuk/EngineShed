@@ -14,10 +14,10 @@ extension DetailPart : CloudMappable {
     /// Changes to `DetailPart` are mapped to a change in `Model`.
     var mappedObject: CloudStorable? { return model }
 
-    /// Any change to `DetailPart` is mapepd to a change in `Model.detailPartsFitted`.
+    /// Any change to `DetailPart` is mapped to a change in `Model.detailParts`.
     ///
-    /// Since `isFitted` is the only mutable value, this is the only key that needs to be updated;
-    /// adding or removing a detail part already results in `Model.detailParts` changing.
-    var mappedKeys: Set<String> { return [ "detailPartsFitted" ] }
+    /// Model handles updating both the "detailParts" and "detailPartsFitted" lists when that
+    /// relationship field is changed.
+    var mappedKeys: Set<String> { return [ "detailParts" ] }
 
 }

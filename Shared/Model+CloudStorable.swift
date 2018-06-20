@@ -168,11 +168,15 @@ extension Model : CloudStorable {
             }
         }
 
+        /// Update both the "detailParts" and "detailPartsFitted" record fields whenever our
+        /// detailParts relationship changes, or when a change is mapped from `DetailPart` itself.
         if keys?.contains("detailParts") ?? true {
             if let detailParts = detailParts as? Set<DetailPart> {
                 record["detailParts"] = detailParts.compactMap { $0.title }
+                record["detailPartsFitted"] = detailParts.filter({ $0.isFitted }).compactMap { $0.title }
             } else {
                 record["detailParts"] = nil
+                record["detailPartsFitted"] = nil
             }
         }
 
@@ -213,16 +217,6 @@ extension Model : CloudStorable {
                 record["tasks"] = tasks.compactMap { $0.title }
             } else {
                 record["tasks"] = nil
-            }
-        }
-
-        // The detailPartsFitted field is a subset of detailParts, which is updated above, so we
-        // update it by checking the set of objects that have isFitted set.
-        if keys?.contains("detailPartsFitted") ?? true {
-            if let detailParts = detailParts as? Set<DetailPart> {
-                record["detailPartsFitted"] = detailParts.filter({ $0.isFitted }).compactMap { $0.title }
-            } else {
-                record["detailPartsFitted"] = nil
             }
         }
 
