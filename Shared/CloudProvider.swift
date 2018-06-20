@@ -327,13 +327,12 @@ public final class CloudProvider {
 
     // MARK: Core Data notifications
 
-    var pendingUpdates: [CKRecord.ID: Set<String>]? = nil
+    /// Set of changed keys for each updated object.
+    var pendingUpdates: [NSManagedObjectID: Set<String>]? = nil
 
     @objc
     func managedObjectContextObjectsWillSave(notification: NSNotification) {
         guard let context = notification.object as? NSManagedObjectContext else { return }
-
-        var pendingUpdates: [CKRecord.ID: Set<String>] = [:]
 
         for object in context.insertedObjects {
             // Generate CloudKit records for storable objects, and use this opportunity to set that
@@ -342,24 +341,16 @@ public final class CloudProvider {
             storable.createRecordInZoneID(zoneID)
         }
 
-        for object in context.updatedObjects {
-            // Keep track of the set of keys we will need to send to the Cloud.
-            // We don't save the values here because validation etc. can still change them;
-            // but here is our only chance to see which keys were actually updated.
-            guard let storable = object as? CloudStorable else { continue }
-            guard let record = storable.record else { fatalError("Storable without record") }
-
-            let changedKeys = object.changedValues().keys
-            pendingUpdates[record.recordID, default: Set()].formUnion(changedKeys)
-        }
-
-        self.pendingUpdates = pendingUpdates
+        // The set of changed keys is not available in DidSave, so save them here; but only the
+        // keys because validation takes place between WillSave and DidSave.
+        pendingUpdates = Dictionary(uniqueKeysWithValues: context.updatedObjects.map {
+            ($0.objectID, Set($0.changedValues().keys))
+        })
     }
 
     @objc
     func managedObjectContextObjectsDidSave(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
-        guard let pendingUpdates = pendingUpdates else { fatalError("DidSave without WillSave") }
 
         var saveRecords: [CKRecord] = []
         var deleteRecordIDs: [CKRecord.ID] = []
@@ -384,7 +375,7 @@ public final class CloudProvider {
                     // only update the record with those.
                     guard let record = storable.record else { fatalError("Storable without record") }
 
-                    let changedKeys = pendingUpdates[record.recordID]
+                    let changedKeys = pendingUpdates?[object.objectID]
                     storable.updateRecord(record, forKeys: changedKeys)
                     saveRecords.append(record)
 
@@ -414,7 +405,7 @@ public final class CloudProvider {
         modifyRecords(recordsToSave: !saveRecords.isEmpty ? saveRecords : nil,
                       recordIDsToDelete: !deleteRecordIDs.isEmpty ? deleteRecordIDs : nil)
 
-        self.pendingUpdates = nil
+        pendingUpdates = nil
     }
 
 
