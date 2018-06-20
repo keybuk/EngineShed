@@ -8,12 +8,12 @@
         <attribute name="address" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="firmwareDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="firmwareVersion" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recordID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID" syncable="YES"/>
         <attribute name="serialNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="soundAuthor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="soundFile" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="decoder" inverseEntity="Model" syncable="YES"/>
         <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DecoderType" inverseName="decoders" inverseEntity="DecoderType" syncable="YES"/>
     </entity>
@@ -26,10 +26,10 @@
         <attribute name="productCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productFamily" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recordID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID" syncable="YES"/>
         <attribute name="socket" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
         <relationship name="decoders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Decoder" inverseName="type" inverseEntity="Decoder" syncable="YES"/>
     </entity>
     <entity name="DetailPart" representedClassName="DetailPart" syncable="YES" codeGenerationType="class">
@@ -59,11 +59,11 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recordID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID" syncable="YES"/>
         <attribute name="socket" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speaker" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
         <relationship name="couplings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Coupling" inverseName="model" inverseEntity="Coupling" syncable="YES"/>
         <relationship name="decoder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Decoder" inverseName="model" inverseEntity="Decoder" syncable="YES"/>
         <relationship name="detailParts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPart" inverseName="model" inverseEntity="DetailPart" syncable="YES"/>
@@ -91,11 +91,11 @@
         <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Decimal" syncable="YES"/>
-        <attribute name="recordID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID" syncable="YES"/>
         <attribute name="store" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="valuation" optional="YES" attributeType="Decimal" syncable="YES"/>
-        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
         <relationship name="models" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Model" inverseName="purchase" inverseEntity="Model" syncable="YES"/>
     </entity>
     <entity name="SpeakerFitting" representedClassName="SpeakerFitting" syncable="YES" codeGenerationType="class">
@@ -109,17 +109,17 @@
     <entity name="Train" representedClassName="Train" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recordID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID" syncable="YES"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TrainMember" inverseName="train" inverseEntity="TrainMember" syncable="YES"/>
     </entity>
     <entity name="TrainMember" representedClassName="TrainMember" syncable="YES" codeGenerationType="class">
         <attribute name="isFlipped" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="recordID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID" syncable="YES"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="zoneID" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="trainMember" inverseEntity="Model" syncable="YES"/>
         <relationship name="train" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Train" inverseName="members" inverseEntity="Train" syncable="YES"/>
     </entity>

@@ -221,8 +221,8 @@ extension Model : CloudStorable {
         }
 
         if keys?.contains("purchase") ?? true {
-            if let purchaseRecord = purchase?.record {
-                record["purchase"] = CKRecord.Reference(record: purchaseRecord, action: .deleteSelf)
+            if let recordID = purchase?.recordID {
+                record["purchase"] = CKRecord.Reference(recordID: recordID, action: .deleteSelf)
             } else {
                 record["purchase"] = nil
             }

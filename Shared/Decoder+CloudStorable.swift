@@ -53,16 +53,16 @@ extension Decoder : CloudStorable {
         if keys?.contains("soundFile") ?? true { record["soundFile"] = soundFile }
 
         if keys?.contains("model") ?? true {
-            if let modelRecord = model?.record {
-                record["model"] = CKRecord.Reference(record: modelRecord, action: .none)
+            if let recordID = model?.recordID {
+                record["model"] = CKRecord.Reference(recordID: recordID, action: .none)
             } else {
                 record["model"] = nil
             }
         }
 
         if keys?.contains("type") ?? true {
-            if let typeRecord = type?.record {
-                record["type"] = CKRecord.Reference(record: typeRecord, action: .deleteSelf)
+            if let recordID = type?.recordID {
+                record["type"] = CKRecord.Reference(recordID: recordID, action: .deleteSelf)
             } else {
                 record["type"] = nil
             }

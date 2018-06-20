@@ -16,13 +16,13 @@ protocol CloudStorable : class {
 
     /// CloudKit record ID.
     ///
-    /// Store as the `CKRecord.ID` type directly. Used to lookup the managed object for a record.
-    var recordID: NSObject? { get set }
+    /// Used to lookup the managed object for a record.
+    var recordID: CKRecord.ID? { get set }
 
     /// CloudKit zone ID.
     ///
-    /// Store as the `CKRecordZone.ID` type directly. Used when a zone is deleted.
-    var zoneID: NSObject? { get set }
+    /// Used when a zone is deleted.
+    var zoneID: CKRecordZone.ID? { get set }
 
     /// CloudKit system fields.
     ///

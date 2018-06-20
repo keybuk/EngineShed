@@ -45,16 +45,16 @@ extension TrainMember : CloudStorable {
         if keys?.contains("title") ?? true { record["title"] = title }
 
         if keys?.contains("model") ?? true {
-            if let modelRecord = model?.record {
-                record["model"] = CKRecord.Reference(record: modelRecord, action: .none)
+            if let recordID = model?.recordID {
+                record["model"] = CKRecord.Reference(recordID: recordID, action: .none)
             } else {
                 record["model"] = nil
             }
         }
 
         if keys?.contains("train") ?? true {
-            if let trainRecord = train?.record {
-                record["train"] = CKRecord.Reference(record: trainRecord, action: .deleteSelf)
+            if let recordID = train?.recordID {
+                record["train"] = CKRecord.Reference(recordID: recordID, action: .deleteSelf)
             } else {
                 record["train"] = nil
             }
