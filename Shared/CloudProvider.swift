@@ -20,7 +20,7 @@ public final class CloudProvider {
     public var database: CKDatabase
 
     public var hasSubscription: Bool = false
-    public var serverChangeToken: CKServerChangeToken?
+    public var databaseServerChangeToken: CKServerChangeToken?
     public var zoneServerChangeToken: [CKRecordZone.ID: CKServerChangeToken?] = [:]
 
     public var persistentContainer: NSPersistentContainer
@@ -45,21 +45,18 @@ public final class CloudProvider {
 
         hasSubscription = defaults.bool(forKey: "HasSubscription")
 
-        if let data = defaults.data(forKey: "ServerChangeToken") {
-            do {
-                serverChangeToken = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? CKServerChangeToken
-            } catch {}
-        }
-
-        if let datas = defaults.array(forKey: "ZoneServerChangeToken") as? [Data] {
+        if let datas = defaults.array(forKey: "ServerChangeToken") as? [Data] {
             for data in datas {
                 guard let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data) else { continue }
-                guard let zoneID = unarchiver.decodeObject(of: CKRecordZone.ID.self, forKey: "ZoneID") else { continue }
 
                 let serverChangeToken = unarchiver.decodeObject(of: CKServerChangeToken.self, forKey: "ServerChangeToken")
-                unarchiver.finishDecoding()
+                if let zoneID = unarchiver.decodeObject(of: CKRecordZone.ID.self, forKey: "ZoneID") {
+                    zoneServerChangeToken.updateValue(serverChangeToken, forKey: zoneID)
+                } else {
+                    databaseServerChangeToken = serverChangeToken
+                }
 
-                zoneServerChangeToken.updateValue(serverChangeToken, forKey: zoneID)
+                unarchiver.finishDecoding()
             }
         }
     }
@@ -70,26 +67,25 @@ public final class CloudProvider {
 
         defaults.set(hasSubscription, forKey: "HasSubscription")
 
-        if let serverChangeToken = serverChangeToken,
-            let data = try? NSKeyedArchiver.archivedData(withRootObject: serverChangeToken, requiringSecureCoding: true) {
+        var tokens: [(CKRecordZone.ID?, CKServerChangeToken?)] = []
+        tokens.append((nil, databaseServerChangeToken))
+        tokens.append(contentsOf: zoneServerChangeToken.map { ($0, $1) })
 
-            defaults.set(data, forKey: "ServerChangeToken")
-        } else {
-            defaults.removeObject(forKey: "ServerChangeToken")
-        }
+        let datas = tokens.map { (zoneID, serverChangeToken) -> Data in
+            let archiver = NSKeyedArchiver(requiringSecureCoding: true)
 
-        let datas = zoneServerChangeToken.compactMap { (item) -> Data in
-            let archiver = NSKeyedArchiver(requiringSecureCoding: false)
-
-            archiver.encode(item.key, forKey: "ZoneID")
-            if let serverChangeToken = item.value {
+            if let zoneID = zoneID {
+                archiver.encode(zoneID, forKey: "ZoneID")
+            }
+            if let serverChangeToken = serverChangeToken {
                 archiver.encode(serverChangeToken, forKey: "ServerChangeToken")
             }
             archiver.finishEncoding()
 
             return archiver.encodedData
         }
-        defaults.set(datas, forKey: "ZoneServerChangeToken")
+
+        defaults.set(datas, forKey: "ServerChangeToken")
     }
 
     /// Subscribe to changes in the zone.
@@ -145,7 +141,7 @@ public final class CloudProvider {
     ///    - error: `nil` on success, error that occurred on failure.
     public func fetchChanges(completionHandler: @escaping (_ error: Error?) -> Void) {
         // Fetch the database changes since the last server change token.
-        let operation = CKFetchDatabaseChangesOperation(previousServerChangeToken: serverChangeToken)
+        let operation = CKFetchDatabaseChangesOperation(previousServerChangeToken: databaseServerChangeToken)
         operation.fetchAllChanges = true
 
         var changedZoneIDs: Set<CKRecordZone.ID> = []
@@ -181,7 +177,7 @@ public final class CloudProvider {
 
             // TODO: Flush zone deletions for this database to disk
 
-            self.serverChangeToken = serverChangeToken
+            self.databaseServerChangeToken = serverChangeToken
             self.saveDefaults()
         }
 
@@ -194,7 +190,7 @@ public final class CloudProvider {
 
                 // TODO: Flush zone deletions for this database to disk
 
-                self.serverChangeToken = serverChangeToken
+                self.databaseServerChangeToken = serverChangeToken
                 self.saveDefaults()
 
                 // We can't use the actual set of changedZoneIDs because there is no connection
