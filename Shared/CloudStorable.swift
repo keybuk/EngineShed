@@ -36,6 +36,13 @@ protocol CloudStorable : class {
     ///   - record: CloudKit record to update from.
     func update(from record: CKRecord) throws
 
+    /// Update a CloudKit record from this managed object.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update.
+    ///   - keys: update only these keys (managed object name), or all keys if `nil.
+    func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?)
+
     /// Returns a CKRecord from the CloudKit system fields.
     var record: CKRecord? { get set }
 

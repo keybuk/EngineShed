@@ -131,4 +131,108 @@ extension Model : CloudStorable {
         }
     }
 
+    /// Update a CloudKit record from this managed object.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update.
+    ///   - keys: update only these keys (managed object name), or all keys if `nil.
+    internal func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+        if keys?.contains("modelClass") ?? true { record["class"] = modelClass }
+        if keys?.contains("classificationRawValue") ?? true { record["classification"] = classificationRawValue }
+        if keys?.contains("details") ?? true { record["details"] = details }
+        if keys?.contains("dispositionRawValue") ?? true { record["disposition"] = dispositionRawValue }
+        if keys?.contains("eraRawValue") ?? true { record["era"] = eraRawValue }
+        if keys?.contains("lastOil") ?? true { record["lastOil"] = lastOil }
+        if keys?.contains("lastRun") ?? true { record["lastRun"] = lastRun }
+        if keys?.contains("livery") ?? true { record["livery"] = livery }
+        if keys?.contains("motor") ?? true { record["motor"] = motor }
+        if keys?.contains("name") ?? true { record["name"] = name }
+        if keys?.contains("notes") ?? true { record["notes"] = notes }
+        if keys?.contains("number") ?? true { record["number"] = number }
+        if keys?.contains("socket") ?? true { record["socket"] = socket }
+        if keys?.contains("speaker") ?? true { record["speaker"] = speaker }
+
+        if keys?.contains("imageFilename") ?? true {
+            if let imageURL = imageURL {
+                record["image"] = CKAsset(fileURL: imageURL)
+            } else {
+                record["image"] = nil
+            }
+        }
+
+        if keys?.contains("couplings") ?? true {
+            if let couplings = couplings as? Set<Coupling> {
+                record["couplings"] = couplings.compactMap { $0.title }
+            } else {
+                record["couplings"] = nil
+            }
+        }
+
+        if keys?.contains("detailParts") ?? true {
+            if let detailParts = detailParts as? Set<DetailPart> {
+                record["detailParts"] = detailParts.compactMap { $0.title }
+            } else {
+                record["detailParts"] = nil
+            }
+        }
+
+        if keys?.contains("features") ?? true {
+            if let features = features as? Set<Feature> {
+                record["features"] = features.compactMap { $0.title }
+            } else {
+                record["features"] = nil
+            }
+        }
+
+        if keys?.contains("lights") ?? true {
+            if let lights = lights as? Set<Light> {
+                record["lights"] = lights.compactMap { $0.title }
+            } else {
+                record["lights"] = nil
+            }
+        }
+
+        if keys?.contains("modifications") ?? true {
+            if let modifications = modifications as? Set<Modification> {
+                record["modifications"] = modifications.compactMap { $0.title }
+            } else {
+                record["modifications"] = nil
+            }
+        }
+
+        if keys?.contains("speakerFittings") ?? true {
+            if let speakerFittings = speakerFittings as? Set<SpeakerFitting> {
+                record["speakerFittings"] = speakerFittings.compactMap { $0.title }
+            } else {
+                record["speakerFittings"] = nil
+            }
+        }
+
+        if keys?.contains("tasks") ?? true {
+            if let tasks = tasks as? Set<Task> {
+                record["tasks"] = tasks.compactMap { $0.title }
+            } else {
+                record["tasks"] = nil
+            }
+        }
+
+        // The detailPartsFitted field is a subset of detailParts, which is updated above, so we
+        // update it by checking the set of objects that have isFitted set.
+        if keys?.contains("detailPartsFitted") ?? true {
+            if let detailParts = detailParts as? Set<DetailPart> {
+                record["detailPartsFitted"] = detailParts.filter({ $0.isFitted }).compactMap { $0.title }
+            } else {
+                record["detailPartsFitted"] = nil
+            }
+        }
+
+        if keys?.contains("purchase") ?? true {
+            if let purchaseRecord = purchase?.record {
+                record["purchase"] = CKRecord.Reference(record: purchaseRecord, action: .deleteSelf)
+            } else {
+                record["purchase"] = nil
+            }
+        }
+    }
+
 }

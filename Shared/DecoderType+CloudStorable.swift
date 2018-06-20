@@ -30,4 +30,21 @@ extension DecoderType : CloudStorable {
         socket = record["socket"]
     }
 
+    /// Update a CloudKit record from this managed object.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update.
+    ///   - keys: update only these keys (managed object name), or all keys if `nil.
+    internal func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+        if keys?.contains("hasRailCom") ?? true { record["hasRailCom"] = hasRailCom }
+        if keys?.contains("hasSound") ?? true { record["hasSound"] = hasSound }
+        if keys?.contains("isProgrammable") ?? true { record["isProgrammable"] = isProgrammable }
+        if keys?.contains("manufacturer") ?? true { record["manufacturer"] = manufacturer }
+        if keys?.contains("minimumStock") ?? true { record["minimumStock"] = minimumStock }
+        if keys?.contains("productCode") ?? true { record["productCode"] = productCode }
+        if keys?.contains("productDescription") ?? true { record["productDescription"] = productDescription }
+        if keys?.contains("productFamily") ?? true { record["productFamily"] = productFamily }
+        if keys?.contains("socket") ?? true { record["socket"] = socket }
+    }
+
 }

@@ -44,4 +44,26 @@ extension Purchase : CloudStorable {
         }
     }
 
+    /// Update a CloudKit record from this managed object.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update.
+    ///   - keys: update only these keys (managed object name), or all keys if `nil.
+    internal func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+        if keys?.contains("catalogDescription") ?? true { record["catalogDescription"] = catalogDescription }
+        if keys?.contains("catalogNumber") ?? true { record["catalogNumber"] = catalogNumber }
+        if keys?.contains("catalogYear") ?? true { record["catalogYear"] = catalogYear }
+        if keys?.contains("conditionRawValue") ?? true { record["condition"] = conditionRawValue }
+        if keys?.contains("date") ?? true { record["date"] = date }
+        if keys?.contains("limitedEdition") ?? true { record["limitedEdition"] = limitedEdition }
+        if keys?.contains("limitedEditionCount") ?? true { record["limitedEditionCount"] = limitedEditionCount }
+        if keys?.contains("limitedEditionNumber") ?? true { record["limitedEditionNumber"] = limitedEditionNumber }
+        if keys?.contains("manufacturer") ?? true { record["manufacturer"] = manufacturer }
+        if keys?.contains("notes") ?? true { record["notes"] = notes }
+        if keys?.contains("store") ?? true { record["store"] = store }
+
+        if keys?.contains("price") ?? true { record["price"] = price as NSDecimalNumber? }
+        if keys?.contains("valuation") ?? true { record["valuation"] = valuation as NSDecimalNumber? }
+    }
+
 }

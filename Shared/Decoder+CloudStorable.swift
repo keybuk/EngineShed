@@ -39,4 +39,34 @@ extension Decoder : CloudStorable {
         }
     }
 
+    /// Update a CloudKit record from this managed object.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to update.
+    ///   - keys: update only these keys (managed object name), or all keys if `nil.
+    internal func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+        if keys?.contains("address") ?? true { record["address"] = address }
+        if keys?.contains("firmwareDate") ?? true { record["firmwareDate"] = firmwareDate }
+        if keys?.contains("firmwareVersion") ?? true { record["firmwareVersion"] = firmwareVersion }
+        if keys?.contains("serialNumber") ?? true { record["serialNumber"] = serialNumber }
+        if keys?.contains("soundAuthor") ?? true { record["soundAuthor"] = soundAuthor }
+        if keys?.contains("soundFile") ?? true { record["soundFile"] = soundFile }
+
+        if keys?.contains("model") ?? true {
+            if let modelRecord = model?.record {
+                record["model"] = CKRecord.Reference(record: modelRecord, action: .none)
+            } else {
+                record["model"] = nil
+            }
+        }
+
+        if keys?.contains("type") ?? true {
+            if let typeRecord = type?.record {
+                record["type"] = CKRecord.Reference(record: typeRecord, action: .deleteSelf)
+            } else {
+                record["type"] = nil
+            }
+        }
+    }
+
 }
