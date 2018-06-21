@@ -140,67 +140,99 @@ public final class CloudProvider {
     ///   - completionHandler: called on completion.
     ///    - error: `nil` on success, error that occurred on failure.
     public func fetchChanges(completionHandler: @escaping (_ error: Error?) -> Void) {
+        // Perform updates on a background context.
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.undoManager = nil
+
+        // Collate deleted zones together so we can issue them as batch deletes; keep track of
+        // changed zones in case we can use that information later.
+        var deleteZoneIDs: [CKRecordZone.ID] = []
+        var changedZoneIDs: Set<CKRecordZone.ID> = []
+
         // Fetch the database changes since the last server change token.
         let operation = CKFetchDatabaseChangesOperation(previousServerChangeToken: databaseServerChangeToken)
         operation.fetchAllChanges = true
 
-        var changedZoneIDs: Set<CKRecordZone.ID> = []
+        // On error we cancel the operation and stash the error here, so we can return it to the
+        // completion handler.
+        var cancelCausedByError: Error? = nil
 
         operation.recordZoneWithIDChangedBlock = { zoneID in
-            print("Zone changed \(zoneID)")
             changedZoneIDs.insert(zoneID)
 
-            // We always fetch changes for all zones since we track their change tokens; but if
-            // this is a new zone, store `nil` for the key to ensure we fetch the contents of the
-            // new zone.
+            // If this is a new zone store `nil` for the change token to receive all changes
+            // in the zone, as well as the latest change token.
             if self.zoneServerChangeToken.index(forKey: zoneID) == nil {
                 self.zoneServerChangeToken.updateValue(nil, forKey: zoneID)
             }
         }
 
         operation.recordZoneWithIDWasDeletedBlock = { zoneID in
-            print("Zone deleted \(zoneID)")
-
-            fatalError("Not yet implemented")
-
-            // TODO: delete the images from Models in this zone
-            // TODO: delete all records in this zone
+            deleteZoneIDs.append(zoneID)
 
             if let index = self.zoneServerChangeToken.index(forKey: zoneID) {
                 self.zoneServerChangeToken.remove(at: index)
             }
+        }
 
+        operation.recordZoneWithIDWasPurgedBlock = { zoneID in
+            deleteZoneIDs.append(zoneID)
+
+            // FIXME: if the zoneID is our primary zone, record that it was purged and do not recreate it or sync without user consent.
+            if let index = self.zoneServerChangeToken.index(forKey: zoneID) {
+                self.zoneServerChangeToken.remove(at: index)
+            }
         }
 
         operation.changeTokenUpdatedBlock = { serverChangeToken in
-            print("New change token \(serverChangeToken)")
+            do {
+                if !deleteZoneIDs.isEmpty {
+                    try NSManagedObject.deleteObjectsForZoneIDs(deleteZoneIDs, in: context, mergeTo: self.persistentContainer.viewContext)
+                    deleteZoneIDs.removeAll()
+                }
 
-            // TODO: Flush zone deletions for this database to disk
-
-            self.databaseServerChangeToken = serverChangeToken
-            self.saveDefaults()
+                self.databaseServerChangeToken = serverChangeToken
+                self.saveDefaults()
+            } catch {
+                print("Error deleting objects in deleted zones: \(error)")
+                cancelCausedByError = error
+                operation.cancel()
+            }
         }
 
         operation.fetchDatabaseChangesCompletionBlock = { serverChangeToken, _, error in
             if let error = error {
-                print("Fetch changes error \(error)")
-                completionHandler(error)
+                if operation.isCancelled, let error = cancelCausedByError {
+                    completionHandler(error)
+                } else {
+                    print("Database changes fetch error: \(error)")
+                    completionHandler(error)
+                }
             } else {
-                print("Fetch changes completed \(serverChangeToken!)")
+                do {
+                    if !deleteZoneIDs.isEmpty {
+                        try NSManagedObject.deleteObjectsForZoneIDs(deleteZoneIDs, in: context, mergeTo: self.persistentContainer.viewContext)
+                        deleteZoneIDs.removeAll()
+                    }
 
-                // TODO: Flush zone deletions for this database to disk
+                    self.databaseServerChangeToken = serverChangeToken
+                    self.saveDefaults()
 
-                self.databaseServerChangeToken = serverChangeToken
-                self.saveDefaults()
-
-                // We can't use the actual set of changedZoneIDs because there is no connection
-                // from database changes to zone changes. This means in case of a zone fetch error
-                // we wouldn't know to try to refetch the zone. We also can't persist this, since
-                // we don't know for a given zone fetch which database token it corresponds to.
-                // So always just fetch changes for all zones. rdar://41256574
-                let changedZoneIDs = Array(self.zoneServerChangeToken.keys)
-                if !changedZoneIDs.isEmpty {
-                    self.fetchZoneChanges(changedZoneIDs, completionHandler: completionHandler)
+                    // We can't use the actual set of changedZoneIDs because there is no connection
+                    // from database changes to zone changes. This means in case of a zone fetch
+                    // error we wouldn't know to try to refetch the zone. We also can't persist
+                    // this, since we don't know for a given zone fetch which database token it
+                    // corresponds to. So always just fetch changes for all zones. rdar://41256574
+                    let changedZoneIDs = Array(self.zoneServerChangeToken.keys)
+                    if !changedZoneIDs.isEmpty {
+                        self.fetchZoneChanges(changedZoneIDs, completionHandler: completionHandler)
+                    } else {
+                        completionHandler(nil)
+                    }
+                } catch {
+                    print("Error deleting objects in deleted zones: \(error)")
+                    completionHandler(error)
                 }
             }
         }
@@ -221,6 +253,9 @@ public final class CloudProvider {
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         context.undoManager = nil
+
+        // Collate deleted records together so we can issue them as batch deletes.
+        var deletedRecords: [CKRecord.RecordType: [CKRecord.ID]] = [:]
 
         // Create a single operation to fetch changes to all zones, providing the appropriate
         // change token to each. In theory we only ever have one zone, but this should future-proof
@@ -243,63 +278,72 @@ public final class CloudProvider {
         }
         operation.fetchAllChanges = true
 
-        operation.recordChangedBlock = { record in
-            print("Record changed \(record)")
-            print(record.changedKeys())
+        // On error we cancel the operation and stash the error here, so we can return it to the
+        // completion handler.
+        var cancelCausedByError: Error? = nil
 
+        operation.recordChangedBlock = { record in
             do {
                 try NSManagedObject.syncObjectFromRecord(record, in: context)
             } catch {
-                // FIXME: abort this operation.
-                fatalError("Failed \(error)")
+                print("Error synchronizing object: \(error)")
+                cancelCausedByError = error
+                operation.cancel()
             }
         }
 
         operation.recordWithIDWasDeletedBlock = { recordID, recordType in
-            print("Record deleted \(recordID) - \(recordType)")
-
-            fatalError("Not yet implemented")
-
-            // TODO: delete the image if this is a Model
-            // TODO: delete the record
+            deletedRecords[recordType, default: []].append(recordID)
         }
 
         operation.recordZoneChangeTokensUpdatedBlock = { zoneID, serverChangeToken, _ in
-            print("New zone change token \(zoneID) \(serverChangeToken!)")
-
             do {
+                if !deletedRecords.isEmpty {
+                    try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context, mergeTo: self.persistentContainer.viewContext)
+                    deletedRecords.removeAll()
+                }
                 try context.save()
-            } catch {
-                // FIXME: abort this operation.
-                fatalError("Save failed \(error)")
-            }
 
-            self.zoneServerChangeToken[zoneID] = serverChangeToken
-            self.saveDefaults()
+                self.zoneServerChangeToken[zoneID] = serverChangeToken
+                self.saveDefaults()
+            } catch {
+                print("Error flushing zone changes: \(error)")
+                cancelCausedByError = error
+                operation.cancel()
+            }
         }
 
         operation.recordZoneFetchCompletionBlock = { zoneID, serverChangeToken, _, _, error in
             if let error = error {
-                print("Zone fetch error \(error)")
+                print("Zone changes fetch error: \(error)")
+                cancelCausedByError = error
+                operation.cancel()
             } else {
-                print("Zone fetch completed \(zoneID) \(serverChangeToken!)")
-
                 do {
+                    if !deletedRecords.isEmpty {
+                        try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context, mergeTo: self.persistentContainer.viewContext)
+                        deletedRecords.removeAll()
+                    }
                     try context.save()
-                } catch {
-                    // FIXME: abort this operation.
-                    fatalError("Save failed \(error)")
-                }
 
-                self.zoneServerChangeToken[zoneID] = serverChangeToken
-                self.saveDefaults()
+                    self.zoneServerChangeToken[zoneID] = serverChangeToken
+                    self.saveDefaults()
+                } catch {
+                    print("Error flushing zone changes: \(error)")
+                    cancelCausedByError = error
+                    operation.cancel()
+                }
             }
         }
 
         operation.fetchRecordZoneChangesCompletionBlock = { error in
             if let error = error {
-                print("Zone changes error \(error)")
-                completionHandler(error)
+                if operation.isCancelled, let error = cancelCausedByError {
+                    completionHandler(error)
+                } else {
+                    print("Zone changes fetch completion error: \(error)")
+                    completionHandler(error)
+                }
             } else {
                 print("Zone changes completed")
                 completionHandler(nil)
@@ -379,30 +423,41 @@ public final class CloudProvider {
             }
         }
 
-        modifyRecords(recordsToSave: !saveRecords.isEmpty ? saveRecords : nil,
-                      recordIDsToDelete: !deleteRecordIDs.isEmpty ? deleteRecordIDs : nil)
-
+        modifyRecords(recordsToSave: saveRecords, recordIDsToDelete: deleteRecordIDs)
         pendingUpdates = nil
     }
 
 
     // MARK: Zone and record creation/updating
 
+    /// `true` if we believe the server has the primary zone for our records.
     var hasZone: Bool {
         return zoneServerChangeToken.index(forKey: zoneID) != nil
     }
 
-    private func createZoneOperation() -> CKDatabaseOperation? {
-        guard !hasZone else { return nil }
-
+    /// Create the primary zone for our records.
+    private func createZoneOperation() -> CKDatabaseOperation {
+        // Create a zone modify operation for our primary zone, which should create it if needed.
         let zone = CKRecordZone(zoneID: zoneID)
         let operation = CKModifyRecordZonesOperation(recordZonesToSave: [zone], recordZoneIDsToDelete: nil)
+
         operation.modifyRecordZonesCompletionBlock = {
             savedZones, deletedZoneIDs, error in
             if let error = error {
-                fatalError("Couldn't modify zone \(error)")
+                // Errors creating the zone should end up appearing in the record modification,
+                // so rather than bailing out, just move on.
+                print("Modify zone error: \(error)")
+            } else {
+                // Record `nil` for the change token of any zone we created, until we find out
+                // what the token really is later on.
+                if let savedZones = savedZones {
+                    for zone in savedZones {
+                        if self.zoneServerChangeToken.index(forKey: zone.zoneID) == nil {
+                            self.zoneServerChangeToken.updateValue(nil, forKey: zone.zoneID)
+                        }
+                    }
+                }
             }
-//            completionHandler(error)
         }
 
         operation.qualityOfService = .utility
@@ -411,24 +466,43 @@ public final class CloudProvider {
         return operation
     }
 
-    private func modifyRecords(recordsToSave: [CKRecord]?, recordIDsToDelete: [CKRecord.ID]?) {
+    /// Send local object changes to the database.
+    ///
+    /// - Parameters:
+    ///   - recordsToSave: CloudKit records to save.
+    ///   - recordIDsToDelete: identifiers of CloudKit records to delete.
+    private func modifyRecords(recordsToSave: [CKRecord], recordIDsToDelete: [CKRecord.ID]) {
         // Perform system field updates on a background context.
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         context.undoManager = nil
 
+        // Create a single operation to modify all of the records at once.
         let operation = CKModifyRecordsOperation(recordsToSave: recordsToSave, recordIDsToDelete: recordIDsToDelete)
         operation.savePolicy = .ifServerRecordUnchanged
 
         operation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
-            if let error = error {
+            if let error = error as? CKError,
+                error.code == .limitExceeded
+            {
+                print("Limit exceeded, splitting request in half")
+                let s = recordsToSave.count / 2
+                let d = recordIDsToDelete.count / 2
+
+                self.modifyRecords(recordsToSave: Array(recordsToSave[..<s]), recordIDsToDelete: Array(recordIDsToDelete[..<d]))
+                self.modifyRecords(recordsToSave: Array(recordsToSave[s...]), recordIDsToDelete: Array(recordIDsToDelete[d...]))
+            } else if let error = error {
                 fatalError("Couldn't modify records: \(error)")
             }
 
             if let savedRecords = savedRecords {
                 debugPrint(savedRecords)
                 do {
-                    try self.updateSystemFields(records: savedRecords, in: context)
+                    for record in savedRecords {
+                        try NSManagedObject.syncObjectFromRecord(record, in: context, updateValues: false)
+                    }
+
+                    try context.save()
                 } catch {
                     fatalError("Failed to write back: \(error)")
                 }
@@ -439,20 +513,15 @@ public final class CloudProvider {
             }
         }
 
-        if let zoneOperatation = createZoneOperation() {
-            operation.addDependency(zoneOperatation)
+        // Create the primary zone before we modify records, but for performance reasons, only
+        // do this if we don't think it exists.
+        if !hasZone {
+            let zoneOperation = createZoneOperation()
+            operation.addDependency(zoneOperation)
         }
 
         operation.qualityOfService = .utility
         database.add(operation)
-    }
-
-    private func updateSystemFields(records: [CKRecord], in context: NSManagedObjectContext) throws {
-        for record in records {
-            try NSManagedObject.syncObjectFromRecord(record, in: context, updateValues: false)
-        }
-
-        try context.save()
     }
 
 }

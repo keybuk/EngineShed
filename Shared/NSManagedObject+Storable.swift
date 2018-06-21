@@ -44,6 +44,38 @@ extension CloudStorable where Self : NSManagedObject {
         return object
     }
 
+    /// Delete all objects for CloudKit records.
+    ///
+    /// This may be called for either a set of known `recordIDs`, or for one or more `zoneIDs`.
+    ///
+    /// Once the deletion is done, changes are merged back to the context `mergeContext`.
+    ///
+    /// - Parameters:
+    ///   - recordIDs: CloudKit record IDs to be deleted, or `nil`.
+    ///   - zoneIDs: CloudKit zoneIDs in which all records should be deleted, or `nil`.
+    ///   - context: managed object context for the deletion.
+    ///   - mergeContext: managed object context to merge changes back to, or `nil`.
+    static func deleteObjects(recordIDs: [CKRecord.ID]?, zoneIDs: [CKRecordZone.ID]?, in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
+        if let recordIDs = recordIDs {
+            fetchRequest.predicate = NSPredicate(format: "recordID IN %@", recordIDs)
+        } else if let zoneIDs = zoneIDs {
+            fetchRequest.predicate = NSPredicate(format: "zoneID IN %@", zoneIDs)
+        }
+
+        try willDeleteObjects(matching: fetchRequest, in: context)
+
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        deleteRequest.resultType = .resultTypeObjectIDs
+
+        let result = try context.execute(deleteRequest) as! NSBatchDeleteResult
+        if let deletedObjects = result.result as? [NSManagedObjectID],
+            let mergeContext = mergeContext
+        {
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSDeletedObjectsKey: deletedObjects], into: [mergeContext])
+        }
+    }
+
     /// Save `systemFields` from CloudKit record.
     func saveSystemFields(from record: CKRecord) {
         let archiver = NSKeyedArchiver(requiringSecureCoding: true)
@@ -98,9 +130,8 @@ extension CloudStorable where Self : NSManagedObject {
 
 }
 
-// When `NSManagedObject` conforms to `StorableObjectTranslation`, provide a method to directly
-// sync an object. This exists here largely to keep the actual translation function in its own
-// file.
+// When `NSManagedObject` conforms to `StorableObjectTranslation`, provide methods to act on
+// objects and group of objects without knowing the underlying entity type.
 extension StorableObjectTranslation where Self : NSManagedObject {
 
     /// Returns the correct `NSManagedObject` subclass for the entity matching `recordType`.
