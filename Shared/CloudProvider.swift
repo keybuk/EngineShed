@@ -9,6 +9,7 @@
 import Foundation
 import CloudKit
 import CoreData
+import Dispatch
 
 public final class CloudProvider {
 
@@ -25,11 +26,15 @@ public final class CloudProvider {
 
     public var persistentContainer: NSPersistentContainer
 
+    public var queue: DispatchQueue
+
     public init(persistentContainer: NSPersistentContainer) {
         container = CKContainer(identifier: containerID)
         database = container.privateCloudDatabase
 
         self.persistentContainer = persistentContainer
+
+        queue = DispatchQueue(label: "com.netsplit.EngineShed.Database.CloudProvider")
 
         loadDefaults()
 
@@ -140,6 +145,24 @@ public final class CloudProvider {
     ///   - completionHandler: called on completion.
     ///    - error: `nil` on success, error that occurred on failure.
     public func fetchChanges(completionHandler: @escaping (_ error: Error?) -> Void) {
+        // Ensure that there is only ever one fetch operation going on at a time.
+        queue.async {
+            self.queue.suspend()
+            self.internalFetchChanges { error in
+                self.queue.resume()
+                completionHandler(error)
+            }
+        }
+    }
+
+    /// Fetch changes from the database.
+    ///
+    /// - Parameters:
+    ///   - completionHandler: called on completion.
+    ///    - error: `nil` on success, error that occurred on failure.
+    private func internalFetchChanges(completionHandler: @escaping (_ error: Error?) -> Void) {
+        dispatchPrecondition(condition: .onQueue(queue))
+
         // Perform updates on a background context.
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
