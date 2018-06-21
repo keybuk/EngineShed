@@ -1,5 +1,5 @@
 //
-//  Decoder+CloudStorable.swift
+//  Decoder+Storable.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/17/18.
@@ -9,7 +9,7 @@
 import CloudKit
 import CoreData
 
-extension Decoder : CloudStorable {
+extension Decoder : StorableManagedObject {
 
     /// CloudKit record type.
     static let recordType = "Decoder"
@@ -27,13 +27,13 @@ extension Decoder : CloudStorable {
         soundFile = record["soundFile"]
 
         if let reference = record["model"] as? CKRecord.Reference {
-            model = try Model.forRecordID(reference.recordID, in: managedObjectContext!)
+            model = try Model.objectForRecordID(reference.recordID, in: managedObjectContext!)
         } else {
             model = nil
         }
 
         if let reference = record["type"] as? CKRecord.Reference {
-            type = try DecoderType.forRecordID(reference.recordID, in: managedObjectContext!)
+            type = try DecoderType.objectForRecordID(reference.recordID, in: managedObjectContext!)
         } else {
             type = nil
         }

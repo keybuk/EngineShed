@@ -1,5 +1,5 @@
 //
-//  Model+CloudStorable.swift
+//  Model+Storable.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/17/18.
@@ -9,7 +9,7 @@
 import CloudKit
 import CoreData
 
-extension Model : CloudStorable {
+extension Model : StorableManagedObject {
 
     /// CloudKit record type.
     static let recordType = "Model"
@@ -125,7 +125,7 @@ extension Model : CloudStorable {
         }
 
         if let reference = record["purchase"] as? CKRecord.Reference {
-            purchase = try Purchase.forRecordID(reference.recordID, in: managedObjectContext!)
+            purchase = try Purchase.objectForRecordID(reference.recordID, in: managedObjectContext!)
         } else {
             purchase = nil
         }

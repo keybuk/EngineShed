@@ -22,31 +22,35 @@
 		D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1920D8143900827F68 /* Model+Image.swift */; };
 		D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1C20D814D700827F68 /* NSImage+PNGData.swift */; };
 		D298CB1F20D8150600827F68 /* UIImage+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1E20D8150600827F68 /* UIImage+URL.swift */; };
-		D298CB2720D8163A00827F68 /* Train+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2020D8163900827F68 /* Train+CloudStorable.swift */; };
-		D298CB2820D8163A00827F68 /* Train+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2020D8163900827F68 /* Train+CloudStorable.swift */; };
-		D298CB2920D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2120D8163900827F68 /* TrainMember+CloudStorable.swift */; };
-		D298CB2A20D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2120D8163900827F68 /* TrainMember+CloudStorable.swift */; };
-		D298CB2B20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2220D8163900827F68 /* DecoderType+CloudStorable.swift */; };
-		D298CB2C20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2220D8163900827F68 /* DecoderType+CloudStorable.swift */; };
-		D298CB2D20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2320D8163A00827F68 /* Decoder+CloudStorable.swift */; };
-		D298CB2E20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2320D8163A00827F68 /* Decoder+CloudStorable.swift */; };
-		D298CB3120D8163A00827F68 /* Model+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2520D8163A00827F68 /* Model+CloudStorable.swift */; };
-		D298CB3220D8163A00827F68 /* Model+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2520D8163A00827F68 /* Model+CloudStorable.swift */; };
-		D298CB3320D8163A00827F68 /* Purchase+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2620D8163A00827F68 /* Purchase+CloudStorable.swift */; };
-		D298CB3420D8163A00827F68 /* Purchase+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2620D8163A00827F68 /* Purchase+CloudStorable.swift */; };
+		D298CB2720D8163A00827F68 /* Train+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2020D8163900827F68 /* Train+Storable.swift */; };
+		D298CB2820D8163A00827F68 /* Train+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2020D8163900827F68 /* Train+Storable.swift */; };
+		D298CB2920D8163A00827F68 /* TrainMember+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2120D8163900827F68 /* TrainMember+Storable.swift */; };
+		D298CB2A20D8163A00827F68 /* TrainMember+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2120D8163900827F68 /* TrainMember+Storable.swift */; };
+		D298CB2B20D8163A00827F68 /* DecoderType+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2220D8163900827F68 /* DecoderType+Storable.swift */; };
+		D298CB2C20D8163A00827F68 /* DecoderType+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2220D8163900827F68 /* DecoderType+Storable.swift */; };
+		D298CB2D20D8163A00827F68 /* Decoder+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2320D8163A00827F68 /* Decoder+Storable.swift */; };
+		D298CB2E20D8163A00827F68 /* Decoder+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2320D8163A00827F68 /* Decoder+Storable.swift */; };
+		D298CB3120D8163A00827F68 /* Model+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2520D8163A00827F68 /* Model+Storable.swift */; };
+		D298CB3220D8163A00827F68 /* Model+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2520D8163A00827F68 /* Model+Storable.swift */; };
+		D298CB3320D8163A00827F68 /* Purchase+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2620D8163A00827F68 /* Purchase+Storable.swift */; };
+		D298CB3420D8163A00827F68 /* Purchase+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2620D8163A00827F68 /* Purchase+Storable.swift */; };
 		D29E457620DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */; };
 		D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */; };
-		D2B2AF4720D8173B00BEFC15 /* CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4420D816CF00BEFC15 /* CloudStorable.swift */; };
-		D2B2AF4820D8173C00BEFC15 /* CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4420D816CF00BEFC15 /* CloudStorable.swift */; };
+		D29E457C20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */; };
+		D29E457D20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */; };
+		D29E457F20DB23FF000624B5 /* CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457E20DB23FF000624B5 /* CloudStorable.swift */; };
+		D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457E20DB23FF000624B5 /* CloudStorable.swift */; };
+		D29E458220DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */; };
+		D29E458320DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */; };
+		D2B2AF4720D8173B00BEFC15 /* StorableManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4420D816CF00BEFC15 /* StorableManagedObject.swift */; };
+		D2B2AF4820D8173C00BEFC15 /* StorableManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4420D816CF00BEFC15 /* StorableManagedObject.swift */; };
 		D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */; };
 		D2B2AF4F20D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
 		D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
-		D2B50B9C20D9C5530040A41F /* CloudMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50B9B20D9C5530040A41F /* CloudMappable.swift */; };
-		D2B50B9D20D9C5530040A41F /* CloudMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50B9B20D9C5530040A41F /* CloudMappable.swift */; };
-		D2B50B9F20D9C59B0040A41F /* DetailPart+CloudMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50B9E20D9C59B0040A41F /* DetailPart+CloudMappable.swift */; };
-		D2B50BA020D9C59B0040A41F /* DetailPart+CloudMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50B9E20D9C59B0040A41F /* DetailPart+CloudMappable.swift */; };
-		D2B50BA220D9D79A0040A41F /* ManagedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50BA120D9D79A0040A41F /* ManagedObjectType.swift */; };
-		D2B50BA320D9D79A0040A41F /* ManagedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50BA120D9D79A0040A41F /* ManagedObjectType.swift */; };
+		D2B50B9F20D9C59B0040A41F /* DetailPart+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50B9E20D9C59B0040A41F /* DetailPart+Storable.swift */; };
+		D2B50BA020D9C59B0040A41F /* DetailPart+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50B9E20D9C59B0040A41F /* DetailPart+Storable.swift */; };
+		D2B50BA220D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */; };
+		D2B50BA320D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */; };
 		D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */; };
 		D2B7C95920D4BA30001B51B1 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */; };
 		D2B7C95B20D4BA30001B51B1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95A20D4BA30001B51B1 /* DetailViewController.swift */; };
@@ -191,19 +195,21 @@
 		D298CB1920D8143900827F68 /* Model+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Image.swift"; sourceTree = "<group>"; };
 		D298CB1C20D814D700827F68 /* NSImage+PNGData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+PNGData.swift"; sourceTree = "<group>"; };
 		D298CB1E20D8150600827F68 /* UIImage+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+URL.swift"; sourceTree = "<group>"; };
-		D298CB2020D8163900827F68 /* Train+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Train+CloudStorable.swift"; sourceTree = "<group>"; };
-		D298CB2120D8163900827F68 /* TrainMember+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrainMember+CloudStorable.swift"; sourceTree = "<group>"; };
-		D298CB2220D8163900827F68 /* DecoderType+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DecoderType+CloudStorable.swift"; sourceTree = "<group>"; };
-		D298CB2320D8163A00827F68 /* Decoder+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decoder+CloudStorable.swift"; sourceTree = "<group>"; };
-		D298CB2520D8163A00827F68 /* Model+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+CloudStorable.swift"; sourceTree = "<group>"; };
-		D298CB2620D8163A00827F68 /* Purchase+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+CloudStorable.swift"; sourceTree = "<group>"; };
+		D298CB2020D8163900827F68 /* Train+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Train+Storable.swift"; sourceTree = "<group>"; };
+		D298CB2120D8163900827F68 /* TrainMember+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrainMember+Storable.swift"; sourceTree = "<group>"; };
+		D298CB2220D8163900827F68 /* DecoderType+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DecoderType+Storable.swift"; sourceTree = "<group>"; };
+		D298CB2320D8163A00827F68 /* Decoder+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decoder+Storable.swift"; sourceTree = "<group>"; };
+		D298CB2520D8163A00827F68 /* Model+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Storable.swift"; sourceTree = "<group>"; };
+		D298CB2620D8163A00827F68 /* Purchase+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Storable.swift"; sourceTree = "<group>"; };
 		D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+TypeAliases.swift"; sourceTree = "<group>"; };
-		D2B2AF4420D816CF00BEFC15 /* CloudStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorable.swift; sourceTree = "<group>"; };
+		D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableObjectTranslation.swift; sourceTree = "<group>"; };
+		D29E457E20DB23FF000624B5 /* CloudStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorable.swift; sourceTree = "<group>"; };
+		D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Storable.swift"; sourceTree = "<group>"; };
+		D2B2AF4420D816CF00BEFC15 /* StorableManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableManagedObject.swift; sourceTree = "<group>"; };
 		D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Flipped.swift"; sourceTree = "<group>"; };
 		D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+Image.swift"; sourceTree = "<group>"; };
-		D2B50B9B20D9C5530040A41F /* CloudMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudMappable.swift; sourceTree = "<group>"; };
-		D2B50B9E20D9C59B0040A41F /* DetailPart+CloudMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailPart+CloudMappable.swift"; sourceTree = "<group>"; };
-		D2B50BA120D9D79A0040A41F /* ManagedObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectType.swift; sourceTree = "<group>"; };
+		D2B50B9E20D9C59B0040A41F /* DetailPart+Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailPart+Storable.swift"; sourceTree = "<group>"; };
+		D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+RecordType.swift"; sourceTree = "<group>"; };
 		D2B7C95120D4BA30001B51B1 /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -395,15 +401,15 @@
 		D2B2AF4920D8180300BEFC15 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D2B50BA120D9D79A0040A41F /* ManagedObjectType.swift */,
-				D298CB2620D8163A00827F68 /* Purchase+CloudStorable.swift */,
-				D298CB2520D8163A00827F68 /* Model+CloudStorable.swift */,
+				D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */,
+				D298CB2620D8163A00827F68 /* Purchase+Storable.swift */,
+				D298CB2520D8163A00827F68 /* Model+Storable.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
-				D2B50B9E20D9C59B0040A41F /* DetailPart+CloudMappable.swift */,
-				D298CB2220D8163900827F68 /* DecoderType+CloudStorable.swift */,
-				D298CB2320D8163A00827F68 /* Decoder+CloudStorable.swift */,
-				D298CB2020D8163900827F68 /* Train+CloudStorable.swift */,
-				D298CB2120D8163900827F68 /* TrainMember+CloudStorable.swift */,
+				D2B50B9E20D9C59B0040A41F /* DetailPart+Storable.swift */,
+				D298CB2220D8163900827F68 /* DecoderType+Storable.swift */,
+				D298CB2320D8163A00827F68 /* Decoder+Storable.swift */,
+				D298CB2020D8163900827F68 /* Train+Storable.swift */,
+				D298CB2120D8163900827F68 /* TrainMember+Storable.swift */,
 				D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */,
 			);
 			name = Model;
@@ -488,8 +494,10 @@
 				D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */,
 				D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */,
 				D298CAF220D737C800827F68 /* CloudProvider.swift */,
-				D2B2AF4420D816CF00BEFC15 /* CloudStorable.swift */,
-				D2B50B9B20D9C5530040A41F /* CloudMappable.swift */,
+				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
+				D2B2AF4420D816CF00BEFC15 /* StorableManagedObject.swift */,
+				D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */,
+				D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */,
 				D2B2AF4920D8180300BEFC15 /* Model */,
 			);
 			path = Shared;
@@ -932,23 +940,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B7C9CC20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
-				D2B2AF4720D8173B00BEFC15 /* CloudStorable.swift in Sources */,
+				D2B2AF4720D8173B00BEFC15 /* StorableManagedObject.swift in Sources */,
 				D2B7C9D220D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */,
-				D298CB2920D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */,
-				D298CB3120D8163A00827F68 /* Model+CloudStorable.swift in Sources */,
+				D298CB2920D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
+				D29E457F20DB23FF000624B5 /* CloudStorable.swift in Sources */,
+				D29E458220DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */,
+				D29E457C20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */,
+				D298CB3120D8163A00827F68 /* Model+Storable.swift in Sources */,
 				D29E457620DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
-				D2B50BA220D9D79A0040A41F /* ManagedObjectType.swift in Sources */,
-				D298CB2720D8163A00827F68 /* Train+CloudStorable.swift in Sources */,
-				D2B50B9F20D9C59B0040A41F /* DetailPart+CloudMappable.swift in Sources */,
-				D2B50B9C20D9C5530040A41F /* CloudMappable.swift in Sources */,
+				D2B50BA220D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */,
+				D298CB2720D8163A00827F68 /* Train+Storable.swift in Sources */,
+				D2B50B9F20D9C59B0040A41F /* DetailPart+Storable.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
 				D298CB1A20D8143A00827F68 /* Model+Image.swift in Sources */,
-				D298CB2D20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */,
-				D298CB2B20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */,
+				D298CB2D20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
+				D298CB2B20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,
 				D2B2AF4F20D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
-				D298CB3320D8163A00827F68 /* Purchase+CloudStorable.swift in Sources */,
+				D298CB3320D8163A00827F68 /* Purchase+Storable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,22 +975,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B7C9CD20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
-				D2B2AF4820D8173C00BEFC15 /* CloudStorable.swift in Sources */,
-				D2B50BA020D9C59B0040A41F /* DetailPart+CloudMappable.swift in Sources */,
+				D2B2AF4820D8173C00BEFC15 /* StorableManagedObject.swift in Sources */,
+				D2B50BA020D9C59B0040A41F /* DetailPart+Storable.swift in Sources */,
+				D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D298CB1F20D8150600827F68 /* UIImage+URL.swift in Sources */,
-				D298CB2A20D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */,
-				D298CB3220D8163A00827F68 /* Model+CloudStorable.swift in Sources */,
+				D298CB2A20D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
+				D298CB3220D8163A00827F68 /* Model+Storable.swift in Sources */,
+				D29E458320DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */,
 				D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
-				D2B50BA320D9D79A0040A41F /* ManagedObjectType.swift in Sources */,
-				D298CB2820D8163A00827F68 /* Train+CloudStorable.swift in Sources */,
+				D29E457D20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */,
+				D2B50BA320D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */,
+				D298CB2820D8163A00827F68 /* Train+Storable.swift in Sources */,
 				D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
 				D298CAF420D737C800827F68 /* CloudProvider.swift in Sources */,
 				D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */,
-				D298CB2E20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */,
-				D298CB2C20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */,
-				D298CB3420D8163A00827F68 /* Purchase+CloudStorable.swift in Sources */,
-				D2B50B9D20D9C5530040A41F /* CloudMappable.swift in Sources */,
+				D298CB2E20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
+				D298CB2C20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,
+				D298CB3420D8163A00827F68 /* Purchase+Storable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

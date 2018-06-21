@@ -1,5 +1,5 @@
 //
-//  Purchase+CloudStorable.swift
+//  Purchase+Storable.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/17/18.
@@ -9,7 +9,7 @@
 import CloudKit
 import CoreData
 
-extension Purchase : CloudStorable {
+extension Purchase : StorableManagedObject {
 
     /// CloudKit record type.
     static let recordType = "Purchase"

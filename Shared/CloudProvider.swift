@@ -248,7 +248,7 @@ public final class CloudProvider {
             print(record.changedKeys())
 
             do {
-                try self.updateManagedObject(from: record, in: context)
+                try NSManagedObject.syncObjectFromRecord(record, in: context)
             } catch {
                 // FIXME: abort this operation.
                 fatalError("Failed \(error)")
@@ -310,21 +310,6 @@ public final class CloudProvider {
         database.add(operation)
     }
 
-    /// Update the NSManagaedObject for a record, creating if necessary.
-    ///
-    /// All fields in the managed object are set to the current values in `record`, and the system
-    /// fields saved to it.
-    ///
-    /// - Parameters:
-    ///   - record: CKRecord for the matching managed object.
-    ///   - context: managed object context to search in, or create the object in.
-    private func updateManagedObject(from record: CKRecord, in context: NSManagedObjectContext) throws {
-        guard let object = try managedObjectType[record.recordType]?.forRecordID(record.recordID, in: context) else { return }
-
-        try object.update(from: record)
-        object.record = record
-    }
-
     // MARK: Core Data notifications
 
     /// Set of changed keys for each updated object.
@@ -334,11 +319,13 @@ public final class CloudProvider {
     func managedObjectContextObjectsWillSave(notification: NSNotification) {
         guard let context = notification.object as? NSManagedObjectContext else { return }
 
+        // Create CKRecord objects for newly inserted objects as part of the save action, rather
+        // than after, so in the case of retry after a failure, we send an update for the same
+        // object rather than duplicating it.
         for object in context.insertedObjects {
-            // Generate CloudKit records for storable objects, and use this opportunity to set that
-            // in the database.
-            guard let storable = object as? CloudStorable else { continue }
-            storable.createRecordInZoneID(zoneID)
+            if let storable = object as? CloudStorable {
+                storable.createRecord(in: zoneID)
+            }
         }
 
         // The set of changed keys is not available in DidSave, so save them here; but only the
@@ -355,50 +342,37 @@ public final class CloudProvider {
         var saveRecords: [CKRecord] = []
         var deleteRecordIDs: [CKRecord.ID] = []
 
+        // Save all of the keys of newly inserted objects that can be synchronized.
         if let insertedObjects = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
             for object in insertedObjects {
-                // Save all of the keys of newly inserted storable objects. Inserted mappable
-                // objects show up as an update to their storable automatically due to the
-                // relationship.
-                guard let storable = object as? CloudStorable else { continue }
-                guard let record = storable.record else { fatalError("Storable without record") }
-
-                storable.updateRecord(record, forKeys: nil)
-                saveRecords.append(record)
+                if let storable = object as? CloudStorable {
+                    if let record = storable.syncToRecord(forKeys: nil) {
+                        saveRecords.append(record)
+                    }
+                }
             }
         }
 
         if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> {
             for object in updatedObjects {
                 if let storable = object as? CloudStorable {
-                    // Retrieve the set of changed keys record in the WillSave notification, and
-                    // only update the record with those.
-                    guard let record = storable.record else { fatalError("Storable without record") }
-
+                    // Retrieve the set of changed keys recorded in the WillSave notification and
+                    // only update the record using those.
                     let changedKeys = pendingUpdates?[object.objectID]
-                    storable.updateRecord(record, forKeys: changedKeys)
-                    saveRecords.append(record)
-
-                } else if let mappable = object as? CloudMappable {
-                    // Special-case where the object is represented in CloudKit by the keys of
-                    // another object; map the update to that other object's keys.
-                    guard let storable = mappable.mappedObject else { fatalError("Mappable without object") }
-                    guard let record = storable.record else { fatalError("Storable without record") }
-
-                    storable.updateRecord(record, forKeys: mappable.mappedKeys)
-                    saveRecords.append(record)
+                    if let record = storable.syncToRecord(forKeys: changedKeys) {
+                        saveRecords.append(record)
+                    }
                 }
             }
         }
 
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject> {
             for object in deletedObjects {
-                // Save all of the keys of deleted storable objects. Deleted mappable objects
-                // show up as an update to their storable automatically due to the relationship.
-                guard let storable = object as? CloudStorable else { continue }
-                guard let record = storable.record else { fatalError("Storable without record") }
-
-                deleteRecordIDs.append(record.recordID)
+                if let storable = object as? CloudStorable {
+                    if let recordID = storable.recordID {
+                        deleteRecordIDs.append(recordID)
+                    }
+                }
             }
         }
 
@@ -472,9 +446,7 @@ public final class CloudProvider {
 
     private func updateSystemFields(records: [CKRecord], in context: NSManagedObjectContext) throws {
         for record in records {
-            guard let object = try managedObjectType[record.recordType]?.fetchRecordID(record.recordID, in: context) else { continue }
-
-            object.record = record
+            try NSManagedObject.syncObjectFromRecord(record, in: context, updateValues: false)
         }
 
         try context.save()

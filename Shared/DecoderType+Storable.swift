@@ -1,5 +1,5 @@
 //
-//  DecoderType+CloudStorable.swift
+//  DecoderType+Storable.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/17/18.
@@ -9,7 +9,7 @@
 import CloudKit
 import CoreData
 
-extension DecoderType : CloudStorable {
+extension DecoderType : StorableManagedObject {
 
     /// CloudKit record type.
     static let recordType = "DecoderType"

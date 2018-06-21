@@ -1,5 +1,5 @@
 //
-//  TrainMember+CloudStorable.swift
+//  TrainMember+Storable.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/17/18.
@@ -9,7 +9,7 @@
 import CloudKit
 import CoreData
 
-extension TrainMember : CloudStorable {
+extension TrainMember : StorableManagedObject {
 
     /// CloudKit record type.
     static let recordType = "TrainMember"
@@ -23,13 +23,13 @@ extension TrainMember : CloudStorable {
         title = record["title"]
 
         if let reference = record["model"] as? CKRecord.Reference {
-            model = try Model.forRecordID(reference.recordID, in: managedObjectContext!)
+            model = try Model.objectForRecordID(reference.recordID, in: managedObjectContext!)
         } else {
             model = nil
         }
 
         if let reference = record["train"] as? CKRecord.Reference {
-            train = try Train.forRecordID(reference.recordID, in: managedObjectContext!)
+            train = try Train.objectForRecordID(reference.recordID, in: managedObjectContext!)
         } else {
             train = nil
         }

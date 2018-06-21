@@ -1,5 +1,5 @@
 //
-//  Train+CloudStorable.swift
+//  Train+Storable.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/17/18.
@@ -9,7 +9,7 @@
 import CloudKit
 import CoreData
 
-extension Train : CloudStorable {
+extension Train : StorableManagedObject {
 
     /// CloudKit record type.
     static let recordType = "Train"
