@@ -276,42 +276,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         callbackOperation.addDependency(zoneOperation)
         database.add(zoneOperation)
 
-        for i in stride(from: 0, to: records.count, by: 400) {
-            let j = min(i + 400, records.endIndex)
-
-            let slice = records[i..<j]
-            let saveOperation = CKModifyRecordsOperation(recordsToSave: Array(slice), recordIDsToDelete: nil)
-            saveOperation.qualityOfService = .utility
-            saveOperation.addDependency(zoneOperation)
-            saveOperation.savePolicy = .allKeys
-
-            saveOperation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
-                if let error = error as? CKError {
-                    //                print("!!")
-                    //                if let retryAfter = error.retryAfterSeconds {
-                    //                    print("\(error.code): Will retry in \(retryAfter)")
-                    //                    let newSaveOperation = saveOperationFor(records: saveOperation.recordsToSave!)
-                    //                    DispatchQueue.main.asyncAfter(deadline: .now() + retryAfter) {
-                    //                        print("Retrying")
-                    //                        database.add(newSaveOperation)
-                    //                    }
-                    //                } else {
-                    fatalError("Couldn't save records \(error)")
-                    //                }
-                } else if let error = error {
-                    fatalError("Couldn't save records \(error)")
-                } else {
-                    print("Saved \(savedRecords?.count ?? -1) records")
-                }
-            }
-
-            callbackOperation.addDependency(saveOperation)
-            database.add(saveOperation)
-        }
-
+        saveRecords(records, in: database, dependency: zoneOperation, whenComplete: callbackOperation)
         OperationQueue.main.addOperation(callbackOperation)
     }
 
+    func saveRecords(_ records: [CKRecord], in database: CKDatabase, dependency zoneOperation: CKDatabaseOperation, whenComplete callbackOperation: Operation) {
+        let saveOperation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+        saveOperation.qualityOfService = .utility
+        saveOperation.savePolicy = .allKeys
+
+        saveOperation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
+            if let error = error as? CKError,
+                error.code == .limitExceeded
+            {
+                print("Limit exceeded, splitting request in half")
+
+                let s = records.count / 2
+                self.saveRecords(Array(records[..<s]), in: database, dependency: zoneOperation, whenComplete: callbackOperation)
+                self.saveRecords(Array(records[s...]), in: database, dependency: zoneOperation, whenComplete: callbackOperation)
+            } else if let error = error {
+                fatalError("Couldn't save records \(error)")
+            } else {
+                print("Saved \(savedRecords?.count ?? -1) records")
+            }
+        }
+
+        callbackOperation.addDependency(saveOperation)
+        saveOperation.addDependency(zoneOperation)
+        database.add(saveOperation)
+    }
 
     // MARK: - Core Data stack
 
