@@ -9,12 +9,12 @@
 import CloudKit
 import CoreData
 
-// `StorableManagedObject` has the implementations of `CloudStorable` provided for free when it's
-// conformed to by an `NSManagedObject` entity type.
+// `CloudStorable` conformance is provided for free when it's conformed to by an
+// `NSManagedObject` entity type.
 //
 // In addition an `objectForRecordID(_:in:)` static method is added to fetch or create records
 // of the correct entity type.
-extension StorableManagedObject where Self : NSManagedObject {
+extension CloudStorable where Self : NSManagedObject {
 
     /// Returns an object for a CloudKit record.
     ///

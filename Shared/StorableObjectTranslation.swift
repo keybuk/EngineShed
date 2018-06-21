@@ -10,13 +10,13 @@ import CloudKit
 import CoreData
 
 /// Permit translation from a `CKRecord.RecordType` to an `NSManagedObject` subclass that conforms
-/// to `StorableManagedObject`.
+/// to `CloudStorable`.
 protocol StorableObjectTranslation {
 
     /// A type that confirms to both `StorableManagedObject` and `NSManagedObject`.
-    typealias StorableObjectType = StorableManagedObject & NSManagedObject
+    typealias CloudStorableObject = CloudStorable & NSManagedObject
 
     /// Returns the correct `NSManagedObject` subclass for the entity matching `recordType`.
-    static func classForRecordType(_ recordType: CKRecord.RecordType) -> StorableObjectType.Type?
+    static func classForRecordType(_ recordType: CKRecord.RecordType) -> CloudStorableObject.Type?
 
 }

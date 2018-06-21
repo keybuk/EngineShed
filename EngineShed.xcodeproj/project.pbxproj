@@ -42,8 +42,6 @@
 		D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457E20DB23FF000624B5 /* CloudStorable.swift */; };
 		D29E458220DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */; };
 		D29E458320DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */; };
-		D2B2AF4720D8173B00BEFC15 /* StorableManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4420D816CF00BEFC15 /* StorableManagedObject.swift */; };
-		D2B2AF4820D8173C00BEFC15 /* StorableManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4420D816CF00BEFC15 /* StorableManagedObject.swift */; };
 		D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */; };
 		D2B2AF4F20D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
 		D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
@@ -203,7 +201,6 @@
 		D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableObjectTranslation.swift; sourceTree = "<group>"; };
 		D29E457E20DB23FF000624B5 /* CloudStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorable.swift; sourceTree = "<group>"; };
 		D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Storable.swift"; sourceTree = "<group>"; };
-		D2B2AF4420D816CF00BEFC15 /* StorableManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableManagedObject.swift; sourceTree = "<group>"; };
 		D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Flipped.swift"; sourceTree = "<group>"; };
 		D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+Image.swift"; sourceTree = "<group>"; };
 		D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+RecordType.swift"; sourceTree = "<group>"; };
@@ -491,7 +488,6 @@
 				D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */,
 				D298CAF220D737C800827F68 /* CloudProvider.swift */,
 				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
-				D2B2AF4420D816CF00BEFC15 /* StorableManagedObject.swift */,
 				D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */,
 				D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */,
 				D2B2AF4920D8180300BEFC15 /* Model */,
@@ -936,7 +932,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B7C9CC20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
-				D2B2AF4720D8173B00BEFC15 /* StorableManagedObject.swift in Sources */,
 				D2B7C9D220D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */,
 				D298CB2920D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
@@ -970,7 +965,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B7C9CD20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
-				D2B2AF4820D8173C00BEFC15 /* StorableManagedObject.swift in Sources */,
 				D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D298CB1F20D8150600827F68 /* UIImage+URL.swift in Sources */,

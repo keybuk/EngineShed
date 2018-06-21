@@ -9,7 +9,7 @@
 import CloudKit
 import CoreData
 
-extension Purchase : StorableManagedObject {
+extension Purchase : CloudStorable {
 
     /// CloudKit record type.
     static let recordType = "Purchase"

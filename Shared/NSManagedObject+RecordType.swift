@@ -12,7 +12,7 @@ import CoreData
 extension NSManagedObject : StorableObjectTranslation {
 
     /// Returns the correct `NSManagedObject` subclass for the entity matching `recordType`.
-    static func classForRecordType(_ recordType: CKRecord.RecordType) -> StorableObjectType.Type? {
+    static func classForRecordType(_ recordType: CKRecord.RecordType) -> CloudStorableObject.Type? {
         switch recordType {
         case Purchase.recordType: return Purchase.self
         case Model.recordType: return Model.self

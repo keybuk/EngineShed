@@ -9,7 +9,7 @@
 import CloudKit
 import CoreData
 
-extension Train : StorableManagedObject {
+extension Train : CloudStorable {
 
     /// CloudKit record type.
     static let recordType = "Train"

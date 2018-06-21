@@ -9,7 +9,7 @@
 import CloudKit
 import CoreData
 
-extension DecoderType : StorableManagedObject {
+extension DecoderType : CloudStorable {
 
     /// CloudKit record type.
     static let recordType = "DecoderType"
