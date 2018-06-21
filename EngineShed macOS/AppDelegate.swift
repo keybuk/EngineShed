@@ -38,7 +38,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         // Insert code here to initialize your application
-        debugPrint(persistentContainer.viewContext)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
