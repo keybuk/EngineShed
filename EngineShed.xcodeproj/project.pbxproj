@@ -12,6 +12,8 @@
 		D215BEAC20D4B53A0054FDCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D215BEAA20D4B53A0054FDCC /* Main.storyboard */; };
 		D215BEB820D4B53A0054FDCC /* EngineShedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEB720D4B53A0054FDCC /* EngineShedTests.swift */; };
 		D215BEC320D4B53A0054FDCC /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */; };
+		D28BE32E20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */; };
+		D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */; };
 		D298CAE920D7109900827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAE820D7109900827F68 /* CloudKit.framework */; };
 		D298CAEF20D7148900827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAEE20D7148900827F68 /* CloudKit.framework */; };
 		D298CAF020D7149200827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAE820D7109900827F68 /* CloudKit.framework */; };
@@ -184,6 +186,7 @@
 		D215BEBE20D4B53A0054FDCC /* EngineShed macOS UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed macOS UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
 		D215BEC420D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+WillDelete.swift"; sourceTree = "<group>"; };
 		D298CAE820D7109900827F68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		D298CAEA20D7118A00827F68 /* EngineShed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EngineShed.entitlements; sourceTree = "<group>"; };
 		D298CAEE20D7148900827F68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -490,6 +493,7 @@
 				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
 				D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */,
 				D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */,
+				D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */,
 				D2B2AF4920D8180300BEFC15 /* Model */,
 			);
 			path = Shared;
@@ -941,6 +945,7 @@
 				D298CB3120D8163A00827F68 /* Model+Storable.swift in Sources */,
 				D29E457620DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
 				D2B50BA220D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */,
+				D28BE32E20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,
 				D298CB2720D8163A00827F68 /* Train+Storable.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
@@ -966,6 +971,7 @@
 			files = (
 				D2B7C9CD20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
 				D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */,
+				D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D298CB1F20D8150600827F68 /* UIImage+URL.swift in Sources */,
 				D298CB2A20D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
