@@ -285,6 +285,7 @@ public final class CloudProvider {
                     if !changedZoneIDs.isEmpty {
                         self.fetchZoneChanges(changedZoneIDs, completionHandler: completionHandler)
                     } else {
+                        print("Database changes completed (no zones)")
                         completionHandler(nil)
                     }
                 } catch {
