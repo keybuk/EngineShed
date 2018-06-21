@@ -18,21 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Set up the CloudKit Provider.
-        cloudProvider.subscribeToChanges { error in
-            if let error = error {
-                print("Failed! \(error)")
-            } else {
-                print("Susbcribed!")
-            }
-        }
-        
-        cloudProvider.fetchChanges { error in
-            if let error = error {
-                print("Failed! \(error)")
-            } else {
-                print("Fetched!")
-            }
-        }
+        cloudProvider.start()
 
         // Register for remote notifications of changes to the iCloud database.
         application.registerForRemoteNotifications()

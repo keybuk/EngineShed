@@ -36,8 +36,6 @@ public final class CloudProvider {
 
         queue = DispatchQueue(label: "com.netsplit.EngineShed.Database.CloudProvider")
 
-        loadDefaults()
-
         // Subscribe to Core Data notifications to watch for changes.
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsWillSave(notification:)), name: NSNotification.Name.NSManagedObjectContextWillSave, object: persistentContainer.viewContext)
@@ -93,14 +91,50 @@ public final class CloudProvider {
         defaults.set(datas, forKey: "ServerChangeToken")
     }
 
+    public func start() {
+        loadDefaults()
+
+        // Fetch and resume all of the long-lived operations.
+        container.fetchAllLongLivedOperationIDs { (operationIDs, error) in
+            if let error = error {
+                print("Failed to fetch long-lived operations: \(error)")
+            } else if let operationIDs = operationIDs {
+                for operationID in operationIDs {
+                    self.container.fetchLongLivedOperation(withID: operationID) { (operation, error) in
+                        if let error = error {
+                            print("Long-lived operation \(operationID) failed: \(error)")
+                        } else if let operation = operation as? CKModifyRecordsOperation {
+                            operation.modifyRecordsCompletionBlock = { (savedRecords, deletedRecordIDs, error) in
+                                if let error = error {
+                                    fatalError("Resumed long-lived modify operation \(operationID) failed: \(error)")
+                                } else {
+                                    self.handleModifyCompletion(savedRecords: savedRecords, deletedRecordIDs: deletedRecordIDs)
+                                }
+                            }
+
+                            print("Resuming long-lived modify operation \(operationID)")
+                            self.container.add(operation)
+                        } else if let operation = operation {
+                            print("Resuming long-lived operation \(operationID)")
+                            self.container.add(operation)
+                        }
+                    }
+                }
+            }
+        }
+        
+        subscribeToChanges()
+        fetchChanges()
+    }
+
     /// Subscribe to changes in the zone.
     ///
     /// - Parameters:
     ///   - completionHandler: called on completion.
     ///    - error: `nil` on success, error that occurred on failure.
-    public func subscribeToChanges(completionHandler: @escaping (_ error: Error?) -> Void) {
+    public func subscribeToChanges(completionHandler: ((_ error: Error?) -> Void)? = nil) {
         guard !hasSubscription else {
-            completionHandler(nil)
+            completionHandler?(nil)
             return
         }
 
@@ -115,10 +149,10 @@ public final class CloudProvider {
         operation.modifySubscriptionsCompletionBlock = { savedSubscriptions, deletedSubscriptionIDs, error in
             if let error = error {
                 print("Modify subscriptions error \(error)")
-                completionHandler(error)
+                completionHandler?(error)
             } else {
                 self.hasSubscription = true
-                completionHandler(nil)
+                completionHandler?(nil)
             }
         }
 
@@ -144,13 +178,13 @@ public final class CloudProvider {
     /// - Parameters:
     ///   - completionHandler: called on completion.
     ///    - error: `nil` on success, error that occurred on failure.
-    public func fetchChanges(completionHandler: @escaping (_ error: Error?) -> Void) {
+    public func fetchChanges(completionHandler: ((_ error: Error?) -> Void)? = nil) {
         // Ensure that there is only ever one fetch operation going on at a time.
         queue.async {
             self.queue.suspend()
             self.internalFetchChanges { error in
                 self.queue.resume()
-                completionHandler(error)
+                completionHandler?(error)
             }
         }
     }
@@ -495,14 +529,10 @@ public final class CloudProvider {
     ///   - recordsToSave: CloudKit records to save.
     ///   - recordIDsToDelete: identifiers of CloudKit records to delete.
     private func modifyRecords(recordsToSave: [CKRecord], recordIDsToDelete: [CKRecord.ID]) {
-        // Perform system field updates on a background context.
-        let context = persistentContainer.newBackgroundContext()
-        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        context.undoManager = nil
-
         // Create a single operation to modify all of the records at once.
         let operation = CKModifyRecordsOperation(recordsToSave: recordsToSave, recordIDsToDelete: recordIDsToDelete)
         operation.savePolicy = .ifServerRecordUnchanged
+        operation.configuration.isLongLived = true
 
         operation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
             if let error = error as? CKError,
@@ -518,22 +548,7 @@ public final class CloudProvider {
                 fatalError("Couldn't modify records: \(error)")
             }
 
-            if let savedRecords = savedRecords {
-                debugPrint(savedRecords)
-                do {
-                    for record in savedRecords {
-                        try NSManagedObject.syncObjectFromRecord(record, in: context, updateValues: false)
-                    }
-
-                    try context.save()
-                } catch {
-                    fatalError("Failed to write back: \(error)")
-                }
-            }
-
-            if let deletedRecordIDs = deletedRecordIDs {
-                debugPrint(deletedRecordIDs)
-            }
+            self.handleModifyCompletion(savedRecords: savedRecords, deletedRecordIDs: deletedRecordIDs)
         }
 
         // Create the primary zone before we modify records, but for performance reasons, only
@@ -545,6 +560,36 @@ public final class CloudProvider {
 
         operation.qualityOfService = .utility
         database.add(operation)
+        print("Modify \(operation)")
+    }
+
+    /// Commit results of a modification to the database.
+    ///
+    /// - Parameters:
+    ///   - savedRecords: CloudKit records that were saved.
+    ///   - deletedRecordIDs: identifiers of CloudKit records that were deleted.
+    func handleModifyCompletion(savedRecords: [CKRecord]?, deletedRecordIDs: [CKRecord.ID]?) {
+        // Perform system field updates on a background context.
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.undoManager = nil
+
+        if let savedRecords = savedRecords {
+            debugPrint(savedRecords)
+            do {
+                for record in savedRecords {
+                    try NSManagedObject.syncObjectFromRecord(record, in: context, updateValues: false)
+                }
+
+                try context.save()
+            } catch {
+                fatalError("Failed to write back: \(error)")
+            }
+        }
+
+        if let deletedRecordIDs = deletedRecordIDs {
+            debugPrint(deletedRecordIDs)
+        }
     }
 
 }

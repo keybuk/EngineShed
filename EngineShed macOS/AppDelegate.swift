@@ -15,20 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Set up the CloudKit Provider.
-        cloudProvider.subscribeToChanges { error in
-            if let error = error {
-                print("Failed! \(error)")
-            } else {
-                print("Susbcribed!")
-            }
-        }
-        cloudProvider.fetchChanges { error in
-            if let error = error {
-                print("Failed! \(error)")
-            } else {
-                print("Fetched!")
-            }
-        }
+        cloudProvider.start()
 
         // Register for remote notifications of changes to the iCloud database.
         if #available(macOS 10.14, *) {
