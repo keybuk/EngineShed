@@ -345,33 +345,36 @@ public final class CloudProvider {
         // Save all of the keys of newly inserted objects that can be synchronized.
         if let insertedObjects = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
             for object in insertedObjects {
-                if let storable = object as? CloudStorable {
-                    if let record = storable.syncToRecord(forKeys: nil) {
-                        saveRecords.append(record)
-                    }
+                if let storable = object as? CloudStorable,
+                    let record = storable.syncToRecord(forKeys: nil)
+                {
+                    saveRecords.append(record)
                 }
             }
         }
 
         if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> {
             for object in updatedObjects {
-                if let storable = object as? CloudStorable {
-                    // Retrieve the set of changed keys recorded in the WillSave notification and
-                    // only update the record using those.
-                    let changedKeys = pendingUpdates?[object.objectID]
-                    if let record = storable.syncToRecord(forKeys: changedKeys) {
-                        saveRecords.append(record)
-                    }
+                guard !object.isInserted else { fatalError("Object inserted and updated") }
+                let changedKeys = pendingUpdates?[object.objectID]
+
+                // Retrieve the set of changed keys recorded in the WillSave notification and
+                // only update the record using those.
+                if let storable = object as? CloudStorable,
+                    let record = storable.syncToRecord(forKeys: changedKeys)
+                {
+                    saveRecords.append(record)
                 }
             }
         }
 
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject> {
             for object in deletedObjects {
-                if let storable = object as? CloudStorable {
-                    if let recordID = storable.recordID {
-                        deleteRecordIDs.append(recordID)
-                    }
+                guard !object.isInserted && !object.isUpdated else { fatalError("Object deleted and inserted or updated") }
+                if let storable = object as? CloudStorable,
+                    let recordID = storable.recordID
+                {
+                    deleteRecordIDs.append(recordID)
                 }
             }
         }

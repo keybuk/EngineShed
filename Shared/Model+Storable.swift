@@ -96,6 +96,10 @@ extension Model : StorableManagedObject {
         addToFeatures(insertFeatures)
         removeFromFeatures(removeFeatures)
 
+        let (insertFittedDetailParts, removeFittedDetailParts) = differencesFrom(objects: fittedDetailParts, to: record, key: "fittedDetailParts", as: FittedDetailPart.self)
+        addToFittedDetailParts(insertFittedDetailParts)
+        removeFromFittedDetailParts(removeFittedDetailParts)
+
         let (insertLights, removeLights) = differencesFrom(objects: lights, to: record, key: "lights", as: Light.self)
         addToLights(insertLights)
         removeFromLights(removeLights)
@@ -111,18 +115,6 @@ extension Model : StorableManagedObject {
         let (insertTasks, removeTasks) = differencesFrom(objects: tasks, to: record, key: "tasks", as: Task.self)
         addToTasks(insertTasks)
         removeFromTasks(removeTasks)
-
-        // The detailPartsFitted field is a subset of detailParts, which is updated above, so we
-        // update it by checking the set of objects that need to have isFitted changed.
-        if let detailParts = detailParts as? Set<DetailPart> {
-            if let detailPartsFitted = record["detailPartsFitted"] as? [String] {
-                for detailPart in detailParts {
-                    detailPart.isFitted = detailPartsFitted.contains(detailPart.title ?? "")
-                }
-            } else {
-                for detailPart in detailParts { detailPart.isFitted = false }
-            }
-        }
 
         if let reference = record["purchase"] as? CKRecord.Reference {
             purchase = try Purchase.objectForRecordID(reference.recordID, in: managedObjectContext!)
@@ -168,15 +160,11 @@ extension Model : StorableManagedObject {
             }
         }
 
-        /// Update both the "detailParts" and "detailPartsFitted" record fields whenever our
-        /// detailParts relationship changes, or when a change is mapped from `DetailPart` itself.
         if keys?.contains("detailParts") ?? true {
             if let detailParts = detailParts as? Set<DetailPart> {
                 record["detailParts"] = detailParts.compactMap { $0.title }
-                record["detailPartsFitted"] = detailParts.filter({ $0.isFitted }).compactMap { $0.title }
             } else {
                 record["detailParts"] = nil
-                record["detailPartsFitted"] = nil
             }
         }
 
@@ -185,6 +173,14 @@ extension Model : StorableManagedObject {
                 record["features"] = features.compactMap { $0.title }
             } else {
                 record["features"] = nil
+            }
+        }
+
+        if keys?.contains("fittedDetailParts") ?? true {
+            if let fittedDetailParts = fittedDetailParts as? Set<FittedDetailPart> {
+                record["fittedDetailParts"] = fittedDetailParts.compactMap { $0.title }
+            } else {
+                record["fittedDetailParts"] = nil
             }
         }
 
