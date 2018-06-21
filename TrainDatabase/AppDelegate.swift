@@ -221,7 +221,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if !model.detailParts.isEmpty {
                     modelRecord["detailParts"] = model.detailParts.map({ $0.title }) as NSArray
                     let fitted = model.detailParts.filter({ $0.isFitted })
-                    if !fitted.isEmpty { modelRecord["detailPartsFitted"] = fitted.map({ $0.title }) as NSArray }
+                    if !fitted.isEmpty { modelRecord["fittedDetailParts"] = fitted.map({ $0.title }) as NSArray }
                 }
                 if !model.modifications.isEmpty {
                     modelRecord["modifications"] = Array(model.modifications) as NSArray }
