@@ -11,17 +11,15 @@ import CoreData
 
 extension NSManagedObject : StorableObjectTranslation {
 
-    /// Returns the correct `NSManagedObject` subclass for the entity matching `recordType`.
-    static func classForRecordType(_ recordType: CKRecord.RecordType) -> CloudStorableObject.Type? {
-        switch recordType {
-        case Purchase.recordType: return Purchase.self
-        case Model.recordType: return Model.self
-        case DecoderType.recordType: return DecoderType.self
-        case Decoder.recordType: return Decoder.self
-        case Train.recordType: return Train.self
-        case TrainMember.recordType: return TrainMember.self
-        default: return nil
-        }
-    }
+    static let storableTypes: [(CKRecord.RecordType, CloudStorableObject.Type)] = [
+        // Model goes first in this list so that we get a chance to delete images; otherwise
+        // cascade rules in batch requests will take away our chance.
+        (Model.recordType, Model.self),
+        (Purchase.recordType, Purchase.self),
+        (DecoderType.recordType, DecoderType.self),
+        (Decoder.recordType, Decoder.self),
+        (Train.recordType, Train.self),
+        (TrainMember.recordType, TrainMember.self)
+    ]
 
 }

@@ -16,7 +16,7 @@ protocol StorableObjectTranslation {
     /// A type that confirms to both `StorableManagedObject` and `NSManagedObject`.
     typealias CloudStorableObject = CloudStorable & NSManagedObject
 
-    /// Returns the correct `NSManagedObject` subclass for the entity matching `recordType`.
-    static func classForRecordType(_ recordType: CKRecord.RecordType) -> CloudStorableObject.Type?
+    /// Map of CloudKit record types to NSManagedObject entity subclasses.
+    static var storableTypes: [(CKRecord.RecordType, CloudStorableObject.Type)] { get }
 
 }
