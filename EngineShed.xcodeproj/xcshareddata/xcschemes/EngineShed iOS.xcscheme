@@ -43,8 +43,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2B7C97320D4BA31001B51B1"
-               BuildableName = "EngineShed IOS UI Tests.xctest"
-               BlueprintName = "EngineShed IOS UI Tests"
+               BuildableName = "EngineShed iOS UI Tests.xctest"
+               BlueprintName = "EngineShed iOS UI Tests"
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
          </TestableReference>
