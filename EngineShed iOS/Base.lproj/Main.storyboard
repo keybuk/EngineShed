@@ -35,44 +35,107 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="20" y="323" width="335" height="21"/>
+                                <rect key="frame" x="16" y="64" width="335" height="23"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="4E8-QC-6Jw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EH3-JI-qro">
-                                <rect key="frame" x="20" y="352" width="335" height="128"/>
+                                <rect key="frame" x="16" y="95" width="343" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yal-c9-FJG">
-                                <rect key="frame" x="170" y="488" width="35" height="30"/>
-                                <state key="normal" title="Save"/>
+                                <rect key="frame" x="300" y="229" width="51" height="30"/>
+                                <state key="normal" title="Update"/>
                                 <connections>
-                                    <action selector="saveChanges:" destination="JEX-9P-axG" eventType="touchUpInside" id="IHE-a7-Ddg"/>
+                                    <action selector="updateField:" destination="JEX-9P-axG" eventType="touchUpInside" id="vNc-dU-RdQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNC-58-542">
+                                <rect key="frame" x="16" y="318" width="61" height="31"/>
+                                <state key="normal" title="Add Test"/>
+                                <connections>
+                                    <action selector="addTest:" destination="JEX-9P-axG" eventType="touchUpInside" id="8m9-E6-WQu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ar-O9-BTd">
+                                <rect key="frame" x="85" y="318" width="88" height="31"/>
+                                <state key="normal" title="Remove Test"/>
+                                <connections>
+                                    <action selector="removeTest:" destination="JEX-9P-axG" eventType="touchUpInside" id="6mV-TE-wBF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzp-Ur-QFI">
+                                <rect key="frame" x="181" y="318" width="90" height="31"/>
+                                <state key="normal" title="Toggle Fitted"/>
+                                <connections>
+                                    <action selector="toggleTestFitted:" destination="JEX-9P-axG" eventType="touchUpInside" id="Xkd-1I-nMS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0O-nD-htD">
+                                <rect key="frame" x="149" y="382" width="77" height="30"/>
+                                <state key="normal" title="Make Copy"/>
+                                <connections>
+                                    <action selector="copyModelButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="ngU-iD-xKn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTG-vU-C89">
+                                <rect key="frame" x="149" y="419" width="78" height="30"/>
+                                <state key="normal" title="Delete This"/>
+                                <connections>
+                                    <action selector="deleteSelf:" destination="JEX-9P-axG" eventType="touchUpInside" id="cUC-d8-LJi"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="EH3-JI-qro" firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" id="7yv-3a-PYd"/>
-                            <constraint firstItem="Yal-c9-FJG" firstAttribute="top" secondItem="EH3-JI-qro" secondAttribute="bottom" constant="8" symbolic="YES" id="8Zp-oI-hIn"/>
-                            <constraint firstItem="Yal-c9-FJG" firstAttribute="centerX" secondItem="EH3-JI-qro" secondAttribute="centerX" id="Ah7-N2-3NB"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
-                            <constraint firstItem="VUw-jc-0yf" firstAttribute="bottom" secondItem="EH3-JI-qro" secondAttribute="bottom" constant="187" id="aIu-Av-lKt"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="jWN-iV-94e"/>
-                            <constraint firstItem="EH3-JI-qro" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="8" symbolic="YES" id="kGu-xm-o1i"/>
-                            <constraint firstItem="EH3-JI-qro" firstAttribute="leading" secondItem="0XM-y9-sOw" secondAttribute="leading" id="lY3-LS-McW"/>
-                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
-                            <constraint firstItem="Yal-c9-FJG" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="170" id="twk-SY-hRO"/>
+                            <constraint firstItem="kNC-58-542" firstAttribute="top" secondItem="EH3-JI-qro" secondAttribute="bottom" constant="95" id="1VF-qg-GxS"/>
+                            <constraint firstItem="aTG-vU-C89" firstAttribute="trailing" secondItem="g0O-nD-htD" secondAttribute="trailing" constant="1" id="331-pt-LZK"/>
+                            <constraint firstItem="g0O-nD-htD" firstAttribute="top" secondItem="6ar-O9-BTd" secondAttribute="bottom" constant="33" id="4s9-Bh-X7d"/>
+                            <constraint firstItem="kNC-58-542" firstAttribute="top" secondItem="6ar-O9-BTd" secondAttribute="top" id="522-8t-3Tw"/>
+                            <constraint firstItem="Yal-c9-FJG" firstAttribute="top" secondItem="EH3-JI-qro" secondAttribute="bottom" constant="6" id="9Gy-fw-XW6"/>
+                            <constraint firstItem="EH3-JI-qro" firstAttribute="leading" secondItem="kNC-58-542" secondAttribute="leading" id="9bI-7c-GSs"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="EH3-JI-qro" secondAttribute="leading" id="AZV-bh-2xq"/>
+                            <constraint firstItem="aTG-vU-C89" firstAttribute="top" secondItem="g0O-nD-htD" secondAttribute="bottom" constant="7" id="FmK-oH-cVu"/>
+                            <constraint firstItem="6ar-O9-BTd" firstAttribute="leading" secondItem="kNC-58-542" secondAttribute="trailing" constant="8" symbolic="YES" id="KvZ-qE-usT"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" id="QQL-wo-wza"/>
+                            <constraint firstItem="6ar-O9-BTd" firstAttribute="baseline" secondItem="Lzp-Ur-QFI" secondAttribute="firstBaseline" id="R9D-mb-vKG"/>
+                            <constraint firstItem="6ar-O9-BTd" firstAttribute="top" secondItem="Lzp-Ur-QFI" secondAttribute="top" id="SSp-oW-biE"/>
+                            <constraint firstItem="EH3-JI-qro" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="8" symbolic="YES" id="TCL-RN-q8X"/>
+                            <constraint firstItem="VUw-jc-0yf" firstAttribute="bottom" secondItem="Yal-c9-FJG" secondAttribute="bottom" constant="408" id="XCl-qb-SsS"/>
+                            <constraint firstItem="kNC-58-542" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="baE-gC-NJl"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="trailing" secondItem="Yal-c9-FJG" secondAttribute="trailing" id="bs7-pz-dnE"/>
+                            <constraint firstItem="EH3-JI-qro" firstAttribute="trailing" secondItem="svH-Pt-448" secondAttribute="trailingMargin" id="cq2-cD-8OH"/>
+                            <constraint firstItem="Yal-c9-FJG" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="300" id="iIf-Gd-Mjh"/>
+                            <constraint firstItem="Lzp-Ur-QFI" firstAttribute="leading" secondItem="6ar-O9-BTd" secondAttribute="trailing" constant="8" symbolic="YES" id="jcK-wi-Ekf"/>
+                            <constraint firstItem="g0O-nD-htD" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="149" id="m3q-VN-rd8"/>
+                            <constraint firstItem="kNC-58-542" firstAttribute="baseline" secondItem="6ar-O9-BTd" secondAttribute="firstBaseline" id="ncC-rc-BWN"/>
+                            <constraint firstItem="g0O-nD-htD" firstAttribute="centerX" secondItem="EH3-JI-qro" secondAttribute="centerX" id="x13-iN-qYh"/>
+                            <constraint firstItem="aTG-vU-C89" firstAttribute="leading" secondItem="g0O-nD-htD" secondAttribute="leading" id="yyu-hs-36B"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" id="zbj-Na-1xf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="b0X-cf-uUL">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="q5r-D2-9ne">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveChanges:" destination="JEX-9P-axG" eventType="touchUpInside" id="mLD-oa-1Kq"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
                         <outlet property="notesTextView" destination="EH3-JI-qro" id="fiu-2d-3lt"/>

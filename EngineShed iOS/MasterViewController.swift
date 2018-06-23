@@ -105,10 +105,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
         
         let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
-        
+
+        fetchRequest.predicate = NSPredicate(format: "modelClass != NULL AND modelClass != ''")
+
         // Set the batch size to a suitable number.
         fetchRequest.fetchBatchSize = 20
-        
+
         // Edit the sort key as appropriate.
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "modelClass", ascending: true),
@@ -119,7 +121,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: "modelClass", cacheName: "Master")
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: "modelClass", cacheName: nil)
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
@@ -158,11 +160,13 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             case .delete:
                 tableView.deleteRows(at: [indexPath!], with: .fade)
             case .update:
-                let cell = tableView.cellForRow(at: indexPath!)! as! MasterTableViewCell
-                cell.model = anObject as? Model
+                if let cell = tableView.cellForRow(at: indexPath!) as? MasterTableViewCell {
+                    cell.model = anObject as? Model
+                }
             case .move:
-                let cell = tableView.cellForRow(at: indexPath!)! as! MasterTableViewCell
-                cell.model = anObject as? Model
+                if let cell = tableView.cellForRow(at: indexPath!) as? MasterTableViewCell {
+                    cell.model = anObject as? Model
+                }
                 tableView.moveRow(at: indexPath!, to: newIndexPath!)
         }
     }
