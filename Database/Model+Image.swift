@@ -11,9 +11,9 @@ import CoreData
 
 extension Model {
 
-    private static let imagesURL: URL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appendingPathComponent("ModelImages", isDirectory: true)
+    static let imagesURL: URL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appendingPathComponent("ModelImages", isDirectory: true)
 
-    internal var imageURL: URL? {
+    var imageURL: URL? {
         guard let imageFilename = imageFilename else { return nil }
         return Model.imagesURL.appendingPathComponent(imageFilename)
     }

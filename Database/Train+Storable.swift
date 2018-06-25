@@ -18,7 +18,7 @@ extension Train : CloudStorable {
     ///
     /// - Parameters:
     ///   - record: CloudKit record to update from.
-    internal func update(from record: CKRecord) throws {
+    func update(from record: CKRecord) throws {
         name = record["name"]
         notes = record["notes"]
     }
@@ -28,7 +28,7 @@ extension Train : CloudStorable {
     /// - Parameters:
     ///   - record: CloudKit record to update.
     ///   - keys: update only these keys (managed object name), or all keys if `nil.
-    internal func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+    func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
         if keys?.contains("name") ?? true { record["name"] = name }
         if keys?.contains("notes") ?? true { record["notes"] = notes }
     }

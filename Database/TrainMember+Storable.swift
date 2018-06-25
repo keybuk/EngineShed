@@ -18,7 +18,7 @@ extension TrainMember : CloudStorable {
     ///
     /// - Parameters:
     ///   - record: CloudKit record to update from.
-    internal func update(from record: CKRecord) throws {
+    func update(from record: CKRecord) throws {
         isFlipped = record["isFlipped"] ?? false
         title = record["title"]
 
@@ -40,7 +40,7 @@ extension TrainMember : CloudStorable {
     /// - Parameters:
     ///   - record: CloudKit record to update.
     ///   - keys: update only these keys (managed object name), or all keys if `nil.
-    internal func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+    func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
         if keys?.contains("isFlipped") ?? true { record["isFlipped"] = isFlipped }
         if keys?.contains("title") ?? true { record["title"] = title }
 

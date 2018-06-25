@@ -18,7 +18,7 @@ extension DecoderType : CloudStorable {
     ///
     /// - Parameters:
     ///   - record: CloudKit record to update from.
-    internal func update(from record: CKRecord) throws {
+    func update(from record: CKRecord) throws {
         hasRailCom = record["hasRailCom"] ?? false
         hasSound = record["hasSound"] ?? false
         isProgrammable = record["isProgrammable"] ?? false
@@ -35,7 +35,7 @@ extension DecoderType : CloudStorable {
     /// - Parameters:
     ///   - record: CloudKit record to update.
     ///   - keys: update only these keys (managed object name), or all keys if `nil.
-    internal func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+    func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
         if keys?.contains("hasRailCom") ?? true { record["hasRailCom"] = hasRailCom }
         if keys?.contains("hasSound") ?? true { record["hasSound"] = hasSound }
         if keys?.contains("isProgrammable") ?? true { record["isProgrammable"] = isProgrammable }

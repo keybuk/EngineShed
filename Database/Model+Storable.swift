@@ -30,7 +30,7 @@ extension Model : CloudStorable {
     ///   matching the titles in `record` that were not present in the relationship, and
     ///   `removeObjects` contains the set of objects from `objects` that were not present in
     ///   `record`.
-    private func differencesFrom<T : NSManagedObject>(objects: NSSet?, to record: CKRecord, key: String, as type: T.Type) -> (NSSet, NSSet) {
+    func differencesFrom<T : NSManagedObject>(objects: NSSet?, to record: CKRecord, key: String, as type: T.Type) -> (NSSet, NSSet) {
         if let values = record[key] as? [String] {
             var removeObjects = NSSet()
             var newValues = Set(values)
@@ -62,7 +62,7 @@ extension Model : CloudStorable {
     ///
     /// - Parameters:
     ///   - record: CloudKit record to update from.
-    internal func update(from record: CKRecord) throws {
+    func update(from record: CKRecord) throws {
         modelClass = record["class"]
         classificationRawValue = record["classification"] ?? 0
         details = record["details"]
@@ -128,7 +128,7 @@ extension Model : CloudStorable {
     /// - Parameters:
     ///   - record: CloudKit record to update.
     ///   - keys: update only these keys (managed object name), or all keys if `nil.
-    internal func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+    func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
         if keys?.contains("modelClass") ?? true { record["class"] = modelClass }
         if keys?.contains("classificationRawValue") ?? true { record["classification"] = classificationRawValue }
         if keys?.contains("details") ?? true { record["details"] = details }
