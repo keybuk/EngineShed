@@ -18,7 +18,7 @@ extension Purchase : CloudStorable {
     ///
     /// - Parameters:
     ///   - record: CloudKit record to update from.
-    internal func update(from record: CKRecord) throws {
+    func update(from record: CKRecord) throws {
         catalogDescription = record["catalogDescription"]
         catalogNumber = record["catalogNumber"]
         catalogYear = record["catalogYear"] ?? 0
@@ -49,7 +49,7 @@ extension Purchase : CloudStorable {
     /// - Parameters:
     ///   - record: CloudKit record to update.
     ///   - keys: update only these keys (managed object name), or all keys if `nil.
-    internal func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+    func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
         if keys?.contains("catalogDescription") ?? true { record["catalogDescription"] = catalogDescription }
         if keys?.contains("catalogNumber") ?? true { record["catalogNumber"] = catalogNumber }
         if keys?.contains("catalogYear") ?? true { record["catalogYear"] = catalogYear }
