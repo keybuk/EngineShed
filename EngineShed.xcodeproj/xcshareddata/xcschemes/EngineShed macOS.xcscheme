@@ -20,6 +20,20 @@
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D2B7C99020D4BE2F001B51B1"
+               BuildableName = "Database macOS Tests.xctest"
+               BlueprintName = "Database macOS Tests"
+               ReferencedContainer = "container:EngineShed.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -29,7 +43,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D215BEB220D4B53A0054FDCC"
@@ -39,12 +53,22 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D215BEBD20D4B53A0054FDCC"
                BuildableName = "EngineShed macOS UI Tests.xctest"
                BlueprintName = "EngineShed macOS UI Tests"
+               ReferencedContainer = "container:EngineShed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D2B7C99020D4BE2F001B51B1"
+               BuildableName = "Database macOS Tests.xctest"
+               BlueprintName = "Database macOS Tests"
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
          </TestableReference>
