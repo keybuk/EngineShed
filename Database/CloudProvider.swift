@@ -106,14 +106,14 @@ public final class CloudProvider {
                         } else if let operation = operation as? CKModifyRecordsOperation {
                             operation.modifyRecordsCompletionBlock = { (savedRecords, deletedRecordIDs, error) in
                                 if let error = error {
-                                    fatalError("Resumed long-lived modify operation \(operationID) failed: \(error)")
+                                    print("Resuming long-lived modify operation \(operationID) failed: \(error)")
                                 } else {
                                     self.handleModifyCompletion(savedRecords: savedRecords, deletedRecordIDs: deletedRecordIDs)
                                 }
                             }
 
                             print("Resuming long-lived modify operation \(operationID)")
-                            self.container.add(operation)
+                            self.database.add(operation)
                         } else if let operation = operation {
                             print("Resuming long-lived operation \(operationID)")
                             self.container.add(operation)
