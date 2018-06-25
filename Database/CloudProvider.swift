@@ -20,13 +20,13 @@ public final class CloudProvider {
     public var container: CKContainer
     public var database: CKDatabase
 
-    public var hasSubscription: Bool = false
-    public var databaseServerChangeToken: CKServerChangeToken?
-    public var zoneServerChangeToken: [CKRecordZone.ID: CKServerChangeToken?] = [:]
+    var hasSubscription: Bool = false
+    var databaseServerChangeToken: CKServerChangeToken?
+    var zoneServerChangeToken: [CKRecordZone.ID: CKServerChangeToken?] = [:]
 
     public var persistentContainer: NSPersistentContainer
 
-    public var queue: DispatchQueue
+    var queue: DispatchQueue
 
     public init(persistentContainer: NSPersistentContainer) {
         container = CKContainer(identifier: containerID)
@@ -43,7 +43,7 @@ public final class CloudProvider {
     }
 
     /// Load cached fields from UserDefaults.
-    private func loadDefaults() {
+    func loadDefaults() {
         let defaults = UserDefaults.standard
 
         hasSubscription = defaults.bool(forKey: "HasSubscription")
@@ -65,7 +65,7 @@ public final class CloudProvider {
     }
 
     /// Save cached fields from UserDefaults.
-    internal func saveDefaults() {
+    func saveDefaults() {
         let defaults = UserDefaults.standard
 
         defaults.set(hasSubscription, forKey: "HasSubscription")
@@ -306,7 +306,7 @@ public final class CloudProvider {
     ///   - changedZoneIDs: IDs of zones that have changed.
     ///   - completionHandler: called on completion.
     ///    - error: `nil` on success, error that occurred on failure.
-    public func fetchZoneChanges(_ changedZoneIDs: Array<CKRecordZone.ID>, completionHandler: @escaping (_ error: Error?) -> Void) {
+    func fetchZoneChanges(_ changedZoneIDs: Array<CKRecordZone.ID>, completionHandler: @escaping (_ error: Error?) -> Void) {
         // Perform updates on a background context.
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
@@ -494,7 +494,7 @@ public final class CloudProvider {
     }
 
     /// Create the primary zone for our records.
-    private func createZoneOperation() -> CKDatabaseOperation {
+    func createZoneOperation() -> CKDatabaseOperation {
         // Create a zone modify operation for our primary zone, which should create it if needed.
         let zone = CKRecordZone(zoneID: zoneID)
         let operation = CKModifyRecordZonesOperation(recordZonesToSave: [zone], recordZoneIDsToDelete: nil)
@@ -529,7 +529,7 @@ public final class CloudProvider {
     /// - Parameters:
     ///   - recordsToSave: CloudKit records to save.
     ///   - recordIDsToDelete: identifiers of CloudKit records to delete.
-    private func modifyRecords(recordsToSave: [CKRecord], recordIDsToDelete: [CKRecord.ID]) {
+    func modifyRecords(recordsToSave: [CKRecord], recordIDsToDelete: [CKRecord.ID]) {
         // Create a single operation to modify all of the records at once.
         let operation = CKModifyRecordsOperation(recordsToSave: recordsToSave, recordIDsToDelete: recordIDsToDelete)
         operation.savePolicy = .ifServerRecordUnchanged
