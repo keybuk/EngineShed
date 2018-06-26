@@ -372,7 +372,10 @@ public final class CloudProvider {
         }
 
         operation.recordZoneFetchCompletionBlock = { zoneID, serverChangeToken, _, _, error in
-            if let error = error {
+            if let error = error as? CKError, error.code == .userDeletedZone {
+                // FIXME: should do something here, but why did we not get the change from the database token?
+                print("User deleted zone error")
+            } else if let error = error {
                 print("Zone changes fetch error: \(error)")
                 cancelCausedByError = error
                 operation.cancel()
