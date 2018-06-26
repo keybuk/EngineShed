@@ -136,13 +136,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var trainMemberRecords: [TrainMember : CKRecord] = [:]
 
         for train in try! Train.all(in: persistentContainer.viewContext) {
-            let trainRecord = CKRecord(recordType: "Train", zoneID: zoneID)
+            let trainRecord = CKRecord.fromSystemFields(
+                &train.managedObject.systemFields,
+                recordID: &train.managedObject.recordID,
+                orCreate: "Train", in: zoneID)
             trainRecord["name"] = train.name as NSString
             trainRecord["notes"] = train.notes as NSString
             records.append(trainRecord)
 
             for trainMember in train.members {
-                let trainMemberRecord = CKRecord(recordType: "TrainMember", zoneID: zoneID)
+                let trainMemberRecord = CKRecord.fromSystemFields(
+                    &trainMember.managedObject.systemFields,
+                    recordID: &trainMember.managedObject.recordID,
+                    orCreate: "TrainMember", in: zoneID)
                 trainMemberRecord["train"] = CKReference(record: trainRecord, action: .deleteSelf)
                 trainMemberRecord["title"] = trainMember.title as NSString
                 trainMemberRecord["isFlipped"] = trainMember.isFlipped as NSNumber
@@ -155,7 +161,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var decoderRecords: [Decoder : CKRecord] = [:]
 
         for decoderType in try! DecoderType.all(in: persistentContainer.viewContext) {
-            let decoderTypeRecord = CKRecord(recordType: "DecoderType", zoneID: zoneID)
+            let decoderTypeRecord = CKRecord.fromSystemFields(
+                &decoderType.managedObject.systemFields,
+                recordID: &decoderType.managedObject.recordID,
+                orCreate: "DecoderType", in: zoneID)
             decoderTypeRecord["manufacturer"] = decoderType.manufacturer as NSString
             decoderTypeRecord["productCode"] = decoderType.productCode as NSString
             decoderTypeRecord["productFamily"] = decoderType.productFamily as NSString
@@ -168,7 +177,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             records.append(decoderTypeRecord)
 
             for decoder in decoderType.decoders {
-                let decoderRecord = CKRecord(recordType: "Decoder", zoneID: zoneID)
+                let decoderRecord = CKRecord.fromSystemFields(
+                    &decoder.managedObject.systemFields,
+                    recordID: &decoder.managedObject.recordID,
+                    orCreate: "Decoder", in: zoneID)
                 decoderRecord["type"] = CKReference(record: decoderTypeRecord, action: .deleteSelf)
                 decoderRecord["serialNumber"] = decoder.serialNumber as NSString
                 decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
@@ -183,7 +195,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         for purchase in try! Purchase.all(in: persistentContainer.viewContext) {
-            let purchaseRecord = CKRecord(recordType: "Purchase", zoneID: zoneID)
+            let purchaseRecord = CKRecord.fromSystemFields(
+                &purchase.managedObject.systemFields,
+                recordID: &purchase.managedObject.recordID,
+                orCreate: "Purchase", in: zoneID)
             purchaseRecord["manufacturer"] = purchase.manufacturer as NSString
             purchaseRecord["catalogNumber"] = purchase.catalogNumber as NSString
             purchaseRecord["catalogDescription"] = purchase.catalogDescription as NSString
@@ -200,7 +215,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             records.append(purchaseRecord)
 
             for model in purchase.models {
-                let modelRecord = CKRecord(recordType: "Model", zoneID: zoneID)
+                let modelRecord = CKRecord.fromSystemFields(
+                    &model.managedObject.systemFields,
+                    recordID: &model.managedObject.recordID,
+                    orCreate: "Model", in: zoneID)
                 modelRecord["purchase"] = CKReference(record: purchaseRecord, action: .deleteSelf)
                 modelRecord["classification"] = model.classification?.rawValue as NSNumber?
                 modelRecord["image"] = model.imageURL.flatMap({ CKAsset(fileURL: $0) })
@@ -235,7 +253,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     if let decoderRecord = decoderRecords[decoder] {
                         decoderRecord["model"] = CKReference(record: modelRecord, action: .none)
                     } else {
-                        let decoderRecord = CKRecord(recordType: "Decoder", zoneID: zoneID)
+                        let decoderRecord = CKRecord.fromSystemFields(
+                            &decoder.managedObject.systemFields,
+                            recordID: &decoder.managedObject.recordID,
+                            orCreate: "Decoder", in: zoneID)
                         decoderRecord["model"] = CKReference(record: modelRecord, action: .none)
                         decoderRecord["serialNumber"] = decoder.serialNumber as NSString
                         decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
@@ -259,6 +280,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
 
+        try! persistentContainer.viewContext.save()
         print("\(records.count) records to upload")
 
         let callbackOperation = BlockOperation(block: callback)
@@ -276,14 +298,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         callbackOperation.addDependency(zoneOperation)
         database.add(zoneOperation)
 
+
         saveRecords(records, in: database, dependency: zoneOperation, whenComplete: callbackOperation)
         OperationQueue.main.addOperation(callbackOperation)
     }
 
     func saveRecords(_ records: [CKRecord], in database: CKDatabase, dependency zoneOperation: CKDatabaseOperation, whenComplete callbackOperation: Operation) {
+        if records.count < 400 {
+            _saveRecords(records, in: database, dependency: zoneOperation, whenComplete: callbackOperation)
+        } else {
+            let s = records.count / 2
+            self.saveRecords(Array(records[..<s]), in: database, dependency: zoneOperation, whenComplete: callbackOperation)
+            self.saveRecords(Array(records[s...]), in: database, dependency: zoneOperation, whenComplete: callbackOperation)
+        }
+    }
+
+    func _saveRecords(_ records: [CKRecord], in database: CKDatabase, dependency zoneOperation: CKDatabaseOperation, whenComplete callbackOperation: Operation) {
         let saveOperation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
         saveOperation.qualityOfService = .utility
         saveOperation.savePolicy = .allKeys
+
+        let context = persistentContainer.newBackgroundContext()
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.undoManager = nil
 
         saveOperation.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
             if let error = error as? CKError,
@@ -296,8 +333,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.saveRecords(Array(records[s...]), in: database, dependency: zoneOperation, whenComplete: callbackOperation)
             } else if let error = error {
                 fatalError("Couldn't save records \(error)")
-            } else {
-                print("Saved \(savedRecords?.count ?? -1) records")
+            } else if let savedRecords = savedRecords {
+                print("Saved \(savedRecords.count) records")
+
+                for record in savedRecords {
+                    NSManagedObject.fromRecord(record, in: context)
+                }
+
+                try! context.save()
             }
         }
 
@@ -408,5 +451,59 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         windowController.window?.makeFirstResponder(windowController.searchField)
     }
     
+
+}
+
+
+extension CKRecord {
+
+    static func fromSystemFields(_ systemFields: inout Data?, recordID: inout CKRecordID?, orCreate recordType: String, in zoneID: CKRecordZoneID) -> CKRecord {
+
+        if let systemFields = systemFields {
+            let archiver = NSKeyedUnarchiver(forReadingWith: systemFields)
+            archiver.requiresSecureCoding = true
+
+            if let record = CKRecord(coder: archiver) {
+                return record
+            }
+
+            archiver.finishDecoding()
+        }
+
+        let recordName = UUID().uuidString
+        recordID = CKRecordID(recordName: recordName, zoneID: zoneID)
+        let record = CKRecord(recordType: recordType, recordID: recordID!)
+
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWith: data)
+        record.encodeSystemFields(with: archiver)
+        archiver.finishEncoding()
+        systemFields = data as Data
+
+        return record
+    }
+
+}
+
+extension NSManagedObject {
+
+    static func fromRecord(_ record: CKRecord, in context: NSManagedObjectContext) {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: record.recordType)
+        fetchRequest.predicate = NSPredicate(format: "recordID == %@", record.recordID)
+
+        let objects = try! context.fetch(fetchRequest)
+        guard let object = objects.first as? NSManagedObject else {
+            print("Missing object for \(record)")
+            return
+        }
+
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWith: data)
+        record.encodeSystemFields(with: archiver)
+        archiver.finishEncoding()
+
+        object.setValue(record.recordID, forKey: "recordID")
+        object.setValue(data as Data, forKey: "systemFields")
+    }
 
 }
