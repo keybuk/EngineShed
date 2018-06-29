@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D200F96D20DE238D003BC8D1 /* Character+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F96C20DE238D003BC8D1 /* Character+Category.swift */; };
+		D200F96E20DE238D003BC8D1 /* Character+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F96C20DE238D003BC8D1 /* Character+Category.swift */; };
+		D200F97020DE23BA003BC8D1 /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */; };
+		D200F97120DE23BA003BC8D1 /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */; };
+		D200F97320DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */; };
+		D200F97420DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */; };
+		D200F97620DEC104003BC8D1 /* Collection+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */; };
+		D200F97720DEC104003BC8D1 /* Collection+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */; };
+		D200F97A20E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */; };
+		D200F98020E0A9C0003BC8D1 /* SimilarPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97F20E0A9C0003BC8D1 /* SimilarPurchaseTests.swift */; };
+		D200F98120E0A9C0003BC8D1 /* SimilarPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97F20E0A9C0003BC8D1 /* SimilarPurchaseTests.swift */; };
+		D200F98220E0C14B003BC8D1 /* CatalogNumberPrefixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */; };
 		D215BEA220D4B5380054FDCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEA120D4B5380054FDCC /* AppDelegate.swift */; };
 		D215BEA420D4B5380054FDCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEA320D4B5380054FDCC /* ViewController.swift */; };
 		D215BEAC20D4B53A0054FDCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D215BEAA20D4B53A0054FDCC /* Main.storyboard */; };
@@ -173,6 +185,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D200F96C20DE238D003BC8D1 /* Character+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Category.swift"; sourceTree = "<group>"; };
+		D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SplitBetween.swift"; sourceTree = "<group>"; };
+		D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Similar.swift"; sourceTree = "<group>"; };
+		D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CountedElements.swift"; sourceTree = "<group>"; };
+		D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNumberPrefixTests.swift; sourceTree = "<group>"; };
+		D200F97F20E0A9C0003BC8D1 /* SimilarPurchaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarPurchaseTests.swift; sourceTree = "<group>"; };
 		D215BE9E20D4B5380054FDCC /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D215BEA120D4B5380054FDCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D215BEA320D4B5380054FDCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +337,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D200F97820E07D00003BC8D1 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */,
+				D200F97F20E0A9C0003BC8D1 /* SimilarPurchaseTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		D215BE9520D4B5380054FDCC = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +423,7 @@
 			children = (
 				D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */,
 				D298CB2620D8163A00827F68 /* Purchase+Storable.swift */,
+				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
 				D298CB2520D8163A00827F68 /* Model+Storable.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
 				D298CB2220D8163900827F68 /* DecoderType+Storable.swift */,
@@ -490,7 +518,11 @@
 				D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */,
 				D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */,
 				D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */,
+				D200F96C20DE238D003BC8D1 /* Character+Category.swift */,
+				D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */,
+				D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */,
 				D2B2AF4920D8180300BEFC15 /* Model */,
+				D200F97820E07D00003BC8D1 /* Tests */,
 				D2B7C98A20D4BE2F001B51B1 /* macOS */,
 				D2B7C99720D4BE2F001B51B1 /* macOS Tests */,
 				D2B7C9AD20D4BEF3001B51B1 /* iOS */,
@@ -936,10 +968,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B7C9CC20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
+				D200F97620DEC104003BC8D1 /* Collection+CountedElements.swift in Sources */,
 				D2B7C9D220D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */,
 				D298CB2920D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
 				D29E457F20DB23FF000624B5 /* CloudStorable.swift in Sources */,
+				D200F96D20DE238D003BC8D1 /* Character+Category.swift in Sources */,
 				D29E458220DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */,
 				D29E457C20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */,
 				D298CB3120D8163A00827F68 /* Model+Storable.swift in Sources */,
@@ -948,8 +982,10 @@
 				D28BE32E20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,
 				D298CB2720D8163A00827F68 /* Train+Storable.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
+				D200F97020DE23BA003BC8D1 /* Collection+SplitBetween.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
 				D298CB1A20D8143A00827F68 /* Model+Image.swift in Sources */,
+				D200F97320DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */,
 				D298CB2D20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
 				D298CB2B20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,
 				D2B2AF4F20D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
@@ -961,6 +997,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D200F97A20E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift in Sources */,
+				D200F98020E0A9C0003BC8D1 /* SimilarPurchaseTests.swift in Sources */,
 				D2B7C99920D4BE2F001B51B1 /* DatabaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -969,12 +1007,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D200F97420DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */,
 				D2B7C9CD20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
 				D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D298CB1F20D8150600827F68 /* UIImage+URL.swift in Sources */,
+				D200F97120DE23BA003BC8D1 /* Collection+SplitBetween.swift in Sources */,
 				D298CB2A20D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
+				D200F97720DEC104003BC8D1 /* Collection+CountedElements.swift in Sources */,
 				D298CB3220D8163A00827F68 /* Model+Storable.swift in Sources */,
 				D29E458320DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */,
 				D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
@@ -984,6 +1025,7 @@
 				D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
 				D298CAF420D737C800827F68 /* CloudProvider.swift in Sources */,
 				D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */,
+				D200F96E20DE238D003BC8D1 /* Character+Category.swift in Sources */,
 				D298CB2E20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
 				D298CB2C20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,
 				D298CB3420D8163A00827F68 /* Purchase+Storable.swift in Sources */,
@@ -994,6 +1036,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D200F98120E0A9C0003BC8D1 /* SimilarPurchaseTests.swift in Sources */,
+				D200F98220E0C14B003BC8D1 /* CatalogNumberPrefixTests.swift in Sources */,
 				D2B7C9BC20D4BEF4001B51B1 /* DatabaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
