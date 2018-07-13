@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-internal extension UIImage {
+extension UIImage {
 
     convenience init?(contentsOf url: URL) {
         guard let data = try? Data(contentsOf: url) else { return nil }

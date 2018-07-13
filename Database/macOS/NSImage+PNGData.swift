@@ -11,7 +11,7 @@ import Cocoa
 
 extension NSImage {
 
-    internal func pngData() -> Data? {
+    func pngData() -> Data? {
         guard let imageData = self.tiffRepresentation else { return nil }
         guard let imageRep = NSBitmapImageRep(data: imageData) else { return nil }
         return imageRep.representation(using: .png, properties: [:])

@@ -10,7 +10,7 @@ import Cocoa
 
 extension NSImage {
 
-    internal func withHorizontallyFlippedOrientation() -> NSImage {
+    func withHorizontallyFlippedOrientation() -> NSImage {
         let flipped = NSImage(size: size)
         flipped.lockFocus()
 
