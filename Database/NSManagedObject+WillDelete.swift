@@ -8,7 +8,6 @@
 
 import CoreData
 
-
 // Extend NSManagedObject to support custom delete handling during batch operations.
 extension NSManagedObject {
 
