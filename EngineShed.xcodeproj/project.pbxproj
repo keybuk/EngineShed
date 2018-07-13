@@ -87,6 +87,14 @@
 		D2DE5CB520F82CAB00CABE34 /* ModelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB420F82CAB00CABE34 /* ModelTableViewCell.swift */; };
 		D2DE5CB720F8431800CABE34 /* Model+Era.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB620F8431800CABE34 /* Model+Era.swift */; };
 		D2DE5CB820F8431800CABE34 /* Model+Era.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB620F8431800CABE34 /* Model+Era.swift */; };
+		D2DE5CBC20F8517500CABE34 /* Model+Classification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB920F8517400CABE34 /* Model+Classification.swift */; };
+		D2DE5CBD20F8517500CABE34 /* Model+Classification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB920F8517400CABE34 /* Model+Classification.swift */; };
+		D2DE5CBE20F8517500CABE34 /* Model+Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CBA20F8517400CABE34 /* Model+Disposition.swift */; };
+		D2DE5CBF20F8517500CABE34 /* Model+Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CBA20F8517400CABE34 /* Model+Disposition.swift */; };
+		D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */; };
+		D2DE5CC120F8517500CABE34 /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */; };
+		D2DE5CC320F8550A00CABE34 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */; };
+		D2DE5CC420F8550A00CABE34 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */; };
 		D2E014E120D8DDD900FF8940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D215BEA820D4B53A0054FDCC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -260,6 +268,10 @@
 		D2DE5CB220F82A3100CABE34 /* ModelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTableViewController.swift; sourceTree = "<group>"; };
 		D2DE5CB420F82CAB00CABE34 /* ModelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTableViewCell.swift; sourceTree = "<group>"; };
 		D2DE5CB620F8431800CABE34 /* Model+Era.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Era.swift"; sourceTree = "<group>"; };
+		D2DE5CB920F8517400CABE34 /* Model+Classification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Classification.swift"; sourceTree = "<group>"; };
+		D2DE5CBA20F8517400CABE34 /* Model+Disposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Disposition.swift"; sourceTree = "<group>"; };
+		D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
+		D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,10 +442,13 @@
 			children = (
 				D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */,
 				D298CB2620D8163A00827F68 /* Purchase+Storable.swift */,
+				D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */,
 				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
 				D298CB2520D8163A00827F68 /* Model+Storable.swift */,
-				D298CB1920D8143900827F68 /* Model+Image.swift */,
+				D2DE5CB920F8517400CABE34 /* Model+Classification.swift */,
 				D2DE5CB620F8431800CABE34 /* Model+Era.swift */,
+				D2DE5CBA20F8517400CABE34 /* Model+Disposition.swift */,
+				D298CB1920D8143900827F68 /* Model+Image.swift */,
 				D298CB2220D8163900827F68 /* DecoderType+Storable.swift */,
 				D298CB2320D8163A00827F68 /* Decoder+Storable.swift */,
 				D298CB2020D8163900827F68 /* Train+Storable.swift */,
@@ -531,6 +546,7 @@
 				D200F96C20DE238D003BC8D1 /* Character+Category.swift */,
 				D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */,
 				D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */,
+				D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */,
 				D2B2AF4920D8180300BEFC15 /* Model */,
 				D200F97820E07D00003BC8D1 /* Tests */,
 				D2B7C98A20D4BE2F001B51B1 /* macOS */,
@@ -992,8 +1008,12 @@
 				D298CB3120D8163A00827F68 /* Model+Storable.swift in Sources */,
 				D29E457620DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
 				D2B50BA220D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */,
+				D2DE5CBE20F8517500CABE34 /* Model+Disposition.swift in Sources */,
+				D2DE5CBC20F8517500CABE34 /* Model+Classification.swift in Sources */,
 				D28BE32E20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,
 				D298CB2720D8163A00827F68 /* Train+Storable.swift in Sources */,
+				D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */,
+				D2DE5CC320F8550A00CABE34 /* ConvertibleFromString.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
 				D200F97020DE23BA003BC8D1 /* Collection+SplitBetween.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
@@ -1021,12 +1041,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D200F97420DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */,
+				D2DE5CBD20F8517500CABE34 /* Model+Classification.swift in Sources */,
 				D2B7C9CD20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
 				D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D298CB1F20D8150600827F68 /* UIImage+URL.swift in Sources */,
 				D200F97120DE23BA003BC8D1 /* Collection+SplitBetween.swift in Sources */,
+				D2DE5CC420F8550A00CABE34 /* ConvertibleFromString.swift in Sources */,
 				D298CB2A20D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
 				D200F97720DEC104003BC8D1 /* Collection+CountedElements.swift in Sources */,
 				D298CB3220D8163A00827F68 /* Model+Storable.swift in Sources */,
@@ -1043,6 +1065,8 @@
 				D298CB2E20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
 				D298CB2C20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,
 				D298CB3420D8163A00827F68 /* Purchase+Storable.swift in Sources */,
+				D2DE5CC120F8517500CABE34 /* Purchase+Condition.swift in Sources */,
+				D2DE5CBF20F8517500CABE34 /* Model+Disposition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

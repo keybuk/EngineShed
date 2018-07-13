@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import CoreData
 
-public struct ModelEra : Codable, Equatable, Hashable {
+public struct ModelEra : Equatable, Hashable {
 
     var era: Int
     var title: String
@@ -31,19 +30,19 @@ extension ModelEra : CustomStringConvertible {
 
 }
 
-extension ModelEra : CaseIterable {
+extension ModelEra : CaseIterable, ConvertibleFromString {
 
-    public static let pioneering =                 ModelEra(era: 1, title: "Pioneering", startYear: 1804, endYear: 1875)
-    public static let preGrouping =                ModelEra(era: 2, title: "Pre-grouping", startYear: 1875, endYear: 1922)
-    public static let theBigFour =                 ModelEra(era: 3, title: "The Big Four - LMS, GNER, LNER & SR", startYear: 1923, endYear: 1947)
-    public static let brSteamEarlyCrest =          ModelEra(era: 4, title: "BR steam. Early Crest", startYear: 1948, endYear: 1956)
-    public static let brSteamLateCrest =           ModelEra(era: 5, title: "BR steam. Late Crest", startYear: 1957, endYear: 1966)
-    public static let brCorporateBluePreTOPS =     ModelEra(era: 6, title: "BR Corporate Blue Pre-TOPS", startYear: 1967, endYear: 1971)
-    public static let brCorporateBluePostTOPS =    ModelEra(era: 7, title: "BR Corporate Blue. Post-TOPS", startYear: 1972, endYear: 1982)
-    public static let brSectorisation =            ModelEra(era: 8, title: "BR Sectorisation", startYear: 1983, endYear: 1994)
-    public static let initialPrivatisation =       ModelEra(era: 9, title: "Initial Privatisation", startYear: 1995, endYear: 2004)
-    public static let rebuildingOfTheRailways =    ModelEra(era: 10, title: "Rebuilding of the Railways", startYear: 2005, endYear: 2015)
-    public static let currentEra =                 ModelEra(era: 11, title: "Current Era", startYear: 2016, endYear: nil)
+    public static let pioneering =              ModelEra(era: 1, title: "Pioneering", startYear: 1804, endYear: 1875)
+    public static let preGrouping =             ModelEra(era: 2, title: "Pre-grouping", startYear: 1875, endYear: 1922)
+    public static let theBigFour =              ModelEra(era: 3, title: "The Big Four - LMS, GNER, LNER & SR", startYear: 1923, endYear: 1947)
+    public static let brSteamEarlyCrest =       ModelEra(era: 4, title: "BR steam. Early Crest", startYear: 1948, endYear: 1956)
+    public static let brSteamLateCrest =        ModelEra(era: 5, title: "BR steam. Late Crest", startYear: 1957, endYear: 1966)
+    public static let brCorporateBluePreTOPS =  ModelEra(era: 6, title: "BR Corporate Blue Pre-TOPS", startYear: 1967, endYear: 1971)
+    public static let brCorporateBluePostTOPS = ModelEra(era: 7, title: "BR Corporate Blue. Post-TOPS", startYear: 1972, endYear: 1982)
+    public static let brSectorisation =         ModelEra(era: 8, title: "BR Sectorisation", startYear: 1983, endYear: 1994)
+    public static let initialPrivatisation =    ModelEra(era: 9, title: "Initial Privatisation", startYear: 1995, endYear: 2004)
+    public static let rebuildingOfTheRailways = ModelEra(era: 10, title: "Rebuilding of the Railways", startYear: 2005, endYear: 2015)
+    public static let currentEra =              ModelEra(era: 11, title: "Current Era", startYear: 2016, endYear: nil)
 
     public static var allCases: [ModelEra] = [
         .pioneering,
@@ -59,7 +58,7 @@ extension ModelEra : CaseIterable {
         .currentEra
     ]
 
-    init?(era: Int) {
+    public init?(era: Int) {
         switch era {
         case 1: self = .pioneering
         case 2: self = .preGrouping
