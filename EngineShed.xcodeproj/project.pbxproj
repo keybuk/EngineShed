@@ -538,11 +538,7 @@
 				D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */,
 				D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */,
 				D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */,
-				D298CAF220D737C800827F68 /* CloudProvider.swift */,
-				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
-				D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */,
-				D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */,
-				D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */,
+				D2DE5CC520F855DB00CABE34 /* CloudKit */,
 				D200F96C20DE238D003BC8D1 /* Character+Category.swift */,
 				D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */,
 				D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */,
@@ -555,6 +551,18 @@
 				D2B7C9BA20D4BEF4001B51B1 /* iOS Tests */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		D2DE5CC520F855DB00CABE34 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				D298CAF220D737C800827F68 /* CloudProvider.swift */,
+				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
+				D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */,
+				D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */,
+				D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */,
+			);
+			name = CloudKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
