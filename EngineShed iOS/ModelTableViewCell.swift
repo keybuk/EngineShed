@@ -10,7 +10,7 @@ import UIKit
 
 import Database
 
-class ModelTableViewCell: UITableViewCell {
+class ModelTableViewCell : UITableViewCell {
 
     var withModelClass: Bool = true
     var model: Model? {
