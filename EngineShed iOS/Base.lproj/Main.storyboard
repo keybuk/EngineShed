@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -169,22 +169,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelCell" rowHeight="60" id="3rb-v8-jvj" customClass="ModelTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelCell" rowHeight="68" id="3rb-v8-jvj" customClass="ModelTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3rb-v8-jvj" id="Jgd-9j-zbM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vlu-uY-JKf">
-                                            <rect key="frame" x="0.0" y="1.5" width="100" height="56.5"/>
+                                            <rect key="frame" x="0.0" y="5.5" width="100" height="56.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="vlu-uY-JKf" secondAttribute="height" multiplier="16:9" id="994-Et-61b"/>
                                                 <constraint firstAttribute="width" constant="100" id="zAv-DX-YXc"/>
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="NK4-Js-MGP">
-                                            <rect key="frame" x="108" y="2" width="251" height="55.5"/>
+                                            <rect key="frame" x="102" y="6" width="257" height="55.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mk1 BCK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ow-wZ-vX4">
                                                     <rect key="frame" x="0.0" y="0.0" width="50.5" height="14.5"/>
@@ -212,11 +212,11 @@
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vlu-uY-JKf" secondAttribute="bottom" id="Ce2-VX-D1o"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="NK4-Js-MGP" secondAttribute="trailingMargin" id="E6b-DJ-DG6"/>
                                         <constraint firstItem="NK4-Js-MGP" firstAttribute="centerY" secondItem="vlu-uY-JKf" secondAttribute="centerY" id="EYX-aH-eDd"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NK4-Js-MGP" secondAttribute="bottom" id="HNM-pw-agc"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NK4-Js-MGP" secondAttribute="bottom" constant="6" id="HNM-pw-agc"/>
                                         <constraint firstItem="vlu-uY-JKf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Jgd-9j-zbM" secondAttribute="top" id="IRr-fZ-Z2a"/>
                                         <constraint firstItem="vlu-uY-JKf" firstAttribute="centerY" secondItem="Jgd-9j-zbM" secondAttribute="centerY" id="UkC-OC-yyn"/>
-                                        <constraint firstItem="NK4-Js-MGP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Jgd-9j-zbM" secondAttribute="top" id="VbB-PU-Lad"/>
-                                        <constraint firstItem="NK4-Js-MGP" firstAttribute="leading" secondItem="vlu-uY-JKf" secondAttribute="trailing" constant="8" id="svo-du-efc"/>
+                                        <constraint firstItem="NK4-Js-MGP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Jgd-9j-zbM" secondAttribute="top" constant="6" id="VbB-PU-Lad"/>
+                                        <constraint firstItem="NK4-Js-MGP" firstAttribute="leading" secondItem="vlu-uY-JKf" secondAttribute="trailing" constant="2" id="svo-du-efc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
