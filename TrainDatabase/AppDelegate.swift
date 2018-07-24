@@ -142,7 +142,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 orCreate: "Train", in: zoneID)
             trainRecord["name"] = train.name as NSString
             trainRecord["notes"] = train.notes as NSString
-            records.append(trainRecord)
+
+            var members: [CKReference] = []
 
             for trainMember in train.members {
                 let trainMemberRecord = CKRecord.fromSystemFields(
@@ -154,8 +155,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 trainMemberRecord["isFlipped"] = trainMember.isFlipped as NSNumber
                 records.append(trainMemberRecord)
 
+                members.append(CKReference(record: trainMemberRecord, action: .none))
                 trainMemberRecords[trainMember] = trainMemberRecord
             }
+
+            trainRecord["members"] = members as NSArray
+            records.append(trainRecord)
         }
 
         var decoderRecords: [Decoder : CKRecord] = [:]
@@ -212,7 +217,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             purchaseRecord["condition"] = purchase.condition?.rawValue as NSNumber?
             purchaseRecord["valuation"] = purchase.valuation as NSNumber?
             purchaseRecord["notes"] = purchase.notes as NSString
-            records.append(purchaseRecord)
+
+            var models: [CKReference] = []
 
             for model in purchase.models {
                 let modelRecord = CKRecord.fromSystemFields(
@@ -249,6 +255,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 modelRecord["notes"] = model.notes as NSString
                 records.append(modelRecord)
 
+                models.append(CKReference(record: modelRecord, action: .none))
+
                 if let decoder = model.decoder {
                     if let decoderRecord = decoderRecords[decoder] {
                         decoderRecord["model"] = CKReference(record: modelRecord, action: .none)
@@ -278,6 +286,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     }
                 }
             }
+
+            purchaseRecord["models"] = models as NSArray
+            records.append(purchaseRecord)
         }
 
         try! persistentContainer.viewContext.save()
