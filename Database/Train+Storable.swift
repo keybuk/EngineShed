@@ -20,6 +20,7 @@ extension Train : CloudStorable {
     ///   - record: CloudKit record to update from.
     func update(from record: CKRecord) throws {
         name = record["name"]
+        details = record["details"]
         notes = record["notes"]
     }
 
@@ -30,6 +31,7 @@ extension Train : CloudStorable {
     ///   - keys: update only these keys (managed object name), or all keys if `nil.
     func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
         if keys?.contains("name") ?? true { record["name"] = name }
+        if keys?.contains("details") ?? true { record["details"] = details }
         if keys?.contains("notes") ?? true { record["notes"] = notes }
     }
 
