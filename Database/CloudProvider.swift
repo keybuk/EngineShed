@@ -243,6 +243,7 @@ public final class CloudProvider {
         }
 
         operation.changeTokenUpdatedBlock = { serverChangeToken in
+            print("Database change token: \(serverChangeToken)")
             do {
                 if !deleteZoneIDs.isEmpty {
                     try NSManagedObject.deleteObjectsForZoneIDs(deleteZoneIDs, in: context, mergeTo: self.persistentContainer.viewContext)
@@ -267,6 +268,7 @@ public final class CloudProvider {
                     completionHandler(error)
                 }
             } else {
+                print("Fetch database changes completed, token: \(serverChangeToken!)")
                 do {
                     if !deleteZoneIDs.isEmpty {
                         try NSManagedObject.deleteObjectsForZoneIDs(deleteZoneIDs, in: context, mergeTo: self.persistentContainer.viewContext)
@@ -295,9 +297,9 @@ public final class CloudProvider {
             }
         }
 
+        print("Begin fetch database changes")
         operation.qualityOfService = .utility
         database.add(operation)
-
     }
 
     /// Fetch zone changes from the database.
@@ -355,6 +357,7 @@ public final class CloudProvider {
         }
 
         operation.recordZoneChangeTokensUpdatedBlock = { zoneID, serverChangeToken, _ in
+            print("Record change token updated: \(zoneID) \(serverChangeToken!)")
             do {
                 if !deletedRecords.isEmpty {
                     try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context, mergeTo: self.persistentContainer.viewContext)
@@ -380,6 +383,7 @@ public final class CloudProvider {
                 cancelCausedByError = error
                 operation.cancel()
             } else {
+                print("Zone fetch completed: \(zoneID) \(serverChangeToken!)")
                 do {
                     if !deletedRecords.isEmpty {
                         try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context, mergeTo: self.persistentContainer.viewContext)
@@ -398,6 +402,7 @@ public final class CloudProvider {
         }
 
         operation.fetchRecordZoneChangesCompletionBlock = { error in
+            print("Fetch zone changes completed")
             if let error = error {
                 if operation.isCancelled, let error = cancelCausedByError {
                     completionHandler(error)
@@ -411,6 +416,7 @@ public final class CloudProvider {
             }
         }
 
+        print("Begin fetch zone changes")
         operation.qualityOfService = .utility
         database.add(operation)
     }
