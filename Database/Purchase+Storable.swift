@@ -42,6 +42,16 @@ extension Purchase : CloudStorable {
         } else {
             valuation = nil
         }
+
+        // TODO: this doesn't feel like the optimal approach for this
+        if let references = record["models"] as? [CKRecord.Reference] {
+            models.map { removeFromModels($0) }
+            for reference in try references.map { try Model.objectForRecordID($0.recordID, in: managedObjectContext!) } {
+                addToModels(reference)
+            }
+        } else {
+            models = nil
+        }
     }
 
     /// Update a CloudKit record from this managed object.
@@ -64,6 +74,14 @@ extension Purchase : CloudStorable {
 
         if keys?.contains("price") ?? true { record["price"] = price as NSDecimalNumber? }
         if keys?.contains("valuation") ?? true { record["valuation"] = valuation as NSDecimalNumber? }
+
+        if keys?.contains("models") ?? true {
+            if let models = models?.array as? [Model] {
+                record["models"] = models.compactMap { $0.recordID.map { CKRecord.Reference(recordID: $0, action: .none) } }
+            } else {
+                record["models"] = nil
+            }
+        }
     }
 
 }
