@@ -150,7 +150,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     recordID: &trainMember.managedObject.recordID,
                     orCreate: "TrainMember", in: zoneID)
                 trainMemberRecord["train"] = CKReference(record: trainRecord, action: .deleteSelf)
-                trainMemberRecord["index"] = (index * 64) as NSNumber
+                trainMemberRecord["index"] = ((index + 1) * 64) as NSNumber
                 trainMemberRecord["title"] = trainMember.title as NSString
                 trainMemberRecord["isFlipped"] = trainMember.isFlipped as NSNumber
                 records.append(trainMemberRecord)
@@ -221,7 +221,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     recordID: &model.managedObject.recordID,
                     orCreate: "Model", in: zoneID)
                 modelRecord["purchase"] = CKReference(record: purchaseRecord, action: .deleteSelf)
-                modelRecord["index"] = (index * 64) as NSNumber
+                modelRecord["index"] = ((index + 1) * 64) as NSNumber
                 modelRecord["classification"] = model.classification?.rawValue as NSNumber?
                 modelRecord["image"] = model.imageURL.flatMap({ CKAsset(fileURL: $0) })
                 modelRecord["class"] = model.modelClass as NSString
