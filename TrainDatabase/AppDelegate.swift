@@ -142,25 +142,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 orCreate: "Train", in: zoneID)
             trainRecord["name"] = train.name as NSString
             trainRecord["notes"] = train.notes as NSString
+            records.append(trainRecord)
 
-            var members: [CKReference] = []
-
-            for trainMember in train.members {
+            for (index, trainMember) in train.members.enumerated() {
                 let trainMemberRecord = CKRecord.fromSystemFields(
                     &trainMember.managedObject.systemFields,
                     recordID: &trainMember.managedObject.recordID,
                     orCreate: "TrainMember", in: zoneID)
                 trainMemberRecord["train"] = CKReference(record: trainRecord, action: .deleteSelf)
+                trainMemberRecord["index"] = (index * 64) as NSNumber
                 trainMemberRecord["title"] = trainMember.title as NSString
                 trainMemberRecord["isFlipped"] = trainMember.isFlipped as NSNumber
                 records.append(trainMemberRecord)
 
-                members.append(CKReference(record: trainMemberRecord, action: .none))
                 trainMemberRecords[trainMember] = trainMemberRecord
             }
-
-            trainRecord["members"] = members as NSArray
-            records.append(trainRecord)
         }
 
         var decoderRecords: [Decoder : CKRecord] = [:]
@@ -217,15 +213,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             purchaseRecord["condition"] = purchase.condition?.rawValue as NSNumber?
             purchaseRecord["valuation"] = purchase.valuation as NSNumber?
             purchaseRecord["notes"] = purchase.notes as NSString
+            records.append(purchaseRecord)
 
-            var models: [CKReference] = []
-
-            for model in purchase.models {
+            for (index, model) in purchase.models.enumerated() {
                 let modelRecord = CKRecord.fromSystemFields(
                     &model.managedObject.systemFields,
                     recordID: &model.managedObject.recordID,
                     orCreate: "Model", in: zoneID)
                 modelRecord["purchase"] = CKReference(record: purchaseRecord, action: .deleteSelf)
+                modelRecord["index"] = (index * 64) as NSNumber
                 modelRecord["classification"] = model.classification?.rawValue as NSNumber?
                 modelRecord["image"] = model.imageURL.flatMap({ CKAsset(fileURL: $0) })
                 modelRecord["class"] = model.modelClass as NSString
@@ -254,8 +250,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if !model.tasks.isEmpty { modelRecord["tasks"] = Array(model.tasks) as NSArray }
                 modelRecord["notes"] = model.notes as NSString
                 records.append(modelRecord)
-
-                models.append(CKReference(record: modelRecord, action: .none))
 
                 if let decoder = model.decoder {
                     if let decoderRecord = decoderRecords[decoder] {
@@ -286,9 +280,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     }
                 }
             }
-
-            purchaseRecord["models"] = models as NSArray
-            records.append(purchaseRecord)
         }
 
         try! persistentContainer.viewContext.save()
