@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14308.2" systemVersion="18A336e" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14308.2" systemVersion="17G2208" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Coupling" representedClassName="Coupling" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="couplings" inverseEntity="Model" syncable="YES"/>
@@ -54,6 +54,7 @@
         <attribute name="dispositionRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="eraRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastOil" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lastRun" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="livery" optional="YES" attributeType="String" syncable="YES"/>
@@ -101,7 +102,7 @@
         <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="valuation" optional="YES" attributeType="Decimal" syncable="YES"/>
         <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
-        <relationship name="models" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Model" inverseName="purchase" inverseEntity="Model" syncable="YES"/>
+        <relationship name="models" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Model" inverseName="purchase" inverseEntity="Model" syncable="YES"/>
     </entity>
     <entity name="SpeakerFitting" representedClassName="SpeakerFitting" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -118,9 +119,10 @@
         <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID" syncable="YES"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
-        <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TrainMember" inverseName="train" inverseEntity="TrainMember" syncable="YES"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TrainMember" inverseName="train" inverseEntity="TrainMember" syncable="YES"/>
     </entity>
     <entity name="TrainMember" representedClassName="TrainMember" syncable="YES" codeGenerationType="class">
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isFlipped" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID" syncable="YES"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -137,12 +139,12 @@
         <element name="Feature" positionX="306" positionY="234" width="128" height="75"/>
         <element name="FittedDetailPart" positionX="315" positionY="351" width="128" height="75"/>
         <element name="Light" positionX="315" positionY="243" width="128" height="75"/>
-        <element name="Model" positionX="270" positionY="207" width="128" height="480"/>
+        <element name="Model" positionX="270" positionY="207" width="128" height="495"/>
         <element name="Modification" positionX="360" positionY="288" width="128" height="75"/>
         <element name="Purchase" positionX="324" positionY="252" width="128" height="315"/>
         <element name="SpeakerFitting" positionX="261" positionY="198" width="128" height="75"/>
         <element name="Task" positionX="288" positionY="216" width="128" height="75"/>
         <element name="Train" positionX="360" positionY="288" width="128" height="150"/>
-        <element name="TrainMember" positionX="351" positionY="279" width="128" height="150"/>
+        <element name="TrainMember" positionX="351" positionY="279" width="128" height="165"/>
     </elements>
 </model>

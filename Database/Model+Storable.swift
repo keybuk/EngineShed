@@ -63,6 +63,7 @@ extension Model : CloudStorable {
     /// - Parameters:
     ///   - record: CloudKit record to update from.
     func update(from record: CKRecord) throws {
+        index = record["index"] ?? 0
         modelClass = record["class"]
         classificationRawValue = record["classification"] ?? 0
         details = record["details"]
@@ -129,6 +130,7 @@ extension Model : CloudStorable {
     ///   - record: CloudKit record to update.
     ///   - keys: update only these keys (managed object name), or all keys if `nil.
     func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+        if keys?.contains("index") ?? true { record["index"] = index }
         if keys?.contains("modelClass") ?? true { record["class"] = modelClass }
         if keys?.contains("classificationRawValue") ?? true { record["classification"] = classificationRawValue }
         if keys?.contains("details") ?? true { record["details"] = details }

@@ -22,16 +22,6 @@ extension Train : CloudStorable {
         name = record["name"]
         details = record["details"]
         notes = record["notes"]
-
-        // TODO: this doesn't feel like the optimal approach for this
-        if let references = record["members"] as? [CKRecord.Reference] {
-            members.map { removeFromMembers($0) }
-            for reference in try references.map { try TrainMember.objectForRecordID($0.recordID, in: managedObjectContext!) } {
-                addToMembers(reference)
-            }
-        } else {
-            members = nil
-        }
     }
 
     /// Update a CloudKit record from this managed object.
@@ -43,14 +33,6 @@ extension Train : CloudStorable {
         if keys?.contains("name") ?? true { record["name"] = name }
         if keys?.contains("details") ?? true { record["details"] = details }
         if keys?.contains("notes") ?? true { record["notes"] = notes }
-
-        if keys?.contains("members") ?? true {
-            if let members = members?.array as? [TrainMember] {
-                record["members"] = members.compactMap { $0.recordID.map { CKRecord.Reference(recordID: $0, action: .none) } }
-            } else {
-                record["members"] = nil
-            }
-        }
     }
 
 }

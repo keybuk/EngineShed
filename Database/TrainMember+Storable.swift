@@ -19,6 +19,7 @@ extension TrainMember : CloudStorable {
     /// - Parameters:
     ///   - record: CloudKit record to update from.
     func update(from record: CKRecord) throws {
+        index = record["index"] ?? 0
         isFlipped = record["isFlipped"] ?? false
         title = record["title"]
 
@@ -41,6 +42,7 @@ extension TrainMember : CloudStorable {
     ///   - record: CloudKit record to update.
     ///   - keys: update only these keys (managed object name), or all keys if `nil.
     func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?) {
+        if keys?.contains("index") ?? true { record["index"] = index }
         if keys?.contains("isFlipped") ?? true { record["isFlipped"] = isFlipped }
         if keys?.contains("title") ?? true { record["title"] = title }
 
