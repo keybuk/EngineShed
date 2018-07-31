@@ -24,6 +24,8 @@
 		D215BEAC20D4B53A0054FDCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D215BEAA20D4B53A0054FDCC /* Main.storyboard */; };
 		D215BEB820D4B53A0054FDCC /* EngineShedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEB720D4B53A0054FDCC /* EngineShedTests.swift */; };
 		D215BEC320D4B53A0054FDCC /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */; };
+		D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
+		D28758242105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
 		D28BE32E20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */; };
 		D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */; };
 		D298CAE920D7109900827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAE820D7109900827F68 /* CloudKit.framework */; };
@@ -60,6 +62,8 @@
 		D2AF28AE2110277300374975 /* Purchase+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28AC2110277300374975 /* Purchase+WillSave.swift */; };
 		D2AF28B02110285B00374975 /* Train+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28AF2110285B00374975 /* Train+WillSave.swift */; };
 		D2AF28B12110285B00374975 /* Train+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28AF2110285B00374975 /* Train+WillSave.swift */; };
+		D2AF28B921102DBC00374975 /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */; };
+		D2AF28BA21102DBC00374975 /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */; };
 		D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */; };
 		D2B2AF4F20D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
 		D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
@@ -220,6 +224,7 @@
 		D215BEBE20D4B53A0054FDCC /* EngineShed macOS UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed macOS UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
 		D215BEC420D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
 		D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+WillDelete.swift"; sourceTree = "<group>"; };
 		D298CAE820D7109900827F68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		D298CAEA20D7118A00827F68 /* EngineShed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EngineShed.entitlements; sourceTree = "<group>"; };
@@ -240,6 +245,7 @@
 		D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Storable.swift"; sourceTree = "<group>"; };
 		D2AF28AC2110277300374975 /* Purchase+WillSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+WillSave.swift"; sourceTree = "<group>"; };
 		D2AF28AF2110285B00374975 /* Train+WillSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+WillSave.swift"; sourceTree = "<group>"; };
+		D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Flipped.swift"; sourceTree = "<group>"; };
 		D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+Image.swift"; sourceTree = "<group>"; };
 		D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+RecordType.swift"; sourceTree = "<group>"; };
@@ -456,12 +462,14 @@
 				D2DE5CB620F8431800CABE34 /* Model+Era.swift */,
 				D2DE5CBA20F8517400CABE34 /* Model+Disposition.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
+				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
 				D298CB2220D8163900827F68 /* DecoderType+Storable.swift */,
 				D298CB2320D8163A00827F68 /* Decoder+Storable.swift */,
 				D298CB2020D8163900827F68 /* Train+Storable.swift */,
 				D2AF28AF2110285B00374975 /* Train+WillSave.swift */,
 				D298CB2120D8163900827F68 /* TrainMember+Storable.swift */,
 				D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */,
+				D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1019,6 +1027,7 @@
 				D298CB2920D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
 				D29E457F20DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D200F96D20DE238D003BC8D1 /* Character+Category.swift in Sources */,
+				D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */,
 				D29E458220DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */,
 				D29E457C20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */,
 				D298CB3120D8163A00827F68 /* Model+Storable.swift in Sources */,
@@ -1031,6 +1040,7 @@
 				D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */,
 				D2DE5CC320F8550A00CABE34 /* ConvertibleFromString.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
+				D2AF28B921102DBC00374975 /* Model+FetchRequests.swift in Sources */,
 				D200F97020DE23BA003BC8D1 /* Collection+SplitBetween.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
 				D298CB1A20D8143A00827F68 /* Model+Image.swift in Sources */,
@@ -1073,10 +1083,12 @@
 				D2AF28AE2110277300374975 /* Purchase+WillSave.swift in Sources */,
 				D298CB3220D8163A00827F68 /* Model+Storable.swift in Sources */,
 				D29E458320DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */,
+				D2AF28BA21102DBC00374975 /* Model+FetchRequests.swift in Sources */,
 				D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
 				D2DE5CB820F8431800CABE34 /* Model+Era.swift in Sources */,
 				D29E457D20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */,
 				D2B50BA320D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */,
+				D28758242105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */,
 				D298CB2820D8163A00827F68 /* Train+Storable.swift in Sources */,
 				D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
 				D298CAF420D737C800827F68 /* CloudProvider.swift in Sources */,
