@@ -48,7 +48,8 @@ extension Purchase {
         return parts.joined()
     }
 
-    public override func willSave() {
+    /// Update the catalogNumberPrefix field.
+    func updateCatalogNumberPrefix() {
         // Update the `catalogNumberPrefix` field on save from `catalogNumber`.
         if let catalogNumber = catalogNumber {
             let catalogNumberPrefix = makePrefix(from: catalogNumber)
