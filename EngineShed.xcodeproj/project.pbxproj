@@ -96,6 +96,14 @@
 		D2DE5CC320F8550A00CABE34 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */; };
 		D2DE5CC420F8550A00CABE34 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */; };
 		D2E014E120D8DDD900FF8940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D215BEA820D4B53A0054FDCC /* Assets.xcassets */; };
+		D2E6BF93210A156D009E8B2D /* Train+Members.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BF92210A156D009E8B2D /* Train+Members.swift */; };
+		D2E6BF94210A156D009E8B2D /* Train+Members.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BF92210A156D009E8B2D /* Train+Members.swift */; };
+		D2E6BF96210A2457009E8B2D /* IndexSortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BF95210A2457009E8B2D /* IndexSortable.swift */; };
+		D2E6BF97210A2457009E8B2D /* IndexSortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BF95210A2457009E8B2D /* IndexSortable.swift */; };
+		D2E6BF99210A28C3009E8B2D /* IndexSortableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BF98210A28C3009E8B2D /* IndexSortableTests.swift */; };
+		D2E6BF9A210A28C3009E8B2D /* IndexSortableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BF98210A28C3009E8B2D /* IndexSortableTests.swift */; };
+		D2E6BF9C210A2E12009E8B2D /* Purchase+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BF9B210A2E12009E8B2D /* Purchase+Models.swift */; };
+		D2E6BF9D210A2E12009E8B2D /* Purchase+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E6BF9B210A2E12009E8B2D /* Purchase+Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,6 +280,10 @@
 		D2DE5CBA20F8517400CABE34 /* Model+Disposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Disposition.swift"; sourceTree = "<group>"; };
 		D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
 		D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
+		D2E6BF92210A156D009E8B2D /* Train+Members.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Members.swift"; sourceTree = "<group>"; };
+		D2E6BF95210A2457009E8B2D /* IndexSortable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexSortable.swift; sourceTree = "<group>"; };
+		D2E6BF98210A28C3009E8B2D /* IndexSortableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexSortableTests.swift; sourceTree = "<group>"; };
+		D2E6BF9B210A2E12009E8B2D /* Purchase+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Models.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +371,7 @@
 		D200F97820E07D00003BC8D1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D2E6BF98210A28C3009E8B2D /* IndexSortableTests.swift */,
 				D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */,
 				D200F97F20E0A9C0003BC8D1 /* SimilarPurchaseTests.swift */,
 			);
@@ -442,6 +455,7 @@
 			children = (
 				D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */,
 				D298CB2620D8163A00827F68 /* Purchase+Storable.swift */,
+				D2E6BF9B210A2E12009E8B2D /* Purchase+Models.swift */,
 				D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */,
 				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
 				D298CB2520D8163A00827F68 /* Model+Storable.swift */,
@@ -452,6 +466,7 @@
 				D298CB2220D8163900827F68 /* DecoderType+Storable.swift */,
 				D298CB2320D8163A00827F68 /* Decoder+Storable.swift */,
 				D298CB2020D8163900827F68 /* Train+Storable.swift */,
+				D2E6BF92210A156D009E8B2D /* Train+Members.swift */,
 				D298CB2120D8163900827F68 /* TrainMember+Storable.swift */,
 				D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */,
 			);
@@ -543,6 +558,7 @@
 				D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */,
 				D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */,
 				D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */,
+				D2E6BF95210A2457009E8B2D /* IndexSortable.swift */,
 				D2B2AF4920D8180300BEFC15 /* Model */,
 				D200F97820E07D00003BC8D1 /* Tests */,
 				D2B7C98A20D4BE2F001B51B1 /* macOS */,
@@ -1022,9 +1038,12 @@
 				D298CB2720D8163A00827F68 /* Train+Storable.swift in Sources */,
 				D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */,
 				D2DE5CC320F8550A00CABE34 /* ConvertibleFromString.swift in Sources */,
+				D2E6BF9C210A2E12009E8B2D /* Purchase+Models.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
 				D200F97020DE23BA003BC8D1 /* Collection+SplitBetween.swift in Sources */,
+				D2E6BF96210A2457009E8B2D /* IndexSortable.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
+				D2E6BF93210A156D009E8B2D /* Train+Members.swift in Sources */,
 				D298CB1A20D8143A00827F68 /* Model+Image.swift in Sources */,
 				D200F97320DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */,
 				D298CB2D20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
@@ -1040,6 +1059,7 @@
 			files = (
 				D200F97A20E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift in Sources */,
 				D200F98020E0A9C0003BC8D1 /* SimilarPurchaseTests.swift in Sources */,
+				D2E6BF99210A28C3009E8B2D /* IndexSortableTests.swift in Sources */,
 				D2B7C99920D4BE2F001B51B1 /* DatabaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1052,8 +1072,10 @@
 				D2DE5CBD20F8517500CABE34 /* Model+Classification.swift in Sources */,
 				D2B7C9CD20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
 				D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */,
+				D2E6BF9D210A2E12009E8B2D /* Purchase+Models.swift in Sources */,
 				D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
+				D2E6BF94210A156D009E8B2D /* Train+Members.swift in Sources */,
 				D298CB1F20D8150600827F68 /* UIImage+URL.swift in Sources */,
 				D200F97120DE23BA003BC8D1 /* Collection+SplitBetween.swift in Sources */,
 				D2DE5CC420F8550A00CABE34 /* ConvertibleFromString.swift in Sources */,
@@ -1061,6 +1083,7 @@
 				D200F97720DEC104003BC8D1 /* Collection+CountedElements.swift in Sources */,
 				D298CB3220D8163A00827F68 /* Model+Storable.swift in Sources */,
 				D29E458320DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */,
+				D2E6BF97210A2457009E8B2D /* IndexSortable.swift in Sources */,
 				D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
 				D2DE5CB820F8431800CABE34 /* Model+Era.swift in Sources */,
 				D29E457D20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */,
@@ -1084,6 +1107,7 @@
 			files = (
 				D200F98120E0A9C0003BC8D1 /* SimilarPurchaseTests.swift in Sources */,
 				D200F98220E0C14B003BC8D1 /* CatalogNumberPrefixTests.swift in Sources */,
+				D2E6BF9A210A28C3009E8B2D /* IndexSortableTests.swift in Sources */,
 				D2B7C9BC20D4BEF4001B51B1 /* DatabaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
