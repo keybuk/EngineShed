@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rpe-CL-hw1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="u35-Dq-xxe" kind="relationship" relationship="rootViewController" id="6zY-k9-W49"/>
+                        <segue destination="u35-Dq-xxe" kind="relationship" relationship="rootViewController" id="5gg-bR-rUe"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
@@ -159,6 +159,118 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-856" y="-330"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="O7U-sd-bfC">
+            <objects>
+                <navigationController id="Rpe-CL-hw1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vwG-vj-bsM">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="69z-M6-R3o" kind="relationship" relationship="rootViewController" id="YRd-1L-fK6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ud-Qj-1vL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-39" y="-1428"/>
+        </scene>
+        <!--Trains-->
+        <scene sceneID="pLS-N7-dcP">
+            <objects>
+                <collectionViewController id="69z-M6-R3o" customClass="TrainCollectionViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="buV-sY-Igh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="CHX-Bo-Ttb">
+                            <size key="itemSize" width="100" height="100"/>
+                            <size key="headerReferenceSize" width="50" height="55"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trainMemberCell" id="V4J-cg-mCN" customClass="TrainMemberCollectionViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="R3612" translatesAutoresizingMaskIntoConstraints="NO" id="qci-QA-cgP">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="56.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="6hg-vO-RXq"/>
+                                                <constraint firstAttribute="width" secondItem="qci-QA-cgP" secondAttribute="height" multiplier="16:9" id="Lx6-dM-vf4"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mallard" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1r-8g-nN3">
+                                            <rect key="frame" x="29" y="63.5" width="42" height="14.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="H1r-8g-nN3" secondAttribute="trailing" id="BGE-7K-Nso"/>
+                                    <constraint firstItem="H1r-8g-nN3" firstAttribute="centerX" secondItem="V4J-cg-mCN" secondAttribute="centerX" id="EWe-Rh-qeR"/>
+                                    <constraint firstItem="qci-QA-cgP" firstAttribute="top" secondItem="V4J-cg-mCN" secondAttribute="top" id="K35-WV-bml"/>
+                                    <constraint firstItem="H1r-8g-nN3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="V4J-cg-mCN" secondAttribute="leading" id="XHy-Zq-JVq"/>
+                                    <constraint firstItem="qci-QA-cgP" firstAttribute="centerX" secondItem="V4J-cg-mCN" secondAttribute="centerX" id="fps-9W-fUe"/>
+                                    <constraint firstItem="H1r-8g-nN3" firstAttribute="firstBaseline" secondItem="qci-QA-cgP" secondAttribute="baseline" constant="18.5" symbolType="layoutAnchor" id="o1l-et-Ibz"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="modelImageView" destination="qci-QA-cgP" id="bvn-WA-tP4"/>
+                                    <outlet property="titleLabel" destination="H1r-8g-nN3" id="a2c-A6-vDA"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="trainHeaderView" id="icg-Pm-oln" customClass="TrainHeaderCollectionReusableView" customModule="EngineShed" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="8Zs-kk-aJH">
+                                    <rect key="frame" x="8" y="8.5" width="228.5" height="38.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Elizabethan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M62-Xb-uiP">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="20.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hypothetical preservation special" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lU-ZY-V5b">
+                                            <rect key="frame" x="0.0" y="20.5" width="228.5" height="18"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8Zs-kk-aJH" secondAttribute="trailing" constant="8" id="3gq-KS-li6"/>
+                                <constraint firstItem="8Zs-kk-aJH" firstAttribute="centerY" secondItem="icg-Pm-oln" secondAttribute="centerY" id="EVL-dq-VXV"/>
+                                <constraint firstItem="8Zs-kk-aJH" firstAttribute="leading" secondItem="icg-Pm-oln" secondAttribute="leading" constant="8" id="RlL-WZ-gJ4"/>
+                                <constraint firstItem="8Zs-kk-aJH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="icg-Pm-oln" secondAttribute="top" constant="8" id="vrM-vF-eYp"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="8Zs-kk-aJH" secondAttribute="bottom" constant="8" id="yZ2-BP-itS"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="detailsLabel" destination="0lU-ZY-V5b" id="xPd-5h-Zgc"/>
+                                <outlet property="nameLabel" destination="M62-Xb-uiP" id="qW1-ts-sxe"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="69z-M6-R3o" id="mZs-5c-lZk"/>
+                            <outlet property="delegate" destination="69z-M6-R3o" id="VOF-21-zH1"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Trains" id="4Le-WJ-Twr"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rCP-hx-uAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="837.60000000000002" y="-1428.0359820089957"/>
         </scene>
         <!--Model Table View Controller-->
         <scene sceneID="tnc-sO-MRL">

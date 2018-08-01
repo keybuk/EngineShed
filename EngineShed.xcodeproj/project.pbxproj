@@ -26,6 +26,8 @@
 		D215BEC320D4B53A0054FDCC /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */; };
 		D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
 		D28758242105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
+		D28758262105FEEE00EF722D /* TrainMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758252105FEEE00EF722D /* TrainMemberCollectionViewCell.swift */; };
+		D287582821060FE700EF722D /* TrainHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D287582721060FE700EF722D /* TrainHeaderCollectionReusableView.swift */; };
 		D28BE32E20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */; };
 		D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */; };
 		D298CAE920D7109900827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAE820D7109900827F68 /* CloudKit.framework */; };
@@ -103,6 +105,7 @@
 		D2DE5CC120F8517500CABE34 /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */; };
 		D2DE5CC320F8550A00CABE34 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */; };
 		D2DE5CC420F8550A00CABE34 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */; };
+		D2DE5CC720F8A60000CABE34 /* TrainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CC620F8A60000CABE34 /* TrainCollectionViewController.swift */; };
 		D2E014E120D8DDD900FF8940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D215BEA820D4B53A0054FDCC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +228,8 @@
 		D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
 		D215BEC420D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
+		D28758252105FEEE00EF722D /* TrainMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberCollectionViewCell.swift; sourceTree = "<group>"; };
+		D287582721060FE700EF722D /* TrainHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+WillDelete.swift"; sourceTree = "<group>"; };
 		D298CAE820D7109900827F68 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		D298CAEA20D7118A00827F68 /* EngineShed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EngineShed.entitlements; sourceTree = "<group>"; };
@@ -284,6 +289,7 @@
 		D2DE5CBA20F8517400CABE34 /* Model+Disposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Disposition.swift"; sourceTree = "<group>"; };
 		D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
 		D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
+		D2DE5CC620F8A60000CABE34 /* TrainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,6 +486,9 @@
 				D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */,
 				D2DE5CB220F82A3100CABE34 /* ModelTableViewController.swift */,
 				D2DE5CB420F82CAB00CABE34 /* ModelTableViewCell.swift */,
+				D2DE5CC620F8A60000CABE34 /* TrainCollectionViewController.swift */,
+				D287582721060FE700EF722D /* TrainHeaderCollectionReusableView.swift */,
+				D28758252105FEEE00EF722D /* TrainMemberCollectionViewCell.swift */,
 				D2B7C95820D4BA30001B51B1 /* MasterViewController.swift */,
 				D2B7C95A20D4BA30001B51B1 /* DetailViewController.swift */,
 				D2B7C95C20D4BA30001B51B1 /* Main.storyboard */,
@@ -992,6 +1001,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2DE5CB520F82CAB00CABE34 /* ModelTableViewCell.swift in Sources */,
+				D28758262105FEEE00EF722D /* TrainMemberCollectionViewCell.swift in Sources */,
+				D2DE5CC720F8A60000CABE34 /* TrainCollectionViewController.swift in Sources */,
+				D287582821060FE700EF722D /* TrainHeaderCollectionReusableView.swift in Sources */,
 				D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */,
 				D2DE5CB320F82A3100CABE34 /* ModelTableViewController.swift in Sources */,
 				D2B7C95920D4BA30001B51B1 /* MasterViewController.swift in Sources */,
