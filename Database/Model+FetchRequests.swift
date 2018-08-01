@@ -8,7 +8,7 @@
 
 import CoreData
 
-extension TrainMember {
+extension Model {
 
     public static func fetchRequestForModels(context: NSManagedObjectContext) -> NSFetchRequest<Model> {
         let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()

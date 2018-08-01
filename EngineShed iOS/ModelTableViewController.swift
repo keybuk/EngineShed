@@ -15,8 +15,8 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
 
     weak var detailViewController: DetailViewController? = nil
 
-    var managedObjectContext: NSManagedObjectContext?
-    var fetchRequest: NSFetchRequest<Model>?
+    var managedObjectContext: NSManagedObjectContext!
+    var fetchRequest: NSFetchRequest<Model>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,10 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
             let navigationController = splitViewController.viewControllers.last as? UINavigationController
         {
             detailViewController = navigationController.topViewController as? DetailViewController
+        }
+
+        if fetchRequest == nil {
+            fetchRequest = Model.fetchRequestForModels(context: managedObjectContext)
         }
     }
 
@@ -83,16 +87,16 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
     // MARK: - Actions
 
     @IBAction func groupChanged(_ sender: UISegmentedControl) {
-        if fetchRequest?.sortDescriptors?.first?.key != "modelClass" {
-            fetchRequest?.sortDescriptors?.removeFirst()
+        if fetchRequest.sortDescriptors?.first?.key != "modelClass" {
+            fetchRequest.sortDescriptors?.removeFirst()
         }
 
         switch sender.selectedSegmentIndex {
         case 0: break
         case 1:
-            fetchRequest?.sortDescriptors?.insert(NSSortDescriptor(key: "eraRawValue", ascending: true), at: 0)
+            fetchRequest.sortDescriptors?.insert(NSSortDescriptor(key: "eraRawValue", ascending: true), at: 0)
         case 2:
-            fetchRequest?.sortDescriptors?.insert(NSSortDescriptor(key: "livery", ascending: true), at: 0)
+            fetchRequest.sortDescriptors?.insert(NSSortDescriptor(key: "livery", ascending: true), at: 0)
         default: return
         }
 
@@ -107,10 +111,10 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
             return fetchedResultsController
         }
 
-        let sectionNameKeyPath = fetchRequest?.sortDescriptors?.first?.key
+        let sectionNameKeyPath = fetchRequest.sortDescriptors?.first?.key
         let cacheName = sectionNameKeyPath.flatMap { "ModelTable.\($0)" }
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest!, managedObjectContext: managedObjectContext!, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
         fetchedResultsController.delegate = self
 
         do {

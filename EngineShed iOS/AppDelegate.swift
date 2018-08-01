@@ -32,18 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 //        let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
 //        let controller = masterNavigationController.topViewController as! ModelTableViewController
 //        controller.managedObjectContext = self.persistentContainer.viewContext
-//
-//        let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
-//        fetchRequest.predicate = NSPredicate(format: "modelClass != NULL AND modelClass != ''")
-//        fetchRequest.fetchBatchSize = 20
-//        fetchRequest.sortDescriptors = [
-//            NSSortDescriptor(key: "modelClass", ascending: true),
-//            NSSortDescriptor(key: "number", ascending: true),
-//            NSSortDescriptor(key: "name", ascending: true),
-//            NSSortDescriptor(key: "dispositionRawValue", ascending: true)
-//        ]
-//
-//        controller.fetchRequest = fetchRequest
 
         let masterNavigationController = self.window!.rootViewController as! UINavigationController
         let controller = masterNavigationController.topViewController as! TrainCollectionViewController
