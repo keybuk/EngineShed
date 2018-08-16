@@ -8,6 +8,7 @@
 
 import CoreData
 
+/// Subclass `NSPersistentContainer` place to correctly default the bundle for the data model.
 public class PersistentContainer : NSPersistentContainer {
 
 //    override public class func defaultDirectoryURL() -> URL {

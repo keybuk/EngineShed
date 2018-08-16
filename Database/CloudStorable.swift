@@ -39,7 +39,7 @@ protocol CloudStorable : class {
     ///
     /// - Parameters:
     ///   - record: CloudKit record to update.
-    ///   - keys: update only these keys (managed object name), or all keys if `nil.
+    ///   - keys: update only these keys (managed object name), or all keys if `nil`.
     func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?)
 
     /// Create a CloudKit record for the type, in the given zone.
