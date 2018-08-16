@@ -60,6 +60,8 @@
 		D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457E20DB23FF000624B5 /* CloudStorable.swift */; };
 		D29E458220DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */; };
 		D29E458320DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */; };
+		D2A4112221262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4112121262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift */; };
+		D2A4112321262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4112121262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift */; };
 		D2AF28AD2110277300374975 /* Purchase+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28AC2110277300374975 /* Purchase+WillSave.swift */; };
 		D2AF28AE2110277300374975 /* Purchase+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28AC2110277300374975 /* Purchase+WillSave.swift */; };
 		D2AF28B02110285B00374975 /* Train+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28AF2110285B00374975 /* Train+WillSave.swift */; };
@@ -248,6 +250,7 @@
 		D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableObjectTranslation.swift; sourceTree = "<group>"; };
 		D29E457E20DB23FF000624B5 /* CloudStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorable.swift; sourceTree = "<group>"; };
 		D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Storable.swift"; sourceTree = "<group>"; };
+		D2A4112121262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+StorableObjectTranslation.swift"; sourceTree = "<group>"; };
 		D2AF28AC2110277300374975 /* Purchase+WillSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+WillSave.swift"; sourceTree = "<group>"; };
 		D2AF28AF2110285B00374975 /* Train+WillSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+WillSave.swift"; sourceTree = "<group>"; };
 		D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+FetchRequests.swift"; sourceTree = "<group>"; };
@@ -583,9 +586,10 @@
 			children = (
 				D298CAF220D737C800827F68 /* CloudProvider.swift */,
 				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
-				D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */,
-				D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */,
 				D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */,
+				D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */,
+				D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */,
+				D2A4112121262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift */,
 			);
 			name = CloudKit;
 			sourceTree = "<group>";
@@ -1052,6 +1056,7 @@
 				D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */,
 				D2DE5CC320F8550A00CABE34 /* ConvertibleFromString.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
+				D2A4112221262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */,
 				D2AF28B921102DBC00374975 /* Model+FetchRequests.swift in Sources */,
 				D200F97020DE23BA003BC8D1 /* Collection+SplitBetween.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
@@ -1108,6 +1113,7 @@
 				D200F96E20DE238D003BC8D1 /* Character+Category.swift in Sources */,
 				D298CB2E20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
 				D298CB2C20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,
+				D2A4112321262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */,
 				D298CB3420D8163A00827F68 /* Purchase+Storable.swift in Sources */,
 				D2DE5CC120F8517500CABE34 /* Purchase+Condition.swift in Sources */,
 				D2DE5CBF20F8517500CABE34 /* Model+Disposition.swift in Sources */,

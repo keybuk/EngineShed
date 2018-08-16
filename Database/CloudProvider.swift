@@ -434,7 +434,7 @@ public final class CloudProvider {
         // than after, so in the case of retry after a failure, we send an update for the same
         // object rather than duplicating it.
         for object in context.insertedObjects {
-            if let storable = object as? CloudStorable {
+            if let storable = object as? NSManagedObject & CloudStorable {
                 storable.createRecord(in: zoneID)
             }
         }
@@ -456,7 +456,7 @@ public final class CloudProvider {
         // Save all of the keys of newly inserted objects that can be synchronized.
         if let insertedObjects = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
             for object in insertedObjects {
-                if let storable = object as? CloudStorable,
+                if let storable = object as? NSManagedObject & CloudStorable,
                     let record = storable.syncToRecord(forKeys: nil)
                 {
                     saveRecords.append(record)
@@ -471,7 +471,7 @@ public final class CloudProvider {
 
                 // Retrieve the set of changed keys recorded in the WillSave notification and
                 // only update the record using those.
-                if let storable = object as? CloudStorable,
+                if let storable = object as? NSManagedObject & CloudStorable,
                     let record = storable.syncToRecord(forKeys: changedKeys)
                 {
                     saveRecords.append(record)
@@ -482,7 +482,7 @@ public final class CloudProvider {
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject> {
             for object in deletedObjects {
                 guard !object.isInserted && !object.isUpdated else { fatalError("Object deleted and inserted or updated") }
-                if let storable = object as? CloudStorable,
+                if let storable = object as? NSManagedObject & CloudStorable,
                     let recordID = storable.recordID
                 {
                     deleteRecordIDs.append(recordID)

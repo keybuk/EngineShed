@@ -13,5 +13,5 @@ extension NSManagedObject {
 
     @objc
     class func willDeleteObjects(matching deleteRequest: NSFetchRequest<NSFetchRequestResult>, in context: NSManagedObjectContext) throws {}
-}
 
+}

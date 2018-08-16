@@ -42,26 +42,4 @@ protocol CloudStorable : class {
     ///   - keys: update only these keys (managed object name), or all keys if `nil`.
     func updateRecord(_ record: CKRecord, forKeys keys: Set<String>?)
 
-    /// Create a CloudKit record for the type, in the given zone.
-    ///
-    /// The type should create a `CKRecord.ID` for the provided `zoneID`, and persist it.
-    ///
-    /// - Parameters:
-    ///   - zoneID: record zone for the new record.
-    func createRecord(in zoneID: CKRecordZone.ID)
-
-    /// Update the values of the CloudKit record.
-    ///
-    /// The type should return a `CKRecord` containing the correct record and zone, along with
-    /// the values of properties provided in `keys` (which are from the instance's point of view).
-    ///
-    /// When `keys` is `nil`, the values of all properties should be set.
-    ///
-    /// - Parameters:
-    ///   - keys: set of keys (from the instance's point of view) to store in the record, or `nil`
-    ///     when all keys should be set.
-    ///
-    /// - Returns: `CKRecord` to store in CloudKit, or `nil` if the object cannot be stored.
-    func syncToRecord(forKeys keys: Set<String>?) -> CKRecord?
-
 }
