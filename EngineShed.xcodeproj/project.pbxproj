@@ -486,22 +486,35 @@
 			path = "Util Tests";
 			sourceTree = "<group>";
 		};
+		D2101B8721264A4900E80DD7 /* Platform Targets */ = {
+			isa = PBXGroup;
+			children = (
+				D2A41191212631AA00B6C198 /* Util macOS */,
+				D2A4119E212631AA00B6C198 /* Util macOS Tests */,
+				D2A4116F212630B900B6C198 /* Util iOS */,
+				D2A4117C212630B900B6C198 /* Util iOS Tests */,
+				D2B7C98A20D4BE2F001B51B1 /* Database macOS */,
+				D2B7C99720D4BE2F001B51B1 /* Database macOS Tests */,
+				D2B7C9AD20D4BEF3001B51B1 /* Database iOS */,
+				D2B7C9BA20D4BEF4001B51B1 /* Database iOS Tests */,
+			);
+			name = "Platform Targets";
+			sourceTree = "<group>";
+		};
 		D215BE9520D4B5380054FDCC = {
 			isa = PBXGroup;
 			children = (
 				D2A4112421262FA600B6C198 /* Util */,
 				D200F97820E07D00003BC8D1 /* Util Tests */,
 				D2B7C9CA20D4D671001B51B1 /* Database */,
+				D2A411C42126339900B6C198 /* Database Tests */,
 				D215BEA020D4B5380054FDCC /* EngineShed macOS */,
 				D2B7C95220D4BA30001B51B1 /* EngineShed iOS */,
 				D215BEB620D4B53A0054FDCC /* EngineShed macOS Tests */,
 				D215BEC120D4B53A0054FDCC /* EngineShed macOS UI Tests */,
 				D2B7C96C20D4BA31001B51B1 /* EngineShed iOS Tests */,
 				D2B7C97720D4BA31001B51B1 /* EngineShed iOS UI Tests */,
-				D2A41191212631AA00B6C198 /* Util macOS */,
-				D2A4119E212631AA00B6C198 /* Util macOS Tests */,
-				D2A4116F212630B900B6C198 /* Util iOS */,
-				D2A4117C212630B900B6C198 /* Util iOS Tests */,
+				D2101B8721264A4900E80DD7 /* Platform Targets */,
 				D215BE9F20D4B5380054FDCC /* Products */,
 				D298CAE720D7109900827F68 /* Frameworks */,
 			);
@@ -615,13 +628,13 @@
 			path = "Util macOS Tests";
 			sourceTree = "<group>";
 		};
-		D2A411C42126339900B6C198 /* Tests */ = {
+		D2A411C42126339900B6C198 /* Database Tests */ = {
 			isa = PBXGroup;
 			children = (
 				D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */,
 				D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */,
 			);
-			path = Tests;
+			path = "Database Tests";
 			sourceTree = "<group>";
 		};
 		D2B2AF4920D8180300BEFC15 /* Model */ = {
@@ -687,43 +700,40 @@
 			path = "EngineShed iOS UI Tests";
 			sourceTree = "<group>";
 		};
-		D2B7C98A20D4BE2F001B51B1 /* macOS */ = {
+		D2B7C98A20D4BE2F001B51B1 /* Database macOS */ = {
 			isa = PBXGroup;
 			children = (
-				D298CB1C20D814D700827F68 /* NSImage+PNGData.swift */,
-				D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */,
 				D2B7C98B20D4BE2F001B51B1 /* Database.h */,
 				D2B7C98C20D4BE2F001B51B1 /* Info.plist */,
 			);
-			path = macOS;
+			path = "Database macOS";
 			sourceTree = "<group>";
 		};
-		D2B7C99720D4BE2F001B51B1 /* macOS Tests */ = {
+		D2B7C99720D4BE2F001B51B1 /* Database macOS Tests */ = {
 			isa = PBXGroup;
 			children = (
 				D2B7C99820D4BE2F001B51B1 /* DatabaseTests.swift */,
 				D2B7C99A20D4BE2F001B51B1 /* Info.plist */,
 			);
-			path = "macOS Tests";
+			path = "Database macOS Tests";
 			sourceTree = "<group>";
 		};
-		D2B7C9AD20D4BEF3001B51B1 /* iOS */ = {
+		D2B7C9AD20D4BEF3001B51B1 /* Database iOS */ = {
 			isa = PBXGroup;
 			children = (
-				D298CB1E20D8150600827F68 /* UIImage+URL.swift */,
 				D2B7C9AE20D4BEF3001B51B1 /* Database.h */,
 				D2B7C9AF20D4BEF3001B51B1 /* Info.plist */,
 			);
-			path = iOS;
+			path = "Database iOS";
 			sourceTree = "<group>";
 		};
-		D2B7C9BA20D4BEF4001B51B1 /* iOS Tests */ = {
+		D2B7C9BA20D4BEF4001B51B1 /* Database iOS Tests */ = {
 			isa = PBXGroup;
 			children = (
 				D2B7C9BB20D4BEF4001B51B1 /* DatabaseTests.swift */,
 				D2B7C9BD20D4BEF4001B51B1 /* Info.plist */,
 			);
-			path = "iOS Tests";
+			path = "Database iOS Tests";
 			sourceTree = "<group>";
 		};
 		D2B7C9CA20D4D671001B51B1 /* Database */ = {
@@ -732,13 +742,11 @@
 				D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */,
 				D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */,
 				D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */,
+				D298CB1C20D814D700827F68 /* NSImage+PNGData.swift */,
+				D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */,
+				D298CB1E20D8150600827F68 /* UIImage+URL.swift */,
 				D2DE5CC520F855DB00CABE34 /* CloudKit */,
 				D2B2AF4920D8180300BEFC15 /* Model */,
-				D2A411C42126339900B6C198 /* Tests */,
-				D2B7C98A20D4BE2F001B51B1 /* macOS */,
-				D2B7C99720D4BE2F001B51B1 /* macOS Tests */,
-				D2B7C9AD20D4BEF3001B51B1 /* iOS */,
-				D2B7C9BA20D4BEF4001B51B1 /* iOS Tests */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -2177,7 +2185,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Database/macOS/Info.plist;
+				INFOPLIST_FILE = "Database macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2209,7 +2217,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Database/macOS/Info.plist;
+				INFOPLIST_FILE = "Database macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2233,7 +2241,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = "Database/macOS Tests/Info.plist";
+				INFOPLIST_FILE = "Database macOS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -2254,7 +2262,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = "Database/macOS Tests/Info.plist";
+				INFOPLIST_FILE = "Database macOS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -2280,7 +2288,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Database/iOS/Info.plist;
+				INFOPLIST_FILE = "Database iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2310,7 +2318,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Database/iOS/Info.plist;
+				INFOPLIST_FILE = "Database iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2335,7 +2343,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = "Database/iOS Tests/Info.plist";
+				INFOPLIST_FILE = "Database iOS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2356,7 +2364,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = "Database/iOS Tests/Info.plist";
+				INFOPLIST_FILE = "Database iOS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
