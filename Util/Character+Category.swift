@@ -10,7 +10,7 @@ import Foundation
 
 extension Character {
 
-    enum Category {
+    public enum Category {
         // TODO: Remove once SE-0211 is implemented.
         case decimalDigit
         case letter
@@ -23,7 +23,7 @@ extension Character {
     }
 
     /// Returns the Unicode category of this character.
-    var category: Category {
+    public var category: Category {
         // TODO: Update once SE-0211 is implemented.
         let scalars = CharacterSet(unicodeScalars)
         if CharacterSet.decimalDigits.isSuperset(of: scalars) {

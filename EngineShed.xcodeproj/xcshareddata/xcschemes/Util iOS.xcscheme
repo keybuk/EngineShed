@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2B7C98820D4BE2F001B51B1"
-               BuildableName = "Database.framework"
-               BlueprintName = "Database macOS"
+               BlueprintIdentifier = "D2A4116D212630B900B6C198"
+               BuildableName = "Util.framework"
+               BlueprintName = "Util iOS"
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2B7C98820D4BE2F001B51B1"
-            BuildableName = "Database.framework"
-            BlueprintName = "Database macOS"
-            ReferencedContainer = "container:EngineShed.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -54,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2B7C98820D4BE2F001B51B1"
-            BuildableName = "Database.framework"
-            BlueprintName = "Database macOS"
+            BlueprintIdentifier = "D2A4116D212630B900B6C198"
+            BuildableName = "Util.framework"
+            BlueprintName = "Util iOS"
             ReferencedContainer = "container:EngineShed.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -72,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2B7C98820D4BE2F001B51B1"
-            BuildableName = "Database.framework"
-            BlueprintName = "Database macOS"
+            BlueprintIdentifier = "D2A4116D212630B900B6C198"
+            BuildableName = "Util.framework"
+            BlueprintName = "Util iOS"
             ReferencedContainer = "container:EngineShed.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

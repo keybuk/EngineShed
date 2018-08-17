@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Util
+
 public enum ModelClassification : Int16, CaseIterable {
 
     case locomotive = 1

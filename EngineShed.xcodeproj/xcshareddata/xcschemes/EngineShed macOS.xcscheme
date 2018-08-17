@@ -72,6 +72,16 @@
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D2A41197212631AA00B6C198"
+               BuildableName = "Util macOS Tests.xctest"
+               BlueprintName = "Util macOS Tests"
+               ReferencedContainer = "container:EngineShed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

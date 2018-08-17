@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Util
+
 public struct ModelEra : Equatable, Hashable {
 
     var era: Int

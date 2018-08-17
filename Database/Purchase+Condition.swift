@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Util
+
 public enum PurchaseCondition : Int16, CaseIterable {
 
     case new = 1
