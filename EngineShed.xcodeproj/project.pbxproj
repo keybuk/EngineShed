@@ -572,6 +572,20 @@
 			path = "EngineShed macOS UI Tests";
 			sourceTree = "<group>";
 		};
+		D215C333214AD2560021C76C /* Model+Storable */ = {
+			isa = PBXGroup;
+			children = (
+				D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */,
+				D298CB2620D8163A00827F68 /* Purchase+Storable.swift */,
+				D298CB2520D8163A00827F68 /* Model+Storable.swift */,
+				D298CB2220D8163900827F68 /* DecoderType+Storable.swift */,
+				D298CB2320D8163A00827F68 /* Decoder+Storable.swift */,
+				D298CB2020D8163900827F68 /* Train+Storable.swift */,
+				D298CB2120D8163900827F68 /* TrainMember+Storable.swift */,
+			);
+			name = "Model+Storable";
+			sourceTree = "<group>";
+		};
 		D298CAE720D7109900827F68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,22 +654,15 @@
 		D2B2AF4920D8180300BEFC15 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */,
-				D298CB2620D8163A00827F68 /* Purchase+Storable.swift */,
 				D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */,
 				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
 				D2AF28AC2110277300374975 /* Purchase+WillSave.swift */,
-				D298CB2520D8163A00827F68 /* Model+Storable.swift */,
 				D2DE5CB920F8517400CABE34 /* Model+Classification.swift */,
 				D2DE5CB620F8431800CABE34 /* Model+Era.swift */,
 				D2DE5CBA20F8517400CABE34 /* Model+Disposition.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
 				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
-				D298CB2220D8163900827F68 /* DecoderType+Storable.swift */,
-				D298CB2320D8163A00827F68 /* Decoder+Storable.swift */,
-				D298CB2020D8163900827F68 /* Train+Storable.swift */,
 				D2AF28AF2110285B00374975 /* Train+WillSave.swift */,
-				D298CB2120D8163900827F68 /* TrainMember+Storable.swift */,
 				D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */,
 				D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */,
 			);
@@ -746,6 +753,7 @@
 				D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */,
 				D298CB1E20D8150600827F68 /* UIImage+URL.swift */,
 				D2DE5CC520F855DB00CABE34 /* CloudKit */,
+				D215C333214AD2560021C76C /* Model+Storable */,
 				D2B2AF4920D8180300BEFC15 /* Model */,
 			);
 			path = Database;
