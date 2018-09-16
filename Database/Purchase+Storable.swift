@@ -31,14 +31,20 @@ extension Purchase : CloudStorable {
         notes = record["notes"]
         store = record["store"]
 
-        if let number = record["price"] as? NSNumber {
-            price = NSDecimalNumber(decimal: number.decimalValue)
+        if let data = record["price"] as? Data,
+            let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data)
+        {
+            price = unarchiver.decodeObject(of: NSDecimalNumber.self, forKey: "Price")
+            unarchiver.finishDecoding()
         } else {
             price = nil
         }
 
-        if let number = record["valuation"] as? NSNumber {
-            valuation = NSDecimalNumber(decimal: number.decimalValue)
+        if let data = record["valuation"] as? Data,
+            let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data)
+        {
+            valuation = unarchiver.decodeObject(of: NSDecimalNumber.self, forKey: "Valuation")
+            unarchiver.finishDecoding()
         } else {
             valuation = nil
         }
@@ -72,8 +78,22 @@ extension Purchase : CloudStorable {
         if keys?.contains("notes") ?? true { record["notes"] = notes }
         if keys?.contains("store") ?? true { record["store"] = store }
 
-        if keys?.contains("price") ?? true { record["price"] = price as NSDecimalNumber? }
-        if keys?.contains("valuation") ?? true { record["valuation"] = valuation as NSDecimalNumber? }
+        if keys?.contains("price") ?? true {
+            record["price"] = price.map {
+                let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                archiver.encode($0, forKey: "Price")
+                archiver.finishEncoding()
+                return archiver.encodedData as NSData
+            }
+        }
+        if keys?.contains("valuation") ?? true {
+            record["valuation"] = valuation.map {
+                let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                archiver.encode($0, forKey: "Valuation")
+                archiver.finishEncoding()
+                return archiver.encodedData as NSData
+            }
+        }
 
         if keys?.contains("models") ?? true {
             if let models = models?.array as? [Model] {
