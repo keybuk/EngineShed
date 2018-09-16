@@ -215,6 +215,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             purchaseRecord["condition"] = purchase.condition?.rawValue as NSNumber?
             purchaseRecord["valuation"] = purchase.valuation as NSNumber?
             purchaseRecord["notes"] = purchase.notes as NSString
+
+            if let price = purchase.price {
+                let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                archiver.encode(price, forKey: "Price")
+                archiver.finishEncoding()
+                purchaseRecord["price"] = archiver.encodedData as NSData
+            } else {
+                purchaseRecord["price"] = nil
+            }
+
+            if let valuation = purchase.valuation {
+                let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                archiver.encode(valuation, forKey: "Valuation")
+                archiver.finishEncoding()
+                purchaseRecord["valuation"] = archiver.encodedData as NSData
+            } else {
+                purchaseRecord["valuation"] = nil
+            }
+
             records.append(purchaseRecord)
 
             for (index, model) in purchase.models.enumerated() {
