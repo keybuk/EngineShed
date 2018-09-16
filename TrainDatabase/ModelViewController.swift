@@ -10,7 +10,7 @@ import Cocoa
 
 extension NSStoryboard.SceneIdentifier {
     
-    static let pickerViewController = NSStoryboard.SceneIdentifier("pickerViewController")
+    static let pickerViewController = "pickerViewController"
 }
 
 extension NSUserInterfaceItemIdentifier {

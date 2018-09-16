@@ -16,7 +16,7 @@ private extension NSUserInterfaceItemIdentifier {
 
 extension NSStoryboard.SceneIdentifier {
     
-    static let decoderTypeWindowController = NSStoryboard.SceneIdentifier("decoderTypeWindowController")
+    static let decoderTypeWindowController = "decoderTypeWindowController"
 
 }
 

@@ -10,7 +10,7 @@ import Cocoa
 
 extension NSImage.Name {
     
-    static let missingModelImage = NSImage.Name("739-question")
+    static let missingModelImage = "739-question"
 }
 
 class TrainMemberItem: NSCollectionViewItem {

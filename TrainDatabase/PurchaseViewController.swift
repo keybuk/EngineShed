@@ -11,8 +11,8 @@ import CoreData
 
 extension NSStoryboardSegue.Identifier {
     
-    static let purchaseModelsSegue = NSStoryboardSegue.Identifier("purchaseModelsSegue")
-    static let modelSegue = NSStoryboardSegue.Identifier("modelSegue")
+    static let purchaseModelsSegue = "purchaseModelsSegue"
+    static let modelSegue = "modelSegue"
 
 }
 

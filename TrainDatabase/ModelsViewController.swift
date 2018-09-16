@@ -18,7 +18,7 @@ extension NSUserInterfaceItemIdentifier {
 
 extension NSStoryboard.SceneIdentifier {
     
-    static let purchaseWindowController = NSStoryboard.SceneIdentifier("purchaseWindowController")
+    static let purchaseWindowController = "purchaseWindowController"
 }
 
 class ModelsViewController : NSViewController {

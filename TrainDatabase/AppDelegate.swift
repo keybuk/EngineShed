@@ -131,7 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let container = CKContainer(identifier: "iCloud.com.netsplit.EngineShed")
         let database = container.privateCloudDatabase
-        let zoneID = CKRecordZoneID(zoneName: "EngineShed", ownerName: CKCurrentUserDefaultName)
+        let zoneID = CKRecordZone.ID(zoneName: "EngineShed", ownerName: CKCurrentUserDefaultName)
         let zone = CKRecordZone(zoneID: zoneID)
 
         var records: [CKRecord] = []
@@ -151,7 +151,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     &trainMember.managedObject.systemFields,
                     recordID: &trainMember.managedObject.recordID,
                     orCreate: "TrainMember", in: zoneID)
-                trainMemberRecord["train"] = CKReference(record: trainRecord, action: .deleteSelf)
+                trainMemberRecord["train"] = CKRecord.Reference(record: trainRecord, action: .deleteSelf)
                 trainMemberRecord["index"] = index as NSNumber
                 trainMemberRecord["title"] = trainMember.title as NSString
                 trainMemberRecord["isFlipped"] = trainMember.isFlipped as NSNumber
@@ -184,7 +184,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     &decoder.managedObject.systemFields,
                     recordID: &decoder.managedObject.recordID,
                     orCreate: "Decoder", in: zoneID)
-                decoderRecord["type"] = CKReference(record: decoderTypeRecord, action: .deleteSelf)
+                decoderRecord["type"] = CKRecord.Reference(record: decoderTypeRecord, action: .deleteSelf)
                 decoderRecord["serialNumber"] = decoder.serialNumber as NSString
                 decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
                 decoderRecord["firmwareDate"] = decoder.firmwareDate as NSDate?
@@ -222,7 +222,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     &model.managedObject.systemFields,
                     recordID: &model.managedObject.recordID,
                     orCreate: "Model", in: zoneID)
-                modelRecord["purchase"] = CKReference(record: purchaseRecord, action: .deleteSelf)
+                modelRecord["purchase"] = CKRecord.Reference(record: purchaseRecord, action: .deleteSelf)
                 modelRecord["index"] = index as NSNumber
                 modelRecord["classification"] = model.classification?.rawValue as NSNumber?
                 modelRecord["image"] = model.imageURL.flatMap({ CKAsset(fileURL: $0) })
@@ -255,13 +255,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
                 if let decoder = model.decoder {
                     if let decoderRecord = decoderRecords[decoder] {
-                        decoderRecord["model"] = CKReference(record: modelRecord, action: .none)
+                        decoderRecord["model"] = CKRecord.Reference(record: modelRecord, action: .none)
                     } else {
                         let decoderRecord = CKRecord.fromSystemFields(
                             &decoder.managedObject.systemFields,
                             recordID: &decoder.managedObject.recordID,
                             orCreate: "Decoder", in: zoneID)
-                        decoderRecord["model"] = CKReference(record: modelRecord, action: .none)
+                        decoderRecord["model"] = CKRecord.Reference(record: modelRecord, action: .none)
                         decoderRecord["serialNumber"] = decoder.serialNumber as NSString
                         decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
                         decoderRecord["firmwareDate"] = decoder.firmwareDate as NSDate?
@@ -276,7 +276,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
                 if let trainMember = model.trainMember {
                     if let trainMemberRecord = trainMemberRecords[trainMember] {
-                        trainMemberRecord["model"] = CKReference(record: modelRecord, action: .none)
+                        trainMemberRecord["model"] = CKRecord.Reference(record: modelRecord, action: .none)
                     } else {
                         fatalError("Train member without train")
                     }
@@ -461,7 +461,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension CKRecord {
 
-    static func fromSystemFields(_ systemFields: inout Data?, recordID: inout CKRecordID?, orCreate recordType: String, in zoneID: CKRecordZoneID) -> CKRecord {
+    static func fromSystemFields(_ systemFields: inout Data?, recordID: inout CKRecord.ID?, orCreate recordType: String, in zoneID: CKRecordZone.ID) -> CKRecord {
 
         if let systemFields = systemFields {
             let archiver = NSKeyedUnarchiver(forReadingWith: systemFields)
@@ -475,7 +475,7 @@ extension CKRecord {
         }
 
         let recordName = UUID().uuidString
-        recordID = CKRecordID(recordName: recordName, zoneID: zoneID)
+        recordID = CKRecord.ID(recordName: recordName, zoneID: zoneID)
         let record = CKRecord(recordType: recordType, recordID: recordID!)
 
         let data = NSMutableData()

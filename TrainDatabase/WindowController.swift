@@ -11,7 +11,7 @@ import CoreData
 
 extension NSStoryboard.SceneIdentifier {
     
-    static let searchViewController = NSStoryboard.SceneIdentifier("searchViewController")
+    static let searchViewController = "searchViewController"
 }
 
 class WindowController : NSWindowController, RecordController {
@@ -50,7 +50,7 @@ class WindowController : NSWindowController, RecordController {
         sourceListViewController = splitViewController.splitViewItems[0].viewController as! SourceListViewController
         tabViewController = splitViewController.splitViewItems[1].viewController as! NSTabViewController
         
-        let purchaseSplitViewController = tabViewController.childViewControllers[0] as! NSSplitViewController
+        let purchaseSplitViewController = tabViewController.children[0] as! NSSplitViewController
         modelsViewController = purchaseSplitViewController.splitViewItems[0].viewController as! ModelsViewController
  
         sourceListViewController.delegate = self

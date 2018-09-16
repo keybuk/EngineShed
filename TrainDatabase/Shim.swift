@@ -11,7 +11,7 @@ import CoreData
 
 extension NSManagedObject {
 
-    public typealias CKRecord_ID = CKRecordID
-    public typealias CKRecordZone_ID = CKRecordZoneID
+    public typealias CKRecord_ID = CKRecord.ID
+    public typealias CKRecordZone_ID = CKRecordZone.ID
 
 }
