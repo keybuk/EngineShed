@@ -109,16 +109,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let coordinator = NSFileCoordinator()
         var error: NSError?
+        var copyError: NSError?
         coordinator.coordinate(readingItemAt: backupURL, options: .forUploading, error: &error) { zippedURL in
             do {
                 try fileManager.copyItem(at: zippedURL, to: backupFile)
             } catch let err {
-                error = err as NSError
+                copyError = err as NSError
             }
         }
         print("Zip done")
         
         if let error = error { throw error }
+        if let error = copyError { throw error }
         try fileManager.removeItem(at: backupURL)
 
         print("Backup complete")
