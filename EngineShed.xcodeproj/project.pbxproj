@@ -598,9 +598,9 @@
 		D2A4112421262FA600B6C198 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				D200F96C20DE238D003BC8D1 /* Character+Category.swift */,
 				D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */,
 				D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */,
+				D200F96C20DE238D003BC8D1 /* Character+Category.swift */,
 				D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */,
 			);
 			path = Util;

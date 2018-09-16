@@ -24,18 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         application.registerForRemoteNotifications()
 
         // Override point for customization after application launch.
-//        let splitViewController = self.window!.rootViewController as! UISplitViewController
-//        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-//        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-//        splitViewController.delegate = self
+        if let splitViewController = window?.rootViewController as? UISplitViewController {
+            let navigationController = splitViewController.viewControllers.last! as! UINavigationController
+            navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+            splitViewController.delegate = self
 
-//        let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
-//        let controller = masterNavigationController.topViewController as! ModelTableViewController
-//        controller.managedObjectContext = self.persistentContainer.viewContext
-
-        let masterNavigationController = self.window!.rootViewController as! UINavigationController
-        let controller = masterNavigationController.topViewController as! TrainCollectionViewController
-        controller.managedObjectContext = self.persistentContainer.viewContext
+            let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
+            let controller = masterNavigationController.topViewController as! ModelTableViewController
+            controller.managedObjectContext = persistentContainer.viewContext
+        } else if let masterNavigationController = window?.rootViewController as? UINavigationController {
+            let controller = masterNavigationController.topViewController as! TrainCollectionViewController
+            controller.managedObjectContext = persistentContainer.viewContext
+        }
 
         return true
     }
