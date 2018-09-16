@@ -103,7 +103,7 @@ extension SourceListViewController : NSOutlineViewDataSource {
             case .models:
                 return 6
             case .accessories:
-                return 1
+                return 2
             }
         default:
             return 0
@@ -144,6 +144,8 @@ extension SourceListViewController : NSOutlineViewDataSource {
                 switch index {
                 case 0:
                     return Member.decoders
+                case 1:
+                    return ModelClassification.accessory
                 default:
                     fatalError("Too many children in Accessories group")
                 }
@@ -203,7 +205,7 @@ extension SourceListViewController : NSOutlineViewDelegate {
             case .maintenance:
                 view.textField?.stringValue = "Maintenance"
             case .accessory:
-                view.textField?.stringValue = "Accesories"
+                view.textField?.stringValue = "Accessories"
             }
             return view
         case let member as Member:
