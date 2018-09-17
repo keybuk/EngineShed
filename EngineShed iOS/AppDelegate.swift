@@ -23,18 +23,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Register for remote notifications of changes to the iCloud database.
         application.registerForRemoteNotifications()
 
-        // Override point for customization after application launch.
-        if let splitViewController = window?.rootViewController as? UISplitViewController {
-            let navigationController = splitViewController.viewControllers.last! as! UINavigationController
-            navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
-            splitViewController.delegate = self
+        if let tabBarController = window?.rootViewController as? UITabBarController {
+            if let splitViewController = tabBarController.viewControllers?[0] as? UISplitViewController {
+                let navigationController = splitViewController.viewControllers.last! as! UINavigationController
+                navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+                splitViewController.delegate = self
 
-            let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
-            let controller = masterNavigationController.topViewController as! ModelTableViewController
-            controller.managedObjectContext = persistentContainer.viewContext
-        } else if let masterNavigationController = window?.rootViewController as? UINavigationController {
-            let controller = masterNavigationController.topViewController as! TrainCollectionViewController
-            controller.managedObjectContext = persistentContainer.viewContext
+                let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
+                let modelTableViewController = masterNavigationController.topViewController as! ModelTableViewController
+                modelTableViewController.managedObjectContext = persistentContainer.viewContext
+            }
+
+            if let navigationController = tabBarController.viewControllers?[1] as? UINavigationController {
+                let trainCollectionViewController = navigationController.topViewController as! TrainCollectionViewController
+                trainCollectionViewController.managedObjectContext = persistentContainer.viewContext
+            }
         }
 
         return true
