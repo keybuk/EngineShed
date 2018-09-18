@@ -1,5 +1,5 @@
 //
-//  ModelClassificationTableViewCell.swift
+//  ModelImageTableViewCell.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 9/17/18.
@@ -10,16 +10,15 @@ import UIKit
 
 import Database
 
-class ModelClassificationTableViewCell : UITableViewCell {
+class ModelImageTableViewCell : UITableViewCell, ModelSettable {
 
-    @IBOutlet weak var classificationImageView: UIImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
-
-    var classification: ModelClassification? {
+    var model: Model? {
         didSet {
             configureCell()
         }
     }
+
+    @IBOutlet weak var modelImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,9 +32,9 @@ class ModelClassificationTableViewCell : UITableViewCell {
     }
 
     func configureCell() {
-        guard let classification = classification else { return }
+        guard let model = model else { return }
 
-        descriptionLabel?.text = classification.description
+        modelImageView?.image = model.image
     }
 
 }

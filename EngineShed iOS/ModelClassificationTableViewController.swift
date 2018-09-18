@@ -11,7 +11,7 @@ import CoreData
 
 import Database
 
-class ModelClassificationTableViewController: UITableViewController {
+class ModelClassificationTableViewController : UITableViewController {
 
     var managedObjectContext: NSManagedObjectContext?
 

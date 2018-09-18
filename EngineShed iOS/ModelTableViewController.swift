@@ -77,15 +77,14 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "modelDetail" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let model = fetchedResultsController.object(at: indexPath)
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let model = fetchedResultsController.object(at: indexPath)
 
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.managedObjectContext = managedObjectContext
-                controller.model = model
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
-            }
+            let viewController = (segue.destination as! UINavigationController).topViewController as! ModelDetailTableViewController
+            viewController.managedObjectContext = managedObjectContext
+            viewController.model = model
+            viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            viewController.navigationItem.leftItemsSupplementBackButton = true
         }
     }
 

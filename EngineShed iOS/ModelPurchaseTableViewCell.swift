@@ -1,5 +1,5 @@
 //
-//  ModelClassificationTableViewCell.swift
+//  ModelPurchaseTableViewCell.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 9/17/18.
@@ -10,16 +10,16 @@ import UIKit
 
 import Database
 
-class ModelClassificationTableViewCell : UITableViewCell {
+class ModelPurchaseTableViewCell : UITableViewCell, ModelSettable {
 
-    @IBOutlet weak var classificationImageView: UIImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
-
-    var classification: ModelClassification? {
+    var model: Model? {
         didSet {
             configureCell()
         }
     }
+
+    @IBOutlet weak var purchaseLabel: UILabel!
+    @IBOutlet weak var purchaseDescriptionLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,9 +33,10 @@ class ModelClassificationTableViewCell : UITableViewCell {
     }
 
     func configureCell() {
-        guard let classification = classification else { return }
+        guard let purchase = model?.purchase else { return }
 
-        descriptionLabel?.text = classification.description
+        purchaseLabel.text = [ purchase.manufacturer, purchase.catalogNumber ].compactMap({ $0 }).joined(separator: " ")
+        purchaseDescriptionLabel.text = purchase.catalogDescription
     }
 
 }
