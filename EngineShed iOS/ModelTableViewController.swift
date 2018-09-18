@@ -15,7 +15,10 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
 
     weak var detailViewController: DetailViewController? = nil
 
-    var managedObjectContext: NSManagedObjectContext!
+    var managedObjectContext: NSManagedObjectContext?
+    var classification: ModelClassification?
+    var grouping: ModelGrouping = .modelClass
+
     var fetchRequest: NSFetchRequest<Model>!
 
     override func viewDidLoad() {
@@ -27,8 +30,10 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
             detailViewController = navigationController.topViewController as? DetailViewController
         }
 
-        if fetchRequest == nil {
-            fetchRequest = Model.fetchRequestForModels(context: managedObjectContext)
+        if fetchRequest == nil,
+            let managedObjectContext = managedObjectContext
+        {
+            fetchRequest = Model.fetchRequestForModels(context: managedObjectContext, classification: classification, groupBy: grouping)
         }
     }
 
@@ -53,14 +58,14 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "modelCell", for: indexPath) as! ModelTableViewCell
         let model = fetchedResultsController.object(at: indexPath)
-        cell.withModelClass = fetchedResultsController.sectionNameKeyPath != "modelClass"
+        cell.withModelClass = grouping != .modelClass
         cell.model = model
         return cell
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch fetchedResultsController.sectionNameKeyPath {
-        case "eraRawValue":
+        switch grouping {
+        case .era:
             let model = fetchedResultsController.sections?[section].objects?.first as? Model
             return model?.era?.description
         default:
@@ -87,20 +92,16 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
     // MARK: - Actions
 
     @IBAction func groupChanged(_ sender: UISegmentedControl) {
-        if fetchRequest.sortDescriptors?.first?.key != "modelClass" {
-            fetchRequest.sortDescriptors?.removeFirst()
-        }
-
         switch sender.selectedSegmentIndex {
-        case 0: break
-        case 1:
-            fetchRequest.sortDescriptors?.insert(NSSortDescriptor(key: "eraRawValue", ascending: true), at: 0)
-        case 2:
-            fetchRequest.sortDescriptors?.insert(NSSortDescriptor(key: "livery", ascending: true), at: 0)
+        case 0: grouping = .modelClass
+        case 1: grouping = .era
+        case 2: grouping = .livery
         default: return
         }
 
+        guard let managedObjectContext = managedObjectContext else { return }
         _fetchedResultsController = nil
+        fetchRequest = Model.fetchRequestForModels(context: managedObjectContext, classification: classification, groupBy: grouping)
         tableView.reloadData()
     }
 
@@ -112,7 +113,7 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
         }
 
         let sectionNameKeyPath = fetchRequest.sortDescriptors?.first?.key
-        let cacheName = sectionNameKeyPath.flatMap { "ModelTable.\($0)" }
+        let cacheName = classification.flatMap { "ModelTable.\($0).\(grouping)" } ?? "ModelTable.all.\(grouping)"
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
         fetchedResultsController.delegate = self
@@ -155,12 +156,12 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
             if let cell = tableView.cellForRow(at: indexPath!) as? ModelTableViewCell {
-                cell.withModelClass = fetchedResultsController.sectionNameKeyPath != "modelClass"
+                cell.withModelClass = grouping != .modelClass
                 cell.model = anObject as? Model
             }
         case .move:
             if let cell = tableView.cellForRow(at: indexPath!) as? ModelTableViewCell {
-                cell.withModelClass = fetchedResultsController.sectionNameKeyPath != "modelClass"
+                cell.withModelClass = grouping != .modelClass
                 cell.model = anObject as? Model
             }
             tableView.moveRow(at: indexPath!, to: newIndexPath!)

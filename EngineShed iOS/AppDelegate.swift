@@ -30,13 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 splitViewController.delegate = self
 
                 let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
-                let modelTableViewController = masterNavigationController.topViewController as! ModelTableViewController
-                modelTableViewController.managedObjectContext = persistentContainer.viewContext
+                let viewController = masterNavigationController.topViewController as! ModelClassificationTableViewController
+                viewController.managedObjectContext = persistentContainer.viewContext
             }
 
             if let navigationController = tabBarController.viewControllers?[1] as? UINavigationController {
-                let trainCollectionViewController = navigationController.topViewController as! TrainCollectionViewController
-                trainCollectionViewController.managedObjectContext = persistentContainer.viewContext
+                let viewController = navigationController.topViewController as! TrainCollectionViewController
+                viewController.managedObjectContext = persistentContainer.viewContext
             }
         }
 

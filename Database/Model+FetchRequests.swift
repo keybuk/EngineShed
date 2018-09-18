@@ -8,17 +8,43 @@
 
 import CoreData
 
+public enum ModelGrouping {
+
+    case modelClass
+    case era
+    case livery
+
+}
+
 extension Model {
 
-    public static func fetchRequestForModels(context: NSManagedObjectContext) -> NSFetchRequest<Model> {
+    public static func fetchRequestForModels(context: NSManagedObjectContext, classification: ModelClassification? = nil, groupBy grouping: ModelGrouping = .modelClass) -> NSFetchRequest<Model> {
         let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
         fetchRequest.fetchBatchSize = 20
-        fetchRequest.sortDescriptors = [
+
+        if let classification = classification {
+            fetchRequest.predicate = NSPredicate(format: "classificationRawValue == %d", classification.rawValue)
+        }
+
+
+        var sortDescriptors: [NSSortDescriptor] = []
+
+        switch grouping {
+        case .modelClass: break
+        case .era:
+            sortDescriptors.append(NSSortDescriptor(key: "eraRawValue", ascending: true))
+        case .livery:
+            sortDescriptors.append(NSSortDescriptor(key: "livery", ascending: true))
+        }
+
+        sortDescriptors.append(contentsOf: [
             NSSortDescriptor(key: "modelClass", ascending: true),
             NSSortDescriptor(key: "number", ascending: true),
             NSSortDescriptor(key: "name", ascending: true),
             NSSortDescriptor(key: "dispositionRawValue", ascending: true)
-        ]
+        ])
+
+        fetchRequest.sortDescriptors = sortDescriptors
 
         return fetchRequest
     }
