@@ -11,13 +11,7 @@ import CoreData
 extension Train {
 
     public override func willSave() {
-        if let members = members {
-            for (index, member) in members.enumerated() {
-                let index = Int16(clamping: index)
-                let member = member as! TrainMember
-                if member.index != index { member.index = index }
-            }
-        }
+        updateMemberIndexes()
     }
 
 }
