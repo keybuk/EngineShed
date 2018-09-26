@@ -46,9 +46,9 @@ class PurchaseViewController: NSViewController {
         
         switch identifier {
         case .purchaseModelsSegue:
-            purchaseModelsViewController = segue.destinationController as! PurchaseModelsViewController
+            purchaseModelsViewController = segue.destinationController as? PurchaseModelsViewController
         case .modelSegue:
-            modelViewController = segue.destinationController as! ModelViewController
+            modelViewController = segue.destinationController as? ModelViewController
         default:
             break
         }
