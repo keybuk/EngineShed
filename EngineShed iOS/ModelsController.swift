@@ -13,7 +13,7 @@ import Database
 
 class ModelsViewController : UITableViewController, NSFetchedResultsControllerDelegate {
 
-    weak var detailViewController: DetailViewController? = nil
+    weak var modelViewController: ModelViewController? = nil
 
     var managedObjectContext: NSManagedObjectContext?
     var classification: ModelClassification?
@@ -27,7 +27,7 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
         if let splitViewController = splitViewController,
             let navigationController = splitViewController.viewControllers.last as? UINavigationController
         {
-            detailViewController = navigationController.topViewController as? DetailViewController
+            modelViewController = navigationController.topViewController as? ModelViewController
         }
 
         if fetchRequest == nil,
