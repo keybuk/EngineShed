@@ -112,6 +112,8 @@
 		D2B9A1B42150C74600156100 /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B32150C74600156100 /* ModelViewController.swift */; };
 		D2B9A1B62150C77000156100 /* ModelImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B52150C77000156100 /* ModelImageCell.swift */; };
 		D2B9A1B82150D35D00156100 /* ModelPurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B72150D35D00156100 /* ModelPurchaseCell.swift */; };
+		D2BE3DD2215B593E0005D68F /* Purchase+Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */; };
+		D2BE3DD3215B593E0005D68F /* Purchase+Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */; };
 		D2DE5CB320F82A3100CABE34 /* ModelsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB220F82A3100CABE34 /* ModelsController.swift */; };
 		D2DE5CB520F82CAB00CABE34 /* ModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB420F82CAB00CABE34 /* ModelCell.swift */; };
 		D2DE5CB720F8431800CABE34 /* Model+Era.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB620F8431800CABE34 /* Model+Era.swift */; };
@@ -359,6 +361,7 @@
 		D2B9A1B32150C74600156100 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
 		D2B9A1B52150C77000156100 /* ModelImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelImageCell.swift; sourceTree = "<group>"; };
 		D2B9A1B72150D35D00156100 /* ModelPurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPurchaseCell.swift; sourceTree = "<group>"; };
+		D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Index.swift"; sourceTree = "<group>"; };
 		D2DE5CB220F82A3100CABE34 /* ModelsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsController.swift; sourceTree = "<group>"; };
 		D2DE5CB420F82CAB00CABE34 /* ModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCell.swift; sourceTree = "<group>"; };
 		D2DE5CB620F8431800CABE34 /* Model+Era.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Era.swift"; sourceTree = "<group>"; };
@@ -660,6 +663,7 @@
 		D2B2AF4920D8180300BEFC15 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */,
 				D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */,
 				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
 				D2AF28AC2110277300374975 /* Purchase+WillSave.swift */,
@@ -1422,6 +1426,7 @@
 				D2A4112221262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */,
 				D2AF28B921102DBC00374975 /* Model+FetchRequests.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
+				D2BE3DD2215B593E0005D68F /* Purchase+Index.swift in Sources */,
 				D298CB1A20D8143A00827F68 /* Model+Image.swift in Sources */,
 				D200F97320DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */,
 				D298CB2D20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
@@ -1468,6 +1473,7 @@
 				D298CB2820D8163A00827F68 /* Train+Storable.swift in Sources */,
 				D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
 				D298CAF420D737C800827F68 /* CloudProvider.swift in Sources */,
+				D2BE3DD3215B593E0005D68F /* Purchase+Index.swift in Sources */,
 				D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */,
 				D298CB2E20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
 				D298CB2C20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,

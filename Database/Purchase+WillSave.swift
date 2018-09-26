@@ -12,14 +12,7 @@ extension Purchase {
 
     public override func willSave() {
         updateCatalogNumberPrefix()
-
-        if let models = models {
-            for (index, model) in models.enumerated() {
-                let index = Int16(clamping: index)
-                let model = model as! Model
-                if model.index != index { model.index = index }
-            }
-        }
+        updateModelIndexes()
     }
 
 }
