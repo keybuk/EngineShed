@@ -1,5 +1,5 @@
 //
-//  TrainMemberCollectionViewCell.swift
+//  TrainMemberCell.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 7/23/18.
@@ -10,7 +10,7 @@ import UIKit
 
 import Database
 
-class TrainMemberCollectionViewCell : UICollectionViewCell {
+class TrainMemberCell : UICollectionViewCell {
 
     @IBOutlet weak var modelImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

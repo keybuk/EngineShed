@@ -1,5 +1,5 @@
 //
-//  ModelTableViewCell.swift
+//  ModelCell.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 7/12/18.
@@ -10,7 +10,7 @@ import UIKit
 
 import Database
 
-class ModelTableViewCell : UITableViewCell {
+class ModelCell : UITableViewCell {
 
     var withModelClass: Bool = true
     var model: Model? {

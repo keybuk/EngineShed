@@ -43,16 +43,16 @@
             </objects>
             <point key="canvasLocation" x="-46" y="-630"/>
         </scene>
-        <!--Model Detail Table View Controller-->
+        <!--Model View Controller-->
         <scene sceneID="dRQ-Ke-HNa">
             <objects>
-                <tableViewController id="de7-sQ-THj" customClass="ModelDetailTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="de7-sQ-THj" customClass="ModelViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f8S-kN-rXp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelImageCell" rowHeight="212" id="CdN-CC-eYJ" customClass="ModelImageTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelImageCell" rowHeight="212" id="CdN-CC-eYJ" customClass="ModelImageCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="212"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CdN-CC-eYJ" id="pmX-5C-ZSc">
@@ -79,7 +79,7 @@
                                     <outlet property="modelImageView" destination="d3R-ge-76B" id="Hxo-G9-pNn"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelPurchaseCell" rowHeight="94" id="x16-v2-afV" customClass="ModelPurchaseTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelPurchaseCell" rowHeight="94" id="x16-v2-afV" customClass="ModelPurchaseCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="240" width="375" height="94"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x16-v2-afV" id="Vfd-96-LGo">
@@ -163,7 +163,7 @@
         <!--Trains-->
         <scene sceneID="pLS-N7-dcP">
             <objects>
-                <collectionViewController id="69z-M6-R3o" customClass="TrainCollectionViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="69z-M6-R3o" customClass="TrainsViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="buV-sY-Igh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,7 +175,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trainMemberCell" id="V4J-cg-mCN" customClass="TrainMemberCollectionViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trainMemberCell" id="V4J-cg-mCN" customClass="TrainMemberCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -211,7 +211,7 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="trainHeaderView" id="icg-Pm-oln" customClass="TrainHeaderCollectionReusableView" customModule="EngineShed" customModuleProvider="target">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="trainHeaderView" id="icg-Pm-oln" customClass="TrainHeaderView" customModule="EngineShed" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
@@ -259,13 +259,13 @@
         <!--Models-->
         <scene sceneID="tnc-sO-MRL">
             <objects>
-                <tableViewController id="u35-Dq-xxe" customClass="ModelTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="u35-Dq-xxe" customClass="ModelsViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YgC-77-90j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelCell" rowHeight="68" id="3rb-v8-jvj" customClass="ModelTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelCell" rowHeight="68" id="3rb-v8-jvj" customClass="ModelCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3rb-v8-jvj" id="Jgd-9j-zbM">
@@ -320,7 +320,7 @@
                                     <outlet property="modelImageView" destination="vlu-uY-JKf" id="04F-oR-ukt"/>
                                     <outlet property="nameLabel" destination="NEg-Nu-tY0" id="Tlx-P4-RSa"/>
                                     <outlet property="numberLabel" destination="pEi-KX-T6f" id="h0B-am-TyG"/>
-                                    <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="modelDetail" id="7r7-ye-Aen"/>
+                                    <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="model" id="7r7-ye-Aen"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -364,16 +364,16 @@
             </objects>
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
-        <!--Model Classification Table View Controller-->
+        <!--Model Classifications View Controller-->
         <scene sceneID="JcB-ad-xPq">
             <objects>
-                <tableViewController id="sZo-Si-uck" customClass="ModelClassificationTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sZo-Si-uck" customClass="ModelClassificationsViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0P2-Of-aTM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelClassificationCell" id="Txg-gn-hoG" customClass="ModelClassificationTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelClassificationCell" id="Txg-gn-hoG" customClass="ModelClassificationCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Txg-gn-hoG" id="Iwd-Nq-bPC">
@@ -428,6 +428,6 @@
         <image name="R3612" width="1440" height="810"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7r7-ye-Aen"/>
+        <segue reference="Tll-UG-LXB"/>
     </inferredMetricsTieBreakers>
 </document>

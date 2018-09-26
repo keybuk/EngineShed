@@ -1,5 +1,5 @@
 //
-//  ModelPurchaseTableViewCell.swift
+//  ModelPurchaseCell.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 9/17/18.
@@ -10,7 +10,7 @@ import UIKit
 
 import Database
 
-class ModelPurchaseTableViewCell : UITableViewCell, ModelSettable {
+class ModelPurchaseCell : UITableViewCell, ModelSettable {
 
     var model: Model? {
         didSet {

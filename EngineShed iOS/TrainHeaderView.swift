@@ -1,5 +1,5 @@
 //
-//  TrainHeaderCollectionReusableView.swift
+//  TrainHeaderView.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 7/23/18.
@@ -10,7 +10,7 @@ import UIKit
 
 import Database
 
-class TrainHeaderCollectionReusableView : UICollectionReusableView {
+class TrainHeaderView : UICollectionReusableView {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!

@@ -1,5 +1,5 @@
 //
-//  TrainCollectionViewController.swift
+//  TrainsViewController.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 7/13/18.
@@ -11,7 +11,7 @@ import CoreData
 
 import Database
 
-class TrainCollectionViewController : UICollectionViewController, NSFetchedResultsControllerDelegate {
+class TrainsViewController : UICollectionViewController, NSFetchedResultsControllerDelegate {
 
     var managedObjectContext: NSManagedObjectContext!
     var fetchRequest: NSFetchRequest<TrainMember>!
@@ -39,14 +39,14 @@ class TrainCollectionViewController : UICollectionViewController, NSFetchedResul
     }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "trainHeaderView", for: indexPath) as! TrainHeaderCollectionReusableView
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "trainHeaderView", for: indexPath) as! TrainHeaderView
         let trainMember = fetchedResultsController.object(at: indexPath)
         view.train = trainMember.train
         return view
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainMemberCell", for: indexPath) as! TrainMemberCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "trainMemberCell", for: indexPath) as! TrainMemberCell
         let trainMember = fetchedResultsController.object(at: indexPath)
         cell.trainMember = trainMember
         return cell

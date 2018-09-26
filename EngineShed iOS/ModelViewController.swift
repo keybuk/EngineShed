@@ -1,5 +1,5 @@
 //
-//  ModelDetailTableViewController.swift
+//  ModelViewController.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 9/17/18.
@@ -17,7 +17,7 @@ protocol ModelSettable : class {
 
 }
 
-class ModelDetailTableViewController : UITableViewController {
+class ModelViewController : UITableViewController {
 
     var managedObjectContext: NSManagedObjectContext?
     

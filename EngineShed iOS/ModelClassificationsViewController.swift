@@ -1,5 +1,5 @@
 //
-//  ModelClassificationTableViewController.swift
+//  ModelClassificationsViewController.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 9/17/18.
@@ -11,7 +11,7 @@ import CoreData
 
 import Database
 
-class ModelClassificationTableViewController : UITableViewController {
+class ModelClassificationsViewController : UITableViewController {
 
     var managedObjectContext: NSManagedObjectContext?
 
@@ -36,7 +36,7 @@ class ModelClassificationTableViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "modelClassificationCell", for: indexPath) as! ModelClassificationTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "modelClassificationCell", for: indexPath) as! ModelClassificationCell
         cell.classification = ModelClassification.allCases[indexPath.row]
         return cell
     }
@@ -47,7 +47,7 @@ class ModelClassificationTableViewController : UITableViewController {
         if segue.identifier == "models" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
 
-            let viewController = segue.destination as! ModelTableViewController
+            let viewController = segue.destination as! ModelsViewController
             viewController.managedObjectContext = managedObjectContext
             viewController.classification = ModelClassification.allCases[indexPath.row]
         }

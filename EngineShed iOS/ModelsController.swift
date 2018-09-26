@@ -1,5 +1,5 @@
 //
-//  ModelTableViewController.swift
+//  ModelsViewController.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 7/12/18.
@@ -11,7 +11,7 @@ import CoreData
 
 import Database
 
-class ModelTableViewController : UITableViewController, NSFetchedResultsControllerDelegate {
+class ModelsViewController : UITableViewController, NSFetchedResultsControllerDelegate {
 
     weak var detailViewController: DetailViewController? = nil
 
@@ -56,7 +56,7 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "modelCell", for: indexPath) as! ModelTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "modelCell", for: indexPath) as! ModelCell
         let model = fetchedResultsController.object(at: indexPath)
         cell.withModelClass = grouping != .modelClass
         cell.model = model
@@ -76,11 +76,11 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "modelDetail" {
+        if segue.identifier == "model" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let model = fetchedResultsController.object(at: indexPath)
 
-            let viewController = (segue.destination as! UINavigationController).topViewController as! ModelDetailTableViewController
+            let viewController = (segue.destination as! UINavigationController).topViewController as! ModelViewController
             viewController.managedObjectContext = managedObjectContext
             viewController.model = model
             viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -154,12 +154,12 @@ class ModelTableViewController : UITableViewController, NSFetchedResultsControll
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
-            if let cell = tableView.cellForRow(at: indexPath!) as? ModelTableViewCell {
+            if let cell = tableView.cellForRow(at: indexPath!) as? ModelCell {
                 cell.withModelClass = grouping != .modelClass
                 cell.model = anObject as? Model
             }
         case .move:
-            if let cell = tableView.cellForRow(at: indexPath!) as? ModelTableViewCell {
+            if let cell = tableView.cellForRow(at: indexPath!) as? ModelCell {
                 cell.withModelClass = grouping != .modelClass
                 cell.model = anObject as? Model
             }
