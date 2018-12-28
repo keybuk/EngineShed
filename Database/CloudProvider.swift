@@ -320,22 +320,11 @@ public final class CloudProvider {
         // Create a single operation to fetch changes to all zones, providing the appropriate
         // change token to each. In theory we only ever have one zone, but this should future-proof
         // the code for supporting sharing later on.
-        let operation: CKFetchRecordZoneChangesOperation
-        if #available(macOS 10.14, iOS 12.0, *) {
-            let configurations = zoneServerChangeToken.mapValues {
-                CKFetchRecordZoneChangesOperation.ZoneConfiguration(previousServerChangeToken: $0, resultsLimit: nil, desiredKeys: nil)
-            }
-
-            operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: changedZoneIDs, configurationsByRecordZoneID: configurations)
-        } else {
-            let options = zoneServerChangeToken.mapValues { (serverChangeToken: CKServerChangeToken?) -> CKFetchRecordZoneChangesOperation.ZoneOptions in
-                let zoneOptions = CKFetchRecordZoneChangesOperation.ZoneOptions()
-                zoneOptions.previousServerChangeToken = serverChangeToken
-                return zoneOptions
-            }
-
-            operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: changedZoneIDs, optionsByRecordZoneID: options)
+        let configurations = zoneServerChangeToken.mapValues {
+            CKFetchRecordZoneChangesOperation.ZoneConfiguration(previousServerChangeToken: $0, resultsLimit: nil, desiredKeys: nil)
         }
+
+        let operation = CKFetchRecordZoneChangesOperation(recordZoneIDs: changedZoneIDs, configurationsByRecordZoneID: configurations)
         operation.fetchAllChanges = true
 
         // On error we cancel the operation and stash the error here, so we can return it to the

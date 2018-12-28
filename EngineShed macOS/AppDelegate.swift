@@ -18,11 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         cloudProvider.start()
 
         // Register for remote notifications of changes to the iCloud database.
-        if #available(macOS 10.14, *) {
-            NSApplication.shared.registerForRemoteNotifications()
-        } else {
-            NSApplication.shared.registerForRemoteNotifications(matching: [])
-        }
+        NSApplication.shared.registerForRemoteNotifications()
 
         // Insert code here to initialize your application
     }
