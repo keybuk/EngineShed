@@ -18,10 +18,12 @@
 		D215BEAC20D4B53A0054FDCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D215BEAA20D4B53A0054FDCC /* Main.storyboard */; };
 		D215BEB820D4B53A0054FDCC /* EngineShedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEB720D4B53A0054FDCC /* EngineShedTests.swift */; };
 		D215BEC320D4B53A0054FDCC /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */; };
+		D2278DFD21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */; };
+		D2278DFE21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */; };
 		D248355721D6E23A00495FC0 /* CloudObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355621D6E23A00495FC0 /* CloudObserver.swift */; };
 		D248355821D6E23A00495FC0 /* CloudObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355621D6E23A00495FC0 /* CloudObserver.swift */; };
-		D248355D21D845B200495FC0 /* DatabaseState+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355C21D845B200495FC0 /* DatabaseState+Fetch.swift */; };
-		D248355E21D845B200495FC0 /* DatabaseState+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355C21D845B200495FC0 /* DatabaseState+Fetch.swift */; };
+		D248355D21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */; };
+		D248355E21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */; };
 		D248356021D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */; };
 		D248356121D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */; };
 		D27FC2402150BE0E00AA522B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */; };
@@ -299,8 +301,9 @@
 		D215BEBE20D4B53A0054FDCC /* EngineShed macOS UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed macOS UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
 		D215BEC420D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZoneState+Provider.swift"; sourceTree = "<group>"; };
 		D248355621D6E23A00495FC0 /* CloudObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudObserver.swift; sourceTree = "<group>"; };
-		D248355C21D845B200495FC0 /* DatabaseState+Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseState+Fetch.swift"; sourceTree = "<group>"; };
+		D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseState+Observer.swift"; sourceTree = "<group>"; };
 		D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+PerformAndWait.swift"; sourceTree = "<group>"; };
 		D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
 		D28758252105FEEE00EF722D /* TrainMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberCell.swift; sourceTree = "<group>"; };
@@ -789,7 +792,8 @@
 		D2DE5CC520F855DB00CABE34 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
-				D248355C21D845B200495FC0 /* DatabaseState+Fetch.swift */,
+				D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */,
+				D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */,
 				D248355621D6E23A00495FC0 /* CloudObserver.swift */,
 				D298CAF220D737C800827F68 /* CloudProvider.swift */,
 				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
@@ -1427,12 +1431,13 @@
 				D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */,
 				D298CB2920D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
 				D29E457F20DB23FF000624B5 /* CloudStorable.swift in Sources */,
-				D248355D21D845B200495FC0 /* DatabaseState+Fetch.swift in Sources */,
+				D248355D21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */,
 				D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */,
 				D29E458220DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */,
 				D29E457C20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */,
 				D298CB3120D8163A00827F68 /* Model+Storable.swift in Sources */,
 				D248355721D6E23A00495FC0 /* CloudObserver.swift in Sources */,
+				D2278DFD21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */,
 				D29E457620DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
 				D2B50BA220D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */,
 				D2DE5CBE20F8517500CABE34 /* Model+Disposition.swift in Sources */,
@@ -1496,10 +1501,11 @@
 				D298CB2820D8163A00827F68 /* Train+Storable.swift in Sources */,
 				D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
 				D298CAF420D737C800827F68 /* CloudProvider.swift in Sources */,
-				D248355E21D845B200495FC0 /* DatabaseState+Fetch.swift in Sources */,
+				D248355E21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */,
 				D2BE3DD3215B593E0005D68F /* Purchase+Index.swift in Sources */,
 				D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */,
 				D298CB2E20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
+				D2278DFE21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */,
 				D298CB2C20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,
 				D2A4112321262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */,
 				D298CB3420D8163A00827F68 /* Purchase+Storable.swift in Sources */,

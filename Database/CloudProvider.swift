@@ -202,11 +202,13 @@ public final class CloudProvider {
         }
 
         // Create the primary zone before we modify records, but for performance reasons, only
-        // do this if we don't think it exists.
-//        if !hasZone {
+        // do this if we don't think it exists, or we know it's been deleted and wasn't purged.
+        // TODO(SE-0230): if try? ... == nil
+        let zoneState = try? ZoneState.fetch(context: persistentContainer.viewContext, for: zoneID, in: database)
+        if zoneState == nil || zoneState! == nil || (zoneState!!.shouldDelete && !zoneState!!.isPurged) {
             let zoneOperation = createZoneOperation()
             operation.addDependency(zoneOperation)
-//        }
+        }
 
         operation.qualityOfService = .utility
         database.add(operation)

@@ -1,5 +1,5 @@
 //
-//  DatabaseState+Fetch.swift
+//  DatabaseState+Observer.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 12/29/18.
@@ -10,17 +10,12 @@ import Foundation
 import CoreData
 import CloudKit
 
-// Extend the DatabaseState core data object to support the basic methods required by
-// `CloudObserver`.
+// Extend the DatabaseState core data object to support the methods required by `CloudObserver`.
 extension DatabaseState {
 
-    enum DatabaseStateError : Error {
-
+    enum Error : Swift.Error {
         /// Inconsistent state caused by multiple sync tokens for the same database.
-        case multipleDatabaseSyncTokens
-
-        /// Inconsistent state causde by multiple sync tokens for the same zone.
-        case multipleZoneSyncTokens
+        case multipleTokens
     }
 
     /// Returns the `DatabaseState` object for the CloudKit database.
@@ -39,7 +34,7 @@ extension DatabaseState {
         return try context.performAndWait {
             let results = try fetchRequest.execute()
             if results.count > 1 {
-                throw DatabaseStateError.multipleDatabaseSyncTokens
+                throw Error.multipleTokens
             } else if results.count > 0 {
                 return results.first!
             } else {
@@ -64,7 +59,7 @@ extension DatabaseState {
         return try managedObjectContext!.performAndWait {
             let results = try fetchRequest.execute()
             if results.count > 1 {
-                throw DatabaseStateError.multipleZoneSyncTokens
+                throw ZoneState.Error.multipleTokens
             } else if results.count > 0 {
                 return results.first!
             } else {

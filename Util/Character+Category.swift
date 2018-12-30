@@ -11,7 +11,7 @@ import Foundation
 extension Character {
 
     public enum Category {
-        // TODO: Remove once SE-0211 is implemented.
+        // TODO(SE-0211): Remove once implemented.
         case decimalDigit
         case letter
         case punctuation
@@ -24,7 +24,7 @@ extension Character {
 
     /// Returns the Unicode category of this character.
     public var category: Category {
-        // TODO: Update once SE-0211 is implemented.
+        // TODO(SE-0211): Update or remove once implemented.
         let scalars = CharacterSet(unicodeScalars)
         if CharacterSet.decimalDigits.isSuperset(of: scalars) {
             return .decimalDigit
