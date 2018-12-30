@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 import CoreData
 
 import Database
@@ -19,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Set up the CloudKit Provider.
         cloudProvider.start()
+
+        // Subscribe to, and fetch changes from CloudKit.
+        cloudObserver.subscribeToChanges()
+        cloudObserver.fetchChanges()
 
         // Register for remote notifications of changes to the iCloud database.
         application.registerForRemoteNotifications()
@@ -80,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Remote Notification")
         
-        cloudProvider.handleRemoteNotification(userInfo) { error in
+        cloudObserver.handleRemoteNotification(userInfo) { error in
             if let _ = error {
                 completionHandler(.failed)
             } else {
@@ -150,8 +155,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     // MARK: - CloudKit stack
+    let containerID = "iCloud.com.netsplit.EngineShed"
+
+    lazy var cloudContainer: CKContainer = {
+        return CKContainer(identifier: containerID)
+    }()
+
+    lazy var cloudObserver: CloudObserver = {
+        let observer = CloudObserver(database: cloudContainer.privateCloudDatabase, persistentContainer: persistentContainer)
+        return observer
+    }()
+
     lazy var cloudProvider: CloudProvider = {
-        let provider = CloudProvider(persistentContainer: persistentContainer)
+        let provider = CloudProvider(container: cloudContainer, database: cloudContainer.privateCloudDatabase, persistentContainer: persistentContainer)
         return provider
     }()
 

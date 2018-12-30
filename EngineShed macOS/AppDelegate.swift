@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import CloudKit
+import CoreData
 
 import Database
 
@@ -16,6 +18,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Set up the CloudKit Provider.
         cloudProvider.start()
+
+        // Subscribe to, and fetch changes from CloudKit.
+        cloudObserver.subscribeToChanges()
+        cloudObserver.fetchChanges()
 
         // Register for remote notifications of changes to the iCloud database.
         NSApplication.shared.registerForRemoteNotifications()
@@ -44,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func application(_ application: NSApplication, didReceiveRemoteNotification userInfo: [String : Any]) {
         print("Remote Notification")
 
-        cloudProvider.handleRemoteNotification(userInfo) { error in
+        cloudObserver.handleRemoteNotification(userInfo) { error in
             if let error = error {
                 print("Error handling notification \(error)")
             }
@@ -153,8 +159,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // MARK: - CloudKit stack
+    let containerID = "iCloud.com.netsplit.EngineShed"
+
+    lazy var cloudContainer: CKContainer = {
+        return CKContainer(identifier: containerID)
+    }()
+
+    lazy var cloudObserver: CloudObserver = {
+        let observer = CloudObserver(database: cloudContainer.privateCloudDatabase, persistentContainer: persistentContainer)
+        return observer
+    }()
+
     lazy var cloudProvider: CloudProvider = {
-        let provider = CloudProvider(persistentContainer: persistentContainer)
+        let provider = CloudProvider(container: cloudContainer, database: cloudContainer.privateCloudDatabase, persistentContainer: persistentContainer)
         return provider
     }()
 

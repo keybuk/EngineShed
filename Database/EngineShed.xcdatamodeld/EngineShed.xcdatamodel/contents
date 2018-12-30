@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.2.4" systemVersion="17G2208" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Coupling" representedClassName="Coupling" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="couplings" inverseEntity="Model" syncable="YES"/>
+    </entity>
+    <entity name="DatabaseState" representedClassName="DatabaseState" syncable="YES" codeGenerationType="class">
+        <attribute name="scopeRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="serverChangeToken" optional="YES" attributeType="Transformable" customClassName="CloudKit.CKServerChangeToken" syncable="YES"/>
+        <relationship name="zoneState" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ZoneState" inverseName="databaseState" inverseEntity="ZoneState" syncable="YES"/>
     </entity>
     <entity name="Decoder" representedClassName="Decoder" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -131,6 +136,14 @@
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="trainMember" inverseEntity="Model" syncable="YES"/>
         <relationship name="train" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Train" inverseName="members" inverseEntity="Train" syncable="YES"/>
     </entity>
+    <entity name="ZoneState" representedClassName="ZoneState" syncable="YES" codeGenerationType="class">
+        <attribute name="isDirty" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isPurged" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="serverChangeToken" optional="YES" attributeType="Transformable" customClassName="CloudKit.CKServerChangeToken" syncable="YES"/>
+        <attribute name="shouldDelete" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
+        <relationship name="databaseState" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DatabaseState" inverseName="zoneState" inverseEntity="DatabaseState" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Coupling" positionX="333" positionY="261" width="128" height="75"/>
         <element name="Decoder" positionX="324" positionY="252" width="128" height="210"/>
@@ -146,5 +159,7 @@
         <element name="Task" positionX="288" positionY="216" width="128" height="75"/>
         <element name="Train" positionX="360" positionY="288" width="128" height="150"/>
         <element name="TrainMember" positionX="351" positionY="279" width="128" height="165"/>
+        <element name="DatabaseState" positionX="315" positionY="351" width="128" height="90"/>
+        <element name="ZoneState" positionX="324" positionY="360" width="128" height="135"/>
     </elements>
 </model>
