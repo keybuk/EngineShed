@@ -18,12 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Set up the CloudKit Provider.
-        cloudProvider.start()
-
-        // Subscribe to, and fetch changes from CloudKit.
-        cloudObserver.subscribeToChanges()
-        cloudObserver.fetchChanges()
+        persistentContainer.syncWithCloud()
 
         // Register for remote notifications of changes to the iCloud database.
         application.registerForRemoteNotifications()
@@ -85,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Remote Notification")
         
-        cloudObserver.handleRemoteNotification(userInfo) { error in
+        persistentContainer.cloudObserver.handleRemoteNotification(userInfo) { error in
             if let _ = error {
                 completionHandler(.failed)
             } else {
@@ -107,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
     // MARK: - Core Data stack
 
-    lazy var persistentContainer: NSPersistentContainer = {
+    lazy var persistentContainer: PersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
@@ -153,23 +148,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         }
     }
-
-    // MARK: - CloudKit stack
-    let containerID = "iCloud.com.netsplit.EngineShed"
-
-    lazy var cloudContainer: CKContainer = {
-        return CKContainer(identifier: containerID)
-    }()
-
-    lazy var cloudObserver: CloudObserver = {
-        let observer = CloudObserver(database: cloudContainer.privateCloudDatabase, persistentContainer: persistentContainer)
-        return observer
-    }()
-
-    lazy var cloudProvider: CloudProvider = {
-        let provider = CloudProvider(container: cloudContainer, database: cloudContainer.privateCloudDatabase, persistentContainer: persistentContainer)
-        return provider
-    }()
 
 }
 
