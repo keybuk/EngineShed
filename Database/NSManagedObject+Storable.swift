@@ -13,6 +13,35 @@ import CoreData
 // be used by `CloudObserver` and `CloudProvider`.
 extension CloudStorable where Self : NSManagedObject {
 
+    /// Returns an object for a CloudKit record.
+    ///
+    /// The existing object with the given `recordID` is returned, or if one does not exist, a
+    /// new object is created.
+    ///
+    /// Note the while the newly created object will have the correct `recordID`, any
+    /// `systemFields` or values will be missing so it is not possible to sync this to a CloudKit
+    /// record without first syncing it from that record.
+    ///
+    /// - Parameters:
+    ///   - recordID: CloudKit record ID for the object.
+    ///   - context: managed object context for the fetch and creation.
+    ///
+    /// - Returns: existing or newly created object.
+    static func objectForRecordID(_ recordID: CKRecord.ID, in context: NSManagedObjectContext) throws -> Self {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "recordID == %@", recordID)
+        
+        let objects = try context.fetch(fetchRequest)
+        if let object = objects.first as? Self { return object }
+        
+        // Create the object, only fill in the record and zone at this point.
+        let object = Self(context: context)
+        object.recordID = recordID
+        object.zoneID = recordID.zoneID
+        return object
+    }
+    
+
     // MARK: CloudObserver methods
     
     /// Sync an object from a CloudKit record.
@@ -86,34 +115,6 @@ extension CloudStorable where Self : NSManagedObject {
 
     // MARK: CloudProvider methods.
 
-    /// Returns an object for a CloudKit record.
-    ///
-    /// The existing object with the given `recordID` is returned, or if one does not exist, a
-    /// new object is created.
-    ///
-    /// Note the while the newly created object will have the correct `recordID`, any
-    /// `systemFields` or values will be missing so it is not possible to sync this to a CloudKit
-    /// record without first syncing it from that record.
-    ///
-    /// - Parameters:
-    ///   - recordID: CloudKit record ID for the object.
-    ///   - context: managed object context for the fetch and creation.
-    ///
-    /// - Returns: existing or newly created object.
-    static func objectForRecordID(_ recordID: CKRecord.ID, in context: NSManagedObjectContext) throws -> Self {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "recordID == %@", recordID)
-
-        let objects = try context.fetch(fetchRequest)
-        if let object = objects.first as? Self { return object }
-
-        // Create the object, only fill in the record and zone at this point.
-        let object = Self(context: context)
-        object.recordID = recordID
-        object.zoneID = recordID.zoneID
-        return object
-    }
-    
     /// Create a CloudKit record in the given zone.
     ///
     /// A new record ID is created automatically and `systemFields` saved so that this object may
