@@ -229,15 +229,24 @@ class CatalogNumberPrefixTests : XCTestCase {
         XCTAssertEqual(catalogNumberPrefix, "OR763TO002")
     }
 
-    /// Check that an Oxford Diecast 76CONT001 number has the trailing number removed.
+    /// Check that an Oxford Diecast 76CONT001 number is preserved.
     func testOxfordDiecast() {
         let purchase = Purchase(context: container!.viewContext)
-        purchase.manufacturer = "Oxford Rail"
+        purchase.manufacturer = "Oxford Diecast"
         purchase.catalogNumber = "76CONT001"
-        // FIXME: this might not be the correct handling for these.
 
         let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
-        XCTAssertEqual(catalogNumberPrefix, "76CONT")
+        XCTAssertEqual(catalogNumberPrefix, "76CONT001")
+    }
+
+    /// Check that an Oxford Diecast 76CONT00124 number has the running number removed.
+    func testOxfordDiecastRunningNumber() {
+        let purchase = Purchase(context: container!.viewContext)
+        purchase.manufacturer = "Oxford Diecast"
+        purchase.catalogNumber = "76CONT00124"
+
+        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        XCTAssertEqual(catalogNumberPrefix, "76CONT001")
     }
 
     // MARK: Others

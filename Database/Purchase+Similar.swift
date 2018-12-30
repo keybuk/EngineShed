@@ -41,10 +41,9 @@ extension Purchase {
             return parts.dropLast().joined()
         }
 
-        // Oxford Diecast style; number, letter, long number.
-        if categories == [ .decimalDigit, .letter, .decimalDigit ] && parts[2].count > 2 {
-            // FIXME: right now this turns 76CONT00124 into 76CONT, along with 76CONT002. I don't know if that's right now or not, it might need to be just 76CONT001.
-            return parts.dropLast().joined()
+        // Oxford Diecast style; number, letter, long number. Shrink long number to three digits.
+        if categories == [ .decimalDigit, .letter, .decimalDigit ] && parts[2].count > 3 {
+            return (parts[..<2] + parts[2...].map { $0.prefix(3) }).joined()
         }
 
         return parts.joined()
