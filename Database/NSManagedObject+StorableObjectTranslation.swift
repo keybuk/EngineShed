@@ -9,8 +9,11 @@
 import CloudKit
 import CoreData
 
-// When `NSManagedObject` conforms to `StorableObjectTranslation`, provide methods to act on
-// objects and group of objects without knowing the underlying entity type.
+/// When `NSManagedObject` conforms to `StorableObjectTranslation`, provide methods to act on
+/// objects and group of objects without knowing the underlying entity type.
+///
+/// These methods map directly to methods of the same name and equivalent type signature in
+/// `CloudStorable`, after expanding the correct entity type.
 extension StorableObjectTranslation where Self : NSManagedObject {
 
     /// Returns the correct `NSManagedObject` subclass for the entity matching `recordType`.
@@ -31,12 +34,7 @@ extension StorableObjectTranslation where Self : NSManagedObject {
     ///     object `systemFields` updated.
     static func syncObjectFromRecord(_ record: CKRecord, in context: NSManagedObjectContext, updateValues: Bool = true) throws {
         guard let storableClass = classForRecordType(record.recordType) else { return }
-
-        let object = try storableClass.objectForRecordID(record.recordID, in: context)
-        if updateValues {
-            try object.update(from: record)
-        }
-        object.saveSystemFields(from: record)
+        try storableClass.syncObjectFromRecord(record, in: context, updateValues: updateValues)        
     }
 
     /// Delete all objects for CloudKit records.
@@ -51,7 +49,7 @@ extension StorableObjectTranslation where Self : NSManagedObject {
     static func deleteObjectsForRecords(_ deletedRecords: [CKRecord.RecordType: [CKRecord.ID]], in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
         for (recordType, recordIDs) in deletedRecords {
             guard let storableClass = classForRecordType(recordType) else { continue }
-            try storableClass.deleteObjects(recordIDs: recordIDs, zoneIDs: nil, in: context, mergeTo: mergeContext)
+            try storableClass.deleteObjectsForRecords(recordIDs, in: context, mergeTo: mergeContext)
         }
     }
 
@@ -65,7 +63,7 @@ extension StorableObjectTranslation where Self : NSManagedObject {
     ///   - mergeContext: managed object context to merge changes back to, or `nil`.
     static func deleteObjectsForZoneIDs(_ zoneIDs: [CKRecordZone.ID], in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
         for (_, storableClass) in storableTypes {
-            try storableClass.deleteObjects(recordIDs: nil, zoneIDs: zoneIDs, in: context, mergeTo: mergeContext)
+            try storableClass.deleteObjectsForZoneIDs(zoneIDs, in: context, mergeTo: mergeContext)
         }
     }
 

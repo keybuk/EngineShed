@@ -10,8 +10,81 @@ import CloudKit
 import CoreData
 
 // When an `NSManagedObject` conforms to `CloudStorable`, provide additional methods to allow it to
-// be used by `CloudProvider`.
+// be used by `CloudObserver` and `CloudProvider`.
 extension CloudStorable where Self : NSManagedObject {
+
+    // MARK: CloudObserver methods
+    
+    /// Sync an object from a CloudKit record.
+    ///
+    /// The existing object with the given `recordID`, or a newly created object if one does not
+    /// exist, is synchronised with the contents of the CloudKit `record`.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to synchronize to the object.
+    ///   - context: managed object context for the fetch and creation.
+    ///   - updateValues: set to `false` if values in `record` should be ignored, and only the
+    ///     object `systemFields` updated.
+    static func syncObjectFromRecord(_ record: CKRecord, in context: NSManagedObjectContext, updateValues: Bool = true) throws {
+        let object = try objectForRecordID(record.recordID, in: context)
+        if updateValues {
+            try object.update(from: record)
+        }
+        object.saveSystemFields(from: record)
+    }
+    
+    /// Delete all objects for CloudKit records.
+    ///
+    /// Once the deletion is done, changes are merged back to the context `mergeContext`.
+    ///
+    /// - Parameters:
+    ///   - recordIDs: Array of CloudKit record IDs to be deleted.
+    ///   - context: managed object context for the deletion.
+    ///   - mergeContext: managed object context to merge changes back to, or `nil`.
+    static func deleteObjectsForRecords(_ recordIDs: [CKRecord.ID], in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "recordID IN %@", recordIDs)
+        
+        try willDeleteObjects(matching: fetchRequest, in: context)
+        
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        deleteRequest.resultType = .resultTypeObjectIDs
+        
+        let result = try context.execute(deleteRequest) as! NSBatchDeleteResult
+        if let deletedObjects = result.result as? [NSManagedObjectID],
+            let mergeContext = mergeContext
+        {
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSDeletedObjectsKey: deletedObjects], into: [mergeContext])
+        }
+    }
+    
+    /// Delete all objects in CloudKit zones.
+    ///
+    /// Once the deletion is done, changes are merged back to the context `mergeContext`.
+    ///
+    /// - Parameters:
+    ///   - zoneIDs: CloudKit zoneIDs in which all records should be deleted.
+    ///   - context: managed object context for the deletion.
+    ///   - mergeContext: managed object context to merge changes back to, or `nil`.
+    static func deleteObjectsForZoneIDs(_ zoneIDs: [CKRecordZone.ID], in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "zoneID IN %@", zoneIDs)
+        
+        try willDeleteObjects(matching: fetchRequest, in: context)
+        
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        deleteRequest.resultType = .resultTypeObjectIDs
+        
+        let result = try context.execute(deleteRequest) as! NSBatchDeleteResult
+        if let deletedObjects = result.result as? [NSManagedObjectID],
+            let mergeContext = mergeContext
+        {
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSDeletedObjectsKey: deletedObjects], into: [mergeContext])
+        }
+    }
+    
+
+    // MARK: CloudProvider methods.
 
     /// Returns an object for a CloudKit record.
     ///
@@ -40,46 +113,7 @@ extension CloudStorable where Self : NSManagedObject {
         object.zoneID = recordID.zoneID
         return object
     }
-
-    /// Delete all objects for CloudKit records.
-    ///
-    /// This may be called for either a set of known `recordIDs`, or for one or more `zoneIDs`.
-    ///
-    /// Once the deletion is done, changes are merged back to the context `mergeContext`.
-    ///
-    /// - Parameters:
-    ///   - recordIDs: CloudKit record IDs to be deleted, or `nil`.
-    ///   - zoneIDs: CloudKit zoneIDs in which all records should be deleted, or `nil`.
-    ///   - context: managed object context for the deletion.
-    ///   - mergeContext: managed object context to merge changes back to, or `nil`.
-    static func deleteObjects(recordIDs: [CKRecord.ID]?, zoneIDs: [CKRecordZone.ID]?, in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
-        if let recordIDs = recordIDs {
-            fetchRequest.predicate = NSPredicate(format: "recordID IN %@", recordIDs)
-        } else if let zoneIDs = zoneIDs {
-            fetchRequest.predicate = NSPredicate(format: "zoneID IN %@", zoneIDs)
-        }
-
-        try willDeleteObjects(matching: fetchRequest, in: context)
-
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        deleteRequest.resultType = .resultTypeObjectIDs
-
-        let result = try context.execute(deleteRequest) as! NSBatchDeleteResult
-        if let deletedObjects = result.result as? [NSManagedObjectID],
-            let mergeContext = mergeContext
-        {
-            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSDeletedObjectsKey: deletedObjects], into: [mergeContext])
-        }
-    }
-
-    /// Save `systemFields` from CloudKit record.
-    func saveSystemFields(from record: CKRecord) {
-        let archiver = NSKeyedArchiver(requiringSecureCoding: true)
-        record.encodeSystemFields(with: archiver)
-        systemFields = archiver.encodedData
-    }
-
+    
     /// Create a CloudKit record in the given zone.
     ///
     /// A new record ID is created automatically and `systemFields` saved so that this object may
@@ -124,5 +158,15 @@ extension CloudStorable where Self : NSManagedObject {
         updateRecord(record, forKeys: keys)
         return record
     }
+    
+    
+    // MARK: Book-keeping
 
+    /// Save `systemFields` from CloudKit record.
+    private func saveSystemFields(from record: CKRecord) {
+        let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+        record.encodeSystemFields(with: archiver)
+        systemFields = archiver.encodedData
+    }
+    
 }

@@ -44,6 +44,17 @@ import Dispatch
 /// The `isDirty` flag for a zone is only cleared when the new server change token for the zone
 /// is persisted, thus an error or crash etc. results in refetching the zone again, just in case,
 /// even if all changes have already been applied.
+///
+/// # NSManagedObject Requirements
+/// In order to make changes to the local store, this class makes three requirements on
+/// `NSManagedObject`:
+///  * `NSManagedObject.syncObjectFromRecord(:in:)`
+///  * `NSManagedObject.deleteObjectsForZoneIDs(:in:mergeTo:)`
+///  * `NSManagedObject.deleteObjectsForRecords(:in:mergeTo:)`
+///
+/// These are not type-aware; `NSManagedObject+StorableObjectTranslation` provides an implementation
+/// that expands or iterates the real object types as long as they conform to `CloudStorable` and
+/// calls methods there.
 public final class CloudObserver {
 
     /// Database object being observed.
