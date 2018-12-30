@@ -411,8 +411,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 print("Limit exceeded, splitting request in half")
 
                 let s = records.count / 2
-                self.saveRecords(Array(records[..<s]), in: database, dependency: zoneOperation, whenComplete: callbackOperation)
-                self.saveRecords(Array(records[s...]), in: database, dependency: zoneOperation, whenComplete: callbackOperation)
+                self._saveRecords(Array(records[..<s]), in: database, dependency: zoneOperation, whenComplete: callbackOperation)
+                self._saveRecords(Array(records[s...]), in: database, dependency: zoneOperation, whenComplete: callbackOperation)
             } else if let error = error {
                 fatalError("Couldn't save records \(error)")
             } else if let savedRecords = savedRecords {
