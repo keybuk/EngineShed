@@ -9,6 +9,7 @@
 import UIKit
 import CloudKit
 import CoreData
+import Dispatch
 
 import Database
 
@@ -18,10 +19,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        persistentContainer.syncWithCloud()
+        // Subscribe to changes in CloudKit, enabling remote notifications.
+        beginNetworkActivity()
+        persistentContainer.cloudObserver.subscribeToChanges { error in
+            self.endNetworkActivity()
+        }
 
         // Register for remote notifications of changes to the iCloud database.
         application.registerForRemoteNotifications()
+
+        // Fetch any changes since last start.
+        beginNetworkActivity()
+        persistentContainer.cloudObserver.fetchChanges { error in
+            self.endNetworkActivity()
+        }
+
+        // Observe changes to our managed context, send to CloudKit.
+        persistentContainer.cloudProvider.observeChanges()
+
+        // Resume any long-lived operations from last run.
+        persistentContainer.cloudProvider.resumeLongLivedOperations()
 
         if let tabBarController = window?.rootViewController as? UITabBarController {
             if let splitViewController = tabBarController.viewControllers?[0] as? UISplitViewController {
@@ -79,8 +96,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Remote Notification")
-        
+
+        beginNetworkActivity()
         persistentContainer.cloudObserver.handleRemoteNotification(userInfo) { error in
+            self.endNetworkActivity()
             if let _ = error {
                 completionHandler(.failed)
             } else {
@@ -100,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         return false
     }
+
     // MARK: - Core Data stack
 
     lazy var persistentContainer: PersistentContainer = {
@@ -145,6 +165,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+
+    // MARK: - Network activity indicator management
+
+    var networkActivityCalls = 0
+
+    func beginNetworkActivity() {
+        DispatchQueue.main.async {
+            self.networkActivityCalls += 1
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
+    }
+
+    func endNetworkActivity() {
+        DispatchQueue.main.async {
+            assert(self.networkActivityCalls > 0, "Mismatched endNetworkActivity")
+            self.networkActivityCalls -= 1
+            if self.networkActivityCalls == 0 {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
     }

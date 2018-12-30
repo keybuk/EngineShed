@@ -16,10 +16,22 @@ import Database
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        persistentContainer.syncWithCloud()
-        
+        // Subscribe to changes in CloudKit, enabling remote notifications.
+        persistentContainer.cloudObserver.subscribeToChanges { error in
+        }
+
         // Register for remote notifications of changes to the iCloud database.
         NSApplication.shared.registerForRemoteNotifications()
+
+        // Fetch any changes since last start.
+        persistentContainer.cloudObserver.fetchChanges { error in
+        }
+
+        // Observe changes to our managed context, send to CloudKit.
+        persistentContainer.cloudProvider.observeChanges()
+
+        // Resume any long-lived operations from last run.
+        persistentContainer.cloudProvider.resumeLongLivedOperations()
 
         // Insert code here to initialize your application
     }

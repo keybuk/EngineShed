@@ -37,14 +37,6 @@ public class PersistentContainer : NSPersistentContainer {
         cloudProvider = CloudProvider(container: cloudContainer, database: cloudDatabase, persistentContainer: self)
     }
     
-    public func syncWithCloud() {
-        cloudObserver.subscribeToChanges()
-        cloudObserver.fetchChanges()
-        
-        cloudProvider.observeChanges()
-        cloudProvider.resumeLongLivedOperations()
-    }
-    
 //    override public class func defaultDirectoryURL() -> URL {
 //        return super.defaultDirectoryURL().appendingPathComponent("EngineShed")
 //    }
