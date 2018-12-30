@@ -191,6 +191,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 decoderRecord["address"] = decoder.address as NSNumber
                 decoderRecord["soundAuthor"] = decoder.soundAuthor as NSString
                 decoderRecord["soundFile"] = decoder.soundFile as NSString
+
+                if let firmwareDate = decoder.firmwareDate {
+                    let calendar = Calendar(identifier: .gregorian)
+                    let dateComponents = calendar.dateComponents([ .calendar, .year, .month, .day ], from: firmwareDate)
+
+                    let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                    archiver.encode(dateComponents, forKey: "FirmwareDate")
+                    archiver.finishEncoding()
+                    decoderRecord["firmwareDate"] = archiver.encodedData as NSData
+                } else {
+                    decoderRecord["firmwareDate"] = nil
+                }
+
                 records.append(decoderRecord)
 
                 decoderRecords[decoder] = decoderRecord
@@ -209,12 +222,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             purchaseRecord["limitedEdition"] = purchase.limitedEdition as NSString
             purchaseRecord["limitedEditionNumber"] = purchase.limitedEditionNumber as NSNumber
             purchaseRecord["limitedEditionCount"] = purchase.limitedEditionCount as NSNumber
-            purchaseRecord["date"] = purchase.date as NSDate?
             purchaseRecord["store"] = purchase.store as NSString
             purchaseRecord["price"] = purchase.price as NSNumber?
             purchaseRecord["condition"] = purchase.condition?.rawValue as NSNumber?
             purchaseRecord["valuation"] = purchase.valuation as NSNumber?
             purchaseRecord["notes"] = purchase.notes as NSString
+
+            if let date = purchase.date {
+                let calendar = Calendar(identifier: .gregorian)
+                let dateComponents = calendar.dateComponents([ .calendar, .year, .month, .day ], from: date)
+
+                let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                archiver.encode(dateComponents, forKey: "Date")
+                archiver.finishEncoding()
+                purchaseRecord["date"] = archiver.encodedData as NSData
+            } else {
+                purchaseRecord["date"] = nil
+            }
 
             if let price = purchase.price {
                 let archiver = NSKeyedArchiver(requiringSecureCoding: true)
@@ -266,10 +290,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
                 if !model.modifications.isEmpty {
                     modelRecord["modifications"] = Array(model.modifications) as NSArray }
-                modelRecord["lastRun"] = model.lastRun as NSDate?
-                modelRecord["lastOil"] = model.lastOil as NSDate?
                 if !model.tasks.isEmpty { modelRecord["tasks"] = Array(model.tasks) as NSArray }
                 modelRecord["notes"] = model.notes as NSString
+
+                if let lastRun = model.lastRun {
+                    let calendar = Calendar(identifier: .gregorian)
+                    let dateComponents = calendar.dateComponents([ .calendar, .year, .month, .day ], from: lastRun)
+
+                    let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                    archiver.encode(dateComponents, forKey: "LastRun")
+                    archiver.finishEncoding()
+                    modelRecord["lastRun"] = archiver.encodedData as NSData
+                } else {
+                    modelRecord["lastRun"] = nil
+                }
+
+                if let lastOil = model.lastOil {
+                    let calendar = Calendar(identifier: .gregorian)
+                    let dateComponents = calendar.dateComponents([ .calendar, .year, .month, .day ], from: lastOil)
+
+                    let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                    archiver.encode(dateComponents, forKey: "LastOil")
+                    archiver.finishEncoding()
+                    modelRecord["lastOil"] = archiver.encodedData as NSData
+                } else {
+                    modelRecord["lastOil"] = nil
+                }
+
                 records.append(modelRecord)
 
                 if let decoder = model.decoder {
@@ -283,10 +330,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         decoderRecord["model"] = CKRecord.Reference(record: modelRecord, action: .none)
                         decoderRecord["serialNumber"] = decoder.serialNumber as NSString
                         decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
-                        decoderRecord["firmwareDate"] = decoder.firmwareDate as NSDate?
                         decoderRecord["address"] = decoder.address as NSNumber
                         decoderRecord["soundAuthor"] = decoder.soundAuthor as NSString
                         decoderRecord["soundFile"] = decoder.soundFile as NSString
+
+                        if let firmwareDate = decoder.firmwareDate {
+                            let calendar = Calendar(identifier: .gregorian)
+                            let dateComponents = calendar.dateComponents([ .calendar, .year, .month, .day ], from: firmwareDate)
+
+                            let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                            archiver.encode(dateComponents, forKey: "FirmwareDate")
+                            archiver.finishEncoding()
+                            decoderRecord["firmwareDate"] = archiver.encodedData as NSData
+                        } else {
+                            decoderRecord["firmwareDate"] = nil
+                        }
+
                         records.append(decoderRecord)
 
                         decoderRecords[decoder] = decoderRecord
