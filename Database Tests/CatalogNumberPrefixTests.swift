@@ -20,7 +20,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false
 
-        container = NSPersistentContainer(name: "EngineShed", managedObjectModel: NSManagedObjectModel.mergedModel(from: Bundle.allBundles)!)
+        container = NSPersistentContainer(name: "EngineShed_CatalogNumberPrefixTests", managedObjectModel: NSManagedObjectModel.mergedModel(from: Bundle.allBundles)!)
         container?.persistentStoreDescriptions = [description]
         container?.loadPersistentStores { (storeDescription, error) in
             precondition(storeDescription.type == NSInMemoryStoreType)
