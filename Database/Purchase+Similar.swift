@@ -85,11 +85,10 @@ extension Purchase {
         let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "SELF != %@ && manufacturer == %@ && catalogNumberPrefix == %@", self, manufacturer, catalogNumberPrefix)
 
-        var results: [Purchase]?
-        managedObjectContext?.performAndWait {
-            results = try? fetchRequest.execute()
-        }
-        guard let purchases = results else { return [] }
+        // SE-0230 will let us remove the !
+        let purchases = (try? managedObjectContext!.performAndWait {
+            return try fetchRequest.execute()
+        }) ?? []
 
         let exactMatches = purchases.filter { $0.catalogNumber == catalogNumber }
         if !exactMatches.isEmpty {
