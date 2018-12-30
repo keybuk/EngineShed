@@ -11,58 +11,66 @@ import CloudKit
 import CoreData
 import Dispatch
 
+// FIXME: this class has no way to report errors
+
+/// Observes changes to a local store, and synchronize to a database stored in CloudKit.
+///
+/// Changes to the local store are observed using notifications on the core data managed object
+/// context:
+///
+///     provider.observeChanges()
+///
+/// Each time the view context is saved, the set of inserted, updated, and deleted objects is
+/// collated, and turned into a modify records operation send to the server.
+///
+/// Observing changes is done in two parts due to the differences between notifications; in
+/// "will save" the set of changed keys is available for updated objects, while in "did save"
+/// the full set of objects is known, but not the changed keys.
+///
+/// When sending the data to the cloud, a long-lived operation is used that can last beyond the
+/// session or application lifetime. On resume, it's necessary to obtain the results from these.
+///
+///     provider.resumeLongLivedOperations()
+///
+/// After the data is received by the servers, changes to the record system fields are usually
+/// necessary; these are performed on a background
+///
+/// # NSManagedObject Entity Requirements
+/// In order to synchronize changes from the local store, this class requires that
+/// `NSManagedObject` entities conform to `CloudStorable` to use the following methods:
+///  * `Entity.createRecord(in:)`
+///  * `Entity.syncToRecord(forKeys:)`
+///  * `Entity.syncObjectFromRecord(:in:updateValues:)`
 public final class CloudProvider {
 
-    public let zoneID = CKRecordZone.ID(zoneName: "EngineShed")
-
+    /// Database container to synchronize to.
     public var container: CKContainer
-    public var database: CKDatabase
-    public var persistentContainer: NSPersistentContainer
+    
+    /// Database to synchronize to.
+    public private(set) var database: CKDatabase
+    
+    /// Persistent container of local store to observe.
+    public private(set) var persistentContainer: NSPersistentContainer
 
+    /// Identifier of record zone to synchronize to.
+    let zoneID = CKRecordZone.ID(zoneName: "EngineShed")
+    
     public init(container: CKContainer, database: CKDatabase, persistentContainer: NSPersistentContainer) {
         self.container = container
         self.database = database
         self.persistentContainer = persistentContainer
+    }
 
-        // Subscribe to Core Data notifications to watch for changes.
+    
+    // MARK: - NSManagedObjectContext notifications
+    
+    // Subscribe to Core Data notifications to watch for changes.
+    public func observeChanges() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsWillSave(notification:)), name: NSNotification.Name.NSManagedObjectContextWillSave, object: persistentContainer.viewContext)
         notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidSave(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: persistentContainer.viewContext)
     }
-
-    public func start() {
-        // Fetch and resume all of the long-lived operations.
-        container.fetchAllLongLivedOperationIDs { (operationIDs, error) in
-            if let error = error {
-                print("Failed to fetch long-lived operations: \(error)")
-            } else if let operationIDs = operationIDs {
-                for operationID in operationIDs {
-                    self.container.fetchLongLivedOperation(withID: operationID) { (operation, error) in
-                        if let error = error {
-                            print("Long-lived operation \(operationID) failed: \(error)")
-                        } else if let operation = operation as? CKModifyRecordsOperation {
-                            operation.modifyRecordsCompletionBlock = { (savedRecords, deletedRecordIDs, error) in
-                                if let error = error {
-                                    print("Resuming long-lived modify operation \(operationID) failed: \(error)")
-                                } else {
-                                    self.handleModifyCompletion(savedRecords: savedRecords, deletedRecordIDs: deletedRecordIDs)
-                                }
-                            }
-
-                            print("Resuming long-lived modify operation \(operationID)")
-                            self.database.add(operation)
-                        } else if let operation = operation {
-                            print("Resuming long-lived operation \(operationID)")
-                            self.container.add(operation)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // MARK: Core Data notifications
-
+    
     /// Set of changed keys for each updated object.
     var pendingUpdates: [NSManagedObjectID: Set<String>]? = nil
 
@@ -134,45 +142,9 @@ public final class CloudProvider {
         pendingUpdates = nil
     }
 
-
-    // MARK: Zone and record creation/updating
-
-    /// `true` if we believe the server has the primary zone for our records.
-//    var hasZone: Bool {
-//        return zoneServerChangeToken.index(forKey: zoneID) != nil
-//    }
-
-    /// Create the primary zone for our records.
-    func createZoneOperation() -> CKDatabaseOperation {
-        // Create a zone modify operation for our primary zone, which should create it if needed.
-        let zone = CKRecordZone(zoneID: zoneID)
-        let operation = CKModifyRecordZonesOperation(recordZonesToSave: [zone], recordZoneIDsToDelete: nil)
-
-        operation.modifyRecordZonesCompletionBlock = {
-            savedZones, deletedZoneIDs, error in
-            if let error = error {
-                // Errors creating the zone should end up appearing in the record modification,
-                // so rather than bailing out, just move on.
-                print("Modify zone error: \(error)")
-            } else {
-                // Record `nil` for the change token of any zone we created, until we find out
-                // what the token really is later on.
-//                if let savedZones = savedZones {
-//                    for zone in savedZones {
-//                        if self.zoneServerChangeToken.index(forKey: zone.zoneID) == nil {
-//                            self.zoneServerChangeToken.updateValue(nil, forKey: zone.zoneID)
-//                        }
-//                    }
-//                }
-            }
-        }
-
-        operation.qualityOfService = .utility
-        database.add(operation)
-
-        return operation
-    }
-
+    
+    // MARK: - CloudKit operations
+    
     /// Send local object changes to the database.
     ///
     /// - Parameters:
@@ -244,4 +216,67 @@ public final class CloudProvider {
         }
     }
 
+    /// Create the primary zone for our records.
+    func createZoneOperation() -> CKDatabaseOperation {
+        // Create a zone modify operation for our primary zone, which should create it if needed.
+        let zone = CKRecordZone(zoneID: zoneID)
+        let operation = CKModifyRecordZonesOperation(recordZonesToSave: [zone], recordZoneIDsToDelete: nil)
+        
+        operation.modifyRecordZonesCompletionBlock = {
+            savedZones, deletedZoneIDs, error in
+            if let error = error {
+                // Errors creating the zone should end up appearing in the record modification,
+                // so rather than bailing out, just move on.
+                print("Modify zone error: \(error)")
+            } else {
+                // Record `nil` for the change token of any zone we created, until we find out
+                // what the token really is later on.
+// FIXME: I don't remember why I did this, and whether it's necessary anymore.
+//                if let savedZones = savedZones {
+//                    for zone in savedZones {
+//                        if self.zoneServerChangeToken.index(forKey: zone.zoneID) == nil {
+//                            self.zoneServerChangeToken.updateValue(nil, forKey: zone.zoneID)
+//                        }
+//                    }
+//                }
+            }
+        }
+        
+        operation.qualityOfService = .utility
+        database.add(operation)
+        
+        return operation
+    }
+    
+    // Fetch and resume all of the long-lived operations.
+    public func resumeLongLivedOperations() {
+        container.fetchAllLongLivedOperationIDs { (operationIDs, error) in
+            if let error = error {
+                print("Failed to fetch long-lived operations: \(error)")
+            } else if let operationIDs = operationIDs {
+                for operationID in operationIDs {
+                    self.container.fetchLongLivedOperation(withID: operationID) { (operation, error) in
+                        if let error = error {
+                            print("Long-lived operation \(operationID) failed: \(error)")
+                        } else if let operation = operation as? CKModifyRecordsOperation {
+                            operation.modifyRecordsCompletionBlock = { (savedRecords, deletedRecordIDs, error) in
+                                if let error = error {
+                                    print("Resuming long-lived modify operation \(operationID) failed: \(error)")
+                                } else {
+                                    self.handleModifyCompletion(savedRecords: savedRecords, deletedRecordIDs: deletedRecordIDs)
+                                }
+                            }
+                            
+                            print("Resuming long-lived modify operation \(operationID)")
+                            self.database.add(operation)
+                        } else if let operation = operation {
+                            print("Resuming long-lived operation \(operationID)")
+                            self.container.add(operation)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }

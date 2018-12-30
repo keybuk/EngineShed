@@ -41,7 +41,8 @@ public class PersistentContainer : NSPersistentContainer {
         cloudObserver.subscribeToChanges()
         cloudObserver.fetchChanges()
         
-        cloudProvider.start()
+        cloudProvider.observeChanges()
+        cloudProvider.resumeLongLivedOperations()
     }
     
 //    override public class func defaultDirectoryURL() -> URL {
