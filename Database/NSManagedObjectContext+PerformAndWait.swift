@@ -10,7 +10,7 @@ import CoreData
 
 // Copy the implementation of Dispatch.sync<T> with rethrows and return value support
 // https://github.com/apple/swift/blob/bb157a070ec6534e4b534456d208b03adc07704b/stdlib/public/SDK/Dispatch/Queue.swift#L228-L249
-public extension NSManagedObjectContext {
+extension NSManagedObjectContext {
 
     /// Synchronously performs a given block on the context’s queue.
     ///
