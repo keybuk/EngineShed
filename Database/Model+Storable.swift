@@ -68,8 +68,6 @@ extension Model : CloudStorable {
         details = record["details"]
         dispositionRawValue = record["disposition"] ?? 0
         eraRawValue = record["era"] ?? 0
-        lastOil = record["lastOil"]
-        lastRun = record["lastRun"]
         livery = record["livery"]
         motor = record["motor"]
         name = record["name"]
@@ -82,6 +80,20 @@ extension Model : CloudStorable {
             image = ModelImage(contentsOf: asset.fileURL)
         } else {
             image = nil
+        }
+
+        if let data = record["lastOil"] as? Data,
+            let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data)
+        {
+            lastOil = unarchiver.decodeObject(of: NSDateComponents.self, forKey: "LastOil")
+            unarchiver.finishDecoding()
+        }
+        
+        if let data = record["lastRun"] as? Data,
+            let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data)
+        {
+            lastRun = unarchiver.decodeObject(of: NSDateComponents.self, forKey: "LastRun")
+            unarchiver.finishDecoding()
         }
 
         let (insertCouplings, removeCouplings) = differencesFrom(objects: couplings, to: record, key: "couplings", as: Coupling.self)
@@ -134,8 +146,6 @@ extension Model : CloudStorable {
         if keys?.contains("details") ?? true { record["details"] = details }
         if keys?.contains("dispositionRawValue") ?? true { record["disposition"] = dispositionRawValue }
         if keys?.contains("eraRawValue") ?? true { record["era"] = eraRawValue }
-        if keys?.contains("lastOil") ?? true { record["lastOil"] = lastOil }
-        if keys?.contains("lastRun") ?? true { record["lastRun"] = lastRun }
         if keys?.contains("livery") ?? true { record["livery"] = livery }
         if keys?.contains("motor") ?? true { record["motor"] = motor }
         if keys?.contains("name") ?? true { record["name"] = name }
@@ -149,6 +159,24 @@ extension Model : CloudStorable {
                 record["image"] = CKAsset(fileURL: imageURL)
             } else {
                 record["image"] = nil
+            }
+        }
+
+        if keys?.contains("lastOil") ?? true {
+            record["lastOil"] = lastOil.map {
+                let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                archiver.encode($0, forKey: "LastOil")
+                archiver.finishEncoding()
+                return archiver.encodedData as NSData
+            }
+        }
+        
+        if keys?.contains("lastRun") ?? true {
+            record["lastRun"] = lastRun.map {
+                let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                archiver.encode($0, forKey: "LastRun")
+                archiver.finishEncoding()
+                return archiver.encodedData as NSData
             }
         }
 

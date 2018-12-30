@@ -23,13 +23,19 @@ extension Purchase : CloudStorable {
         catalogNumber = record["catalogNumber"]
         catalogYear = record["catalogYear"] ?? 0
         conditionRawValue = record["condition"] ?? 0
-        date = record["date"]
         limitedEdition = record["limitedEdition"]
         limitedEditionCount = record["limitedEditionCount"] ?? 0
         limitedEditionNumber = record["limitedEditionNumber"] ?? 0
         manufacturer = record["manufacturer"]
         notes = record["notes"]
         store = record["store"]
+        
+        if let data = record["date"] as? Data,
+            let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data)
+        {
+            date = unarchiver.decodeObject(of: NSDateComponents.self, forKey: "Date")
+            unarchiver.finishDecoding()
+        }
 
         if let data = record["price"] as? Data,
             let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data)
@@ -70,13 +76,21 @@ extension Purchase : CloudStorable {
         if keys?.contains("catalogNumber") ?? true { record["catalogNumber"] = catalogNumber }
         if keys?.contains("catalogYear") ?? true { record["catalogYear"] = catalogYear }
         if keys?.contains("conditionRawValue") ?? true { record["condition"] = conditionRawValue }
-        if keys?.contains("date") ?? true { record["date"] = date }
         if keys?.contains("limitedEdition") ?? true { record["limitedEdition"] = limitedEdition }
         if keys?.contains("limitedEditionCount") ?? true { record["limitedEditionCount"] = limitedEditionCount }
         if keys?.contains("limitedEditionNumber") ?? true { record["limitedEditionNumber"] = limitedEditionNumber }
         if keys?.contains("manufacturer") ?? true { record["manufacturer"] = manufacturer }
         if keys?.contains("notes") ?? true { record["notes"] = notes }
         if keys?.contains("store") ?? true { record["store"] = store }
+
+        if keys?.contains("date") ?? true {
+            record["date"] = date.map {
+                let archiver = NSKeyedArchiver(requiringSecureCoding: true)
+                archiver.encode($0, forKey: "Date")
+                archiver.finishEncoding()
+                return archiver.encodedData as NSData
+            }
+        }
 
         if keys?.contains("price") ?? true {
             record["price"] = price.map {
@@ -86,6 +100,7 @@ extension Purchase : CloudStorable {
                 return archiver.encodedData as NSData
             }
         }
+        
         if keys?.contains("valuation") ?? true {
             record["valuation"] = valuation.map {
                 let archiver = NSKeyedArchiver(requiringSecureCoding: true)
