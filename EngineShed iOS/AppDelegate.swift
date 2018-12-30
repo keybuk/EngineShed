@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+#if !targetEnvironment(simulator)
         // Subscribe to changes in CloudKit, enabling remote notifications.
         beginNetworkActivity()
         persistentContainer.cloudObserver.subscribeToChanges { error in
@@ -39,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
         // Resume any long-lived operations from last run.
         persistentContainer.cloudProvider.resumeLongLivedOperations()
+#endif
 
         if let tabBarController = window?.rootViewController as? UITabBarController {
             if let splitViewController = tabBarController.viewControllers?[0] as? UISplitViewController {
