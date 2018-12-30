@@ -50,7 +50,7 @@ extension StorableObjectTranslation where Self : NSManagedObject {
     ///   - mergeContext: managed object context to merge changes back to, or `nil`.
     static func deleteObjectsForRecords(_ deletedRecords: [CKRecord.RecordType: [CKRecord.ID]], in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
         for (recordType, recordIDs) in deletedRecords {
-            guard let storableClass = classForRecordType(recordType) else { return }
+            guard let storableClass = classForRecordType(recordType) else { continue }
             try storableClass.deleteObjects(recordIDs: recordIDs, zoneIDs: nil, in: context, mergeTo: mergeContext)
         }
     }
