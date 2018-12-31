@@ -337,7 +337,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
                         decoderRecord["address"] = decoder.address as NSNumber
                         decoderRecord["soundAuthor"] = decoder.soundAuthor as NSString
-                        decoderRecord["soundFile"] = decoder.soundFile as NSString
+                        decoderRecord["soundProject"] = decoder.soundFile as NSString
 
                         if let firmwareDate = decoder.firmwareDate {
                             let calendar = Calendar(identifier: .gregorian)
