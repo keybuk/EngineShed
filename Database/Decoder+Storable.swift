@@ -23,7 +23,9 @@ extension Decoder : CloudStorable {
         firmwareVersion = record["firmwareVersion"]
         serialNumber = record["serialNumber"]
         soundAuthor = record["soundAuthor"]
-        soundFile = record["soundFile"]
+        soundProject = record["soundProject"]
+        soundProjectVersion = record["soundProjectVersion"]
+        soundSettings = record["soundSettings"]
 
         if let data = record["firmwareDate"] as? Data,
             let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data)
@@ -55,7 +57,9 @@ extension Decoder : CloudStorable {
         if keys?.contains("firmwareVersion") ?? true { record["firmwareVersion"] = firmwareVersion }
         if keys?.contains("serialNumber") ?? true { record["serialNumber"] = serialNumber }
         if keys?.contains("soundAuthor") ?? true { record["soundAuthor"] = soundAuthor }
-        if keys?.contains("soundFile") ?? true { record["soundFile"] = soundFile }
+        if keys?.contains("soundProject") ?? true { record["soundProject"] = soundProject }
+        if keys?.contains("soundProjectVersion") ?? true { record["soundProjectVersion"] = soundProjectVersion }
+        if keys?.contains("soundSettings") ?? true { record["soundSettings"] = soundSettings }
 
         if keys?.contains("firmwareDate") ?? true {
             record["firmwareDate"] = firmwareDate.map {

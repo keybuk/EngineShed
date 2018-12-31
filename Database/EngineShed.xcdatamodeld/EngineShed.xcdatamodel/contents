@@ -16,7 +16,9 @@
         <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID" syncable="YES"/>
         <attribute name="serialNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="soundAuthor" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="soundFile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="soundProject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="soundProjectVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="soundSettings" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="decoder" inverseEntity="Model" syncable="YES"/>
@@ -147,7 +149,7 @@
     <elements>
         <element name="Coupling" positionX="333" positionY="261" width="128" height="75"/>
         <element name="DatabaseState" positionX="315" positionY="351" width="128" height="90"/>
-        <element name="Decoder" positionX="324" positionY="252" width="128" height="210"/>
+        <element name="Decoder" positionX="324" positionY="252" width="128" height="240"/>
         <element name="DecoderType" positionX="342" positionY="270" width="128" height="240"/>
         <element name="DetailPart" positionX="342" positionY="270" width="128" height="75"/>
         <element name="Feature" positionX="306" positionY="234" width="128" height="75"/>
