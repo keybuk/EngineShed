@@ -143,6 +143,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 recordID: &train.managedObject.recordID,
                 orCreate: "Train", in: zoneID)
             trainRecord["name"] = train.name as NSString
+            trainRecord["details"] = train.details as NSString
             trainRecord["notes"] = train.notes as NSString
 
             var members: [CKRecord.Reference] = []

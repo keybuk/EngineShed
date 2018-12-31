@@ -45,7 +45,15 @@ struct Train : ManagedObjectBacked {
             try? managedObject.managedObjectContext?.save()
         }
     }
-    
+
+    var details: String {
+        get { return managedObject.details ?? "" }
+        set {
+            managedObject.details = newValue
+            try? managedObject.managedObjectContext?.save()
+        }
+    }
+
     var notes: String {
         get { return managedObject.notes ?? "" }
         set {
@@ -83,6 +91,7 @@ extension Train : Encodable {
     
     enum CodingKeys : String, CodingKey {
         case name
+        case details
         case notes
         case members
     }
@@ -90,6 +99,7 @@ extension Train : Encodable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
+        try container.encode(details, forKey: .details)
         try container.encode(notes, forKey: .notes)
         try container.encode(members, forKey: .members)
     }
