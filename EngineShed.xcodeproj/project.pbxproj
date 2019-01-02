@@ -124,7 +124,7 @@
 		D2BE3DD3215B593E0005D68F /* Purchase+Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */; };
 		D2BE3DD5215B59C50005D68F /* Train+Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE3DD4215B59C50005D68F /* Train+Index.swift */; };
 		D2BE3DD6215B59C50005D68F /* Train+Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BE3DD4215B59C50005D68F /* Train+Index.swift */; };
-		D2DE5CB320F82A3100CABE34 /* ModelsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB220F82A3100CABE34 /* ModelsController.swift */; };
+		D2DE5CB320F82A3100CABE34 /* ModelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB220F82A3100CABE34 /* ModelsViewController.swift */; };
 		D2DE5CB520F82CAB00CABE34 /* ModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB420F82CAB00CABE34 /* ModelCell.swift */; };
 		D2DE5CB720F8431800CABE34 /* Model+Era.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB620F8431800CABE34 /* Model+Era.swift */; };
 		D2DE5CB820F8431800CABE34 /* Model+Era.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB620F8431800CABE34 /* Model+Era.swift */; };
@@ -377,7 +377,7 @@
 		D2B9A1B72150D35D00156100 /* ModelPurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPurchaseCell.swift; sourceTree = "<group>"; };
 		D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Index.swift"; sourceTree = "<group>"; };
 		D2BE3DD4215B59C50005D68F /* Train+Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Index.swift"; sourceTree = "<group>"; };
-		D2DE5CB220F82A3100CABE34 /* ModelsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsController.swift; sourceTree = "<group>"; };
+		D2DE5CB220F82A3100CABE34 /* ModelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsViewController.swift; sourceTree = "<group>"; };
 		D2DE5CB420F82CAB00CABE34 /* ModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCell.swift; sourceTree = "<group>"; };
 		D2DE5CB620F8431800CABE34 /* Model+Era.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Era.swift"; sourceTree = "<group>"; };
 		D2DE5CB920F8517400CABE34 /* Model+Classification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Classification.swift"; sourceTree = "<group>"; };
@@ -701,7 +701,7 @@
 				D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */,
 				D212EA442150AEDA005FEED3 /* ModelClassificationsViewController.swift */,
 				D212EA462150AF98005FEED3 /* ModelClassificationCell.swift */,
-				D2DE5CB220F82A3100CABE34 /* ModelsController.swift */,
+				D2DE5CB220F82A3100CABE34 /* ModelsViewController.swift */,
 				D2DE5CB420F82CAB00CABE34 /* ModelCell.swift */,
 				D2B9A1B32150C74600156100 /* ModelViewController.swift */,
 				D2B9A1B52150C77000156100 /* ModelImageCell.swift */,
@@ -1400,7 +1400,7 @@
 				D287582821060FE700EF722D /* TrainHeaderView.swift in Sources */,
 				D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */,
 				D212EA452150AEDA005FEED3 /* ModelClassificationsViewController.swift in Sources */,
-				D2DE5CB320F82A3100CABE34 /* ModelsController.swift in Sources */,
+				D2DE5CB320F82A3100CABE34 /* ModelsViewController.swift in Sources */,
 				D2B9A1B42150C74600156100 /* ModelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
