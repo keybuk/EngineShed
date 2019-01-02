@@ -71,8 +71,11 @@ extension Model {
         fetchRequest.fetchBatchSize = 20
         fetchRequest.resultType = .dictionaryResultType
         fetchRequest.propertiesToFetch = [ "imageFilename" ]
+        
+        let results = try context.performAndWait {
+            return try fetchRequest.execute() as! [[String: Any]]
+        }
 
-        let results = try context.fetch(fetchRequest) as! [[String: Any]]
         for result in results {
             guard let imageFilename = result["imageFilename"] as? String else { continue }
             let imageURL = Model.imagesURL.appendingPathComponent(imageFilename)
