@@ -31,7 +31,9 @@ extension CloudStorable where Self : NSManagedObject {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "recordID == %@", recordID)
         
-        let objects = try context.fetch(fetchRequest)
+        let objects = try context.performAndWait {
+            return try fetchRequest.execute()
+        }
         if let object = objects.first as? Self { return object }
         
         // Create the object, only fill in the record and zone at this point.
