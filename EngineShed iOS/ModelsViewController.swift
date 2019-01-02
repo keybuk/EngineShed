@@ -19,7 +19,7 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
     var classification: ModelClassification?
     var grouping: ModelGrouping = .modelClass
 
-    var fetchRequest: NSFetchRequest<Model>!
+    var fetchRequest: NSFetchRequest<Model>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,11 +110,14 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
         if let fetchedResultsController = _fetchedResultsController {
             return fetchedResultsController
         }
+        
+        guard let fetchRequest = fetchRequest, let managedObjectContext = managedObjectContext
+            else { fatalError("Cannot construct controller without fetchRequest and context") }
 
         let sectionNameKeyPath = fetchRequest.sortDescriptors?.first?.key
         let cacheName = classification.flatMap { "ModelTable.\($0).\(grouping)" } ?? "ModelTable.all.\(grouping)"
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext!, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
         fetchedResultsController.delegate = self
 
         do {

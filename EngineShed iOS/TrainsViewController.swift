@@ -13,8 +13,9 @@ import Database
 
 class TrainsViewController : UICollectionViewController, NSFetchedResultsControllerDelegate {
 
-    var managedObjectContext: NSManagedObjectContext!
-    var fetchRequest: NSFetchRequest<TrainMember>!
+    var managedObjectContext: NSManagedObjectContext?
+
+    var fetchRequest: NSFetchRequest<TrainMember>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,9 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        if fetchRequest == nil {
+        if fetchRequest == nil,
+            let managedObjectContext = managedObjectContext
+        {
             fetchRequest = TrainMember.fetchRequestForTrains(context: managedObjectContext)
         }
     }
@@ -66,7 +69,7 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
 
         do {
             userInitiatedMove = (sourceIndexPath, destinationIndexPath)
-            try managedObjectContext.save()
+            try managedObjectContext?.save()
         } catch {
             fatalError("Save failed")
         }
@@ -114,7 +117,10 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
             return fetchedResultsController
         }
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest!, managedObjectContext: managedObjectContext!, sectionNameKeyPath: "train.name", cacheName: nil/*"TrainCollection.Train.Name"*/)
+        guard let fetchRequest = fetchRequest, let managedObjectContext = managedObjectContext
+            else { fatalError("Cannot construct controller without fetchRequest and context") }
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "train.name", cacheName: nil/*"TrainCollection.Train.Name"*/)
         fetchedResultsController.delegate = self
 
         do {
