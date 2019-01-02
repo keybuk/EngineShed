@@ -44,7 +44,7 @@ import Dispatch
 public final class CloudProvider {
 
     /// Database container to synchronize to.
-    public var container: CKContainer
+    public private(set) var container: CKContainer
     
     /// Database to synchronize to.
     public private(set) var database: CKDatabase
