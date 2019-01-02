@@ -305,6 +305,7 @@
 		D248355621D6E23A00495FC0 /* CloudObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudObserver.swift; sourceTree = "<group>"; };
 		D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseState+Observer.swift"; sourceTree = "<group>"; };
 		D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+PerformAndWait.swift"; sourceTree = "<group>"; };
+		D25AAC7921DD445700AC4359 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
 		D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
 		D28758252105FEEE00EF722D /* TrainMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberCell.swift; sourceTree = "<group>"; };
 		D287582721060FE700EF722D /* TrainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainHeaderView.swift; sourceTree = "<group>"; };
@@ -528,6 +529,7 @@
 		D215BE9520D4B5380054FDCC = {
 			isa = PBXGroup;
 			children = (
+				D25AAC7921DD445700AC4359 /* Coding Style.md */,
 				D2A4112421262FA600B6C198 /* Util */,
 				D200F97820E07D00003BC8D1 /* Util Tests */,
 				D2B7C9CA20D4D671001B51B1 /* Database */,
