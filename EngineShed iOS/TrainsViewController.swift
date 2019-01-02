@@ -53,21 +53,19 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         return cell
     }
 
-    var userInitiatedMove: (source: IndexPath, destination: IndexPath)?
-
     override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         precondition(sourceIndexPath.section == destinationIndexPath.section, "Train members can't move between trains")
 
         let trainMember = fetchedResultsController.object(at: sourceIndexPath)
         guard let train = trainMember.train else { preconditionFailure("Train member without a train") }
 
-        print("\(sourceIndexPath) -> \(destinationIndexPath)")
         train.removeFromMembers(at: sourceIndexPath.item)
         train.insertIntoMembers(trainMember, at: destinationIndexPath.item)
 
         do {
-            userInitiatedMove = (sourceIndexPath, destinationIndexPath)
+            changeIsUserDriven = true
             try managedObjectContext?.save()
+            changeIsUserDriven = false
         } catch {
             fatalError("Save failed")
         }
@@ -136,13 +134,21 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
 
     // MARK: NSFetchedResultsControllerDelegate
 
-    var changeBlocks: [(UICollectionView) ->Void]? = nil
+    /// Set to `true` across a context save to ignore any changes from it.
+    var changeIsUserDriven = false
+
+    /// Collated changes from a content change.
+    var changeBlocks: [(UICollectionView) -> Void]? = nil
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        guard !changeIsUserDriven else { return }
+
         changeBlocks = []
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        guard !changeIsUserDriven else { return }
+
         switch type {
         case .insert:
             changeBlocks!.append { $0.insertSections(IndexSet(integer: sectionIndex)) }
@@ -154,31 +160,48 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        guard !changeIsUserDriven else { return }
+
         switch type {
         case .insert:
             changeBlocks!.append { $0.insertItems(at: [newIndexPath!]) }
         case .delete:
             changeBlocks!.append { $0.deleteItems(at: [indexPath!]) }
         case .update:
-            changeBlocks!.append { $0.reloadItems(at: [indexPath!]) }
+            changeBlocks!.append {
+                // Don't use reloadItems since that's a delete and insertion.
+                if let cell = $0.cellForItem(at: indexPath!) as? TrainMemberCell {
+                    cell.trainMember = anObject as? TrainMember
+                }
+            }
         case .move:
-            if userInitiatedMove?.source != indexPath || userInitiatedMove?.destination != newIndexPath {
-                changeBlocks!.append { $0.moveItem(at: indexPath!, to: newIndexPath!) }
-            } else {
-                print("Ignored move!")
-                userInitiatedMove = nil
+            changeBlocks!.append {
+                // Move implies an update;don't use reloadItems since that's a delete and insertion
+                // already.
+                if let cell = $0.cellForItem(at: indexPath!) as? TrainMemberCell {
+                    cell.trainMember = anObject as? TrainMember
+                }
+
+                // Prefer moveItem to get an animation.
+                $0.moveItem(at: indexPath!, to: newIndexPath!)
             }
         }
     }
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        guard let changeBlocks = changeBlocks else { return }
+        guard !changeIsUserDriven && !changeBlocks.isEmpty else {
+            self.changeBlocks = nil
+            return
+        }
+
         collectionView.performBatchUpdates({
-            for changeBlock in changeBlocks! {
+            for changeBlock in changeBlocks {
                 changeBlock(collectionView)
             }
         })
 
-        changeBlocks = nil
+        self.changeBlocks = nil
     }
 
 }
