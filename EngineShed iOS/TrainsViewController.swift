@@ -23,10 +23,8 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        if fetchRequest == nil,
-            let managedObjectContext = managedObjectContext
-        {
-            fetchRequest = TrainMember.fetchRequestForTrains(context: managedObjectContext)
+        if fetchRequest == nil {
+            fetchRequest = TrainMember.fetchRequestForTrains()
         }
     }
 

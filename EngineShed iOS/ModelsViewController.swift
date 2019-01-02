@@ -30,10 +30,8 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
             modelViewController = navigationController.topViewController as? ModelViewController
         }
 
-        if fetchRequest == nil,
-            let managedObjectContext = managedObjectContext
-        {
-            fetchRequest = Model.fetchRequestForModels(context: managedObjectContext, classification: classification, groupBy: grouping)
+        if fetchRequest == nil {
+            fetchRequest = Model.fetchRequestForModels(classification: classification, groupBy: grouping)
         }
     }
 
@@ -98,9 +96,8 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
         default: return
         }
 
-        guard let managedObjectContext = managedObjectContext else { return }
         _fetchedResultsController = nil
-        fetchRequest = Model.fetchRequestForModels(context: managedObjectContext, classification: classification, groupBy: grouping)
+        fetchRequest = Model.fetchRequestForModels(classification: classification, groupBy: grouping)
         tableView.reloadData()
     }
 

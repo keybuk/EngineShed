@@ -18,7 +18,7 @@ public enum ModelGrouping {
 
 extension Model {
 
-    public static func fetchRequestForModels(context: NSManagedObjectContext, classification: ModelClassification? = nil, groupBy grouping: ModelGrouping = .modelClass) -> NSFetchRequest<Model> {
+    public static func fetchRequestForModels(classification: ModelClassification? = nil, groupBy grouping: ModelGrouping = .modelClass) -> NSFetchRequest<Model> {
         let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
         fetchRequest.fetchBatchSize = 20
 
