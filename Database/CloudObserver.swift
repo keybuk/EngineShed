@@ -114,7 +114,7 @@ public final class CloudObserver {
 
         // Perform updates on a background context.
         let context = persistentContainer.newBackgroundContext()
-        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.mergePolicy = NSMergePolicy.overwrite
         context.undoManager = nil
 
         // Fetch or create the database state record.
@@ -255,7 +255,7 @@ public final class CloudObserver {
     private func fetchZoneChanges(completionHandler: @escaping (_ error: Error?) -> Void) {
         // Perform updates on a background context.
         let context = persistentContainer.newBackgroundContext()
-        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.mergePolicy = NSMergePolicy.overwrite
         context.undoManager = nil
 
         // Fetch or create the database state record, and set of dirty zones.
