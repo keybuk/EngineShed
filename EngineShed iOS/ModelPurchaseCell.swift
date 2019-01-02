@@ -12,15 +12,15 @@ import Database
 
 class ModelPurchaseCell : UITableViewCell, ModelSettable {
 
+    @IBOutlet weak var purchaseLabel: UILabel!
+    @IBOutlet weak var purchaseDescriptionLabel: UILabel!
+
     var model: Model? {
         didSet {
             configureCell()
         }
     }
-
-    @IBOutlet weak var purchaseLabel: UILabel!
-    @IBOutlet weak var purchaseDescriptionLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

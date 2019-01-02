@@ -12,18 +12,18 @@ import Database
 
 class ModelCell : UITableViewCell {
 
+    @IBOutlet weak var modelImageView: UIImageView!
+    @IBOutlet weak var modelClassLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+
     var withModelClass: Bool = true
     var model: Model? {
         didSet {
             configureCell()
         }
     }
-
-    @IBOutlet weak var modelImageView: UIImageView!
-    @IBOutlet weak var modelClassLabel: UILabel!
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

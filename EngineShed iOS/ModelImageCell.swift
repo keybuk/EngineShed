@@ -12,14 +12,14 @@ import Database
 
 class ModelImageCell : UITableViewCell, ModelSettable {
 
+    @IBOutlet weak var modelImageView: UIImageView!
+
     var model: Model? {
         didSet {
             configureCell()
         }
     }
-
-    @IBOutlet weak var modelImageView: UIImageView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
