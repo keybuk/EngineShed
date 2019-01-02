@@ -237,7 +237,9 @@ public final class CloudObserver {
                 zoneState.serverChangeToken = nil
                 zoneState.shouldDelete = false
             } else {
-                context.delete(zoneState)
+                context.performAndWait {
+                    context.delete(zoneState)
+                }
             }
         }
     }
