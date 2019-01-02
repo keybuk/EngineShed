@@ -114,7 +114,7 @@ public final class CloudProvider {
 
         if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> {
             for object in updatedObjects {
-                guard !object.isInserted else { fatalError("Object inserted and updated") }
+                guard !object.isInserted else { preconditionFailure("Object inserted and updated") }
                 let changedKeys = pendingUpdates?[object.objectID]
 
                 // Retrieve the set of changed keys recorded in the WillSave notification and
@@ -129,7 +129,7 @@ public final class CloudProvider {
 
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject> {
             for object in deletedObjects {
-                guard !object.isInserted && !object.isUpdated else { fatalError("Object deleted and inserted or updated") }
+                guard !object.isInserted && !object.isUpdated else { preconditionFailure("Object deleted and inserted or updated") }
                 if let storable = object as? NSManagedObject & CloudStorable,
                     let recordID = storable.recordID
                 {

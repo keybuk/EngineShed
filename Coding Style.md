@@ -1,3 +1,9 @@
+## General
+
+Use `precondition` and `preconditionFailure` to stop progress beyond a point.
+Use `assert` and `assertionFailure` only when it's okay to proceed in Release mode, but is something we want to catch in Debug mode just in case.
+Use `fatalError` when we have an actual error, and always log it.
+
 ## Cocoa Touch
 
 Properties initialized by constructor come first

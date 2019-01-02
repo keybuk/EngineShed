@@ -125,7 +125,7 @@ extension CloudStorable where Self : NSManagedObject {
     /// - Parameters:
     ///   - zoneID: record zone for the new record.
     func createRecord(in zoneID: CKRecordZone.ID) {
-        guard systemFields == nil else { fatalError("Managed object already has a CKRecord") }
+        guard systemFields == nil else { preconditionFailure("Managed object already has a CKRecord") }
 
         let recordName = UUID().uuidString
         let recordID = CKRecord.ID(recordName: recordName, zoneID: zoneID)

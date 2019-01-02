@@ -109,7 +109,7 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
         }
         
         guard let fetchRequest = fetchRequest, let managedObjectContext = managedObjectContext
-            else { fatalError("Cannot construct controller without fetchRequest and context") }
+            else { preconditionFailure("Cannot construct controller without fetchRequest and context") }
 
         let sectionNameKeyPath = fetchRequest.sortDescriptors?.first?.key
         let cacheName = classification.flatMap { "ModelTable.\($0).\(grouping)" } ?? "ModelTable.all.\(grouping)"

@@ -59,7 +59,7 @@ class ModelViewController : UITableViewController {
         switch indexPath.row {
         case 0: identifier = "modelImageCell"
         case 1: identifier = "modelPurchaseCell"
-        default: fatalError("Unexpected indexPath")
+        default: preconditionFailure("Unexpected indexPath")
         }
 
 

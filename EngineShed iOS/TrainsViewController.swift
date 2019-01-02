@@ -67,7 +67,7 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
             try managedObjectContext?.save()
             changeIsUserDriven = false
         } catch {
-            fatalError("Save failed")
+            fatalError("Save failed \(error)")
         }
     }
 
@@ -114,7 +114,7 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         }
 
         guard let fetchRequest = fetchRequest, let managedObjectContext = managedObjectContext
-            else { fatalError("Cannot construct controller without fetchRequest and context") }
+            else { preconditionFailure("Cannot construct controller without fetchRequest and context") }
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "train.name", cacheName: nil/*"TrainCollection.Train.Name"*/)
         fetchedResultsController.delegate = self

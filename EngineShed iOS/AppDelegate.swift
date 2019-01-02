@@ -186,7 +186,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func endNetworkActivity() {
         DispatchQueue.main.async {
-            assert(self.networkActivityCalls > 0, "Mismatched endNetworkActivity")
+            precondition(self.networkActivityCalls > 0, "Mismatched endNetworkActivity")
             self.networkActivityCalls -= 1
             if self.networkActivityCalls == 0 {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
