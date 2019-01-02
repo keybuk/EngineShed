@@ -149,8 +149,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         })
 
+        // Merge changes from the store into the context automatically (e.g. CloudKit sync),
+        // but keep any unsaved property values in this context.
         container.viewContext.automaticallyMergesChangesFromParent = true
-        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
         return container
     }()
