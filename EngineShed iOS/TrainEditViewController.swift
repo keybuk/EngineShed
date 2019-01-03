@@ -13,6 +13,8 @@ import Database
 
 class TrainEditViewController : UITableViewController {
 
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+
     var managedObjectContext: NSManagedObjectContext?
 
     var train: Train? {
@@ -158,5 +160,15 @@ class TrainEditViewController : UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    // MARK: - Actions
+
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true)
+    }
+
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        dismiss(animated: true)
+    }
 
 }

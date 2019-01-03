@@ -219,20 +219,27 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         // We use Train objects as a header, but our fetch is for TrainMember so we don't get
         // notifications of changes just to Train objects themselves.
         //
-        // Watch for the event where they are refreshed, and update their headers accordingly.
+        // Watch for the event where they are updated and/or refreshed, and update their headers
+        // accordingly.
+        var updatedTrains = Set<Train>()
+        if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> {
+            updatedTrains.formUnion(updatedObjects.compactMap { $0 as? Train })
+        }
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject> {
-            for case let train as Train in refreshedObjects {
-                guard let trainMember = train.members?.firstObject as? TrainMember else {
-                    assertionFailure("Train without member")
-                    continue
-                }
+            updatedTrains.formUnion(refreshedObjects.compactMap { $0 as? Train })
+        }
 
-                if let indexPath = fetchedResultsController.indexPath(forObject: trainMember) {
-                    let kind = UICollectionView.elementKindSectionHeader
-                    let headerIndexPath = IndexPath(row: 0, section: indexPath.section)
-                    if let view = collectionView.supplementaryView(forElementKind: kind, at: headerIndexPath) as! TrainHeaderView? {
-                        view.train = train
-                    }
+        for train in updatedTrains {
+            guard let trainMember = train.members?.firstObject as? TrainMember else {
+                assertionFailure("Train without member")
+                continue
+            }
+
+            if let indexPath = fetchedResultsController.indexPath(forObject: trainMember) {
+                let kind = UICollectionView.elementKindSectionHeader
+                let headerIndexPath = IndexPath(row: 0, section: indexPath.section)
+                if let view = collectionView.supplementaryView(forElementKind: kind, at: headerIndexPath) as! TrainHeaderView? {
+                    view.train = train
                 }
             }
         }
@@ -249,7 +256,10 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
             let trainMember = fetchedResultsController.object(at: indexPath)
             guard let train = trainMember.train else { preconditionFailure("Train member without a train") }
 
-            let viewController = segue.destination as! TrainEditViewController
+            let navigationController = segue.destination as! UINavigationController
+
+            let viewController = navigationController.topViewController!
+                as! TrainEditViewController
             viewController.managedObjectContext = managedObjectContext
             viewController.train = train
         }

@@ -302,10 +302,25 @@
                             <outlet property="delegate" destination="yE4-ea-ZFy" id="EPG-uD-6NO"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Scn-jm-gxW">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Wgi-Io-go1">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="yE4-ea-ZFy" id="x0u-k1-Cvj"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="gjh-7w-Sii">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="yE4-ea-ZFy" id="hXs-Dn-EB7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="gjh-7w-Sii" id="rhJ-tk-UgK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ThL-cH-vPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="851"/>
+            <point key="canvasLocation" x="1452" y="851"/>
         </scene>
         <!--Models-->
         <scene sceneID="Nki-YV-4Qg">
@@ -432,7 +447,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="Trains" id="4Le-WJ-Twr"/>
                     <connections>
-                        <segue destination="yE4-ea-ZFy" kind="show" identifier="trainEdit" id="e7U-R0-rWc"/>
+                        <segue destination="KDy-lR-RbI" kind="presentation" identifier="trainEdit" modalPresentationStyle="pageSheet" id="e7U-R0-rWc"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCP-hx-uAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -604,6 +619,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXN-RA-n2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="708" y="-630"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Bgd-4N-zSS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KDy-lR-RbI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uVF-Yo-JmI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yE4-ea-ZFy" kind="relationship" relationship="rootViewController" id="iXe-J9-sOc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0hI-DN-xnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="851"/>
         </scene>
     </scenes>
     <resources>
