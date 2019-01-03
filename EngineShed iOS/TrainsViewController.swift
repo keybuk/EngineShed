@@ -26,6 +26,11 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         if fetchRequest == nil {
             fetchRequest = TrainMember.fetchRequestForTrains()
         }
+
+        if let managedObjectContext = managedObjectContext {
+            let notificationCenter = NotificationCenter.default
+            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -202,6 +207,32 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         })
 
         self.changeBlocks = nil
+    }
+
+    @objc
+    func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+
+        // We use Train objects as a header, but our fetch is for TrainMember so we don't get
+        // notifications of changes just to Train objects themselves.
+        //
+        // Watch for the event where they are refreshed, and update their headers accordingly.
+        if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject> {
+            for case let train as Train in refreshedObjects {
+                guard let trainMember = train.members?.firstObject as? TrainMember else {
+                    assertionFailure("Train without member")
+                    continue
+                }
+
+                if let indexPath = fetchedResultsController.indexPath(forObject: trainMember) {
+                    let kind = UICollectionView.elementKindSectionHeader
+                    let headerIndexPath = IndexPath(row: 0, section: indexPath.section)
+                    if let view = collectionView.supplementaryView(forElementKind: kind, at: headerIndexPath) as! TrainHeaderView? {
+                        view.train = train
+                    }
+                }
+            }
+        }
     }
 
 }
