@@ -26,6 +26,12 @@
 		D248355E21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */; };
 		D248356021D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */; };
 		D248356121D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */; };
+		D25828B021DC39AC0094918F /* TrainEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828AF21DC39AC0094918F /* TrainEditViewController.swift */; };
+		D25828B221DC437A0094918F /* TrainEditNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828B121DC437A0094918F /* TrainEditNameCell.swift */; };
+		D25828B421DC43870094918F /* TrainEditDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828B321DC43870094918F /* TrainEditDetailsCell.swift */; };
+		D25828B621DC43950094918F /* TrainEditNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828B521DC43950094918F /* TrainEditNotesCell.swift */; };
+		D25828B821DC43A10094918F /* TrainEditMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828B721DC43A10094918F /* TrainEditMemberCell.swift */; };
+		D25828BA21DC43D70094918F /* TrainAddMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828B921DC43D70094918F /* TrainAddMemberCell.swift */; };
 		D27FC2402150BE0E00AA522B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */; };
 		D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
 		D28758242105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
@@ -306,6 +312,12 @@
 		D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseState+Observer.swift"; sourceTree = "<group>"; };
 		D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+PerformAndWait.swift"; sourceTree = "<group>"; };
 		D25AAC7921DD445700AC4359 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
+		D25828AF21DC39AC0094918F /* TrainEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditViewController.swift; sourceTree = "<group>"; };
+		D25828B121DC437A0094918F /* TrainEditNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditNameCell.swift; sourceTree = "<group>"; };
+		D25828B321DC43870094918F /* TrainEditDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditDetailsCell.swift; sourceTree = "<group>"; };
+		D25828B521DC43950094918F /* TrainEditNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditNotesCell.swift; sourceTree = "<group>"; };
+		D25828B721DC43A10094918F /* TrainEditMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditMemberCell.swift; sourceTree = "<group>"; };
+		D25828B921DC43D70094918F /* TrainAddMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainAddMemberCell.swift; sourceTree = "<group>"; };
 		D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
 		D28758252105FEEE00EF722D /* TrainMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberCell.swift; sourceTree = "<group>"; };
 		D287582721060FE700EF722D /* TrainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainHeaderView.swift; sourceTree = "<group>"; };
@@ -711,6 +723,12 @@
 				D2DE5CC620F8A60000CABE34 /* TrainsViewController.swift */,
 				D287582721060FE700EF722D /* TrainHeaderView.swift */,
 				D28758252105FEEE00EF722D /* TrainMemberCell.swift */,
+				D25828AF21DC39AC0094918F /* TrainEditViewController.swift */,
+				D25828B121DC437A0094918F /* TrainEditNameCell.swift */,
+				D25828B321DC43870094918F /* TrainEditDetailsCell.swift */,
+				D25828B521DC43950094918F /* TrainEditNotesCell.swift */,
+				D25828B721DC43A10094918F /* TrainEditMemberCell.swift */,
+				D25828B921DC43D70094918F /* TrainAddMemberCell.swift */,
 				D2B7C95C20D4BA30001B51B1 /* Main.storyboard */,
 				D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */,
 				D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */,
@@ -1393,13 +1411,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D25828B821DC43A10094918F /* TrainEditMemberCell.swift in Sources */,
+				D25828BA21DC43D70094918F /* TrainAddMemberCell.swift in Sources */,
+				D25828B221DC437A0094918F /* TrainEditNameCell.swift in Sources */,
 				D2B9A1B82150D35D00156100 /* ModelPurchaseCell.swift in Sources */,
 				D2DE5CB520F82CAB00CABE34 /* ModelCell.swift in Sources */,
+				D25828B621DC43950094918F /* TrainEditNotesCell.swift in Sources */,
 				D212EA472150AF98005FEED3 /* ModelClassificationCell.swift in Sources */,
 				D28758262105FEEE00EF722D /* TrainMemberCell.swift in Sources */,
 				D2B9A1B62150C77000156100 /* ModelImageCell.swift in Sources */,
+				D25828B021DC39AC0094918F /* TrainEditViewController.swift in Sources */,
 				D2DE5CC720F8A60000CABE34 /* TrainsViewController.swift in Sources */,
 				D287582821060FE700EF722D /* TrainHeaderView.swift in Sources */,
+				D25828B421DC43870094918F /* TrainEditDetailsCell.swift in Sources */,
 				D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */,
 				D212EA452150AEDA005FEED3 /* ModelClassificationsViewController.swift in Sources */,
 				D2DE5CB320F82A3100CABE34 /* ModelsViewController.swift in Sources */,

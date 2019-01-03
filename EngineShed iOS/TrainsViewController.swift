@@ -46,6 +46,9 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "trainHeaderView", for: indexPath) as! TrainHeaderView
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(trainHeaderTapped))
+        view.addGestureRecognizer(recognizer)
+
         let trainMember = fetchedResultsController.object(at: indexPath)
         view.train = trainMember.train
         return view
@@ -231,6 +234,33 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
                         view.train = train
                     }
                 }
+            }
+        }
+    }
+
+    // MARK: - Navigation
+
+    var tappedIndexPath: IndexPath?
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "trainEdit" {
+            guard let indexPath = tappedIndexPath else { return }
+
+            let trainMember = fetchedResultsController.object(at: indexPath)
+            guard let train = trainMember.train else { preconditionFailure("Train member without a train") }
+
+            let viewController = segue.destination as! TrainEditViewController
+            viewController.managedObjectContext = managedObjectContext
+            viewController.train = train
+        }
+    }
+
+    @IBAction func trainHeaderTapped(_ sender: UITapGestureRecognizer) {
+        let kind = UICollectionView.elementKindSectionHeader
+        for indexPath in collectionView.indexPathsForVisibleSupplementaryElements(ofKind: kind) {
+            if sender.view == collectionView.supplementaryView(forElementKind: kind, at: indexPath) {
+                tappedIndexPath = indexPath
+                performSegue(withIdentifier: "trainEdit", sender: sender.view)
             }
         }
     }
