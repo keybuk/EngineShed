@@ -168,7 +168,21 @@ class TrainEditViewController : UITableViewController {
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
-        dismiss(animated: true)
+        guard let managedObjectContext = managedObjectContext else { return }
+
+        managedObjectContext.perform {
+            do {
+                if managedObjectContext.hasChanges {
+                    try managedObjectContext.save()
+                }
+
+                self.dismiss(animated: true)
+            } catch {
+                let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true)
+            }
+        }
     }
 
 }
