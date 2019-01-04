@@ -111,6 +111,8 @@ class TrainEditViewController : UITableViewController {
         }
     }
 
+    // MARK: Editing support
+
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         switch indexPath.section {
         case 0: return false
@@ -135,32 +137,98 @@ class TrainEditViewController : UITableViewController {
         }
     }
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let managedObjectContext = managedObjectContext else { preconditionFailure("No context to save to") }
+        guard let train = train else { preconditionFailure("No train to change") }
+
+        precondition(indexPath.section == 2, "Attempt to edit cell outside of members")
+
         if editingStyle == .delete {
-            // Delete the row from the data source
+            precondition(indexPath.row < train.members!.count, "Attempt to delete non-member cell")
+
+            managedObjectContext.performAndWait {
+                let trainMember = train.members![indexPath.row] as! TrainMember
+                train.removeFromMembers(trainMember)
+                managedObjectContext.delete(trainMember)
+            }
+
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            precondition(indexPath.row == train.members!.count, "Attempt to insert within members")
+
+            managedObjectContext.performAndWait {
+                let trainMember = TrainMember(context: managedObjectContext)
+                train.addToMembers(trainMember)
+            }
+
+            tableView.insertRows(at: [indexPath], with: .bottom)
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0: break
+        case 1: break
+        case 2:
+            switch indexPath.row {
+            case ..<(train?.members!.count ?? 0): break
+            default:
+                // Call the delegate method as if the insertion control was tapped directly.
+                self.tableView(tableView, commit: .insert, forRowAt: indexPath)
+            }
+        default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+        }
     }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
+    // MARK: Reordering support
+
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+        switch indexPath.section {
+        case 0: return false
+        case 1: return false
+        case 2:
+            switch indexPath.row {
+            case ..<(train?.members!.count ?? 0):
+                return true
+            default:
+                return false
+            }
+        default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+        }
     }
-    */
+
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        guard let train = train else { preconditionFailure("No train to change") }
+
+        precondition(sourceIndexPath.section == 2, "Attempt to move cell outside of members")
+        precondition(sourceIndexPath.row < train.members!.count, "Attempt to move non-member")
+
+        guard proposedDestinationIndexPath.section == 2 else { return sourceIndexPath }
+        guard proposedDestinationIndexPath.row < train.members!.count else { return sourceIndexPath }
+
+        return proposedDestinationIndexPath
+    }
+
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        guard let managedObjectContext = managedObjectContext else { preconditionFailure("No context to save to") }
+        guard let train = train else { preconditionFailure("No train to change") }
+
+        precondition(fromIndexPath.section == 2, "Attempt to move cell outside of members")
+        precondition(fromIndexPath.row < train.members!.count, "Attempt to move non-member")
+
+        precondition(to.section == 2, "Attempt to move cell out of members")
+        precondition(to.row < train.members!.count, "Attempt to move outside of bounds")
+
+        managedObjectContext.performAndWait {
+            let trainMember = train.members![fromIndexPath.row] as! TrainMember
+
+            train.removeFromMembers(at: fromIndexPath.row)
+            train.insertIntoMembers(trainMember, at: to.row)
+        }
+
+        tableView.moveRow(at: fromIndexPath, to: to)
+    }
 
     // MARK: Object lifecycle
 
