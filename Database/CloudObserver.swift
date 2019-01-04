@@ -116,6 +116,7 @@ public final class CloudObserver {
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergePolicy.overwrite
         context.undoManager = nil
+        context.userInfo[CloudProvider.ignoreChangesKey] = true
 
         // Fetch or create the database state record.
         let databaseState: DatabaseState
@@ -257,6 +258,7 @@ public final class CloudObserver {
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergePolicy.overwrite
         context.undoManager = nil
+        context.userInfo[CloudProvider.ignoreChangesKey] = true
 
         // Fetch or create the database state record, and set of dirty zones.
         let databaseState: DatabaseState

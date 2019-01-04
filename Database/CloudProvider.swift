@@ -54,6 +54,9 @@ public final class CloudProvider {
 
     /// Identifier of record zone to synchronize to.
     let zoneID = CKRecordZone.ID(zoneName: "EngineShed")
+
+    /// Key to ignore contexts and avoid sync loops.
+    static let ignoreChangesKey = "EngineShedIgnoreChanges"
     
     public init(container: CKContainer, database: CKDatabase, persistentContainer: NSPersistentContainer) {
         self.container = container
@@ -67,8 +70,8 @@ public final class CloudProvider {
     // Subscribe to Core Data notifications to watch for changes.
     public func observeChanges() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsWillSave(notification:)), name: NSNotification.Name.NSManagedObjectContextWillSave, object: persistentContainer.viewContext)
-        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidSave(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: persistentContainer.viewContext)
+        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsWillSave(notification:)), name: NSNotification.Name.NSManagedObjectContextWillSave, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidSave(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
     }
     
     /// Set of changed keys for each updated object.
@@ -77,6 +80,10 @@ public final class CloudProvider {
     @objc
     func managedObjectContextObjectsWillSave(notification: NSNotification) {
         guard let context = notification.object as? NSManagedObjectContext else { return }
+        guard context.persistentStoreCoordinator == persistentContainer.persistentStoreCoordinator else { return }
+
+        if let ignoreChanges = context.userInfo[CloudProvider.ignoreChangesKey] as? Bool,
+            ignoreChanges { return }
 
         // Create CKRecord objects for newly inserted objects as part of the save action, rather
         // than after, so in the case of retry after a failure, we send an update for the same
@@ -96,6 +103,12 @@ public final class CloudProvider {
 
     @objc
     func managedObjectContextObjectsDidSave(notification: NSNotification) {
+        guard let context = notification.object as? NSManagedObjectContext else { return }
+        guard context.persistentStoreCoordinator == persistentContainer.persistentStoreCoordinator else { return }
+        
+        if let ignoreChanges = context.userInfo[CloudProvider.ignoreChangesKey] as? Bool,
+            ignoreChanges { return }
+
         guard let userInfo = notification.userInfo else { return }
 
         var saveRecords: [CKRecord] = []
@@ -197,6 +210,7 @@ public final class CloudProvider {
         let context = persistentContainer.newBackgroundContext()
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         context.undoManager = nil
+        context.userInfo[CloudProvider.ignoreChangesKey] = true
 
         if let savedRecords = savedRecords {
             debugPrint(savedRecords)
