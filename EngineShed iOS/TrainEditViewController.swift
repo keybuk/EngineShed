@@ -181,24 +181,29 @@ class TrainEditViewController : UITableViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let managedObjectContext = managedObjectContext else { return }
 
-        // FIXME resign the first responder
+        // Resign the first responder from whichever cell holds it.
+        for cell in tableView.visibleCells {
+            switch cell {
+            case let cell as TrainEditNameCell: cell.textField.resignFirstResponder()
+            case let cell as TrainEditDetailsCell: cell.textField.resignFirstResponder()
+            case let cell as TrainEditNotesCell: cell.textView.resignFirstResponder()
+            case let cell as TrainEditMemberCell: cell.textField.resignFirstResponder()
+            default: continue
+            }
+        }
 
-        managedObjectContext.perform {
-            do {
+        do {
+            try managedObjectContext.performAndWait {
                 if managedObjectContext.hasChanges {
                     try managedObjectContext.save()
                 }
-
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true)
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(alert, animated: true)
-                }
             }
+
+            self.dismiss(animated: true)
+        } catch {
+            let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
         }
     }
 
