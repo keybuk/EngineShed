@@ -19,8 +19,8 @@ protocol ModelSettable : class {
 
 class ModelViewController : UITableViewController {
 
-    var managedObjectContext: NSManagedObjectContext?
-    
+    var persistentContainer: NSPersistentContainer?
+
     var model: Model? {
         didSet {
             // Update the view.

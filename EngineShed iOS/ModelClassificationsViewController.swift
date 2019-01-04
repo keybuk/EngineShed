@@ -13,7 +13,7 @@ import Database
 
 class ModelClassificationsViewController : UITableViewController {
 
-    var managedObjectContext: NSManagedObjectContext?
+    var persistentContainer: NSPersistentContainer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class ModelClassificationsViewController : UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
 
             let viewController = segue.destination as! ModelsViewController
-            viewController.managedObjectContext = managedObjectContext
+            viewController.persistentContainer = persistentContainer
             viewController.classification = ModelClassification.allCases[indexPath.row]
         }
     }

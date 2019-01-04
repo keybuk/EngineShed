@@ -13,7 +13,7 @@ import Database
 
 class TrainsViewController : UICollectionViewController, NSFetchedResultsControllerDelegate {
 
-    var managedObjectContext: NSManagedObjectContext?
+    var persistentContainer: NSPersistentContainer?
 
     var fetchRequest: NSFetchRequest<TrainMember>?
 
@@ -27,7 +27,7 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
             fetchRequest = TrainMember.fetchRequestForTrains()
         }
 
-        if let managedObjectContext = managedObjectContext {
+        if let managedObjectContext = persistentContainer?.viewContext {
             let notificationCenter = NotificationCenter.default
             notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
         }
@@ -67,15 +67,20 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         let trainMember = fetchedResultsController.object(at: sourceIndexPath)
         guard let train = trainMember.train else { preconditionFailure("Train member without a train") }
 
-        train.removeFromMembers(at: sourceIndexPath.item)
-        train.insertIntoMembers(trainMember, at: destinationIndexPath.item)
+        guard let managedObjectContext = persistentContainer?.newBackgroundContext() else { preconditionFailure("No database context") }
+        managedObjectContext.performAndWait {
+            let train = managedObjectContext.object(with: train.objectID) as! Train
+            let trainMember = managedObjectContext.object(with: trainMember.objectID) as! TrainMember
 
-        do {
-            changeIsUserDriven = true
-            try managedObjectContext?.save()
-            changeIsUserDriven = false
-        } catch {
-            fatalError("Save failed \(error)")
+            train.removeFromMembers(at: sourceIndexPath.item)
+            train.insertIntoMembers(trainMember, at: destinationIndexPath.item)
+
+            do {
+                self.changeIsUserDriven = true
+                try managedObjectContext.save()
+            } catch {
+                fatalError("Save failed \(error)")
+            }
         }
     }
 
@@ -121,7 +126,7 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
             return fetchedResultsController
         }
 
-        guard let fetchRequest = fetchRequest, let managedObjectContext = managedObjectContext
+        guard let managedObjectContext = persistentContainer?.viewContext, let fetchRequest = fetchRequest
             else { preconditionFailure("Cannot construct controller without fetchRequest and context") }
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "train.name", cacheName: nil/*"TrainCollection.Train.Name"*/)
@@ -149,41 +154,40 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
     var changeBlocks: [(UICollectionView) -> Void]? = nil
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        guard !changeIsUserDriven else { return }
+        if changeIsUserDriven {
+            changeIsUserDriven = false
+            return
+        }
 
         changeBlocks = []
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        guard !changeIsUserDriven else { return }
-
         switch type {
         case .insert:
-            changeBlocks!.append { $0.insertSections(IndexSet(integer: sectionIndex)) }
+            changeBlocks?.append { $0.insertSections(IndexSet(integer: sectionIndex)) }
         case .delete:
-            changeBlocks!.append { $0.deleteSections(IndexSet(integer: sectionIndex)) }
+            changeBlocks?.append { $0.deleteSections(IndexSet(integer: sectionIndex)) }
         default:
             return
         }
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        guard !changeIsUserDriven else { return }
-
         switch type {
         case .insert:
-            changeBlocks!.append { $0.insertItems(at: [newIndexPath!]) }
+            changeBlocks?.append { $0.insertItems(at: [newIndexPath!]) }
         case .delete:
-            changeBlocks!.append { $0.deleteItems(at: [indexPath!]) }
+            changeBlocks?.append { $0.deleteItems(at: [indexPath!]) }
         case .update:
-            changeBlocks!.append {
+            changeBlocks?.append {
                 // Don't use reloadItems since that's a delete and insertion.
                 if let cell = $0.cellForItem(at: indexPath!) as? TrainMemberCell {
                     cell.trainMember = anObject as? TrainMember
                 }
             }
         case .move:
-            changeBlocks!.append {
+            changeBlocks?.append {
                 // Move implies an update;don't use reloadItems since that's a delete and insertion
                 // already.
                 if let cell = $0.cellForItem(at: indexPath!) as? TrainMemberCell {
@@ -198,7 +202,7 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard let changeBlocks = changeBlocks else { return }
-        guard !changeIsUserDriven && !changeBlocks.isEmpty else {
+        if changeBlocks.isEmpty {
             self.changeBlocks = nil
             return
         }
@@ -214,32 +218,27 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
 
     @objc
     func managedObjectContextObjectsDidChange(notification: NSNotification) {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
         guard let userInfo = notification.userInfo else { return }
 
         // We use Train objects as a header, but our fetch is for TrainMember so we don't get
         // notifications of changes just to Train objects themselves.
         //
-        // Watch for the event where they are updated and/or refreshed, and update their headers
-        // accordingly.
-        var updatedTrains = Set<Train>()
-        if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject> {
-            updatedTrains.formUnion(updatedObjects.compactMap { $0 as? Train })
-        }
+        // Watch for the event where they are refreshed, by sync from cloud or merge after save
+        // from other context, and update their headers accordingly.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject> {
-            updatedTrains.formUnion(refreshedObjects.compactMap { $0 as? Train })
-        }
+            for case let train as Train in refreshedObjects {
+                guard let trainMember = train.members?.firstObject as? TrainMember else {
+                    assertionFailure("Train without member")
+                    continue
+                }
 
-        for train in updatedTrains {
-            guard let trainMember = train.members?.firstObject as? TrainMember else {
-                assertionFailure("Train without member")
-                continue
-            }
-
-            if let indexPath = fetchedResultsController.indexPath(forObject: trainMember) {
-                let kind = UICollectionView.elementKindSectionHeader
-                let headerIndexPath = IndexPath(row: 0, section: indexPath.section)
-                if let view = collectionView.supplementaryView(forElementKind: kind, at: headerIndexPath) as! TrainHeaderView? {
-                    view.train = train
+                if let indexPath = fetchedResultsController.indexPath(forObject: trainMember) {
+                    let kind = UICollectionView.elementKindSectionHeader
+                    let headerIndexPath = IndexPath(row: 0, section: indexPath.section)
+                    if let view = collectionView.supplementaryView(forElementKind: kind, at: headerIndexPath) as! TrainHeaderView? {
+                        view.train = train
+                    }
                 }
             }
         }
@@ -260,8 +259,8 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
 
             let viewController = navigationController.topViewController!
                 as! TrainEditViewController
-            viewController.managedObjectContext = managedObjectContext
-            viewController.train = train
+            viewController.persistentContainer = persistentContainer
+            viewController.editTrain(train)
         }
     }
 

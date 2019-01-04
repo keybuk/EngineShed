@@ -13,13 +13,13 @@ import Database
 
 class ModelsViewController : UITableViewController, NSFetchedResultsControllerDelegate {
 
-    weak var modelViewController: ModelViewController? = nil
+    var persistentContainer: NSPersistentContainer?
 
-    var managedObjectContext: NSManagedObjectContext?
     var classification: ModelClassification?
     var grouping: ModelGrouping = .modelClass
-
     var fetchRequest: NSFetchRequest<Model>?
+
+    weak var modelViewController: ModelViewController? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +79,7 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
             let model = fetchedResultsController.object(at: indexPath)
 
             let viewController = (segue.destination as! UINavigationController).topViewController as! ModelViewController
-            viewController.managedObjectContext = managedObjectContext
+            viewController.persistentContainer = persistentContainer
             viewController.model = model
             viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
             viewController.navigationItem.leftItemsSupplementBackButton = true
@@ -108,7 +108,7 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
             return fetchedResultsController
         }
         
-        guard let fetchRequest = fetchRequest, let managedObjectContext = managedObjectContext
+        guard let managedObjectContext = persistentContainer?.viewContext, let fetchRequest = fetchRequest
             else { preconditionFailure("Cannot construct controller without fetchRequest and context") }
 
         let sectionNameKeyPath = fetchRequest.sortDescriptors?.first?.key

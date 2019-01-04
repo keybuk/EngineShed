@@ -15,12 +15,21 @@ class TrainEditViewController : UITableViewController {
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
-    var managedObjectContext: NSManagedObjectContext?
+    var persistentContainer: NSPersistentContainer?
 
-    var train: Train? {
-        didSet {
-            // Update the view.
-            tableView.reloadData()
+    private var managedObjectContext: NSManagedObjectContext?
+    private var train: Train?
+
+    func editTrain(_ train: Train) {
+        guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
+
+        // Merge from the store, but keep any local changes.
+        managedObjectContext = persistentContainer.newBackgroundContext()
+        managedObjectContext?.automaticallyMergesChangesFromParent = true
+        managedObjectContext?.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+
+        managedObjectContext?.performAndWait {
+            self.train = managedObjectContext?.object(with: train.objectID) as? Train
         }
     }
 
@@ -142,12 +151,14 @@ class TrainEditViewController : UITableViewController {
         guard let userInfo = notification.userInfo else { return }
         guard let train = train else { return }
 
-        // Only check for a refresh from the store (sync from cloud), otherwise we'll end up
-        // chasing our own tail as we edit the object.
+        // Check for a refresh of our train object, by sync from cloud or merge after save
+        // from other context, and reload the table.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
             refreshedObjects.contains(train)
         {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 
@@ -170,17 +181,23 @@ class TrainEditViewController : UITableViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let managedObjectContext = managedObjectContext else { return }
 
+        // FIXME resign the first responder
+
         managedObjectContext.perform {
             do {
                 if managedObjectContext.hasChanges {
                     try managedObjectContext.save()
                 }
 
-                self.dismiss(animated: true)
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true)
+                }
             } catch {
-                let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alert, animated: true)
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                }
             }
         }
     }
