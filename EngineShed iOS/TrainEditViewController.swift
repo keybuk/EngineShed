@@ -42,6 +42,8 @@ class TrainEditViewController : UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
+        tableView.isEditing = true
+
         if let managedObjectContext = managedObjectContext {
             let notificationCenter = NotificationCenter.default
             notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
@@ -109,13 +111,29 @@ class TrainEditViewController : UITableViewController {
         }
     }
 
-    /*
-    // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        switch indexPath.section {
+        case 0: return false
+        case 1: return false
+        case 2: return true
+        default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+        }
     }
-    */
+
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        switch indexPath.section {
+        case 0: return .none
+        case 1: return .none
+        case 2:
+            switch indexPath.row {
+            case ..<(train?.members?.count ?? 0):
+                return .delete
+            default:
+                return .insert
+            }
+        default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+        }
+    }
 
     /*
     // Override to support editing the table view.

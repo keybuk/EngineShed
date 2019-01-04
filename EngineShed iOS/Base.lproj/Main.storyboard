@@ -220,7 +220,7 @@
                                             </connections>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtH-1m-HCt">
-                                            <rect key="frame" x="16" y="0.0" width="45.5" height="21"/>
+                                            <rect key="frame" x="16" y="0.0" width="46" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -229,10 +229,12 @@
                                     <constraints>
                                         <constraint firstItem="qo2-ov-Z5X" firstAttribute="top" secondItem="GdZ-h2-S3q" secondAttribute="top" id="92q-ff-yaf"/>
                                         <constraint firstItem="RtH-1m-HCt" firstAttribute="top" secondItem="qo2-ov-Z5X" secondAttribute="top" id="DH8-B8-HmL"/>
+                                        <constraint firstItem="RtH-1m-HCt" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qo2-ov-Z5X" secondAttribute="trailing" id="J8S-Nx-UOg"/>
                                         <constraint firstAttribute="bottom" secondItem="qo2-ov-Z5X" secondAttribute="bottom" id="Nwl-y7-83C"/>
                                         <constraint firstItem="qo2-ov-Z5X" firstAttribute="leading" secondItem="GdZ-h2-S3q" secondAttribute="leadingMargin" id="QvP-yb-qgb"/>
                                         <constraint firstItem="RtH-1m-HCt" firstAttribute="leading" secondItem="qo2-ov-Z5X" secondAttribute="leading" id="TPQ-LX-L8x"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="qo2-ov-Z5X" secondAttribute="trailing" id="ifu-jM-3gL"/>
+                                        <constraint firstItem="RtH-1m-HCt" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="qo2-ov-Z5X" secondAttribute="bottom" id="pTE-71-Ix2"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -279,18 +281,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbV-LN-34c">
-                                            <rect key="frame" x="16" y="10" width="22" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Member" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lD-Kq-ehc">
-                                            <rect key="frame" x="46" y="11" width="99" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Member" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lD-Kq-ehc">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43.5" id="lJq-wU-0Kn"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5lD-Kq-ehc" secondAttribute="trailing" id="IYx-ez-utQ"/>
+                                        <constraint firstItem="5lD-Kq-ehc" firstAttribute="top" secondItem="Ifv-vv-80s" secondAttribute="top" id="VV1-hD-A6c"/>
+                                        <constraint firstItem="5lD-Kq-ehc" firstAttribute="leading" secondItem="Ifv-vv-80s" secondAttribute="leadingMargin" id="wRV-N1-liD"/>
+                                        <constraint firstAttribute="bottom" secondItem="5lD-Kq-ehc" secondAttribute="bottom" id="xNI-sa-5nf"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="label" destination="5lD-Kq-ehc" id="BvR-qT-hkT"/>
