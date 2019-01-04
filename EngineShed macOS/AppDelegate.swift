@@ -66,14 +66,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: - Core Data stack
 
-    lazy var persistentContainer: PersistentContainer = {
+    lazy var persistentContainer: LocalPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = PersistentContainer(name: "EngineShed")
+        let container = LocalPersistentContainer(name: "EngineShed")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error {
                 // Replace this implementation with code to handle the error appropriately.

@@ -119,8 +119,8 @@
 		D2B7C9BE20D4BEF4001B51B1 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = D2B7C9AE20D4BEF3001B51B1 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2B7C9C120D4BEF4001B51B1 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7C9AC20D4BEF3001B51B1 /* Database.framework */; };
 		D2B7C9C220D4BEF4001B51B1 /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2B7C9AC20D4BEF3001B51B1 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D2B7C9CC20D4D722001B51B1 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */; };
-		D2B7C9CD20D4D722001B51B1 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */; };
+		D2B7C9CC20D4D722001B51B1 /* LocalPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9CB20D4D722001B51B1 /* LocalPersistentContainer.swift */; };
+		D2B7C9CD20D4D722001B51B1 /* LocalPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9CB20D4D722001B51B1 /* LocalPersistentContainer.swift */; };
 		D2B7C9D220D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */; };
 		D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */; };
 		D2B9A1B42150C74600156100 /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B32150C74600156100 /* ModelViewController.swift */; };
@@ -311,13 +311,13 @@
 		D248355621D6E23A00495FC0 /* CloudObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudObserver.swift; sourceTree = "<group>"; };
 		D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseState+Observer.swift"; sourceTree = "<group>"; };
 		D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+PerformAndWait.swift"; sourceTree = "<group>"; };
-		D25AAC7921DD445700AC4359 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
 		D25828AF21DC39AC0094918F /* TrainEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditViewController.swift; sourceTree = "<group>"; };
 		D25828B121DC437A0094918F /* TrainEditNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditNameCell.swift; sourceTree = "<group>"; };
 		D25828B321DC43870094918F /* TrainEditDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditDetailsCell.swift; sourceTree = "<group>"; };
 		D25828B521DC43950094918F /* TrainEditNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditNotesCell.swift; sourceTree = "<group>"; };
 		D25828B721DC43A10094918F /* TrainEditMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditMemberCell.swift; sourceTree = "<group>"; };
 		D25828B921DC43D70094918F /* TrainAddMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainAddMemberCell.swift; sourceTree = "<group>"; };
+		D25AAC7921DD445700AC4359 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
 		D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
 		D28758252105FEEE00EF722D /* TrainMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberCell.swift; sourceTree = "<group>"; };
 		D287582721060FE700EF722D /* TrainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainHeaderView.swift; sourceTree = "<group>"; };
@@ -383,7 +383,7 @@
 		D2B7C9B420D4BEF3001B51B1 /* Database iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Database iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C9BB20D4BEF4001B51B1 /* DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
 		D2B7C9BD20D4BEF4001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		D2B7C9CB20D4D722001B51B1 /* LocalPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistentContainer.swift; sourceTree = "<group>"; };
 		D2B7C9D120D4D905001B51B1 /* EngineShed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EngineShed.xcdatamodel; sourceTree = "<group>"; };
 		D2B9A1B32150C74600156100 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
 		D2B9A1B52150C77000156100 /* ModelImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelImageCell.swift; sourceTree = "<group>"; };
@@ -798,7 +798,7 @@
 				D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */,
 				D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */,
 				D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */,
-				D2B7C9CB20D4D722001B51B1 /* PersistentContainer.swift */,
+				D2B7C9CB20D4D722001B51B1 /* LocalPersistentContainer.swift */,
 				D298CB1C20D814D700827F68 /* NSImage+PNGData.swift */,
 				D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */,
 				D298CB1E20D8150600827F68 /* UIImage+URL.swift */,
@@ -1451,7 +1451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B7C9CC20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
+				D2B7C9CC20D4D722001B51B1 /* LocalPersistentContainer.swift in Sources */,
 				D2DE5CB720F8431800CABE34 /* Model+Era.swift in Sources */,
 				D2B7C9D220D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */,
@@ -1505,7 +1505,7 @@
 			files = (
 				D200F97420DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */,
 				D2DE5CBD20F8517500CABE34 /* Model+Classification.swift in Sources */,
-				D2B7C9CD20D4D722001B51B1 /* PersistentContainer.swift in Sources */,
+				D2B7C9CD20D4D722001B51B1 /* LocalPersistentContainer.swift in Sources */,
 				D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,

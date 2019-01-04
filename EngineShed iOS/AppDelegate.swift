@@ -50,12 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
                 let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
                 let viewController = masterNavigationController.topViewController as! ModelClassificationsViewController
-                viewController.managedObjectContext = persistentContainer.viewContext
+                viewController.persistentContainer = persistentContainer
             }
 
             if let navigationController = tabBarController.viewControllers?[1] as? UINavigationController {
                 let viewController = navigationController.topViewController as! TrainsViewController
-                viewController.managedObjectContext = persistentContainer.viewContext
+                viewController.persistentContainer = persistentContainer
             }
         }
 
@@ -124,14 +124,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     // MARK: - Core Data stack
 
-    lazy var persistentContainer: PersistentContainer = {
+    lazy var persistentContainer: LocalPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = PersistentContainer(name: "EngineShed")
+        let container = LocalPersistentContainer(name: "EngineShed")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

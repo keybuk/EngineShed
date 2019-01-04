@@ -1,5 +1,5 @@
 //
-//  PersistentContainer.swift
+//  LocalPersistentContainer.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/15/18.
@@ -13,7 +13,7 @@ import CoreData
 ///
 /// This also turns out to be a useful place to connect the core data persistent store with the
 /// CloudKit observer and provider.
-public class PersistentContainer : NSPersistentContainer {
+public class LocalPersistentContainer : NSPersistentContainer {
 
     /// Container identifier for CloudKit store.
     let cloudContainerID = "iCloud.com.netsplit.EngineShed"
