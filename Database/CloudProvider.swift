@@ -214,7 +214,9 @@ public final class CloudProvider {
         context.undoManager = nil
         context.userInfo[CloudProvider.ignoreChangesKey] = true
 
-        if let savedRecords = savedRecords {
+        if let savedRecords = savedRecords,
+            !savedRecords.isEmpty
+        {
             debugPrint(savedRecords)
             do {
                 for record in savedRecords {
@@ -227,7 +229,9 @@ public final class CloudProvider {
             }
         }
 
-        if let deletedRecordIDs = deletedRecordIDs {
+        if let deletedRecordIDs = deletedRecordIDs,
+            !deletedRecordIDs.isEmpty
+        {
             debugPrint(deletedRecordIDs)
         }
     }
