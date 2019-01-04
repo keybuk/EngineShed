@@ -24,6 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         beginNetworkActivity()
         persistentContainer.cloudObserver.subscribeToChanges { error in
             self.endNetworkActivity()
+
+            if let error = error {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "CloudKit Subscription Failed", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.window?.rootViewController?.present(alert, animated: true)
+                }
+            }
         }
 
         // Register for remote notifications of changes to the iCloud database.
@@ -33,6 +41,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         beginNetworkActivity()
         persistentContainer.cloudObserver.fetchChanges { error in
             self.endNetworkActivity()
+
+            if let error = error {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Sync From CloudKit Failed", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.window?.rootViewController?.present(alert, animated: true)
+                }
+            }
         }
 
         persistentContainer.cloudProvider.delegate = self
@@ -103,7 +119,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         beginNetworkActivity()
         persistentContainer.cloudObserver.handleRemoteNotification(userInfo) { error in
             self.endNetworkActivity()
-            if let _ = error {
+            if let error = error {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Sync From CloudKit Failed", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.window?.rootViewController?.present(alert, animated: true)
+                }
+                
                 completionHandler(.failed)
             } else {
                 completionHandler(.newData)
