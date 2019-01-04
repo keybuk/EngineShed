@@ -220,6 +220,8 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         self.changeBlocks = nil
     }
 
+    // MARK: - Notifications
+
     @objc
     func managedObjectContextObjectsDidChange(notification: NSNotification) {
         dispatchPrecondition(condition: .onQueue(DispatchQueue.main))

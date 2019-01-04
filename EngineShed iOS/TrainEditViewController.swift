@@ -141,11 +141,12 @@ class TrainEditViewController : UITableViewController {
         guard let managedObjectContext = managedObjectContext else { preconditionFailure("No context to save to") }
         guard let train = train else { preconditionFailure("No train to change") }
 
-        precondition(indexPath.section == 2, "Attempt to edit cell outside of members")
-
         if editingStyle == .delete {
+            precondition(indexPath.section == 2, "Attempt to delete cell outside of members")
             precondition(indexPath.row < train.members!.count, "Attempt to delete non-member cell")
 
+            // Remove the member from the list, and delete it. Both are required otherwise it
+            // remains as a member without a train, or a deleted member in our relationship.
             managedObjectContext.performAndWait {
                 let trainMember = train.members![indexPath.row] as! TrainMember
                 train.removeFromMembers(trainMember)
@@ -154,13 +155,16 @@ class TrainEditViewController : UITableViewController {
 
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
+            precondition(indexPath.section == 2, "Attempt to insert cell outside of members")
             precondition(indexPath.row == train.members!.count, "Attempt to insert within members")
 
+            // Insert a blank member at the end of the members list.
             managedObjectContext.performAndWait {
                 let trainMember = TrainMember(context: managedObjectContext)
                 train.addToMembers(trainMember)
             }
 
+            // After inserting the row, select it to trigger immediate editing.
             tableView.insertRows(at: [indexPath], with: .bottom)
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
         }
@@ -199,13 +203,12 @@ class TrainEditViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        guard let train = train else { preconditionFailure("No train to change") }
-
         precondition(sourceIndexPath.section == 2, "Attempt to move cell outside of members")
-        precondition(sourceIndexPath.row < train.members!.count, "Attempt to move non-member")
+        precondition(sourceIndexPath.row < (train?.members!.count ?? 0), "Attempt to move non-member")
 
+        // Only allow reordering within the members list, not past the end, or to other sections.
         guard proposedDestinationIndexPath.section == 2 else { return sourceIndexPath }
-        guard proposedDestinationIndexPath.row < train.members!.count else { return sourceIndexPath }
+        guard proposedDestinationIndexPath.row < (train?.members!.count ?? 0) else { return sourceIndexPath }
 
         return proposedDestinationIndexPath
     }
@@ -220,6 +223,10 @@ class TrainEditViewController : UITableViewController {
         precondition(to.section == 2, "Attempt to move cell out of members")
         precondition(to.row < train.members!.count, "Attempt to move outside of bounds")
 
+        // Remove from the members list first, and then insert at the new index path. This will
+        // do the right thing when moving up, because removing below doesn't change the above
+        // objects. It will also do the right thing when moving down, because the other objects
+        // move up, making way for it and leaving a gap at the new index path.
         managedObjectContext.performAndWait {
             let trainMember = train.members![fromIndexPath.row] as! TrainMember
 
@@ -229,8 +236,8 @@ class TrainEditViewController : UITableViewController {
 
         tableView.moveRow(at: fromIndexPath, to: to)
     }
-
-    // MARK: Object lifecycle
+    
+    // MARK: - Notifications
 
     @objc
     func managedObjectContextObjectsDidChange(notification: NSNotification) {
