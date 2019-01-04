@@ -151,7 +151,9 @@ public final class CloudProvider {
             }
         }
 
-        modifyRecords(recordsToSave: saveRecords, recordIDsToDelete: deleteRecordIDs)
+        if !saveRecords.isEmpty || !deleteRecordIDs.isEmpty {
+            modifyRecords(recordsToSave: saveRecords, recordIDsToDelete: deleteRecordIDs)
+        }
         pendingUpdates = nil
     }
 
