@@ -134,8 +134,18 @@ class TrainEditViewController : UITableViewController {
                 self.tableView(tableView, commit: .insert, forRowAt: indexPath)
             }
         case 3:
-            // Delete train
-            break
+            // Confirm train deletion using an alert.
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Delete Train", style: .destructive) { action in
+                self.deleteTrainAt(indexPath)
+            })
+
+            // Cancel case, deselect the table row.
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            })
+
+            present(alert, animated: true)
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
     }
@@ -307,6 +317,25 @@ class TrainEditViewController : UITableViewController {
                 if managedObjectContext.hasChanges {
                     try managedObjectContext.save()
                 }
+            }
+
+            self.dismiss(animated: true)
+        } catch {
+            let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+
+    func deleteTrainAt(_ indexPath: IndexPath) {
+        guard let managedObjectContext = managedObjectContext else { return }
+        guard let train = train else { return }
+
+        do {
+            try managedObjectContext.performAndWait {
+                managedObjectContext.delete(train)
+
+                try managedObjectContext.save()
             }
 
             self.dismiss(animated: true)
