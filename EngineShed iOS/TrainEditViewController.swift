@@ -60,7 +60,7 @@ class TrainEditViewController : UITableViewController {
         switch section {
         case 0: return 2
         case 1: return 1
-        case 2: return (train?.members?.count ?? 0) + 1
+        case 2: return (train?.members!.count ?? 0) + 1
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -89,9 +89,9 @@ class TrainEditViewController : UITableViewController {
             }
         case 2:
             switch indexPath.row {
-            case ..<(train?.members?.count ?? 0):
+            case ..<(train?.members!.count ?? 0):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "trainEditMemberCell", for: indexPath) as! TrainEditMemberCell
-                cell.trainMember = train?.members?[indexPath.row] as? TrainMember
+                cell.trainMember = train?.members![indexPath.row] as? TrainMember
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "trainAddMemberCell", for: indexPath) as! TrainAddMemberCell
@@ -128,7 +128,7 @@ class TrainEditViewController : UITableViewController {
         case 1: return .none
         case 2:
             switch indexPath.row {
-            case ..<(train?.members?.count ?? 0):
+            case ..<(train?.members!.count ?? 0):
                 return .delete
             default:
                 return .insert

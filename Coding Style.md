@@ -9,17 +9,22 @@ Use `fatalError` when we have an actual error, and always log it.
 Properties initialized by constructor come first
 Followed by outlets as weak IUOs
 Followed by any properties set by segue or before loading the view
- - Managed object context is always optional
 
 ## Core Data
 
 Always execute fetch requests inside a context queue
  ```
-let results = context.performAndWait {
+let results = try context.performAndWait {
     return try fetchRequest.execute()
 }
 ```    
 
-Always create and delete objects inside a context queue
+Treat `persistentContainer.viewContext` read-only, use for UI and fetch requests, not editing
 
-It's okay to call setters outside a context queue
+Perform all editing in a background context and save
+
+Always create and delete objects inside a `context.perform` block
+
+It's okay to call setters outside a background context's perform
+
+`NSSet`, `NSOrderedSet`, etc. members are always force-unwrapped
