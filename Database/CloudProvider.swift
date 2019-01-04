@@ -11,8 +11,6 @@ import CloudKit
 import CoreData
 import Dispatch
 
-// FIXME: this class has no way to report errors
-
 /// Observes changes to a local store, and synchronize to a database stored in CloudKit.
 ///
 /// Changes to the local store are observed using notifications on the core data managed object
@@ -51,6 +49,9 @@ public final class CloudProvider {
     
     /// Persistent container of local store to observe.
     public private(set) var persistentContainer: NSPersistentContainer
+
+    /// Delegate to receive notification of events.
+    public var delegate: CloudProviderDelegate?
 
     /// Identifier of record zone to synchronize to.
     let zoneID = CKRecordZone.ID(zoneName: "EngineShed")
@@ -182,7 +183,12 @@ public final class CloudProvider {
                 self.modifyRecords(recordsToSave: Array(recordsToSave[..<s]), recordIDsToDelete: Array(recordIDsToDelete[..<d]))
                 self.modifyRecords(recordsToSave: Array(recordsToSave[s...]), recordIDsToDelete: Array(recordIDsToDelete[d...]))
             } else if let error = error {
-                fatalError("Couldn't modify records: \(error)")
+                if let delegate = self.delegate {
+                    delegate.cloudProvider(self, didFailWithError: error)
+                    return
+                } else {
+                    fatalError("Couldn't modify records: \(error)")
+                }
             }
 
             self.handleModifyCompletion(savedRecords: savedRecords, deletedRecordIDs: deletedRecordIDs)
@@ -224,8 +230,14 @@ public final class CloudProvider {
                 }
 
                 try context.save()
+                delegate?.cloudProvider(self, didSaveRecords: savedRecords)
             } catch {
-                fatalError("Failed to write back: \(error)")
+                if let delegate = self.delegate {
+                    delegate.cloudProvider(self, didFailWithError: error)
+                    return
+                } else {
+                    fatalError("Failed to write back: \(error)")
+                }
             }
         }
 
@@ -233,6 +245,7 @@ public final class CloudProvider {
             !deletedRecordIDs.isEmpty
         {
             debugPrint(deletedRecordIDs)
+            delegate?.cloudProvider(self, didDeleteRecordsWithIDs: deletedRecordIDs)
         }
     }
 
@@ -272,27 +285,46 @@ public final class CloudProvider {
     public func resumeLongLivedOperations() {
         container.fetchAllLongLivedOperationIDs { (operationIDs, error) in
             if let error = error {
-                print("Failed to fetch long-lived operations: \(error)")
-            } else if let operationIDs = operationIDs {
-                for operationID in operationIDs {
-                    self.container.fetchLongLivedOperation(withID: operationID) { (operation, error) in
-                        if let error = error {
-                            print("Long-lived operation \(operationID) failed: \(error)")
-                        } else if let operation = operation as? CKModifyRecordsOperation {
-                            operation.modifyRecordsCompletionBlock = { (savedRecords, deletedRecordIDs, error) in
-                                if let error = error {
-                                    print("Resuming long-lived modify operation \(operationID) failed: \(error)")
+                if let delegate = self.delegate {
+                    delegate.cloudProvider(self, didFailWithError: error)
+                    return
+                } else {
+                    fatalError("Failed to fetch long-lived operations: \(error)")
+                }
+            }
+
+            guard let operationIDs = operationIDs else { return }
+            for operationID in operationIDs {
+                self.container.fetchLongLivedOperation(withID: operationID) { (operation, error) in
+                    if let error = error {
+                        if let delegate = self.delegate {
+                            delegate.cloudProvider(self, didFailWithError: error)
+                            return
+                        } else {
+                            fatalError("Long-lived operation \(operationID) failed: \(error)")
+                        }
+                    }
+
+                    if let operation = operation as? CKModifyRecordsOperation {
+                        operation.modifyRecordsCompletionBlock = { (savedRecords, deletedRecordIDs, error) in
+                            if let error = error {
+                                if let delegate = self.delegate {
+                                    delegate.cloudProvider(self, didFailWithError: error)
+                                    return
                                 } else {
-                                    self.handleModifyCompletion(savedRecords: savedRecords, deletedRecordIDs: deletedRecordIDs)
+                                    fatalError("Resuming long-lived modify operation \(operationID) failed: \(error)")
                                 }
                             }
-                            
-                            print("Resuming long-lived modify operation \(operationID)")
-                            self.database.add(operation)
-                        } else if let operation = operation {
-                            print("Resuming long-lived operation \(operationID)")
-                            self.container.add(operation)
+
+
+                            self.handleModifyCompletion(savedRecords: savedRecords, deletedRecordIDs: deletedRecordIDs)
                         }
+
+                        print("Resuming long-lived modify operation \(operationID)")
+                        self.database.add(operation)
+                    } else if let operation = operation {
+                        print("Resuming long-lived operation \(operationID)")
+                        self.container.add(operation)
                     }
                 }
             }

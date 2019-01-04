@@ -14,7 +14,7 @@ import Dispatch
 import Database
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, CloudProviderDelegate {
 
     var window: UIWindow?
 
@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         persistentContainer.cloudObserver.fetchChanges { error in
             self.endNetworkActivity()
         }
+
+        persistentContainer.cloudProvider.delegate = self
 
         // Observe changes to our managed context, send to CloudKit.
         persistentContainer.cloudProvider.observeChanges()
@@ -107,6 +109,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 completionHandler(.newData)
             }
         }
+    }
+
+    // MARK: - Cloud provider delegate
+
+    func cloudProvider(_ cloudProvider: CloudProvider, didFailWithError error: Error) {
+        let alert = UIAlertController(title: "Sync to CloudKit Failed", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        window?.rootViewController?.present(alert, animated: true)
     }
 
     // MARK: - Split view
