@@ -14,17 +14,6 @@ class TrainAddMemberCell : UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
 
-    var train: Train? {
-        didSet {
-            configureView()
-        }
-    }
-
-    func configureView() {
-        guard let train = train else { return }
-    }
-
-
     override func awakeFromNib() {
         super.awakeFromNib()
 

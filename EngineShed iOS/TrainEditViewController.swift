@@ -96,7 +96,6 @@ class TrainEditViewController : UITableViewController {
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "trainAddMemberCell", for: indexPath) as! TrainAddMemberCell
-                cell.train = train
                 return cell
             }
         case 3:
