@@ -179,8 +179,8 @@ class TrainEditViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard let managedObjectContext = managedObjectContext else { preconditionFailure("No context to save to") }
-        guard let train = train else { preconditionFailure("No train to change") }
+        guard let managedObjectContext = managedObjectContext else { return }
+        guard let train = train else { return }
 
         if editingStyle == .delete {
             precondition(indexPath.section == 2, "Attempt to delete cell outside of members")
@@ -241,8 +241,8 @@ class TrainEditViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        guard let managedObjectContext = managedObjectContext else { preconditionFailure("No context to save to") }
-        guard let train = train else { preconditionFailure("No train to change") }
+        guard let managedObjectContext = managedObjectContext else { return }
+        guard let train = train else { return }
 
         precondition(fromIndexPath.section == 2, "Attempt to move cell outside of members")
         precondition(fromIndexPath.row < train.members!.count, "Attempt to move non-member")
