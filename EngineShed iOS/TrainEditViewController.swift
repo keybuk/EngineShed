@@ -53,7 +53,7 @@ class TrainEditViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,6 +61,7 @@ class TrainEditViewController : UITableViewController {
         case 0: return 2
         case 1: return 1
         case 2: return (train?.members!.count ?? 0) + 1
+        case 3: return 1
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -98,6 +99,14 @@ class TrainEditViewController : UITableViewController {
                 cell.train = train
                 return cell
             }
+        case 3:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "deleteTrainCell", for: indexPath) as! DeleteTrainCell
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
     }
@@ -107,7 +116,28 @@ class TrainEditViewController : UITableViewController {
         case 0: return nil
         case 1: return nil
         case 2: return "Members"
+        case 3: return nil
         default: preconditionFailure("Unexpected section: \(section)")
+        }
+    }
+
+    // MARK: - Table view delegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0: break
+        case 1: break
+        case 2:
+            switch indexPath.row {
+            case ..<(train?.members!.count ?? 0): break
+            default:
+                // Call the delegate method as if the insertion control was tapped directly.
+                self.tableView(tableView, commit: .insert, forRowAt: indexPath)
+            }
+        case 3:
+            // Delete train
+            break
+        default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
     }
 
@@ -118,6 +148,7 @@ class TrainEditViewController : UITableViewController {
         case 0: return false
         case 1: return false
         case 2: return true
+        case 3: return false
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
     }
@@ -133,6 +164,7 @@ class TrainEditViewController : UITableViewController {
             default:
                 return .insert
             }
+        case 3: return .none
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
     }
@@ -170,21 +202,6 @@ class TrainEditViewController : UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0: break
-        case 1: break
-        case 2:
-            switch indexPath.row {
-            case ..<(train?.members!.count ?? 0): break
-            default:
-                // Call the delegate method as if the insertion control was tapped directly.
-                self.tableView(tableView, commit: .insert, forRowAt: indexPath)
-            }
-        default: preconditionFailure("Unexpected indexPath: \(indexPath)")
-        }
-    }
-
     // MARK: Reordering support
 
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -198,6 +215,7 @@ class TrainEditViewController : UITableViewController {
             default:
                 return false
             }
+        case 3: return false
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
     }
@@ -236,7 +254,7 @@ class TrainEditViewController : UITableViewController {
 
         tableView.moveRow(at: fromIndexPath, to: to)
     }
-    
+
     // MARK: - Notifications
 
     @objc

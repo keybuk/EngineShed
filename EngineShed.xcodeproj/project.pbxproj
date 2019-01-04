@@ -34,6 +34,7 @@
 		D25828BA21DC43D70094918F /* TrainAddMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828B921DC43D70094918F /* TrainAddMemberCell.swift */; };
 		D25828BC21DEFF450094918F /* CloudProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828BB21DEFF450094918F /* CloudProviderDelegate.swift */; };
 		D25828BD21DEFF450094918F /* CloudProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828BB21DEFF450094918F /* CloudProviderDelegate.swift */; };
+		D25828BF21E0225D0094918F /* DeleteTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828BE21E0225D0094918F /* DeleteTrainCell.swift */; };
 		D27FC2402150BE0E00AA522B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */; };
 		D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
 		D28758242105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
@@ -320,6 +321,7 @@
 		D25828B721DC43A10094918F /* TrainEditMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditMemberCell.swift; sourceTree = "<group>"; };
 		D25828B921DC43D70094918F /* TrainAddMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainAddMemberCell.swift; sourceTree = "<group>"; };
 		D25828BB21DEFF450094918F /* CloudProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudProviderDelegate.swift; sourceTree = "<group>"; };
+		D25828BE21E0225D0094918F /* DeleteTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTrainCell.swift; sourceTree = "<group>"; };
 		D25AAC7921DD445700AC4359 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
 		D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
 		D28758252105FEEE00EF722D /* TrainMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberCell.swift; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 				D25828B521DC43950094918F /* TrainEditNotesCell.swift */,
 				D25828B721DC43A10094918F /* TrainEditMemberCell.swift */,
 				D25828B921DC43D70094918F /* TrainAddMemberCell.swift */,
+				D25828BE21E0225D0094918F /* DeleteTrainCell.swift */,
 				D2B7C95C20D4BA30001B51B1 /* Main.storyboard */,
 				D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */,
 				D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */,
@@ -1424,6 +1427,7 @@
 				D212EA472150AF98005FEED3 /* ModelClassificationCell.swift in Sources */,
 				D28758262105FEEE00EF722D /* TrainMemberCell.swift in Sources */,
 				D2B9A1B62150C77000156100 /* ModelImageCell.swift in Sources */,
+				D25828BF21E0225D0094918F /* DeleteTrainCell.swift in Sources */,
 				D25828B021DC39AC0094918F /* TrainEditViewController.swift in Sources */,
 				D2DE5CC720F8A60000CABE34 /* TrainsViewController.swift in Sources */,
 				D287582821060FE700EF722D /* TrainHeaderView.swift in Sources */,
