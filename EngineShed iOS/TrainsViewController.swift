@@ -68,19 +68,23 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         guard let train = trainMember.train else { preconditionFailure("Train member without a train") }
 
         guard let managedObjectContext = persistentContainer?.newBackgroundContext() else { preconditionFailure("No database context") }
-        managedObjectContext.performAndWait {
-            let train = managedObjectContext.object(with: train.objectID) as! Train
-            let trainMember = managedObjectContext.object(with: trainMember.objectID) as! TrainMember
+        do {
+            try managedObjectContext.performAndWait {
+                let train = managedObjectContext.object(with: train.objectID) as! Train
+                let trainMember = managedObjectContext.object(with: trainMember.objectID) as! TrainMember
 
-            train.removeFromMembers(at: sourceIndexPath.item)
-            train.insertIntoMembers(trainMember, at: destinationIndexPath.item)
+                train.removeFromMembers(at: sourceIndexPath.item)
+                train.insertIntoMembers(trainMember, at: destinationIndexPath.item)
 
-            do {
                 self.changeIsUserDriven = true
                 try managedObjectContext.save()
-            } catch {
-                fatalError("Save failed \(error)")
             }
+        } catch {
+            collectionView.moveItem(at: destinationIndexPath, to: sourceIndexPath)
+
+            let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
         }
     }
 
