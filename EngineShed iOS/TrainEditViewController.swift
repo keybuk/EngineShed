@@ -20,19 +20,6 @@ class TrainEditViewController : UITableViewController {
     private var managedObjectContext: NSManagedObjectContext?
     private var train: Train?
 
-    func editTrain(_ train: Train) {
-        guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
-
-        // Merge from the store, but keep any local changes.
-        managedObjectContext = persistentContainer.newBackgroundContext()
-        managedObjectContext?.automaticallyMergesChangesFromParent = true
-        managedObjectContext?.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-
-        managedObjectContext?.performAndWait {
-            self.train = managedObjectContext?.object(with: train.objectID) as? Train
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +31,11 @@ class TrainEditViewController : UITableViewController {
 
         tableView.isEditing = true
 
+        // Set the initial save button state.
+        updateSaveButton()
+
+        // Register for notifications of changes to our background context so we can update the
+        // field values when changed outside this view.
         if let managedObjectContext = managedObjectContext {
             let notificationCenter = NotificationCenter.default
             notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
@@ -264,6 +256,54 @@ class TrainEditViewController : UITableViewController {
         tableView.moveRow(at: fromIndexPath, to: to)
     }
 
+    // MARK: - Object management and observation
+
+    func editTrain(_ train: Train) {
+        guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
+
+        // Merge from the store, but keep any local changes.
+        managedObjectContext = persistentContainer.newBackgroundContext()
+        managedObjectContext?.automaticallyMergesChangesFromParent = true
+        managedObjectContext?.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+
+        managedObjectContext?.performAndWait {
+            self.train = managedObjectContext?.object(with: train.objectID) as? Train
+
+            // Use KVO to keep the save button state up to date.
+            self.observeTrain()
+        }
+    }
+
+    var observers: [NSKeyValueObservation] = []
+
+    func observeTrain() {
+        self.observers.removeAll()
+        guard let train = self.train else { return }
+
+        // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
+        // temporarily replace with Cocoa KVO if necessary.
+        self.observers.append(train.observe(\.name) { (_, _) in self.updateSaveButton() })
+        self.observers.append(train.observe(\.details) { (_, _) in self.updateSaveButton() })
+        self.observers.append(train.observe(\.notes) { (_, _) in self.updateSaveButton() })
+        self.observers.append(train.observe(\.members) { (_, _) in
+            self.updateSaveButton()
+            self.observeTrainMembers()
+        })
+
+        self.observeTrainMembers()
+    }
+
+    var memberObservers: [NSKeyValueObservation] = []
+
+    func observeTrainMembers() {
+        self.memberObservers.removeAll()
+        guard let train = self.train else { return }
+
+        for case let trainMember as TrainMember in train.members! {
+            self.observers.append(trainMember.observe(\.title) { (_, _) in self.updateSaveButton() })
+        }
+    }
+
     // MARK: - Notifications
 
     @objc
@@ -332,6 +372,25 @@ class TrainEditViewController : UITableViewController {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
+        }
+    }
+
+    func updateSaveButton() {
+        guard let managedObjectContext = managedObjectContext else { return }
+        guard let train = train else { return }
+
+        saveButton.isEnabled = managedObjectContext.performAndWait {
+            if train.isInserted,
+                let _ = try? train.validateForInsert()
+            {
+                return true
+            } else if train.isUpdated,
+                let _ = try? train.validateForUpdate()
+            {
+                return true
+            } else {
+                return false
+            }
         }
     }
 
