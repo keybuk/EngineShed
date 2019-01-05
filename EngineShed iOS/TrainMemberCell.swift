@@ -24,7 +24,12 @@ class TrainMemberCell : UICollectionViewCell {
     func configureCell() {
         guard let trainMember = trainMember else { return }
 
-        modelImageView.image = trainMember.image
+        if let _ = trainMember.model {
+            modelImageView.image = trainMember.image ?? UIImage(named: "missing-image")
+        } else {
+            modelImageView.image = UIImage(named: "missing-model")
+        }
+
         titleLabel.text = trainMember.title
     }
 
