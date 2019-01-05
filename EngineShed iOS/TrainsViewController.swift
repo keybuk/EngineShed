@@ -29,7 +29,7 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
 
         if let managedObjectContext = persistentContainer?.viewContext {
             let notificationCenter = NotificationCenter.default
-            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
         }
     }
 
@@ -223,7 +223,7 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
     // MARK: - Notifications
 
     @objc
-    func managedObjectContextObjectsDidChange(notification: NSNotification) {
+    func managedObjectContextObjectsDidChange(_ notification: Notification) {
         dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
         guard let userInfo = notification.userInfo else { return }
 

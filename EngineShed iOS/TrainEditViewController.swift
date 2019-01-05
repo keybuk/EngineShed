@@ -34,7 +34,7 @@ class TrainEditViewController : UITableViewController {
         // field values when changed outside this view.
         if let managedObjectContext = managedObjectContext {
             let notificationCenter = NotificationCenter.default
-            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(notification:)), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
         }
     }
 
@@ -317,16 +317,6 @@ class TrainEditViewController : UITableViewController {
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: - Actions
 

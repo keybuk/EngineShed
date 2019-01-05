@@ -71,15 +71,15 @@ public final class CloudProvider {
     // Subscribe to Core Data notifications to watch for changes.
     public func observeChanges() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsWillSave(notification:)), name: NSNotification.Name.NSManagedObjectContextWillSave, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidSave(notification:)), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsWillSave), name: NSNotification.Name.NSManagedObjectContextWillSave, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidSave), name: NSNotification.Name.NSManagedObjectContextDidSave, object: nil)
     }
     
     /// Set of changed keys for each updated object.
     var pendingUpdates: [NSManagedObjectID: Set<String>]? = nil
 
     @objc
-    func managedObjectContextObjectsWillSave(notification: NSNotification) {
+    func managedObjectContextObjectsWillSave(_ notification: Notification) {
         guard let context = notification.object as? NSManagedObjectContext else { return }
         guard context.persistentStoreCoordinator == persistentContainer.persistentStoreCoordinator else { return }
 
@@ -103,7 +103,7 @@ public final class CloudProvider {
     }
 
     @objc
-    func managedObjectContextObjectsDidSave(notification: NSNotification) {
+    func managedObjectContextObjectsDidSave(_ notification: Notification) {
         guard let context = notification.object as? NSManagedObjectContext else { return }
         guard context.persistentStoreCoordinator == persistentContainer.persistentStoreCoordinator else { return }
         
