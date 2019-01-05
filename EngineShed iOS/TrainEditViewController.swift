@@ -23,13 +23,9 @@ class TrainEditViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-
-        tableView.isEditing = true
+        // Set the view to editing so rows can be reordered and one-tap deleted, and also to show
+        // the insert accessory.
+        isEditing = true
 
         // Set the initial save button state.
         updateSaveButton()
