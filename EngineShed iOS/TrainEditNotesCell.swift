@@ -29,7 +29,6 @@ class TrainEditNotesCell : UITableViewCell, UITextViewDelegate {
         placeholderLabel.isHidden = !textView.text.isEmpty
     }
 
-
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -52,10 +51,14 @@ class TrainEditNotesCell : UITableViewCell, UITextViewDelegate {
     // MARK: - UITextViewDelegate
 
     func textViewDidChange(_ textView: UITextView) {
+        train?.notes = textView.text
         placeholderLabel.isHidden = !textView.text.isEmpty
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
+        // Strictly speaking this isn't necessary, but make sure the value is set at the end of
+        // editing just in case something changes it during resigning of the responder, before we
+        // process the notification.
         train?.notes = textView.text
     }
 

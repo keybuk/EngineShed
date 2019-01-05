@@ -26,10 +26,12 @@ class TrainEditMemberCell : UITableViewCell, UITextFieldDelegate {
         textField.text = trainMember.title
     }
 
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        // UITextFieldDelegate lacks a textFieldDidChange, but has a Notification we can use instead
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: textField)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,6 +50,16 @@ class TrainEditMemberCell : UITableViewCell, UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
+        // Strictly speaking this isn't necessary, but make sure the value is set at the end of
+        // editing just in case something changes it during resigning of the responder, before we
+        // process the notification.
+        trainMember?.title = textField.text
+    }
+
+    // MARK: - Notifications
+
+    @objc
+    func textDidChange(_ notification: Notification) {
         trainMember?.title = textField.text
     }
 
