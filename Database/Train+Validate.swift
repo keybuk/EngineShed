@@ -27,11 +27,6 @@ extension Train {
 
     func validateMembers() throws {
         guard members!.count > 0 else { throw ValidationError.noMembers }
-
-        for case let member as TrainMember in members! {
-            if member.isInserted { try member.validateForInsert() }
-            else if member.isUpdated { try member.validateForUpdate() }
-        }
     }
 
     public override func validateForInsert() throws {

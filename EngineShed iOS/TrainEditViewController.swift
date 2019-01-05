@@ -365,16 +365,31 @@ class TrainEditViewController : UITableViewController {
         guard let managedObjectContext = managedObjectContext else { return }
         guard let train = train else { return }
 
+        // Enable the save button only if there has been a change, and that the result is valid.
         saveButton.isEnabled = managedObjectContext.performAndWait {
-            if train.isInserted,
-                let _ = try? train.validateForInsert()
-            {
-                return true
-            } else if train.isUpdated,
-                let _ = try? train.validateForUpdate()
-            {
-                return true
-            } else {
+            var isChanged = false
+
+            do {
+                if train.isInserted {
+                    try train.validateForInsert()
+                    isChanged = true
+                } else if train.isUpdated {
+                    try train.validateForUpdate()
+                    isChanged = true
+                }
+
+                for case let member as TrainMember in train.members! {
+                    if member.isInserted {
+                        try member.validateForInsert()
+                        isChanged = true
+                    } else if member.isUpdated {
+                        try member.validateForUpdate()
+                        isChanged = true
+                    }
+                }
+
+                return isChanged
+            } catch {
                 return false
             }
         }
