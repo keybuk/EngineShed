@@ -37,8 +37,6 @@
 		D25828BF21E0225D0094918F /* DeleteTrainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828BE21E0225D0094918F /* DeleteTrainCell.swift */; };
 		D25828C121E028920094918F /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
 		D25828C221E028920094918F /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
-		D25828C421E02B730094918F /* TrainMember+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C321E02B730094918F /* TrainMember+Validate.swift */; };
-		D25828C521E02B730094918F /* TrainMember+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C321E02B730094918F /* TrainMember+Validate.swift */; };
 		D27FC2402150BE0E00AA522B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */; };
 		D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
 		D28758242105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
@@ -327,7 +325,6 @@
 		D25828BB21DEFF450094918F /* CloudProviderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudProviderDelegate.swift; sourceTree = "<group>"; };
 		D25828BE21E0225D0094918F /* DeleteTrainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTrainCell.swift; sourceTree = "<group>"; };
 		D25828C021E028920094918F /* Train+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Validate.swift"; sourceTree = "<group>"; };
-		D25828C321E02B730094918F /* TrainMember+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+Validate.swift"; sourceTree = "<group>"; };
 		D25AAC7921DD445700AC4359 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
 		D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
 		D28758252105FEEE00EF722D /* TrainMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberCell.swift; sourceTree = "<group>"; };
@@ -715,7 +712,6 @@
 				D2BE3DD4215B59C50005D68F /* Train+Index.swift */,
 				D2AF28AF2110285B00374975 /* Train+WillSave.swift */,
 				D25828C021E028920094918F /* Train+Validate.swift */,
-				D25828C321E02B730094918F /* TrainMember+Validate.swift */,
 				D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */,
 				D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */,
 			);
@@ -1491,7 +1487,6 @@
 				D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
 				D2A4112221262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */,
-				D25828C421E02B730094918F /* TrainMember+Validate.swift in Sources */,
 				D2AF28B921102DBC00374975 /* Model+FetchRequests.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
 				D2BE3DD5215B59C50005D68F /* Train+Index.swift in Sources */,
@@ -1547,7 +1542,6 @@
 				D28758242105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */,
 				D298CB2820D8163A00827F68 /* Train+Storable.swift in Sources */,
 				D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
-				D25828C521E02B730094918F /* TrainMember+Validate.swift in Sources */,
 				D298CAF420D737C800827F68 /* CloudProvider.swift in Sources */,
 				D248355E21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */,
 				D2BE3DD3215B593E0005D68F /* Purchase+Index.swift in Sources */,
