@@ -301,17 +301,6 @@ class TrainEditViewController : UITableViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let managedObjectContext = managedObjectContext else { return }
 
-        // Resign the first responder from whichever cell holds it.
-        for cell in tableView.visibleCells {
-            switch cell {
-            case let cell as TrainEditNameCell: cell.textField.resignFirstResponder()
-            case let cell as TrainEditDetailsCell: cell.textField.resignFirstResponder()
-            case let cell as TrainEditNotesCell: cell.textView.resignFirstResponder()
-            case let cell as TrainEditMemberCell: cell.textField.resignFirstResponder()
-            default: continue
-            }
-        }
-
         do {
             try managedObjectContext.performAndWait {
                 if managedObjectContext.hasChanges {
