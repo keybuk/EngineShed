@@ -303,7 +303,7 @@ class TrainEditViewController : UITableViewController {
     // MARK: - Notifications
 
     @objc
-    func managedObjectContextObjectsDidChange(notification: NSNotification) {
+    func managedObjectContextObjectsDidChange(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         guard let train = train else { return }
 
