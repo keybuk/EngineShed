@@ -317,16 +317,23 @@ public final class CloudObserver {
         operation.recordZoneChangeTokensUpdatedBlock = { zoneID, serverChangeToken, _ in
             print("Record change token updated: \(zoneID) \(serverChangeToken!)")
             do {
-                if !deletedRecords.isEmpty {
-                    try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context, mergeTo: self.persistentContainer.viewContext)
-                    deletedRecords.removeAll()
-                }
+                // RP says to flush changes, but the reality of having to split large change
+                // operations means we could be trying to flush a partial sync which fails
+                // validation.
+                //
+                // Disable everything but recording the change token for now until I can think more
+                // on it.
+//                if !deletedRecords.isEmpty {
+//                    try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context, mergeTo: self.persistentContainer.viewContext)
+//                    deletedRecords.removeAll()
+//                }
 
                 let zoneState = try databaseState.stateForZoneWithID(zoneID)
                 zoneState.serverChangeToken = serverChangeToken
-                try context.save()
+                // try context.save()
             } catch {
-                print("Error flushing zone changes: \(error)")
+//                print("Error flushing zone changes: \(error)")
+                print("Error saving zone change token: \(error)")
                 cancelCausedByError = error
                 operation.cancel()
             }
