@@ -56,6 +56,18 @@
 		D23B8BCF21E2B8C9004F994D /* DetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23B8BCE21E2B8C9004F994D /* DetailsHeaderView.xib */; };
 		D23B8BD121E2B8D1004F994D /* MaintenanceHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23B8BD021E2B8D1004F994D /* MaintenanceHeaderView.xib */; };
 		D23B8BD321E2B8D9004F994D /* NotesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23B8BD221E2B8D9004F994D /* NotesHeaderView.xib */; };
+		D23B8BD621E2BEA4004F994D /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BD521E2BEA4004F994D /* PurchaseViewController.swift */; };
+		D23B8BD821E2BFD1004F994D /* PurchaseManufacturerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BD721E2BFD1004F994D /* PurchaseManufacturerCell.swift */; };
+		D23B8BDA21E2C025004F994D /* PurchaseCatalogNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BD921E2C025004F994D /* PurchaseCatalogNumberCell.swift */; };
+		D23B8BDC21E2C042004F994D /* PurchaseCatalogDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BDB21E2C042004F994D /* PurchaseCatalogDescriptionCell.swift */; };
+		D23B8BDE21E2C068004F994D /* PurchaseCatalogYearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BDD21E2C068004F994D /* PurchaseCatalogYearCell.swift */; };
+		D23B8BE021E2C09C004F994D /* PurchaseLimitedEditionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BDF21E2C09C004F994D /* PurchaseLimitedEditionCell.swift */; };
+		D23B8BE221E2C108004F994D /* PurchaseDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BE121E2C108004F994D /* PurchaseDateCell.swift */; };
+		D23B8BE421E2C117004F994D /* PurchaseStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BE321E2C117004F994D /* PurchaseStoreCell.swift */; };
+		D23B8BE621E2C129004F994D /* PurchasePriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BE521E2C129004F994D /* PurchasePriceCell.swift */; };
+		D23B8BE821E2C137004F994D /* PurchaseConditionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BE721E2C137004F994D /* PurchaseConditionCell.swift */; };
+		D23B8BEC21E2C160004F994D /* PurchaseValuationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BEB21E2C160004F994D /* PurchaseValuationCell.swift */; };
+		D23B8BEE21E2C172004F994D /* PurchaseNotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8BED21E2C172004F994D /* PurchaseNotesCell.swift */; };
 		D248355721D6E23A00495FC0 /* CloudObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355621D6E23A00495FC0 /* CloudObserver.swift */; };
 		D248355821D6E23A00495FC0 /* CloudObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355621D6E23A00495FC0 /* CloudObserver.swift */; };
 		D248355D21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */; };
@@ -385,6 +397,18 @@
 		D23B8BCE21E2B8C9004F994D /* DetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsHeaderView.xib; sourceTree = "<group>"; };
 		D23B8BD021E2B8D1004F994D /* MaintenanceHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MaintenanceHeaderView.xib; sourceTree = "<group>"; };
 		D23B8BD221E2B8D9004F994D /* NotesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesHeaderView.xib; sourceTree = "<group>"; };
+		D23B8BD521E2BEA4004F994D /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		D23B8BD721E2BFD1004F994D /* PurchaseManufacturerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManufacturerCell.swift; sourceTree = "<group>"; };
+		D23B8BD921E2C025004F994D /* PurchaseCatalogNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCatalogNumberCell.swift; sourceTree = "<group>"; };
+		D23B8BDB21E2C042004F994D /* PurchaseCatalogDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCatalogDescriptionCell.swift; sourceTree = "<group>"; };
+		D23B8BDD21E2C068004F994D /* PurchaseCatalogYearCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCatalogYearCell.swift; sourceTree = "<group>"; };
+		D23B8BDF21E2C09C004F994D /* PurchaseLimitedEditionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseLimitedEditionCell.swift; sourceTree = "<group>"; };
+		D23B8BE121E2C108004F994D /* PurchaseDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDateCell.swift; sourceTree = "<group>"; };
+		D23B8BE321E2C117004F994D /* PurchaseStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseStoreCell.swift; sourceTree = "<group>"; };
+		D23B8BE521E2C129004F994D /* PurchasePriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePriceCell.swift; sourceTree = "<group>"; };
+		D23B8BE721E2C137004F994D /* PurchaseConditionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConditionCell.swift; sourceTree = "<group>"; };
+		D23B8BEB21E2C160004F994D /* PurchaseValuationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseValuationCell.swift; sourceTree = "<group>"; };
+		D23B8BED21E2C172004F994D /* PurchaseNotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseNotesCell.swift; sourceTree = "<group>"; };
 		D248355621D6E23A00495FC0 /* CloudObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudObserver.swift; sourceTree = "<group>"; };
 		D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseState+Observer.swift"; sourceTree = "<group>"; };
 		D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+PerformAndWait.swift"; sourceTree = "<group>"; };
@@ -792,6 +816,25 @@
 			name = "Train View";
 			sourceTree = "<group>";
 		};
+		D23B8BD421E2BE84004F994D /* Purchase View */ = {
+			isa = PBXGroup;
+			children = (
+				D23B8BD521E2BEA4004F994D /* PurchaseViewController.swift */,
+				D23B8BD721E2BFD1004F994D /* PurchaseManufacturerCell.swift */,
+				D23B8BD921E2C025004F994D /* PurchaseCatalogNumberCell.swift */,
+				D23B8BDB21E2C042004F994D /* PurchaseCatalogDescriptionCell.swift */,
+				D23B8BDD21E2C068004F994D /* PurchaseCatalogYearCell.swift */,
+				D23B8BDF21E2C09C004F994D /* PurchaseLimitedEditionCell.swift */,
+				D23B8BE121E2C108004F994D /* PurchaseDateCell.swift */,
+				D23B8BE321E2C117004F994D /* PurchaseStoreCell.swift */,
+				D23B8BE521E2C129004F994D /* PurchasePriceCell.swift */,
+				D23B8BE721E2C137004F994D /* PurchaseConditionCell.swift */,
+				D23B8BEB21E2C160004F994D /* PurchaseValuationCell.swift */,
+				D23B8BED21E2C172004F994D /* PurchaseNotesCell.swift */,
+			);
+			name = "Purchase View";
+			sourceTree = "<group>";
+		};
 		D298CAE720D7109900827F68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,6 +928,7 @@
 				D23B8B8221E29502004F994D /* Classification View */,
 				D23B8B8421E2951B004F994D /* Models View */,
 				D23B8B8521E29527004F994D /* Model View */,
+				D23B8BD421E2BE84004F994D /* Purchase View */,
 				D23B8B8621E29533004F994D /* Trains View */,
 				D23B8B8721E29544004F994D /* Train View */,
 				D2B7C95C20D4BA30001B51B1 /* Main.storyboard */,
@@ -1577,16 +1621,21 @@
 			files = (
 				D23B8B9321E29C54004F994D /* ModelDetailsCell.swift in Sources */,
 				D23B8BC521E2B5B3004F994D /* ModelModificationsCell.swift in Sources */,
+				D23B8BE221E2C108004F994D /* PurchaseDateCell.swift in Sources */,
 				D25828B821DC43A10094918F /* TrainEditMemberCell.swift in Sources */,
+				D23B8BD821E2BFD1004F994D /* PurchaseManufacturerCell.swift in Sources */,
 				D25828BA21DC43D70094918F /* TrainAddMemberCell.swift in Sources */,
 				D23B8B8B21E29BF3004F994D /* ModelClassCell.swift in Sources */,
+				D23B8BE821E2C137004F994D /* PurchaseConditionCell.swift in Sources */,
 				D23B8B9921E2A167004F994D /* ModelMotorCell.swift in Sources */,
 				D23B8BC121E2B579004F994D /* ModelDetailPartsCell.swift in Sources */,
+				D23B8BE421E2C117004F994D /* PurchaseStoreCell.swift in Sources */,
 				D25828B221DC437A0094918F /* TrainEditNameCell.swift in Sources */,
 				D2B9A1B82150D35D00156100 /* ModelPurchaseCell.swift in Sources */,
 				D23B8BA321E2AD44004F994D /* ModelSocketCell.swift in Sources */,
 				D2DE5CB520F82CAB00CABE34 /* ModelCell.swift in Sources */,
 				D23B8B8F21E29C2B004F994D /* ModelNameCell.swift in Sources */,
+				D23B8BDC21E2C042004F994D /* PurchaseCatalogDescriptionCell.swift in Sources */,
 				D23B8BA921E2AE7D004F994D /* ModelDecoderFirmwareVersionCell.swift in Sources */,
 				D23B8BA521E2AD6E004F994D /* ModelDecoderTypeCell.swift in Sources */,
 				D23B8BC721E2B79F004F994D /* ModelTasksCell.swift in Sources */,
@@ -1606,20 +1655,27 @@
 				D23B8BAB21E2AE96004F994D /* ModelDecoderFirmwareDateCell.swift in Sources */,
 				D23B8B9121E29C3E004F994D /* ModelLiveryCell.swift in Sources */,
 				D23B8BB521E2AF13004F994D /* ModelDecoderSoundSettingsCell.swift in Sources */,
+				D23B8BEC21E2C160004F994D /* PurchaseValuationCell.swift in Sources */,
 				D23B8BC921E2B7C1004F994D /* ModelLastRunCell.swift in Sources */,
 				D2DE5CC720F8A60000CABE34 /* TrainsViewController.swift in Sources */,
+				D23B8BDE21E2C068004F994D /* PurchaseCatalogYearCell.swift in Sources */,
 				D287582821060FE700EF722D /* TrainHeaderView.swift in Sources */,
 				D23B8BBD21E2B52D004F994D /* ModelCouplingsCell.swift in Sources */,
 				D23B8BBF21E2B54B004F994D /* ModelFeaturesCell.swift in Sources */,
 				D25828B421DC43870094918F /* TrainEditDetailsCell.swift in Sources */,
+				D23B8BEE21E2C172004F994D /* PurchaseNotesCell.swift in Sources */,
 				D23B8B8921E29A37004F994D /* ModelClassificationCell.swift in Sources */,
 				D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */,
+				D23B8BE621E2C129004F994D /* PurchasePriceCell.swift in Sources */,
 				D212EA452150AEDA005FEED3 /* ClassificationsViewController.swift in Sources */,
+				D23B8BDA21E2C025004F994D /* PurchaseCatalogNumberCell.swift in Sources */,
 				D23B8BB921E2AF3A004F994D /* ModelSpeakerCell.swift in Sources */,
 				D2DE5CB320F82A3100CABE34 /* ModelsViewController.swift in Sources */,
 				D23B8BCB21E2B7DD004F994D /* ModelLastOilCell.swift in Sources */,
 				D23B8BA721E2AE57004F994D /* ModelDecoderSerialNumberCell.swift in Sources */,
 				D23B8B9D21E2A18E004F994D /* ModelLightsCell.swift in Sources */,
+				D23B8BE021E2C09C004F994D /* PurchaseLimitedEditionCell.swift in Sources */,
+				D23B8BD621E2BEA4004F994D /* PurchaseViewController.swift in Sources */,
 				D23B8BCD21E2B895004F994D /* ModelNotesCell.swift in Sources */,
 				D23B8BB321E2AEFD004F994D /* ModelDecoderSoundProjectVersionCell.swift in Sources */,
 				D2B9A1B42150C74600156100 /* ModelViewController.swift in Sources */,
