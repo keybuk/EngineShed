@@ -51,7 +51,7 @@ class ModelViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 10
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,6 +59,14 @@ class ModelViewController : UITableViewController {
         switch indexPath.row {
         case 0: identifier = "modelImageCell"
         case 1: identifier = "modelPurchaseCell"
+        case 2: identifier = "modelClassificationCell"
+        case 3: identifier = "modelClassCell"
+        case 4: identifier = "modelNumberCell"
+        case 5: identifier = "modelNameCell"
+        case 6: identifier = "modelLiveryCell"
+        case 7: identifier = "modelDetailsCell"
+        case 8: identifier = "modelEraCell"
+        case 9: identifier = "modelDispositionCell"
         default: preconditionFailure("Unexpected indexPath")
         }
 

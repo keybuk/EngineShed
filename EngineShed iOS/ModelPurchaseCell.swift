@@ -33,10 +33,8 @@ class ModelPurchaseCell : UITableViewCell, ModelSettable {
     }
 
     func configureCell() {
-        guard let purchase = model?.purchase else { return }
-
-        purchaseLabel.text = [ purchase.manufacturer, purchase.catalogNumber ].compactMap({ $0 }).joined(separator: " ")
-        purchaseDescriptionLabel.text = purchase.catalogDescription
+        purchaseLabel.text = [ model?.purchase?.manufacturer, model?.purchase?.catalogNumber ].compactMap({ $0 }).joined(separator: " ")
+        purchaseDescriptionLabel.text = model?.purchase?.catalogDescription
     }
 
 }

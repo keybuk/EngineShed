@@ -1,25 +1,25 @@
 //
-//  ModelImageCell.swift
+//  ModelNameCell.swift
 //  EngineShed iOS
 //
-//  Created by Scott James Remnant on 9/17/18.
-//  Copyright © 2018 Scott James Remnant. All rights reserved.
+//  Created by Scott James Remnant on 1/6/19.
+//  Copyright © 2019 Scott James Remnant. All rights reserved.
 //
 
 import UIKit
 
 import Database
 
-class ModelImageCell : UITableViewCell, ModelSettable {
+class ModelNameCell : UITableViewCell, ModelSettable {
 
-    @IBOutlet weak var modelImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
 
     var model: Model? {
         didSet {
             configureCell()
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,7 +32,7 @@ class ModelImageCell : UITableViewCell, ModelSettable {
     }
 
     func configureCell() {
-        modelImageView?.image = model?.image ?? UIImage(named: "missing-image")
+        nameLabel.text = model?.name
     }
 
 }
