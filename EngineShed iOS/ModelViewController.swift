@@ -39,6 +39,9 @@ class ModelViewController : UITableViewController {
 
         tableView.register(UINib(nibName: "ElectricalHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "electricalHeaderView")
         tableView.register(UINib(nibName: "DCCHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "dccHeaderView")
+        tableView.register(UINib(nibName: "DetailsHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "detailsHeaderView")
+        tableView.register(UINib(nibName: "MaintenanceHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "maintenanceHeaderView")
+        tableView.register(UINib(nibName: "NotesHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "notesHeaderView")
     }
 
     func configureView() {
@@ -48,7 +51,7 @@ class ModelViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 6
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,6 +59,9 @@ class ModelViewController : UITableViewController {
         case 0: return 10
         case 1: return 2
         case 2: return 12
+        case 3: return 5
+        case 4: return 3
+        case 5: return 1
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -89,6 +95,19 @@ class ModelViewController : UITableViewController {
         case (2, 9): identifier = "modelDecoderSoundSettingsCell"
         case (2, 10): identifier = "modelSpeakerCell"
         case (2, 11): identifier = "modelSpeakerFittingsCell"
+        // Details
+        case (3, 0): identifier = "modelCouplingsCell"
+        case (3, 1): identifier = "modelFeaturesCell"
+        case (3, 2): identifier = "modelDetailPartsCell"
+        case (3, 3): identifier = "modelFittedDetailPartsCell"
+        case (3, 4): identifier = "modelModificationsCell"
+        // Maintenance
+        case (4, 0): identifier = "modelLastRunCell"
+        case (4, 1): identifier = "modelLastOilCell"
+        case (4, 2): identifier = "modelTasksCell"
+        // Notes
+        case (5, 0): identifier = "modelNotesCell"
+
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 
@@ -103,6 +122,9 @@ class ModelViewController : UITableViewController {
         case 0: return nil
         case 1: identifier = "electricalHeaderView"
         case 2: identifier = "dccHeaderView"
+        case 3: identifier = "detailsHeaderView"
+        case 4: identifier = "maintenanceHeaderView"
+        case 5: identifier = "notesHeaderView"
         default: preconditionFailure("Unexpected section: \(section)")
         }
 
