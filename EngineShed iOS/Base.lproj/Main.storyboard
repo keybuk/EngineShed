@@ -47,7 +47,7 @@
         <scene sceneID="dRQ-Ke-HNa">
             <objects>
                 <tableViewController id="de7-sQ-THj" customClass="ModelViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f8S-kN-rXp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="40" sectionFooterHeight="28" id="f8S-kN-rXp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,10 +105,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="xMo-AO-xgG" firstAttribute="leadingMargin" secondItem="Vfd-96-LGo" secondAttribute="leadingMargin" id="4LC-1P-Y8i"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="xMo-AO-xgG" secondAttribute="bottomMargin" id="Bcc-ob-Wwu"/>
-                                        <constraint firstItem="xMo-AO-xgG" firstAttribute="topMargin" secondItem="Vfd-96-LGo" secondAttribute="topMargin" id="h7z-Z7-M7I"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="xMo-AO-xgG" secondAttribute="trailingMargin" id="uDi-MO-UbL"/>
+                                        <constraint firstItem="xMo-AO-xgG" firstAttribute="leading" secondItem="Vfd-96-LGo" secondAttribute="leadingMargin" id="4LC-1P-Y8i"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="xMo-AO-xgG" secondAttribute="bottom" id="Bcc-ob-Wwu"/>
+                                        <constraint firstItem="xMo-AO-xgG" firstAttribute="top" secondItem="Vfd-96-LGo" secondAttribute="topMargin" id="h7z-Z7-M7I"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xMo-AO-xgG" secondAttribute="trailing" id="uDi-MO-UbL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -142,10 +142,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="d1O-PT-Koc" secondAttribute="trailingMargin" id="HxI-jx-ILh"/>
-                                        <constraint firstItem="d1O-PT-Koc" firstAttribute="topMargin" secondItem="SkM-xE-72R" secondAttribute="topMargin" id="Jmm-kF-qbL"/>
-                                        <constraint firstItem="d1O-PT-Koc" firstAttribute="leadingMargin" secondItem="SkM-xE-72R" secondAttribute="leadingMargin" id="YgH-Jv-Syl"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="d1O-PT-Koc" secondAttribute="bottomMargin" id="ijF-2q-4kv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="d1O-PT-Koc" secondAttribute="trailing" id="HxI-jx-ILh"/>
+                                        <constraint firstItem="d1O-PT-Koc" firstAttribute="top" secondItem="SkM-xE-72R" secondAttribute="topMargin" id="Jmm-kF-qbL"/>
+                                        <constraint firstItem="d1O-PT-Koc" firstAttribute="leading" secondItem="SkM-xE-72R" secondAttribute="leadingMargin" id="YgH-Jv-Syl"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="d1O-PT-Koc" secondAttribute="bottom" id="ijF-2q-4kv"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -178,10 +178,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="OPD-UJ-mlK" firstAttribute="leadingMargin" secondItem="54u-4B-fsY" secondAttribute="leadingMargin" id="S4j-6e-vbT"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="OPD-UJ-mlK" secondAttribute="trailingMargin" id="TWc-0A-20z"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="OPD-UJ-mlK" secondAttribute="bottomMargin" id="ngf-6c-aWB"/>
-                                        <constraint firstItem="OPD-UJ-mlK" firstAttribute="topMargin" secondItem="54u-4B-fsY" secondAttribute="topMargin" id="wj8-Pn-Qfv"/>
+                                        <constraint firstItem="OPD-UJ-mlK" firstAttribute="leading" secondItem="54u-4B-fsY" secondAttribute="leadingMargin" id="S4j-6e-vbT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="OPD-UJ-mlK" secondAttribute="trailing" id="TWc-0A-20z"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="OPD-UJ-mlK" secondAttribute="bottom" id="ngf-6c-aWB"/>
+                                        <constraint firstItem="OPD-UJ-mlK" firstAttribute="top" secondItem="54u-4B-fsY" secondAttribute="topMargin" id="wj8-Pn-Qfv"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -214,10 +214,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="lpX-5F-DbN" secondAttribute="trailingMargin" id="7KI-I5-XWr"/>
-                                        <constraint firstItem="lpX-5F-DbN" firstAttribute="topMargin" secondItem="tLR-Rj-rVe" secondAttribute="topMargin" id="LCl-OT-3Eb"/>
-                                        <constraint firstItem="lpX-5F-DbN" firstAttribute="leadingMargin" secondItem="tLR-Rj-rVe" secondAttribute="leadingMargin" id="b3R-pS-c1G"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="lpX-5F-DbN" secondAttribute="bottomMargin" id="mPh-uc-gXT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="lpX-5F-DbN" secondAttribute="trailing" id="7KI-I5-XWr"/>
+                                        <constraint firstItem="lpX-5F-DbN" firstAttribute="top" secondItem="tLR-Rj-rVe" secondAttribute="topMargin" id="LCl-OT-3Eb"/>
+                                        <constraint firstItem="lpX-5F-DbN" firstAttribute="leading" secondItem="tLR-Rj-rVe" secondAttribute="leadingMargin" id="b3R-pS-c1G"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="lpX-5F-DbN" secondAttribute="bottom" id="mPh-uc-gXT"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -250,10 +250,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="P06-be-12w" firstAttribute="leadingMargin" secondItem="yKh-Cu-blm" secondAttribute="leadingMargin" id="JKm-Yb-SYh"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="P06-be-12w" secondAttribute="trailingMargin" id="Otg-EF-VSl"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="P06-be-12w" secondAttribute="bottomMargin" id="YXN-Wr-vSu"/>
-                                        <constraint firstItem="P06-be-12w" firstAttribute="topMargin" secondItem="yKh-Cu-blm" secondAttribute="topMargin" id="kK1-GE-qjt"/>
+                                        <constraint firstItem="P06-be-12w" firstAttribute="leading" secondItem="yKh-Cu-blm" secondAttribute="leadingMargin" id="JKm-Yb-SYh"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="P06-be-12w" secondAttribute="trailing" id="Otg-EF-VSl"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="P06-be-12w" secondAttribute="bottom" id="YXN-Wr-vSu"/>
+                                        <constraint firstItem="P06-be-12w" firstAttribute="top" secondItem="yKh-Cu-blm" secondAttribute="topMargin" id="kK1-GE-qjt"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -286,10 +286,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="m7c-BQ-WFs" secondAttribute="bottomMargin" id="Esz-NN-tE5"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="m7c-BQ-WFs" secondAttribute="trailingMargin" id="huI-6O-MW7"/>
-                                        <constraint firstItem="m7c-BQ-WFs" firstAttribute="topMargin" secondItem="NkB-u6-GfR" secondAttribute="topMargin" id="ipO-GB-KTV"/>
-                                        <constraint firstItem="m7c-BQ-WFs" firstAttribute="leadingMargin" secondItem="NkB-u6-GfR" secondAttribute="leadingMargin" id="oEH-se-hNz"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="m7c-BQ-WFs" secondAttribute="bottom" id="Esz-NN-tE5"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="m7c-BQ-WFs" secondAttribute="trailing" id="huI-6O-MW7"/>
+                                        <constraint firstItem="m7c-BQ-WFs" firstAttribute="top" secondItem="NkB-u6-GfR" secondAttribute="topMargin" id="ipO-GB-KTV"/>
+                                        <constraint firstItem="m7c-BQ-WFs" firstAttribute="leading" secondItem="NkB-u6-GfR" secondAttribute="leadingMargin" id="oEH-se-hNz"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -322,10 +322,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="joE-Jl-cNP" firstAttribute="leadingMargin" secondItem="Jxm-qo-eak" secondAttribute="leadingMargin" id="CZs-X1-tPU"/>
-                                        <constraint firstItem="joE-Jl-cNP" firstAttribute="topMargin" secondItem="Jxm-qo-eak" secondAttribute="topMargin" id="kJK-mE-yzG"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="joE-Jl-cNP" secondAttribute="trailingMargin" id="qbw-3z-mV5"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="joE-Jl-cNP" secondAttribute="bottomMargin" id="wX2-ux-YCK"/>
+                                        <constraint firstItem="joE-Jl-cNP" firstAttribute="leading" secondItem="Jxm-qo-eak" secondAttribute="leadingMargin" id="CZs-X1-tPU"/>
+                                        <constraint firstItem="joE-Jl-cNP" firstAttribute="top" secondItem="Jxm-qo-eak" secondAttribute="topMargin" id="kJK-mE-yzG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="joE-Jl-cNP" secondAttribute="trailing" id="qbw-3z-mV5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="joE-Jl-cNP" secondAttribute="bottom" id="wX2-ux-YCK"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -358,10 +358,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="19C-rx-Igb" secondAttribute="trailingMargin" id="LhW-IL-yo8"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="19C-rx-Igb" secondAttribute="bottomMargin" id="XaC-DE-JD5"/>
-                                        <constraint firstItem="19C-rx-Igb" firstAttribute="topMargin" secondItem="C5M-0Y-oih" secondAttribute="topMargin" id="Z5V-1L-TrS"/>
-                                        <constraint firstItem="19C-rx-Igb" firstAttribute="leadingMargin" secondItem="C5M-0Y-oih" secondAttribute="leadingMargin" id="mTa-BT-QtY"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="19C-rx-Igb" secondAttribute="trailing" id="LhW-IL-yo8"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="19C-rx-Igb" secondAttribute="bottom" id="XaC-DE-JD5"/>
+                                        <constraint firstItem="19C-rx-Igb" firstAttribute="top" secondItem="C5M-0Y-oih" secondAttribute="topMargin" id="Z5V-1L-TrS"/>
+                                        <constraint firstItem="19C-rx-Igb" firstAttribute="leading" secondItem="C5M-0Y-oih" secondAttribute="leadingMargin" id="mTa-BT-QtY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -394,14 +394,86 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ywF-Gu-XWY" secondAttribute="trailingMargin" id="1ED-X2-lhg"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ywF-Gu-XWY" secondAttribute="bottomMargin" id="PNh-Uc-vlj"/>
-                                        <constraint firstItem="ywF-Gu-XWY" firstAttribute="leadingMargin" secondItem="Pfg-VB-VJ2" secondAttribute="leadingMargin" id="noA-9K-b0c"/>
-                                        <constraint firstItem="ywF-Gu-XWY" firstAttribute="topMargin" secondItem="Pfg-VB-VJ2" secondAttribute="topMargin" id="qkC-hN-WnU"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ywF-Gu-XWY" secondAttribute="trailing" id="1ED-X2-lhg"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ywF-Gu-XWY" secondAttribute="bottom" id="PNh-Uc-vlj"/>
+                                        <constraint firstItem="ywF-Gu-XWY" firstAttribute="leading" secondItem="Pfg-VB-VJ2" secondAttribute="leadingMargin" id="noA-9K-b0c"/>
+                                        <constraint firstItem="ywF-Gu-XWY" firstAttribute="top" secondItem="Pfg-VB-VJ2" secondAttribute="topMargin" id="qkC-hN-WnU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dispositionLabel" destination="fbb-3j-BhH" id="kc9-J9-QiD"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelMotorCell" rowHeight="57" id="BCc-Pw-cTF" customClass="ModelMotorCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="789" width="375" height="57"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BCc-Pw-cTF" id="iYV-pN-zBk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Bii-Wv-llQ">
+                                            <rect key="frame" x="8" y="8" width="359" height="40.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1d-J5-qtl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="5-pole" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-0a-K7c">
+                                                    <rect key="frame" x="0.0" y="14.5" width="359" height="26"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Bii-Wv-llQ" firstAttribute="top" secondItem="iYV-pN-zBk" secondAttribute="topMargin" id="5KJ-Zs-AaY"/>
+                                        <constraint firstItem="Bii-Wv-llQ" firstAttribute="leading" secondItem="iYV-pN-zBk" secondAttribute="leadingMargin" id="7ev-SA-4D8"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Bii-Wv-llQ" secondAttribute="trailing" id="Snc-p6-QX9"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Bii-Wv-llQ" secondAttribute="bottom" id="do8-RT-7ES"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="motorLabel" destination="iOi-0a-K7c" id="eGW-nW-bVF"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLightsCell" rowHeight="75" id="Gmi-un-Z1x" customClass="ModelLightsCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="846" width="375" height="75"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gmi-un-Z1x" id="whh-uA-gH8">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NCT-Zq-tiS">
+                                            <rect key="frame" x="8" y="8" width="359" height="58.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOC-Sa-Jl7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Cab, Firebox Flicker, Oil Lamps (Express Passenger)" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4au-Rr-UDK">
+                                                    <rect key="frame" x="0.0" y="14.5" width="359" height="44"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="NCT-Zq-tiS" secondAttribute="trailing" id="4PV-A6-suN"/>
+                                        <constraint firstItem="NCT-Zq-tiS" firstAttribute="leading" secondItem="whh-uA-gH8" secondAttribute="leadingMargin" id="QKO-pl-RQo"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="NCT-Zq-tiS" secondAttribute="bottom" id="Yhl-ER-Afo"/>
+                                        <constraint firstItem="NCT-Zq-tiS" firstAttribute="top" secondItem="whh-uA-gH8" secondAttribute="topMargin" id="bt1-6T-Pw0"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lightsLabel" destination="4au-Rr-UDK" id="AdQ-LN-e52"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

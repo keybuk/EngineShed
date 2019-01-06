@@ -36,6 +36,8 @@ class ModelViewController : UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+
+        tableView.register(UINib(nibName: "ElectricalHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "electricalHeaderView")
     }
 
     func configureView() {
@@ -45,35 +47,51 @@ class ModelViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 10
+        switch section {
+        case 0: return 10
+        case 1: return 2
+        default: preconditionFailure("Unexpected section: \(section)")
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier: String
-        switch indexPath.row {
-        case 0: identifier = "modelImageCell"
-        case 1: identifier = "modelPurchaseCell"
-        case 2: identifier = "modelClassificationCell"
-        case 3: identifier = "modelClassCell"
-        case 4: identifier = "modelNumberCell"
-        case 5: identifier = "modelNameCell"
-        case 6: identifier = "modelLiveryCell"
-        case 7: identifier = "modelDetailsCell"
-        case 8: identifier = "modelEraCell"
-        case 9: identifier = "modelDispositionCell"
-        default: preconditionFailure("Unexpected indexPath")
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0): identifier = "modelImageCell"
+        case (0, 1): identifier = "modelPurchaseCell"
+        case (0, 2): identifier = "modelClassificationCell"
+        case (0, 3): identifier = "modelClassCell"
+        case (0, 4): identifier = "modelNumberCell"
+        case (0, 5): identifier = "modelNameCell"
+        case (0, 6): identifier = "modelLiveryCell"
+        case (0, 7): identifier = "modelDetailsCell"
+        case (0, 8): identifier = "modelEraCell"
+        case (0, 9): identifier = "modelDispositionCell"
+        // Electrical
+        case (1, 0): identifier = "modelMotorCell"
+        case (1, 1): identifier = "modelLightsCell"
+        default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
-
 
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! UITableViewCell & ModelSettable
         cell.model = model
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let identifier: String
+        switch section {
+        case 0: return nil
+        case 1: identifier = "electricalHeaderView"
+        default: preconditionFailure("Unexpected section: \(section)")
+        }
+
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
+        return view
     }
 
     /*

@@ -28,6 +28,9 @@
 		D23B8B9321E29C54004F994D /* ModelDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B9221E29C54004F994D /* ModelDetailsCell.swift */; };
 		D23B8B9521E29C69004F994D /* ModelEraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B9421E29C69004F994D /* ModelEraCell.swift */; };
 		D23B8B9721E29CD2004F994D /* ModelDispositionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B9621E29CD2004F994D /* ModelDispositionCell.swift */; };
+		D23B8B9921E2A167004F994D /* ModelMotorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B9821E2A167004F994D /* ModelMotorCell.swift */; };
+		D23B8B9D21E2A18E004F994D /* ModelLightsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B9C21E2A18E004F994D /* ModelLightsCell.swift */; };
+		D23B8B9F21E2A626004F994D /* ElectricalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23B8B9E21E2A626004F994D /* ElectricalHeaderView.xib */; };
 		D248355721D6E23A00495FC0 /* CloudObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355621D6E23A00495FC0 /* CloudObserver.swift */; };
 		D248355821D6E23A00495FC0 /* CloudObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355621D6E23A00495FC0 /* CloudObserver.swift */; };
 		D248355D21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */; };
@@ -329,6 +332,9 @@
 		D23B8B9221E29C54004F994D /* ModelDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDetailsCell.swift; sourceTree = "<group>"; };
 		D23B8B9421E29C69004F994D /* ModelEraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEraCell.swift; sourceTree = "<group>"; };
 		D23B8B9621E29CD2004F994D /* ModelDispositionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDispositionCell.swift; sourceTree = "<group>"; };
+		D23B8B9821E2A167004F994D /* ModelMotorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMotorCell.swift; sourceTree = "<group>"; };
+		D23B8B9C21E2A18E004F994D /* ModelLightsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLightsCell.swift; sourceTree = "<group>"; };
+		D23B8B9E21E2A626004F994D /* ElectricalHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ElectricalHeaderView.xib; sourceTree = "<group>"; };
 		D248355621D6E23A00495FC0 /* CloudObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudObserver.swift; sourceTree = "<group>"; };
 		D248355C21D845B200495FC0 /* DatabaseState+Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseState+Observer.swift"; sourceTree = "<group>"; };
 		D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+PerformAndWait.swift"; sourceTree = "<group>"; };
@@ -680,6 +686,9 @@
 				D23B8B9221E29C54004F994D /* ModelDetailsCell.swift */,
 				D23B8B9421E29C69004F994D /* ModelEraCell.swift */,
 				D23B8B9621E29CD2004F994D /* ModelDispositionCell.swift */,
+				D23B8B9821E2A167004F994D /* ModelMotorCell.swift */,
+				D23B8B9C21E2A18E004F994D /* ModelLightsCell.swift */,
+				D23B8B9E21E2A626004F994D /* ElectricalHeaderView.xib */,
 			);
 			name = "Model View";
 			sourceTree = "<group>";
@@ -1369,6 +1378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B7C96320D4BA31001B51B1 /* LaunchScreen.storyboard in Resources */,
+				D23B8B9F21E2A626004F994D /* ElectricalHeaderView.xib in Resources */,
 				D27FC2402150BE0E00AA522B /* Assets.xcassets in Resources */,
 				D2B7C95E20D4BA30001B51B1 /* Main.storyboard in Resources */,
 			);
@@ -1490,6 +1500,7 @@
 				D25828B821DC43A10094918F /* TrainEditMemberCell.swift in Sources */,
 				D25828BA21DC43D70094918F /* TrainAddMemberCell.swift in Sources */,
 				D23B8B8B21E29BF3004F994D /* ModelClassCell.swift in Sources */,
+				D23B8B9921E2A167004F994D /* ModelMotorCell.swift in Sources */,
 				D25828B221DC437A0094918F /* TrainEditNameCell.swift in Sources */,
 				D2B9A1B82150D35D00156100 /* ModelPurchaseCell.swift in Sources */,
 				D2DE5CB520F82CAB00CABE34 /* ModelCell.swift in Sources */,
@@ -1510,6 +1521,7 @@
 				D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */,
 				D212EA452150AEDA005FEED3 /* ClassificationsViewController.swift in Sources */,
 				D2DE5CB320F82A3100CABE34 /* ModelsViewController.swift in Sources */,
+				D23B8B9D21E2A18E004F994D /* ModelLightsCell.swift in Sources */,
 				D2B9A1B42150C74600156100 /* ModelViewController.swift in Sources */,
 				D23B8B9521E29C69004F994D /* ModelEraCell.swift in Sources */,
 			);
