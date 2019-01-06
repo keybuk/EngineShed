@@ -38,6 +38,7 @@ class ModelViewController : UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         tableView.register(UINib(nibName: "ElectricalHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "electricalHeaderView")
+        tableView.register(UINib(nibName: "DCCHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "dccHeaderView")
     }
 
     func configureView() {
@@ -47,13 +48,14 @@ class ModelViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 10
         case 1: return 2
+        case 2: return 12
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -74,6 +76,19 @@ class ModelViewController : UITableViewController {
         // Electrical
         case (1, 0): identifier = "modelMotorCell"
         case (1, 1): identifier = "modelLightsCell"
+        // DCC
+        case (2, 0): identifier = "modelSocketCell"
+        case (2, 1): identifier = "modelDecoderTypeCell"
+        case (2, 2): identifier = "modelDecoderSerialNumberCell"
+        case (2, 3): identifier = "modelDecoderFirmwareVersionCell"
+        case (2, 4): identifier = "modelDecoderFirmwareDateCell"
+        case (2, 5): identifier = "modelDecoderAddressCell"
+        case (2, 6): identifier = "modelDecoderSoundAuthorCell"
+        case (2, 7): identifier = "modelDecoderSoundProjectCell"
+        case (2, 8): identifier = "modelDecoderSoundProjectVersionCell"
+        case (2, 9): identifier = "modelDecoderSoundSettingsCell"
+        case (2, 10): identifier = "modelSpeakerCell"
+        case (2, 11): identifier = "modelSpeakerFittingsCell"
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 
@@ -87,6 +102,7 @@ class ModelViewController : UITableViewController {
         switch section {
         case 0: return nil
         case 1: identifier = "electricalHeaderView"
+        case 2: identifier = "dccHeaderView"
         default: preconditionFailure("Unexpected section: \(section)")
         }
 
