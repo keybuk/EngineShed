@@ -632,6 +632,58 @@
 			name = "Model+Storable";
 			sourceTree = "<group>";
 		};
+		D23B8B8221E29502004F994D /* Model Classification View */ = {
+			isa = PBXGroup;
+			children = (
+				D212EA442150AEDA005FEED3 /* ModelClassificationsViewController.swift */,
+				D212EA462150AF98005FEED3 /* ModelClassificationCell.swift */,
+			);
+			name = "Model Classification View";
+			sourceTree = "<group>";
+		};
+		D23B8B8421E2951B004F994D /* Models View */ = {
+			isa = PBXGroup;
+			children = (
+				D2DE5CB220F82A3100CABE34 /* ModelsViewController.swift */,
+				D2DE5CB420F82CAB00CABE34 /* ModelCell.swift */,
+			);
+			name = "Models View";
+			sourceTree = "<group>";
+		};
+		D23B8B8521E29527004F994D /* Model View */ = {
+			isa = PBXGroup;
+			children = (
+				D2B9A1B32150C74600156100 /* ModelViewController.swift */,
+				D2B9A1B52150C77000156100 /* ModelImageCell.swift */,
+				D2B9A1B72150D35D00156100 /* ModelPurchaseCell.swift */,
+			);
+			name = "Model View";
+			sourceTree = "<group>";
+		};
+		D23B8B8621E29533004F994D /* Trains View */ = {
+			isa = PBXGroup;
+			children = (
+				D2DE5CC620F8A60000CABE34 /* TrainsViewController.swift */,
+				D287582721060FE700EF722D /* TrainHeaderView.swift */,
+				D28758252105FEEE00EF722D /* TrainMemberCell.swift */,
+			);
+			name = "Trains View";
+			sourceTree = "<group>";
+		};
+		D23B8B8721E29544004F994D /* Train View */ = {
+			isa = PBXGroup;
+			children = (
+				D25828AF21DC39AC0094918F /* TrainEditViewController.swift */,
+				D25828B121DC437A0094918F /* TrainEditNameCell.swift */,
+				D25828B321DC43870094918F /* TrainEditDetailsCell.swift */,
+				D25828B521DC43950094918F /* TrainEditNotesCell.swift */,
+				D25828B721DC43A10094918F /* TrainEditMemberCell.swift */,
+				D25828B921DC43D70094918F /* TrainAddMemberCell.swift */,
+				D25828BE21E0225D0094918F /* DeleteTrainCell.swift */,
+			);
+			name = "Train View";
+			sourceTree = "<group>";
+		};
 		D298CAE720D7109900827F68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,23 +774,11 @@
 			isa = PBXGroup;
 			children = (
 				D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */,
-				D212EA442150AEDA005FEED3 /* ModelClassificationsViewController.swift */,
-				D212EA462150AF98005FEED3 /* ModelClassificationCell.swift */,
-				D2DE5CB220F82A3100CABE34 /* ModelsViewController.swift */,
-				D2DE5CB420F82CAB00CABE34 /* ModelCell.swift */,
-				D2B9A1B32150C74600156100 /* ModelViewController.swift */,
-				D2B9A1B52150C77000156100 /* ModelImageCell.swift */,
-				D2B9A1B72150D35D00156100 /* ModelPurchaseCell.swift */,
-				D2DE5CC620F8A60000CABE34 /* TrainsViewController.swift */,
-				D287582721060FE700EF722D /* TrainHeaderView.swift */,
-				D28758252105FEEE00EF722D /* TrainMemberCell.swift */,
-				D25828AF21DC39AC0094918F /* TrainEditViewController.swift */,
-				D25828B121DC437A0094918F /* TrainEditNameCell.swift */,
-				D25828B321DC43870094918F /* TrainEditDetailsCell.swift */,
-				D25828B521DC43950094918F /* TrainEditNotesCell.swift */,
-				D25828B721DC43A10094918F /* TrainEditMemberCell.swift */,
-				D25828B921DC43D70094918F /* TrainAddMemberCell.swift */,
-				D25828BE21E0225D0094918F /* DeleteTrainCell.swift */,
+				D23B8B8221E29502004F994D /* Model Classification View */,
+				D23B8B8421E2951B004F994D /* Models View */,
+				D23B8B8521E29527004F994D /* Model View */,
+				D23B8B8621E29533004F994D /* Trains View */,
+				D23B8B8721E29544004F994D /* Train View */,
 				D2B7C95C20D4BA30001B51B1 /* Main.storyboard */,
 				D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */,
 				D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */,
