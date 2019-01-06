@@ -22,13 +22,6 @@ class TrainEditNotesCell : UITableViewCell, UITextViewDelegate {
         }
     }
 
-    func configureView() {
-        guard let train = train else { return }
-
-        textView.text = train.notes
-        placeholderLabel.isHidden = !textView.text.isEmpty
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -46,6 +39,11 @@ class TrainEditNotesCell : UITableViewCell, UITextViewDelegate {
         if selected {
             textView.becomeFirstResponder()
         }
+    }
+
+    func configureView() {
+        textView.text = train?.notes
+        placeholderLabel.isHidden = !textView.text.isEmpty
     }
 
     // MARK: - UITextViewDelegate

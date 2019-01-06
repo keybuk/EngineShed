@@ -22,10 +22,8 @@ class TrainHeaderView : UICollectionReusableView {
     }
 
     func configureView() {
-        guard let train = train else { return }
-
-        nameLabel.text = train.name
-        detailsLabel.text = train.details
+        nameLabel.text = train?.name
+        detailsLabel.text = train?.details
     }
 
 }

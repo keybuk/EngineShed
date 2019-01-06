@@ -33,9 +33,7 @@ class ClassificationCell : UITableViewCell {
     }
 
     func configureCell() {
-        guard let classification = classification else { return }
-
-        descriptionLabel?.text = classification.description
+        descriptionLabel.text = classification?.description
     }
 
 }

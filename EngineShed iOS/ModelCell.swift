@@ -36,12 +36,10 @@ class ModelCell : UITableViewCell {
     }
 
     func configureCell() {
-        guard let model = model else { return }
-
-        modelClassLabel.text = withModelClass ? model.modelClass : nil
-        modelImageView.image = model.image
-        numberLabel.text = model.number
-        nameLabel.text = model.name
+        modelClassLabel.text = withModelClass ? model?.modelClass : nil
+        modelImageView.image = model?.image
+        numberLabel.text = model?.number
+        nameLabel.text = model?.name
     }
 
 }

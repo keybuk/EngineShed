@@ -20,12 +20,6 @@ class TrainEditMemberCell : UITableViewCell, UITextFieldDelegate {
         }
     }
 
-    func configureView() {
-        guard let trainMember = trainMember else { return }
-
-        textField.text = trainMember.title
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -40,6 +34,10 @@ class TrainEditMemberCell : UITableViewCell, UITextFieldDelegate {
         if selected {
             textField.becomeFirstResponder()
         }
+    }
+
+    func configureView() {
+        textField.text = trainMember?.title
     }
 
     // MARK: - UITextFieldDelegate
