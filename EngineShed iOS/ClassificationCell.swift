@@ -1,5 +1,5 @@
 //
-//  ModelClassificationCell.swift
+//  ClassificationCell.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 9/17/18.
@@ -10,7 +10,7 @@ import UIKit
 
 import Database
 
-class ModelClassificationCell : UITableViewCell {
+class ClassificationCell : UITableViewCell {
 
     @IBOutlet weak var classificationImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!

@@ -11,8 +11,8 @@
 		D200F97420DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */; };
 		D2101B8021263CD600E80DD7 /* Util.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A41190212631AA00B6C198 /* Util.framework */; };
 		D2101B8121263CDB00E80DD7 /* Util.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A4116E212630B900B6C198 /* Util.framework */; };
-		D212EA452150AEDA005FEED3 /* ModelClassificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA442150AEDA005FEED3 /* ModelClassificationsViewController.swift */; };
-		D212EA472150AF98005FEED3 /* ModelClassificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA462150AF98005FEED3 /* ModelClassificationCell.swift */; };
+		D212EA452150AEDA005FEED3 /* ClassificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA442150AEDA005FEED3 /* ClassificationsViewController.swift */; };
+		D212EA472150AF98005FEED3 /* ClassificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA462150AF98005FEED3 /* ClassificationCell.swift */; };
 		D215BEA220D4B5380054FDCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEA120D4B5380054FDCC /* AppDelegate.swift */; };
 		D215BEA420D4B5380054FDCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEA320D4B5380054FDCC /* ViewController.swift */; };
 		D215BEAC20D4B53A0054FDCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D215BEAA20D4B53A0054FDCC /* Main.storyboard */; };
@@ -297,8 +297,8 @@
 		D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Similar.swift"; sourceTree = "<group>"; };
 		D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CountedElements.swift"; sourceTree = "<group>"; };
 		D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNumberPrefixTests.swift; sourceTree = "<group>"; };
-		D212EA442150AEDA005FEED3 /* ModelClassificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassificationsViewController.swift; sourceTree = "<group>"; };
-		D212EA462150AF98005FEED3 /* ModelClassificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassificationCell.swift; sourceTree = "<group>"; };
+		D212EA442150AEDA005FEED3 /* ClassificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationsViewController.swift; sourceTree = "<group>"; };
+		D212EA462150AF98005FEED3 /* ClassificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationCell.swift; sourceTree = "<group>"; };
 		D215BE9E20D4B5380054FDCC /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D215BEA120D4B5380054FDCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D215BEA320D4B5380054FDCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -632,13 +632,13 @@
 			name = "Model+Storable";
 			sourceTree = "<group>";
 		};
-		D23B8B8221E29502004F994D /* Model Classification View */ = {
+		D23B8B8221E29502004F994D /* Classification View */ = {
 			isa = PBXGroup;
 			children = (
-				D212EA442150AEDA005FEED3 /* ModelClassificationsViewController.swift */,
-				D212EA462150AF98005FEED3 /* ModelClassificationCell.swift */,
+				D212EA442150AEDA005FEED3 /* ClassificationsViewController.swift */,
+				D212EA462150AF98005FEED3 /* ClassificationCell.swift */,
 			);
-			name = "Model Classification View";
+			name = "Classification View";
 			sourceTree = "<group>";
 		};
 		D23B8B8421E2951B004F994D /* Models View */ = {
@@ -774,7 +774,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */,
-				D23B8B8221E29502004F994D /* Model Classification View */,
+				D23B8B8221E29502004F994D /* Classification View */,
 				D23B8B8421E2951B004F994D /* Models View */,
 				D23B8B8521E29527004F994D /* Model View */,
 				D23B8B8621E29533004F994D /* Trains View */,
@@ -1468,7 +1468,7 @@
 				D2B9A1B82150D35D00156100 /* ModelPurchaseCell.swift in Sources */,
 				D2DE5CB520F82CAB00CABE34 /* ModelCell.swift in Sources */,
 				D25828B621DC43950094918F /* TrainEditNotesCell.swift in Sources */,
-				D212EA472150AF98005FEED3 /* ModelClassificationCell.swift in Sources */,
+				D212EA472150AF98005FEED3 /* ClassificationCell.swift in Sources */,
 				D28758262105FEEE00EF722D /* TrainMemberCell.swift in Sources */,
 				D2B9A1B62150C77000156100 /* ModelImageCell.swift in Sources */,
 				D25828BF21E0225D0094918F /* DeleteTrainCell.swift in Sources */,
@@ -1477,7 +1477,7 @@
 				D287582821060FE700EF722D /* TrainHeaderView.swift in Sources */,
 				D25828B421DC43870094918F /* TrainEditDetailsCell.swift in Sources */,
 				D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */,
-				D212EA452150AEDA005FEED3 /* ModelClassificationsViewController.swift in Sources */,
+				D212EA452150AEDA005FEED3 /* ClassificationsViewController.swift in Sources */,
 				D2DE5CB320F82A3100CABE34 /* ModelsViewController.swift in Sources */,
 				D2B9A1B42150C74600156100 /* ModelViewController.swift in Sources */,
 			);

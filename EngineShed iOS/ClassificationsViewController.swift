@@ -1,5 +1,5 @@
 //
-//  ModelClassificationsViewController.swift
+//  ClassificationsViewController.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 9/17/18.
@@ -11,7 +11,7 @@ import CoreData
 
 import Database
 
-class ModelClassificationsViewController : UITableViewController {
+class ClassificationsViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?
 
@@ -36,7 +36,7 @@ class ModelClassificationsViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "modelClassificationCell", for: indexPath) as! ModelClassificationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "classificationCell", for: indexPath) as! ClassificationCell
         cell.classification = ModelClassification.allCases[indexPath.row]
         return cell
     }

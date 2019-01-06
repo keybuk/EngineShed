@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 splitViewController.delegate = self
 
                 let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
-                let viewController = masterNavigationController.topViewController as! ModelClassificationsViewController
+                let viewController = masterNavigationController.topViewController as! ClassificationsViewController
                 viewController.persistentContainer = persistentContainer
             }
 
