@@ -71,7 +71,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 viewController.persistentContainer = persistentContainer
             }
 
-            if let navigationController = tabBarController.viewControllers?[1] as? UINavigationController {
+            if let splitViewController = tabBarController.viewControllers?[1] as? UISplitViewController {
+                let navigationController = splitViewController.viewControllers.last! as! UINavigationController
+                navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+                splitViewController.delegate = self
+
+                let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
+                let viewController = masterNavigationController.topViewController as! PurchasesViewController
+                viewController.persistentContainer = persistentContainer
+            }
+
+            if let navigationController = tabBarController.viewControllers?[2] as? UINavigationController {
                 let viewController = navigationController.topViewController as! TrainsViewController
                 viewController.persistentContainer = persistentContainer
             }
@@ -145,11 +155,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
         guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-        guard let topAsDetailController = secondaryAsNavController.topViewController as? ModelViewController else { return false }
-        if topAsDetailController.model == nil {
-            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-            return true
-        }
+
+        // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+        if let modelViewController = secondaryAsNavController.topViewController as? ModelViewController,
+            modelViewController.model == nil { return true }
+        if let purchaseViewController = secondaryAsNavController.topViewController as? PurchaseViewController,
+            purchaseViewController.purchase == nil { return true }
+
         return false
     }
 
