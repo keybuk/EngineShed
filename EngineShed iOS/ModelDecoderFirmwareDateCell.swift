@@ -32,16 +32,7 @@ class ModelDecoderFirmwareDateCell : UITableViewCell, ModelSettable {
     }
 
     func configureCell() {
-        let date = model?.decoder?.firmwareDate.flatMap { dateComponents -> Date? in
-            let calendar = dateComponents.calendar ?? Calendar.current
-            return calendar.date(from: dateComponents as DateComponents)
-        }
-
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-
-        firmwareDateLabel.text = date.flatMap({ formatter.string(from: $0) })
+        firmwareDateLabel.text = model?.decoder?.firmwareDateAsString
     }
 
 }

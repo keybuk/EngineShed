@@ -32,16 +32,7 @@ class ModelLastOilCell : UITableViewCell, ModelSettable {
     }
 
     func configureCell() {
-        let date = model?.lastOil.flatMap { dateComponents -> Date? in
-            let calendar = dateComponents.calendar ?? Calendar.current
-            return calendar.date(from: dateComponents as DateComponents)
-        }
-
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-
-        lastOilLabel.text = date.flatMap({ formatter.string(from: $0) })
+        lastOilLabel.text = model?.lastOilAsString
     }
 
 }
