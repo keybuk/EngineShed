@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D200F97320DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */; };
 		D200F97420DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */; };
+		D202D10821EAEBF2008153FB /* Purchase+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D202D10721EAEBF2008153FB /* Purchase+Date.swift */; };
+		D202D10921EAEBF2008153FB /* Purchase+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D202D10721EAEBF2008153FB /* Purchase+Date.swift */; };
 		D2101B8021263CD600E80DD7 /* Util.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A41190212631AA00B6C198 /* Util.framework */; };
 		D2101B8121263CDB00E80DD7 /* Util.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A4116E212630B900B6C198 /* Util.framework */; };
 		D212EA452150AEDA005FEED3 /* ClassificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA442150AEDA005FEED3 /* ClassificationsViewController.swift */; };
@@ -345,6 +347,7 @@
 		D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Similar.swift"; sourceTree = "<group>"; };
 		D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CountedElements.swift"; sourceTree = "<group>"; };
 		D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNumberPrefixTests.swift; sourceTree = "<group>"; };
+		D202D10721EAEBF2008153FB /* Purchase+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Date.swift"; sourceTree = "<group>"; };
 		D212EA442150AEDA005FEED3 /* ClassificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationsViewController.swift; sourceTree = "<group>"; };
 		D212EA462150AF98005FEED3 /* ClassificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationCell.swift; sourceTree = "<group>"; };
 		D215BE9E20D4B5380054FDCC /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -904,6 +907,7 @@
 			isa = PBXGroup;
 			children = (
 				D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */,
+				D202D10721EAEBF2008153FB /* Purchase+Date.swift */,
 				D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */,
 				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
 				D2AF28AC2110277300374975 /* Purchase+WillSave.swift */,
@@ -1725,6 +1729,7 @@
 				D298CB2720D8163A00827F68 /* Train+Storable.swift in Sources */,
 				D25828BC21DEFF450094918F /* CloudProviderDelegate.swift in Sources */,
 				D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */,
+				D202D10821EAEBF2008153FB /* Purchase+Date.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
 				D2A4112221262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */,
 				D2AF28B921102DBC00374975 /* Model+FetchRequests.swift in Sources */,
@@ -1759,6 +1764,7 @@
 			files = (
 				D200F97420DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */,
 				D2DE5CBD20F8517500CABE34 /* Model+Classification.swift in Sources */,
+				D202D10921EAEBF2008153FB /* Purchase+Date.swift in Sources */,
 				D2B7C9CD20D4D722001B51B1 /* LocalPersistentContainer.swift in Sources */,
 				D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,

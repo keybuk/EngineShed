@@ -32,16 +32,7 @@ class PurchaseDateCell : UITableViewCell, PurchaseSettable {
     }
 
     func configureCell() {
-        let date = purchase?.date.flatMap { dateComponents -> Date? in
-            let calendar = dateComponents.calendar ?? Calendar.current
-            return calendar.date(from: dateComponents as DateComponents)
-        }
-
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-
-        dateLabel.text = date.flatMap({ formatter.string(from: $0) })
+        dateLabel.text = purchase?.dateAsString
     }
 
 }

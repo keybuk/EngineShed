@@ -97,7 +97,9 @@
         <attribute name="catalogNumberPrefix" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="catalogYear" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="conditionRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="Transformable" customClassName="NSDateComponents" syncable="YES"/>
+        <attribute name="dateComponents" optional="YES" attributeType="Transformable" customClassName="NSDateComponents" syncable="YES"/>
+        <attribute name="dateForGrouping" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateForSort" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="limitedEdition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="limitedEditionCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="limitedEditionNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -157,7 +159,7 @@
         <element name="Light" positionX="315" positionY="243" width="128" height="75"/>
         <element name="Model" positionX="270" positionY="207" width="128" height="495"/>
         <element name="Modification" positionX="360" positionY="288" width="128" height="75"/>
-        <element name="Purchase" positionX="324" positionY="252" width="128" height="315"/>
+        <element name="Purchase" positionX="324" positionY="252" width="128" height="345"/>
         <element name="SpeakerFitting" positionX="261" positionY="198" width="128" height="75"/>
         <element name="Task" positionX="288" positionY="216" width="128" height="75"/>
         <element name="Train" positionX="360" positionY="288" width="128" height="150"/>

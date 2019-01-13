@@ -12,6 +12,7 @@ extension Purchase {
 
     public override func willSave() {
         updateCatalogNumberPrefix()
+        updateDateForSort()
         updateModelIndexes()
     }
 
