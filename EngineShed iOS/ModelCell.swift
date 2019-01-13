@@ -36,8 +36,9 @@ class ModelCell : UITableViewCell {
     }
 
     func configureCell() {
-        modelClassLabel.text = withModelClass ? model?.modelClass : nil
         modelImageView.image = model?.image
+        modelClassLabel.text = model?.modelClass
+        modelClassLabel.isHidden = !withModelClass
         numberLabel.text = model?.number
         nameLabel.text = model?.name
     }
