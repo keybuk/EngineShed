@@ -13,6 +13,7 @@ import Database
 class PurchaseCell : UITableViewCell {
 
     @IBOutlet weak var modelImageView: UIImageView!
+    @IBOutlet weak var manufacturerLabel: UILabel!
     @IBOutlet weak var catalogNumberLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var storeLabel: UILabel!
@@ -43,11 +44,9 @@ class PurchaseCell : UITableViewCell {
     func configureCell() {
         modelImageView.image = (purchase?.models?.firstObject as? Model)?.image
 
-        if ordering == .catalog {
-            catalogNumberLabel.text = purchase?.catalogNumber
-        } else {
-            catalogNumberLabel.text = [ purchase?.manufacturer, purchase?.catalogNumber ].compactMap({ $0 }).joined(separator: " ")
-        }
+        manufacturerLabel.text = purchase?.manufacturer
+        manufacturerLabel.isHidden = ordering == .catalog
+        catalogNumberLabel.text = purchase?.catalogNumber
 
         dateLabel.text = purchase?.dateAsString
 

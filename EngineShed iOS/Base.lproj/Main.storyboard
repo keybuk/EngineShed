@@ -1932,12 +1932,23 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Uu3-HK-qPa">
                                             <rect key="frame" x="102" y="6" width="257" height="55.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R3612" textAlignment="natural" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFa-pJ-KqW">
-                                                    <rect key="frame" x="0.0" y="0.0" width="51.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" spacing="4.5" translatesAutoresizingMaskIntoConstraints="NO" id="cDU-Ws-03O">
+                                                    <rect key="frame" x="0.0" y="0.0" width="115" height="20.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hornby" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8d-yt-v6J">
+                                                            <rect key="frame" x="0.0" y="0.0" width="59" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="R3612" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFa-pJ-KqW">
+                                                            <rect key="frame" x="63.5" y="0.0" width="51.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/1/18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfa-ek-2bd">
                                                     <rect key="frame" x="0.0" y="20.5" width="47" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -1968,6 +1979,7 @@
                                 <connections>
                                     <outlet property="catalogNumberLabel" destination="wFa-pJ-KqW" id="wUx-Zz-tFx"/>
                                     <outlet property="dateLabel" destination="Rfa-ek-2bd" id="LZf-hq-uQK"/>
+                                    <outlet property="manufacturerLabel" destination="X8d-yt-v6J" id="kQO-92-dNt"/>
                                     <outlet property="modelImageView" destination="QT9-j2-ar3" id="2mk-sL-RTO"/>
                                     <outlet property="storeLabel" destination="ItG-Dn-Len" id="lRl-12-cAf"/>
                                     <segue destination="uKp-ap-pwP" kind="showDetail" identifier="purchase" id="x7g-2G-nuO"/>
