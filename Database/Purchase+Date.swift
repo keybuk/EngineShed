@@ -31,13 +31,13 @@ extension Purchase {
 
     /// `dateForGrouping` formatted as string with format "MMMMyyyy".
     public var dateForGroupingAsString: String? {
-        return dateForGrouping.flatMap {
-            let formatter = DateFormatter()
-            formatter.locale = Locale.current
-            formatter.setLocalizedDateFormatFromTemplate("MMMMyyyy")
+        guard let _ = date, let dateForGrouping = dateForGrouping else { return nil }
 
-            return formatter.string(from: $0)
-        }
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.setLocalizedDateFormatFromTemplate("MMMMyyyy")
+
+        return formatter.string(from: dateForGrouping)
     }
     
     /// Update the sortable date fields.
