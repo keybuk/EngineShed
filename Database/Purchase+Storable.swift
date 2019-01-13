@@ -33,7 +33,7 @@ extension Purchase : CloudStorable {
         if let data = record["date"] as? Data,
             let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data)
         {
-            dateComponents = unarchiver.decodeObject(of: NSDateComponents.self, forKey: "Date")
+            date = unarchiver.decodeObject(of: NSDateComponents.self, forKey: "Date")
             unarchiver.finishDecoding()
         }
 
@@ -83,8 +83,8 @@ extension Purchase : CloudStorable {
         if keys?.contains("notes") ?? true { record["notes"] = notes }
         if keys?.contains("store") ?? true { record["store"] = store }
 
-        if keys?.contains("dateComponents") ?? true {
-            record["date"] = dateComponents.map {
+        if keys?.contains("date") ?? true {
+            record["date"] = date.map {
                 let archiver = NSKeyedArchiver(requiringSecureCoding: true)
                 archiver.encode($0, forKey: "Date")
                 archiver.finishEncoding()

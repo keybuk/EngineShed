@@ -97,7 +97,7 @@
         <attribute name="catalogNumberPrefix" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="catalogYear" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="conditionRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="dateComponents" optional="YES" attributeType="Transformable" customClassName="NSDateComponents" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Transformable" customClassName="NSDateComponents" syncable="YES"/>
         <attribute name="dateForGrouping" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateForSort" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="limitedEdition" optional="YES" attributeType="String" syncable="YES"/>
