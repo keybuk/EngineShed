@@ -7,7 +7,7 @@
     <entity name="DatabaseState" representedClassName="DatabaseState" syncable="YES" codeGenerationType="class">
         <attribute name="scopeRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="serverChangeToken" optional="YES" attributeType="Transformable" customClassName="CloudKit.CKServerChangeToken" syncable="YES"/>
-        <relationship name="zoneState" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ZoneState" inverseName="databaseState" inverseEntity="ZoneState" syncable="YES"/>
+        <relationship name="zoneStates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ZoneState" inverseName="databaseState" inverseEntity="ZoneState" syncable="YES"/>
     </entity>
     <entity name="Decoder" representedClassName="Decoder" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -146,7 +146,7 @@
         <attribute name="serverChangeToken" optional="YES" attributeType="Transformable" customClassName="CloudKit.CKServerChangeToken" syncable="YES"/>
         <attribute name="shouldDelete" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="zoneID" optional="YES" attributeType="Transformable" customClassName="CKRecordZone_ID" syncable="YES"/>
-        <relationship name="databaseState" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DatabaseState" inverseName="zoneState" inverseEntity="DatabaseState" syncable="YES"/>
+        <relationship name="databaseState" maxCount="1" deletionRule="Nullify" destinationEntity="DatabaseState" inverseName="zoneStates" inverseEntity="DatabaseState" syncable="YES"/>
     </entity>
     <elements>
         <element name="Coupling" positionX="333" positionY="261" width="128" height="75"/>
