@@ -19,16 +19,8 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
     var grouping: ModelGrouping = .modelClass
     var fetchRequest: NSFetchRequest<Model>?
 
-    weak var modelViewController: ModelViewController? = nil
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let splitViewController = splitViewController,
-            let navigationController = splitViewController.viewControllers.last as? UINavigationController
-        {
-            modelViewController = navigationController.topViewController as? ModelViewController
-        }
 
         if fetchRequest == nil {
             fetchRequest = Model.fetchRequestForModels(classification: classification, groupBy: grouping)
