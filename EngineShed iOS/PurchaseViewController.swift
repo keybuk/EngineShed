@@ -41,12 +41,13 @@ class PurchaseViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 11
+        case 1: return purchase?.models!.count ?? 0
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -65,6 +66,11 @@ class PurchaseViewController : UITableViewController {
         case (0, 8): identifier = "purchaseConditionCell"
         case (0, 9): identifier = "purchaseValuationCell"
         case (0, 10): identifier = "purchaseNotesCell"
+        case (1, _):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "modelCell", for: indexPath) as! ModelCell
+            let model = purchase?.models![indexPath.row] as! Model?
+            cell.model = model
+            return cell
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 
@@ -108,14 +114,17 @@ class PurchaseViewController : UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "purchaseModel" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let model = purchase?.models![indexPath.row] as! Model?
+
+            let modelViewController = segue.destination as! ModelViewController
+            modelViewController.persistentContainer = persistentContainer
+            modelViewController.model = model
+        }
     }
-    */
 
 }

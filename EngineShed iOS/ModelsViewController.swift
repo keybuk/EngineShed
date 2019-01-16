@@ -56,7 +56,7 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "modelCell", for: indexPath) as! ModelCell
         let model = fetchedResultsController.object(at: indexPath)
-        cell.withModelClass = grouping != .modelClass
+        cell.grouping = grouping
         cell.model = model
         return cell
     }
@@ -155,12 +155,12 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
             if let cell = tableView.cellForRow(at: indexPath!) as? ModelCell {
-                cell.withModelClass = grouping != .modelClass
+                cell.grouping = grouping
                 cell.model = anObject as? Model
             }
         case .move:
             if let cell = tableView.cellForRow(at: indexPath!) as? ModelCell {
-                cell.withModelClass = grouping != .modelClass
+                cell.grouping = grouping
                 cell.model = anObject as? Model
             }
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
