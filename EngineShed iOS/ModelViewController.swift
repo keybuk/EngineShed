@@ -19,12 +19,13 @@ protocol ModelSettable : class {
 
 class ModelViewController : UITableViewController {
 
+    @IBOutlet weak var similarModelsButton: UIBarButtonItem!
+
     var persistentContainer: NSPersistentContainer?
 
     var model: Model? {
         didSet {
-            // Update the view.
-            tableView.reloadData()
+            configureView()
         }
     }
 
@@ -45,7 +46,10 @@ class ModelViewController : UITableViewController {
     }
 
     func configureView() {
+        // Update the view.
+        tableView.reloadData()
 
+        similarModelsButton.isEnabled = !(model?.similar().isEmpty ?? true)
     }
 
     // MARK: - Table view data source

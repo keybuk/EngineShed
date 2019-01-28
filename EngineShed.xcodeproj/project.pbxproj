@@ -17,6 +17,8 @@
 		D202D11221EB199E008153FB /* Decoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D202D11021EB199E008153FB /* Decoder+Date.swift */; };
 		D2101B8021263CD600E80DD7 /* Util.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A41190212631AA00B6C198 /* Util.framework */; };
 		D2101B8121263CDB00E80DD7 /* Util.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A4116E212630B900B6C198 /* Util.framework */; };
+		D210EDCE21F14E5F00467AF2 /* Model+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */; };
+		D210EDCF21F14E5F00467AF2 /* Model+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */; };
 		D212EA452150AEDA005FEED3 /* ClassificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA442150AEDA005FEED3 /* ClassificationsViewController.swift */; };
 		D212EA472150AF98005FEED3 /* ClassificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA462150AF98005FEED3 /* ClassificationCell.swift */; };
 		D215BEA220D4B5380054FDCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEA120D4B5380054FDCC /* AppDelegate.swift */; };
@@ -358,6 +360,7 @@
 		D202D10721EAEBF2008153FB /* Purchase+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Date.swift"; sourceTree = "<group>"; };
 		D202D10A21EB0670008153FB /* Model+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Date.swift"; sourceTree = "<group>"; };
 		D202D11021EB199E008153FB /* Decoder+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Date.swift"; sourceTree = "<group>"; };
+		D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Similar.swift"; sourceTree = "<group>"; };
 		D212EA442150AEDA005FEED3 /* ClassificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationsViewController.swift; sourceTree = "<group>"; };
 		D212EA462150AF98005FEED3 /* ClassificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationCell.swift; sourceTree = "<group>"; };
 		D215BE9E20D4B5380054FDCC /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -939,6 +942,7 @@
 				D2DE5CBA20F8517400CABE34 /* Model+Disposition.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
 				D202D10A21EB0670008153FB /* Model+Date.swift */,
+				D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */,
 				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
 				D202D11021EB199E008153FB /* Decoder+Date.swift */,
 				D2BE3DD4215B59C50005D68F /* Train+Index.swift */,
@@ -1742,6 +1746,7 @@
 				D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */,
 				D202D10B21EB0670008153FB /* Model+Date.swift in Sources */,
 				D298CB2920D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
+				D210EDCE21F14E5F00467AF2 /* Model+Similar.swift in Sources */,
 				D29E457F20DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D248355D21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */,
 				D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */,
@@ -1830,6 +1835,7 @@
 				D2278DFE21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */,
 				D298CB2C20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,
 				D2A4112321262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */,
+				D210EDCF21F14E5F00467AF2 /* Model+Similar.swift in Sources */,
 				D298CB3420D8163A00827F68 /* Purchase+Storable.swift in Sources */,
 				D2DE5CC120F8517500CABE34 /* Purchase+Condition.swift in Sources */,
 				D2DE5CBF20F8517500CABE34 /* Model+Disposition.swift in Sources */,

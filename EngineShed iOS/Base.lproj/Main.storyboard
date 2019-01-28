@@ -1230,7 +1230,12 @@
                             <outlet property="delegate" destination="de7-sQ-THj" id="jhr-oO-ogS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hR6-q4-TcF"/>
+                    <navigationItem key="navigationItem" id="hR6-q4-TcF">
+                        <barButtonItem key="rightBarButtonItem" title="Similar" image="966-contact-cards-toolbar" id="1bg-7f-lcR"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="similarModelsButton" destination="1bg-7f-lcR" id="Gv7-NQ-kRh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHn-7o-ZDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2443,7 +2448,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="x7g-2G-nuO"/>
         <segue reference="7r7-ye-Aen"/>
-        <segue reference="c21-Hk-PA0"/>
-        <segue reference="wnU-Dv-X6z"/>
+        <segue reference="eFf-wH-92g"/>
+        <segue reference="ToH-YJ-ahj"/>
     </inferredMetricsTieBreakers>
 </document>
