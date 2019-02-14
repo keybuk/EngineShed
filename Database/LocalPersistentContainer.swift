@@ -27,6 +27,14 @@ public class LocalPersistentContainer : NSPersistentContainer {
     public private(set) var cloudObserver: CloudObserver!
     public private(set) var cloudProvider: CloudProvider!
 
+    /// Shared container instance.
+    ///
+    /// This is used to ensure the running app, and unit tests running within it, share the same
+    /// `managedObjectModel`.
+    public static let shared: LocalPersistentContainer = {
+        return LocalPersistentContainer(name: "EngineShed")
+    }()
+
     public override init(name: String, managedObjectModel model: NSManagedObjectModel) {
         cloudContainer = CKContainer(identifier: cloudContainerID)
         cloudDatabase = cloudContainer.privateCloudDatabase
