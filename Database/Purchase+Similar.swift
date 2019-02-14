@@ -89,8 +89,7 @@ extension Purchase {
         let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "SELF != %@ && manufacturer == %@ && catalogNumberPrefix == %@", self, manufacturer, catalogNumberPrefix)
 
-        // TODO(SE-0230): replace ! with ?
-        let purchases = (try? managedObjectContext!.performAndWait {
+        let purchases = (try? managedObjectContext?.performAndWait {
             return try fetchRequest.execute()
         }) ?? []
 
