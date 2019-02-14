@@ -139,7 +139,7 @@ class PurchasesViewController : UITableViewController, NSFetchedResultsControlle
         case .delete:
             tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
         default:
-            return
+            assertionFailure("Unimplemented fetched results controller change type: \(type)")
         }
     }
 
@@ -160,6 +160,8 @@ class PurchasesViewController : UITableViewController, NSFetchedResultsControlle
                 cell.purchase = anObject as? Purchase
             }
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        @unknown default:
+            assertionFailure("Unimplemented fetched results controller change type: \(type)")
         }
     }
 

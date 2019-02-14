@@ -173,7 +173,7 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         case .delete:
             changeBlocks?.append { $0.deleteSections(IndexSet(integer: sectionIndex)) }
         default:
-            return
+            assertionFailure("Unimplemented fetched results controller change type: \(type)")
         }
     }
 
@@ -201,6 +201,8 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
                 // Prefer moveItem to get an animation.
                 $0.moveItem(at: indexPath!, to: newIndexPath!)
             }
+        @unknown default:
+            assertionFailure("Unimplemented fetched results controller change type: \(type)")
         }
     }
 

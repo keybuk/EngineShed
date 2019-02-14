@@ -452,7 +452,7 @@ public final class CloudObserver {
     ///    - error: `nil` on success, error that occurred on failure.
     public func handleRemoteNotification(_ userInfo: [AnyHashable : Any], completionHandler: @escaping (_ error: Error?) -> Void) {
         let notification = CKNotification(fromRemoteNotificationDictionary: userInfo)
-        if notification.subscriptionID == subscriptionID {
+        if notification?.subscriptionID == subscriptionID {
             fetchChanges(completionHandler: completionHandler)
         }
     }

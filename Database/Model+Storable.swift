@@ -76,8 +76,8 @@ extension Model : CloudStorable {
         socket = record["socket"]
         speaker = record["speaker"]
 
-        if let asset = record["image"] as? CKAsset {
-            image = ModelImage(contentsOf: asset.fileURL)
+        if let asset = record["image"] as? CKAsset, let fileURL = asset.fileURL {
+            image = ModelImage(contentsOf: fileURL)
         } else {
             image = nil
         }

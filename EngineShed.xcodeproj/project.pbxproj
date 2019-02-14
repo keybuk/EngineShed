@@ -1372,6 +1372,7 @@
 				TargetAttributes = {
 					D215BE9D20D4B5380054FDCC = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1383,28 +1384,35 @@
 					};
 					D215BEB220D4B53A0054FDCC = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						TestTargetID = D215BE9D20D4B5380054FDCC;
 					};
 					D215BEBD20D4B53A0054FDCC = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						TestTargetID = D215BE9D20D4B5380054FDCC;
 					};
 					D2A4116D212630B900B6C198 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 					};
 					D2A41175212630B900B6C198 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						TestTargetID = D2B7C95020D4BA30001B51B1;
 					};
 					D2A4118F212631AA00B6C198 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 					};
 					D2A41197212631AA00B6C198 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						TestTargetID = D215BE9D20D4B5380054FDCC;
 					};
 					D2B7C95020D4BA30001B51B1 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1419,26 +1427,30 @@
 					};
 					D2B7C96820D4BA31001B51B1 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						TestTargetID = D2B7C95020D4BA30001B51B1;
 					};
 					D2B7C97320D4BA31001B51B1 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						TestTargetID = D2B7C95020D4BA30001B51B1;
 					};
 					D2B7C98820D4BE2F001B51B1 = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 					D2B7C99020D4BE2F001B51B1 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						TestTargetID = D215BE9D20D4B5380054FDCC;
 					};
 					D2B7C9AB20D4BEF3001B51B1 = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 					D2B7C9B320D4BEF3001B51B1 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						TestTargetID = D2B7C95020D4BA30001B51B1;
 					};
 				};
@@ -2097,7 +2109,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.macOS;
 				PRODUCT_NAME = EngineShed;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2118,7 +2130,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.macOS;
 				PRODUCT_NAME = EngineShed;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2139,7 +2151,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/Contents/MacOS/EngineShed";
 			};
 			name = Debug;
@@ -2161,7 +2173,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/Contents/MacOS/EngineShed";
 			};
 			name = Release;
@@ -2183,7 +2195,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "EngineShed macOS";
 			};
 			name = Debug;
@@ -2205,7 +2217,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "EngineShed macOS";
 			};
 			name = Release;
@@ -2233,7 +2245,7 @@
 				PRODUCT_NAME = Util;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2262,7 +2274,7 @@
 				PRODUCT_NAME = Util;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2286,7 +2298,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.UtilTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
 			};
 			name = Debug;
@@ -2308,7 +2320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.UtilTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2339,7 +2351,7 @@
 				PRODUCT_NAME = Util;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2370,7 +2382,7 @@
 				PRODUCT_NAME = Util;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2393,7 +2405,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.UtilTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/Contents/MacOS/EngineShed";
 			};
 			name = Debug;
@@ -2415,7 +2427,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.UtilTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/Contents/MacOS/EngineShed";
 			};
 			name = Release;
@@ -2438,7 +2450,7 @@
 				PRODUCT_NAME = EngineShed;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2460,7 +2472,7 @@
 				PRODUCT_NAME = EngineShed;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2482,7 +2494,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
 			};
 			name = Debug;
@@ -2504,7 +2516,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2527,7 +2539,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "EngineShed iOS";
 			};
 			name = Debug;
@@ -2549,7 +2561,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "EngineShed iOS";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2581,7 +2593,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2612,7 +2624,7 @@
 				PRODUCT_NAME = Database;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2634,7 +2646,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DatabaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/Contents/MacOS/EngineShed";
 			};
 			name = Debug;
@@ -2655,7 +2667,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DatabaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/Contents/MacOS/EngineShed";
 			};
 			name = Release;
@@ -2684,7 +2696,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2713,7 +2725,7 @@
 				PRODUCT_NAME = Database;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2736,7 +2748,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DatabaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
 			};
 			name = Debug;
@@ -2757,7 +2769,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.DatabaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
 				VALIDATE_PRODUCT = YES;
 			};

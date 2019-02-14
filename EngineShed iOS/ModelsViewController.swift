@@ -135,7 +135,7 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
         case .delete:
             tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
         default:
-            return
+            assertionFailure("Unimplemented fetched results controller change type: \(type)")
         }
     }
 
@@ -156,6 +156,8 @@ class ModelsViewController : UITableViewController, NSFetchedResultsControllerDe
                 cell.model = anObject as? Model
             }
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        @unknown default:
+            assertionFailure("Unimplemented fetched results controller change type: \(type)")
         }
     }
 
