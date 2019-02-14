@@ -23,26 +23,31 @@ extension Purchase {
     /// - Parameter catalogNumber: full catalog number.
     /// - Returns: `catalogNumber` or the common prefix equivalent, which is always shorter.
     func makePrefix(from catalogNumber: String) -> String {
-        let parts = catalogNumber.split(between: { $0.category != $1.category })
-        let categories = parts.map { $0[$0.startIndex].category }
+        let parts = catalogNumber.split(between: {
+            if $0.isWhitespace && $1.isWhitespace { return false }
+            if $0.isLetter && $1.isLetter { return false }
+            if $0.isNumber && $1.isNumber { return false }
+            if $0.isPunctuation && $1.isPunctuation { return false }
+            return true
+        })
 
         if let lastDash = parts.lastIndex(of: "-") {
             if lastDash != parts.firstIndex(of: "-") {
                 // Dapol, Hattons, etc. with more than one dash, remove everything past the last dash.
                 return parts[...lastDash].joined()
-            } else if categories[0] == .decimalDigit && parts[0].count > 2 {
+            } else if parts.count > 0 && parts[0].count > 2 && parts[0].first!.isNumber {
                 // Special case for Realtrack, the first part is a number sequence longer than two.
                 return parts[...lastDash].joined()
             }
         }
 
         // Hornby, Bachmann, final-letter style.
-        if categories.count > 1 && categories.last == .letter {
+        if parts.count > 1 && parts.last!.first!.isLetter {
             return parts.dropLast().joined()
         }
 
         // Oxford Diecast style; number, letter, long number. Shrink long number to three digits.
-        if categories == [ .decimalDigit, .letter, .decimalDigit ] && parts[2].count > 3 {
+        if parts.count == 3 && parts[0].first!.isNumber && parts[1].first!.isLetter && parts[2].first!.isNumber && parts[2].count > 3 {
             return (parts[..<2] + parts[2...].map { $0.prefix(3) }).joined()
         }
 

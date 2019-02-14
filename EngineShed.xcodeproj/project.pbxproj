@@ -152,8 +152,6 @@
 		D2A411B0212632C700B6C198 /* Collection+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */; };
 		D2A411B1212632C900B6C198 /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */; };
 		D2A411B2212632CA00B6C198 /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */; };
-		D2A411B3212632CE00B6C198 /* Character+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F96C20DE238D003BC8D1 /* Character+Category.swift */; };
-		D2A411B4212632CF00B6C198 /* Character+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F96C20DE238D003BC8D1 /* Character+Category.swift */; };
 		D2A411CA2126342B00B6C198 /* SimilarPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */; };
 		D2A411CB2126342C00B6C198 /* SimilarPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */; };
 		D2A411CD2126343000B6C198 /* CatalogNumberPrefixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */; };
@@ -352,7 +350,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D200F96C20DE238D003BC8D1 /* Character+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Category.swift"; sourceTree = "<group>"; };
 		D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SplitBetween.swift"; sourceTree = "<group>"; };
 		D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Similar.swift"; sourceTree = "<group>"; };
 		D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CountedElements.swift"; sourceTree = "<group>"; };
@@ -877,7 +874,6 @@
 			children = (
 				D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */,
 				D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */,
-				D200F96C20DE238D003BC8D1 /* Character+Category.swift */,
 				D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */,
 			);
 			path = Util;
@@ -1628,7 +1624,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A411B0212632C700B6C198 /* Collection+CountedElements.swift in Sources */,
-				D2A411B4212632CF00B6C198 /* Character+Category.swift in Sources */,
 				D2A411AD212632C100B6C198 /* ConvertibleFromString.swift in Sources */,
 				D2A411B1212632C900B6C198 /* Collection+SplitBetween.swift in Sources */,
 			);
@@ -1647,7 +1642,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A411AF212632C600B6C198 /* Collection+CountedElements.swift in Sources */,
-				D2A411B3212632CE00B6C198 /* Character+Category.swift in Sources */,
 				D2A411AE212632C200B6C198 /* ConvertibleFromString.swift in Sources */,
 				D2A411B2212632CA00B6C198 /* Collection+SplitBetween.swift in Sources */,
 			);
