@@ -18,5 +18,3 @@ extension NSImage {
     }
 
 }
-
-public typealias ModelImage = NSImage

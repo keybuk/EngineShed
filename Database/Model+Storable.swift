@@ -71,9 +71,9 @@ extension Model : CloudStorable {
         speaker = record["speaker"]
 
         if let asset = record["image"] as? CKAsset, let fileURL = asset.fileURL {
-            image = ModelImage(contentsOf: fileURL)
+            imageData = try? Data(contentsOf: fileURL)
         } else {
-            image = nil
+            imageData = nil
         }
 
         if let data = record["lastOil"] as? Data,
@@ -126,10 +126,13 @@ extension Model : CloudStorable {
         if keys?.contains("speaker") ?? true { record["speaker"] = speaker }
 
         if keys?.contains("imageFilename") ?? true {
-            if let imageURL = imageURL {
-                record["image"] = CKAsset(fileURL: imageURL)
-            } else {
-                record["image"] = nil
+            record["image"] = imageData.flatMap { (imageData) -> CKAsset? in
+                do {
+                    return try CKDataAsset(data: imageData)
+                } catch {
+                    print("Error creating CKAsset for data: \(error)")
+                    return nil
+                }
             }
         }
 
