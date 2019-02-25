@@ -64,53 +64,37 @@ extension CloudStorable where Self : NSManagedObject {
         object.saveSystemFields(from: record)
     }
     
-    /// Delete all objects for CloudKit records.
-    ///
-    /// Once the deletion is done, changes are merged back to the context `mergeContext`.
+    /// Delete all objects for specified CloudKit records.
     ///
     /// - Parameters:
     ///   - recordIDs: Array of CloudKit record IDs to be deleted.
     ///   - context: managed object context for the deletion.
-    ///   - mergeContext: managed object context to merge changes back to, or `nil`.
-    static func deleteObjectsForRecords(_ recordIDs: [CKRecord.ID], in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
+    static func deleteObjectsForRecords(_ recordIDs: [CKRecord.ID], in context: NSManagedObjectContext) throws {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "recordID IN %@", recordIDs)
-        
-        try willDeleteObjects(matching: fetchRequest, in: context)
-        
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        deleteRequest.resultType = .resultTypeObjectIDs
-        
-        let result = try context.execute(deleteRequest) as! NSBatchDeleteResult
-        if let deletedObjects = result.result as? [NSManagedObjectID],
-            let mergeContext = mergeContext
-        {
-            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSDeletedObjectsKey: deletedObjects], into: [mergeContext])
+
+        try context.performAndWait {
+            let objects = try fetchRequest.execute()
+            for case let object as Self in objects {
+                context.delete(object)
+            }
         }
     }
     
-    /// Delete all objects in CloudKit zones.
-    ///
-    /// Once the deletion is done, changes are merged back to the context `mergeContext`.
+    /// Delete all objects in specified CloudKit zones.
     ///
     /// - Parameters:
     ///   - zoneIDs: CloudKit zoneIDs in which all records should be deleted.
     ///   - context: managed object context for the deletion.
-    ///   - mergeContext: managed object context to merge changes back to, or `nil`.
-    static func deleteObjectsForZoneIDs(_ zoneIDs: [CKRecordZone.ID], in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
+    static func deleteObjectsForZoneIDs(_ zoneIDs: [CKRecordZone.ID], in context: NSManagedObjectContext) throws {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "zoneID IN %@", zoneIDs)
-        
-        try willDeleteObjects(matching: fetchRequest, in: context)
-        
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        deleteRequest.resultType = .resultTypeObjectIDs
-        
-        let result = try context.execute(deleteRequest) as! NSBatchDeleteResult
-        if let deletedObjects = result.result as? [NSManagedObjectID],
-            let mergeContext = mergeContext
-        {
-            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSDeletedObjectsKey: deletedObjects], into: [mergeContext])
+
+        try context.performAndWait {
+            let objects = try fetchRequest.execute()
+            for case let object as Self in objects {
+                context.delete(object)
+            }
         }
     }
     

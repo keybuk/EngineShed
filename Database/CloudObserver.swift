@@ -49,8 +49,8 @@ import Dispatch
 /// In order to make changes to the local store, this class makes three requirements on
 /// `NSManagedObject`:
 ///  * `NSManagedObject.syncObjectFromRecord(:in:)`
-///  * `NSManagedObject.deleteObjectsForZoneIDs(:in:mergeTo:)`
-///  * `NSManagedObject.deleteObjectsForRecords(:in:mergeTo:)`
+///  * `NSManagedObject.deleteObjectsForZoneIDs(:in:)`
+///  * `NSManagedObject.deleteObjectsForRecords(:in:)`
 ///
 /// These are not type-aware; `NSManagedObject+StorableObjectTranslation` provides an implementation
 /// that expands or iterates the real object types as long as they conform to `CloudStorable` and
@@ -217,10 +217,8 @@ public final class CloudObserver {
 
     /// Delete records stored in zones marked for deletion.
     ///
-    /// Fetches the set of zones marked `shouldDelete`, and then performs a batch deletion, for
-    /// each storable record type, of records marked as originating from each zone to be deleted.
-    ///
-    /// Once the deletion is complete, changes are merged back to the view context.
+    /// Fetches the set of zones marked `shouldDelete`, and then performs a deletion for each
+    /// storable record type, of records marked as originating from each zone to be deleted.
     ///
     /// - Parameters:
     ///   - databaseState: database sync state record on current context.
@@ -230,7 +228,7 @@ public final class CloudObserver {
         let zoneIDs = deleteZoneStates.compactMap { $0.zoneID }
         print("\(zoneIDs.count) zones pending deletion")
 
-        try NSManagedObject.deleteObjectsForZoneIDs(zoneIDs, in: context, mergeTo: persistentContainer.viewContext)
+        try NSManagedObject.deleteObjectsForZoneIDs(zoneIDs, in: context)
 
         // Preserve the ZoneState record if purged, otherwise clean up.
         for zoneState in deleteZoneStates {
@@ -317,23 +315,22 @@ public final class CloudObserver {
         operation.recordZoneChangeTokensUpdatedBlock = { zoneID, serverChangeToken, _ in
             print("Record change token updated: \(zoneID) \(serverChangeToken!)")
             do {
+                if !deletedRecords.isEmpty {
+                    try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context)
+                    deletedRecords.removeAll()
+                }
+
+                let zoneState = try databaseState.stateForZoneWithID(zoneID)
+                zoneState.serverChangeToken = serverChangeToken
+
                 // RP says to flush changes, but the reality of having to split large change
                 // operations means we could be trying to flush a partial sync which fails
                 // validation.
                 //
-                // Disable everything but recording the change token for now until I can think more
-                // on it.
-//                if !deletedRecords.isEmpty {
-//                    try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context, mergeTo: self.persistentContainer.viewContext)
-//                    deletedRecords.removeAll()
-//                }
-
-                let zoneState = try databaseState.stateForZoneWithID(zoneID)
-                zoneState.serverChangeToken = serverChangeToken
+                // Disable the final saving until I can think more on it.
                 // try context.save()
             } catch {
-//                print("Error flushing zone changes: \(error)")
-                print("Error saving zone change token: \(error)")
+                print("Error flushing zone changes on token update: \(error)")
                 cancelCausedByError = error
                 operation.cancel()
             }
@@ -360,7 +357,7 @@ public final class CloudObserver {
                 print("Zone fetch completed: \(zoneID) \(serverChangeToken!)")
                 do {
                     if !deletedRecords.isEmpty {
-                        try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context, mergeTo: self.persistentContainer.viewContext)
+                        try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context)
                         deletedRecords.removeAll()
                     }
 

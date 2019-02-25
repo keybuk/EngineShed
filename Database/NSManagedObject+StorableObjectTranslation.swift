@@ -39,31 +39,25 @@ extension StorableObjectTranslation where Self : NSManagedObject {
 
     /// Delete all objects for CloudKit records.
     ///
-    /// Once the deletion is done, changes are merged back to the context `mergeContext`.
-    ///
     /// - Parameters:
     ///   - deletedRecords: Array of CloudKit record IDs mapped to a set of CloudKit record types.
     ///   - zoneIDs: CloudKit zoneIDs in which all records should be deleted, or `nil`.
     ///   - context: managed object context for the deletion.
-    ///   - mergeContext: managed object context to merge changes back to, or `nil`.
-    static func deleteObjectsForRecords(_ deletedRecords: [CKRecord.RecordType: [CKRecord.ID]], in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
+    static func deleteObjectsForRecords(_ deletedRecords: [CKRecord.RecordType: [CKRecord.ID]], in context: NSManagedObjectContext) throws {
         for (recordType, recordIDs) in deletedRecords {
             guard let storableClass = classForRecordType(recordType) else { continue }
-            try storableClass.deleteObjectsForRecords(recordIDs, in: context, mergeTo: mergeContext)
+            try storableClass.deleteObjectsForRecords(recordIDs, in: context)
         }
     }
 
     /// Delete all objects in CloudKit zones.
     ///
-    /// Once the deletion is done, changes are merged back to the context `mergeContext`.
-    ///
     /// - Parameters:
     ///   - zoneIDs: CloudKit zoneIDs in which all records should be deleted.
     ///   - context: managed object context for the deletion.
-    ///   - mergeContext: managed object context to merge changes back to, or `nil`.
-    static func deleteObjectsForZoneIDs(_ zoneIDs: [CKRecordZone.ID], in context: NSManagedObjectContext, mergeTo mergeContext: NSManagedObjectContext?) throws {
+    static func deleteObjectsForZoneIDs(_ zoneIDs: [CKRecordZone.ID], in context: NSManagedObjectContext) throws {
         for (_, storableClass) in storableTypes {
-            try storableClass.deleteObjectsForZoneIDs(zoneIDs, in: context, mergeTo: mergeContext)
+            try storableClass.deleteObjectsForZoneIDs(zoneIDs, in: context)
         }
     }
 
