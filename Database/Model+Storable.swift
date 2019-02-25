@@ -14,47 +14,41 @@ extension Model : CloudStorable {
     /// CloudKit record type.
     static let recordType = "Model"
 
-    /// Identify the differences from relationship objects to a `CKRecord` list.
+    /// Update list of relationship objects from a `CKRecord` list.
     ///
     /// Since Core Data has no concept of a string list, and to reduce the model burden on the
-    /// Cloud Kit side, we have to translate between string lists and relationships with sets of
+    /// Cloud Kit side, we translate between string lists and relationships with sets of
     /// objects that just contain a title.
     ///
     /// - Parameters:
     ///   - objects: set of objects in the relationship.
-    ///   - record: CloudKit record.
-    ///   - key: key of field in CloudKit.
+    ///   - titles: list of titles from CloudKit.
     ///   - as: type of `NSManagedObject` to construct.
-    ///
-    /// - Returns: (`insertObjects`, `removeObjects`) where `insertObjects` contains new objects
-    ///   matching the titles in `record` that were not present in the relationship, and
-    ///   `removeObjects` contains the set of objects from `objects` that were not present in
-    ///   `record`.
-    func differencesFrom<T : NSManagedObject>(objects: NSSet?, to record: CKRecord, key: String, as type: T.Type) -> (NSSet, NSSet) {
-        if let values = record[key] as? [String] {
-            var removeObjects = NSSet()
-            var newValues = Set(values)
-            if let objects = objects as? Set<NSManagedObject> {
-                removeObjects = objects.filter {
-                    guard let title = $0.value(forKey: "title") as? String else { return true }
-                    return !newValues.contains(title)
-                } as NSSet
+    func updateList<Entity: NSManagedObject>(_ objects: NSSet?, from titles: [String]?, as type: Entity.Type) {
+        guard let managedObjectContext = managedObjectContext else { preconditionFailure("Can't update list field outside of managed object context") }
 
-                newValues.subtract(objects.map {
-                    guard let title = $0.value(forKey: "title") as? String else { return "" }
-                    return title
-                })
+        var newTitles = Set(titles ?? [])
+
+        // Remove any database object not in `newTitles`, or any new title that's in the database.
+        if let objects = objects as? Set<NSManagedObject> {
+            for object in objects {
+                guard let title = object.value(forKey: "title") as? String else { continue }
+                if newTitles.contains(title) {
+                    newTitles.remove(title)
+                } else {
+                    managedObjectContext.performAndWait {
+                        object.setValue(nil, forKey: "model")
+                        managedObjectContext.delete(object)
+                    }
+                }
             }
+        }
 
-            let insertObjects = Set(newValues.map { (title: String) -> T in
-                let object = T(context: managedObjectContext!)
-                object.setValue(title, forKey: "title")
-                return object
-            }) as NSSet
-
-            return (insertObjects, removeObjects)
-        } else {
-            return ([], objects ?? [])
+        // Insert any title left in `newTitles`.
+        for title in newTitles {
+            let object = Entity(context: managedObjectContext)
+            object.setValue(self, forKey: "model")
+            object.setValue(title, forKey: "title")
         }
     }
 
@@ -96,37 +90,14 @@ extension Model : CloudStorable {
             unarchiver.finishDecoding()
         }
 
-        let (insertCouplings, removeCouplings) = differencesFrom(objects: couplings, to: record, key: "couplings", as: Coupling.self)
-        addToCouplings(insertCouplings)
-        removeFromCouplings(removeCouplings)
-
-        let (insertDetailParts, removeDetailParts) = differencesFrom(objects: detailParts, to: record, key: "detailParts", as: DetailPart.self)
-        addToDetailParts(insertDetailParts)
-        removeFromDetailParts(removeDetailParts)
-
-        let (insertFeatures, removeFeatures) = differencesFrom(objects: features, to: record, key: "features", as: Feature.self)
-        addToFeatures(insertFeatures)
-        removeFromFeatures(removeFeatures)
-
-        let (insertFittedDetailParts, removeFittedDetailParts) = differencesFrom(objects: fittedDetailParts, to: record, key: "fittedDetailParts", as: FittedDetailPart.self)
-        addToFittedDetailParts(insertFittedDetailParts)
-        removeFromFittedDetailParts(removeFittedDetailParts)
-
-        let (insertLights, removeLights) = differencesFrom(objects: lights, to: record, key: "lights", as: Light.self)
-        addToLights(insertLights)
-        removeFromLights(removeLights)
-
-        let (insertModifications, removeModifications) = differencesFrom(objects: modifications, to: record, key: "modifications", as: Modification.self)
-        addToModifications(insertModifications)
-        removeFromModifications(removeModifications)
-
-        let (insertSpeakerFittings, removeSpeakerFittings) = differencesFrom(objects: speakerFittings, to: record, key: "speakerFittings", as: SpeakerFitting.self)
-        addToSpeakerFittings(insertSpeakerFittings)
-        removeFromSpeakerFittings(removeSpeakerFittings)
-
-        let (insertTasks, removeTasks) = differencesFrom(objects: tasks, to: record, key: "tasks", as: Task.self)
-        addToTasks(insertTasks)
-        removeFromTasks(removeTasks)
+        updateList(couplings, from: record["couplings"], as: Coupling.self)
+        updateList(detailParts, from: record["detailParts"], as: DetailPart.self)
+        updateList(features, from: record["features"], as: Feature.self)
+        updateList(fittedDetailParts, from: record["fittedDetailParts"], as: FittedDetailPart.self)
+        updateList(lights, from: record["lights"], as: Light.self)
+        updateList(modifications, from: record["modifications"], as: Modification.self)
+        updateList(speakerFittings, from: record["speakerFittings"], as: SpeakerFitting.self)
+        updateList(tasks, from: record["tasks"], as: Task.self)
 
         if let reference = record["purchase"] as? CKRecord.Reference {
             purchase = try Purchase.objectForRecordID(reference.recordID, in: managedObjectContext!)
