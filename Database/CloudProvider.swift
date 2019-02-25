@@ -261,16 +261,16 @@ public final class CloudProvider {
                 // so rather than bailing out, just move on.
                 print("Modify zone error: \(error)")
             } else {
-                // Record `nil` for the change token of any zone we created, until we find out
-                // what the token really is later on.
-// FIXME: I don't remember why I did this, and whether it's necessary anymore.
-//                if let savedZones = savedZones {
-//                    for zone in savedZones {
-//                        if self.zoneServerChangeToken.index(forKey: zone.zoneID) == nil {
-//                            self.zoneServerChangeToken.updateValue(nil, forKey: zone.zoneID)
-//                        }
-//                    }
-//                }
+                // FIXME: After creating the zone, we were storing the equivalent of a ZoneState
+                // without a change token. This was when we had to always fetch all zones because
+                // we didn't track which ones changed between runs in the table like we do now with
+                // ZoneState.
+                //
+                // In theory this shouldn't be necessary anymore, while we won't automatically
+                // fetch the new zone after creating it, we should still eventually get a change
+                // from the server that creates the ZoneState for it.
+                //
+                // Keep this comment until I prove that to myself.
             }
         }
         
