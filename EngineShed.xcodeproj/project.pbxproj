@@ -98,8 +98,6 @@
 		D28758242105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
 		D28758262105FEEE00EF722D /* TrainMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758252105FEEE00EF722D /* TrainMemberCell.swift */; };
 		D287582821060FE700EF722D /* TrainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D287582721060FE700EF722D /* TrainHeaderView.swift */; };
-		D28BE32E20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */; };
-		D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */; };
 		D295D8A621EADCF900BBD204 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A521EADCF900BBD204 /* PurchasesViewController.swift */; };
 		D295D8A821EADD0800BBD204 /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A721EADD0800BBD204 /* PurchaseCell.swift */; };
 		D295D8AA21EADDDE00BBD204 /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */; };
@@ -438,7 +436,6 @@
 		D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
 		D28758252105FEEE00EF722D /* TrainMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberCell.swift; sourceTree = "<group>"; };
 		D287582721060FE700EF722D /* TrainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainHeaderView.swift; sourceTree = "<group>"; };
-		D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+WillDelete.swift"; sourceTree = "<group>"; };
 		D295D8A521EADCF900BBD204 /* PurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
 		D295D8A721EADD0800BBD204 /* PurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
 		D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+FetchRequests.swift"; sourceTree = "<group>"; };
@@ -1050,7 +1047,6 @@
 				D298CAF220D737C800827F68 /* CloudProvider.swift */,
 				D25828BB21DEFF450094918F /* CloudProviderDelegate.swift */,
 				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
-				D28BE32D20DC15F100F1E612 /* NSManagedObject+WillDelete.swift */,
 				D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */,
 				D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */,
 				D2A4112121262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift */,
@@ -1766,7 +1762,6 @@
 				D2B50BA220D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */,
 				D2DE5CBE20F8517500CABE34 /* Model+Disposition.swift in Sources */,
 				D2DE5CBC20F8517500CABE34 /* Model+Classification.swift in Sources */,
-				D28BE32E20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,
 				D298CB2720D8163A00827F68 /* Train+Storable.swift in Sources */,
 				D25828BC21DEFF450094918F /* CloudProviderDelegate.swift in Sources */,
 				D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */,
@@ -1811,7 +1806,6 @@
 				D202D11221EB199E008153FB /* Decoder+Date.swift in Sources */,
 				D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D202D10C21EB0670008153FB /* Model+Date.swift in Sources */,
-				D28BE32F20DC15F100F1E612 /* NSManagedObject+WillDelete.swift in Sources */,
 				D295D8AB21EADDDE00BBD204 /* Purchase+FetchRequests.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D298CB1F20D8150600827F68 /* UIImage+URL.swift in Sources */,

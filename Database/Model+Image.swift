@@ -55,37 +55,9 @@ extension Model {
                 try FileManager.default.removeItem(at: imageURL)
             } catch CocoaError.fileNoSuchFile {
                 // Ignore, this is probably one context learning about the deletion of another.
+                print("Failed to delete file in prepare that wasn't there: \(imageURL.lastPathComponent)")
             } catch {
-                print("Failed to delete \(imageURL.lastPathComponent): \(error)")
-            }
-        }
-    }
-
-    @objc
-    override class func willDeleteObjects(matching deleteRequest: NSFetchRequest<NSFetchRequestResult>, in context: NSManagedObjectContext) throws {
-        // Create a new fetch request, with the same predicate; both remembering that deleteRequest
-        // is a reference, and also that we only really care about the predicate.
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = self.fetchRequest()
-
-        fetchRequest.predicate = deleteRequest.predicate
-        fetchRequest.fetchBatchSize = 20
-        fetchRequest.resultType = .dictionaryResultType
-        fetchRequest.propertiesToFetch = [ "imageFilename" ]
-        
-        let results = try context.performAndWait {
-            return try fetchRequest.execute() as! [[String: Any]]
-        }
-
-        for result in results {
-            guard let imageFilename = result["imageFilename"] as? String else { continue }
-            let imageURL = Model.imagesURL.appendingPathComponent(imageFilename)
-
-            do {
-                try FileManager.default.removeItem(at: imageURL)
-            } catch CocoaError.fileNoSuchFile {
-                // Ignore.
-            } catch {
-                print("Failed to delete \(imageURL.lastPathComponent): \(error)")
+                print("Failed to delete in prepare \(imageURL.lastPathComponent): \(error)")
             }
         }
     }
