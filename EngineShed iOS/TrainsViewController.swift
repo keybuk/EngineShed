@@ -257,18 +257,15 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
     var tappedIndexPath: IndexPath?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "trainEdit" {
+        if segue.identifier == "train" {
             guard let indexPath = tappedIndexPath else { return }
 
             let trainMember = fetchedResultsController.object(at: indexPath)
             guard let train = trainMember.train else { preconditionFailure("Train member without a train") }
 
-            let navigationController = segue.destination as! UINavigationController
-
-            let viewController = navigationController.topViewController!
-                as! TrainEditViewController
+            let viewController = segue.destination as! TrainTableViewController
             viewController.persistentContainer = persistentContainer
-            viewController.editTrain(train)
+            viewController.train = train
         }
     }
 
@@ -277,7 +274,7 @@ class TrainsViewController : UICollectionViewController, NSFetchedResultsControl
         for indexPath in collectionView.indexPathsForVisibleSupplementaryElements(ofKind: kind) {
             if sender.view == collectionView.supplementaryView(forElementKind: kind, at: indexPath) {
                 tappedIndexPath = indexPath
-                performSegue(withIdentifier: "trainEdit", sender: sender.view)
+                performSegue(withIdentifier: "train", sender: sender.view)
             }
         }
     }
