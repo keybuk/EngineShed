@@ -124,6 +124,13 @@ class PurchaseTableViewController : UITableViewController {
             let viewController = segue.destination as! ModelTableViewController
             viewController.persistentContainer = persistentContainer
             viewController.model = model
+        } else if segue.identifier == "purchaseEdit" {
+            guard let purchase = purchase else { return }
+            let navigationController = segue.destination as! UINavigationController
+
+            let viewController = navigationController.topViewController! as! PurchaseEditTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.editPurchase(purchase)
         }
     }
 

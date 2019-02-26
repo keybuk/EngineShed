@@ -93,6 +93,7 @@
 		D25828BF21E0225D0094918F /* TrainDeleteTrainDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828BE21E0225D0094918F /* TrainDeleteTrainDeleteTableViewCell.swift */; };
 		D25828C121E028920094918F /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
 		D25828C221E028920094918F /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
+		D27300342224F9390002CEF9 /* PurchaseEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27300332224F9390002CEF9 /* PurchaseEditTableViewController.swift */; };
 		D27FC2402150BE0E00AA522B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */; };
 		D2820D03222484C000D9B3F8 /* CKDataAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2820D02222484C000D9B3F8 /* CKDataAsset.swift */; };
 		D2820D04222484C000D9B3F8 /* CKDataAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2820D02222484C000D9B3F8 /* CKDataAsset.swift */; };
@@ -440,6 +441,7 @@
 		D25828BE21E0225D0094918F /* TrainDeleteTrainDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDeleteTrainDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		D25828C021E028920094918F /* Train+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Validate.swift"; sourceTree = "<group>"; };
 		D25AAC7921DD445700AC4359 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
+		D27300332224F9390002CEF9 /* PurchaseEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseEditTableViewController.swift; sourceTree = "<group>"; };
 		D2820D02222484C000D9B3F8 /* CKDataAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKDataAsset.swift; sourceTree = "<group>"; };
 		D2820D062224971D00D9B3F8 /* TrainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainTableViewController.swift; sourceTree = "<group>"; };
 		D2820D082224A52000D9B3F8 /* TrainNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -862,6 +864,14 @@
 			name = "Purchase View";
 			sourceTree = "<group>";
 		};
+		D27300322224F9220002CEF9 /* Purchase Edit View */ = {
+			isa = PBXGroup;
+			children = (
+				D27300332224F9390002CEF9 /* PurchaseEditTableViewController.swift */,
+			);
+			name = "Purchase Edit View";
+			sourceTree = "<group>";
+		};
 		D2820D052224970100D9B3F8 /* Train View */ = {
 			isa = PBXGroup;
 			children = (
@@ -982,6 +992,7 @@
 				D295D8A421EADCD900BBD204 /* Purchases View */,
 				D23B8B8521E29527004F994D /* Model View */,
 				D23B8BD421E2BE84004F994D /* Purchase View */,
+				D27300322224F9220002CEF9 /* Purchase Edit View */,
 				D23B8B8621E29533004F994D /* Trains View */,
 				D2820D052224970100D9B3F8 /* Train View */,
 				D23B8B8721E29544004F994D /* Train Edit View */,
@@ -1722,6 +1733,7 @@
 				D23B8B9121E29C3E004F994D /* ModelLiveryTableViewCell.swift in Sources */,
 				D23B8BB521E2AF13004F994D /* ModelDecoderSoundSettingsTableViewCell.swift in Sources */,
 				D23B8BEC21E2C160004F994D /* PurchaseValuationTableViewCell.swift in Sources */,
+				D27300342224F9390002CEF9 /* PurchaseEditTableViewController.swift in Sources */,
 				D23B8BC921E2B7C1004F994D /* ModelLastRunTableViewCell.swift in Sources */,
 				D2DE5CC720F8A60000CABE34 /* TrainsCollectionViewController.swift in Sources */,
 				D23B8BDE21E2C068004F994D /* PurchaseCatalogYearTableViewCell.swift in Sources */,
