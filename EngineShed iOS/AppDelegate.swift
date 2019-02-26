@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 splitViewController.delegate = self
 
                 let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
-                let viewController = masterNavigationController.topViewController as! ClassificationsViewController
+                let viewController = masterNavigationController.topViewController as! ClassificationsTableViewController
                 viewController.persistentContainer = persistentContainer
             }
 
@@ -77,12 +77,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 splitViewController.delegate = self
 
                 let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
-                let viewController = masterNavigationController.topViewController as! PurchasesViewController
+                let viewController = masterNavigationController.topViewController as! PurchasesTableViewController
                 viewController.persistentContainer = persistentContainer
             }
 
             if let navigationController = tabBarController.viewControllers?[2] as? UINavigationController {
-                let viewController = navigationController.topViewController as! TrainsViewController
+                let viewController = navigationController.topViewController as! TrainsCollectionViewController
                 viewController.persistentContainer = persistentContainer
             }
         }
@@ -157,10 +157,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
 
         // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-        if let modelViewController = secondaryAsNavController.topViewController as? ModelViewController,
-            modelViewController.model == nil { return true }
-        if let purchaseViewController = secondaryAsNavController.topViewController as? PurchaseViewController,
-            purchaseViewController.purchase == nil { return true }
+        if let viewController = secondaryAsNavController.topViewController as? ModelTableViewController,
+            viewController.model == nil { return true }
+        if let viewController = secondaryAsNavController.topViewController as? PurchaseTableViewController,
+            viewController.purchase == nil { return true }
 
         return false
     }

@@ -57,21 +57,21 @@ class TrainTableViewController : UITableViewController {
         case 0:
             switch indexPath.row {
             case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "trainNameCell", for: indexPath) as! TrainNameTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "trainName", for: indexPath) as! TrainNameTableViewCell
                 cell.train = train
                 return cell
             case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "trainDetailsCell", for: indexPath) as! TrainDetailsTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "trainDetails", for: indexPath) as! TrainDetailsTableViewCell
                 cell.train = train
                 return cell
             case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "trainNotesCell", for: indexPath) as! TrainNotesTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "trainNotes", for: indexPath) as! TrainNotesTableViewCell
                 cell.train = train
                 return cell
             default: preconditionFailure("Unexpected indexPath: \(indexPath)")
             }
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "trainMemberCell", for: indexPath) as! TrainMemberTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "trainMember", for: indexPath) as! TrainMemberTableViewCell
             cell.trainMember = train?.members![indexPath.row] as? TrainMember
             return cell
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
@@ -124,11 +124,11 @@ class TrainTableViewController : UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editTrain" {
+        if segue.identifier == "trainEdit" {
             guard let train = train else { return }
             let navigationController = segue.destination as! UINavigationController
 
-            let viewController = navigationController.topViewController! as! TrainEditViewController
+            let viewController = navigationController.topViewController! as! TrainEditTableViewController
             viewController.persistentContainer = persistentContainer
             viewController.editTrain(train)
         }

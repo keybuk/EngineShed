@@ -1,19 +1,17 @@
 //
-//  TrainMemberAddTableViewCell.swift
+//  TrainDeleteTableViewCell.swift
 //  EngineShed iOS
 //
-//  Created by Scott James Remnant on 1/1/19.
+//  Created by Scott James Remnant on 1/4/19.
 //  Copyright © 2019 Scott James Remnant. All rights reserved.
 //
 
 import UIKit
 
-import Database
-
-class TrainMemberAddTableViewCell : UITableViewCell {
+class TrainDeleteTableViewCell : UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 

@@ -44,16 +44,16 @@
             </objects>
             <point key="canvasLocation" x="97" y="-630"/>
         </scene>
-        <!--Model View Controller-->
+        <!--Model Table View Controller-->
         <scene sceneID="dRQ-Ke-HNa">
             <objects>
-                <tableViewController id="de7-sQ-THj" customClass="ModelViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="de7-sQ-THj" customClass="ModelTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="40" sectionFooterHeight="28" id="f8S-kN-rXp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelImageCell" rowHeight="212" id="CdN-CC-eYJ" customClass="ModelImageCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelImage" rowHeight="212" id="CdN-CC-eYJ" customClass="ModelImageTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="212"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CdN-CC-eYJ" id="pmX-5C-ZSc">
@@ -80,7 +80,7 @@
                                     <outlet property="modelImageView" destination="d3R-ge-76B" id="Hxo-G9-pNn"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelPurchaseCell" rowHeight="93" id="x16-v2-afV" customClass="ModelPurchaseCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelPurchase" rowHeight="93" id="x16-v2-afV" customClass="ModelPurchaseTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="240" width="375" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x16-v2-afV" id="Vfd-96-LGo">
@@ -118,7 +118,7 @@
                                     <segue destination="S6m-nV-rET" kind="show" identifier="modelPurchase" id="eFf-wH-92g"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelClassificationCell" rowHeight="57" id="xvF-dC-OyS" customClass="ModelClassificationCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelClassification" rowHeight="57" id="xvF-dC-OyS" customClass="ModelClassificationTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="333" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xvF-dC-OyS" id="SkM-xE-72R">
@@ -154,7 +154,7 @@
                                     <outlet property="classificationLabel" destination="nRv-dx-1om" id="8XK-Ss-oIg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelClassCell" rowHeight="57" id="HQm-gT-Mw0" customClass="ModelClassCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelClass" rowHeight="57" id="HQm-gT-Mw0" customClass="ModelClassTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="390" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HQm-gT-Mw0" id="54u-4B-fsY">
@@ -190,7 +190,7 @@
                                     <outlet property="classLabel" destination="PiL-qJ-eDS" id="jFq-ah-0LT"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelNumberCell" rowHeight="57" id="4Fd-Wf-a7c" customClass="ModelNumberCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelNumber" rowHeight="57" id="4Fd-Wf-a7c" customClass="ModelNumberTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="447" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Fd-Wf-a7c" id="tLR-Rj-rVe">
@@ -226,7 +226,7 @@
                                     <outlet property="numberLabel" destination="tly-nY-Puc" id="r3X-3T-jUV"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelNameCell" rowHeight="57" id="Siw-Tm-l1w" customClass="ModelNameCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelName" rowHeight="57" id="Siw-Tm-l1w" customClass="ModelNameTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="504" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Siw-Tm-l1w" id="yKh-Cu-blm">
@@ -262,7 +262,7 @@
                                     <outlet property="nameLabel" destination="6LZ-BS-eSD" id="v8h-K3-g4N"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLiveryCell" rowHeight="57" id="iiG-M0-iRf" customClass="ModelLiveryCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLivery" rowHeight="57" id="iiG-M0-iRf" customClass="ModelLiveryTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="561" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iiG-M0-iRf" id="NkB-u6-GfR">
@@ -298,7 +298,7 @@
                                     <outlet property="liveryLabel" destination="sCm-JI-IN9" id="dpP-9V-6WE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDetailsCell" rowHeight="57" id="0Xh-Cg-WBO" customClass="ModelDetailsCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDetails" rowHeight="57" id="0Xh-Cg-WBO" customClass="ModelDetailsTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="618" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Xh-Cg-WBO" id="Jxm-qo-eak">
@@ -334,7 +334,7 @@
                                     <outlet property="detailsLabel" destination="tbU-2R-FUU" id="kwO-fM-0lq"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelEraCell" rowHeight="57" id="mqA-Mp-7Nn" customClass="ModelEraCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelEra" rowHeight="57" id="mqA-Mp-7Nn" customClass="ModelEraTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="675" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mqA-Mp-7Nn" id="C5M-0Y-oih">
@@ -370,7 +370,7 @@
                                     <outlet property="eraLabel" destination="6GB-LA-fRF" id="Ti3-xi-3xF"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDispositionCell" rowHeight="57" id="Xu2-qH-ttv" customClass="ModelDispositionCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDisposition" rowHeight="57" id="Xu2-qH-ttv" customClass="ModelDispositionTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="732" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xu2-qH-ttv" id="Pfg-VB-VJ2">
@@ -406,7 +406,7 @@
                                     <outlet property="dispositionLabel" destination="fbb-3j-BhH" id="kc9-J9-QiD"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelMotorCell" rowHeight="57" id="BCc-Pw-cTF" customClass="ModelMotorCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelMotor" rowHeight="57" id="BCc-Pw-cTF" customClass="ModelMotorTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="789" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BCc-Pw-cTF" id="iYV-pN-zBk">
@@ -442,7 +442,7 @@
                                     <outlet property="motorLabel" destination="iOi-0a-K7c" id="eGW-nW-bVF"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLightsCell" rowHeight="75" id="Gmi-un-Z1x" customClass="ModelLightsCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLights" rowHeight="75" id="Gmi-un-Z1x" customClass="ModelLightsTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="846" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gmi-un-Z1x" id="whh-uA-gH8">
@@ -478,7 +478,7 @@
                                     <outlet property="lightsLabel" destination="4au-Rr-UDK" id="AdQ-LN-e52"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelSocketCell" rowHeight="57" id="HAd-xg-ygE" customClass="ModelSocketCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelSocket" rowHeight="57" id="HAd-xg-ygE" customClass="ModelSocketTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="921" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HAd-xg-ygE" id="W0k-Ze-y8H">
@@ -514,7 +514,7 @@
                                     <outlet property="socketLabel" destination="kML-52-4Z4" id="737-nr-IsB"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderTypeCell" rowHeight="57" id="NlU-fm-ew5" customClass="ModelDecoderTypeCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderType" rowHeight="57" id="NlU-fm-ew5" customClass="ModelDecoderTypeTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="978" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NlU-fm-ew5" id="U33-xg-6Uo">
@@ -550,7 +550,7 @@
                                     <outlet property="decoderTypeLabel" destination="ZdT-qF-lFP" id="9y0-X8-7b1"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderSerialNumberCell" rowHeight="57" id="yW3-9u-Mf9" customClass="ModelDecoderSerialNumberCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderSerialNumber" rowHeight="57" id="yW3-9u-Mf9" customClass="ModelDecoderSerialNumberTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1035" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yW3-9u-Mf9" id="CMh-VN-eJ7">
@@ -586,7 +586,7 @@
                                     <outlet property="serialNumberLabel" destination="hK7-Po-jjj" id="fie-q6-plJ"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderFirmwareVersionCell" rowHeight="57" id="eUE-h5-0JD" customClass="ModelDecoderFirmwareVersionCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderFirmwareVersion" rowHeight="57" id="eUE-h5-0JD" customClass="ModelDecoderFirmwareVersionTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1092" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eUE-h5-0JD" id="RYE-FM-0Zq">
@@ -622,7 +622,7 @@
                                     <outlet property="firmwareVersionLabel" destination="hCn-cY-ho1" id="uwf-GT-afF"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderFirmwareDateCell" rowHeight="57" id="yyI-eu-jtH" customClass="ModelDecoderFirmwareDateCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderFirmwareDate" rowHeight="57" id="yyI-eu-jtH" customClass="ModelDecoderFirmwareDateTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1149" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yyI-eu-jtH" id="Ax0-aD-S5a">
@@ -658,7 +658,7 @@
                                     <outlet property="firmwareDateLabel" destination="KYh-Uz-KNI" id="nSQ-9g-s0c"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderAddressCell" rowHeight="57" id="N2n-s9-EnZ" customClass="ModelDecoderAddressCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderAddress" rowHeight="57" id="N2n-s9-EnZ" customClass="ModelDecoderAddressTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1206" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N2n-s9-EnZ" id="qXG-R2-usM">
@@ -694,7 +694,7 @@
                                     <outlet property="addressLabel" destination="eXH-pJ-eim" id="Hqb-MI-Kip"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderSoundAuthorCell" rowHeight="57" id="Lc2-I8-TVB" customClass="ModelDecoderSoundAuthorCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderSoundAuthor" rowHeight="57" id="Lc2-I8-TVB" customClass="ModelDecoderSoundAuthorTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1263" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lc2-I8-TVB" id="Wqq-ZM-8Ho">
@@ -730,7 +730,7 @@
                                     <outlet property="soundAuthorLabel" destination="3tv-Lc-TCn" id="Nbm-fh-7uZ"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderSoundProjectCell" rowHeight="57" id="Vcl-58-aIg" customClass="ModelDecoderSoundProjectCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderSoundProject" rowHeight="57" id="Vcl-58-aIg" customClass="ModelDecoderSoundProjectTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1320" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vcl-58-aIg" id="56j-JB-SAF">
@@ -766,7 +766,7 @@
                                     <outlet property="soundProjectLabel" destination="cXm-wT-BdQ" id="3Wh-Ys-6bt"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderSoundProjectVersionCell" rowHeight="57" id="oRO-Ee-Ne0" customClass="ModelDecoderSoundProjectVersionCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderSoundProjectVersion" rowHeight="57" id="oRO-Ee-Ne0" customClass="ModelDecoderSoundProjectVersionTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1377" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oRO-Ee-Ne0" id="AVI-Oj-ReR">
@@ -802,7 +802,7 @@
                                     <outlet property="soundProjectVersionLabel" destination="82f-dM-C5P" id="OHB-md-uC5"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderSoundSettingsCell" rowHeight="57" id="hZv-2e-WTd" customClass="ModelDecoderSoundSettingsCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDecoderSoundSettings" rowHeight="57" id="hZv-2e-WTd" customClass="ModelDecoderSoundSettingsTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1434" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hZv-2e-WTd" id="9cR-PG-Sqc">
@@ -838,7 +838,7 @@
                                     <outlet property="soundSettingsLabel" destination="K3l-4s-zag" id="V0C-vS-2U9"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelSpeakerCell" rowHeight="57" id="EfG-0Y-fgv" customClass="ModelSpeakerCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelSpeaker" rowHeight="57" id="EfG-0Y-fgv" customClass="ModelSpeakerTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1491" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EfG-0Y-fgv" id="nYa-hp-cj4">
@@ -874,7 +874,7 @@
                                     <outlet property="speakerLabel" destination="a1e-8W-j2I" id="xbN-b4-4YS"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelSpeakerFittingsCell" rowHeight="75" id="yXh-Am-v6h" customClass="ModelSpeakerFittingsCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelSpeakerFittings" rowHeight="75" id="yXh-Am-v6h" customClass="ModelSpeakerFittingsTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1548" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yXh-Am-v6h" id="Kwk-nc-h58">
@@ -910,7 +910,7 @@
                                     <outlet property="speakerFittingsLabel" destination="t2r-D7-Rjq" id="XC5-Yh-G8j"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelCouplingsCell" rowHeight="75" id="fWh-id-a0R" customClass="ModelCouplingsCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelCouplings" rowHeight="75" id="fWh-id-a0R" customClass="ModelCouplingsTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1623" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fWh-id-a0R" id="4KK-NR-IUj">
@@ -946,7 +946,7 @@
                                     <outlet property="couplingsLabel" destination="MEd-fH-EHT" id="gEr-fb-YTh"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelFeaturesCell" rowHeight="57" id="eIU-8Y-c0w" customClass="ModelFeaturesCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelFeatures" rowHeight="57" id="eIU-8Y-c0w" customClass="ModelFeaturesTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1698" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eIU-8Y-c0w" id="Y95-lL-3MG">
@@ -982,7 +982,7 @@
                                     <outlet property="featuresLabel" destination="aT9-2w-FYm" id="lvf-Ia-07J"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDetailPartsCell" rowHeight="57" id="U0v-IU-zDW" customClass="ModelDetailPartsCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDetailParts" rowHeight="57" id="U0v-IU-zDW" customClass="ModelDetailPartsTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1755" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U0v-IU-zDW" id="o2D-Nc-AYK">
@@ -1018,7 +1018,7 @@
                                     <outlet property="detailPartsLabel" destination="YSX-B0-Axf" id="G6a-Ti-CTA"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelFittedDetailPartsCell" rowHeight="57" id="4QK-17-WcI" customClass="ModelFittedDetailPartsCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelFittedDetailParts" rowHeight="57" id="4QK-17-WcI" customClass="ModelFittedDetailPartsTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1812" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4QK-17-WcI" id="tLR-dQ-z2h">
@@ -1054,7 +1054,7 @@
                                     <outlet property="fittedDetailPartsLabel" destination="NER-rY-Ukp" id="rcL-JX-TfJ"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelModificationsCell" rowHeight="75" id="qJs-G2-MEt" customClass="ModelModificationsCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelModifications" rowHeight="75" id="qJs-G2-MEt" customClass="ModelModificationsTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1869" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qJs-G2-MEt" id="wWV-fz-T4l">
@@ -1090,7 +1090,7 @@
                                     <outlet property="modificationsLabel" destination="wdz-HP-jTn" id="VSP-3w-j3Q"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLastRunCell" rowHeight="57" id="dNL-gM-8x5" customClass="ModelLastRunCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLastRun" rowHeight="57" id="dNL-gM-8x5" customClass="ModelLastRunTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1944" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dNL-gM-8x5" id="vn3-Vr-oFg">
@@ -1126,7 +1126,7 @@
                                     <outlet property="lastRunLabel" destination="tn8-TG-zFc" id="GSE-qQ-Jfv"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLastOilCell" rowHeight="57" id="Bjo-Rh-jXq" customClass="ModelLastOilCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLastOil" rowHeight="57" id="Bjo-Rh-jXq" customClass="ModelLastOilTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="2001" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bjo-Rh-jXq" id="wBD-Jc-SD8">
@@ -1162,7 +1162,7 @@
                                     <outlet property="lastOilLabel" destination="zEy-eJ-xwG" id="w4g-Fr-wbz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelTasksCell" rowHeight="75" id="dmT-xX-QIR" customClass="ModelTasksCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelTasks" rowHeight="75" id="dmT-xX-QIR" customClass="ModelTasksTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="2058" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dmT-xX-QIR" id="Qtx-BK-DAf">
@@ -1198,7 +1198,7 @@
                                     <outlet property="tasksLabel" destination="tYp-3Z-qfY" id="Iyu-4b-pmU"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelNotesCell" rowHeight="104" id="ExV-9m-OKV" customClass="ModelNotesCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelNotes" rowHeight="104" id="ExV-9m-OKV" customClass="ModelNotesTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="2133" width="375" height="104"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ExV-9m-OKV" id="Aei-nV-JOF">
@@ -1241,16 +1241,16 @@
             </objects>
             <point key="canvasLocation" x="1049" y="127"/>
         </scene>
-        <!--Purchase View Controller-->
+        <!--Purchase Table View Controller-->
         <scene sceneID="AhB-6b-GzM">
             <objects>
-                <tableViewController id="S6m-nV-rET" customClass="PurchaseViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="S6m-nV-rET" customClass="PurchaseTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="40" sectionFooterHeight="28" id="ynx-ju-2SW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseManufacturerCell" rowHeight="57" id="g2V-ci-RTb" customClass="PurchaseManufacturerCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseManufacturer" rowHeight="57" id="g2V-ci-RTb" customClass="PurchaseManufacturerTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g2V-ci-RTb" id="ZnW-4L-2SS">
@@ -1286,7 +1286,7 @@
                                     <outlet property="manufacturerLabel" destination="YZL-4D-96n" id="aPh-aZ-kjn"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCatalogNumberCell" rowHeight="57" id="piL-F1-Nq6" customClass="PurchaseCatalogNumberCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCatalogNumber" rowHeight="57" id="piL-F1-Nq6" customClass="PurchaseCatalogNumberTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="85" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="piL-F1-Nq6" id="f5B-jp-4v0">
@@ -1322,7 +1322,7 @@
                                     <outlet property="catalogNumberLabel" destination="0Nk-vv-agl" id="19J-Us-76Z"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCatalogDescriptionCell" rowHeight="79" id="twz-ca-9OF" customClass="PurchaseCatalogDescriptionCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCatalogDescription" rowHeight="79" id="twz-ca-9OF" customClass="PurchaseCatalogDescriptionTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="142" width="375" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="twz-ca-9OF" id="40v-js-2ET">
@@ -1358,7 +1358,7 @@
                                     <outlet property="catalogDescriptionLabel" destination="ZX3-As-FsZ" id="T8J-kB-Asw"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCatalogYearCell" rowHeight="57" id="4xD-yu-eaP" customClass="PurchaseCatalogYearCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCatalogYear" rowHeight="57" id="4xD-yu-eaP" customClass="PurchaseCatalogYearTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="221" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4xD-yu-eaP" id="TPL-Vc-Omm">
@@ -1394,7 +1394,7 @@
                                     <outlet property="catalogYearLabel" destination="ZAg-wV-zQZ" id="ZRU-Rs-fZs"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseLimitedEditionCell" rowHeight="78" id="nmM-Wc-npb" customClass="PurchaseLimitedEditionCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseLimitedEdition" rowHeight="78" id="nmM-Wc-npb" customClass="PurchaseLimitedEditionTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="278" width="375" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nmM-Wc-npb" id="N4o-Ny-QYr">
@@ -1458,7 +1458,7 @@
                                     <outlet property="limitedEditionNumberLabel" destination="Cfn-6E-A2v" id="Iyc-Ry-dOF"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseDateCell" rowHeight="57" id="ftl-Y1-0PY" customClass="PurchaseDateCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseDate" rowHeight="57" id="ftl-Y1-0PY" customClass="PurchaseDateTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="356" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ftl-Y1-0PY" id="J0B-M6-7Fq">
@@ -1494,7 +1494,7 @@
                                     <outlet property="dateLabel" destination="Mfi-cI-7DL" id="2L9-dN-Xqm"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseStoreCell" rowHeight="57" id="AOX-Xy-VaD" customClass="PurchaseStoreCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseStore" rowHeight="57" id="AOX-Xy-VaD" customClass="PurchaseStoreTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="413" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AOX-Xy-VaD" id="Eyo-Ul-Uqh">
@@ -1530,7 +1530,7 @@
                                     <outlet property="storeLabel" destination="j5T-3G-z59" id="SbI-cd-ZAS"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchasePriceCell" rowHeight="57" id="o90-qv-4VB" customClass="PurchasePriceCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchasePrice" rowHeight="57" id="o90-qv-4VB" customClass="PurchasePriceTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="470" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o90-qv-4VB" id="e3u-XL-i9d">
@@ -1566,7 +1566,7 @@
                                     <outlet property="priceLabel" destination="g4t-MZ-7u5" id="JlY-1Z-tWP"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseConditionCell" rowHeight="57" id="fas-aG-VWB" customClass="PurchaseConditionCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCondition" rowHeight="57" id="fas-aG-VWB" customClass="PurchaseConditionTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="527" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fas-aG-VWB" id="hui-yp-uLD">
@@ -1602,7 +1602,7 @@
                                     <outlet property="conditionLabel" destination="H0k-62-8mu" id="1zw-tK-MuP"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseValuationCell" rowHeight="57" id="nOm-5v-22Q" customClass="PurchaseValuationCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseValuation" rowHeight="57" id="nOm-5v-22Q" customClass="PurchaseValuationTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="584" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nOm-5v-22Q" id="1Dt-dv-UoV">
@@ -1638,7 +1638,7 @@
                                     <outlet property="valuationLabel" destination="08m-VB-8GQ" id="M2f-JT-Q4V"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseNotesCell" rowHeight="97" id="ICz-Th-RFr" customClass="PurchaseNotesCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseNotes" rowHeight="97" id="ICz-Th-RFr" customClass="PurchaseNotesTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="641" width="375" height="97"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ICz-Th-RFr" id="eb4-rz-2aW">
@@ -1674,7 +1674,7 @@
                                     <outlet property="notesLabel" destination="u1w-ur-Jdv" id="EBj-4q-vuR"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelCell" rowHeight="68" id="N1j-6H-wVT" customClass="ModelCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="purchaseModel" rowHeight="68" id="N1j-6H-wVT" customClass="PurchaseModelTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="738" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N1j-6H-wVT" id="ZcH-cD-3Av">
@@ -1725,10 +1725,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="modelClassLabel" destination="Bbe-35-U8i" id="ua1-6d-bcl"/>
-                                    <outlet property="modelImageView" destination="paw-Bi-h2X" id="jMH-c8-pJH"/>
-                                    <outlet property="nameLabel" destination="f67-GO-XXQ" id="pZR-Z3-vYl"/>
-                                    <outlet property="numberLabel" destination="cOi-XO-41g" id="8xt-JG-0Ut"/>
+                                    <outlet property="modelClassLabel" destination="Bbe-35-U8i" id="hYa-6Q-RKL"/>
+                                    <outlet property="modelImageView" destination="paw-Bi-h2X" id="prE-ca-PgZ"/>
+                                    <outlet property="nameLabel" destination="f67-GO-XXQ" id="9aK-wx-pb1"/>
+                                    <outlet property="numberLabel" destination="cOi-XO-41g" id="TzS-eF-Gw6"/>
                                     <segue destination="de7-sQ-THj" kind="show" identifier="purchaseModel" id="wnU-Dv-X6z"/>
                                 </connections>
                             </tableViewCell>
@@ -1744,16 +1744,16 @@
             </objects>
             <point key="canvasLocation" x="2006" y="1746"/>
         </scene>
-        <!--Train Edit View Controller-->
+        <!--Train Edit Table View Controller-->
         <scene sceneID="DLW-nR-4Zg">
             <objects>
-                <tableViewController id="yE4-ea-ZFy" customClass="TrainEditViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="yE4-ea-ZFy" customClass="TrainEditTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Xbd-Hm-pQa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="trainEditNameCell" id="ZbK-IK-xIn" customClass="TrainEditNameCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="trainNameEdit" id="ZbK-IK-xIn" customClass="TrainNameEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZbK-IK-xIn" id="ClF-r7-pfQ">
@@ -1784,7 +1784,7 @@
                                     <outlet property="textField" destination="srB-BR-WxR" id="5IE-64-7a7"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="trainEditDetailsCell" id="Ofq-Lf-QCj" customClass="TrainEditDetailsCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="trainDetailsEdit" id="Ofq-Lf-QCj" customClass="TrainDetailsEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ofq-Lf-QCj" id="jA8-hs-gTQ">
@@ -1815,7 +1815,7 @@
                                     <outlet property="textField" destination="Zix-V3-rWP" id="DNI-9h-e7P"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="trainEditNotesCell" rowHeight="129" id="0de-Tg-9Vd" customClass="TrainEditNotesCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="trainNotesEdit" rowHeight="129" id="0de-Tg-9Vd" customClass="TrainNotesEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="143.5" width="375" height="129"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0de-Tg-9Vd" id="GdZ-h2-S3q">
@@ -1859,7 +1859,7 @@
                                     <outlet property="textView" destination="qo2-ov-Z5X" id="srX-Rp-6u1"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="trainEditMemberCell" id="aQY-AE-2qC" customClass="TrainEditMemberCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="trainMemberEdit" id="aQY-AE-2qC" customClass="TrainMemberEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="272.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aQY-AE-2qC" id="rp3-D8-1dR">
@@ -1890,7 +1890,7 @@
                                     <outlet property="textField" destination="ecr-y4-LBT" id="FYa-po-3cL"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="trainAddMemberCell" id="QEQ-Yv-cpt" customClass="TrainAddMemberCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="trainMemberAdd" id="QEQ-Yv-cpt" customClass="TrainMemberAddTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="316.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QEQ-Yv-cpt" id="Ifv-vv-80s">
@@ -1918,7 +1918,7 @@
                                     <outlet property="label" destination="5lD-Kq-ehc" id="BvR-qT-hkT"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="deleteTrainCell" id="ZC6-GR-GIy" customClass="DeleteTrainCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trainDelete" id="ZC6-GR-GIy" customClass="TrainDeleteTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="360.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZC6-GR-GIy" id="yWv-ON-Z67">
@@ -1981,7 +1981,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trainNameCell" rowHeight="57" id="IEI-bx-pKx" customClass="TrainNameTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trainName" rowHeight="57" id="IEI-bx-pKx" customClass="TrainNameTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IEI-bx-pKx" id="ABJ-rh-tev">
@@ -2017,7 +2017,7 @@
                                     <outlet property="nameLabel" destination="Vem-Ex-PT1" id="7eD-6T-abm"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trainDetailsCell" rowHeight="57" id="odN-0s-tEq" customClass="TrainDetailsTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trainDetails" rowHeight="57" id="odN-0s-tEq" customClass="TrainDetailsTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="85" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="odN-0s-tEq" id="eqs-OF-ZLb">
@@ -2053,7 +2053,7 @@
                                     <outlet property="detailsLabel" destination="qfd-E0-NSl" id="pRY-ZJ-BJz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trainNotesCell" rowHeight="101" id="yzr-sp-9cr" customClass="TrainNotesTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trainNotes" rowHeight="101" id="yzr-sp-9cr" customClass="TrainNotesTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="142" width="375" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yzr-sp-9cr" id="RGb-Vh-THv">
@@ -2089,7 +2089,7 @@
                                     <outlet property="notesLabel" destination="pem-XS-bPD" id="aue-AW-2NI"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="trainMemberCell" rowHeight="68" id="VUP-ql-cO8" customClass="TrainMemberTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="trainMember" rowHeight="68" id="VUP-ql-cO8" customClass="TrainMemberTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="243" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VUP-ql-cO8" id="MFd-eB-jPF">
@@ -2136,7 +2136,7 @@
                     <navigationItem key="navigationItem" id="7s0-eX-rj8">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Gbh-eP-I5x">
                             <connections>
-                                <segue destination="KDy-lR-RbI" kind="presentation" identifier="editTrain" id="fje-MW-QxC"/>
+                                <segue destination="KDy-lR-RbI" kind="presentation" identifier="trainEdit" id="fje-MW-QxC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2145,16 +2145,16 @@
             </objects>
             <point key="canvasLocation" x="1049" y="2606"/>
         </scene>
-        <!--Purchases View Controller-->
+        <!--Purchases Table View Controller-->
         <scene sceneID="NKY-a4-YnB">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="gIP-m3-OKu" customClass="PurchasesViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="gIP-m3-OKu" customClass="PurchasesTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xRk-Mn-A1c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="purchaseCell" rowHeight="68" id="RSi-H7-dMz" customClass="PurchaseCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="purchase" rowHeight="68" id="RSi-H7-dMz" customClass="PurchaseTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RSi-H7-dMz" id="r2U-oM-gUe">
@@ -2314,7 +2314,7 @@
         <!--Trains-->
         <scene sceneID="pLS-N7-dcP">
             <objects>
-                <collectionViewController id="69z-M6-R3o" customClass="TrainsViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="69z-M6-R3o" customClass="TrainsCollectionViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="buV-sY-Igh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2326,7 +2326,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trainMemberCell" id="V4J-cg-mCN" customClass="TrainMemberCell" customModule="EngineShed" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trainMember" id="V4J-cg-mCN" customClass="TrainMemberCollectionViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -2362,7 +2362,7 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="trainHeaderView" id="icg-Pm-oln" customClass="TrainHeaderView" customModule="EngineShed" customModuleProvider="target">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="trainHeader" id="icg-Pm-oln" customClass="TrainHeaderCollectionReusableView" customModule="EngineShed" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
@@ -2419,13 +2419,13 @@
         <!--Models-->
         <scene sceneID="tnc-sO-MRL">
             <objects>
-                <tableViewController id="u35-Dq-xxe" customClass="ModelsViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="u35-Dq-xxe" customClass="ModelsTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YgC-77-90j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelCell" rowHeight="68" id="3rb-v8-jvj" customClass="ModelCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="model" rowHeight="68" id="3rb-v8-jvj" customClass="ModelTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3rb-v8-jvj" id="Jgd-9j-zbM">
@@ -2524,16 +2524,16 @@
             </objects>
             <point key="canvasLocation" x="97" y="127"/>
         </scene>
-        <!--Classifications View Controller-->
+        <!--Classifications Table View Controller-->
         <scene sceneID="JcB-ad-xPq">
             <objects>
-                <tableViewController id="sZo-Si-uck" customClass="ClassificationsViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sZo-Si-uck" customClass="ClassificationsTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0P2-Of-aTM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="classificationCell" id="Txg-gn-hoG" customClass="ClassificationCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="classification" id="Txg-gn-hoG" customClass="ClassificationTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Txg-gn-hoG" id="Iwd-Nq-bPC">
@@ -2625,9 +2625,9 @@
         <image name="R3612" width="1440" height="810"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="x7g-2G-nuO"/>
+        <segue reference="RKd-7e-o29"/>
         <segue reference="7r7-ye-Aen"/>
-        <segue reference="c21-Hk-PA0"/>
-        <segue reference="wnU-Dv-X6z"/>
+        <segue reference="eFf-wH-92g"/>
+        <segue reference="ToH-YJ-ahj"/>
     </inferredMetricsTieBreakers>
 </document>
