@@ -1239,7 +1239,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHn-7o-ZDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1049" y="127"/>
+            <point key="canvasLocation" x="1049" y="126"/>
         </scene>
         <!--Purchase Table View Controller-->
         <scene sceneID="AhB-6b-GzM">
@@ -1678,7 +1678,7 @@
                                 <rect key="frame" x="0.0" y="738" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N1j-6H-wVT" id="ZcH-cD-3Av">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="67.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="349" height="67.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="R3612" translatesAutoresizingMaskIntoConstraints="NO" id="paw-Bi-h2X">
@@ -1970,7 +1970,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ThL-cH-vPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2985" y="2606"/>
+            <point key="canvasLocation" x="2954" y="3471"/>
         </scene>
         <!--Train Table View Controller-->
         <scene sceneID="f9N-QC-qsa">
@@ -2407,9 +2407,16 @@
                             <outlet property="delegate" destination="69z-M6-R3o" id="VOF-21-zH1"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Trains" id="4Le-WJ-Twr"/>
+                    <navigationItem key="navigationItem" title="Trains" id="4Le-WJ-Twr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UKr-W3-XIa">
+                            <connections>
+                                <segue destination="KDy-lR-RbI" kind="presentation" identifier="trainAdd" id="i9i-ye-UgR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="71s-74-Oue" kind="show" identifier="train" id="cCL-gE-oMT"/>
+                        <segue destination="71s-74-Oue" kind="show" identifier="trainAdded" animates="NO" id="GPI-RN-COd"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCP-hx-uAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2598,7 +2605,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0hI-DN-xnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2006" y="2606"/>
+            <point key="canvasLocation" x="2006" y="3471"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AdN-Ki-FJt">
@@ -2626,7 +2633,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RKd-7e-o29"/>
+        <segue reference="i9i-ye-UgR"/>
         <segue reference="7r7-ye-Aen"/>
+        <segue reference="GPI-RN-COd"/>
         <segue reference="eFf-wH-92g"/>
         <segue reference="ToH-YJ-ahj"/>
     </inferredMetricsTieBreakers>

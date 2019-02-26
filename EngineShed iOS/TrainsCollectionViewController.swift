@@ -255,6 +255,7 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
     // MARK: - Navigation
 
     var tappedIndexPath: IndexPath?
+    var addedTrain: Train?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "train" {
@@ -262,6 +263,21 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
 
             let trainMember = fetchedResultsController.object(at: indexPath)
             guard let train = trainMember.train else { preconditionFailure("Train member without a train") }
+
+            let viewController = segue.destination as! TrainTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.train = train
+        } else if segue.identifier == "trainAdd" {
+            let navigationController = segue.destination as! UINavigationController
+
+            let viewController = navigationController.topViewController as! TrainEditTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.addTrain() { train in
+                self.addedTrain = train
+                self.performSegue(withIdentifier: "trainAdded", sender: nil)
+            }
+        } else if segue.identifier == "trainAdded" {
+            guard let train = addedTrain else { return }
 
             let viewController = segue.destination as! TrainTableViewController
             viewController.persistentContainer = persistentContainer

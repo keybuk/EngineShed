@@ -19,6 +19,7 @@ class TrainEditTableViewController : UITableViewController {
 
     private var managedObjectContext: NSManagedObjectContext?
     private var train: Train?
+    private var completionHandler: ((Train) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,7 @@ class TrainEditTableViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return (train?.isInserted ?? true) ? 3 : 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,6 +88,7 @@ class TrainEditTableViewController : UITableViewController {
                 return cell
             }
         case 3:
+            precondition(!(train?.isInserted ?? true), "Unexpected delete train section in inserted train")
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "trainDelete", for: indexPath) as! TrainDeleteTableViewCell
@@ -122,10 +124,12 @@ class TrainEditTableViewController : UITableViewController {
                 self.tableView(tableView, commit: .insert, forRowAt: indexPath)
             }
         case 3:
+            precondition(!(train?.isInserted ?? true), "Unexpected delete train section in inserted train")
+
             // Confirm train deletion using an alert.
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Delete Train", style: .destructive) { action in
-                self.deleteTrainAt(indexPath)
+                self.deleteTrain()
             })
 
             // Cancel case, deselect the table row.
@@ -259,11 +263,29 @@ class TrainEditTableViewController : UITableViewController {
 
         // Merge from the store, but keep any local changes.
         managedObjectContext = persistentContainer.newBackgroundContext()
-        managedObjectContext?.automaticallyMergesChangesFromParent = true
-        managedObjectContext?.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        managedObjectContext!.automaticallyMergesChangesFromParent = true
+        managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
-        managedObjectContext?.performAndWait {
-            self.train = managedObjectContext?.object(with: train.objectID) as? Train
+        managedObjectContext!.performAndWait {
+            self.train = managedObjectContext!.object(with: train.objectID) as? Train
+
+            // Use KVO to keep the save button state up to date.
+            self.observeTrain()
+        }
+    }
+
+    func addTrain(completionHandler: ((Train) -> Void)? = nil) {
+        guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
+
+        self.completionHandler = completionHandler
+
+        // Merge from the store, but keep any local changes.
+        managedObjectContext = persistentContainer.newBackgroundContext()
+        managedObjectContext!.automaticallyMergesChangesFromParent = true
+        managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+
+        managedObjectContext!.performAndWait {
+            self.train = Train(context: managedObjectContext!)
 
             // Use KVO to keep the save button state up to date.
             self.observeTrain()
@@ -274,7 +296,7 @@ class TrainEditTableViewController : UITableViewController {
 
     func observeTrain() {
         self.observers.removeAll()
-        guard let train = self.train else { return }
+        guard let train = train else { return }
 
         // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
         // temporarily replace with Cocoa KVO if necessary.
@@ -293,9 +315,10 @@ class TrainEditTableViewController : UITableViewController {
 
     func observeTrainMembers() {
         self.memberObservers.removeAll()
-        guard let train = self.train else { return }
+        guard let train = train else { return }
+        guard let members = train.members else { return }
 
-        for case let trainMember as TrainMember in train.members! {
+        for case let trainMember as TrainMember in members {
             self.observers.append(trainMember.observe(\.title) { (_, _) in self.updateSaveButton() })
         }
     }
@@ -326,6 +349,7 @@ class TrainEditTableViewController : UITableViewController {
 
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let managedObjectContext = managedObjectContext else { return }
+        guard let train = train else { return }
 
         do {
             try managedObjectContext.performAndWait {
@@ -334,7 +358,11 @@ class TrainEditTableViewController : UITableViewController {
                 }
             }
 
-            self.dismiss(animated: true)
+            persistentContainer?.viewContext.performAndWait {
+                let train = persistentContainer!.viewContext.object(with: train.objectID) as! Train
+                self.completionHandler?(train)
+                self.dismiss(animated: true)
+            }
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -342,7 +370,7 @@ class TrainEditTableViewController : UITableViewController {
         }
     }
 
-    func deleteTrainAt(_ indexPath: IndexPath) {
+    func deleteTrain() {
         guard let managedObjectContext = managedObjectContext else { return }
         guard let train = train else { return }
 
@@ -378,7 +406,8 @@ class TrainEditTableViewController : UITableViewController {
                     isChanged = true
                 }
 
-                for case let member as TrainMember in train.members! {
+                guard let members = train.members else { return isChanged }
+                for case let member as TrainMember in members {
                     if member.isInserted {
                         try member.validateForInsert()
                         isChanged = true

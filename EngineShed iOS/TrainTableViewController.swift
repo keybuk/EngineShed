@@ -149,6 +149,13 @@ class TrainTableViewController : UITableViewController {
         {
             tableView.reloadData()
         }
+
+        // Check for a deletion of our train object, taking the view off the stack.
+        if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
+            deletedObjects.contains(train)
+        {
+            navigationController?.popViewController(animated: false)
+        }
     }
 
 }
