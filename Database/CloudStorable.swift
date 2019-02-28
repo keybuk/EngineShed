@@ -15,7 +15,7 @@ import CloudKit
 ///
 /// For handling storage the entity provides a method to update the object from a CloudKit record,
 /// and a method to update a CloudKit record from the object.
-protocol CloudStorable : class {
+protocol CloudStorable : AnyObject {
 
     /// CloudKit record type.
     static var recordType: CKRecord.RecordType { get }

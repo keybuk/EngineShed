@@ -1,5 +1,5 @@
 //
-//  DecoderType+Storable.swift
+//  DecoderType+CloudStorable.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/17/18.

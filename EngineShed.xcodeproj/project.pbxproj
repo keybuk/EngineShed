@@ -120,28 +120,24 @@
 		D298CB1A20D8143A00827F68 /* Model+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1920D8143900827F68 /* Model+Image.swift */; };
 		D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1920D8143900827F68 /* Model+Image.swift */; };
 		D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1C20D814D700827F68 /* NSImage+PNGData.swift */; };
-		D298CB2720D8163A00827F68 /* Train+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2020D8163900827F68 /* Train+Storable.swift */; };
-		D298CB2820D8163A00827F68 /* Train+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2020D8163900827F68 /* Train+Storable.swift */; };
-		D298CB2920D8163A00827F68 /* TrainMember+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2120D8163900827F68 /* TrainMember+Storable.swift */; };
-		D298CB2A20D8163A00827F68 /* TrainMember+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2120D8163900827F68 /* TrainMember+Storable.swift */; };
-		D298CB2B20D8163A00827F68 /* DecoderType+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2220D8163900827F68 /* DecoderType+Storable.swift */; };
-		D298CB2C20D8163A00827F68 /* DecoderType+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2220D8163900827F68 /* DecoderType+Storable.swift */; };
-		D298CB2D20D8163A00827F68 /* Decoder+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2320D8163A00827F68 /* Decoder+Storable.swift */; };
-		D298CB2E20D8163A00827F68 /* Decoder+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2320D8163A00827F68 /* Decoder+Storable.swift */; };
-		D298CB3120D8163A00827F68 /* Model+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2520D8163A00827F68 /* Model+Storable.swift */; };
-		D298CB3220D8163A00827F68 /* Model+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2520D8163A00827F68 /* Model+Storable.swift */; };
-		D298CB3320D8163A00827F68 /* Purchase+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2620D8163A00827F68 /* Purchase+Storable.swift */; };
-		D298CB3420D8163A00827F68 /* Purchase+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2620D8163A00827F68 /* Purchase+Storable.swift */; };
+		D298CB2720D8163A00827F68 /* Train+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2020D8163900827F68 /* Train+CloudStorable.swift */; };
+		D298CB2820D8163A00827F68 /* Train+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2020D8163900827F68 /* Train+CloudStorable.swift */; };
+		D298CB2920D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2120D8163900827F68 /* TrainMember+CloudStorable.swift */; };
+		D298CB2A20D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2120D8163900827F68 /* TrainMember+CloudStorable.swift */; };
+		D298CB2B20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2220D8163900827F68 /* DecoderType+CloudStorable.swift */; };
+		D298CB2C20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2220D8163900827F68 /* DecoderType+CloudStorable.swift */; };
+		D298CB2D20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2320D8163A00827F68 /* Decoder+CloudStorable.swift */; };
+		D298CB2E20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2320D8163A00827F68 /* Decoder+CloudStorable.swift */; };
+		D298CB3120D8163A00827F68 /* Model+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2520D8163A00827F68 /* Model+CloudStorable.swift */; };
+		D298CB3220D8163A00827F68 /* Model+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2520D8163A00827F68 /* Model+CloudStorable.swift */; };
+		D298CB3320D8163A00827F68 /* Purchase+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2620D8163A00827F68 /* Purchase+CloudStorable.swift */; };
+		D298CB3420D8163A00827F68 /* Purchase+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB2620D8163A00827F68 /* Purchase+CloudStorable.swift */; };
 		D29E457620DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */; };
 		D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */; };
-		D29E457C20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */; };
-		D29E457D20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */; };
 		D29E457F20DB23FF000624B5 /* CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457E20DB23FF000624B5 /* CloudStorable.swift */; };
 		D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457E20DB23FF000624B5 /* CloudStorable.swift */; };
-		D29E458220DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */; };
-		D29E458320DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */; };
-		D2A4112221262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4112121262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift */; };
-		D2A4112321262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4112121262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift */; };
+		D29E458220DB29E5000624B5 /* NSManagedObject+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+CloudStorable.swift */; };
+		D29E458320DB29E5000624B5 /* NSManagedObject+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+CloudStorable.swift */; };
 		D2A41177212630B900B6C198 /* Util.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A4116E212630B900B6C198 /* Util.framework */; };
 		D2A4117E212630B900B6C198 /* UtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4117D212630B900B6C198 /* UtilTests.swift */; };
 		D2A41180212630B900B6C198 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = D2A41170212630B900B6C198 /* Util.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -171,8 +167,6 @@
 		D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */; };
 		D2B2AF4F20D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
 		D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
-		D2B50BA220D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */; };
-		D2B50BA320D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */; };
 		D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */; };
 		D2B7C95E20D4BA30001B51B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95C20D4BA30001B51B1 /* Main.storyboard */; };
 		D2B7C96320D4BA31001B51B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */; };
@@ -475,17 +469,15 @@
 		D298CAF220D737C800827F68 /* CloudProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudProvider.swift; sourceTree = "<group>"; };
 		D298CB1920D8143900827F68 /* Model+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Image.swift"; sourceTree = "<group>"; };
 		D298CB1C20D814D700827F68 /* NSImage+PNGData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+PNGData.swift"; sourceTree = "<group>"; };
-		D298CB2020D8163900827F68 /* Train+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Train+Storable.swift"; sourceTree = "<group>"; };
-		D298CB2120D8163900827F68 /* TrainMember+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrainMember+Storable.swift"; sourceTree = "<group>"; };
-		D298CB2220D8163900827F68 /* DecoderType+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DecoderType+Storable.swift"; sourceTree = "<group>"; };
-		D298CB2320D8163A00827F68 /* Decoder+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decoder+Storable.swift"; sourceTree = "<group>"; };
-		D298CB2520D8163A00827F68 /* Model+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Storable.swift"; sourceTree = "<group>"; };
-		D298CB2620D8163A00827F68 /* Purchase+Storable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Storable.swift"; sourceTree = "<group>"; };
+		D298CB2020D8163900827F68 /* Train+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Train+CloudStorable.swift"; sourceTree = "<group>"; };
+		D298CB2120D8163900827F68 /* TrainMember+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TrainMember+CloudStorable.swift"; sourceTree = "<group>"; };
+		D298CB2220D8163900827F68 /* DecoderType+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DecoderType+CloudStorable.swift"; sourceTree = "<group>"; };
+		D298CB2320D8163A00827F68 /* Decoder+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decoder+CloudStorable.swift"; sourceTree = "<group>"; };
+		D298CB2520D8163A00827F68 /* Model+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+CloudStorable.swift"; sourceTree = "<group>"; };
+		D298CB2620D8163A00827F68 /* Purchase+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+CloudStorable.swift"; sourceTree = "<group>"; };
 		D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+TypeAliases.swift"; sourceTree = "<group>"; };
-		D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableObjectTranslation.swift; sourceTree = "<group>"; };
 		D29E457E20DB23FF000624B5 /* CloudStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorable.swift; sourceTree = "<group>"; };
-		D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Storable.swift"; sourceTree = "<group>"; };
-		D2A4112121262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+StorableObjectTranslation.swift"; sourceTree = "<group>"; };
+		D29E458120DB29E5000624B5 /* NSManagedObject+CloudStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+CloudStorable.swift"; sourceTree = "<group>"; };
 		D2A4116E212630B900B6C198 /* Util.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Util.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A41170212630B900B6C198 /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		D2A41171212630B900B6C198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -504,7 +496,6 @@
 		D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Flipped.swift"; sourceTree = "<group>"; };
 		D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+Image.swift"; sourceTree = "<group>"; };
-		D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+RecordType.swift"; sourceTree = "<group>"; };
 		D2B7C95120D4BA30001B51B1 /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B7C95D20D4BA30001B51B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -770,18 +761,17 @@
 			path = "EngineShed macOS UI Tests";
 			sourceTree = "<group>";
 		};
-		D215C333214AD2560021C76C /* Model+Storable */ = {
+		D215C333214AD2560021C76C /* Model+CloudStorable */ = {
 			isa = PBXGroup;
 			children = (
-				D2B50BA120D9D79A0040A41F /* NSManagedObject+RecordType.swift */,
-				D298CB2620D8163A00827F68 /* Purchase+Storable.swift */,
-				D298CB2520D8163A00827F68 /* Model+Storable.swift */,
-				D298CB2220D8163900827F68 /* DecoderType+Storable.swift */,
-				D298CB2320D8163A00827F68 /* Decoder+Storable.swift */,
-				D298CB2020D8163900827F68 /* Train+Storable.swift */,
-				D298CB2120D8163900827F68 /* TrainMember+Storable.swift */,
+				D298CB2620D8163A00827F68 /* Purchase+CloudStorable.swift */,
+				D298CB2520D8163A00827F68 /* Model+CloudStorable.swift */,
+				D298CB2220D8163900827F68 /* DecoderType+CloudStorable.swift */,
+				D298CB2320D8163A00827F68 /* Decoder+CloudStorable.swift */,
+				D298CB2020D8163900827F68 /* Train+CloudStorable.swift */,
+				D298CB2120D8163900827F68 /* TrainMember+CloudStorable.swift */,
 			);
-			name = "Model+Storable";
+			name = "Model+CloudStorable";
 			sourceTree = "<group>";
 		};
 		D23B8B8221E29502004F994D /* Classification View */ = {
@@ -1111,7 +1101,7 @@
 				D298CB1C20D814D700827F68 /* NSImage+PNGData.swift */,
 				D2B2AF4A20D819F200BEFC15 /* NSImage+Flipped.swift */,
 				D2DE5CC520F855DB00CABE34 /* CloudKit */,
-				D215C333214AD2560021C76C /* Model+Storable */,
+				D215C333214AD2560021C76C /* Model+CloudStorable */,
 				D2B2AF4920D8180300BEFC15 /* Model */,
 			);
 			path = Database;
@@ -1127,9 +1117,7 @@
 				D298CAF220D737C800827F68 /* CloudProvider.swift */,
 				D25828BB21DEFF450094918F /* CloudProviderDelegate.swift */,
 				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
-				D29E458120DB29E5000624B5 /* NSManagedObject+Storable.swift */,
-				D29E457B20DB222A000624B5 /* StorableObjectTranslation.swift */,
-				D2A4112121262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift */,
+				D29E458120DB29E5000624B5 /* NSManagedObject+CloudStorable.swift */,
 			);
 			name = CloudKit;
 			sourceTree = "<group>";
@@ -1848,41 +1836,38 @@
 				D25828C121E028920094918F /* Train+Validate.swift in Sources */,
 				D298CB1D20D814D700827F68 /* NSImage+PNGData.swift in Sources */,
 				D202D10B21EB0670008153FB /* Model+Date.swift in Sources */,
-				D298CB2920D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
+				D298CB2920D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */,
 				D210EDCE21F14E5F00467AF2 /* Model+Similar.swift in Sources */,
 				D29E457F20DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D248355D21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */,
 				D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */,
-				D29E458220DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */,
-				D29E457C20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */,
-				D298CB3120D8163A00827F68 /* Model+Storable.swift in Sources */,
+				D29E458220DB29E5000624B5 /* NSManagedObject+CloudStorable.swift in Sources */,
+				D298CB3120D8163A00827F68 /* Model+CloudStorable.swift in Sources */,
 				D248355721D6E23A00495FC0 /* CloudObserver.swift in Sources */,
 				D295D8AA21EADDDE00BBD204 /* Purchase+FetchRequests.swift in Sources */,
 				D2278DFD21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */,
 				D29E457620DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
-				D2B50BA220D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */,
 				D2DE5CBE20F8517500CABE34 /* Model+Disposition.swift in Sources */,
 				D2DE5CBC20F8517500CABE34 /* Model+Classification.swift in Sources */,
-				D298CB2720D8163A00827F68 /* Train+Storable.swift in Sources */,
+				D298CB2720D8163A00827F68 /* Train+CloudStorable.swift in Sources */,
 				D25828BC21DEFF450094918F /* CloudProviderDelegate.swift in Sources */,
 				D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */,
 				D202D10821EAEBF2008153FB /* Purchase+Date.swift in Sources */,
 				D202D11121EB199E008153FB /* Decoder+Date.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
-				D2A4112221262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */,
 				D2AF28B921102DBC00374975 /* Model+FetchRequests.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
 				D2BE3DD5215B59C50005D68F /* Train+Index.swift in Sources */,
 				D2BE3DD2215B593E0005D68F /* Purchase+Index.swift in Sources */,
 				D298CB1A20D8143A00827F68 /* Model+Image.swift in Sources */,
 				D200F97320DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */,
-				D298CB2D20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
+				D298CB2D20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */,
 				D2AF28B02110285B00374975 /* Train+WillSave.swift in Sources */,
 				D2820D03222484C000D9B3F8 /* CKDataAsset.swift in Sources */,
-				D298CB2B20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,
+				D298CB2B20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */,
 				D2AF28AD2110277300374975 /* Purchase+WillSave.swift in Sources */,
 				D2B2AF4F20D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
-				D298CB3320D8163A00827F68 /* Purchase+Storable.swift in Sources */,
+				D298CB3320D8163A00827F68 /* Purchase+CloudStorable.swift in Sources */,
 				D248356021D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1910,13 +1895,13 @@
 				D202D10C21EB0670008153FB /* Model+Date.swift in Sources */,
 				D295D8AB21EADDDE00BBD204 /* Purchase+FetchRequests.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
-				D298CB2A20D8163A00827F68 /* TrainMember+Storable.swift in Sources */,
+				D298CB2A20D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */,
 				D2AF28B12110285B00374975 /* Train+WillSave.swift in Sources */,
 				D2BE3DD6215B59C50005D68F /* Train+Index.swift in Sources */,
 				D2820D04222484C000D9B3F8 /* CKDataAsset.swift in Sources */,
 				D2AF28AE2110277300374975 /* Purchase+WillSave.swift in Sources */,
-				D298CB3220D8163A00827F68 /* Model+Storable.swift in Sources */,
-				D29E458320DB29E5000624B5 /* NSManagedObject+Storable.swift in Sources */,
+				D298CB3220D8163A00827F68 /* Model+CloudStorable.swift in Sources */,
+				D29E458320DB29E5000624B5 /* NSManagedObject+CloudStorable.swift in Sources */,
 				D2AF28BA21102DBC00374975 /* Model+FetchRequests.swift in Sources */,
 				D248356121D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift in Sources */,
 				D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
@@ -1924,21 +1909,18 @@
 				D25828BD21DEFF450094918F /* CloudProviderDelegate.swift in Sources */,
 				D25828C221E028920094918F /* Train+Validate.swift in Sources */,
 				D2DE5CB820F8431800CABE34 /* Model+Era.swift in Sources */,
-				D29E457D20DB222A000624B5 /* StorableObjectTranslation.swift in Sources */,
-				D2B50BA320D9D79A0040A41F /* NSManagedObject+RecordType.swift in Sources */,
 				D28758242105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */,
-				D298CB2820D8163A00827F68 /* Train+Storable.swift in Sources */,
+				D298CB2820D8163A00827F68 /* Train+CloudStorable.swift in Sources */,
 				D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
 				D298CAF420D737C800827F68 /* CloudProvider.swift in Sources */,
 				D248355E21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */,
 				D2BE3DD3215B593E0005D68F /* Purchase+Index.swift in Sources */,
 				D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */,
-				D298CB2E20D8163A00827F68 /* Decoder+Storable.swift in Sources */,
+				D298CB2E20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */,
 				D2278DFE21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */,
-				D298CB2C20D8163A00827F68 /* DecoderType+Storable.swift in Sources */,
-				D2A4112321262EF400B6C198 /* NSManagedObject+StorableObjectTranslation.swift in Sources */,
+				D298CB2C20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */,
 				D210EDCF21F14E5F00467AF2 /* Model+Similar.swift in Sources */,
-				D298CB3420D8163A00827F68 /* Purchase+Storable.swift in Sources */,
+				D298CB3420D8163A00827F68 /* Purchase+CloudStorable.swift in Sources */,
 				D2DE5CC120F8517500CABE34 /* Purchase+Condition.swift in Sources */,
 				D2DE5CBF20F8517500CABE34 /* Model+Disposition.swift in Sources */,
 			);

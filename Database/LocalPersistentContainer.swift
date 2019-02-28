@@ -27,6 +27,16 @@ public class LocalPersistentContainer : NSPersistentContainer {
     public private(set) var cloudObserver: CloudObserver!
     public private(set) var cloudProvider: CloudProvider!
 
+    /// Managed object types that we store in CloudKit.
+    let storableTypes: [(NSManagedObject & CloudStorable).Type] = [
+        Purchase.self,
+        Model.self,
+        DecoderType.self,
+        Decoder.self,
+        Train.self,
+        TrainMember.self
+    ]
+
     /// Shared container instance.
     ///
     /// This is used to ensure the running app, and unit tests running within it, share the same
@@ -41,8 +51,8 @@ public class LocalPersistentContainer : NSPersistentContainer {
 
         super.init(name: name, managedObjectModel: model)
 
-        cloudObserver = CloudObserver(database: cloudDatabase, persistentContainer: self)
-        cloudProvider = CloudProvider(container: cloudContainer, database: cloudDatabase, persistentContainer: self)
+        cloudObserver = CloudObserver(database: cloudDatabase, persistentContainer: self, storableTypes: storableTypes)
+        cloudProvider = CloudProvider(container: cloudContainer, database: cloudDatabase, persistentContainer: self, storableTypes: storableTypes)
     }
     
 //    override public class func defaultDirectoryURL() -> URL {

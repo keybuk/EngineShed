@@ -1,5 +1,5 @@
 //
-//  NSManagedObject+Storable.swift
+//  NSManagedObject+CloudStorable.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/20/18.

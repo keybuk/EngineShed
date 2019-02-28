@@ -1,5 +1,5 @@
 //
-//  Purchase+Storable.swift
+//  Purchase+CloudStorable.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/17/18.

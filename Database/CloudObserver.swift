@@ -46,22 +46,21 @@ import Dispatch
 /// even if all changes have already been applied.
 ///
 /// # NSManagedObject Requirements
-/// In order to make changes to the local store, this class makes three requirements on
-/// `NSManagedObject`:
-///  * `NSManagedObject.syncObjectFromRecord(:in:)`
-///  * `NSManagedObject.deleteObjectsForZoneIDs(:in:)`
-///  * `NSManagedObject.deleteObjectsForRecords(:in:)`
-///
-/// These are not type-aware; `NSManagedObject+StorableObjectTranslation` provides an implementation
-/// that expands or iterates the real object types as long as they conform to `CloudStorable` and
-/// calls methods there.
+/// In order to synchronize changes from the local store, this class requires that
+/// `NSManagedObject` entities conform to `CloudStorable` to use the following methods:
+///  * `Entity.syncObjectFromRecord(:in:)`
+///  * `Entity.deleteObjectsForZoneIDs(:in:)`
+///  * `Entity.deleteObjectsForRecords(:in:)`
 public final class CloudObserver {
 
     /// Database object being observed.
-    public private(set) var database: CKDatabase
+    var database: CKDatabase
 
     /// Persistent container of local store.
-    public private(set) var persistentContainer: NSPersistentContainer
+    var persistentContainer: NSPersistentContainer
+
+    /// Managed object types to be stored.
+    var storableTypes: [(NSManagedObject & CloudStorable).Type]
 
     /// Label for dispatch queue to ensure serial operation.
     let queueLabel = "com.netsplit.EngineShed.Database.CloudObserver"
@@ -72,9 +71,10 @@ public final class CloudObserver {
     /// Subscription identifier registered for notifications.
     let subscriptionID = "private-changes"
 
-    public init(database: CKDatabase, persistentContainer: NSPersistentContainer) {
+    init(database: CKDatabase, persistentContainer: NSPersistentContainer, storableTypes: [(NSManagedObject & CloudStorable).Type]) {
         self.database = database
         self.persistentContainer = persistentContainer
+        self.storableTypes = storableTypes
 
         queue = DispatchQueue(label: queueLabel)
     }
@@ -228,7 +228,7 @@ public final class CloudObserver {
         let zoneIDs = deleteZoneStates.compactMap { $0.zoneID }
         print("\(zoneIDs.count) zones pending deletion")
 
-        try NSManagedObject.deleteObjectsForZoneIDs(zoneIDs, in: context)
+        try self.deleteObjectsForZoneIDs(zoneIDs, in: context)
 
         // Preserve the ZoneState record if purged, otherwise clean up.
         for zoneState in deleteZoneStates {
@@ -299,7 +299,7 @@ public final class CloudObserver {
         operation.recordChangedBlock = { record in
             print("Record changed: \(record.recordID)")
             do {
-                try NSManagedObject.syncObjectFromRecord(record, in: context)
+                try self.syncObjectFromRecord(record, in: context)
             } catch {
                 print("Error synchronizing object: \(error)")
                 cancelCausedByError = error
@@ -316,7 +316,7 @@ public final class CloudObserver {
             print("Record change token updated: \(zoneID) \(serverChangeToken!)")
             do {
                 if !deletedRecords.isEmpty {
-                    try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context)
+                    try self.deleteObjectsForRecords(deletedRecords, in: context)
                     deletedRecords.removeAll()
                 }
 
@@ -357,7 +357,7 @@ public final class CloudObserver {
                 print("Zone fetch completed: \(zoneID) \(serverChangeToken!)")
                 do {
                     if !deletedRecords.isEmpty {
-                        try NSManagedObject.deleteObjectsForRecords(deletedRecords, in: context)
+                        try self.deleteObjectsForRecords(deletedRecords, in: context)
                         deletedRecords.removeAll()
                     }
 
@@ -391,6 +391,45 @@ public final class CloudObserver {
         print("Begin fetch zone changes")
         operation.qualityOfService = .utility
         database.add(operation)
+    }
+
+    /// Sync an object from a CloudKit record.
+    ///
+    /// The existing object with the given `recordID`, or a newly created object if one does not
+    /// exist, is synchronised with the contents of the CloudKit `record`.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to synchronize to the object.
+    ///   - context: managed object context for the fetch and creation.
+    ///   - updateValues: set to `false` if values in `record` should be ignored, and only the
+    ///     object `systemFields` updated.
+    func syncObjectFromRecord(_ record: CKRecord, in context: NSManagedObjectContext, updateValues: Bool = true) throws {
+        guard let storableType = storableTypes.first(where: { $0.recordType == record.recordType }) else { return }
+        try storableType.syncObjectFromRecord(record, in: context, updateValues: updateValues)
+    }
+
+    /// Delete all objects in CloudKit zones.
+    ///
+    /// - Parameters:
+    ///   - zoneIDs: CloudKit zoneIDs in which all records should be deleted.
+    ///   - context: managed object context for the deletion.
+    func deleteObjectsForZoneIDs(_ zoneIDs: [CKRecordZone.ID], in context: NSManagedObjectContext) throws {
+        for storableType in storableTypes {
+            try storableType.deleteObjectsForZoneIDs(zoneIDs, in: context)
+        }
+    }
+
+    /// Delete all objects for CloudKit records.
+    ///
+    /// - Parameters:
+    ///   - deletedRecords: Array of CloudKit record IDs mapped to a set of CloudKit record types.
+    ///   - zoneIDs: CloudKit zoneIDs in which all records should be deleted, or `nil`.
+    ///   - context: managed object context for the deletion.
+    func deleteObjectsForRecords(_ deletedRecords: [CKRecord.RecordType: [CKRecord.ID]], in context: NSManagedObjectContext) throws {
+        for (recordType, recordIDs) in deletedRecords {
+            guard let storableType = storableTypes.first(where: { $0.recordType == recordType }) else { continue }
+            try storableType.deleteObjectsForRecords(recordIDs, in: context)
+        }
     }
 
     /// Subscribe to changes in the zone.

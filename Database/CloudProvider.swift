@@ -42,13 +42,16 @@ import Dispatch
 public final class CloudProvider {
 
     /// Database container to synchronize to.
-    public private(set) var container: CKContainer
+    var container: CKContainer
     
     /// Database to synchronize to.
-    public private(set) var database: CKDatabase
+    var database: CKDatabase
     
     /// Persistent container of local store to observe.
-    public private(set) var persistentContainer: NSPersistentContainer
+    var persistentContainer: NSPersistentContainer
+
+    /// Managed object types to be stored.
+    var storableTypes: [(NSManagedObject & CloudStorable).Type]
 
     /// Delegate to receive notification of events.
     public var delegate: CloudProviderDelegate?
@@ -59,10 +62,11 @@ public final class CloudProvider {
     /// Key to ignore contexts and avoid sync loops.
     static let ignoreChangesKey = "EngineShedIgnoreChanges"
     
-    public init(container: CKContainer, database: CKDatabase, persistentContainer: NSPersistentContainer) {
+    init(container: CKContainer, database: CKDatabase, persistentContainer: NSPersistentContainer, storableTypes: [(NSManagedObject & CloudStorable).Type]) {
         self.container = container
         self.database = database
         self.persistentContainer = persistentContainer
+        self.storableTypes = storableTypes
     }
 
     
@@ -184,6 +188,7 @@ public final class CloudProvider {
                 self.modifyRecords(recordsToSave: Array(recordsToSave[s...]), recordIDsToDelete: Array(recordIDsToDelete[d...]))
             } else if let error = error {
                 if let delegate = self.delegate {
+                    print("Couldn't modify records: \(error)")
                     delegate.cloudProvider(self, didFailWithError: error)
                     return
                 } else {
@@ -225,13 +230,14 @@ public final class CloudProvider {
             debugPrint(savedRecords)
             do {
                 for record in savedRecords {
-                    try NSManagedObject.syncObjectFromRecord(record, in: context, updateValues: false)
+                    try self.syncObjectFromRecord(record, in: context, updateValues: false)
                 }
 
                 try context.save()
                 delegate?.cloudProvider(self, didSaveRecords: savedRecords)
             } catch {
                 if let delegate = self.delegate {
+                    print("Failed to write back: \(error)")
                     delegate.cloudProvider(self, didFailWithError: error)
                     return
                 } else {
@@ -246,6 +252,21 @@ public final class CloudProvider {
             debugPrint(deletedRecordIDs)
             delegate?.cloudProvider(self, didDeleteRecordsWithIDs: deletedRecordIDs)
         }
+    }
+
+    /// Sync an object from a CloudKit record.
+    ///
+    /// The existing object with the given `recordID`, or a newly created object if one does not
+    /// exist, is synchronised with the contents of the CloudKit `record`.
+    ///
+    /// - Parameters:
+    ///   - record: CloudKit record to synchronize to the object.
+    ///   - context: managed object context for the fetch and creation.
+    ///   - updateValues: set to `false` if values in `record` should be ignored, and only the
+    ///     object `systemFields` updated.
+    func syncObjectFromRecord(_ record: CKRecord, in context: NSManagedObjectContext, updateValues: Bool = true) throws {
+        guard let storableType = storableTypes.first(where: { $0.recordType == record.recordType }) else { return }
+        try storableType.syncObjectFromRecord(record, in: context, updateValues: updateValues)
     }
 
     /// Create the primary zone for our records.
@@ -285,6 +306,7 @@ public final class CloudProvider {
         container.fetchAllLongLivedOperationIDs { (operationIDs, error) in
             if let error = error {
                 if let delegate = self.delegate {
+                    print("Failed to fetch long-lived operations: \(error)")
                     delegate.cloudProvider(self, didFailWithError: error)
                     return
                 } else {
@@ -297,6 +319,7 @@ public final class CloudProvider {
                 self.container.fetchLongLivedOperation(withID: operationID) { (operation, error) in
                     if let error = error {
                         if let delegate = self.delegate {
+                            print("Long-lived operation \(operationID) failed: \(error)")
                             delegate.cloudProvider(self, didFailWithError: error)
                             return
                         } else {
@@ -308,6 +331,7 @@ public final class CloudProvider {
                         operation.modifyRecordsCompletionBlock = { (savedRecords, deletedRecordIDs, error) in
                             if let error = error {
                                 if let delegate = self.delegate {
+                                    print("Resuming long-lived modify operation \(operationID) failed: \(error)")
                                     delegate.cloudProvider(self, didFailWithError: error)
                                     return
                                 } else {
