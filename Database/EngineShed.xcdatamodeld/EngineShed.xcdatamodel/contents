@@ -7,7 +7,7 @@
     <entity name="DatabaseState" representedClassName="DatabaseState" syncable="YES" codeGenerationType="class">
         <attribute name="scopeRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="serverChangeToken" optional="YES" attributeType="Transformable" customClassName="CloudKit.CKServerChangeToken" syncable="YES"/>
-        <relationship name="zoneStates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ZoneState" inverseName="databaseState" inverseEntity="ZoneState" syncable="YES"/>
+        <relationship name="zoneStates" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ZoneState" inverseName="databaseState" inverseEntity="ZoneState" syncable="YES"/>
     </entity>
     <entity name="Decoder" representedClassName="Decoder" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
