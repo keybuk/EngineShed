@@ -146,9 +146,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Cloud provider delegate
 
     func cloudProvider(_ cloudProvider: CloudProvider, didFailWithError error: Error) {
-        let alert = UIAlertController(title: "Sync to CloudKit Failed", message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        window?.rootViewController?.present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Sync to CloudKit Failed", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.window?.rootViewController?.present(alert, animated: true)
+        }
     }
 
     // MARK: - Split view
