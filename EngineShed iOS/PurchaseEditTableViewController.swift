@@ -26,7 +26,7 @@ class PurchaseEditTableViewController : UITableViewController {
 
         // Set the view to editing so rows can be reordered and one-tap deleted, and also to show
         // the insert accessory.
-        isEditing = true
+//        isEditing = true
 
         // Set the initial save button state.
         updateSaveButton()
@@ -42,24 +42,113 @@ class PurchaseEditTableViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return (purchase?.isInserted ?? true) ? 4 : 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        switch section {
+        case 0: return 4
+        case 1: return 3
+        case 2: return 5
+        case 3: return 1
+        case 4: return 1
+        default: preconditionFailure("Unexpected section: \(section)")
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseManufacturerEdit", for: indexPath) as! PurchaseManufacturerEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseCatalogNumberEdit", for: indexPath) as! PurchaseCatalogNumberEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseCatalogDescriptionEdit", for: indexPath) as! PurchaseCatalogDescriptionEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseCatalogYearEdit", for: indexPath) as! PurchaseCatalogYearEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseLimitedEditionEdit", for: indexPath) as! PurchaseLimitedEditionEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseLimitedEditionNumberEdit", for: indexPath) as! PurchaseLimitedEditionNumberEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseLimitedEditionCountEdit", for: indexPath) as! PurchaseLimitedEditionCountEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 2:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseDateEdit", for: indexPath) as! PurchaseDateEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseStoreEdit", for: indexPath) as! PurchaseStoreEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchasePriceEdit", for: indexPath) as! PurchasePriceEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseConditionEdit", for: indexPath) as! PurchaseConditionEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            case 4:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseValuationEdit", for: indexPath) as! PurchaseValuationEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 3:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseNotesEdit", for: indexPath) as! PurchaseNotesEditTableViewCell
+                cell.purchase = purchase
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 4:
+            precondition(!(purchase?.isInserted ?? true), "Unexpected delete purchase section in inserted purchase")
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseDelete", for: indexPath) as! PurchaseDeleteTableViewCell
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
 
-        // Configure the cell...
-
-        return cell
+        default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+        }
     }
-    */
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0: return "Catalog"
+        case 1: return "Limited Edition"
+        case 2: return "Purchase"
+        case 3: return "Notes"
+        case 4: return nil
+        default: preconditionFailure("Unexpected section: \(section)")
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -95,6 +184,33 @@ class PurchaseEditTableViewController : UITableViewController {
         return true
     }
     */
+
+    // MARK: - Table view delegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0: break
+        case 1: break
+        case 2: break
+        case 3: break
+        case 4:
+            precondition(!(purchase?.isInserted ?? true), "Unexpected purchase train section in inserted purchase")
+
+            // Confirm train deletion using an alert.
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Delete Purchase", style: .destructive) { action in
+                self.deletePurchase()
+            })
+
+            // Cancel case, deselect the table row.
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            })
+
+            present(alert, animated: true)
+        default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+        }
+    }
 
     // MARK: - Object management and observation
 
