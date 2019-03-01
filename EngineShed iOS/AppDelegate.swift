@@ -19,46 +19,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        #if !targetEnvironment(simulator)
-        // Subscribe to changes in CloudKit, enabling remote notifications.
-        beginNetworkActivity()
-        persistentContainer.cloudObserver.subscribeToChanges { error in
-            self.endNetworkActivity()
-
-            if let error = error {
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "CloudKit Subscription Failed", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.window?.rootViewController?.present(alert, animated: true)
-                }
-            }
-        }
-
-        // Register for remote notifications of changes to the iCloud database.
-        application.registerForRemoteNotifications()
-        #endif
-
-        // Fetch any changes since last start.
-        beginNetworkActivity()
-        persistentContainer.cloudObserver.fetchChanges { error in
-            self.endNetworkActivity()
-
-            if let error = error {
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Sync From CloudKit Failed", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.window?.rootViewController?.present(alert, animated: true)
-                }
-            }
-        }
-
         persistentContainer.cloudProvider.delegate = self
 
-        // Observe changes to our managed context, send to CloudKit.
-        persistentContainer.cloudProvider.observeChanges()
+        persistentContainer.cloudContainer.accountStatus { (accountStatus, error) in
+            if let error = error { fatalError("Error checking CloudKit account status: \(error)") }
+            if accountStatus != .available { return }
 
-        // Resume any long-lived operations from last run.
-        persistentContainer.cloudProvider.resumeLongLivedOperations()
+            DispatchQueue.main.async {
+                #if !targetEnvironment(simulator)
+                // Subscribe to changes in CloudKit, enabling remote notifications.
+                self.beginNetworkActivity()
+                self.persistentContainer.cloudObserver.subscribeToChanges { error in
+                    self.endNetworkActivity()
+
+                    if let error = error {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "CloudKit Subscription Failed", message: error.localizedDescription, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default))
+                            self.window?.rootViewController?.present(alert, animated: true)
+                        }
+                    }
+                }
+
+                // Register for remote notifications of changes to the iCloud database.
+                application.registerForRemoteNotifications()
+                #endif
+
+                // Fetch any changes since last start.
+                self.beginNetworkActivity()
+                self.persistentContainer.cloudObserver.fetchChanges { error in
+                    self.endNetworkActivity()
+
+                    if let error = error {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Sync From CloudKit Failed", message: error.localizedDescription, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default))
+                            self.window?.rootViewController?.present(alert, animated: true)
+                        }
+                    }
+                }
+
+                // Observe changes to our managed context, send to CloudKit.
+                self.persistentContainer.cloudProvider.observeChanges()
+
+                // Resume any long-lived operations from last run.
+                self.persistentContainer.cloudProvider.resumeLongLivedOperations()
+            }
+        }
 
         if let tabBarController = window?.rootViewController as? UITabBarController {
             if let splitViewController = tabBarController.viewControllers?[0] as? UISplitViewController {
