@@ -2165,27 +2165,15 @@
                                                 <outlet property="delegate" destination="vs4-DW-CLO" id="QiH-GG-Yjz"/>
                                             </connections>
                                         </textView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeB-zg-goC">
-                                            <rect key="frame" x="8" y="0.0" width="45.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="fQr-Ad-DOe" secondAttribute="bottom" id="2Ep-Hs-sHY"/>
                                         <constraint firstItem="fQr-Ad-DOe" firstAttribute="top" secondItem="iUw-6Q-5E5" secondAttribute="top" id="6HI-qL-6ab"/>
-                                        <constraint firstItem="FeB-zg-goC" firstAttribute="leading" secondItem="fQr-Ad-DOe" secondAttribute="leading" id="AfA-ch-O65"/>
                                         <constraint firstItem="fQr-Ad-DOe" firstAttribute="leading" secondItem="iUw-6Q-5E5" secondAttribute="leadingMargin" id="Hpi-E1-Say"/>
-                                        <constraint firstItem="FeB-zg-goC" firstAttribute="top" secondItem="fQr-Ad-DOe" secondAttribute="top" id="Lz2-9F-qwV"/>
-                                        <constraint firstItem="FeB-zg-goC" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="fQr-Ad-DOe" secondAttribute="bottom" id="Wwm-QA-dY7"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="fQr-Ad-DOe" secondAttribute="trailing" id="ihO-dJ-0Pl"/>
-                                        <constraint firstItem="FeB-zg-goC" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="fQr-Ad-DOe" secondAttribute="trailing" id="qPA-zx-3Xx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="placeholderLabel" destination="FeB-zg-goC" id="W9o-VH-79B"/>
-                                    <outlet property="placeholderTopConstraint" destination="Lz2-9F-qwV" id="z2u-hU-tVt"/>
                                     <outlet property="textView" destination="fQr-Ad-DOe" id="dOq-cG-uSX"/>
                                 </connections>
                             </tableViewCell>

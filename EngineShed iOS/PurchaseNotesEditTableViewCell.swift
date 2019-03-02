@@ -13,8 +13,6 @@ import Database
 class PurchaseNotesEditTableViewCell : UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var placeholderLabel: UILabel!
-    @IBOutlet weak var placeholderTopConstraint: NSLayoutConstraint!
 
     var purchase: Purchase? {
         didSet {
@@ -27,10 +25,6 @@ class PurchaseNotesEditTableViewCell : UITableViewCell, UITextViewDelegate {
 
         // Remove the leading padding from the text view to match the other text fields.
         textView.textContainer.lineFragmentPadding = 0
-
-        // Align the placeholder with the first line, and set the initial hidden state.
-        placeholderTopConstraint.constant = textView.textContainerInset.top
-        placeholderLabel.isHidden = !textView.text.isEmpty
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,14 +37,12 @@ class PurchaseNotesEditTableViewCell : UITableViewCell, UITextViewDelegate {
 
     func configureView() {
         textView.text = purchase?.notes
-        placeholderLabel.isHidden = !textView.text.isEmpty
     }
 
     // MARK: - UITextViewDelegate
 
     func textViewDidChange(_ textView: UITextView) {
         purchase?.notes = textView.text
-        placeholderLabel.isHidden = !textView.text.isEmpty
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
