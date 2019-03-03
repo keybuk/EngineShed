@@ -31,13 +31,22 @@ class PurchaseLimitedEditionNumberEditTableViewCell : UITableViewCell, UITextFie
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if selected {
-            textField.becomeFirstResponder()
-        }
+        // Configure the view for the selected state
     }
 
     func configureView() {
         textField.text = purchase?.limitedEditionNumberAsString
+    }
+
+    // MARK: - UIResponder
+
+    override var canBecomeFirstResponder: Bool {
+        return textField.canBecomeFirstResponder
+    }
+
+    override func becomeFirstResponder() -> Bool {
+        super.becomeFirstResponder()
+        return textField.becomeFirstResponder()
     }
 
     // MARK: - UITextFieldDelegate

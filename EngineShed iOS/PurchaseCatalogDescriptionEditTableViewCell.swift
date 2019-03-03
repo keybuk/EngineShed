@@ -36,14 +36,23 @@ class PurchaseCatalogDescriptionEditTableViewCell : UITableViewCell, UITextViewD
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if selected {
-            textView.becomeFirstResponder()
-        }
+        // Configure the view for the selected state
     }
 
     func configureView() {
         textView.text = purchase?.catalogDescription
         placeholderLabel.isHidden = !textView.text.isEmpty
+    }
+
+    // MARK: - UIResponder
+
+    override var canBecomeFirstResponder: Bool {
+        return textView.canBecomeFirstResponder
+    }
+
+    override func becomeFirstResponder() -> Bool {
+        super.becomeFirstResponder()
+        return textView.becomeFirstResponder()
     }
 
     // MARK: - UITextViewDelegate

@@ -140,6 +140,13 @@ class TrainEditTableViewController : UITableViewController {
             present(alert, animated: true)
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
+
+        // Default handling
+        if let cell = tableView.cellForRow(at: indexPath),
+            cell.canBecomeFirstResponder
+        {
+            cell.becomeFirstResponder()
+        }
     }
 
     // MARK: Editing support

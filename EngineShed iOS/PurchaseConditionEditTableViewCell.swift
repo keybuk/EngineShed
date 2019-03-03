@@ -41,6 +41,17 @@ class PurchaseConditionEditTableViewCell : UITableViewCell, UITextFieldDelegate 
 //        textField.text = purchase?.condition
     }
 
+    // MARK: - UIResponder
+
+    override var canBecomeFirstResponder: Bool {
+        return textField.canBecomeFirstResponder
+    }
+
+    override func becomeFirstResponder() -> Bool {
+        super.becomeFirstResponder()
+        return textField.becomeFirstResponder()
+    }
+
     // MARK: - UITextFieldDelegate
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

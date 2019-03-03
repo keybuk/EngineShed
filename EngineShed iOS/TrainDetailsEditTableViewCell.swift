@@ -40,6 +40,17 @@ class TrainDetailsEditTableViewCell : UITableViewCell, UITextFieldDelegate {
         textField.text = train?.details
     }
 
+    // MARK: - UIResponder
+
+    override var canBecomeFirstResponder: Bool {
+        return textField.canBecomeFirstResponder
+    }
+
+    override func becomeFirstResponder() -> Bool {
+        super.becomeFirstResponder()
+        return textField.becomeFirstResponder()
+    }
+
     // MARK: - UITextFieldDelegate
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

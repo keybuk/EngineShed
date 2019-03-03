@@ -31,14 +31,23 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if selected {
-            textField.becomeFirstResponder()
-        }
+        // Configure the view for the selected state
     }
 
     func configureView() {
         // FIXME: date
 //        textField.text = purchase?.date
+    }
+
+    // MARK: - UIResponder
+
+    override var canBecomeFirstResponder: Bool {
+        return textField.canBecomeFirstResponder
+    }
+
+    override func becomeFirstResponder() -> Bool {
+        super.becomeFirstResponder()
+        return textField.becomeFirstResponder()
     }
 
     // MARK: - UITextFieldDelegate
