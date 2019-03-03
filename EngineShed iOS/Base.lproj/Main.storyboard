@@ -2037,7 +2037,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qY-Mz-mK9">
+                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qY-Mz-mK9">
                                                     <rect key="frame" x="116" y="0.0" width="195" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="ByR-Ma-kYj"/>
@@ -2049,7 +2049,7 @@
                                                         <outlet property="delegate" destination="KGA-eg-V3S" id="Pot-Dc-jDa"/>
                                                     </connections>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvQ-EI-fhZ">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvQ-EI-fhZ">
                                                     <rect key="frame" x="327" y="11" width="16" height="22"/>
                                                     <state key="normal" image="Clear Glyph - On Light"/>
                                                     <connections>
@@ -3280,7 +3280,7 @@
         <image name="R3612" width="1440" height="810"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QLA-Sq-wEi"/>
+        <segue reference="U0Y-gq-7f1"/>
         <segue reference="x7g-2G-nuO"/>
         <segue reference="i9i-ye-UgR"/>
         <segue reference="7r7-ye-Aen"/>
