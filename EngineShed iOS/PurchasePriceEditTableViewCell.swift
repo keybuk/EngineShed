@@ -69,9 +69,7 @@ class PurchasePriceEditTableViewCell : UITableViewCell, UITextFieldDelegate {
         // Strictly speaking this isn't necessary, but make sure the value is set at the end of
         // editing just in case something changes it during resigning of the responder, before we
         // process the notification.
-        purchase?.price = textField.text.flatMap {
-            purchase?.currencyFormatter.number(from: $0) as? NSDecimalNumber
-        }
+        purchase?.priceAsString = textField.text
 
         // Set the field value to the re-formatted result of the number. This both corrects the
         // number of decimal places, as well as removes the currency symbol when left blank.
@@ -82,9 +80,7 @@ class PurchasePriceEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     @objc
     func textDidChange(_ notification: Notification) {
-        purchase?.price = textField.text.flatMap {
-            purchase?.currencyFormatter.number(from: $0) as? NSDecimalNumber
-        }
+        purchase?.priceAsString = textField.text
     }
 
 }

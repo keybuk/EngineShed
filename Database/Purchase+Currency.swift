@@ -23,15 +23,31 @@ extension Purchase {
 
     /// `price` formatted as string using `currencyFormatter`.
     public var priceAsString: String? {
-        return price.flatMap {
-            currencyFormatter.string(from: $0)
+        get {
+            return price.flatMap {
+                currencyFormatter.string(from: $0)
+            }
+        }
+
+        set {
+            price = newValue.flatMap {
+                currencyFormatter.number(from: $0) as? NSDecimalNumber
+            }
         }
     }
 
     /// `valuation` formatted as string using `currencyFormatter`.
     public var valuationAsString: String? {
-        return valuation.flatMap {
-            currencyFormatter.string(from: $0)
+        get {
+            return valuation.flatMap {
+                currencyFormatter.string(from: $0)
+            }
+        }
+
+        set {
+            valuation = newValue.flatMap {
+                currencyFormatter.number(from: $0) as? NSDecimalNumber
+            }
         }
     }
 
