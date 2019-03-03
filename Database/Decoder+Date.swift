@@ -10,22 +10,38 @@ import Foundation
 
 extension Decoder {
 
+    /// Formatter for date types.
+    public var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        return formatter
+    }
+
     /// `firmwareDate` as `Date` in current time zone.
     public var firmwareDateAsDate: Date? {
-        return firmwareDate.flatMap { dateComponents -> Date? in
-            let calendar = dateComponents.calendar ?? Calendar.current
-            return calendar.date(from: dateComponents as DateComponents)
+        get {
+            return firmwareDate.flatMap { dateComponents -> Date? in
+                let calendar = dateComponents.calendar ?? Calendar.current
+                return calendar.date(from: dateComponents as DateComponents)
+            }
+        }
+
+        set {
+            firmwareDate = newValue.flatMap {
+                return Calendar.current.dateComponents([ .year, .month, .day ], from: $0) as NSDateComponents?
+            }
         }
     }
 
-    /// `firmwareDate` formatted as string with format "ddMMyyyy".
+    /// `firmwareDate` formatted as string using `dateFormatter`.
     public var firmwareDateAsString: String? {
-        return firmwareDateAsDate.flatMap {
-            let formatter = DateFormatter()
-            formatter.locale = Locale.current
-            formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        get {
+            return firmwareDateAsDate.flatMap { return dateFormatter.string(from: $0) }
+        }
 
-            return formatter.string(from: $0)
+        set {
+            firmwareDateAsDate = newValue.flatMap { dateFormatter.date(from: $0) }
         }
     }
 

@@ -10,41 +10,65 @@ import Foundation
 
 extension Model {
 
+    /// Formatter for date types.
+    public var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        return formatter
+    }
+
     /// `lastOil` as `Date` in current time zone.
     public var lastOilAsDate: Date? {
-        return lastOil.flatMap { dateComponents -> Date? in
-            let calendar = dateComponents.calendar ?? Calendar.current
-            return calendar.date(from: dateComponents as DateComponents)
+        get {
+            return lastOil.flatMap { dateComponents -> Date? in
+                let calendar = dateComponents.calendar ?? Calendar.current
+                return calendar.date(from: dateComponents as DateComponents)
+            }
+        }
+
+        set {
+            lastOil = newValue.flatMap {
+                return Calendar.current.dateComponents([ .year, .month, .day ], from: $0) as NSDateComponents?
+            }
         }
     }
 
-    /// `lastOil` formatted as string with format "ddMMyyyy".
+    /// `lastOil` formatted as string using `dateFormatter`.
     public var lastOilAsString: String? {
-        return lastOilAsDate.flatMap {
-            let formatter = DateFormatter()
-            formatter.locale = Locale.current
-            formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        get {
+            return lastOilAsDate.flatMap { return dateFormatter.string(from: $0) }
+        }
 
-            return formatter.string(from: $0)
+        set {
+            lastOilAsDate = newValue.flatMap { dateFormatter.date(from: $0) }
         }
     }
 
     /// `lastRun` as `Date` in current time zone.
     public var lastRunAsDate: Date? {
-        return lastRun.flatMap { dateComponents -> Date? in
-            let calendar = dateComponents.calendar ?? Calendar.current
-            return calendar.date(from: dateComponents as DateComponents)
+        get {
+            return lastRun.flatMap { dateComponents -> Date? in
+                let calendar = dateComponents.calendar ?? Calendar.current
+                return calendar.date(from: dateComponents as DateComponents)
+            }
+        }
+
+        set {
+            lastRun = newValue.flatMap {
+                return Calendar.current.dateComponents([ .year, .month, .day ], from: $0) as NSDateComponents?
+            }
         }
     }
 
-    /// `lastRun` formatted as string with format "ddMMyyyy".
+    /// `lastRun` formatted as string using `dateFormatter`.
     public var lastRunAsString: String? {
-        return lastRunAsDate.flatMap {
-            let formatter = DateFormatter()
-            formatter.locale = Locale.current
-            formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        get {
+            return lastRunAsDate.flatMap { return dateFormatter.string(from: $0) }
+        }
 
-            return formatter.string(from: $0)
+        set {
+            lastRunAsDate = newValue.flatMap { dateFormatter.date(from: $0) }
         }
     }
 

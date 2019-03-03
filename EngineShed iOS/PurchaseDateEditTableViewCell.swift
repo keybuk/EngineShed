@@ -35,8 +35,7 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
     }
 
     func configureView() {
-        // FIXME: date
-//        textField.text = purchase?.date
+        textField.text = purchase?.dateAsString
     }
 
     // MARK: - UIResponder
@@ -62,15 +61,17 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
         // editing just in case something changes it during resigning of the responder, before we
         // process the notification.
         // FIXME: date
-//        purchase?.date = textField.text
+        purchase?.dateAsString = textField.text
+
+        // Set the field value to the re-formatted result of the date.
+        textField.text = purchase?.dateAsString
     }
 
     // MARK: - Notifications
 
     @objc
     func textDidChange(_ notification: Notification) {
-        // FIXME: date
-//        purchase?.date = textField.text
+        purchase?.dateAsString = textField.text
     }
 
 }

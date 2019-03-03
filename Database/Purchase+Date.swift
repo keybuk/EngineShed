@@ -10,22 +10,38 @@ import Foundation
 
 extension Purchase {
 
+    /// Formatter for date types.
+    public var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        return formatter
+    }
+
     /// `date` as `Date` in current time zone.
     public var dateAsDate: Date? {
-        return date.flatMap { dateComponents -> Date? in
-            let calendar = dateComponents.calendar ?? Calendar.current
-            return calendar.date(from: dateComponents as DateComponents)
+        get {
+            return date.flatMap { dateComponents -> Date? in
+                let calendar = dateComponents.calendar ?? Calendar.current
+                return calendar.date(from: dateComponents as DateComponents)
+            }
+        }
+
+        set {
+            date = newValue.flatMap {
+                return Calendar.current.dateComponents([ .year, .month, .day ], from: $0) as NSDateComponents?
+            }
         }
     }
 
-    /// `date` formatted as string with format "ddMMyyyy".
+    /// `date` formatted as string using `dateFormatter`.
     public var dateAsString: String? {
-        return dateAsDate.flatMap {
-            let formatter = DateFormatter()
-            formatter.locale = Locale.current
-            formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        get {
+            return dateAsDate.flatMap { return dateFormatter.string(from: $0) }
+        }
 
-            return formatter.string(from: $0)
+        set {
+            dateAsDate = newValue.flatMap { dateFormatter.date(from: $0) }
         }
     }
 
