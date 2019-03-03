@@ -13,6 +13,7 @@ import Database
 class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var clearButton: UIButton!
 
     var purchase: Purchase? {
         didSet {
@@ -20,8 +21,18 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
         }
     }
 
+    var pickerVisible = false {
+        didSet {
+            textField.textColor = pickerVisible ? textField.tintColor : UIColor.black
+        }
+    }
+
+    var defaultTextColor: UIColor!
+
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        defaultTextColor = textField.textColor
 
         // UITextFieldDelegate lacks a textFieldDidChange, but has a Notification we can use instead
         let notificationCenter = NotificationCenter.default
@@ -36,6 +47,9 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     func configureView() {
         textField.text = purchase?.dateAsString
+        clearButton.isHidden = purchase?.date == nil
+
+        observePurchase()
     }
 
     // MARK: - UIResponder
@@ -65,6 +79,23 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
         // Set the field value to the re-formatted result of the date.
         textField.text = purchase?.dateAsString
+        clearButton.isHidden = purchase?.date == nil
+    }
+
+    // MARK: - Object management and observation
+
+    var observers: [NSKeyValueObservation] = []
+
+    func observePurchase() {
+        observers.removeAll()
+        guard let purchase = purchase else { return }
+
+        // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
+        // temporarily replace with Cocoa KVO if necessary.
+        observers.append(purchase.observe(\.date) { (_, _) in
+            self.textField.text = purchase.dateAsString
+            self.clearButton.isHidden = purchase.date == nil
+        })
     }
 
     // MARK: - Notifications
@@ -72,6 +103,16 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
     @objc
     func textDidChange(_ notification: Notification) {
         purchase?.dateAsString = textField.text
+        clearButton.isHidden = purchase?.date == nil
     }
+
+    // MARK: - Actions
+
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        purchase?.date = nil
+        textField.text = purchase?.dateAsString
+        clearButton.isHidden = purchase?.date == nil
+    }
+
 
 }

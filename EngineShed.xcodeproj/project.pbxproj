@@ -30,6 +30,7 @@
 		D21DD33E222B524B0065D934 /* Purchase+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33C222B524B0065D934 /* Purchase+Currency.swift */; };
 		D21DD340222B5D550065D934 /* Purchase+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33F222B5D550065D934 /* Purchase+Number.swift */; };
 		D21DD341222B5D550065D934 /* Purchase+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33F222B5D550065D934 /* Purchase+Number.swift */; };
+		D21DD343222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */; };
 		D2278DFD21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */; };
 		D2278DFE21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */; };
 		D23B8B8921E29A37004F994D /* ModelClassificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B8821E29A37004F994D /* ModelClassificationTableViewCell.swift */; };
@@ -393,6 +394,7 @@
 		D215BEC420D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D21DD33C222B524B0065D934 /* Purchase+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Currency.swift"; sourceTree = "<group>"; };
 		D21DD33F222B5D550065D934 /* Purchase+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Number.swift"; sourceTree = "<group>"; };
+		D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZoneState+Provider.swift"; sourceTree = "<group>"; };
 		D23B8B8821E29A37004F994D /* ModelClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassificationTableViewCell.swift; sourceTree = "<group>"; };
 		D23B8B8A21E29BF3004F994D /* ModelClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassTableViewCell.swift; sourceTree = "<group>"; };
@@ -900,6 +902,7 @@
 				D2C978712227911200AB3C1C /* PurchaseLimitedEditionNumberEditTableViewCell.swift */,
 				D2C978732227911A00AB3C1C /* PurchaseLimitedEditionCountEditTableViewCell.swift */,
 				D2C978752227912200AB3C1C /* PurchaseDateEditTableViewCell.swift */,
+				D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */,
 				D2C978772227912E00AB3C1C /* PurchaseStoreEditTableViewCell.swift */,
 				D2C978792227913800AB3C1C /* PurchasePriceEditTableViewCell.swift */,
 				D2C9787B2227913E00AB3C1C /* PurchaseConditionEditTableViewCell.swift */,
@@ -1758,6 +1761,7 @@
 				D2C978662227733200AB3C1C /* PurchaseDeleteTableViewCell.swift in Sources */,
 				D23B8BC721E2B79F004F994D /* ModelTasksTableViewCell.swift in Sources */,
 				D23B8BB121E2AEE6004F994D /* ModelDecoderSoundProjectTableViewCell.swift in Sources */,
+				D21DD343222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift in Sources */,
 				D25828B621DC43950094918F /* TrainNotesEditTableViewCell.swift in Sources */,
 				D23B8B9721E29CD2004F994D /* ModelDispositionTableViewCell.swift in Sources */,
 				D212EA472150AF98005FEED3 /* ClassificationTableViewCell.swift in Sources */,

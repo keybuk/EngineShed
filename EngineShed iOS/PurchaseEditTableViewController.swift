@@ -41,6 +41,8 @@ class PurchaseEditTableViewController : UITableViewController {
 
     // MARK: - Table view data source
 
+    var datePickerVisible = false
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return (purchase?.isInserted ?? true) ? 4 : 5
     }
@@ -49,7 +51,7 @@ class PurchaseEditTableViewController : UITableViewController {
         switch section {
         case 0: return 4
         case 1: return 3
-        case 2: return 5
+        case 2: return 5 + (datePickerVisible ? 1 : 0)
         case 3: return 1
         case 4: return 1
         default: preconditionFailure("Unexpected section: \(section)")
@@ -95,24 +97,30 @@ class PurchaseEditTableViewController : UITableViewController {
             default: preconditionFailure("Unexpected indexPath: \(indexPath)")
             }
         case 2:
+            let datePickerOffset = datePickerVisible ? 1 : 0
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseDateEdit", for: indexPath) as! PurchaseDateEditTableViewCell
                 cell.purchase = purchase
+                cell.pickerVisible = datePickerVisible
                 return cell
-            case 1:
+            case 1 where datePickerVisible:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseDatePicker", for: indexPath) as! PurchaseDatePickerTableViewCell
+                cell.purchase = purchase
+                return cell
+            case 1 + datePickerOffset:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseStoreEdit", for: indexPath) as! PurchaseStoreEditTableViewCell
                 cell.purchase = purchase
                 return cell
-            case 2:
+            case 2 + datePickerOffset:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "purchasePriceEdit", for: indexPath) as! PurchasePriceEditTableViewCell
                 cell.purchase = purchase
                 return cell
-            case 3:
+            case 3 + datePickerOffset:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseConditionEdit", for: indexPath) as! PurchaseConditionEditTableViewCell
                 cell.purchase = purchase
                 return cell
-            case 4:
+            case 4 + datePickerOffset:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseValuationEdit", for: indexPath) as! PurchaseValuationEditTableViewCell
                 cell.purchase = purchase
                 return cell
@@ -191,7 +199,44 @@ class PurchaseEditTableViewController : UITableViewController {
         switch indexPath.section {
         case 0: break
         case 1: break
-        case 2: break
+        case 2:
+            switch indexPath.row {
+            case 0:
+                weak var dateEditCell = tableView.cellForRow(at: indexPath) as? PurchaseDateEditTableViewCell
+
+                let datePickerIndexPath = IndexPath(row: 1, section: 2)
+                if !datePickerVisible {
+                    datePickerVisible = true
+                    tableView.insertRows(at: [datePickerIndexPath], with: .top)
+//                    tableView.scrollToRow(at: datePickerIndexPath, at: .bottom, animated: true)
+
+                    dateEditCell?.pickerVisible = datePickerVisible
+
+                    // Make the date picker the first responder, and when it loses that status,
+                    // hide the cell again.
+                    if let cell = tableView.cellForRow(at: datePickerIndexPath) as? PurchaseDatePickerTableViewCell,
+                        cell.canBecomeFirstResponder,
+                        cell.becomeFirstResponder()
+                    {
+                        cell.resignFirstResponderBlock = {
+                            if self.datePickerVisible {
+                                self.datePickerVisible = false
+                                self.tableView.deleteRows(at: [datePickerIndexPath], with: .top)
+
+                                dateEditCell?.pickerVisible = self.datePickerVisible
+                            }
+                        }
+                    }
+                } else {
+                    datePickerVisible = false
+                    tableView.deleteRows(at: [datePickerIndexPath], with: .top)
+
+                    dateEditCell?.pickerVisible = datePickerVisible
+                }
+
+                tableView.deselectRow(at: indexPath, animated: true)
+            default: break
+            }
         case 3: break
         case 4:
             precondition(!(purchase?.isInserted ?? true), "Unexpected purchase train section in inserted purchase")

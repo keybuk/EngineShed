@@ -2018,7 +2018,7 @@
                                     <outlet property="textField" destination="6Dp-DV-mVK" id="JJF-M3-zyd"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="purchaseDateEdit" id="KGA-eg-V3S" customClass="PurchaseDateEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseDateEdit" id="KGA-eg-V3S" customClass="PurchaseDateEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="448.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGA-eg-V3S" id="cXi-ZP-H17">
@@ -2037,8 +2037,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qY-Mz-mK9">
-                                                    <rect key="frame" x="116" y="0.0" width="227" height="43.5"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qY-Mz-mK9">
+                                                    <rect key="frame" x="116" y="0.0" width="195" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="ByR-Ma-kYj"/>
                                                     </constraints>
@@ -2049,6 +2049,13 @@
                                                         <outlet property="delegate" destination="KGA-eg-V3S" id="Pot-Dc-jDa"/>
                                                     </connections>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvQ-EI-fhZ">
+                                                    <rect key="frame" x="327" y="11" width="16" height="22"/>
+                                                    <state key="normal" image="Clear Glyph - On Light"/>
+                                                    <connections>
+                                                        <action selector="clearButtonTapped:" destination="KGA-eg-V3S" eventType="touchUpInside" id="iWM-ow-gqw"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -2060,18 +2067,47 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="clearButton" destination="FvQ-EI-fhZ" id="n8w-Fl-cA4"/>
                                     <outlet property="textField" destination="1qY-Mz-mK9" id="Cwg-1c-fzn"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="purchaseDatePicker" rowHeight="164" id="5UM-Nu-s44" customClass="PurchaseDatePickerTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="492.5" width="375" height="164"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5UM-Nu-s44" id="KDU-L5-79g">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uWF-m5-0fz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
+                                            <date key="date" timeIntervalSinceReferenceDate="573335209.05116403">
+                                                <!--2019-03-03 19:46:49 +0000-->
+                                            </date>
+                                            <connections>
+                                                <action selector="datePickerValueChanged:" destination="5UM-Nu-s44" eventType="valueChanged" id="EMa-3w-b37"/>
+                                            </connections>
+                                        </datePicker>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uWF-m5-0fz" firstAttribute="top" secondItem="KDU-L5-79g" secondAttribute="top" id="5s1-6W-0vn"/>
+                                        <constraint firstAttribute="bottom" secondItem="uWF-m5-0fz" secondAttribute="bottom" id="aR4-gb-u0G"/>
+                                        <constraint firstItem="uWF-m5-0fz" firstAttribute="leading" secondItem="KDU-L5-79g" secondAttribute="leading" id="kwb-FL-NSL"/>
+                                        <constraint firstAttribute="trailing" secondItem="uWF-m5-0fz" secondAttribute="trailing" id="w1o-Z8-8Sd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="datePicker" destination="uWF-m5-0fz" id="goU-JE-faD"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="purchaseStoreEdit" id="3Mm-7l-Qcj" customClass="PurchaseStoreEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="492.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="656.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Mm-7l-Qcj" id="ZWP-cs-EHQ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dWn-Fz-Kbj">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="8" y="0.0" width="359" height="43.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RY-Z6-4Ni">
                                                     <rect key="frame" x="0.0" y="11.5" width="100" height="20.5"/>
@@ -2083,7 +2119,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gAh-L7-xFZ">
-                                                    <rect key="frame" x="116" y="0.0" width="227" height="43.5"/>
+                                                    <rect key="frame" x="116" y="0.0" width="243" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="RP8-gW-tSh"/>
                                                     </constraints>
@@ -2109,14 +2145,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="purchasePriceEdit" id="thQ-2b-0Vs" customClass="PurchasePriceEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="536.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="700.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="thQ-2b-0Vs" id="Ole-Jd-X9d">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="QkU-pQ-c9f">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="8" y="0.0" width="359" height="43.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkD-6P-Rg0">
                                                     <rect key="frame" x="0.0" y="11.5" width="100" height="20.5"/>
@@ -2128,7 +2164,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="niY-sn-rXz">
-                                                    <rect key="frame" x="116" y="0.0" width="227" height="43.5"/>
+                                                    <rect key="frame" x="116" y="0.0" width="243" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="gyh-7i-eOj"/>
                                                     </constraints>
@@ -2154,14 +2190,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="purchaseConditionEdit" id="I6f-pr-7Lg" customClass="PurchaseConditionEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="580.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="744.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I6f-pr-7Lg" id="HtS-Ks-x7n">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6g2-XR-cCe">
-                                            <rect key="frame" x="16" y="0.0" width="317" height="43.5"/>
+                                            <rect key="frame" x="8" y="0.0" width="333" height="43.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crM-6c-Vt9">
                                                     <rect key="frame" x="0.0" y="11.5" width="100" height="20.5"/>
@@ -2173,7 +2209,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVi-nb-f8P">
-                                                    <rect key="frame" x="116" y="0.0" width="201" height="43.5"/>
+                                                    <rect key="frame" x="116" y="0.0" width="217" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="M5J-ED-j3b"/>
                                                     </constraints>
@@ -2199,7 +2235,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="purchaseValuationEdit" id="QTI-7J-2Mx" customClass="PurchaseValuationEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="624.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="788.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QTI-7J-2Mx" id="Dn8-u2-xev">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -2244,7 +2280,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="purchaseNotesEdit" rowHeight="129" id="vs4-DW-CLO" customClass="PurchaseNotesEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="668.5" width="375" height="129"/>
+                                <rect key="frame" x="0.0" y="832.5" width="375" height="129"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vs4-DW-CLO" id="iUw-6Q-5E5">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128.5"/>
@@ -2276,7 +2312,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseDelete" id="ag6-lt-O8f" customClass="PurchaseDeleteTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="797.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="961.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ag6-lt-O8f" id="til-Hd-Z8n">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -3239,6 +3275,7 @@
     </scenes>
     <resources>
         <image name="966-contact-cards-toolbar" width="22" height="18"/>
+        <image name="Clear Glyph - On Light" width="16" height="16"/>
         <image name="Light - Disclosure" width="10" height="15"/>
         <image name="R3612" width="1440" height="810"/>
     </resources>
