@@ -303,33 +303,25 @@ class PurchaseEditTableViewController : UITableViewController {
     var observers: [NSKeyValueObservation] = []
 
     func observePurchase() {
-        self.observers.removeAll()
+        observers.removeAll()
         guard let purchase = purchase else { return }
 
         // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
         // temporarily replace with Cocoa KVO if necessary.
-        self.observers.append(purchase.observe(\.manufacturer) { (_, _) in self.updateSaveButton() })
-        self.observers.append(purchase.observe(\.catalogNumber) { (_, _) in self.updateSaveButton() })
-        self.observers.append(purchase.observe(\.catalogDescription) { (_, _) in self.updateSaveButton() })
-        // FIXME: more
-        self.observers.append(purchase.observe(\.models) { (_, _) in
-            self.updateSaveButton()
-            self.observePurchaseModels()
-        })
-
-        self.observePurchaseModels()
-    }
-
-    var modelObservers: [NSKeyValueObservation] = []
-
-    func observePurchaseModels() {
-        self.modelObservers.removeAll()
-        guard let purchase = purchase else { return }
-        guard let models = purchase.models else { return }
-
-        for case let model as Model in models {
-            self.observers.append(model.observe(\.modelClass) { (_, _) in self.updateSaveButton() })
-        }
+        observers.append(purchase.observe(\.manufacturer) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.catalogNumber) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.catalogDescription) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.catalogYear) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.limitedEdition) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.limitedEditionNumber) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.limitedEditionCount) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.date) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.store) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.price) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.conditionRawValue) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.valuation) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.notes) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.models) { (_, _) in self.updateSaveButton() })
     }
 
     // MARK: - Notifications
@@ -413,17 +405,6 @@ class PurchaseEditTableViewController : UITableViewController {
                 } else if purchase.isUpdated {
                     try purchase.validateForUpdate()
                     isChanged = true
-                }
-
-                guard let models = purchase.models else { return isChanged }
-                for case let model as Model in models {
-                    if model.isInserted {
-                        try model.validateForInsert()
-                        isChanged = true
-                    } else if model.isUpdated {
-                        try model.validateForUpdate()
-                        isChanged = true
-                    }
                 }
 
                 return isChanged
