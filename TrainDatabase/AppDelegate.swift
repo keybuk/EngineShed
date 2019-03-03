@@ -197,15 +197,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 decoderRecord["type"] = CKRecord.Reference(record: decoderTypeRecord, action: .deleteSelf)
                 decoderRecord["serialNumber"] = decoder.serialNumber as NSString
                 decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
-                decoderRecord["firmwareDate"] = decoder.firmwareDate as NSDate?
                 decoderRecord["address"] = decoder.address as NSNumber
                 decoderRecord["soundAuthor"] = decoder.soundAuthor as NSString
                 decoderRecord["soundProject"] = decoder.soundFile as NSString
 
                 if let firmwareDate = decoder.firmwareDate {
-                    var dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: firmwareDate)
-                    dateComponents.calendar = calendar
-
+                    let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: firmwareDate)
                     let archiver = NSKeyedArchiver(requiringSecureCoding: true)
                     archiver.encode(dateComponents, forKey: "FirmwareDate")
                     archiver.finishEncoding()
@@ -239,9 +236,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             purchaseRecord["notes"] = purchase.notes as NSString
 
             if let date = purchase.date {
-                var dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: date)
-                dateComponents.calendar = calendar
-
+                let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: date)
                 let archiver = NSKeyedArchiver(requiringSecureCoding: true)
                 archiver.encode(dateComponents, forKey: "Date")
                 archiver.finishEncoding()
@@ -303,9 +298,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 modelRecord["notes"] = model.notes as NSString
 
                 if let lastRun = model.lastRun {
-                    var dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: lastRun)
-                    dateComponents.calendar = calendar
-
+                    let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: lastRun)
                     let archiver = NSKeyedArchiver(requiringSecureCoding: true)
                     archiver.encode(dateComponents, forKey: "LastRun")
                     archiver.finishEncoding()
@@ -315,9 +308,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
 
                 if let lastOil = model.lastOil {
-                    var dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: lastOil)
-                    dateComponents.calendar = calendar
-
+                    let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: lastOil)
                     let archiver = NSKeyedArchiver(requiringSecureCoding: true)
                     archiver.encode(dateComponents, forKey: "LastOil")
                     archiver.finishEncoding()
@@ -346,9 +337,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         decoderRecord["soundProject"] = decoder.soundFile as NSString
 
                         if let firmwareDate = decoder.firmwareDate {
-                            var dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: firmwareDate)
-                            dateComponents.calendar = calendar
-
+                            let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: firmwareDate)
                             let archiver = NSKeyedArchiver(requiringSecureCoding: true)
                             archiver.encode(dateComponents, forKey: "FirmwareDate")
                             archiver.finishEncoding()
@@ -443,6 +432,105 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         callbackOperation.addDependency(saveOperation)
         saveOperation.addDependency(zoneOperation)
         database.add(saveOperation)
+    }
+
+    func restoreFromCloud() {
+        let container = CKContainer(identifier: "iCloud.com.netsplit.EngineShed")
+        let database = container.privateCloudDatabase
+        let zoneID = CKRecordZone.ID(zoneName: "EngineShed", ownerName: CKCurrentUserDefaultName)
+
+        let decoderTypePredicate = NSPredicate(format: "productCode IN %@", [ "54400", "56899" ])
+        let decoderTypeQuery = CKQuery(recordType: "DecoderType", predicate: decoderTypePredicate)
+
+        database.perform(decoderTypeQuery, inZoneWith: zoneID) { (decoderTypeRecords, error) in
+            if let error = error { fatalError("Unable to query decoder types: \(error)") }
+            guard let decoderTypeRecords = decoderTypeRecords else { fatalError("decoder type: no error and no records") }
+
+            for decoderTypeRecord in decoderTypeRecords {
+                print([ decoderTypeRecord["manufacturer"], decoderTypeRecord["productCode"], decoderTypeRecord["productFamily"] ].compactMap({ $0.flatMap({ "\($0)" }) }).joined(separator: " "))
+
+                let decoderTypeObject = DecoderTypeManagedObject(context: self.persistentContainer.viewContext)
+                decoderTypeObject.manufacturer = decoderTypeRecord["manufacturer"]
+                decoderTypeObject.productCode = decoderTypeRecord["productCode"]
+                decoderTypeObject.productFamily = decoderTypeRecord["productFamily"]
+                decoderTypeObject.productDescription = decoderTypeRecord["productDescription"]
+                decoderTypeObject.socket = decoderTypeRecord["socket"]
+                decoderTypeObject.programmable = decoderTypeRecord["isProgrammable"] ?? false
+                decoderTypeObject.sound = decoderTypeRecord["hasSound"] ?? false
+                decoderTypeObject.railCom = decoderTypeRecord["hasRailCom"] ?? false
+                decoderTypeObject.minimumStock = decoderTypeRecord["minimumStock"] ?? 0
+
+                let data = NSMutableData()
+                let archiver = NSKeyedArchiver(forWritingWith: data)
+                decoderTypeRecord.encodeSystemFields(with: archiver)
+                archiver.finishEncoding()
+
+                decoderTypeObject.recordID = decoderTypeRecord.recordID
+                decoderTypeObject.systemFields = data as Data
+
+                let decoderPredicate = NSPredicate(format: "type == %@", decoderTypeRecord.recordID)
+                let decoderQuery = CKQuery(recordType: "Decoder", predicate: decoderPredicate)
+
+                database.perform(decoderQuery, inZoneWith: zoneID) { (decoderRecords, error) in
+                    if let error = error { fatalError("Unable to query decoders: \(error)") }
+                    guard let decoderRecords = decoderRecords else { fatalError("decoder: no error and no records") }
+
+                    for decoderRecord in decoderRecords {
+                        print([ decoderRecord["serialNumber"], decoderRecord["address"], decoderRecord["soundAuthor"], decoderRecord["soundProject"] ].compactMap({ $0.flatMap({ "\($0)" }) }).joined(separator: " "))
+
+                        let decoderObject = DecoderManagedObject(context: self.persistentContainer.viewContext)
+                        decoderObject.type = decoderTypeObject
+                        decoderObject.serialNumber = decoderRecord["serialNumber"]
+                        decoderObject.firmwareVersion = decoderRecord["firmwareVersion"]
+                        decoderObject.address = decoderRecord["address"] ?? 0
+                        decoderObject.soundAuthor = decoderRecord["soundAuthor"]
+                        decoderObject.soundFile = decoderRecord["soundProject"]
+
+                        if let data = decoderRecord["firmwareDate"] as? Data,
+                            let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data)
+                        {
+                            guard let dateComponents = unarchiver.decodeObject(of: NSDateComponents.self, forKey: "FirmwareDate") else { fatalError("Unable to decode data components") }
+                            unarchiver.finishDecoding()
+
+                            let calendar = dateComponents.calendar ?? Calendar.current
+                            guard let date = calendar.date(from: dateComponents as DateComponents) else { fatalError("Unable to decode data from components") }
+
+                            decoderObject.firmwareDate = date
+                        }
+
+                        let data = NSMutableData()
+                        let archiver = NSKeyedArchiver(forWritingWith: data)
+                        decoderRecord.encodeSystemFields(with: archiver)
+                        archiver.finishEncoding()
+
+                        decoderObject.recordID = decoderRecord.recordID
+                        decoderObject.systemFields = data as Data
+
+                        if let modelReference = decoderRecord["model"] as? CKRecord.Reference {
+                            print("-> \(modelReference)")
+
+                            let fetchRequest: NSFetchRequest<ModelManagedObject> = ModelManagedObject.fetchRequest()
+                            fetchRequest.predicate = NSPredicate(format: "recordID == %@", modelReference.recordID)
+
+                            self.persistentContainer.viewContext.performAndWait {
+                                let models = try! fetchRequest.execute()
+                                guard let model = models.first else { fatalError("Missing model for decoder") }
+
+                                print([ model.purchase?.manufacturer, model.purchase?.catalogNumber ].compactMap({ $0 }).joined(separator: " "))
+                                decoderObject.model = model
+                            }
+                        }
+                    }
+
+                    do {
+                        try self.persistentContainer.viewContext.save()
+                    } catch {
+                        fatalError("Failed to save: \(error)")
+                    }
+
+                }
+            }
+        }
     }
 
     // MARK: - Core Data stack
