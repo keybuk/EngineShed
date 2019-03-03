@@ -32,11 +32,7 @@ class PurchaseValuationTableViewCell : UITableViewCell, PurchaseSettable {
     }
 
     func configureCell() {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "GBP"
-
-        valuationLabel.text = purchase?.valuation.flatMap({ formatter.string(from: $0) })
+        valuationLabel.text = purchase?.valuationAsString
     }
 
 }
