@@ -302,31 +302,31 @@ class TrainEditTableViewController : UITableViewController {
     var observers: [NSKeyValueObservation] = []
 
     func observeTrain() {
-        self.observers.removeAll()
+        observers.removeAll()
         guard let train = train else { return }
 
         // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
         // temporarily replace with Cocoa KVO if necessary.
-        self.observers.append(train.observe(\.name) { (_, _) in self.updateSaveButton() })
-        self.observers.append(train.observe(\.details) { (_, _) in self.updateSaveButton() })
-        self.observers.append(train.observe(\.notes) { (_, _) in self.updateSaveButton() })
-        self.observers.append(train.observe(\.members) { (_, _) in
+        observers.append(train.observe(\.name) { (_, _) in self.updateSaveButton() })
+        observers.append(train.observe(\.details) { (_, _) in self.updateSaveButton() })
+        observers.append(train.observe(\.notes) { (_, _) in self.updateSaveButton() })
+        observers.append(train.observe(\.members) { (_, _) in
             self.updateSaveButton()
             self.observeTrainMembers()
         })
 
-        self.observeTrainMembers()
+        observeTrainMembers()
     }
 
     var memberObservers: [NSKeyValueObservation] = []
 
     func observeTrainMembers() {
-        self.memberObservers.removeAll()
+        memberObservers.removeAll()
         guard let train = train else { return }
         guard let members = train.members else { return }
 
         for case let trainMember as TrainMember in members {
-            self.observers.append(trainMember.observe(\.title) { (_, _) in self.updateSaveButton() })
+            observers.append(trainMember.observe(\.title) { (_, _) in self.updateSaveButton() })
         }
     }
 
