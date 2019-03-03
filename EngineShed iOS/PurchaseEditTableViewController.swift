@@ -208,7 +208,7 @@ class PurchaseEditTableViewController : UITableViewController {
                 if !datePickerVisible {
                     datePickerVisible = true
                     tableView.insertRows(at: [datePickerIndexPath], with: .top)
-//                    tableView.scrollToRow(at: datePickerIndexPath, at: .bottom, animated: true)
+                    tableView.scrollToRow(at: datePickerIndexPath, at: .middle, animated: true)
 
                     dateEditCell?.pickerVisible = datePickerVisible
 
