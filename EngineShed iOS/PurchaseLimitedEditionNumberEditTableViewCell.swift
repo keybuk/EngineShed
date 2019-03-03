@@ -37,8 +37,7 @@ class PurchaseLimitedEditionNumberEditTableViewCell : UITableViewCell, UITextFie
     }
 
     func configureView() {
-        // FIXME: numeric
-//        textField.text = purchase?.limitedEditionNumber
+        textField.text = purchase?.limitedEditionNumberAsString
     }
 
     // MARK: - UITextFieldDelegate
@@ -48,20 +47,30 @@ class PurchaseLimitedEditionNumberEditTableViewCell : UITableViewCell, UITextFie
         return true
     }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard var text = textField.text else { preconditionFailure("Replacing characters in range of nil text") }
+        guard let range = Range(range, in: text) else { preconditionFailure("Range doesn't map to text") }
+        text.replaceSubrange(range, with: string)
+
+        // Allow valid numbers and the empty string.
+        return Int16(text) != nil || text.isEmpty
+    }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         // Strictly speaking this isn't necessary, but make sure the value is set at the end of
         // editing just in case something changes it during resigning of the responder, before we
         // process the notification.
-        // FIXME: numeric
-//        purchase?.limitedEditionNumber = textField.text
+        purchase?.limitedEditionNumberAsString = textField.text
+
+        // Set the field value to the re-formatted result of the number.
+        textField.text = purchase?.limitedEditionNumberAsString
     }
 
     // MARK: - Notifications
 
     @objc
     func textDidChange(_ notification: Notification) {
-        // FIXME: numeric
-//        purchase?.limitedEditionNumber = textField.text
+        purchase?.limitedEditionNumberAsString = textField.text
     }
 
 }

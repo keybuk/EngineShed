@@ -28,6 +28,8 @@
 		D215BEC320D4B53A0054FDCC /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */; };
 		D21DD33D222B524B0065D934 /* Purchase+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33C222B524B0065D934 /* Purchase+Currency.swift */; };
 		D21DD33E222B524B0065D934 /* Purchase+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33C222B524B0065D934 /* Purchase+Currency.swift */; };
+		D21DD340222B5D550065D934 /* Purchase+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33F222B5D550065D934 /* Purchase+Number.swift */; };
+		D21DD341222B5D550065D934 /* Purchase+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33F222B5D550065D934 /* Purchase+Number.swift */; };
 		D2278DFD21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */; };
 		D2278DFE21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */; };
 		D23B8B8921E29A37004F994D /* ModelClassificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B8821E29A37004F994D /* ModelClassificationTableViewCell.swift */; };
@@ -390,6 +392,7 @@
 		D215BEC220D4B53A0054FDCC /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
 		D215BEC420D4B53A0054FDCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D21DD33C222B524B0065D934 /* Purchase+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Currency.swift"; sourceTree = "<group>"; };
+		D21DD33F222B5D550065D934 /* Purchase+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Number.swift"; sourceTree = "<group>"; };
 		D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZoneState+Provider.swift"; sourceTree = "<group>"; };
 		D23B8B8821E29A37004F994D /* ModelClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassificationTableViewCell.swift; sourceTree = "<group>"; };
 		D23B8B8A21E29BF3004F994D /* ModelClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassTableViewCell.swift; sourceTree = "<group>"; };
@@ -996,6 +999,7 @@
 			isa = PBXGroup;
 			children = (
 				D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */,
+				D21DD33F222B5D550065D934 /* Purchase+Number.swift */,
 				D202D10721EAEBF2008153FB /* Purchase+Date.swift */,
 				D21DD33C222B524B0065D934 /* Purchase+Currency.swift */,
 				D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */,
@@ -1843,6 +1847,7 @@
 				D202D10B21EB0670008153FB /* Model+Date.swift in Sources */,
 				D298CB2920D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */,
 				D210EDCE21F14E5F00467AF2 /* Model+Similar.swift in Sources */,
+				D21DD340222B5D550065D934 /* Purchase+Number.swift in Sources */,
 				D29E457F20DB23FF000624B5 /* CloudStorable.swift in Sources */,
 				D248355D21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */,
 				D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */,
@@ -1897,6 +1902,7 @@
 				D2B7C9CD20D4D722001B51B1 /* LocalPersistentContainer.swift in Sources */,
 				D202D11221EB199E008153FB /* Decoder+Date.swift in Sources */,
 				D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */,
+				D21DD341222B5D550065D934 /* Purchase+Number.swift in Sources */,
 				D202D10C21EB0670008153FB /* Model+Date.swift in Sources */,
 				D295D8AB21EADDDE00BBD204 /* Purchase+FetchRequests.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,

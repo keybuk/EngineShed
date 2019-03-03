@@ -35,8 +35,8 @@ class PurchaseLimitedEditionTableViewCell : UITableViewCell, PurchaseSettable {
 
     func configureCell() {
         limitedEditionLabel.text = purchase?.limitedEdition
-        limitedEditionNumberLabel.text = (purchase?.limitedEditionNumber).flatMap({ "\($0)" })
-        limitedEditionCountLabel.text = (purchase?.limitedEditionCount).flatMap({ "\($0)" })
+        limitedEditionNumberLabel.text = purchase?.limitedEditionNumberAsString
+        limitedEditionCountLabel.text = purchase?.limitedEditionCountAsString
     }
 
 }

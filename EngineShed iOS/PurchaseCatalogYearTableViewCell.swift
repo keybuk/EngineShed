@@ -32,7 +32,7 @@ class PurchaseCatalogYearTableViewCell : UITableViewCell, PurchaseSettable {
     }
 
     func configureCell() {
-        catalogYearLabel.text = (purchase?.catalogYear).flatMap({ "\($0)" })
+        catalogYearLabel.text = purchase?.catalogYearAsString
     }
 
 }
