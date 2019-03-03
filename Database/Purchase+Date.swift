@@ -22,14 +22,15 @@ extension Purchase {
     public var dateAsDate: Date? {
         get {
             return date.flatMap { dateComponents -> Date? in
-                let calendar = dateComponents.calendar ?? Calendar.current
+                let calendar = Calendar.current
                 return calendar.date(from: dateComponents as DateComponents)
             }
         }
 
         set {
             date = newValue.flatMap {
-                return Calendar.current.dateComponents([ .year, .month, .day ], from: $0) as NSDateComponents?
+                let calendar = Calendar.current
+                return calendar.dateComponents([ .year, .month, .day ], from: $0) as NSDateComponents?
             }
         }
     }
@@ -67,8 +68,8 @@ extension Purchase {
             return
         }
 
-        let calendar = dateComponents.calendar ?? Calendar.current
-        dateComponents.timeZone = TimeZone(abbreviation: "UTC")!
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
 
         let dateForSort = calendar.date(from: dateComponents)
         if self.dateForSort != dateForSort { self.dateForSort = dateForSort }

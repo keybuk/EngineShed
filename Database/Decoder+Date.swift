@@ -22,14 +22,15 @@ extension Decoder {
     public var firmwareDateAsDate: Date? {
         get {
             return firmwareDate.flatMap { dateComponents -> Date? in
-                let calendar = dateComponents.calendar ?? Calendar.current
+                let calendar = Calendar.current
                 return calendar.date(from: dateComponents as DateComponents)
             }
         }
 
         set {
             firmwareDate = newValue.flatMap {
-                return Calendar.current.dateComponents([ .year, .month, .day ], from: $0) as NSDateComponents?
+                let calendar = Calendar.current
+                return calendar.dateComponents([ .year, .month, .day ], from: $0) as NSDateComponents?
             }
         }
     }
