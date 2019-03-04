@@ -60,7 +60,7 @@ public final class CloudObserver {
     var persistentContainer: NSPersistentContainer
 
     /// Managed object types to be stored.
-    var storableTypes: [(NSManagedObject & CloudStorable).Type]
+    var storableTypes: [CloudStorable.Type]
 
     /// Label for dispatch queue to ensure serial operation.
     let queueLabel = "com.netsplit.EngineShed.Database.CloudObserver"
@@ -71,7 +71,7 @@ public final class CloudObserver {
     /// Subscription identifier registered for notifications.
     let subscriptionID = "private-changes"
 
-    init(database: CKDatabase, persistentContainer: NSPersistentContainer, storableTypes: [(NSManagedObject & CloudStorable).Type]) {
+    init(database: CKDatabase, persistentContainer: NSPersistentContainer, storableTypes: [CloudStorable.Type]) {
         self.database = database
         self.persistentContainer = persistentContainer
         self.storableTypes = storableTypes

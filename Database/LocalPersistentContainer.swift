@@ -28,7 +28,7 @@ public class LocalPersistentContainer : NSPersistentContainer {
     public private(set) var cloudProvider: CloudProvider!
 
     /// Managed object types that we store in CloudKit.
-    let storableTypes: [(NSManagedObject & CloudStorable).Type] = [
+    let storableTypes: [CloudStorable.Type] = [
         Purchase.self,
         Model.self,
         DecoderType.self,

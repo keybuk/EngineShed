@@ -144,8 +144,6 @@
 		D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */; };
 		D29E457F20DB23FF000624B5 /* CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457E20DB23FF000624B5 /* CloudStorable.swift */; };
 		D29E458020DB23FF000624B5 /* CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E457E20DB23FF000624B5 /* CloudStorable.swift */; };
-		D29E458220DB29E5000624B5 /* NSManagedObject+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+CloudStorable.swift */; };
-		D29E458320DB29E5000624B5 /* NSManagedObject+CloudStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E458120DB29E5000624B5 /* NSManagedObject+CloudStorable.swift */; };
 		D2A41177212630B900B6C198 /* Util.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A4116E212630B900B6C198 /* Util.framework */; };
 		D2A4117E212630B900B6C198 /* UtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4117D212630B900B6C198 /* UtilTests.swift */; };
 		D2A41180212630B900B6C198 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = D2A41170212630B900B6C198 /* Util.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -490,7 +488,6 @@
 		D298CB2620D8163A00827F68 /* Purchase+CloudStorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+CloudStorable.swift"; sourceTree = "<group>"; };
 		D29E457520DB1724000624B5 /* NSManagedObject+TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+TypeAliases.swift"; sourceTree = "<group>"; };
 		D29E457E20DB23FF000624B5 /* CloudStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorable.swift; sourceTree = "<group>"; };
-		D29E458120DB29E5000624B5 /* NSManagedObject+CloudStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+CloudStorable.swift"; sourceTree = "<group>"; };
 		D2A4116E212630B900B6C198 /* Util.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Util.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A41170212630B900B6C198 /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		D2A41171212630B900B6C198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1135,7 +1132,6 @@
 				D298CAF220D737C800827F68 /* CloudProvider.swift */,
 				D25828BB21DEFF450094918F /* CloudProviderDelegate.swift */,
 				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
-				D29E458120DB29E5000624B5 /* NSManagedObject+CloudStorable.swift */,
 			);
 			name = CloudKit;
 			sourceTree = "<group>";
@@ -1864,7 +1860,6 @@
 				D248355D21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */,
 				D21DD346222C83A90065D934 /* Purchase+Validate.swift in Sources */,
 				D28758232105FB7400EF722D /* TrainMember+FetchRequests.swift in Sources */,
-				D29E458220DB29E5000624B5 /* NSManagedObject+CloudStorable.swift in Sources */,
 				D298CB3120D8163A00827F68 /* Model+CloudStorable.swift in Sources */,
 				D248355721D6E23A00495FC0 /* CloudObserver.swift in Sources */,
 				D295D8AA21EADDDE00BBD204 /* Purchase+FetchRequests.swift in Sources */,
@@ -1926,7 +1921,6 @@
 				D2820D04222484C000D9B3F8 /* CKDataAsset.swift in Sources */,
 				D2AF28AE2110277300374975 /* Purchase+WillSave.swift in Sources */,
 				D298CB3220D8163A00827F68 /* Model+CloudStorable.swift in Sources */,
-				D29E458320DB29E5000624B5 /* NSManagedObject+CloudStorable.swift in Sources */,
 				D2AF28BA21102DBC00374975 /* Model+FetchRequests.swift in Sources */,
 				D248356121D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift in Sources */,
 				D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,

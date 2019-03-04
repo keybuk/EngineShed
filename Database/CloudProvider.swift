@@ -51,7 +51,7 @@ public final class CloudProvider {
     var persistentContainer: NSPersistentContainer
 
     /// Managed object types to be stored.
-    var storableTypes: [(NSManagedObject & CloudStorable).Type]
+    var storableTypes: [CloudStorable.Type]
 
     /// Delegate to receive notification of events.
     public var delegate: CloudProviderDelegate?
@@ -62,7 +62,7 @@ public final class CloudProvider {
     /// Key to ignore contexts and avoid sync loops.
     static let ignoreChangesKey = "EngineShedIgnoreChanges"
     
-    init(container: CKContainer, database: CKDatabase, persistentContainer: NSPersistentContainer, storableTypes: [(NSManagedObject & CloudStorable).Type]) {
+    init(container: CKContainer, database: CKDatabase, persistentContainer: NSPersistentContainer, storableTypes: [CloudStorable.Type]) {
         self.container = container
         self.database = database
         self.persistentContainer = persistentContainer
@@ -94,7 +94,7 @@ public final class CloudProvider {
         // than after, so in the case of retry after a failure, we send an update for the same
         // object rather than duplicating it.
         for object in context.insertedObjects {
-            if let storable = object as? NSManagedObject & CloudStorable {
+            if let storable = object as? CloudStorable {
                 storable.createRecord(in: zoneID)
             }
         }
@@ -122,7 +122,7 @@ public final class CloudProvider {
         // Save all of the keys of newly inserted objects that can be synchronized.
         if let insertedObjects = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject> {
             for object in insertedObjects {
-                if let storable = object as? NSManagedObject & CloudStorable,
+                if let storable = object as? CloudStorable,
                     let record = storable.syncToRecord(forKeys: nil)
                 {
                     saveRecords.append(record)
@@ -137,7 +137,7 @@ public final class CloudProvider {
 
                 // Retrieve the set of changed keys recorded in the WillSave notification and
                 // only update the record using those.
-                if let storable = object as? NSManagedObject & CloudStorable,
+                if let storable = object as? CloudStorable,
                     let record = storable.syncToRecord(forKeys: changedKeys)
                 {
                     saveRecords.append(record)
@@ -148,7 +148,7 @@ public final class CloudProvider {
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject> {
             for object in deletedObjects {
                 guard !object.isInserted && !object.isUpdated else { preconditionFailure("Object deleted and inserted or updated") }
-                if let storable = object as? NSManagedObject & CloudStorable,
+                if let storable = object as? CloudStorable,
                     let recordID = storable.recordID
                 {
                     deleteRecordIDs.append(recordID)
