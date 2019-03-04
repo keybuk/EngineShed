@@ -17,6 +17,7 @@ class PurchaseConditionEditTableViewCell : UITableViewCell, UITextFieldDelegate 
     var purchase: Purchase? {
         didSet {
             configureView()
+            observePurchase()
         }
     }
 
@@ -37,8 +38,7 @@ class PurchaseConditionEditTableViewCell : UITableViewCell, UITextFieldDelegate 
     }
 
     func configureView() {
-        // FIXME: enum
-//        textField.text = purchase?.condition
+        textField.text = purchase?.condition.flatMap { "\($0)" }
     }
 
     // MARK: - UIResponder
@@ -66,6 +66,22 @@ class PurchaseConditionEditTableViewCell : UITableViewCell, UITextFieldDelegate 
         // FIXME: enum
 //        purchase?.condition = textField.text
     }
+
+    // MARK: - Object management and observation
+
+    var observers: [NSKeyValueObservation] = []
+
+    func observePurchase() {
+        observers.removeAll()
+        guard let purchase = purchase else { return }
+
+        // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
+        // temporarily replace with Cocoa KVO if necessary.
+        observers.append(purchase.observe(\.conditionRawValue) { (_, _) in
+            self.textField.text = purchase.condition.flatMap { "\($0)" }
+        })
+    }
+
 
     // MARK: - Notifications
 

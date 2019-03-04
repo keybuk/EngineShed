@@ -413,4 +413,14 @@ class PurchaseEditTableViewController : UITableViewController {
             }
         }
     }
+
+    // MARK: -
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "purchaseConditionPicker" {
+            let viewController = segue.destination as! PurchaseConditionPickerTableViewController
+            viewController.purchase = purchase
+        }
+    }
+
 }

@@ -18,6 +18,7 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
     var purchase: Purchase? {
         didSet {
             configureView()
+            observePurchase()
         }
     }
 
@@ -48,8 +49,6 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
     func configureView() {
         textField.text = purchase?.dateAsString
         clearButton.isHidden = purchase?.date == nil
-
-        observePurchase()
     }
 
     // MARK: - UIResponder

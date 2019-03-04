@@ -33,6 +33,7 @@
 		D21DD343222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */; };
 		D21DD346222C83A90065D934 /* Purchase+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD344222C835A0065D934 /* Purchase+Validate.swift */; };
 		D21DD347222C83AA0065D934 /* Purchase+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD344222C835A0065D934 /* Purchase+Validate.swift */; };
+		D21DD34B222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD34A222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift */; };
 		D2278DFD21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */; };
 		D2278DFE21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */; };
 		D23B8B8921E29A37004F994D /* ModelClassificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B8821E29A37004F994D /* ModelClassificationTableViewCell.swift */; };
@@ -398,6 +399,7 @@
 		D21DD33F222B5D550065D934 /* Purchase+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Number.swift"; sourceTree = "<group>"; };
 		D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		D21DD344222C835A0065D934 /* Purchase+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Validate.swift"; sourceTree = "<group>"; };
+		D21DD34A222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConditionPickerTableViewController.swift; sourceTree = "<group>"; };
 		D2278DFC21D9550C006C2EEB /* ZoneState+Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZoneState+Provider.swift"; sourceTree = "<group>"; };
 		D23B8B8821E29A37004F994D /* ModelClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassificationTableViewCell.swift; sourceTree = "<group>"; };
 		D23B8B8A21E29BF3004F994D /* ModelClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassTableViewCell.swift; sourceTree = "<group>"; };
@@ -909,6 +911,7 @@
 				D2C978772227912E00AB3C1C /* PurchaseStoreEditTableViewCell.swift */,
 				D2C978792227913800AB3C1C /* PurchasePriceEditTableViewCell.swift */,
 				D2C9787B2227913E00AB3C1C /* PurchaseConditionEditTableViewCell.swift */,
+				D21DD34A222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift */,
 				D2C9787D2227914400AB3C1C /* PurchaseValuationEditTableViewCell.swift */,
 				D2C9787F2227914B00AB3C1C /* PurchaseNotesEditTableViewCell.swift */,
 				D2C978652227733200AB3C1C /* PurchaseDeleteTableViewCell.swift */,
@@ -1808,6 +1811,7 @@
 				D212EA452150AEDA005FEED3 /* ClassificationsTableViewController.swift in Sources */,
 				D23B8BDA21E2C025004F994D /* PurchaseCatalogNumberTableViewCell.swift in Sources */,
 				D23B8BB921E2AF3A004F994D /* ModelSpeakerTableViewCell.swift in Sources */,
+				D21DD34B222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift in Sources */,
 				D2C978762227912200AB3C1C /* PurchaseDateEditTableViewCell.swift in Sources */,
 				D2DE5CB320F82A3100CABE34 /* ModelsTableViewController.swift in Sources */,
 				D23B8BCB21E2B7DD004F994D /* ModelLastOilTableViewCell.swift in Sources */,
