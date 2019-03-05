@@ -89,7 +89,7 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
             viewController.persistentContainer = persistentContainer
             viewController.addPurchase() { purchase in
                 self.addedPurchase = purchase
-                self.performSegue(withIdentifier: "trainAdded", sender: nil)
+                self.performSegue(withIdentifier: "purchaseAdded", sender: nil)
             }
         } else if segue.identifier == "purchaseAdded" {
             guard let purchase = addedPurchase else { return }
