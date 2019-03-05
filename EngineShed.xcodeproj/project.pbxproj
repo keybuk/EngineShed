@@ -227,6 +227,11 @@
 		D2E014E120D8DDD900FF8940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D215BEA820D4B53A0054FDCC /* Assets.xcassets */; };
 		D2F4EE98222E2245008FB14A /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
 		D2F4EE99222E2245008FB14A /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
+		D2F4EEBA222F2B22008FB14A /* DecoderTypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEB9222F2B22008FB14A /* DecoderTypesTableViewController.swift */; };
+		D2F4EEBC222F2E07008FB14A /* DecoderTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEBB222F2E07008FB14A /* DecoderTypeTableViewCell.swift */; };
+		D2F4EEBE222F2F61008FB14A /* DecoderType+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */; };
+		D2F4EEBF222F2F61008FB14A /* DecoderType+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */; };
+		D2F4EEC2222F3175008FB14A /* DecoderTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC1222F3175008FB14A /* DecoderTypeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -562,6 +567,10 @@
 		D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
 		D2DE5CC620F8A60000CABE34 /* TrainsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainsCollectionViewController.swift; sourceTree = "<group>"; };
 		D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Suggestions.swift"; sourceTree = "<group>"; };
+		D2F4EEB9222F2B22008FB14A /* DecoderTypesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypesTableViewController.swift; sourceTree = "<group>"; };
+		D2F4EEBB222F2E07008FB14A /* DecoderTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeTableViewCell.swift; sourceTree = "<group>"; };
+		D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+FetchRequests.swift"; sourceTree = "<group>"; };
+		D2F4EEC1222F3175008FB14A /* DecoderTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1024,6 +1033,7 @@
 				D202D10A21EB0670008153FB /* Model+Date.swift */,
 				D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */,
 				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
+				D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */,
 				D202D11021EB199E008153FB /* Decoder+Date.swift */,
 				D2BE3DD4215B59C50005D68F /* Train+Index.swift */,
 				D2AF28AF2110285B00374975 /* Train+WillSave.swift */,
@@ -1047,6 +1057,8 @@
 				D23B8B8621E29533004F994D /* Trains View */,
 				D2820D052224970100D9B3F8 /* Train View */,
 				D23B8B8721E29544004F994D /* Train Edit View */,
+				D2F4EEB8222F2B00008FB14A /* Decoder Types View */,
+				D2F4EEC0222F3163008FB14A /* Decoder Type View */,
 				D2B7C95C20D4BA30001B51B1 /* Main.storyboard */,
 				D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */,
 				D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */,
@@ -1138,6 +1150,23 @@
 				D29E457E20DB23FF000624B5 /* CloudStorable.swift */,
 			);
 			name = CloudKit;
+			sourceTree = "<group>";
+		};
+		D2F4EEB8222F2B00008FB14A /* Decoder Types View */ = {
+			isa = PBXGroup;
+			children = (
+				D2F4EEB9222F2B22008FB14A /* DecoderTypesTableViewController.swift */,
+				D2F4EEBB222F2E07008FB14A /* DecoderTypeTableViewCell.swift */,
+			);
+			name = "Decoder Types View";
+			sourceTree = "<group>";
+		};
+		D2F4EEC0222F3163008FB14A /* Decoder Type View */ = {
+			isa = PBXGroup;
+			children = (
+				D2F4EEC1222F3175008FB14A /* DecoderTypeTableViewController.swift */,
+			);
+			name = "Decoder Type View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1753,6 +1782,7 @@
 				D23B8BE821E2C137004F994D /* PurchaseConditionTableViewCell.swift in Sources */,
 				D2C9786A222790E800AB3C1C /* PurchaseCatalogNumberEditTableViewCell.swift in Sources */,
 				D23B8B9921E2A167004F994D /* ModelMotorTableViewCell.swift in Sources */,
+				D2F4EEBC222F2E07008FB14A /* DecoderTypeTableViewCell.swift in Sources */,
 				D2C9787E2227914400AB3C1C /* PurchaseValuationEditTableViewCell.swift in Sources */,
 				D23B8BC121E2B579004F994D /* ModelDetailPartsTableViewCell.swift in Sources */,
 				D23B8BE421E2C117004F994D /* PurchaseStoreTableViewCell.swift in Sources */,
@@ -1815,6 +1845,7 @@
 				D2C978762227912200AB3C1C /* PurchaseDateEditTableViewCell.swift in Sources */,
 				D2DE5CB320F82A3100CABE34 /* ModelsTableViewController.swift in Sources */,
 				D23B8BCB21E2B7DD004F994D /* ModelLastOilTableViewCell.swift in Sources */,
+				D2F4EEC2222F3175008FB14A /* DecoderTypeTableViewController.swift in Sources */,
 				D2820D0D2224A53000D9B3F8 /* TrainNotesTableViewCell.swift in Sources */,
 				D23B8BA721E2AE57004F994D /* ModelDecoderSerialNumberTableViewCell.swift in Sources */,
 				D23B8B9D21E2A18E004F994D /* ModelLightsTableViewCell.swift in Sources */,
@@ -1823,6 +1854,7 @@
 				D23B8BD621E2BEA4004F994D /* PurchaseTableViewController.swift in Sources */,
 				D2C9787A2227913800AB3C1C /* PurchasePriceEditTableViewCell.swift in Sources */,
 				D23B8BCD21E2B895004F994D /* ModelNotesTableViewCell.swift in Sources */,
+				D2F4EEBA222F2B22008FB14A /* DecoderTypesTableViewController.swift in Sources */,
 				D2C978702227910900AB3C1C /* PurchaseLimitedEditionEditTableViewCell.swift in Sources */,
 				D23B8BB321E2AEFD004F994D /* ModelDecoderSoundProjectVersionTableViewCell.swift in Sources */,
 				D2B9A1B42150C74600156100 /* ModelTableViewController.swift in Sources */,
@@ -1889,6 +1921,7 @@
 				D2820D03222484C000D9B3F8 /* CKDataAsset.swift in Sources */,
 				D298CB2B20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */,
 				D2AF28AD2110277300374975 /* Purchase+WillSave.swift in Sources */,
+				D2F4EEBE222F2F61008FB14A /* DecoderType+FetchRequests.swift in Sources */,
 				D2B2AF4F20D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
 				D298CB3320D8163A00827F68 /* Purchase+CloudStorable.swift in Sources */,
 				D248356021D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift in Sources */,
@@ -1918,6 +1951,7 @@
 				D21DD341222B5D550065D934 /* Purchase+Number.swift in Sources */,
 				D202D10C21EB0670008153FB /* Model+Date.swift in Sources */,
 				D295D8AB21EADDDE00BBD204 /* Purchase+FetchRequests.swift in Sources */,
+				D2F4EEBF222F2F61008FB14A /* DecoderType+FetchRequests.swift in Sources */,
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D21DD33E222B524B0065D934 /* Purchase+Currency.swift in Sources */,
 				D298CB2A20D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */,

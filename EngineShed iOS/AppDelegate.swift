@@ -92,6 +92,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 let viewController = navigationController.topViewController as! TrainsCollectionViewController
                 viewController.persistentContainer = persistentContainer
             }
+
+            if let splitViewController = tabBarController.viewControllers?[3] as? UISplitViewController {
+                let navigationController = splitViewController.viewControllers.last! as! UINavigationController
+                navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+                splitViewController.delegate = self
+
+                let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
+                let viewController = masterNavigationController.topViewController as! DecoderTypesTableViewController
+                viewController.persistentContainer = persistentContainer
+            }
         }
 
         return true
@@ -170,6 +180,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             viewController.model == nil { return true }
         if let viewController = secondaryAsNavController.topViewController as? PurchaseTableViewController,
             viewController.purchase == nil { return true }
+        if let viewController = secondaryAsNavController.topViewController as? DecoderTypeTableViewController,
+            viewController.decoderType == nil { return true }
 
         return false
     }
