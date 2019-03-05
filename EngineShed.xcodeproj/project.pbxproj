@@ -225,6 +225,8 @@
 		D2DE5CC120F8517500CABE34 /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */; };
 		D2DE5CC720F8A60000CABE34 /* TrainsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CC620F8A60000CABE34 /* TrainsCollectionViewController.swift */; };
 		D2E014E120D8DDD900FF8940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D215BEA820D4B53A0054FDCC /* Assets.xcassets */; };
+		D2F4EE98222E2245008FB14A /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
+		D2F4EE99222E2245008FB14A /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -559,6 +561,7 @@
 		D2DE5CBB20F8517500CABE34 /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
 		D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
 		D2DE5CC620F8A60000CABE34 /* TrainsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainsCollectionViewController.swift; sourceTree = "<group>"; };
+		D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Suggestions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1005,6 +1008,7 @@
 			isa = PBXGroup;
 			children = (
 				D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */,
+				D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */,
 				D21DD33F222B5D550065D934 /* Purchase+Number.swift */,
 				D202D10721EAEBF2008153FB /* Purchase+Date.swift */,
 				D21DD33C222B524B0065D934 /* Purchase+Currency.swift */,
@@ -1868,6 +1872,7 @@
 				D2DE5CBE20F8517500CABE34 /* Model+Disposition.swift in Sources */,
 				D2DE5CBC20F8517500CABE34 /* Model+Classification.swift in Sources */,
 				D298CB2720D8163A00827F68 /* Train+CloudStorable.swift in Sources */,
+				D2F4EE98222E2245008FB14A /* Purchase+Suggestions.swift in Sources */,
 				D25828BC21DEFF450094918F /* CloudProviderDelegate.swift in Sources */,
 				D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */,
 				D202D10821EAEBF2008153FB /* Purchase+Date.swift in Sources */,
@@ -1918,6 +1923,7 @@
 				D298CB2A20D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */,
 				D2AF28B12110285B00374975 /* Train+WillSave.swift in Sources */,
 				D2BE3DD6215B59C50005D68F /* Train+Index.swift in Sources */,
+				D2F4EE99222E2245008FB14A /* Purchase+Suggestions.swift in Sources */,
 				D2820D04222484C000D9B3F8 /* CKDataAsset.swift in Sources */,
 				D2AF28AE2110277300374975 /* Purchase+WillSave.swift in Sources */,
 				D298CB3220D8163A00827F68 /* Model+CloudStorable.swift in Sources */,
