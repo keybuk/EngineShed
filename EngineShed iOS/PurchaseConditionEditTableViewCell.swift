@@ -78,7 +78,9 @@ class PurchaseConditionEditTableViewCell : UITableViewCell, UITextFieldDelegate 
         // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
         // temporarily replace with Cocoa KVO if necessary.
         observers.append(purchase.observe(\.conditionRawValue) { (_, _) in
-            self.textField.text = purchase.condition.flatMap { "\($0)" }
+            DispatchQueue.main.async {
+                self.textField.text = purchase.condition.flatMap { "\($0)" }
+            }
         })
     }
 

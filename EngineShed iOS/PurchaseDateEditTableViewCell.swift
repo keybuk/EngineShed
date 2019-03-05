@@ -92,8 +92,10 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
         // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
         // temporarily replace with Cocoa KVO if necessary.
         observers.append(purchase.observe(\.date) { (_, _) in
-            self.textField.text = purchase.dateAsString
-            self.clearButton.isHidden = purchase.date == nil
+            DispatchQueue.main.async {
+                self.textField.text = purchase.dateAsString
+                self.clearButton.isHidden = purchase.date == nil
+            }
         })
     }
 
