@@ -232,6 +232,12 @@
 		D2F4EEBE222F2F61008FB14A /* DecoderType+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */; };
 		D2F4EEBF222F2F61008FB14A /* DecoderType+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */; };
 		D2F4EEC2222F3175008FB14A /* DecoderTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC1222F3175008FB14A /* DecoderTypeTableViewController.swift */; };
+		D2F4EEC4222F43A4008FB14A /* DecoderType+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC3222F43A4008FB14A /* DecoderType+WillSave.swift */; };
+		D2F4EEC5222F43A5008FB14A /* DecoderType+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC3222F43A4008FB14A /* DecoderType+WillSave.swift */; };
+		D2F4EEC7222F43C9008FB14A /* DecoderType+Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC6222F43C9008FB14A /* DecoderType+Stock.swift */; };
+		D2F4EEC8222F43C9008FB14A /* DecoderType+Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC6222F43C9008FB14A /* DecoderType+Stock.swift */; };
+		D2F4EECA222F4489008FB14A /* Decoder+Unallocated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC9222F4489008FB14A /* Decoder+Unallocated.swift */; };
+		D2F4EECB222F4489008FB14A /* Decoder+Unallocated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC9222F4489008FB14A /* Decoder+Unallocated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -571,6 +577,9 @@
 		D2F4EEBB222F2E07008FB14A /* DecoderTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2F4EEC1222F3175008FB14A /* DecoderTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeTableViewController.swift; sourceTree = "<group>"; };
+		D2F4EEC3222F43A4008FB14A /* DecoderType+WillSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+WillSave.swift"; sourceTree = "<group>"; };
+		D2F4EEC6222F43C9008FB14A /* DecoderType+Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Stock.swift"; sourceTree = "<group>"; };
+		D2F4EEC9222F4489008FB14A /* Decoder+Unallocated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Unallocated.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1033,8 +1042,11 @@
 				D202D10A21EB0670008153FB /* Model+Date.swift */,
 				D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */,
 				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
+				D2F4EEC6222F43C9008FB14A /* DecoderType+Stock.swift */,
+				D2F4EEC3222F43A4008FB14A /* DecoderType+WillSave.swift */,
 				D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */,
 				D202D11021EB199E008153FB /* Decoder+Date.swift */,
+				D2F4EEC9222F4489008FB14A /* Decoder+Unallocated.swift */,
 				D2BE3DD4215B59C50005D68F /* Train+Index.swift */,
 				D2AF28AF2110285B00374975 /* Train+WillSave.swift */,
 				D25828C021E028920094918F /* Train+Validate.swift */,
@@ -1901,6 +1913,7 @@
 				D295D8AA21EADDDE00BBD204 /* Purchase+FetchRequests.swift in Sources */,
 				D2278DFD21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */,
 				D29E457620DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
+				D2F4EECA222F4489008FB14A /* Decoder+Unallocated.swift in Sources */,
 				D2DE5CBE20F8517500CABE34 /* Model+Disposition.swift in Sources */,
 				D2DE5CBC20F8517500CABE34 /* Model+Classification.swift in Sources */,
 				D298CB2720D8163A00827F68 /* Train+CloudStorable.swift in Sources */,
@@ -1917,6 +1930,7 @@
 				D298CB1A20D8143A00827F68 /* Model+Image.swift in Sources */,
 				D200F97320DE23EB003BC8D1 /* Purchase+Similar.swift in Sources */,
 				D298CB2D20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */,
+				D2F4EEC4222F43A4008FB14A /* DecoderType+WillSave.swift in Sources */,
 				D2AF28B02110285B00374975 /* Train+WillSave.swift in Sources */,
 				D2820D03222484C000D9B3F8 /* CKDataAsset.swift in Sources */,
 				D298CB2B20D8163A00827F68 /* DecoderType+CloudStorable.swift in Sources */,
@@ -1925,6 +1939,7 @@
 				D2B2AF4F20D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
 				D298CB3320D8163A00827F68 /* Purchase+CloudStorable.swift in Sources */,
 				D248356021D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift in Sources */,
+				D2F4EEC7222F43C9008FB14A /* DecoderType+Stock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1955,6 +1970,7 @@
 				D2B7C9D320D4D905001B51B1 /* EngineShed.xcdatamodeld in Sources */,
 				D21DD33E222B524B0065D934 /* Purchase+Currency.swift in Sources */,
 				D298CB2A20D8163A00827F68 /* TrainMember+CloudStorable.swift in Sources */,
+				D2F4EECB222F4489008FB14A /* Decoder+Unallocated.swift in Sources */,
 				D2AF28B12110285B00374975 /* Train+WillSave.swift in Sources */,
 				D2BE3DD6215B59C50005D68F /* Train+Index.swift in Sources */,
 				D2F4EE99222E2245008FB14A /* Purchase+Suggestions.swift in Sources */,
@@ -1973,7 +1989,9 @@
 				D29E457720DB1724000624B5 /* NSManagedObject+TypeAliases.swift in Sources */,
 				D298CAF420D737C800827F68 /* CloudProvider.swift in Sources */,
 				D248355E21D845B200495FC0 /* DatabaseState+Observer.swift in Sources */,
+				D2F4EEC5222F43A5008FB14A /* DecoderType+WillSave.swift in Sources */,
 				D2BE3DD3215B593E0005D68F /* Purchase+Index.swift in Sources */,
+				D2F4EEC8222F43C9008FB14A /* DecoderType+Stock.swift in Sources */,
 				D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */,
 				D298CB2E20D8163A00827F68 /* Decoder+CloudStorable.swift in Sources */,
 				D2278DFE21D9550C006C2EEB /* ZoneState+Provider.swift in Sources */,

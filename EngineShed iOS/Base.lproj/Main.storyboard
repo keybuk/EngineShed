@@ -3281,7 +3281,7 @@
                                             </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="v3W-Ei-QRz">
-                                            <rect key="frame" x="102" y="6" width="257" height="55.5"/>
+                                            <rect key="frame" x="102" y="6" width="220.5" height="55.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ESU 58429" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="658-UY-QCR">
                                                     <rect key="frame" x="0.0" y="0.0" width="91.5" height="20.5"/>
@@ -3303,24 +3303,36 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FL6-0d-L77">
+                                            <rect key="frame" x="328.5" y="18.5" width="30.5" height="30.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="10" backgroundImage="rounded-corner"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="v3W-Ei-QRz" secondAttribute="trailing" id="41b-B1-sfV"/>
+                                        <constraint firstItem="FL6-0d-L77" firstAttribute="leading" secondItem="v3W-Ei-QRz" secondAttribute="trailing" constant="6" id="5Kn-q7-mqk"/>
                                         <constraint firstItem="v3W-Ei-QRz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TSb-BZ-1Ck" secondAttribute="top" constant="6" id="8Ud-1y-myQ"/>
                                         <constraint firstItem="v3W-Ei-QRz" firstAttribute="centerY" secondItem="3cJ-so-DF9" secondAttribute="centerY" id="DmX-ES-7Gu"/>
                                         <constraint firstItem="v3W-Ei-QRz" firstAttribute="leading" secondItem="3cJ-so-DF9" secondAttribute="trailing" constant="2" id="Mwn-LH-QfU"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3cJ-so-DF9" secondAttribute="bottom" id="PIM-Xp-BS0"/>
                                         <constraint firstItem="3cJ-so-DF9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TSb-BZ-1Ck" secondAttribute="top" id="ThL-75-O6w"/>
+                                        <constraint firstItem="FL6-0d-L77" firstAttribute="centerY" secondItem="TSb-BZ-1Ck" secondAttribute="centerY" id="YCQ-cj-J22"/>
                                         <constraint firstItem="3cJ-so-DF9" firstAttribute="leading" secondItem="TSb-BZ-1Ck" secondAttribute="leading" id="hTd-zb-EGr"/>
-                                        <constraint firstItem="v3W-Ei-QRz" firstAttribute="trailing" secondItem="TSb-BZ-1Ck" secondAttribute="trailingMargin" id="hez-ck-29I"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="v3W-Ei-QRz" secondAttribute="bottom" constant="6" id="jIn-Xp-GeP"/>
                                         <constraint firstItem="3cJ-so-DF9" firstAttribute="centerY" secondItem="TSb-BZ-1Ck" secondAttribute="centerY" id="nlZ-Dd-gnX"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="FL6-0d-L77" firstAttribute="trailing" secondItem="1Rp-KW-lSY" secondAttribute="trailingMargin" id="8iU-xQ-mKC"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="decoderTypeImageView" destination="3cJ-so-DF9" id="Wpn-LX-Ut4"/>
                                     <outlet property="productFamilyLabel" destination="GAN-oX-7h1" id="beC-Sa-lLU"/>
                                     <outlet property="productLabel" destination="658-UY-QCR" id="FV2-ST-99Z"/>
                                     <outlet property="socketLabel" destination="Odb-ad-Rqz" id="mQi-DX-SqR"/>
+                                    <outlet property="stockButton" destination="FL6-0d-L77" id="7mj-79-SFk"/>
                                     <segue destination="sGa-NP-Oj0" kind="showDetail" identifier="decoderType" id="vpC-UR-4HW"/>
                                 </connections>
                             </tableViewCell>
@@ -3474,6 +3486,7 @@
         <image name="Clear Glyph - On Light" width="16" height="16"/>
         <image name="Light - Disclosure" width="10" height="15"/>
         <image name="R3612" width="1440" height="810"/>
+        <image name="rounded-corner" width="30.5" height="30.5"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vpC-UR-4HW"/>

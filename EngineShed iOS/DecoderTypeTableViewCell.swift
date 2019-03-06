@@ -16,6 +16,7 @@ class DecoderTypeTableViewCell : UITableViewCell {
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var productFamilyLabel: UILabel!
     @IBOutlet weak var socketLabel: UILabel!
+    @IBOutlet weak var stockButton: UIButton!
 
     var decoderType: DecoderType? {
         didSet {
@@ -38,6 +39,23 @@ class DecoderTypeTableViewCell : UITableViewCell {
         productLabel.text = [ decoderType?.manufacturer, decoderType?.productCode ].compactMap({ $0 }).joined(separator: " ")
         productFamilyLabel.text = decoderType?.productFamily
         socketLabel.text = decoderType?.socket
+
+        if let minimumStock = decoderType?.minimumStock,
+            let remainingStock = decoderType?.remainingStock,
+            minimumStock > 0
+        {
+            stockButton.setTitle("\(remainingStock)", for: .normal)
+            stockButton.isHidden = false
+
+            if remainingStock < minimumStock {
+                stockButton.tintColor = UIColor(named: "stockLowColor")
+            } else {
+                stockButton.tintColor = UIColor(named: "stockNormalColor")
+            }
+        } else {
+            stockButton.setTitle(nil, for: .normal)
+            stockButton.isHidden = true
+        }
     }
 
 }
