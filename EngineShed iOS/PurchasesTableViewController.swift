@@ -15,7 +15,7 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
 
     var persistentContainer: NSPersistentContainer?
 
-    var ordering: PurchaseOrdering = .catalog
+    var ordering: PurchaseOrdering = .date
     var fetchRequest: NSFetchRequest<Purchase>?
 
     override func viewDidLoad() {
@@ -104,8 +104,8 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
 
     @IBAction func groupChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0: ordering = .catalog
-        case 1: ordering = .date
+        case 0: ordering = .date
+        case 1: ordering = .catalog
         default: return
         }
 

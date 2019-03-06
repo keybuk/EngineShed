@@ -2896,8 +2896,8 @@
                             <rect key="frame" x="84" y="7" width="207" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="Catalog"/>
                                 <segment title="Purchase Date"/>
+                                <segment title="Catalog"/>
                             </segments>
                             <connections>
                                 <action selector="groupChanged:" destination="gIP-m3-OKu" eventType="valueChanged" id="iHl-DW-dJd"/>
@@ -3490,12 +3490,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vpC-UR-4HW"/>
-        <segue reference="QLA-Sq-wEi"/>
+        <segue reference="U0Y-gq-7f1"/>
         <segue reference="x7g-2G-nuO"/>
         <segue reference="fje-MW-QxC"/>
         <segue reference="7r7-ye-Aen"/>
         <segue reference="GPI-RN-COd"/>
-        <segue reference="c21-Hk-PA0"/>
+        <segue reference="mmG-bt-YYK"/>
         <segue reference="wnU-Dv-X6z"/>
     </inferredMetricsTieBreakers>
 </document>
