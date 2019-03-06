@@ -43,6 +43,13 @@ class ModelTableViewController : UITableViewController {
         tableView.register(UINib(nibName: "DetailsHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "detailsHeader")
         tableView.register(UINib(nibName: "MaintenanceHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "maintenanceHeader")
         tableView.register(UINib(nibName: "NotesHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "notesHeader")
+
+        // Register for notifications of changes to the view context so we can update the view
+        // when changes to the record are merged back into it.
+        if let managedObjectContext = persistentContainer?.viewContext {
+            let notificationCenter = NotificationCenter.default
+            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+        }
     }
 
     func configureView() {
@@ -180,6 +187,30 @@ class ModelTableViewController : UITableViewController {
             viewController.persistentContainer = persistentContainer
             viewController.purchase = model?.purchase
 
+        }
+    }
+
+    // MARK: - Notifications
+
+    @objc
+    func managedObjectContextObjectsDidChange(_ notification: Notification) {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+        guard let userInfo = notification.userInfo else { return }
+        guard let model = model else { return }
+
+        // Check for a refresh of our model object, by sync from cloud or merge after save
+        // from other context, and reload the table.
+        if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
+            refreshedObjects.contains(model)
+        {
+            tableView.reloadData()
+        }
+
+        // Check for a deletion of our model object, taking the view off the stack.
+        if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
+            deletedObjects.contains(model)
+        {
+            navigationController?.popViewController(animated: false)
         }
     }
 

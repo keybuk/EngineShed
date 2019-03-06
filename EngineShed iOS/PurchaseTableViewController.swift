@@ -36,6 +36,13 @@ class PurchaseTableViewController : UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+
+        // Register for notifications of changes to the view context so we can update the view
+        // when changes to the record are merged back into it.
+        if let managedObjectContext = persistentContainer?.viewContext {
+            let notificationCenter = NotificationCenter.default
+            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+        }
     }
 
     // MARK: - Table view data source
@@ -131,6 +138,30 @@ class PurchaseTableViewController : UITableViewController {
             let viewController = navigationController.topViewController! as! PurchaseEditTableViewController
             viewController.persistentContainer = persistentContainer
             viewController.editPurchase(purchase)
+        }
+    }
+
+    // MARK: - Notifications
+
+    @objc
+    func managedObjectContextObjectsDidChange(_ notification: Notification) {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+        guard let userInfo = notification.userInfo else { return }
+        guard let purchase = purchase else { return }
+
+        // Check for a refresh of our purchase object, by sync from cloud or merge after save
+        // from other context, and reload the table.
+        if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
+            refreshedObjects.contains(purchase)
+        {
+            tableView.reloadData()
+        }
+
+        // Check for a deletion of our purchase object, taking the view off the stack.
+        if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
+            deletedObjects.contains(purchase)
+        {
+            navigationController?.popViewController(animated: false)
         }
     }
 

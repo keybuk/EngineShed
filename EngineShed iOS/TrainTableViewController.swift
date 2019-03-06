@@ -30,8 +30,8 @@ class TrainTableViewController : UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-        // Register for notifications of changes so we can update the field values when changed
-        // outside this view.
+        // Register for notifications of changes to the view context so we can update the view
+        // when changes to the record are merged back into it.
         if let managedObjectContext = persistentContainer?.viewContext {
             let notificationCenter = NotificationCenter.default
             notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
