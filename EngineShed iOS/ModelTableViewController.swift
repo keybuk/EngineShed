@@ -201,6 +201,7 @@ class ModelTableViewController : UITableViewController {
             deletedObjects.contains(model)
         {
             navigationController?.popViewController(animated: false)
+            self.model = nil
         }
     }
 

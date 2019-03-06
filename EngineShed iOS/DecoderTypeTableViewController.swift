@@ -127,6 +127,7 @@ class DecoderTypeTableViewController: UITableViewController {
             deletedObjects.contains(decoderType)
         {
             navigationController?.popViewController(animated: false)
+            self.decoderType = nil
         }
     }
 

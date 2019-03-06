@@ -162,6 +162,7 @@ class PurchaseTableViewController : UITableViewController {
             deletedObjects.contains(purchase)
         {
             navigationController?.popViewController(animated: false)
+            self.purchase = nil
         }
     }
 

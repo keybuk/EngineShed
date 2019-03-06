@@ -155,6 +155,7 @@ class TrainTableViewController : UITableViewController {
             deletedObjects.contains(train)
         {
             navigationController?.popViewController(animated: false)
+            self.train = nil
         }
     }
 
