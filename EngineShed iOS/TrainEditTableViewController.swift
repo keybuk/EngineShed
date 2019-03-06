@@ -95,7 +95,6 @@ class TrainEditTableViewController : UITableViewController {
                 return cell
             default: preconditionFailure("Unexpected indexPath: \(indexPath)")
             }
-
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
     }

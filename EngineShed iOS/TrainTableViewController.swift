@@ -124,7 +124,14 @@ class TrainTableViewController : UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "trainEdit" {
+        if segue.identifier == "trainMember" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let trainMember = train?.members![indexPath.row] as! TrainMember?
+
+            let viewController = segue.destination as! TrainMemberTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.trainMember = trainMember
+        } else if segue.identifier == "trainEdit" {
             guard let train = train else { return }
             let navigationController = segue.destination as! UINavigationController
 
