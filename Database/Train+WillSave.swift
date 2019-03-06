@@ -6,7 +6,7 @@
 //  Copyright © 2018 Scott James Remnant. All rights reserved.
 //
 
-import CoreData
+import Foundation
 
 extension Train {
 

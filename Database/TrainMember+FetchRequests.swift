@@ -6,6 +6,7 @@
 //  Copyright © 2018 Scott James Remnant. All rights reserved.
 //
 
+import Foundation
 import CoreData
 
 extension TrainMember {

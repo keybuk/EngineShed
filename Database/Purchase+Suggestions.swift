@@ -6,6 +6,7 @@
 //  Copyright © 2019 Scott James Remnant. All rights reserved.
 //
 
+import Foundation
 import CoreData
 
 extension Purchase {
