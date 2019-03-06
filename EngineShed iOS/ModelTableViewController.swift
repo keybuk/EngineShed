@@ -38,12 +38,6 @@ class ModelTableViewController : UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-        tableView.register(UINib(nibName: "ElectricalHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "electricalHeader")
-        tableView.register(UINib(nibName: "DCCHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "dccHeader")
-        tableView.register(UINib(nibName: "DetailsHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "detailsHeader")
-        tableView.register(UINib(nibName: "MaintenanceHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "maintenanceHeader")
-        tableView.register(UINib(nibName: "NotesHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "notesHeader")
-
         // Register for notifications of changes to the view context so we can update the view
         // when changes to the record are merged back into it.
         if let managedObjectContext = persistentContainer?.viewContext {
@@ -127,20 +121,16 @@ class ModelTableViewController : UITableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let identifier: String
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0: return nil
-        case 1: identifier = "electricalHeader"
-        case 2: identifier = "dccHeader"
-        case 3: identifier = "detailsHeader"
-        case 4: identifier = "maintenanceHeader"
-        case 5: identifier = "notesHeader"
+        case 1: return "Electrical"
+        case 2: return "DCC"
+        case 3: return "Details"
+        case 4: return "Maintenance"
+        case 5: return "Notes"
         default: preconditionFailure("Unexpected section: \(section)")
         }
-
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
-        return view
     }
 
     /*

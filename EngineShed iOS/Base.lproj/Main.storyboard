@@ -49,7 +49,7 @@
         <scene sceneID="dRQ-Ke-HNa">
             <objects>
                 <tableViewController id="de7-sQ-THj" customClass="ModelTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="40" sectionFooterHeight="28" id="f8S-kN-rXp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="40" sectionFooterHeight="28" id="f8S-kN-rXp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1247,7 +1247,7 @@
         <scene sceneID="AhB-6b-GzM">
             <objects>
                 <tableViewController id="S6m-nV-rET" customClass="PurchaseTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="40" sectionFooterHeight="28" id="ynx-ju-2SW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="40" sectionFooterHeight="28" id="ynx-ju-2SW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3490,12 +3490,12 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vpC-UR-4HW"/>
-        <segue reference="U0Y-gq-7f1"/>
+        <segue reference="QLA-Sq-wEi"/>
         <segue reference="x7g-2G-nuO"/>
         <segue reference="fje-MW-QxC"/>
         <segue reference="7r7-ye-Aen"/>
         <segue reference="GPI-RN-COd"/>
         <segue reference="c21-Hk-PA0"/>
-        <segue reference="ToH-YJ-ahj"/>
+        <segue reference="wnU-Dv-X6z"/>
     </inferredMetricsTieBreakers>
 </document>
