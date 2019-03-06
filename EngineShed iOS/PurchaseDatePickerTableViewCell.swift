@@ -34,6 +34,9 @@ class PurchaseDatePickerTableViewCell: UITableViewCell {
     }
 
     func configureView() {
+        // When the picker is shown, default the date in the purchase as today to match the
+        // picker.
+        if purchase?.dateAsDate == nil { purchase?.dateAsDate = Date() }
         datePicker.date = purchase?.dateAsDate ?? Date()
     }
 
