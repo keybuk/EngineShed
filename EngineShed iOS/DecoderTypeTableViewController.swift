@@ -126,8 +126,8 @@ class DecoderTypeTableViewController: UITableViewController {
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
             deletedObjects.contains(decoderType)
         {
-            navigationController?.popViewController(animated: false)
             self.decoderType = nil
+            navigationController?.popViewController(animated: false)
         }
     }
 

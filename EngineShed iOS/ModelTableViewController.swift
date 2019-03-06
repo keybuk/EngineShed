@@ -200,8 +200,8 @@ class ModelTableViewController : UITableViewController {
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
             deletedObjects.contains(model)
         {
-            navigationController?.popViewController(animated: false)
             self.model = nil
+            navigationController?.popViewController(animated: false)
         }
     }
 

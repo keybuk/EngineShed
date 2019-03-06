@@ -161,8 +161,8 @@ class PurchaseTableViewController : UITableViewController {
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
             deletedObjects.contains(purchase)
         {
-            navigationController?.popViewController(animated: false)
             self.purchase = nil
+            navigationController?.popViewController(animated: false)
         }
     }
 

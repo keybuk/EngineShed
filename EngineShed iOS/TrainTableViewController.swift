@@ -154,8 +154,8 @@ class TrainTableViewController : UITableViewController {
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
             deletedObjects.contains(train)
         {
-            navigationController?.popViewController(animated: false)
             self.train = nil
+            navigationController?.popViewController(animated: false)
         }
     }
 
