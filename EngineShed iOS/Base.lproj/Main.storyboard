@@ -307,16 +307,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="joE-Jl-cNP">
-                                            <rect key="frame" x="8" y="8" width="359" height="40.5"/>
+                                            <rect key="frame" x="16" y="11" width="343" height="35"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygm-48-427">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="14.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="—" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbU-2R-FUU">
-                                                    <rect key="frame" x="0.0" y="14.5" width="359" height="26"/>
+                                                    <rect key="frame" x="0.0" y="14.5" width="343" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1248,7 +1248,7 @@
             <objects>
                 <tableViewController id="S6m-nV-rET" customClass="PurchaseTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="40" sectionFooterHeight="28" id="ynx-ju-2SW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -3122,7 +3122,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="S6m-nV-rET" kind="showDetail" identifier="purchaseAdded" animates="NO" id="mmG-bt-YYK"/>
+                        <segue destination="uKp-ap-pwP" kind="showDetail" identifier="purchaseAdded" id="AGe-R9-RqP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTW-Er-HQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4480,11 +4480,11 @@
         <segue reference="b7R-tw-SjE"/>
         <segue reference="thw-bt-3zr"/>
         <segue reference="U0Y-gq-7f1"/>
-        <segue reference="x7g-2G-nuO"/>
+        <segue reference="AGe-R9-RqP"/>
         <segue reference="fje-MW-QxC"/>
         <segue reference="Tll-UG-LXB"/>
         <segue reference="GPI-RN-COd"/>
-        <segue reference="mmG-bt-YYK"/>
+        <segue reference="eFf-wH-92g"/>
         <segue reference="ToH-YJ-ahj"/>
     </inferredMetricsTieBreakers>
 </document>

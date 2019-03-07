@@ -94,7 +94,10 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
         } else if segue.identifier == "purchaseAdded" {
             guard let purchase = addedPurchase else { return }
             addedPurchase = nil
-            let viewController = segue.destination as! PurchaseTableViewController
+
+            let navigationController = segue.destination as! UINavigationController
+
+            let viewController = navigationController.topViewController as! PurchaseTableViewController
             viewController.persistentContainer = persistentContainer
             viewController.purchase = purchase
         }
