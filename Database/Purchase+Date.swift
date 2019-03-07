@@ -52,6 +52,7 @@ extension Purchase {
 
         let formatter = DateFormatter()
         formatter.locale = Locale.current
+        formatter.timeZone = TimeZone(abbreviation: "UTC")!
         formatter.setLocalizedDateFormatFromTemplate("MMMMyyyy")
 
         return formatter.string(from: dateForGrouping)
