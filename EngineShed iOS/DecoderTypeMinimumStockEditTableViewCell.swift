@@ -1,5 +1,5 @@
 //
-//  TrainMemberTitleEditTableViewCell.swift
+//  DecoderTypeMinimumStockEditTableViewCell.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 3/6/19.
@@ -10,11 +10,11 @@ import UIKit
 
 import Database
 
-class TrainMemberTitleEditTableViewCell : UITableViewCell, UITextFieldDelegate {
+class DecoderTypeMinimumStockEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
 
-    var trainMember: TrainMember? {
+    var decoderType: DecoderType? {
         didSet {
             configureView()
         }
@@ -35,7 +35,7 @@ class TrainMemberTitleEditTableViewCell : UITableViewCell, UITextFieldDelegate {
     }
 
     func configureView() {
-        textField.text = trainMember?.title
+        textField.text = decoderType?.minimumStockAsString
     }
 
     // MARK: - UIResponder
@@ -56,18 +56,30 @@ class TrainMemberTitleEditTableViewCell : UITableViewCell, UITextFieldDelegate {
         return true
     }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard var text = textField.text else { preconditionFailure("Replacing characters in range of nil text") }
+        guard let range = Range(range, in: text) else { preconditionFailure("Range doesn't map to text") }
+        text.replaceSubrange(range, with: string)
+
+        // Allow valid numbers and the empty string.
+        return Int16(text) != nil || text.isEmpty
+    }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         // Strictly speaking this isn't necessary, but make sure the value is set at the end of
         // editing just in case something changes it during resigning of the responder, before we
         // process the notification.
-        trainMember?.title = textField.text
+        decoderType?.minimumStockAsString = textField.text
+
+        // Set the field value to the re-formatted result of the number.
+        textField.text = decoderType?.minimumStockAsString
     }
 
     // MARK: - Notifications
 
     @objc
     func textDidChange(_ notification: Notification) {
-        trainMember?.title = textField.text
+        decoderType?.minimumStockAsString = textField.text
     }
 
 }

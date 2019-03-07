@@ -1,5 +1,5 @@
 //
-//  TrainMemberTitleEditTableViewCell.swift
+//  DecoderTypeProductFamilyEditTableViewCell.swift
 //  EngineShed iOS
 //
 //  Created by Scott James Remnant on 3/6/19.
@@ -10,11 +10,11 @@ import UIKit
 
 import Database
 
-class TrainMemberTitleEditTableViewCell : UITableViewCell, UITextFieldDelegate {
+class DecoderTypeProductFamilyEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
 
-    var trainMember: TrainMember? {
+    var decoderType: DecoderType? {
         didSet {
             configureView()
         }
@@ -35,7 +35,7 @@ class TrainMemberTitleEditTableViewCell : UITableViewCell, UITextFieldDelegate {
     }
 
     func configureView() {
-        textField.text = trainMember?.title
+        textField.text = decoderType?.productFamily
     }
 
     // MARK: - UIResponder
@@ -60,14 +60,14 @@ class TrainMemberTitleEditTableViewCell : UITableViewCell, UITextFieldDelegate {
         // Strictly speaking this isn't necessary, but make sure the value is set at the end of
         // editing just in case something changes it during resigning of the responder, before we
         // process the notification.
-        trainMember?.title = textField.text
+        decoderType?.productFamily = textField.text
     }
 
     // MARK: - Notifications
 
     @objc
     func textDidChange(_ notification: Notification) {
-        trainMember?.title = textField.text
+        decoderType?.productFamily = textField.text
     }
 
 }

@@ -11,7 +11,7 @@ import CoreData
 
 import Database
 
-class DecoderTypeTableViewController: UITableViewController {
+class DecoderTypeTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?
 
@@ -42,69 +42,96 @@ class DecoderTypeTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        switch section {
+        case 0: return 4
+        case 1: return 4
+        case 2: return 1
+        case 3: return decoderType?.decoders!.count ?? 0
+        default: preconditionFailure("Unexpected section: \(section)")
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeManufacturer", for: indexPath) as! DecoderTypeManufacturerTableViewCell
+                cell.decoderType = decoderType
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeProductCode", for: indexPath) as! DecoderTypeProductCodeTableViewCell
+                cell.decoderType = decoderType
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeProductFamily", for: indexPath) as! DecoderTypeProductFamilyTableViewCell
+                cell.decoderType = decoderType
+                return cell
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeProductDescription", for: indexPath) as! DecoderTypeProductDescriptionTableViewCell
+                cell.decoderType = decoderType
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeSocket", for: indexPath) as! DecoderTypeSocketTableViewCell
+                cell.decoderType = decoderType
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeIsProgrammable", for: indexPath) as! DecoderTypeIsProgrammableTableViewCell
+                cell.decoderType = decoderType
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeHasRailCom", for: indexPath) as! DecoderTypeHasRailComTableViewCell
+                cell.decoderType = decoderType
+                return cell
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeHasSound", for: indexPath) as! DecoderTypeHasSoundTableViewCell
+                cell.decoderType = decoderType
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 2:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeMinimumStock", for: indexPath) as! DecoderTypeMinimumStockTableViewCell
+                cell.decoderType = decoderType
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeDecoder", for: indexPath) as! DecoderTypeDecoderTableViewCell
+//            cell.decoder = decoderType?.decoders![indexPath.row] as? Decoder
+            return cell
+        default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+        }
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        /*if segue.identifier == "decoderTypeDecoder" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let trainMember = train?.members![indexPath.row] as! TrainMember?
+
+            let viewController = segue.destination as! TrainMemberTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.trainMember = trainMember
+        } else*/ if segue.identifier == "decoderTypeEdit" {
+            guard let decoderType = decoderType else { return }
+            let navigationController = segue.destination as! UINavigationController
+
+            let viewController = navigationController.topViewController! as! DecoderTypeEditTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.editDecoderType(decoderType)
+        }
     }
-    */
 
     // MARK: - Notifications
 

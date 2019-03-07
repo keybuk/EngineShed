@@ -102,7 +102,7 @@ class DecoderTypesTableViewController : UITableViewController, NSFetchedResultsC
 
     // MARK: - Navigation
 
-//    var addedDecoderType: DecoderType?
+    var addedDecoderType: DecoderType?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "decoderType" {
@@ -114,21 +114,24 @@ class DecoderTypesTableViewController : UITableViewController, NSFetchedResultsC
             viewController.decoderType = decoderType
             viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
             viewController.navigationItem.leftItemsSupplementBackButton = true
-//        } else if segue.identifier == "purchaseAdd" {
-//            let navigationController = segue.destination as! UINavigationController
-//
-//            let viewController = navigationController.topViewController as! PurchaseEditTableViewController
-//            viewController.persistentContainer = persistentContainer
-//            viewController.addPurchase() { purchase in
-//                self.addedPurchase = purchase
-//                self.performSegue(withIdentifier: "purchaseAdded", sender: nil)
-//            }
-//        } else if segue.identifier == "purchaseAdded" {
-//            guard let purchase = addedPurchase else { return }
-//            addedPurchase = nil
-//            let viewController = segue.destination as! PurchaseTableViewController
-//            viewController.persistentContainer = persistentContainer
-//            viewController.purchase = purchase
+        } else if segue.identifier == "decoderTypeAdd" {
+            let navigationController = segue.destination as! UINavigationController
+
+            let viewController = navigationController.topViewController as! DecoderTypeEditTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.addDecoderType() { decoderType in
+                self.addedDecoderType = decoderType
+                self.performSegue(withIdentifier: "decoderTypeAdded", sender: nil)
+            }
+        } else if segue.identifier == "decoderTypeAdded" {
+            guard let decoderType = addedDecoderType else { return }
+            addedDecoderType = nil
+
+            let navigationController = segue.destination as! UINavigationController
+
+            let viewController = navigationController.topViewController as! DecoderTypeTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.decoderType = decoderType
         }
     }
 
