@@ -19,7 +19,14 @@ class PurchaseEditTableViewController : UITableViewController {
 
     private var managedObjectContext: NSManagedObjectContext?
     private var purchase: Purchase?
-    private var completionHandler: ((Purchase) -> Void)?
+
+    enum Result {
+        case canceled
+        case saved(Purchase)
+        case deleted
+    }
+
+    private var completionHandler: ((Result) -> Void)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -266,8 +273,10 @@ class PurchaseEditTableViewController : UITableViewController {
 
     // MARK: - Object management and observation
 
-    func editPurchase(_ purchase: Purchase) {
+    func editPurchase(_ purchase: Purchase, completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
+
+        self.completionHandler = completionHandler
 
         // Merge from the store, but keep any local changes.
         managedObjectContext = persistentContainer.newBackgroundContext()
@@ -282,7 +291,7 @@ class PurchaseEditTableViewController : UITableViewController {
         }
     }
 
-    func addPurchase(completionHandler: ((Purchase) -> Void)? = nil) {
+    func addPurchase(completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
 
         self.completionHandler = completionHandler
@@ -345,10 +354,11 @@ class PurchaseEditTableViewController : UITableViewController {
     // MARK: - Actions
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        dismiss(animated: true)
+        self.completionHandler?(.canceled)
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let purchase = purchase else { return }
 
@@ -359,10 +369,12 @@ class PurchaseEditTableViewController : UITableViewController {
                 }
             }
 
-            persistentContainer?.viewContext.performAndWait {
-                let purchase = persistentContainer!.viewContext.object(with: purchase.objectID) as! Purchase
-                self.completionHandler?(purchase)
-                self.dismiss(animated: true)
+            // Give the view context a chance to receive the merge notification before grabbing
+            // a copy of the object and running the completion handler.
+            view.isUserInteractionEnabled = false
+            viewContext.perform {
+                let purchase = viewContext.object(with: purchase.objectID) as! Purchase
+                self.completionHandler?(.saved(purchase))
             }
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
@@ -372,6 +384,7 @@ class PurchaseEditTableViewController : UITableViewController {
     }
 
     func deletePurchase() {
+        guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let purchase = purchase else { return }
 
@@ -382,7 +395,12 @@ class PurchaseEditTableViewController : UITableViewController {
                 try managedObjectContext.save()
             }
 
-            self.dismiss(animated: true)
+            // Give the view context a chance to receive the merge notification before running
+            // the completion handler.
+            view.isUserInteractionEnabled = false
+            viewContext.perform {
+                self.completionHandler?(.deleted)
+            }
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))

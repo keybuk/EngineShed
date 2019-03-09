@@ -83,7 +83,18 @@ class TrainMemberTableViewController : UITableViewController {
 
             let viewController = navigationController.topViewController! as! TrainMemberEditTableViewController
             viewController.persistentContainer = persistentContainer
-            viewController.editTrainMember(trainMember)
+            viewController.editTrainMember(trainMember) { result in
+                if case .deleted = result {
+                    // When we pop ourselves off the stack, we lose the link to the presented modal
+                    // controller, so stash that for now. This allows us to animate the modal going
+                    // away to something other than the view we're currently deleting.
+                    let realPresentingViewController = self.presentedViewController?.presentingViewController
+                    self.navigationController?.popDetailViewController(animated: false)
+                    realPresentingViewController?.dismiss(animated: true)
+                } else {
+                    self.dismiss(animated: true)
+                }
+            }
         }
     }
 
@@ -103,12 +114,11 @@ class TrainMemberTableViewController : UITableViewController {
             tableView.reloadData()
         }
 
-        // Check for a deletion of our train member object, taking the view off the stack.
+        // Check for a deletion of our train member object.
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
             deletedObjects.contains(trainMember)
         {
             self.trainMember = nil
-            navigationController?.popViewController(animated: false)
         }
     }
 

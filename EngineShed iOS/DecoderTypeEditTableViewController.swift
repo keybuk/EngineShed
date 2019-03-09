@@ -19,7 +19,14 @@ class DecoderTypeEditTableViewController : UITableViewController {
 
     private var managedObjectContext: NSManagedObjectContext?
     private var decoderType: DecoderType?
-    private var completionHandler: ((DecoderType) -> Void)?
+
+    enum Result {
+        case canceled
+        case saved(DecoderType)
+        case deleted
+    }
+
+    private var completionHandler: ((Result) -> Void)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,8 +160,10 @@ class DecoderTypeEditTableViewController : UITableViewController {
 
     // MARK: - Object management and observation
 
-    func editDecoderType(_ decoderType: DecoderType) {
+    func editDecoderType(_ decoderType: DecoderType, completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
+
+        self.completionHandler = completionHandler
 
         // Merge from the store, but keep any local changes.
         managedObjectContext = persistentContainer.newBackgroundContext()
@@ -169,7 +178,7 @@ class DecoderTypeEditTableViewController : UITableViewController {
         }
     }
 
-    func addDecoderType(completionHandler: ((DecoderType) -> Void)? = nil) {
+    func addDecoderType(completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
 
         self.completionHandler = completionHandler
@@ -227,10 +236,11 @@ class DecoderTypeEditTableViewController : UITableViewController {
     // MARK: - Actions
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        dismiss(animated: true)
+        self.completionHandler?(.canceled)
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let decoderType = decoderType else { return }
 
@@ -241,10 +251,12 @@ class DecoderTypeEditTableViewController : UITableViewController {
                 }
             }
 
-            persistentContainer?.viewContext.performAndWait {
-                let decoderType = persistentContainer!.viewContext.object(with: decoderType.objectID) as! DecoderType
-                self.completionHandler?(decoderType)
-                self.dismiss(animated: true)
+            // Give the view context a chance to receive the merge notification before grabbing
+            // a copy of the object and running the completion handler.
+            view.isUserInteractionEnabled = false
+            viewContext.perform {
+                let decoderType = viewContext.object(with: decoderType.objectID) as! DecoderType
+                self.completionHandler?(.saved(decoderType))
             }
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
@@ -254,6 +266,7 @@ class DecoderTypeEditTableViewController : UITableViewController {
     }
 
     func deleteDecoderType() {
+        guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let decoderType = decoderType else { return }
 
@@ -264,7 +277,12 @@ class DecoderTypeEditTableViewController : UITableViewController {
                 try managedObjectContext.save()
             }
 
-            self.dismiss(animated: true)
+            // Give the view context a chance to receive the merge notification before running
+            // the completion handler.
+            view.isUserInteractionEnabled = false
+            viewContext.perform {
+                self.completionHandler?(.deleted)
+            }
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))

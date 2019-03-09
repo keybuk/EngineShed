@@ -102,8 +102,6 @@ class DecoderTypesTableViewController : UITableViewController, NSFetchedResultsC
 
     // MARK: - Navigation
 
-    var addedDecoderType: DecoderType?
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "decoderType" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
@@ -119,19 +117,16 @@ class DecoderTypesTableViewController : UITableViewController, NSFetchedResultsC
 
             let viewController = navigationController.topViewController as! DecoderTypeEditTableViewController
             viewController.persistentContainer = persistentContainer
-            viewController.addDecoderType() { decoderType in
-                self.addedDecoderType = decoderType
-                self.performSegue(withIdentifier: "decoderTypeAdded", sender: nil)
+            viewController.addDecoderType() { result in
+                if case .saved(let decoderType) = result,
+                    let indexPath = self.fetchedResultsController.indexPath(forObject: decoderType)
+                {
+                    self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                    self.performSegue(withIdentifier: "decoderType", sender: nil)
+                }
+
+                self.dismiss(animated: true)
             }
-        } else if segue.identifier == "decoderTypeAdded" {
-            guard let decoderType = addedDecoderType else { return }
-            addedDecoderType = nil
-
-            let navigationController = segue.destination as! UINavigationController
-
-            let viewController = navigationController.topViewController as! DecoderTypeTableViewController
-            viewController.persistentContainer = persistentContainer
-            viewController.decoderType = decoderType
         }
     }
 

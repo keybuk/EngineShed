@@ -265,6 +265,7 @@
 		D2F4EF092230991D008FB14A /* DecoderType+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF072230991D008FB14A /* DecoderType+Number.swift */; };
 		D2F4EF0B2230995E008FB14A /* DecoderType+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */; };
 		D2F4EF0C2230995E008FB14A /* DecoderType+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */; };
+		D2F4EF0E2231F666008FB14A /* UINavigationController+PopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF0D2231F666008FB14A /* UINavigationController+PopDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -632,6 +633,7 @@
 		D2F4EF05223094FF008FB14A /* DecoderTypeDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF072230991D008FB14A /* DecoderType+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Number.swift"; sourceTree = "<group>"; };
 		D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Suggestions.swift"; sourceTree = "<group>"; };
+		D2F4EF0D2231F666008FB14A /* UINavigationController+PopDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+PopDetail.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1109,6 +1111,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */,
+				D2F4EF0D2231F666008FB14A /* UINavigationController+PopDetail.swift */,
 				D23B8B8221E29502004F994D /* Classification View */,
 				D23B8B8421E2951B004F994D /* Models View */,
 				D23B8B8521E29527004F994D /* Model View */,
@@ -1980,6 +1983,7 @@
 				D23B8BA721E2AE57004F994D /* ModelDecoderSerialNumberTableViewCell.swift in Sources */,
 				D2F4EEE822307458008FB14A /* DecoderTypeIsProgrammableTableViewCell.swift in Sources */,
 				D23B8B9D21E2A18E004F994D /* ModelLightsTableViewCell.swift in Sources */,
+				D2F4EF0E2231F666008FB14A /* UINavigationController+PopDetail.swift in Sources */,
 				D295D8A821EADD0800BBD204 /* PurchaseTableViewCell.swift in Sources */,
 				D2F4EEE422307439008FB14A /* DecoderTypeProductFamilyTableViewCell.swift in Sources */,
 				D2F4EEFC223094CE008FB14A /* DecoderTypeSocketTableViewCell.swift in Sources */,

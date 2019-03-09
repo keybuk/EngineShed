@@ -19,7 +19,14 @@ class TrainEditTableViewController : UITableViewController {
 
     private var managedObjectContext: NSManagedObjectContext?
     private var train: Train?
-    private var completionHandler: ((Train) -> Void)?
+
+    enum Result {
+        case canceled
+        case saved(Train)
+        case deleted
+    }
+
+    private var completionHandler: ((Result) -> Void)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -264,8 +271,10 @@ class TrainEditTableViewController : UITableViewController {
 
     // MARK: - Object management and observation
 
-    func editTrain(_ train: Train) {
+    func editTrain(_ train: Train, completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
+
+        self.completionHandler = completionHandler
 
         // Merge from the store, but keep any local changes.
         managedObjectContext = persistentContainer.newBackgroundContext()
@@ -280,7 +289,7 @@ class TrainEditTableViewController : UITableViewController {
         }
     }
 
-    func addTrain(completionHandler: ((Train) -> Void)? = nil) {
+    func addTrain(completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
 
         self.completionHandler = completionHandler
@@ -350,10 +359,11 @@ class TrainEditTableViewController : UITableViewController {
     // MARK: - Actions
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        dismiss(animated: true)
+        self.completionHandler?(.canceled)
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let train = train else { return }
 
@@ -364,10 +374,12 @@ class TrainEditTableViewController : UITableViewController {
                 }
             }
 
-            persistentContainer?.viewContext.performAndWait {
-                let train = persistentContainer!.viewContext.object(with: train.objectID) as! Train
-                self.completionHandler?(train)
-                self.dismiss(animated: true)
+            // Give the view context a chance to receive the merge notification before grabbing
+            // a copy of the object and running the completion handler.
+            view.isUserInteractionEnabled = false
+            viewContext.perform {
+                let train = viewContext.object(with: train.objectID) as! Train
+                self.completionHandler?(.saved(train))
             }
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
@@ -377,6 +389,7 @@ class TrainEditTableViewController : UITableViewController {
     }
 
     func deleteTrain() {
+        guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let train = train else { return }
 
@@ -387,7 +400,12 @@ class TrainEditTableViewController : UITableViewController {
                 try managedObjectContext.save()
             }
 
-            self.dismiss(animated: true)
+            // Give the view context a chance to receive the merge notification before running
+            // the completion handler.
+            view.isUserInteractionEnabled = false
+            viewContext.perform {
+                self.completionHandler?(.deleted)
+            }
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))

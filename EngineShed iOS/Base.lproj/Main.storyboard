@@ -3121,9 +3121,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="uKp-ap-pwP" kind="showDetail" identifier="purchaseAdded" id="AGe-R9-RqP"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTW-Er-HQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3296,7 +3293,6 @@
                     </navigationItem>
                     <connections>
                         <segue destination="71s-74-Oue" kind="show" identifier="train" id="cCL-gE-oMT"/>
-                        <segue destination="71s-74-Oue" kind="show" identifier="trainAdded" animates="NO" id="GPI-RN-COd"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCP-hx-uAB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4480,10 +4476,9 @@
         <segue reference="b7R-tw-SjE"/>
         <segue reference="thw-bt-3zr"/>
         <segue reference="U0Y-gq-7f1"/>
-        <segue reference="AGe-R9-RqP"/>
-        <segue reference="fje-MW-QxC"/>
+        <segue reference="RKd-7e-o29"/>
+        <segue reference="i9i-ye-UgR"/>
         <segue reference="Tll-UG-LXB"/>
-        <segue reference="GPI-RN-COd"/>
         <segue reference="eFf-wH-92g"/>
         <segue reference="ToH-YJ-ahj"/>
     </inferredMetricsTieBreakers>

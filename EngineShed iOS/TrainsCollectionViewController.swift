@@ -259,11 +259,19 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "train" {
-            guard let indexPath = tappedIndexPath else { return }
-            tappedIndexPath = nil
+            let train: Train
+            if let indexPath = tappedIndexPath {
+                tappedIndexPath = nil
 
-            let trainMember = fetchedResultsController.object(at: indexPath)
-            guard let train = trainMember.train else { preconditionFailure("Train member without a train") }
+                let trainMember = fetchedResultsController.object(at: indexPath)
+                guard let trainMemberTrain = trainMember.train else { preconditionFailure("Train member without a train") }
+
+                train = trainMemberTrain
+            } else if let addedTrain = addedTrain {
+                self.addedTrain = nil
+
+                train = addedTrain
+            } else { return }
 
             let viewController = segue.destination as! TrainTableViewController
             viewController.persistentContainer = persistentContainer
@@ -273,17 +281,16 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
 
             let viewController = navigationController.topViewController as! TrainEditTableViewController
             viewController.persistentContainer = persistentContainer
-            viewController.addTrain() { train in
-                self.addedTrain = train
-                self.performSegue(withIdentifier: "trainAdded", sender: nil)
-            }
-        } else if segue.identifier == "trainAdded" {
-            guard let train = addedTrain else { return }
-            addedTrain = nil
+            viewController.addTrain() { result in
+                if case .saved(let train) = result {
+                    self.addedTrain = train
+                    //FIXME: select the header view once I've made that selectable
+                    //self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                    self.performSegue(withIdentifier: "train", sender: nil)
+                }
 
-            let viewController = segue.destination as! TrainTableViewController
-            viewController.persistentContainer = persistentContainer
-            viewController.train = train
+                self.dismiss(animated: true)
+            }
         }
     }
 

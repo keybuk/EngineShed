@@ -70,8 +70,6 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
 
     // MARK: - Navigation
 
-    var addedPurchase: Purchase?
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "purchase" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
@@ -87,19 +85,16 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
 
             let viewController = navigationController.topViewController as! PurchaseEditTableViewController
             viewController.persistentContainer = persistentContainer
-            viewController.addPurchase() { purchase in
-                self.addedPurchase = purchase
-                self.performSegue(withIdentifier: "purchaseAdded", sender: nil)
+            viewController.addPurchase() { result in
+                if case .saved(let purchase) = result,
+                    let indexPath = self.fetchedResultsController.indexPath(forObject: purchase)
+                {
+                    self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                    self.performSegue(withIdentifier: "purchase", sender: nil)
+                }
+
+                self.dismiss(animated: true)
             }
-        } else if segue.identifier == "purchaseAdded" {
-            guard let purchase = addedPurchase else { return }
-            addedPurchase = nil
-
-            let navigationController = segue.destination as! UINavigationController
-
-            let viewController = navigationController.topViewController as! PurchaseTableViewController
-            viewController.persistentContainer = persistentContainer
-            viewController.purchase = purchase
         }
     }
 
