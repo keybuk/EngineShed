@@ -49,7 +49,7 @@ class ModelEditTableViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2 + ((model?.isInserted ?? true) ? 1 : 0)
+        return 2 + ((model?.isInserted ?? true) ? 0 : 1)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
