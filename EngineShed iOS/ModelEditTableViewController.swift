@@ -49,12 +49,14 @@ class ModelEditTableViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return (model?.isInserted ?? true) ? 0 : 1
+        return 2 + ((model?.isInserted ?? true) ? 1 : 0)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
+        case 1: return 8
+        case 2: return 1
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -62,6 +64,8 @@ class ModelEditTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0: return nil
+        case 1: return nil
+        case 2: return nil
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -69,6 +73,50 @@ class ModelEditTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelImageEdit", for: indexPath) as! ModelImageEditTableViewCell
+                cell.model = model
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelClassificationEdit", for: indexPath) as! ModelClassificationEditTableViewCell
+                cell.model = model
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelClassEdit", for: indexPath) as! ModelClassEditTableViewCell
+                cell.model = model
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelNumberEdit", for: indexPath) as! ModelNumberEditTableViewCell
+                cell.model = model
+                return cell
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelNameEdit", for: indexPath) as! ModelNameEditTableViewCell
+                cell.model = model
+                return cell
+            case 4:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelLiveryEdit", for: indexPath) as! ModelLiveryEditTableViewCell
+                cell.model = model
+                return cell
+            case 5:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelDetailsEdit", for: indexPath) as! ModelDetailsEditTableViewCell
+                cell.model = model
+                return cell
+            case 6:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelEraEdit", for: indexPath) as! ModelEraEditTableViewCell
+                cell.model = model
+                return cell
+            case 7:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelDispositionEdit", for: indexPath) as! ModelDispositionEditTableViewCell
+                cell.model = model
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 2:
             precondition(!(model?.isInserted ?? true), "Unexpected delete model section in inserted model")
             switch indexPath.row {
             case 0:
@@ -76,7 +124,6 @@ class ModelEditTableViewController : UITableViewController {
                 return cell
             default: preconditionFailure("Unexpected indexPath: \(indexPath)")
             }
-
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
     }
@@ -85,7 +132,9 @@ class ModelEditTableViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 0:
+        case 0: break
+        case 1: break
+        case 2:
             precondition(!(model?.isInserted ?? true), "Unexpected delete model section in inserted model")
 
             // Confirm train deletion using an alert.
@@ -116,16 +165,6 @@ class ModelEditTableViewController : UITableViewController {
             cell.becomeFirstResponder()
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: - Object management and observation
 
@@ -314,6 +353,24 @@ class ModelEditTableViewController : UITableViewController {
             } catch {
                 return false
             }
+        }
+    }
+
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "modelClassificationPicker" {
+            let viewController = segue.destination as! ModelClassificationPickerTableViewController
+            viewController.model = model
+        } else if segue.identifier == "modelLiveryPicker" {
+            let viewController = segue.destination as! ModelLiveryPickerTableViewController
+            viewController.model = model
+        } else if segue.identifier == "modelEraPicker" {
+            let viewController = segue.destination as! ModelEraPickerTableViewController
+            viewController.model = model
+        } else if segue.identifier == "modelDispositionPicker" {
+            let viewController = segue.destination as! ModelDispositionPickerTableViewController
+            viewController.model = model
         }
     }
 
