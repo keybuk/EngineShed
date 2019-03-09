@@ -160,10 +160,12 @@ class TrainTableViewController : UITableViewController {
         guard let userInfo = notification.userInfo else { return }
         guard let train = train else { return }
 
-        // Check for a refresh of our train object, by sync from cloud or merge after save
-        // from other context, and reload the table.
+        // Check for refreshes of our train object, or its children members, meaning they
+        // were updated by sync from cloud or merge after save from other context. Reload the
+        // table for either case.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
             refreshedObjects.contains(train)
+                || !refreshedObjects.isDisjoint(with: train.members!.set as! Set<NSManagedObject>)
         {
             tableView.reloadData()
         }
