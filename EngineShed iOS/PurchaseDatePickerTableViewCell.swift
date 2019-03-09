@@ -10,7 +10,7 @@ import UIKit
 
 import Database
 
-class PurchaseDatePickerTableViewCell: UITableViewCell {
+class PurchaseDatePickerTableViewCell : UITableViewCell {
 
     @IBOutlet weak var datePicker: UIDatePicker!
 

@@ -24,7 +24,7 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     var pickerVisible = false {
         didSet {
-            textField.textColor = pickerVisible ? textField.tintColor : UIColor.black
+            textField.textColor = pickerVisible ? textField.tintColor : defaultTextColor
         }
     }
 
@@ -114,6 +114,5 @@ class PurchaseDateEditTableViewCell : UITableViewCell, UITextFieldDelegate {
         textField.text = purchase?.dateAsString
         clearButton.isHidden = purchase?.date == nil
     }
-
 
 }
