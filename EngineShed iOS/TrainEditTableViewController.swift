@@ -143,6 +143,12 @@ class TrainEditTableViewController : UITableViewController {
                 self.tableView.deselectRow(at: indexPath, animated: true)
             })
 
+            // Set iPad presentation.
+            if let popover = alert.popoverPresentationController {
+                popover.sourceView = tableView;
+                popover.sourceRect = tableView.rectForRow(at: indexPath)
+            }
+
             present(alert, animated: true)
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }

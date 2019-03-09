@@ -246,7 +246,7 @@ class PurchaseEditTableViewController : UITableViewController {
             }
         case 3: break
         case 4:
-            precondition(!(purchase?.isInserted ?? true), "Unexpected purchase train section in inserted purchase")
+            precondition(!(purchase?.isInserted ?? true), "Unexpected delete purchase section in inserted purchase")
 
             // Confirm train deletion using an alert.
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -258,6 +258,12 @@ class PurchaseEditTableViewController : UITableViewController {
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
                 self.tableView.deselectRow(at: indexPath, animated: true)
             })
+
+            // Set iPad presentation.
+            if let popover = alert.popoverPresentationController {
+                popover.sourceView = tableView;
+                popover.sourceRect = tableView.rectForRow(at: indexPath)
+            }
 
             present(alert, animated: true)
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
