@@ -1,8 +1,8 @@
 //
-//  DecoderTypeDecoderTableViewCell.swift
+//  DecoderSoundAuthorTableViewCell.swift
 //  EngineShed iOS
 //
-//  Created by Scott James Remnant on 3/6/19.
+//  Created by Scott James Remnant on 3/8/19.
 //  Copyright © 2019 Scott James Remnant. All rights reserved.
 //
 
@@ -10,15 +10,13 @@ import UIKit
 
 import Database
 
-class DecoderTypeDecoderTableViewCell : UITableViewCell {
+class DecoderSoundAuthorTableViewCell : UITableViewCell {
 
-    @IBOutlet weak var serialNumberLabel: UILabel!
     @IBOutlet weak var soundAuthorLabel: UILabel!
-    @IBOutlet weak var soundProjectLabel: UILabel!
 
     var decoder: Decoder? {
         didSet {
-            configureCell()
+            configureView()
         }
     }
 
@@ -33,12 +31,8 @@ class DecoderTypeDecoderTableViewCell : UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureCell() {
-        serialNumberLabel.text = decoder?.serialNumber
+    func configureView() {
         soundAuthorLabel.text = decoder?.soundAuthor
-        soundAuthorLabel.isHidden = (decoder?.soundAuthor?.isEmpty ?? true)
-        soundProjectLabel.text = decoder?.soundProject
-        soundProjectLabel.isHidden = (decoder?.soundProject?.isEmpty ?? true)
     }
 
 }

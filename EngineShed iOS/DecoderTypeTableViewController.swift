@@ -17,8 +17,16 @@ class DecoderTypeTableViewController : UITableViewController {
 
     var decoderType: DecoderType? {
         didSet {
+            fetchRequest = decoderType?.fetchRequestForDecoders()
+
             // Update the view.
             tableView.reloadData()
+        }
+    }
+
+    var fetchRequest: NSFetchRequest<Decoder>? {
+        didSet {
+            _decoders = nil
         }
     }
 
@@ -50,7 +58,17 @@ class DecoderTypeTableViewController : UITableViewController {
         case 0: return 4
         case 1: return 4
         case 2: return 1
-        case 3: return decoderType?.decoders!.count ?? 0
+        case 3: return decoders.count
+        default: preconditionFailure("Unexpected section: \(section)")
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0: return nil
+        case 1: return nil
+        case 2: return nil
+        case 3: return "Decoders"
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -107,7 +125,7 @@ class DecoderTypeTableViewController : UITableViewController {
             }
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeDecoder", for: indexPath) as! DecoderTypeDecoderTableViewCell
-//            cell.decoder = decoderType?.decoders![indexPath.row] as? Decoder
+            cell.decoder = decoders[indexPath.row]
             return cell
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
@@ -116,14 +134,14 @@ class DecoderTypeTableViewController : UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*if segue.identifier == "decoderTypeDecoder" {
+        if segue.identifier == "decoderTypeDecoder" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let trainMember = train?.members![indexPath.row] as! TrainMember?
+            let decoder = decoders[indexPath.row]
 
-            let viewController = segue.destination as! TrainMemberTableViewController
+            let viewController = segue.destination as! DecoderTableViewController
             viewController.persistentContainer = persistentContainer
-            viewController.trainMember = trainMember
-        } else*/ if segue.identifier == "decoderTypeEdit" {
+            viewController.decoder = decoder
+        } else if segue.identifier == "decoderTypeEdit" {
             guard let decoderType = decoderType else { return }
             let navigationController = segue.destination as! UINavigationController
 
@@ -141,8 +159,41 @@ class DecoderTypeTableViewController : UITableViewController {
                     self.dismiss(animated: true)
                 }
             }
+        } else if segue.identifier == "decoderTypeDecoderAdd" {
+            guard let decoderType = decoderType else { return }
+            let navigationController = segue.destination as! UINavigationController
+
+            let viewController = navigationController.topViewController as! DecoderEditTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.addDecoder(type: decoderType) { result in
+                if case .saved(let decoder) = result,
+                    let index = self.decoders.firstIndex(of: decoder)
+                {
+                    let indexPath = IndexPath(row: index, section: 3)
+                    self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                    self.performSegue(withIdentifier: "decoderTypeDecoder", sender: nil)
+                }
+
+                self.dismiss(animated: true)
+            }
         }
+
     }
+
+    // MARK: - Decoders table
+
+    var decoders: [Decoder] {
+        if let decoders = _decoders { return decoders }
+        guard let managedObjectContext = persistentContainer?.viewContext, let fetchRequest = fetchRequest
+            else { return [] }
+
+        _decoders = try? managedObjectContext.performAndWait {
+            return try fetchRequest.execute()
+        }
+        return _decoders ?? []
+    }
+
+    var _decoders: [Decoder]? = nil
 
     // MARK: - Notifications
 
@@ -152,15 +203,18 @@ class DecoderTypeTableViewController : UITableViewController {
         guard let userInfo = notification.userInfo else { return }
         guard let decoderType = decoderType else { return }
 
-        // Check for a refresh of our decoder type object, by sync from cloud or merge after save
-        // from other context, and reload the table.
+        // Check for refreshes of our decoder type object, or its children decoders, meaning they
+        // were updated by sync from cloud or merge after save from other context. Requery the
+        // set of decoders, and reload the table.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
-            refreshedObjects.contains(decoderType)
+            refreshedObjects.contains(decoderType) || !refreshedObjects.isDisjoint(with: decoders)
         {
+            _decoders = nil
             tableView.reloadData()
         }
 
-        // Check for a deletion of our decoder type object.
+        // Check for a deletion of our decoder type object. We don't need to check for children
+        // because deletion of those update our object's `decoders` set.
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
             deletedObjects.contains(decoderType)
         {
