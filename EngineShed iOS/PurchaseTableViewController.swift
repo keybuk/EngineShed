@@ -149,6 +149,24 @@ class PurchaseTableViewController : UITableViewController {
                     self.dismiss(animated: true)
                 }
             }
+        } else if segue.identifier == "purchaseModelAdd" {
+            guard let purchase = purchase else { return }
+            let navigationController = segue.destination as! UINavigationController
+
+            let viewController = navigationController.topViewController as! ModelEditTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.addModel(to: purchase) { result in
+                if case .saved(let model) = result {
+                    let index = purchase.models!.index(of: model)
+                    if index != NSNotFound {
+                        let indexPath = IndexPath(row: index, section: 1)
+                        self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                        self.performSegue(withIdentifier: "purchaseModel", sender: nil)
+                    }
+                }
+
+                self.dismiss(animated: true)
+            }
         }
     }
 

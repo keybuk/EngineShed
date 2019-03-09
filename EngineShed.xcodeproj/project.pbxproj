@@ -96,6 +96,8 @@
 		D25828BF21E0225D0094918F /* TrainDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828BE21E0225D0094918F /* TrainDeleteTableViewCell.swift */; };
 		D25828C121E028920094918F /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
 		D25828C221E028920094918F /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
+		D269035A2234595C002C7A48 /* ModelEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26903592234595C002C7A48 /* ModelEditTableViewController.swift */; };
+		D269035C22345C5D002C7A48 /* ModelDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269035B22345C5D002C7A48 /* ModelDeleteTableViewCell.swift */; };
 		D27300342224F9390002CEF9 /* PurchaseEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27300332224F9390002CEF9 /* PurchaseEditTableViewController.swift */; };
 		D27FC2402150BE0E00AA522B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */; };
 		D2820D03222484C000D9B3F8 /* CKDataAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2820D02222484C000D9B3F8 /* CKDataAsset.swift */; };
@@ -520,6 +522,8 @@
 		D25828BE21E0225D0094918F /* TrainDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		D25828C021E028920094918F /* Train+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Validate.swift"; sourceTree = "<group>"; };
 		D25AAC7921DD445700AC4359 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
+		D26903592234595C002C7A48 /* ModelEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEditTableViewController.swift; sourceTree = "<group>"; };
+		D269035B22345C5D002C7A48 /* ModelDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		D27300332224F9390002CEF9 /* PurchaseEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseEditTableViewController.swift; sourceTree = "<group>"; };
 		D2820D02222484C000D9B3F8 /* CKDataAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKDataAsset.swift; sourceTree = "<group>"; };
 		D2820D062224971D00D9B3F8 /* TrainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainTableViewController.swift; sourceTree = "<group>"; };
@@ -1008,6 +1012,15 @@
 			name = "Purchase View";
 			sourceTree = "<group>";
 		};
+		D269035822345945002C7A48 /* Model Edit View */ = {
+			isa = PBXGroup;
+			children = (
+				D26903592234595C002C7A48 /* ModelEditTableViewController.swift */,
+				D269035B22345C5D002C7A48 /* ModelDeleteTableViewCell.swift */,
+			);
+			name = "Model Edit View";
+			sourceTree = "<group>";
+		};
 		D27300322224F9220002CEF9 /* Purchase Edit View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1163,6 +1176,7 @@
 				D23B8B8221E29502004F994D /* Classification View */,
 				D23B8B8421E2951B004F994D /* Models View */,
 				D23B8B8521E29527004F994D /* Model View */,
+				D269035822345945002C7A48 /* Model Edit View */,
 				D295D8A421EADCD900BBD204 /* Purchases View */,
 				D23B8BD421E2BE84004F994D /* Purchase View */,
 				D27300322224F9220002CEF9 /* Purchase Edit View */,
@@ -1969,6 +1983,7 @@
 				D2F4EEEC2230747B008FB14A /* DecoderTypeHasSoundTableViewCell.swift in Sources */,
 				D23B8BC521E2B5B3004F994D /* ModelModificationsTableViewCell.swift in Sources */,
 				D2820D0F2224A55E00D9B3F8 /* TrainMemberTableViewCell.swift in Sources */,
+				D269035C22345C5D002C7A48 /* ModelDeleteTableViewCell.swift in Sources */,
 				D2F4EEDE22307412008FB14A /* DecoderTypeEditTableViewController.swift in Sources */,
 				D2F4EF1222335F2E008FB14A /* DecoderTableViewController.swift in Sources */,
 				D23B8BE221E2C108004F994D /* PurchaseDateTableViewCell.swift in Sources */,
@@ -2030,6 +2045,7 @@
 				D23B8BBB21E2AF54004F994D /* ModelSpeakerFittingsTableViewCell.swift in Sources */,
 				D2820D092224A52000D9B3F8 /* TrainNameTableViewCell.swift in Sources */,
 				D23B8BAF21E2AECB004F994D /* ModelDecoderSoundAuthorTableViewCell.swift in Sources */,
+				D269035A2234595C002C7A48 /* ModelEditTableViewController.swift in Sources */,
 				D25828B021DC39AC0094918F /* TrainEditTableViewController.swift in Sources */,
 				D23B8BAB21E2AE96004F994D /* ModelDecoderFirmwareDateTableViewCell.swift in Sources */,
 				D23B8B9121E29C3E004F994D /* ModelLiveryTableViewCell.swift in Sources */,

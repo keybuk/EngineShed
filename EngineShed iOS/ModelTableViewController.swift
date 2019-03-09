@@ -176,6 +176,24 @@ class ModelTableViewController : UITableViewController {
             let viewController = segue.destination as! PurchaseTableViewController
             viewController.persistentContainer = persistentContainer
             viewController.purchase = model?.purchase
+        } else if segue.identifier == "modelEdit" {
+            guard let model = model else { return }
+            let navigationController = segue.destination as! UINavigationController
+
+            let viewController = navigationController.topViewController! as! ModelEditTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.editModel(model) { result in
+                if case .deleted = result {
+                    // When we pop ourselves off the stack, we lose the link to the presented modal
+                    // controller, so stash that for now. This allows us to animate the modal going
+                    // away to something other than the view we're currently deleting.
+                    let realPresentingViewController = self.presentedViewController?.presentingViewController
+                    self.navigationController?.popDetailViewController(animated: false)
+                    realPresentingViewController?.dismiss(animated: true)
+                } else {
+                    self.dismiss(animated: true)
+                }
+            }
         }
     }
 
@@ -191,8 +209,9 @@ class ModelTableViewController : UITableViewController {
         // from cloud or merge after save from other context, and reload the table.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
             refreshedObjects.contains(model) ||
-                refreshedObjects.contains(model.purchase!) ||
-                (model.decoder.map({ refreshedObjects.contains($0) }) ?? false)
+                (model.purchase.map({ refreshedObjects.contains($0) }) ?? false) ||
+                (model.decoder.map({ refreshedObjects.contains($0) }) ?? false) ||
+                (model.trainMember.map({ refreshedObjects.contains($0) }) ?? false)
         {
             tableView.reloadData()
         }

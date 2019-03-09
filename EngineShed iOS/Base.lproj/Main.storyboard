@@ -1232,7 +1232,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="hR6-q4-TcF">
-                        <barButtonItem key="rightBarButtonItem" title="Similar" image="966-contact-cards-toolbar" id="1bg-7f-lcR"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="edit" id="ZHo-yP-aGr">
+                                <connections>
+                                    <segue destination="a18-FN-0Zt" kind="presentation" identifier="modelEdit" id="uZU-NK-TwG"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Similar" image="966-contact-cards-toolbar" id="1bg-7f-lcR"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
@@ -1241,7 +1248,78 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHn-7o-ZDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1049" y="126"/>
+            <point key="canvasLocation" x="2953" y="126"/>
+        </scene>
+        <!--Model Edit Table View Controller-->
+        <scene sceneID="Ez7-lV-zQ0">
+            <objects>
+                <tableViewController id="j6u-hu-f8H" customClass="ModelEditTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="7zp-eq-z2d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ArI-3N-A6n">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ArI-3N-A6n" id="dsq-CF-vJQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDelete" id="PyS-xg-sIv" customClass="ModelDeleteTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PyS-xg-sIv" id="BqP-3o-0Om">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gck-8i-exQ">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="qEb-2V-7gn"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Gck-8i-exQ" secondAttribute="trailing" id="58e-ra-Fsj"/>
+                                        <constraint firstItem="Gck-8i-exQ" firstAttribute="leading" secondItem="BqP-3o-0Om" secondAttribute="leadingMargin" id="66w-ef-3Ua"/>
+                                        <constraint firstAttribute="bottom" secondItem="Gck-8i-exQ" secondAttribute="bottom" id="Ash-bO-7Yn"/>
+                                        <constraint firstItem="Gck-8i-exQ" firstAttribute="top" secondItem="BqP-3o-0Om" secondAttribute="top" id="j2K-q6-uKd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="Gck-8i-exQ" id="N4S-LI-tjr"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="j6u-hu-f8H" id="aZq-a8-6l4"/>
+                            <outlet property="delegate" destination="j6u-hu-f8H" id="aVg-lK-BaI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Pub-DH-tb2">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="u0F-E9-z5h">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="j6u-hu-f8H" id="SVT-nK-x5y"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="pZ7-hQ-YZ9">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="j6u-hu-f8H" id="qth-Ve-pvu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="pZ7-hQ-YZ9" id="xnv-4k-ggK"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zO3-3Q-WD5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4876" y="528"/>
         </scene>
         <!--Purchase Table View Controller-->
         <scene sceneID="AhB-6b-GzM">
@@ -1741,11 +1819,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ZkA-Em-7ey">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Nn0-Sx-mMn">
-                            <connections>
-                                <segue destination="i6b-vU-oc4" kind="presentation" identifier="purchaseEdit" id="QLA-Sq-wEi"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="edit" id="Nn0-Sx-mMn">
+                                <connections>
+                                    <segue destination="i6b-vU-oc4" kind="presentation" identifier="purchaseEdit" id="QLA-Sq-wEi"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="AB9-YM-9KH">
+                                <connections>
+                                    <segue destination="a18-FN-0Zt" kind="presentation" identifier="purchaseModelAdd" id="Epa-QZ-vVX"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BfQ-UH-gH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3405,7 +3490,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="127"/>
+            <point key="canvasLocation" x="2006" y="126"/>
         </scene>
         <!--Classifications Table View Controller-->
         <scene sceneID="JcB-ad-xPq">
@@ -4753,7 +4838,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jyS-VS-ZEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="1746"/>
+            <point key="canvasLocation" x="1049" y="1746"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0NO-eU-wPe">
@@ -5239,6 +5324,24 @@
             </objects>
             <point key="canvasLocation" x="2436" y="5975"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="quf-Rv-SHn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a18-FN-0Zt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D9L-M1-7i0">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="j6u-hu-f8H" kind="relationship" relationship="rootViewController" id="5Nl-hr-hbj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Gx-Q7-5kb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3937" y="528"/>
+        </scene>
     </scenes>
     <resources>
         <image name="58419" width="640" height="480"/>
@@ -5249,10 +5352,11 @@
         <image name="rounded-corner" width="30.5" height="30.5"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="uZU-NK-TwG"/>
         <segue reference="yTH-Y2-YmO"/>
         <segue reference="b7R-tw-SjE"/>
         <segue reference="vpC-UR-4HW"/>
-        <segue reference="U0Y-gq-7f1"/>
+        <segue reference="QLA-Sq-wEi"/>
         <segue reference="x7g-2G-nuO"/>
         <segue reference="fje-MW-QxC"/>
         <segue reference="Tll-UG-LXB"/>
