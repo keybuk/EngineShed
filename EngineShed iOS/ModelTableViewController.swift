@@ -176,7 +176,6 @@ class ModelTableViewController : UITableViewController {
             let viewController = segue.destination as! PurchaseTableViewController
             viewController.persistentContainer = persistentContainer
             viewController.purchase = model?.purchase
-
         }
     }
 
@@ -188,20 +187,21 @@ class ModelTableViewController : UITableViewController {
         guard let userInfo = notification.userInfo else { return }
         guard let model = model else { return }
 
-        // Check for a refresh of our model object, by sync from cloud or merge after save
-        // from other context, and reload the table.
+        // Check for a refresh of our model object, or linked purchase or decoder objects, by sync
+        // from cloud or merge after save from other context, and reload the table.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
-            refreshedObjects.contains(model)
+            refreshedObjects.contains(model) ||
+                refreshedObjects.contains(model.purchase!) ||
+                (model.decoder.map({ refreshedObjects.contains($0) }) ?? false)
         {
             tableView.reloadData()
         }
 
-        // Check for a deletion of our model object, taking the view off the stack.
+        // Check for a deletion of our model object,.
         if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
             deletedObjects.contains(model)
         {
             self.model = nil
-            navigationController?.popViewController(animated: false)
         }
     }
 
