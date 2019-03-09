@@ -46,9 +46,14 @@ class PurchaseEditTableViewController : UITableViewController {
         }
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+
     // MARK: - Table view data source
 
     var datePickerVisible = false
+    let datePickerIndexPath = IndexPath(row: 1, section: 2)
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return (purchase?.isInserted ?? true) ? 4 : 5
@@ -211,7 +216,6 @@ class PurchaseEditTableViewController : UITableViewController {
             case 0:
                 weak var dateEditCell = tableView.cellForRow(at: indexPath) as? PurchaseDateEditTableViewCell
 
-                let datePickerIndexPath = IndexPath(row: 1, section: 2)
                 if !datePickerVisible {
                     datePickerVisible = true
                     tableView.insertRows(at: [datePickerIndexPath], with: .top)
@@ -228,7 +232,7 @@ class PurchaseEditTableViewController : UITableViewController {
                         cell.resignFirstResponderBlock = {
                             if self.datePickerVisible {
                                 self.datePickerVisible = false
-                                self.tableView.deleteRows(at: [datePickerIndexPath], with: .top)
+                                self.tableView.deleteRows(at: [self.datePickerIndexPath], with: .top)
 
                                 dateEditCell?.pickerVisible = self.datePickerVisible
                             }
@@ -354,6 +358,17 @@ class PurchaseEditTableViewController : UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+        }
+
+        // Check for the insertion of our purchase object, usually as a result of our own save
+        // button, and clear it. This is something of a hack to avoid inserting the "Delete" section
+        // before the picker view resigns the first responder (as a result of the user interaction
+        // going to false), and the table row for that being deleted, throwing an inconsistency
+        // exception.
+        if let insertedObjects = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject>,
+            insertedObjects.contains(purchase)
+        {
+            self.purchase = nil
         }
     }
 
