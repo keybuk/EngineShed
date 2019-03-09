@@ -164,8 +164,8 @@ class PurchaseTableViewController : UITableViewController {
         // were updated by sync from cloud or merge after save from other context.
         // Reload the table in either case.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
-            refreshedObjects.contains(purchase)
-                || !refreshedObjects.isDisjoint(with: purchase.models!.set as! Set<NSManagedObject>)
+            refreshedObjects.contains(purchase) ||
+                !refreshedObjects.isDisjoint(with: purchase.models!.set as! Set<NSManagedObject>)
         {
             tableView.reloadData()
         }
