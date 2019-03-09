@@ -65,7 +65,7 @@ extension CloudStorable {
     /// - Returns: existing or newly created object.
     static func objectForRecordID(_ recordID: CKRecord.ID, in context: NSManagedObjectContext) throws -> Self {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Self.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "recordID == %@", recordID)
+        fetchRequest.predicate = NSPredicate(format: "recordID = %@", recordID)
 
         return try context.performAndWait {
             let objects = try fetchRequest.execute()

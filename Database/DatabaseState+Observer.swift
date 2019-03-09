@@ -29,7 +29,7 @@ extension DatabaseState {
     /// - Returns: `DatabaseState` object in `context`.
     static func fetchOrCreate(context: NSManagedObjectContext, for database: CKDatabase) throws -> DatabaseState {
         let fetchRequest: NSFetchRequest<DatabaseState> = DatabaseState.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "scopeRawValue == %d", database.databaseScope.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "scopeRawValue = %d", database.databaseScope.rawValue)
 
         return try context.performAndWait {
             let results = try fetchRequest.execute()
@@ -54,7 +54,7 @@ extension DatabaseState {
     /// - Returns: `ZoneState` object from `zoneStates`.
     func stateForZoneWithID(_ zoneID: CKRecordZone.ID) throws -> ZoneState {
         let fetchRequest: NSFetchRequest<ZoneState> = ZoneState.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "databaseState == %@ AND zoneID == %@", self, zoneID)
+        fetchRequest.predicate = NSPredicate(format: "databaseState = %@ AND zoneID = %@", self, zoneID)
 
         return try managedObjectContext!.performAndWait {
             let results = try fetchRequest.execute()
@@ -76,7 +76,7 @@ extension DatabaseState {
     /// - Returns: array of `ZoneState` where `isDirty` is `true`.
     func statesForDirtyZones() throws -> [ZoneState] {
         let fetchRequest: NSFetchRequest<ZoneState> = ZoneState.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "databaseState == %@ AND isDirty == TRUE", self)
+        fetchRequest.predicate = NSPredicate(format: "databaseState = %@ AND isDirty = TRUE", self)
 
         return try managedObjectContext!.performAndWait {
             return try fetchRequest.execute()
@@ -88,7 +88,7 @@ extension DatabaseState {
     /// - Returns: array of `ZoneState` where `shouldDelete` is `true`.
     func statesForDeletedZones() throws -> [ZoneState] {
         let fetchRequest: NSFetchRequest<ZoneState> = ZoneState.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "databaseState == %@ AND shouldDelete == TRUE", self)
+        fetchRequest.predicate = NSPredicate(format: "databaseState = %@ AND shouldDelete = TRUE", self)
 
         return try managedObjectContext!.performAndWait {
             return try fetchRequest.execute()

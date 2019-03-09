@@ -24,7 +24,7 @@ extension Model {
         fetchRequest.fetchBatchSize = 20
 
         if let classification = classification {
-            fetchRequest.predicate = NSPredicate(format: "classificationRawValue == %d", classification.rawValue)
+            fetchRequest.predicate = NSPredicate(format: "classificationRawValue = %d", classification.rawValue)
         }
 
 

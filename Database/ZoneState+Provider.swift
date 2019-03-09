@@ -30,7 +30,7 @@ extension ZoneState {
     /// - Returns: `ZoneState` object in `context`, or `nil` if no such record.
     static func fetch(context: NSManagedObjectContext, for zoneID: CKRecordZone.ID, in database: CKDatabase) throws -> ZoneState? {
         let fetchRequest: NSFetchRequest<ZoneState> = ZoneState.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "zoneID == %@ AND databaseState.scopeRawValue == %d", zoneID, database.databaseScope.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "zoneID = %@ AND databaseState.scopeRawValue = %d", zoneID, database.databaseScope.rawValue)
         
         return try context.performAndWait {
             let results = try fetchRequest.execute()

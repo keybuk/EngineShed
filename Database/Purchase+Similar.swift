@@ -87,7 +87,7 @@ extension Purchase {
         guard catalogNumberPrefix != "" else { return [] }
 
         let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "SELF != %@ && manufacturer == %@ && catalogNumberPrefix == %@", self, manufacturer, catalogNumberPrefix)
+        fetchRequest.predicate = NSPredicate(format: "SELF != %@ && manufacturer = %@ && catalogNumberPrefix = %@", self, manufacturer, catalogNumberPrefix)
 
         let purchases = (try? managedObjectContext?.performAndWait {
             return try fetchRequest.execute()
