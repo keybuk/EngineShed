@@ -65,6 +65,16 @@ class DecoderEditTableViewController : UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0: return nil
+        case 1: return "Firmware"
+        case 2: return "Sound Project"
+        case 3: return nil
+        default: preconditionFailure("Unexpected section: \(section)")
+        }
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
