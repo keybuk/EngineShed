@@ -20,8 +20,10 @@ extension Model {
         fetchRequest.returnsDistinctResults = true
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "modelClass", ascending: true) ]
 
-        if let prefix = prefix {
+        if let prefix = prefix, !prefix.isEmpty {
             fetchRequest.predicate = NSPredicate(format: "modelClass BEGINSWITH %@", prefix)
+        } else {
+            fetchRequest.predicate = NSPredicate(format: "modelClass != NULL AND modelClass != ''")
         }
 
         let results = (try? managedObjectContext.performAndWait {
@@ -40,7 +42,7 @@ extension Model {
         fetchRequest.returnsDistinctResults = true
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "livery", ascending: true) ]
 
-        if let prefix = prefix {
+        if let prefix = prefix, !prefix.isEmpty {
             fetchRequest.predicate = NSPredicate(format: "livery BEGINSWITH %@", prefix)
         } else {
             fetchRequest.predicate = NSPredicate(format: "livery != NULL AND livery != ''")

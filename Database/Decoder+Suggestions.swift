@@ -29,8 +29,10 @@ extension Decoder {
             predicates.append(NSPredicate(format: "type = %@", type))
         }
 
-        if let prefix = prefix {
+        if let prefix = prefix, !prefix.isEmpty {
             predicates.append(NSPredicate(format: "firmwareVersion BEGINSWITH %@", prefix))
+        } else {
+            predicates.append(NSPredicate(format: "firmwareVersion != NULL AND firmwareVersion != ''"))
         }
 
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
@@ -61,6 +63,8 @@ extension Decoder {
             predicates.append(NSPredicate(format: "firmwareVersion = %@", firmwareVersion))
         }
 
+        predicates.append(NSPredicate(format: "firmwareDate != NULL"))
+
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
 
         let results = (try? managedObjectContext.performAndWait {
@@ -81,8 +85,10 @@ extension Decoder {
             NSSortDescriptor(key: "soundAuthor", ascending: true)
         ]
 
-        if let prefix = prefix {
+        if let prefix = prefix, !prefix.isEmpty {
             fetchRequest.predicate = NSPredicate(format: "soundAuthor BEGINSWITH %@", prefix)
+        } else {
+            fetchRequest.predicate = NSPredicate(format: "soundAuthor != NULL AND soundAuthor != ''")
         }
 
         let results = (try? managedObjectContext.performAndWait {
@@ -109,8 +115,10 @@ extension Decoder {
             predicates.append(NSPredicate(format: "soundAuthor = %@", soundAuthor))
         }
 
-        if let prefix = prefix {
+        if let prefix = prefix, !prefix.isEmpty {
             predicates.append(NSPredicate(format: "soundProject BEGINSWITH %@", prefix))
+        } else {
+            predicates.append(NSPredicate(format: "soundProject != NULL AND soundProject != ''"))
         }
 
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
@@ -139,9 +147,13 @@ extension Decoder {
             predicates.append(NSPredicate(format: "soundProject = %@", soundProject))
         }
 
-        if let prefix = prefix {
-            fetchRequest.predicate = NSPredicate(format: "soundProjectVersion BEGINSWITH %@", prefix)
+        if let prefix = prefix, !prefix.isEmpty {
+            predicates.append(NSPredicate(format: "soundProjectVersion BEGINSWITH %@", prefix))
+        } else {
+            predicates.append(NSPredicate(format: "soundProjectVersion != NULL AND soundProjectVersion != ''"))
         }
+
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
 
         let results = (try? managedObjectContext.performAndWait {
             return try fetchRequest.execute() as! [[String: String]]

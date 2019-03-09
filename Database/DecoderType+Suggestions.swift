@@ -20,8 +20,10 @@ extension DecoderType {
         fetchRequest.returnsDistinctResults = true
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "manufacturer", ascending: true) ]
 
-        if let prefix = prefix {
+        if let prefix = prefix, !prefix.isEmpty {
             fetchRequest.predicate = NSPredicate(format: "manufacturer BEGINSWITH %@", prefix)
+        } else {
+            fetchRequest.predicate = NSPredicate(format: "manufacturer != NULL AND manufacturer != ''")
         }
 
         let results = (try? managedObjectContext.performAndWait {
@@ -40,8 +42,10 @@ extension DecoderType {
         fetchRequest.returnsDistinctResults = true
         fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "socket", ascending: true) ]
 
-        if let prefix = prefix {
+        if let prefix = prefix, !prefix.isEmpty {
             fetchRequest.predicate = NSPredicate(format: "socket BEGINSWITH %@", prefix)
+        } else {
+            fetchRequest.predicate = NSPredicate(format: "socket != NULL AND socket != ''")
         }
 
         let results = (try? managedObjectContext.performAndWait {
