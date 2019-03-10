@@ -110,6 +110,7 @@ class PurchaseEditTableViewController : UITableViewController {
             }
         case 2:
             let datePickerOffset = datePickerVisible ? 1 : 0
+            
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseDateEdit", for: indexPath) as! PurchaseDateEditTableViewCell
@@ -215,9 +216,11 @@ class PurchaseEditTableViewController : UITableViewController {
             switch indexPath.row {
             case 0:
                 weak var dateEditCell = tableView.cellForRow(at: indexPath) as? PurchaseDateEditTableViewCell
+                tableView.deselectRow(at: indexPath, animated: true)
 
                 if !datePickerVisible {
                     datePickerVisible = true
+
                     tableView.insertRows(at: [datePickerIndexPath], with: .top)
                     tableView.scrollToRow(at: datePickerIndexPath, at: .middle, animated: true)
 
@@ -232,20 +235,19 @@ class PurchaseEditTableViewController : UITableViewController {
                         cell.resignFirstResponderBlock = {
                             if self.datePickerVisible {
                                 self.datePickerVisible = false
-                                self.tableView.deleteRows(at: [self.datePickerIndexPath], with: .top)
 
+                                self.tableView.deleteRows(at: [self.datePickerIndexPath], with: .top)
                                 dateEditCell?.pickerVisible = self.datePickerVisible
                             }
                         }
                     }
                 } else {
                     datePickerVisible = false
-                    tableView.deleteRows(at: [datePickerIndexPath], with: .top)
 
+                    tableView.deleteRows(at: [datePickerIndexPath], with: .top)
                     dateEditCell?.pickerVisible = datePickerVisible
                 }
 
-                tableView.deselectRow(at: indexPath, animated: true)
             default: break
             }
         case 3: break

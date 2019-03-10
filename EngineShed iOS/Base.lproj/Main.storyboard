@@ -1634,8 +1634,166 @@
                                     <segue destination="ast-oP-7Zh" kind="show" identifier="modelSpeakerPicker" id="6f2-e1-RZm"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDelete" id="PyS-xg-sIv" customClass="ModelDeleteTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLastRunEdit" id="5jT-JW-pNR" customClass="ModelLastRunEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="751.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5jT-JW-pNR" id="HfP-bp-CvC">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="CaK-FO-Krb">
+                                            <rect key="frame" x="8" y="0.0" width="359" height="43.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Last Run" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkW-J8-vL5">
+                                                    <rect key="frame" x="0.0" y="11.5" width="67" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4S1-Io-U9n">
+                                                    <rect key="frame" x="83" y="0.0" width="244" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="SbT-yf-Wnm"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="5jT-JW-pNR" id="1WL-xI-xGc"/>
+                                                    </connections>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYn-hV-UT2">
+                                                    <rect key="frame" x="343" y="11" width="16" height="22"/>
+                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="Clear Glyph - On Light"/>
+                                                    <connections>
+                                                        <action selector="clearButtonTapped:" destination="5jT-JW-pNR" eventType="touchUpInside" id="G4O-db-9ON"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CaK-FO-Krb" firstAttribute="top" secondItem="HfP-bp-CvC" secondAttribute="top" id="8JQ-kf-BT2"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="CaK-FO-Krb" secondAttribute="leading" id="AZ6-Hq-LNh"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="CaK-FO-Krb" secondAttribute="trailing" id="YaJ-iz-Ywo"/>
+                                        <constraint firstAttribute="bottom" secondItem="CaK-FO-Krb" secondAttribute="bottom" id="q3W-zQ-PrN"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="clearButton" destination="BYn-hV-UT2" id="Qv8-lI-vHz"/>
+                                    <outlet property="textField" destination="4S1-Io-U9n" id="wK6-iH-zBi"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelLastRunPicker" rowHeight="164" id="2SR-nC-wyt" customClass="ModelLastRunPickerTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="795.5" width="375" height="164"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2SR-nC-wyt" id="Win-rs-HAE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wk3-64-G3O">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
+                                            <date key="date" timeIntervalSinceReferenceDate="573335209.05116403">
+                                                <!--2019-03-03 19:46:49 +0000-->
+                                            </date>
+                                            <connections>
+                                                <action selector="datePickerValueChanged:" destination="2SR-nC-wyt" eventType="valueChanged" id="9HK-Zg-8yz"/>
+                                            </connections>
+                                        </datePicker>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="wk3-64-G3O" firstAttribute="leading" secondItem="Win-rs-HAE" secondAttribute="leading" id="0KB-fd-cBt"/>
+                                        <constraint firstAttribute="bottom" secondItem="wk3-64-G3O" secondAttribute="bottom" id="EmW-y2-7gk"/>
+                                        <constraint firstAttribute="trailing" secondItem="wk3-64-G3O" secondAttribute="trailing" id="YHb-MG-7G6"/>
+                                        <constraint firstItem="wk3-64-G3O" firstAttribute="top" secondItem="Win-rs-HAE" secondAttribute="top" id="ZfB-v5-g8W"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="datePicker" destination="wk3-64-G3O" id="nD4-NM-fVb"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLastOilEdit" id="WPD-Dz-Vk6" customClass="ModelLastOilEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="959.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WPD-Dz-Vk6" id="vL3-4a-M6P">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ypH-1z-xyE">
+                                            <rect key="frame" x="8" y="0.0" width="359" height="43.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Last Oil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmL-EP-nbm">
+                                                    <rect key="frame" x="0.0" y="11.5" width="57.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktr-cQ-swy">
+                                                    <rect key="frame" x="73.5" y="0.0" width="253.5" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="6Te-xB-NiY"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="WPD-Dz-Vk6" id="1b4-I5-6GW"/>
+                                                    </connections>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eij-pM-Sji">
+                                                    <rect key="frame" x="343" y="11" width="16" height="22"/>
+                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="Clear Glyph - On Light"/>
+                                                    <connections>
+                                                        <action selector="clearButtonTapped:" destination="WPD-Dz-Vk6" eventType="touchUpInside" id="GwP-Fe-AB8"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ypH-1z-xyE" secondAttribute="trailing" id="KMw-42-S7g"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="ypH-1z-xyE" secondAttribute="leading" id="bAb-cf-i5S"/>
+                                        <constraint firstAttribute="bottom" secondItem="ypH-1z-xyE" secondAttribute="bottom" id="bET-aC-a8E"/>
+                                        <constraint firstItem="ypH-1z-xyE" firstAttribute="top" secondItem="vL3-4a-M6P" secondAttribute="top" id="gma-zR-cqx"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="clearButton" destination="Eij-pM-Sji" id="qCz-NZ-eNT"/>
+                                    <outlet property="textField" destination="Ktr-cQ-swy" id="Y2b-rx-n6R"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelLastOilPicker" rowHeight="164" id="A91-Jb-r5l" customClass="ModelLastOilPickerTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="1003.5" width="375" height="164"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A91-Jb-r5l" id="aEO-yr-h0n">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Sgr-tM-Jjt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
+                                            <date key="date" timeIntervalSinceReferenceDate="573335209.05116403">
+                                                <!--2019-03-03 19:46:49 +0000-->
+                                            </date>
+                                            <connections>
+                                                <action selector="datePickerValueChanged:" destination="A91-Jb-r5l" eventType="valueChanged" id="hGU-xX-0nc"/>
+                                            </connections>
+                                        </datePicker>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Sgr-tM-Jjt" secondAttribute="bottom" id="HfP-BS-JCK"/>
+                                        <constraint firstItem="Sgr-tM-Jjt" firstAttribute="leading" secondItem="aEO-yr-h0n" secondAttribute="leading" id="ggi-hR-bPp"/>
+                                        <constraint firstItem="Sgr-tM-Jjt" firstAttribute="top" secondItem="aEO-yr-h0n" secondAttribute="top" id="mk5-tq-qg2"/>
+                                        <constraint firstAttribute="trailing" secondItem="Sgr-tM-Jjt" secondAttribute="trailing" id="oX9-DN-wfx"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="datePicker" destination="Sgr-tM-Jjt" id="fT3-6z-xgD"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDelete" id="PyS-xg-sIv" customClass="ModelDeleteTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="1167.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PyS-xg-sIv" id="BqP-3o-0Om">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

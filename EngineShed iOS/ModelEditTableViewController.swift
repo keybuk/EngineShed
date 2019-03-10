@@ -48,8 +48,11 @@ class ModelEditTableViewController : UITableViewController {
 
     // MARK: - Table view data source
 
+    var lastRunPickerVisible = false
+    var lastOilPickerVisible = false
+
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3 + ((model?.isInserted ?? true) ? 0 : 1)
+        return 4 + ((model?.isInserted ?? true) ? 0 : 1)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,7 +60,8 @@ class ModelEditTableViewController : UITableViewController {
         case 0: return 1
         case 1: return 8
         case 2: return 3
-        case 3: return 1
+        case 3: return 2 + (lastRunPickerVisible ? 1 : 0) + (lastOilPickerVisible ? 1 : 0)
+        case 4: return 1
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -67,7 +71,8 @@ class ModelEditTableViewController : UITableViewController {
         case 0: return nil
         case 1: return nil
         case 2: return "Electrical"
-        case 3: return nil
+        case 3: return "Maintenance"
+        case 4: return nil
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -135,6 +140,29 @@ class ModelEditTableViewController : UITableViewController {
             default: preconditionFailure("Unexpected indexPath: \(indexPath)")
             }
         case 3:
+            let lastRunPickerOffset = lastRunPickerVisible ? 1 : 0
+//            let lastOilPickerOffset = lastOilPickerVisible ? 1 : 0
+            
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelLastRunEdit", for: indexPath) as! ModelLastRunEditTableViewCell
+                cell.model = model
+                return cell
+            case 1 where lastRunPickerVisible:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelLastRunPicker", for: indexPath) as! ModelLastRunPickerTableViewCell
+                cell.model = model
+                return cell
+            case 1 + lastRunPickerOffset:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelLastOilEdit", for: indexPath) as! ModelLastOilEditTableViewCell
+                cell.model = model
+                return cell
+            case 2 + lastRunPickerOffset where lastOilPickerVisible:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelLastOilPicker", for: indexPath) as! ModelLastOilPickerTableViewCell
+                cell.model = model
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 4:
             precondition(!(model?.isInserted ?? true), "Unexpected delete model section in inserted model")
             switch indexPath.row {
             case 0:
@@ -153,7 +181,86 @@ class ModelEditTableViewController : UITableViewController {
         case 0: break
         case 1: break
         case 2: break
-        case 3: break
+        case 3:
+            let lastRunPickerOffset = lastRunPickerVisible ? 1 : 0
+//            let lastOilPickerOffset = lastOilPickerVisible ? 1 : 0
+
+            let lastRunPickerIndexPath = IndexPath(row: 1, section: 3)
+            let lastOilPickerIndexPath = IndexPath(row: 2 + lastRunPickerOffset, section: 3)
+
+            switch indexPath.row {
+            case 0:
+                weak var lastRunEditCell = tableView.cellForRow(at: indexPath) as? ModelLastRunEditTableViewCell
+                tableView.deselectRow(at: indexPath, animated: true)
+
+                if !lastRunPickerVisible {
+                    lastRunPickerVisible = true
+
+                    tableView.insertRows(at: [lastRunPickerIndexPath], with: .top)
+                    tableView.scrollToRow(at: lastRunPickerIndexPath, at: .middle, animated: true)
+
+                    lastRunEditCell?.pickerVisible = lastRunPickerVisible
+
+                    // Make the date picker the first responder, and when it loses that status,
+                    // hide the cell again.
+                    if let cell = tableView.cellForRow(at: lastRunPickerIndexPath) as? ModelLastRunPickerTableViewCell,
+                        cell.canBecomeFirstResponder,
+                        cell.becomeFirstResponder()
+                    {
+                        cell.resignFirstResponderBlock = {
+                            if self.lastRunPickerVisible {
+                                self.lastRunPickerVisible = false
+
+                                self.tableView.deleteRows(at: [lastRunPickerIndexPath], with: .top)
+                                lastRunEditCell?.pickerVisible = self.lastRunPickerVisible
+                            }
+                        }
+                    }
+                } else {
+                    lastRunPickerVisible = false
+
+                    tableView.deleteRows(at: [lastRunPickerIndexPath], with: .top)
+                    lastRunEditCell?.pickerVisible = lastRunPickerVisible
+                }
+
+            case 1 + lastRunPickerOffset:
+                weak var lastOilEditCell = tableView.cellForRow(at: indexPath) as? ModelLastOilEditTableViewCell
+                tableView.deselectRow(at: indexPath, animated: true)
+
+                if !lastOilPickerVisible {
+                    lastOilPickerVisible = true
+
+                    tableView.insertRows(at: [lastOilPickerIndexPath], with: .top)
+                    tableView.scrollToRow(at: lastOilPickerIndexPath, at: .middle, animated: true)
+
+                    lastOilEditCell?.pickerVisible = lastOilPickerVisible
+
+                    // Make the date picker the first responder, and when it loses that status,
+                    // hide the cell again.
+                    if let cell = tableView.cellForRow(at: lastOilPickerIndexPath) as? ModelLastOilPickerTableViewCell,
+                        cell.canBecomeFirstResponder,
+                        cell.becomeFirstResponder()
+                    {
+                        cell.resignFirstResponderBlock = {
+                            let lastRunPickerOffset = self.lastRunPickerVisible ? 1 : 0
+                            let lastOilPickerIndexPath = IndexPath(row: 2 + lastRunPickerOffset, section: 3)
+
+                            if self.lastOilPickerVisible {
+                                self.lastOilPickerVisible = false
+
+                                self.tableView.deleteRows(at: [lastOilPickerIndexPath], with: .top)
+                                lastOilEditCell?.pickerVisible = self.lastOilPickerVisible
+                            }
+                        }
+                    }
+                } else {
+                    lastOilPickerVisible = false
+
+                    tableView.deleteRows(at: [lastOilPickerIndexPath], with: .top)
+                    lastOilEditCell?.pickerVisible = lastOilPickerVisible
+                }
+            default: break
+            }
         case 4:
             precondition(!(model?.isInserted ?? true), "Unexpected delete model section in inserted model")
 
