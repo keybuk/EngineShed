@@ -1792,8 +1792,40 @@
                                     <outlet property="datePicker" destination="Sgr-tM-Jjt" id="fT3-6z-xgD"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelNotesEdit" rowHeight="129" id="GoJ-8o-siJ" customClass="ModelNotesEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="1167.5" width="375" height="129"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GoJ-8o-siJ" id="S7c-vd-Z9e">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7NC-sf-vZJ">
+                                            <rect key="frame" x="8" y="0.0" width="359" height="128.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="128" id="jnm-nw-o9w"/>
+                                            </constraints>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="GoJ-8o-siJ" id="Dwy-8x-HJJ"/>
+                                            </connections>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="7NC-sf-vZJ" secondAttribute="trailing" id="AGF-YD-sbs"/>
+                                        <constraint firstAttribute="bottom" secondItem="7NC-sf-vZJ" secondAttribute="bottom" id="NvX-rZ-1qF"/>
+                                        <constraint firstItem="7NC-sf-vZJ" firstAttribute="leading" secondItem="S7c-vd-Z9e" secondAttribute="leadingMargin" id="jgR-Ob-BAd"/>
+                                        <constraint firstItem="7NC-sf-vZJ" firstAttribute="top" secondItem="S7c-vd-Z9e" secondAttribute="top" id="lX7-vD-zUU"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textView" destination="7NC-sf-vZJ" id="dtg-R2-AJW"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDelete" id="PyS-xg-sIv" customClass="ModelDeleteTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1167.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="1296.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PyS-xg-sIv" id="BqP-3o-0Om">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -3050,7 +3082,7 @@
                                 <rect key="frame" x="0.0" y="744.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I6f-pr-7Lg" id="HtS-Ks-x7n">
-                                    <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6g2-XR-cCe">

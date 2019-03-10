@@ -52,16 +52,18 @@ class ModelEditTableViewController : UITableViewController {
     var lastOilPickerVisible = false
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4 + ((model?.isInserted ?? true) ? 0 : 1)
+        return 6 + ((model?.isInserted ?? true) ? 0 : 1)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
         case 1: return 8
-        case 2: return 3
-        case 3: return 2 + (lastRunPickerVisible ? 1 : 0) + (lastOilPickerVisible ? 1 : 0)
-        case 4: return 1
+        case 2: return 2
+        case 3: return 1
+        case 4: return 2 + (lastRunPickerVisible ? 1 : 0) + (lastOilPickerVisible ? 1 : 0)
+        case 5: return 1
+        case 6: return 1
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -71,8 +73,10 @@ class ModelEditTableViewController : UITableViewController {
         case 0: return nil
         case 1: return nil
         case 2: return "Electrical"
-        case 3: return "Maintenance"
-        case 4: return nil
+        case 3: return "Sound"
+        case 4: return "Maintenance"
+        case 5: return "Notes"
+        case 6: return nil
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -133,13 +137,17 @@ class ModelEditTableViewController : UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "modelSocketEdit", for: indexPath) as! ModelSocketEditTableViewCell
                 cell.model = model
                 return cell
-            case 2:
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 3:
+            switch indexPath.row {
+            case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "modelSpeakerEdit", for: indexPath) as! ModelSpeakerEditTableViewCell
                 cell.model = model
                 return cell
             default: preconditionFailure("Unexpected indexPath: \(indexPath)")
             }
-        case 3:
+        case 4:
             let lastRunPickerOffset = lastRunPickerVisible ? 1 : 0
 //            let lastOilPickerOffset = lastOilPickerVisible ? 1 : 0
             
@@ -162,7 +170,15 @@ class ModelEditTableViewController : UITableViewController {
                 return cell
             default: preconditionFailure("Unexpected indexPath: \(indexPath)")
             }
-        case 4:
+        case 5:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelNotesEdit", for: indexPath) as! ModelNotesEditTableViewCell
+                cell.model = model
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 6:
             precondition(!(model?.isInserted ?? true), "Unexpected delete model section in inserted model")
             switch indexPath.row {
             case 0:
@@ -181,12 +197,13 @@ class ModelEditTableViewController : UITableViewController {
         case 0: break
         case 1: break
         case 2: break
-        case 3:
+        case 3: break
+        case 4:
             let lastRunPickerOffset = lastRunPickerVisible ? 1 : 0
 //            let lastOilPickerOffset = lastOilPickerVisible ? 1 : 0
 
-            let lastRunPickerIndexPath = IndexPath(row: 1, section: 3)
-            let lastOilPickerIndexPath = IndexPath(row: 2 + lastRunPickerOffset, section: 3)
+            let lastRunPickerIndexPath = IndexPath(row: 1, section: 4)
+            let lastOilPickerIndexPath = IndexPath(row: 2 + lastRunPickerOffset, section: 4)
 
             switch indexPath.row {
             case 0:
@@ -243,7 +260,7 @@ class ModelEditTableViewController : UITableViewController {
                     {
                         cell.resignFirstResponderBlock = {
                             let lastRunPickerOffset = self.lastRunPickerVisible ? 1 : 0
-                            let lastOilPickerIndexPath = IndexPath(row: 2 + lastRunPickerOffset, section: 3)
+                            let lastOilPickerIndexPath = IndexPath(row: 2 + lastRunPickerOffset, section: 4)
 
                             if self.lastOilPickerVisible {
                                 self.lastOilPickerVisible = false
@@ -261,7 +278,8 @@ class ModelEditTableViewController : UITableViewController {
                 }
             default: break
             }
-        case 4:
+        case 5: break
+        case 6:
             precondition(!(model?.isInserted ?? true), "Unexpected delete model section in inserted model")
 
             // Confirm train deletion using an alert.
