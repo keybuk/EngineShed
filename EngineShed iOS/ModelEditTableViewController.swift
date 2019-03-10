@@ -49,14 +49,15 @@ class ModelEditTableViewController : UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2 + ((model?.isInserted ?? true) ? 0 : 1)
+        return 3 + ((model?.isInserted ?? true) ? 0 : 1)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
         case 1: return 8
-        case 2: return 1
+        case 2: return 3
+        case 3: return 1
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -65,7 +66,8 @@ class ModelEditTableViewController : UITableViewController {
         switch section {
         case 0: return nil
         case 1: return nil
-        case 2: return nil
+        case 2: return "Electrical"
+        case 3: return nil
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -117,6 +119,22 @@ class ModelEditTableViewController : UITableViewController {
             default: preconditionFailure("Unexpected indexPath: \(indexPath)")
             }
         case 2:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelMotorEdit", for: indexPath) as! ModelMotorEditTableViewCell
+                cell.model = model
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelSocketEdit", for: indexPath) as! ModelSocketEditTableViewCell
+                cell.model = model
+                return cell
+            case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelSpeakerEdit", for: indexPath) as! ModelSpeakerEditTableViewCell
+                cell.model = model
+                return cell
+            default: preconditionFailure("Unexpected indexPath: \(indexPath)")
+            }
+        case 3:
             precondition(!(model?.isInserted ?? true), "Unexpected delete model section in inserted model")
             switch indexPath.row {
             case 0:
@@ -134,7 +152,9 @@ class ModelEditTableViewController : UITableViewController {
         switch indexPath.section {
         case 0: break
         case 1: break
-        case 2:
+        case 2: break
+        case 3: break
+        case 4:
             precondition(!(model?.isInserted ?? true), "Unexpected delete model section in inserted model")
 
             // Confirm train deletion using an alert.
@@ -370,6 +390,15 @@ class ModelEditTableViewController : UITableViewController {
             viewController.model = model
         } else if segue.identifier == "modelDispositionPicker" {
             let viewController = segue.destination as! ModelDispositionPickerTableViewController
+            viewController.model = model
+        } else if segue.identifier == "modelMotorPicker" {
+            let viewController = segue.destination as! ModelMotorPickerTableViewController
+            viewController.model = model
+        } else if segue.identifier == "modelSocketPicker" {
+            let viewController = segue.destination as! ModelSocketPickerTableViewController
+            viewController.model = model
+        } else if segue.identifier == "modelSpeakerPicker" {
+            let viewController = segue.destination as! ModelSpeakerPickerTableViewController
             viewController.model = model
         }
     }

@@ -320,4 +320,13 @@ class DecoderTypeEditTableViewController : UITableViewController {
         }
     }
 
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "decoderTypeSocketPicker" {
+            let viewController = segue.destination as! DecoderTypeSocketPickerTableViewController
+            viewController.decoderType = decoderType
+        }
+    }
+
 }

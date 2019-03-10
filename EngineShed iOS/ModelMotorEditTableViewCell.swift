@@ -1,8 +1,8 @@
 //
-//  DecoderTypeSocketEditTableViewCell.swift
+//  ModelMotorEditTableViewCell.swift
 //  EngineShed iOS
 //
-//  Created by Scott James Remnant on 3/6/19.
+//  Created by Scott James Remnant on 3/9/19.
 //  Copyright © 2019 Scott James Remnant. All rights reserved.
 //
 
@@ -10,14 +10,14 @@ import UIKit
 
 import Database
 
-class DecoderTypeSocketEditTableViewCell : UITableViewCell, UITextFieldDelegate {
+class ModelMotorEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
 
-    var decoderType: DecoderType? {
+    var model: Model? {
         didSet {
             configureView()
-            observeDecoderType()
+            observeModel()
         }
     }
 
@@ -36,7 +36,7 @@ class DecoderTypeSocketEditTableViewCell : UITableViewCell, UITextFieldDelegate 
     }
 
     func configureView() {
-        textField.text = decoderType?.socket
+        textField.text = model?.motor
     }
 
     // MARK: - UIResponder
@@ -86,7 +86,7 @@ class DecoderTypeSocketEditTableViewCell : UITableViewCell, UITextFieldDelegate 
         }
 
         if !string.isEmpty,
-            let suggestion = decoderType?.suggestionsForSocket(startingWith: text).first
+            let suggestion = model?.suggestionsForMotor(startingWith: text).first
         {
             pendingCompletion = String(suggestion.dropFirst(text.count))
         } else {
@@ -102,22 +102,22 @@ class DecoderTypeSocketEditTableViewCell : UITableViewCell, UITextFieldDelegate 
         // Strictly speaking this isn't necessary, but make sure the value is set at the end of
         // editing just in case something changes it during resigning of the responder, before we
         // process the notification.
-        decoderType?.socket = textField.text
+        model?.motor = textField.text
     }
 
     // MARK: - Object management and observation
 
     var observers: [NSKeyValueObservation] = []
 
-    func observeDecoderType() {
+    func observeModel() {
         observers.removeAll()
-        guard let decoderType = decoderType else { return }
+        guard let model = model else { return }
 
         // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
         // temporarily replace with Cocoa KVO if necessary.
-        observers.append(decoderType.observe(\.socket) { (_, _) in
+        observers.append(model.observe(\.motor) { (_, _) in
             DispatchQueue.main.async {
-                self.textField.text = decoderType.socket
+                self.textField.text = model.motor
             }
         })
     }
@@ -126,7 +126,7 @@ class DecoderTypeSocketEditTableViewCell : UITableViewCell, UITextFieldDelegate 
 
     @objc
     func textDidChange(_ notification: Notification) {
-        decoderType?.socket = textField.text
+        model?.motor = textField.text
 
         DispatchQueue.main.async {
             if let completion = self.pendingCompletion {
