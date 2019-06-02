@@ -121,4 +121,28 @@ extension Model {
         return results.compactMap { $0["speaker"] }
     }
 
+    // MARK: List suggestions
+
+    public func suggestionsForLights(startingWith prefix: String? = nil) -> [String] {
+        guard let managedObjectContext = managedObjectContext else { return [] }
+
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Light.fetchRequest()
+        fetchRequest.resultType = .dictionaryResultType
+        fetchRequest.propertiesToFetch = [ "title" ]
+        fetchRequest.returnsDistinctResults = true
+        fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "title", ascending: true) ]
+
+        if let prefix = prefix, !prefix.isEmpty {
+            fetchRequest.predicate = NSPredicate(format: "title BEGINSWITH %@", prefix)
+        } else {
+            fetchRequest.predicate = NSPredicate(format: "title != NULL AND title != ''")
+        }
+
+        let results = (try? managedObjectContext.performAndWait {
+            return try fetchRequest.execute() as! [[String: String]]
+            }) ?? []
+
+        return results.compactMap { $0["title"] }
+    }
+
 }

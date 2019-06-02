@@ -237,6 +237,9 @@
 		D2C9787C2227913E00AB3C1C /* PurchaseConditionEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C9787B2227913E00AB3C1C /* PurchaseConditionEditTableViewCell.swift */; };
 		D2C9787E2227914400AB3C1C /* PurchaseValuationEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C9787D2227914400AB3C1C /* PurchaseValuationEditTableViewCell.swift */; };
 		D2C978802227914B00AB3C1C /* PurchaseNotesEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C9787F2227914B00AB3C1C /* PurchaseNotesEditTableViewCell.swift */; };
+		D2DE2DB3223885F5005D4CFD /* ModelLightsEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE2DB2223885F5005D4CFD /* ModelLightsEditTableViewCell.swift */; };
+		D2DE2DB5223886E7005D4CFD /* Model+Lists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */; };
+		D2DE2DB6223886E7005D4CFD /* Model+Lists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */; };
 		D2DE5CB320F82A3100CABE34 /* ModelsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB220F82A3100CABE34 /* ModelsTableViewController.swift */; };
 		D2DE5CB520F82CAB00CABE34 /* ModelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB420F82CAB00CABE34 /* ModelTableViewCell.swift */; };
 		D2DE5CB720F8431800CABE34 /* Model+Era.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CB620F8431800CABE34 /* Model+Era.swift */; };
@@ -668,6 +671,8 @@
 		D2C9787B2227913E00AB3C1C /* PurchaseConditionEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConditionEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2C9787D2227914400AB3C1C /* PurchaseValuationEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseValuationEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2C9787F2227914B00AB3C1C /* PurchaseNotesEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseNotesEditTableViewCell.swift; sourceTree = "<group>"; };
+		D2DE2DB2223885F5005D4CFD /* ModelLightsEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLightsEditTableViewCell.swift; sourceTree = "<group>"; };
+		D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Lists.swift"; sourceTree = "<group>"; };
 		D2DE5CB220F82A3100CABE34 /* ModelsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsTableViewController.swift; sourceTree = "<group>"; };
 		D2DE5CB420F82CAB00CABE34 /* ModelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTableViewCell.swift; sourceTree = "<group>"; };
 		D2DE5CB620F8431800CABE34 /* Model+Era.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Era.swift"; sourceTree = "<group>"; };
@@ -1084,6 +1089,7 @@
 				D2690375223472CF002C7A48 /* ModelDispositionPickerTableViewController.swift */,
 				D269037C2234B57F002C7A48 /* ModelMotorEditTableViewCell.swift */,
 				D269037A2234B574002C7A48 /* ModelMotorPickerTableViewController.swift */,
+				D2DE2DB2223885F5005D4CFD /* ModelLightsEditTableViewCell.swift */,
 				D26903802234BAF2002C7A48 /* ModelSocketEditTableViewCell.swift */,
 				D26903842234BB02002C7A48 /* ModelSocketPickerTableViewController.swift */,
 				D269037E2234BAEB002C7A48 /* ModelSpeakerEditTableViewCell.swift */,
@@ -1225,6 +1231,7 @@
 				D2DE5CBA20F8517400CABE34 /* Model+Disposition.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
 				D202D10A21EB0670008153FB /* Model+Date.swift */,
+				D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */,
 				D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */,
 				D269037722347330002C7A48 /* Model+Suggestions.swift */,
 				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
@@ -2187,6 +2194,7 @@
 				D2F4EF26223374D0008FB14A /* DecoderDeleteTableViewCell.swift in Sources */,
 				D2F4EF1E223374AF008FB14A /* DecoderSoundAuthorTableViewCell.swift in Sources */,
 				D2F4EF2822337549008FB14A /* DecoderSerialNumberEditTableViewCell.swift in Sources */,
+				D2DE2DB3223885F5005D4CFD /* ModelLightsEditTableViewCell.swift in Sources */,
 				D2F4EEFE223094D9008FB14A /* DecoderTypeIsProgrammableEditTableViewCell.swift in Sources */,
 				D2F4EF1822337492008FB14A /* DecoderAddressTableViewCell.swift in Sources */,
 				D2F4EF3222337578008FB14A /* DecoderSoundProjectEditTableViewCell.swift in Sources */,
@@ -2277,6 +2285,7 @@
 				D2DE5CC020F8517500CABE34 /* Purchase+Condition.swift in Sources */,
 				D202D10821EAEBF2008153FB /* Purchase+Date.swift in Sources */,
 				D202D11121EB199E008153FB /* Decoder+Date.swift in Sources */,
+				D2DE2DB5223886E7005D4CFD /* Model+Lists.swift in Sources */,
 				D2B2AF4B20D819F200BEFC15 /* NSImage+Flipped.swift in Sources */,
 				D2AF28B921102DBC00374975 /* Model+FetchRequests.swift in Sources */,
 				D298CAF320D737C800827F68 /* CloudProvider.swift in Sources */,
@@ -2339,6 +2348,7 @@
 				D298CB3220D8163A00827F68 /* Model+CloudStorable.swift in Sources */,
 				D2AF28BA21102DBC00374975 /* Model+FetchRequests.swift in Sources */,
 				D248356121D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift in Sources */,
+				D2DE2DB6223886E7005D4CFD /* Model+Lists.swift in Sources */,
 				D2B2AF5020D81A7B00BEFC15 /* TrainMember+Image.swift in Sources */,
 				D248355821D6E23A00495FC0 /* CloudObserver.swift in Sources */,
 				D25828BD21DEFF450094918F /* CloudProviderDelegate.swift in Sources */,

@@ -59,7 +59,7 @@ class ModelEditTableViewController : UITableViewController {
         switch section {
         case 0: return 1
         case 1: return 8
-        case 2: return 2
+        case 2: return 3
         case 3: return 1
         case 4: return 2 + (lastRunPickerVisible ? 1 : 0) + (lastOilPickerVisible ? 1 : 0)
         case 5: return 1
@@ -134,6 +134,10 @@ class ModelEditTableViewController : UITableViewController {
                 cell.model = model
                 return cell
             case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelLightsEdit", for: indexPath) as! ModelLightsEditTableViewCell
+                cell.model = model
+                return cell
+            case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "modelSocketEdit", for: indexPath) as! ModelSocketEditTableViewCell
                 cell.model = model
                 return cell

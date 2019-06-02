@@ -1267,7 +1267,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="R3612" translatesAutoresizingMaskIntoConstraints="NO" id="T83-Da-Xcm">
-                                            <rect key="frame" x="0.0" y="0.5" width="375" height="210.5"/>
+                                            <rect key="frame" x="173.5" y="98" width="28" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="T83-Da-Xcm" secondAttribute="height" multiplier="16:9" id="T5a-gb-FXO"/>
                                             </constraints>
@@ -1570,8 +1570,52 @@
                                     <segue destination="eob-gQ-wLk" kind="show" identifier="modelMotorPicker" id="olK-Nv-IuH"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelLightsEdit" rowHeight="129" id="Uav-dN-UCE" customClass="ModelLightsEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="663.5" width="375" height="129"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uav-dN-UCE" id="kqJ-bG-xzF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OGm-Ms-9c5">
+                                            <rect key="frame" x="8" y="0.0" width="359" height="128.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="128" id="D9b-uH-PaP"/>
+                                            </constraints>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="Uav-dN-UCE" id="Syb-QG-DT6"/>
+                                            </connections>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GS4-KT-AIE">
+                                            <rect key="frame" x="8" y="0.0" width="47" height="20.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OGm-Ms-9c5" firstAttribute="leading" secondItem="kqJ-bG-xzF" secondAttribute="leadingMargin" id="07e-xI-rKq"/>
+                                        <constraint firstItem="GS4-KT-AIE" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OGm-Ms-9c5" secondAttribute="trailing" id="0ug-ur-hM3"/>
+                                        <constraint firstItem="OGm-Ms-9c5" firstAttribute="top" secondItem="kqJ-bG-xzF" secondAttribute="top" id="40m-VO-2Wt"/>
+                                        <constraint firstItem="GS4-KT-AIE" firstAttribute="top" secondItem="OGm-Ms-9c5" secondAttribute="top" id="DOS-es-Xzx"/>
+                                        <constraint firstItem="GS4-KT-AIE" firstAttribute="leading" secondItem="OGm-Ms-9c5" secondAttribute="leading" id="Hcu-Ix-JnE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="OGm-Ms-9c5" secondAttribute="trailing" id="XiK-MJ-vlR"/>
+                                        <constraint firstAttribute="bottom" secondItem="OGm-Ms-9c5" secondAttribute="bottom" id="eTK-ah-zKd"/>
+                                        <constraint firstItem="GS4-KT-AIE" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="OGm-Ms-9c5" secondAttribute="bottom" id="kig-x0-Jyh"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="placeholderLabel" destination="GS4-KT-AIE" id="Snl-Vf-9eq"/>
+                                    <outlet property="placeholderTopConstraint" destination="DOS-es-Xzx" id="ZAK-Xa-LvB"/>
+                                    <outlet property="textView" destination="OGm-Ms-9c5" id="z23-Pk-Rk7"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelSocketEdit" id="8an-6Z-EQE" customClass="ModelSocketEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="663.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="792.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8an-6Z-EQE" id="arh-BC-pdP">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -1603,7 +1647,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelSpeakerEdit" id="2s7-tX-rv3" customClass="ModelSpeakerEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="707.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="836.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2s7-tX-rv3" id="Rrn-Rk-sUY">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -1635,7 +1679,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLastRunEdit" id="5jT-JW-pNR" customClass="ModelLastRunEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="751.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="880.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5jT-JW-pNR" id="HfP-bp-CvC">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1686,7 +1730,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelLastRunPicker" rowHeight="164" id="2SR-nC-wyt" customClass="ModelLastRunPickerTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="795.5" width="375" height="164"/>
+                                <rect key="frame" x="0.0" y="924.5" width="375" height="164"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2SR-nC-wyt" id="Win-rs-HAE">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
@@ -1714,7 +1758,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLastOilEdit" id="WPD-Dz-Vk6" customClass="ModelLastOilEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="959.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="1088.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WPD-Dz-Vk6" id="vL3-4a-M6P">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1765,7 +1809,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelLastOilPicker" rowHeight="164" id="A91-Jb-r5l" customClass="ModelLastOilPickerTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1003.5" width="375" height="164"/>
+                                <rect key="frame" x="0.0" y="1132.5" width="375" height="164"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A91-Jb-r5l" id="aEO-yr-h0n">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
@@ -1793,7 +1837,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelNotesEdit" rowHeight="129" id="GoJ-8o-siJ" customClass="ModelNotesEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1167.5" width="375" height="129"/>
+                                <rect key="frame" x="0.0" y="1296.5" width="375" height="129"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GoJ-8o-siJ" id="S7c-vd-Z9e">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128.5"/>
@@ -1825,14 +1869,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDelete" id="PyS-xg-sIv" customClass="ModelDeleteTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1296.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="1425.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PyS-xg-sIv" id="BqP-3o-0Om">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gck-8i-exQ">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="8" y="0.0" width="359" height="43.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="qEb-2V-7gn"/>
                                             </constraints>
@@ -3082,7 +3126,7 @@
                                 <rect key="frame" x="0.0" y="744.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I6f-pr-7Lg" id="HtS-Ks-x7n">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6g2-XR-cCe">
