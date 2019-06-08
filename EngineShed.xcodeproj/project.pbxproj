@@ -2964,6 +2964,7 @@
 				CODE_SIGN_ENTITLEMENTS = "EngineShed iOS/EngineShed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
 				INFOPLIST_FILE = "EngineShed iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2974,7 +2975,9 @@
 				PRODUCT_NAME = EngineShed;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
+				SUPPORTS_UIKITFORMAC = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -2986,6 +2989,7 @@
 				CODE_SIGN_ENTITLEMENTS = "EngineShed iOS/EngineShed.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
 				INFOPLIST_FILE = "EngineShed iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2996,7 +3000,9 @@
 				PRODUCT_NAME = EngineShed;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
+				SUPPORTS_UIKITFORMAC = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
