@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelLastRunEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!

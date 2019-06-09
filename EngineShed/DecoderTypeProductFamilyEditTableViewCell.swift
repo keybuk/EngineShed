@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class DecoderTypeProductFamilyEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!

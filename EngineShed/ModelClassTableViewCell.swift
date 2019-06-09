@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelClassTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var classLabel: UILabel!

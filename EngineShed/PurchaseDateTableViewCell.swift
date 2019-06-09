@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class PurchaseDateTableViewCell : UITableViewCell, PurchaseSettable {
 
     @IBOutlet weak var dateLabel: UILabel!

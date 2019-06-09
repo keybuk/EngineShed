@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class TrainMemberEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!

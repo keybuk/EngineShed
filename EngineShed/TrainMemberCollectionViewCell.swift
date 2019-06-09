@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class TrainMemberCollectionViewCell : UICollectionViewCell {
 
     @IBOutlet weak var modelImageView: UIImageView!

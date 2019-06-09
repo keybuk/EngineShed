@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class TrainMemberIsFlippedTableViewCell : UITableViewCell {
 
     @IBOutlet weak var isFlippedLabel: UILabel!

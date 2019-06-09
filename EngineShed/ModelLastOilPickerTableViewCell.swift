@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelLastOilPickerTableViewCell : UITableViewCell {
 
     @IBOutlet weak var datePicker: UIDatePicker!

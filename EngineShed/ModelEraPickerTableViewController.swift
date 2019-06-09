@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelEraPickerTableViewController : UITableViewController {
 
     var model: Model? {

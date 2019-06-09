@@ -6,22 +6,14 @@
 //  Copyright © 2018 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension TrainMember {
 
-    #if os(iOS)
     public var image: UIImage? {
         return model?.image.map {
             isFlipped ? $0.withHorizontallyFlippedOrientation() : $0
         }
     }
-    #elseif os(macOS)
-    public var image: NSImage? {
-        return model?.image.map {
-            isFlipped ? $0.withHorizontallyFlippedOrientation() : $0
-        }
-    }
-    #endif
 
 }

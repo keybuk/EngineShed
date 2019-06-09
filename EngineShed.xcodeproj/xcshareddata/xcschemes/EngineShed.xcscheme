@@ -20,20 +20,6 @@
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2A41175212630B900B6C198"
-               BuildableName = "Util iOS Tests.xctest"
-               BlueprintName = "Util iOS Tests"
-               ReferencedContainer = "container:EngineShed.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -68,26 +54,6 @@
                BlueprintIdentifier = "D2B7C97320D4BA31001B51B1"
                BuildableName = "EngineShedUITests.xctest"
                BlueprintName = "EngineShedUITests"
-               ReferencedContainer = "container:EngineShed.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2B7C9B320D4BEF3001B51B1"
-               BuildableName = "Database iOS Tests.xctest"
-               BlueprintName = "Database iOS Tests"
-               ReferencedContainer = "container:EngineShed.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2A41175212630B900B6C198"
-               BuildableName = "Util iOS Tests.xctest"
-               BlueprintName = "Util iOS Tests"
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-import Database
-
 class TrainsCollectionViewController : UICollectionViewController, NSFetchedResultsControllerDelegate {
 
     var persistentContainer: NSPersistentContainer?

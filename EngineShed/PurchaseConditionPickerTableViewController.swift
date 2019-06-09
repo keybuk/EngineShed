@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class PurchaseConditionPickerTableViewController : UITableViewController {
 
     var purchase: Purchase? {

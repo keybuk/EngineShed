@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelTableViewCell : UITableViewCell {
 
     @IBOutlet weak var modelImageView: UIImageView!

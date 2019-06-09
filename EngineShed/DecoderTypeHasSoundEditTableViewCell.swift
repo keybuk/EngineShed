@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class DecoderTypeHasSoundEditTableViewCell : UITableViewCell {
 
     @IBOutlet weak var hasSoundSwitch: UISwitch!

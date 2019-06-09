@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class DecoderTypeHasRailComTableViewCell : UITableViewCell {
 
     @IBOutlet weak var hasRailComLabel: UILabel!

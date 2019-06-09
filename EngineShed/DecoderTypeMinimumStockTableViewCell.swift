@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class DecoderTypeMinimumStockTableViewCell : UITableViewCell {
 
     @IBOutlet weak var minimumStockLabel: UILabel!

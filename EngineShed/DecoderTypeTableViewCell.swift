@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class DecoderTypeTableViewCell : UITableViewCell {
 
     @IBOutlet weak var decoderTypeImageView: UIImageView!

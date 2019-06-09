@@ -6,11 +6,10 @@
 //  Copyright © 2018 Scott James Remnant. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension Model {
 
-    #if os(iOS)
     public var image: UIImage? {
         get {
             return imageData.flatMap { UIImage(data: $0) }
@@ -20,16 +19,5 @@ extension Model {
             imageData = newValue?.pngData()
         }
     }
-    #elseif os(macOS)
-    public var image: NSImage? {
-        get {
-            return imageData.flatMap { NSImage(data: $0) }
-        }
-
-        set {
-            imageData = newValue?.pngData()
-        }
-    }
-    #endif
 
 }

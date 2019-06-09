@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelLiveryPickerTableViewController : UITableViewController {
 
     var model: Model? {

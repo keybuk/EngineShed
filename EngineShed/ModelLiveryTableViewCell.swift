@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelLiveryTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var liveryLabel: UILabel!

@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Util
-
 public enum ModelDisposition : Int16, CaseIterable {
     
     case normal = 1

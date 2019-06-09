@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelMotorTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var motorLabel: UILabel!

@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class DecoderTypeIsProgrammableEditTableViewCell : UITableViewCell {
 
     @IBOutlet weak var isProgrammableSwitch: UISwitch!

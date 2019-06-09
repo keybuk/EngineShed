@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelNameEditTableViewCell : UITableViewCell {
 
     @IBOutlet weak var textField: UITextField!

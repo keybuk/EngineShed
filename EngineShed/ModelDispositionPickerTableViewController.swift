@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelDispositionPickerTableViewController : UITableViewController {
 
     var model: Model? {

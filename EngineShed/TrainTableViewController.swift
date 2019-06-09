@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-import Database
-
 class TrainTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?

@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelClassificationPickerTableViewController : UITableViewController {
 
     var model: Model? {

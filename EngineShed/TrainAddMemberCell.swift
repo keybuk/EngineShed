@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class TrainMemberAddTableViewCell : UITableViewCell {
 
     @IBOutlet weak var label: UILabel!

@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class PurchaseConditionTableViewCell : UITableViewCell, PurchaseSettable {
 
     @IBOutlet weak var conditionLabel: UILabel!

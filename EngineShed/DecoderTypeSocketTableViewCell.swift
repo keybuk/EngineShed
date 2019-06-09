@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class DecoderTypeSocketTableViewCell : UITableViewCell {
 
     @IBOutlet weak var socketLabel: UILabel!

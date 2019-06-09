@@ -9,7 +9,7 @@
 import XCTest
 import CoreData
 
-@testable import Database
+@testable import EngineShed
 
 class SimilarPurchaseTests : XCTestCase {
 
@@ -20,7 +20,8 @@ class SimilarPurchaseTests : XCTestCase {
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false
 
-        container = NSPersistentContainer(name: "EngineShed_SimilarPurchaseTests", managedObjectModel: LocalPersistentContainer.shared.managedObjectModel)
+        container = NSPersistentContainer(name: "EngineShed")
+//        container = NSPersistentContainer(name: "EngineShed_SimilarPurchaseTests", managedObjectModel: LocalPersistentContainer.shared.managedObjectModel)
         container?.persistentStoreDescriptions = [description]
         container?.loadPersistentStores { (storeDescription, error) in
             precondition(storeDescription.type == NSInMemoryStoreType)

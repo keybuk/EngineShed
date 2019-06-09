@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-import Database
-
 protocol ModelSettable : class {
 
     var model: Model? { get set }

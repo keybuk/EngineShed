@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-import Database
-
 class PurchaseEditTableViewController : UITableViewController {
 
     @IBOutlet weak var saveButton: UIBarButtonItem!

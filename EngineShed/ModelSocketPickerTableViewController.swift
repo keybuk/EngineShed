@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelSocketPickerTableViewController : UITableViewController {
 
     var model: Model? {

@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelMotorPickerTableViewController : UITableViewController {
 
     var model: Model? {

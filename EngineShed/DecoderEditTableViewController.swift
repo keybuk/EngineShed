@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-import Database
-
 class DecoderEditTableViewController : UITableViewController {
 
     @IBOutlet weak var saveButton: UIBarButtonItem!

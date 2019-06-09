@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Database
-
 class ModelDispositionTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var dispositionLabel: UILabel!
