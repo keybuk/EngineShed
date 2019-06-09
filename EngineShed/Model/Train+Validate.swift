@@ -25,18 +25,18 @@ extension Train {
         guard let name = value.pointee as? String, name != "" else { throw ValidationError.emptyName }
     }
 
-    func validateMembers() throws {
-        guard members!.count > 0 else { throw ValidationError.noMembers }
-    }
-
-    public override func validateForInsert() throws {
-        try super.validateForInsert()
-        try validateMembers()
-    }
-
-    public override func validateForUpdate() throws {
-        try super.validateForUpdate()
-        try validateMembers()
-    }
+//    func validateMembers() throws {
+//        guard members!.count > 0 else { throw ValidationError.noMembers }
+//    }
+//
+//    public override func validateForInsert() throws {
+//        try super.validateForInsert()
+//        try validateMembers()
+//    }
+//
+//    public override func validateForUpdate() throws {
+//        try super.validateForUpdate()
+//        try validateMembers()
+//    }
 
 }
