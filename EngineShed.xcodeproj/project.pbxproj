@@ -731,7 +731,6 @@
 				D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */,
 				D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */,
 				D2B7C96420D4BA31001B51B1 /* Info.plist */,
-				D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */,
 				D298CAEA20D7118A00827F68 /* EngineShed.entitlements */,
 			);
 			path = EngineShed;
@@ -769,6 +768,7 @@
 		D2C7E20B22ADA08600A024A5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */,
 				D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */,
 				D21DD33F222B5D550065D934 /* Purchase+Number.swift */,
 				D202D10721EAEBF2008153FB /* Purchase+Date.swift */,
