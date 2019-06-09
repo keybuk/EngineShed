@@ -23,14 +23,14 @@ extension Model {
         get {
             return lastOil.flatMap { dateComponents -> Date? in
                 let calendar = Calendar.current
-                return calendar.date(from: dateComponents as DateComponents)
+                return calendar.date(from: dateComponents)
             }
         }
 
         set {
             lastOil = newValue.flatMap {
                 let calendar = Calendar.current
-                return calendar.dateComponents([ .year, .month, .day ], from: $0) as NSDateComponents?
+                return calendar.dateComponents([ .year, .month, .day ], from: $0)
             }
         }
     }
@@ -51,14 +51,14 @@ extension Model {
         get {
             return lastRun.flatMap { dateComponents -> Date? in
                 let calendar = Calendar.current
-                return calendar.date(from: dateComponents as DateComponents)
+                return calendar.date(from: dateComponents)
             }
         }
 
         set {
             lastRun = newValue.flatMap {
                 let calendar = Calendar.current
-                return calendar.dateComponents([ .year, .month, .day ], from: $0) as NSDateComponents?
+                return calendar.dateComponents([ .year, .month, .day ], from: $0)
             }
         }
     }

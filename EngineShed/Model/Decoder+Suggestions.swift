@@ -44,7 +44,7 @@ extension Decoder {
         return results.compactMap { $0["firmwareVersion"] }
     }
 
-    public func suggestedFirmwareDate() -> NSDateComponents? {
+    public func suggestedFirmwareDate() -> DateComponents? {
         guard let managedObjectContext = managedObjectContext else { return nil }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Decoder.fetchRequest()
@@ -68,7 +68,7 @@ extension Decoder {
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
 
         let results = (try? managedObjectContext.performAndWait {
-            return try fetchRequest.execute() as! [[String: NSDateComponents?]]
+            return try fetchRequest.execute() as! [[String: DateComponents?]]
             }) ?? []
 
         return results.first?["firmwareDate"] ?? nil
