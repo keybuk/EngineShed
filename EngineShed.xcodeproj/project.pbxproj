@@ -147,6 +147,7 @@
 		D2C7E23322ADA38500A024A5 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
 		D2C7E23422ADA38500A024A5 /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
 		D2C7E23522ADA39500A024A5 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */; };
+		D2C7E23822ADA5AE00A024A5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C7E23722ADA5AE00A024A5 /* CloudKit.framework */; };
 		D2C978662227733200AB3C1C /* PurchaseDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C978652227733200AB3C1C /* PurchaseDeleteTableViewCell.swift */; };
 		D2C97868222790E000AB3C1C /* PurchaseManufacturerEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C97867222790E000AB3C1C /* PurchaseManufacturerEditTableViewCell.swift */; };
 		D2C9786A222790E800AB3C1C /* PurchaseCatalogNumberEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C97869222790E800AB3C1C /* PurchaseCatalogNumberEditTableViewCell.swift */; };
@@ -383,6 +384,7 @@
 		D2B9A1B72150D35D00156100 /* ModelPurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		D2BE3DD1215B593E0005D68F /* Purchase+Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Index.swift"; sourceTree = "<group>"; };
 		D2BE3DD4215B59C50005D68F /* Train+Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Index.swift"; sourceTree = "<group>"; };
+		D2C7E23722ADA5AE00A024A5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D2C978652227733200AB3C1C /* PurchaseDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		D2C97867222790E000AB3C1C /* PurchaseManufacturerEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManufacturerEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2C97869222790E800AB3C1C /* PurchaseCatalogNumberEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCatalogNumberEditTableViewCell.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C7E23822ADA5AE00A024A5 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +506,7 @@
 				D2B7C96C20D4BA31001B51B1 /* EngineShedTests */,
 				D2B7C97720D4BA31001B51B1 /* EngineShedUITests */,
 				D215BE9F20D4B5380054FDCC /* Products */,
+				D2C7E23622ADA5AE00A024A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -800,6 +804,14 @@
 				D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D2C7E23622ADA5AE00A024A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2C7E23722ADA5AE00A024A5 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D2F4EEB8222F2B00008FB14A /* Decoder Types View */ = {
@@ -1424,6 +1436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EngineShed/EngineShed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
@@ -1444,6 +1457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EngineShed/EngineShed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
