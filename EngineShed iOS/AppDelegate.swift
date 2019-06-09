@@ -14,59 +14,11 @@ import Dispatch
 import Database
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, CloudProviderDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        persistentContainer.cloudProvider.delegate = self
-
-        persistentContainer.cloudContainer.accountStatus { (accountStatus, error) in
-            if let error = error { fatalError("Error checking CloudKit account status: \(error)") }
-            if accountStatus != .available { return }
-
-            DispatchQueue.main.async {
-                #if !targetEnvironment(simulator)
-                // Subscribe to changes in CloudKit, enabling remote notifications.
-                self.beginNetworkActivity()
-                self.persistentContainer.cloudObserver.subscribeToChanges { error in
-                    self.endNetworkActivity()
-
-                    if let error = error {
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "CloudKit Subscription Failed", message: error.localizedDescription, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default))
-                            self.window?.rootViewController?.present(alert, animated: true)
-                        }
-                    }
-                }
-
-                // Register for remote notifications of changes to the iCloud database.
-                application.registerForRemoteNotifications()
-                #endif
-
-                // Fetch any changes since last start.
-                self.beginNetworkActivity()
-                self.persistentContainer.cloudObserver.fetchChanges { error in
-                    self.endNetworkActivity()
-
-                    if let error = error {
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "Sync From CloudKit Failed", message: error.localizedDescription, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default))
-                            self.window?.rootViewController?.present(alert, animated: true)
-                        }
-                    }
-                }
-
-                // Observe changes to our managed context, send to CloudKit.
-                self.persistentContainer.cloudProvider.observeChanges()
-
-                // Resume any long-lived operations from last run.
-                self.persistentContainer.cloudProvider.resumeLongLivedOperations()
-            }
-        }
-
         if let tabBarController = window?.rootViewController as? UITabBarController {
             if let splitViewController = tabBarController.viewControllers?[0] as? UISplitViewController {
                 let navigationController = splitViewController.viewControllers.last! as! UINavigationController
@@ -130,62 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Saves changes in the application's managed object context before the application terminates.
     }
 
-    // MARK: - Remote notifications
-
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("Remote notifications registered \(deviceToken)")
-    }
-
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Registration failed \(error)")
-    }
-
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print("Remote Notification")
-
-        beginNetworkActivity()
-        persistentContainer.cloudObserver.handleRemoteNotification(userInfo) { error in
-            self.endNetworkActivity()
-            if let error = error {
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Sync From CloudKit Failed", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.window?.rootViewController?.present(alert, animated: true)
-                }
-                
-                completionHandler(.failed)
-            } else {
-                completionHandler(.newData)
-            }
-        }
-    }
-
-    // MARK: - Cloud provider delegate
-
-    func cloudProvider(_ cloudProvider: CloudProvider, didFailWithError error: Error) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Sync to CloudKit Failed", message: error.localizedDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.window?.rootViewController?.present(alert, animated: true)
-        }
-    }
-
-    // MARK: - Split view
-
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
-        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-
-        // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-        if let viewController = secondaryAsNavController.topViewController as? ModelTableViewController,
-            viewController.model == nil { return true }
-        if let viewController = secondaryAsNavController.topViewController as? PurchaseTableViewController,
-            viewController.purchase == nil { return true }
-        if let viewController = secondaryAsNavController.topViewController as? DecoderTypeTableViewController,
-            viewController.decoderType == nil { return true }
-
-        return false
-    }
-
     // MARK: - Core Data stack
 
     lazy var persistentContainer: LocalPersistentContainer = {
@@ -213,34 +109,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             }
         })
 
-        // Merge changes from the store into the context automatically (e.g. CloudKit sync),
-        // but keep any unsaved property values in this context.
-        container.viewContext.automaticallyMergesChangesFromParent = true
-        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-
         return container
     }()
-
-    // MARK: - Network activity indicator management
-
-    var networkActivityCalls = 0
-
-    func beginNetworkActivity() {
-        DispatchQueue.main.async {
-            self.networkActivityCalls += 1
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        }
-    }
-
-    func endNetworkActivity() {
-        DispatchQueue.main.async {
-            precondition(self.networkActivityCalls > 0, "Mismatched endNetworkActivity")
-            self.networkActivityCalls -= 1
-            if self.networkActivityCalls == 0 {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
 
 }
 
