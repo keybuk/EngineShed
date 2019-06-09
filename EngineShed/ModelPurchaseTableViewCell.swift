@@ -1,6 +1,6 @@
 //
 //  ModelPurchaseTableViewCell.swift
-//  EngineShed iOS
+//  EngineShed
 //
 //  Created by Scott James Remnant on 9/17/18.
 //  Copyright © 2018 Scott James Remnant. All rights reserved.
