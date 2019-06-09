@@ -114,7 +114,6 @@
 		D295D8A621EADCF900BBD204 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A521EADCF900BBD204 /* PurchasesTableViewController.swift */; };
 		D295D8A821EADD0800BBD204 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A721EADD0800BBD204 /* PurchaseTableViewCell.swift */; };
 		D295D8AB21EADDDE00BBD204 /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */; };
-		D298CAE920D7109900827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAE820D7109900827F68 /* CloudKit.framework */; };
 		D298CAF020D7149200827F68 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D298CAE820D7109900827F68 /* CloudKit.framework */; };
 		D298CB1B20D8143A00827F68 /* Model+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1920D8143900827F68 /* Model+Image.swift */; };
 		D2A41177212630B900B6C198 /* Util.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2A4116E212630B900B6C198 /* Util.framework */; };
@@ -445,10 +444,10 @@
 		D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2B7C96220D4BA31001B51B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2B7C96420D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2B7C96920D4BA31001B51B1 /* EngineShed iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7C96920D4BA31001B51B1 /* EngineShedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineShedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C96D20D4BA31001B51B1 /* EngineShedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedTests.swift; sourceTree = "<group>"; };
 		D2B7C96F20D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2B7C97420D4BA31001B51B1 /* EngineShed iOS UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EngineShed iOS UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B7C97420D4BA31001B51B1 /* EngineShedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineShedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C97820D4BA31001B51B1 /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
 		D2B7C97A20D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2B7C98B20D4BE2F001B51B1 /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
@@ -577,7 +576,6 @@
 			files = (
 				D2A41183212630B900B6C198 /* Util.framework in Frameworks */,
 				D2B7C9C120D4BEF4001B51B1 /* Database.framework in Frameworks */,
-				D298CAE920D7109900827F68 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,9 +643,9 @@
 				D200F97820E07D00003BC8D1 /* Util Tests */,
 				D2B7C9CA20D4D671001B51B1 /* Database */,
 				D2A411C42126339900B6C198 /* Database Tests */,
-				D2B7C95220D4BA30001B51B1 /* EngineShed iOS */,
-				D2B7C96C20D4BA31001B51B1 /* EngineShed iOS Tests */,
-				D2B7C97720D4BA31001B51B1 /* EngineShed iOS UI Tests */,
+				D2B7C95220D4BA30001B51B1 /* EngineShed */,
+				D2B7C96C20D4BA31001B51B1 /* EngineShedTests */,
+				D2B7C97720D4BA31001B51B1 /* EngineShedUITests */,
 				D2101B8721264A4900E80DD7 /* Platform Targets */,
 				D215BE9F20D4B5380054FDCC /* Products */,
 				D298CAE720D7109900827F68 /* Frameworks */,
@@ -658,8 +656,8 @@
 			isa = PBXGroup;
 			children = (
 				D2B7C95120D4BA30001B51B1 /* EngineShed.app */,
-				D2B7C96920D4BA31001B51B1 /* EngineShed iOS Tests.xctest */,
-				D2B7C97420D4BA31001B51B1 /* EngineShed iOS UI Tests.xctest */,
+				D2B7C96920D4BA31001B51B1 /* EngineShedTests.xctest */,
+				D2B7C97420D4BA31001B51B1 /* EngineShedUITests.xctest */,
 				D2B7C9AC20D4BEF3001B51B1 /* Database.framework */,
 				D2B7C9B420D4BEF3001B51B1 /* Database iOS Tests.xctest */,
 				D2A4116E212630B900B6C198 /* Util.framework */,
@@ -954,7 +952,7 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		D2B7C95220D4BA30001B51B1 /* EngineShed iOS */ = {
+		D2B7C95220D4BA30001B51B1 /* EngineShed */ = {
 			isa = PBXGroup;
 			children = (
 				D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */,
@@ -982,25 +980,25 @@
 				D2B7C96420D4BA31001B51B1 /* Info.plist */,
 				D298CAEA20D7118A00827F68 /* EngineShed.entitlements */,
 			);
-			path = "EngineShed iOS";
+			path = EngineShed;
 			sourceTree = "<group>";
 		};
-		D2B7C96C20D4BA31001B51B1 /* EngineShed iOS Tests */ = {
+		D2B7C96C20D4BA31001B51B1 /* EngineShedTests */ = {
 			isa = PBXGroup;
 			children = (
 				D2B7C96D20D4BA31001B51B1 /* EngineShedTests.swift */,
 				D2B7C96F20D4BA31001B51B1 /* Info.plist */,
 			);
-			path = "EngineShed iOS Tests";
+			path = EngineShedTests;
 			sourceTree = "<group>";
 		};
-		D2B7C97720D4BA31001B51B1 /* EngineShed iOS UI Tests */ = {
+		D2B7C97720D4BA31001B51B1 /* EngineShedUITests */ = {
 			isa = PBXGroup;
 			children = (
 				D2B7C97820D4BA31001B51B1 /* EngineShedUITests.swift */,
 				D2B7C97A20D4BA31001B51B1 /* Info.plist */,
 			);
-			path = "EngineShed iOS UI Tests";
+			path = EngineShedUITests;
 			sourceTree = "<group>";
 		};
 		D2B7C98A20D4BE2F001B51B1 /* Database macOS */ = {
@@ -1212,9 +1210,9 @@
 			productReference = D2A41176212630B900B6C198 /* Util iOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D2B7C95020D4BA30001B51B1 /* EngineShed iOS */ = {
+		D2B7C95020D4BA30001B51B1 /* EngineShed */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D2B7C97B20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed iOS" */;
+			buildConfigurationList = D2B7C97B20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed" */;
 			buildPhases = (
 				D2B7C94D20D4BA30001B51B1 /* Sources */,
 				D2B7C94E20D4BA30001B51B1 /* Frameworks */,
@@ -1227,14 +1225,14 @@
 				D2B7C9C020D4BEF4001B51B1 /* PBXTargetDependency */,
 				D2A41182212630B900B6C198 /* PBXTargetDependency */,
 			);
-			name = "EngineShed iOS";
+			name = EngineShed;
 			productName = EngineShed;
 			productReference = D2B7C95120D4BA30001B51B1 /* EngineShed.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D2B7C96820D4BA31001B51B1 /* EngineShed iOS Tests */ = {
+		D2B7C96820D4BA31001B51B1 /* EngineShedTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D2B7C97E20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed iOS Tests" */;
+			buildConfigurationList = D2B7C97E20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShedTests" */;
 			buildPhases = (
 				D2B7C96520D4BA31001B51B1 /* Sources */,
 				D2B7C96620D4BA31001B51B1 /* Frameworks */,
@@ -1245,14 +1243,14 @@
 			dependencies = (
 				D2B7C96B20D4BA31001B51B1 /* PBXTargetDependency */,
 			);
-			name = "EngineShed iOS Tests";
+			name = EngineShedTests;
 			productName = EngineShedTests;
-			productReference = D2B7C96920D4BA31001B51B1 /* EngineShed iOS Tests.xctest */;
+			productReference = D2B7C96920D4BA31001B51B1 /* EngineShedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D2B7C97320D4BA31001B51B1 /* EngineShed iOS UI Tests */ = {
+		D2B7C97320D4BA31001B51B1 /* EngineShedUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D2B7C98120D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed iOS UI Tests" */;
+			buildConfigurationList = D2B7C98120D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShedUITests" */;
 			buildPhases = (
 				D2B7C97020D4BA31001B51B1 /* Sources */,
 				D2B7C97120D4BA31001B51B1 /* Frameworks */,
@@ -1263,9 +1261,9 @@
 			dependencies = (
 				D2B7C97620D4BA31001B51B1 /* PBXTargetDependency */,
 			);
-			name = "EngineShed iOS UI Tests";
+			name = EngineShedUITests;
 			productName = EngineShedUITests;
-			productReference = D2B7C97420D4BA31001B51B1 /* EngineShed iOS UI Tests.xctest */;
+			productReference = D2B7C97420D4BA31001B51B1 /* EngineShedUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		D2B7C9AB20D4BEF3001B51B1 /* Database iOS */ = {
@@ -1373,9 +1371,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D2B7C95020D4BA30001B51B1 /* EngineShed iOS */,
-				D2B7C96820D4BA31001B51B1 /* EngineShed iOS Tests */,
-				D2B7C97320D4BA31001B51B1 /* EngineShed iOS UI Tests */,
+				D2B7C95020D4BA30001B51B1 /* EngineShed */,
+				D2B7C96820D4BA31001B51B1 /* EngineShedTests */,
+				D2B7C97320D4BA31001B51B1 /* EngineShedUITests */,
 				D2A4116D212630B900B6C198 /* Util iOS */,
 				D2A41175212630B900B6C198 /* Util iOS Tests */,
 				D2B7C9AB20D4BEF3001B51B1 /* Database iOS */,
@@ -1710,7 +1708,7 @@
 		};
 		D2A4117B212630B900B6C198 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D2B7C95020D4BA30001B51B1 /* EngineShed iOS */;
+			target = D2B7C95020D4BA30001B51B1 /* EngineShed */;
 			targetProxy = D2A4117A212630B900B6C198 /* PBXContainerItemProxy */;
 		};
 		D2A41182212630B900B6C198 /* PBXTargetDependency */ = {
@@ -1720,12 +1718,12 @@
 		};
 		D2B7C96B20D4BA31001B51B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D2B7C95020D4BA30001B51B1 /* EngineShed iOS */;
+			target = D2B7C95020D4BA30001B51B1 /* EngineShed */;
 			targetProxy = D2B7C96A20D4BA31001B51B1 /* PBXContainerItemProxy */;
 		};
 		D2B7C97620D4BA31001B51B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D2B7C95020D4BA30001B51B1 /* EngineShed iOS */;
+			target = D2B7C95020D4BA30001B51B1 /* EngineShed */;
 			targetProxy = D2B7C97520D4BA31001B51B1 /* PBXContainerItemProxy */;
 		};
 		D2B7C9B720D4BEF4001B51B1 /* PBXTargetDependency */ = {
@@ -1735,7 +1733,7 @@
 		};
 		D2B7C9B920D4BEF4001B51B1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D2B7C95020D4BA30001B51B1 /* EngineShed iOS */;
+			target = D2B7C95020D4BA30001B51B1 /* EngineShed */;
 			targetProxy = D2B7C9B820D4BEF4001B51B1 /* PBXContainerItemProxy */;
 		};
 		D2B7C9C020D4BEF4001B51B1 /* PBXTargetDependency */ = {
@@ -1797,7 +1795,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1816,13 +1813,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1858,7 +1854,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1871,12 +1866,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -1987,22 +1982,17 @@
 		D2B7C97C20D4BA31001B51B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon iOS";
-				CODE_SIGN_ENTITLEMENTS = "EngineShed iOS/EngineShed.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = "EngineShed iOS/Info.plist";
+				INFOPLIST_FILE = EngineShed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.iOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed;
 				PRODUCT_NAME = EngineShed;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = iphoneos;
 				SUPPORTS_UIKITFORMAC = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2012,26 +2002,20 @@
 		D2B7C97D20D4BA31001B51B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon iOS";
-				CODE_SIGN_ENTITLEMENTS = "EngineShed iOS/EngineShed.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = "EngineShed iOS/Info.plist";
+				INFOPLIST_FILE = EngineShed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.iOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed;
 				PRODUCT_NAME = EngineShed;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = iphoneos;
 				SUPPORTS_UIKITFORMAC = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -2040,10 +2024,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = "EngineShed iOS Tests/Info.plist";
+				INFOPLIST_FILE = EngineShedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2051,8 +2034,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
 			};
 			name = Debug;
@@ -2062,10 +2045,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = "EngineShed iOS Tests/Info.plist";
+				INFOPLIST_FILE = EngineShedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2073,10 +2055,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -2084,10 +2065,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = "EngineShed iOS UI Tests/Info.plist";
+				INFOPLIST_FILE = EngineShedUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2095,10 +2075,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "EngineShed iOS";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EngineShed;
 			};
 			name = Debug;
 		};
@@ -2106,10 +2085,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = "EngineShed iOS UI Tests/Info.plist";
+				INFOPLIST_FILE = EngineShedUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2117,11 +2095,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "EngineShed iOS";
-				VALIDATE_PRODUCT = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EngineShed;
 			};
 			name = Release;
 		};
@@ -2258,7 +2234,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D2B7C97B20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed iOS" */ = {
+		D2B7C97B20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D2B7C97C20D4BA31001B51B1 /* Debug */,
@@ -2267,7 +2243,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D2B7C97E20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed iOS Tests" */ = {
+		D2B7C97E20D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShedTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D2B7C97F20D4BA31001B51B1 /* Debug */,
@@ -2276,7 +2252,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D2B7C98120D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShed iOS UI Tests" */ = {
+		D2B7C98120D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShedUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D2B7C98220D4BA31001B51B1 /* Debug */,
