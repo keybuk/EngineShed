@@ -16,42 +16,44 @@ class SimilarPurchaseTests : XCTestCase {
     var container: NSPersistentContainer?
 
     override func setUp() {
-        let description = NSPersistentStoreDescription()
-        description.type = NSInMemoryStoreType
-        description.shouldAddStoreAsynchronously = false
+        super.setUp()
 
         container = NSPersistentContainer(name: "EngineShed")
-//        container = NSPersistentContainer(name: "EngineShed_SimilarPurchaseTests", managedObjectModel: LocalPersistentContainer.shared.managedObjectModel)
-        container?.persistentStoreDescriptions = [description]
+        container?.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         container?.loadPersistentStores { (storeDescription, error) in
-            precondition(storeDescription.type == NSInMemoryStoreType)
-
-            if let error = error {
-                fatalError("Couldn't create memory context: \(error)")
-            }
+            XCTAssertNil(error)
         }
 
-        var purchase = Purchase(context: container!.viewContext)
-        purchase.manufacturer = "Hornby"
-        purchase.catalogNumber = "R2700"
+        guard let context = container?.viewContext else {
+            XCTFail("missing viewContext")
+            return
+        }
 
-        purchase = Purchase(context: container!.viewContext)
-        purchase.manufacturer = "Hornby"
-        purchase.catalogNumber = "R2700A"
+        XCTAssertNoThrow(try context.performAndWait {
+            var purchase = Purchase(context: context)
+            purchase.manufacturer = "Hornby"
+            purchase.catalogNumber = "R2700"
 
-        purchase = Purchase(context: container!.viewContext)
-        purchase.manufacturer = "Hornby"
-        purchase.catalogNumber = "R2701"
+            purchase = Purchase(context: context)
+            purchase.manufacturer = "Hornby"
+            purchase.catalogNumber = "R2700A"
 
-        purchase = Purchase(context: container!.viewContext)
-        purchase.manufacturer = "Not Hornby"
-        purchase.catalogNumber = "R2701"
+            purchase = Purchase(context: context)
+            purchase.manufacturer = "Hornby"
+            purchase.catalogNumber = "R2701"
 
-        try! container!.viewContext.save()
+            purchase = Purchase(context: context)
+            purchase.manufacturer = "Not Hornby"
+            purchase.catalogNumber = "R2701"
+
+            try context.save()
+        })
     }
 
     override func tearDown() {
         container = nil
+
+        super.tearDown()
     }
 
     func testExactMatch() {

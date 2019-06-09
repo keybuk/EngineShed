@@ -16,24 +16,19 @@ class CatalogNumberPrefixTests : XCTestCase {
     var container: NSPersistentContainer?
 
     override func setUp() {
-        let description = NSPersistentStoreDescription()
-        description.type = NSInMemoryStoreType
-        description.shouldAddStoreAsynchronously = false
+        super.setUp()
 
         container = NSPersistentContainer(name: "EngineShed")
-//        container = NSPersistentContainer(name: "EngineShed_CatalogNumberPrefixTests", managedObjectModel: LocalPersistentContainer.shared.managedObjectModel)
-        container?.persistentStoreDescriptions = [description]
+        container?.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         container?.loadPersistentStores { (storeDescription, error) in
-            precondition(storeDescription.type == NSInMemoryStoreType)
-
-            if let error = error {
-                fatalError("Couldn't create memory context: \(error)")
-            }
+            XCTAssertNil(error)
         }
     }
 
     override func tearDown() {
         container = nil
+
+        super.tearDown()
     }
 
     // MARK: - catalogNumberPrefix
