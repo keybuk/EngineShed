@@ -80,6 +80,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Saves changes in the application's managed object context before the application terminates.
     }
 
+    // MARK: - Split view
+
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
+        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
+
+        // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+        if let viewController = secondaryAsNavController.topViewController as? ModelTableViewController,
+            viewController.model == nil { return true }
+        if let viewController = secondaryAsNavController.topViewController as? PurchaseTableViewController,
+            viewController.purchase == nil { return true }
+        if let viewController = secondaryAsNavController.topViewController as? DecoderTypeTableViewController,
+            viewController.decoderType == nil { return true }
+
+        return false
+    }
+
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
