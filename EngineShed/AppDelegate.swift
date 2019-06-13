@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import CloudKit
 import CoreData
-import Dispatch
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate : UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
 
