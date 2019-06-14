@@ -136,27 +136,7 @@ class DecoderTypeEditTableViewController : UITableViewController {
         case 0: break
         case 1: break
         case 2: break
-        case 3:
-            precondition(!(decoderType?.isInserted ?? true), "Unexpected delete decoder type section in inserted decoder type")
-
-            // Confirm train deletion using an alert.
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Delete Decoder Type", style: .destructive) { action in
-                self.deleteDecoderType()
-            })
-
-            // Cancel case, deselect the table row.
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
-                self.tableView.deselectRow(at: indexPath, animated: true)
-            })
-
-            // Set iPad presentation.
-            if let popover = alert.popoverPresentationController {
-                popover.sourceView = tableView;
-                popover.sourceRect = tableView.rectForRow(at: indexPath)
-            }
-
-            present(alert, animated: true)
+        case 3: confirmDeleteDecoderType(from: indexPath)
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 
@@ -271,6 +251,26 @@ class DecoderTypeEditTableViewController : UITableViewController {
         }
     }
 
+    func confirmDeleteDecoderType(from indexPath: IndexPath) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Delete Decoder Type", style: .destructive) { action in
+            self.deleteDecoderType()
+        })
+        
+        // Cancel case, deselect the table row.
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        })
+        
+        // Set iPad presentation.
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = tableView;
+            popover.sourceRect = tableView.rectForRow(at: indexPath)
+        }
+        
+        present(alert, animated: true)
+    }
+    
     func deleteDecoderType() {
         guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }

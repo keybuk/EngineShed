@@ -107,27 +107,7 @@ class TrainMemberEditTableViewController: UITableViewController {
         switch indexPath.section {
         case 0: break
         case 1: break
-        case 2:
-            precondition(!(trainMember?.isInserted ?? true), "Unexpected delete train member section in inserted train member")
-
-            // Confirm train deletion using an alert.
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Delete Train Member", style: .destructive) { action in
-                self.deleteTrainMember()
-            })
-
-            // Cancel case, deselect the table row.
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
-                self.tableView.deselectRow(at: indexPath, animated: true)
-            })
-
-            // Set iPad presentation.
-            if let popover = alert.popoverPresentationController {
-                popover.sourceView = tableView;
-                popover.sourceRect = tableView.rectForRow(at: indexPath)
-            }
-
-            present(alert, animated: true)
+        case 2: confirmDeleteTrainMember(from: indexPath)
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 
@@ -233,6 +213,26 @@ class TrainMemberEditTableViewController: UITableViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             present(alert, animated: true)
         }
+    }
+    
+    func confirmDeleteTrainMember(from indexPath: IndexPath) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Delete Train Member", style: .destructive) { action in
+            self.deleteTrainMember()
+        })
+        
+        // Cancel case, deselect the table row.
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        })
+        
+        // Set iPad presentation.
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = tableView;
+            popover.sourceRect = tableView.rectForRow(at: indexPath)
+        }
+        
+        present(alert, animated: true)
     }
 
     func deleteTrainMember() {

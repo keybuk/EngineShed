@@ -251,27 +251,7 @@ class PurchaseEditTableViewController : UITableViewController {
             default: break
             }
         case 3: break
-        case 4:
-            precondition(!(purchase?.isInserted ?? true), "Unexpected delete purchase section in inserted purchase")
-
-            // Confirm train deletion using an alert.
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Delete Purchase", style: .destructive) { action in
-                self.deletePurchase()
-            })
-
-            // Cancel case, deselect the table row.
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
-                self.tableView.deselectRow(at: indexPath, animated: true)
-            })
-
-            // Set iPad presentation.
-            if let popover = alert.popoverPresentationController {
-                popover.sourceView = tableView;
-                popover.sourceRect = tableView.rectForRow(at: indexPath)
-            }
-
-            present(alert, animated: true)
+        case 4: confirmDeletePurchase(from: indexPath)
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 
@@ -400,6 +380,26 @@ class PurchaseEditTableViewController : UITableViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             present(alert, animated: true)
         }
+    }
+
+    func confirmDeletePurchase(from indexPath: IndexPath) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Delete Purchase", style: .destructive) { action in
+            self.deletePurchase()
+        })
+        
+        // Cancel case, deselect the table row.
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        })
+        
+        // Set iPad presentation.
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = tableView;
+            popover.sourceRect = tableView.rectForRow(at: indexPath)
+        }
+        
+        present(alert, animated: true)
     }
 
     func deletePurchase() {

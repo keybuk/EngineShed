@@ -287,27 +287,7 @@ class ModelEditTableViewController : UITableViewController {
             default: break
             }
         case 5: break
-        case 6:
-            precondition(!(model?.isInserted ?? true), "Unexpected delete model section in inserted model")
-
-            // Confirm train deletion using an alert.
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Delete Model", style: .destructive) { action in
-                self.deleteModel()
-            })
-
-            // Cancel case, deselect the table row.
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
-                self.tableView.deselectRow(at: indexPath, animated: true)
-            })
-
-            // Set iPad presentation.
-            if let popover = alert.popoverPresentationController {
-                popover.sourceView = tableView;
-                popover.sourceRect = tableView.rectForRow(at: indexPath)
-            }
-
-            present(alert, animated: true)
+        case 6: confirmDeleteModel(from: indexPath)
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 
@@ -454,6 +434,26 @@ class ModelEditTableViewController : UITableViewController {
         }
     }
 
+    func confirmDeleteModel(from indexPath: IndexPath) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Delete Model", style: .destructive) { action in
+            self.deleteModel()
+        })
+        
+        // Cancel case, deselect the table row.
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        })
+        
+        // Set iPad presentation.
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = tableView;
+            popover.sourceRect = tableView.rectForRow(at: indexPath)
+        }
+        
+        present(alert, animated: true)
+    }
+    
     func deleteModel() {
         guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
