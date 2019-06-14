@@ -23,7 +23,13 @@ class ModelEditTableViewController : UITableViewController {
         }
     }
     
-    private var model: Model?
+    /// Model being edited in this view, on `managedObjectContext`.
+    private var model: Model? {
+        didSet {
+            // Use KVO to keep the save button state up to date.
+            observeModel()
+        }
+    }
 
     enum Result {
         case canceled
@@ -313,7 +319,7 @@ class ModelEditTableViewController : UITableViewController {
         }
     }
 
-    // MARK: - Object management and observation
+    // MARK: - Presenter API
 
     func editModel(_ model: Model, completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
@@ -328,9 +334,6 @@ class ModelEditTableViewController : UITableViewController {
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
         self.model = managedObjectContext!.object(with: model.objectID) as? Model
-
-        // Use KVO to keep the save button state up to date.
-        observeModel()
     }
 
     func addModel(to purchase: Purchase, completionHandler: @escaping ((Result) -> Void)) {
@@ -347,10 +350,9 @@ class ModelEditTableViewController : UITableViewController {
 
         model = Model(context: managedObjectContext!)
         model!.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
-
-        // Use KVO to keep the save button state up to date.
-        observeModel()
     }
+    
+    // MARK: - Object observation
 
     var observers: [NSKeyValueObservation] = []
 

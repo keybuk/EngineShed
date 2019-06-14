@@ -23,7 +23,13 @@ class PurchaseEditTableViewController : UITableViewController {
         }
     }
     
-    private var purchase: Purchase?
+    /// Purchase being edited in this view, on `managedObjectContext`.
+    private var purchase: Purchase? {
+        didSet {
+            // Use KVO to keep the save button state up to date.
+            observePurchase()
+        }
+    }
 
     enum Result {
         case canceled
@@ -281,7 +287,7 @@ class PurchaseEditTableViewController : UITableViewController {
         }
     }
 
-    // MARK: - Object management and observation
+    // MARK: - Presenter API
 
     func editPurchase(_ purchase: Purchase, completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
@@ -296,9 +302,6 @@ class PurchaseEditTableViewController : UITableViewController {
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
         self.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
-
-        // Use KVO to keep the save button state up to date.
-        observePurchase()
     }
 
     func addPurchase(completionHandler: @escaping ((Result) -> Void)) {
@@ -314,10 +317,9 @@ class PurchaseEditTableViewController : UITableViewController {
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
         purchase = Purchase(context: managedObjectContext!)
-
-        // Use KVO to keep the save button state up to date.
-        observePurchase()
     }
+    
+    // MARK: - Object observation
 
     var observers: [NSKeyValueObservation] = []
 

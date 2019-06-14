@@ -23,7 +23,13 @@ class DecoderEditTableViewController : UITableViewController {
         }
     }
     
-    private var decoder: Decoder?
+    /// Decoder being edited in this view, on `managedObjectContext`.
+    private var decoder: Decoder? {
+        didSet {
+            // Use KVO to keep the save button state up to date.
+            observeDecoder()
+        }
+    }
 
     enum Result {
         case canceled
@@ -211,7 +217,7 @@ class DecoderEditTableViewController : UITableViewController {
         }
     }
 
-    // MARK: - Object management and observation
+    // MARK: - Presenter API
 
     func editDecoder(_ decoder: Decoder, completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
@@ -226,9 +232,6 @@ class DecoderEditTableViewController : UITableViewController {
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
         self.decoder = managedObjectContext!.object(with: decoder.objectID) as? Decoder
-
-        // Use KVO to keep the save button state up to date.
-        observeDecoder()
     }
 
     func addDecoder(type decoderType: DecoderType, completionHandler: @escaping ((Result) -> Void)) {
@@ -245,11 +248,10 @@ class DecoderEditTableViewController : UITableViewController {
 
         decoder = Decoder(context: managedObjectContext!)
         decoder!.type = managedObjectContext!.object(with: decoderType.objectID) as? DecoderType
-
-        // Use KVO to keep the save button state up to date.
-        observeDecoder()
     }
 
+    // MARK: - Object observation
+    
     var observers: [NSKeyValueObservation] = []
 
     func observeDecoder() {

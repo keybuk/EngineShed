@@ -23,7 +23,13 @@ class TrainMemberEditTableViewController: UITableViewController {
         }
     }
     
-    private var trainMember: TrainMember?
+    /// TrainMember being edited in this view, on `managedObjectContext`.
+    private var trainMember: TrainMember? {
+        didSet {
+            // Use KVO to keep the save button state up to date.
+            observeTrainMember()
+        }
+    }
 
     enum Result {
         case canceled
@@ -129,7 +135,7 @@ class TrainMemberEditTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Object management and observation
+    // MARK: - Presenter API
 
     func editTrainMember(_ trainMember: TrainMember, completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
@@ -144,9 +150,6 @@ class TrainMemberEditTableViewController: UITableViewController {
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
         self.trainMember = managedObjectContext!.object(with: trainMember.objectID) as? TrainMember
-
-        // Use KVO to keep the save button state up to date.
-        observeTrainMember()
     }
 
     func addTrainMember(completionHandler: @escaping ((Result) -> Void)) {
@@ -162,11 +165,10 @@ class TrainMemberEditTableViewController: UITableViewController {
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
         trainMember = TrainMember(context: managedObjectContext!)
-
-        // Use KVO to keep the save button state up to date.
-        observeTrainMember()
     }
 
+    // MARK: - Object observation
+    
     var observers: [NSKeyValueObservation] = []
 
     func observeTrainMember() {

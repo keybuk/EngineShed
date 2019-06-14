@@ -23,7 +23,13 @@ class TrainEditTableViewController : UITableViewController {
         }
     }
     
-    private var train: Train?
+    /// Train being edited in this view, on `managedObjectContext`.
+    private var train: Train? {
+        didSet {
+            // Use KVO to keep the save button state up to date.
+            observeTrain()
+        }
+    }
 
     enum Result {
         case canceled
@@ -265,7 +271,7 @@ class TrainEditTableViewController : UITableViewController {
         tableView.moveRow(at: fromIndexPath, to: to)
     }
 
-    // MARK: - Object management and observation
+    // MARK: - Presenter API
 
     func editTrain(_ train: Train, completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
@@ -280,9 +286,6 @@ class TrainEditTableViewController : UITableViewController {
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
         self.train = managedObjectContext!.object(with: train.objectID) as? Train
-
-        // Use KVO to keep the save button state up to date.
-        observeTrain()
     }
 
     func addTrain(completionHandler: @escaping ((Result) -> Void)) {
@@ -298,10 +301,9 @@ class TrainEditTableViewController : UITableViewController {
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
         train = Train(context: managedObjectContext!)
-
-        // Use KVO to keep the save button state up to date.
-        observeTrain()
     }
+
+    // MARK: - Object observation
 
     var observers: [NSKeyValueObservation] = []
 
