@@ -295,12 +295,10 @@ class PurchaseEditTableViewController : UITableViewController {
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
-        managedObjectContext!.performAndWait {
-            self.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
+        self.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
 
-            // Use KVO to keep the save button state up to date.
-            self.observePurchase()
-        }
+        // Use KVO to keep the save button state up to date.
+        observePurchase()
     }
 
     func addPurchase(completionHandler: @escaping ((Result) -> Void)) {
@@ -315,17 +313,17 @@ class PurchaseEditTableViewController : UITableViewController {
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
-        managedObjectContext!.performAndWait {
-            self.purchase = Purchase(context: managedObjectContext!)
+        purchase = Purchase(context: managedObjectContext!)
 
-            // Use KVO to keep the save button state up to date.
-            self.observePurchase()
-        }
+        // Use KVO to keep the save button state up to date.
+        observePurchase()
     }
 
     var observers: [NSKeyValueObservation] = []
 
     func observePurchase() {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+
         observers.removeAll()
         guard let purchase = purchase else { return }
 
@@ -351,6 +349,7 @@ class PurchaseEditTableViewController : UITableViewController {
 
     @objc
     func managedObjectContextObjectsDidChange(_ notification: Notification) {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
         guard let userInfo = notification.userInfo else { return }
         guard let purchase = purchase else { return }
 
@@ -359,9 +358,7 @@ class PurchaseEditTableViewController : UITableViewController {
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
             refreshedObjects.contains(purchase)
         {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            tableView.reloadData()
         }
 
         // Check for the insertion of our purchase object, usually as a result of our own save
@@ -379,7 +376,7 @@ class PurchaseEditTableViewController : UITableViewController {
     // MARK: - Actions
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.completionHandler?(.canceled)
+        completionHandler?(.canceled)
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -388,10 +385,8 @@ class PurchaseEditTableViewController : UITableViewController {
         guard let purchase = purchase else { return }
 
         do {
-            try managedObjectContext.performAndWait {
-                if managedObjectContext.hasChanges {
-                    try managedObjectContext.save()
-                }
+            if managedObjectContext.hasChanges {
+                try managedObjectContext.save()
             }
 
             // Give the view context a chance to receive the merge notification before grabbing
@@ -404,7 +399,7 @@ class PurchaseEditTableViewController : UITableViewController {
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true)
+            present(alert, animated: true)
         }
     }
 
@@ -414,11 +409,8 @@ class PurchaseEditTableViewController : UITableViewController {
         guard let purchase = purchase else { return }
 
         do {
-            try managedObjectContext.performAndWait {
-                managedObjectContext.delete(purchase)
-
-                try managedObjectContext.save()
-            }
+            managedObjectContext.delete(purchase)
+            try managedObjectContext.save()
 
             // Give the view context a chance to receive the merge notification before running
             // the completion handler.
@@ -429,32 +421,34 @@ class PurchaseEditTableViewController : UITableViewController {
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true)
+            present(alert, animated: true)
         }
     }
 
-    func updateSaveButton() {
-        guard let managedObjectContext = managedObjectContext else { return }
-        guard let purchase = purchase else { return }
+    /// Returns `true` if `purchase` has changes, and is in a valid state to be saved.
+    func canSave() -> Bool {
+        guard let purchase = purchase else { return false }
 
-        // Enable the save button only if there has been a change, and that the result is valid.
-        saveButton.isEnabled = managedObjectContext.performAndWait {
+        do {
             var isChanged = false
-
-            do {
-                if purchase.isInserted {
-                    try purchase.validateForInsert()
-                    isChanged = true
-                } else if purchase.isUpdated {
-                    try purchase.validateForUpdate()
-                    isChanged = true
-                }
-
-                return isChanged
-            } catch {
-                return false
+            
+            if purchase.isInserted {
+                try purchase.validateForInsert()
+                isChanged = true
+            } else if purchase.isUpdated {
+                try purchase.validateForUpdate()
+                isChanged = true
             }
+
+            return isChanged
+        } catch {
+            return false
         }
+    }
+    
+    func updateSaveButton() {
+        // Enable the save button only if there has been a change, and that the result is valid.
+        saveButton.isEnabled = canSave()
     }
 
     // MARK: - Navigation

@@ -176,12 +176,10 @@ class DecoderTypeEditTableViewController : UITableViewController {
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
-        managedObjectContext!.performAndWait {
-            self.decoderType = managedObjectContext!.object(with: decoderType.objectID) as? DecoderType
+        self.decoderType = managedObjectContext!.object(with: decoderType.objectID) as? DecoderType
 
-            // Use KVO to keep the save button state up to date.
-            self.observeDecoderType()
-        }
+        // Use KVO to keep the save button state up to date.
+        observeDecoderType()
     }
 
     func addDecoderType(completionHandler: @escaping ((Result) -> Void)) {
@@ -196,17 +194,17 @@ class DecoderTypeEditTableViewController : UITableViewController {
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
-        managedObjectContext!.performAndWait {
-            self.decoderType = DecoderType(context: managedObjectContext!)
+        decoderType = DecoderType(context: managedObjectContext!)
 
-            // Use KVO to keep the save button state up to date.
-            self.observeDecoderType()
-        }
+        // Use KVO to keep the save button state up to date.
+        observeDecoderType()
     }
 
     var observers: [NSKeyValueObservation] = []
 
     func observeDecoderType() {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+
         observers.removeAll()
         guard let decoderType = decoderType else { return }
 
@@ -227,6 +225,7 @@ class DecoderTypeEditTableViewController : UITableViewController {
 
     @objc
     func managedObjectContextObjectsDidChange(_ notification: Notification) {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
         guard let userInfo = notification.userInfo else { return }
         guard let decoderType = decoderType else { return }
 
@@ -235,16 +234,14 @@ class DecoderTypeEditTableViewController : UITableViewController {
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
             refreshedObjects.contains(decoderType)
         {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            tableView.reloadData()
         }
     }
 
     // MARK: - Actions
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.completionHandler?(.canceled)
+        completionHandler?(.canceled)
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -253,10 +250,8 @@ class DecoderTypeEditTableViewController : UITableViewController {
         guard let decoderType = decoderType else { return }
 
         do {
-            try managedObjectContext.performAndWait {
-                if managedObjectContext.hasChanges {
-                    try managedObjectContext.save()
-                }
+            if managedObjectContext.hasChanges {
+                try managedObjectContext.save()
             }
 
             // Give the view context a chance to receive the merge notification before grabbing
@@ -269,7 +264,7 @@ class DecoderTypeEditTableViewController : UITableViewController {
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true)
+            present(alert, animated: true)
         }
     }
 
@@ -279,11 +274,8 @@ class DecoderTypeEditTableViewController : UITableViewController {
         guard let decoderType = decoderType else { return }
 
         do {
-            try managedObjectContext.performAndWait {
-                managedObjectContext.delete(decoderType)
-
-                try managedObjectContext.save()
-            }
+            managedObjectContext.delete(decoderType)
+            try managedObjectContext.save()
 
             // Give the view context a chance to receive the merge notification before running
             // the completion handler.
@@ -294,32 +286,34 @@ class DecoderTypeEditTableViewController : UITableViewController {
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true)
+            present(alert, animated: true)
         }
     }
 
-    func updateSaveButton() {
-        guard let managedObjectContext = managedObjectContext else { return }
-        guard let decoderType = decoderType else { return }
+    /// Returns `true` if `decoderType` has changes, and is in a valid state to be saved.
+    func canSave() -> Bool {
+        guard let decoderType = decoderType else { return false }
 
-        // Enable the save button only if there has been a change, and that the result is valid.
-        saveButton.isEnabled = managedObjectContext.performAndWait {
+        do {
             var isChanged = false
-
-            do {
-                if decoderType.isInserted {
-                    try decoderType.validateForInsert()
-                    isChanged = true
-                } else if decoderType.isUpdated {
-                    try decoderType.validateForUpdate()
-                    isChanged = true
-                }
-
-                return isChanged
-            } catch {
-                return false
+            
+            if decoderType.isInserted {
+                try decoderType.validateForInsert()
+                isChanged = true
+            } else if decoderType.isUpdated {
+                try decoderType.validateForUpdate()
+                isChanged = true
             }
+
+            return isChanged
+        } catch {
+            return false
         }
+    }
+    
+    func updateSaveButton() {
+        // Enable the save button only if there has been a change, and that the result is valid.
+        saveButton.isEnabled = canSave()
     }
 
     // MARK: - Navigation

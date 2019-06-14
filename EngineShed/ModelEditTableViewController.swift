@@ -327,12 +327,10 @@ class ModelEditTableViewController : UITableViewController {
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
-        managedObjectContext!.performAndWait {
-            self.model = managedObjectContext!.object(with: model.objectID) as? Model
+        self.model = managedObjectContext!.object(with: model.objectID) as? Model
 
-            // Use KVO to keep the save button state up to date.
-            self.observeModel()
-        }
+        // Use KVO to keep the save button state up to date.
+        observeModel()
     }
 
     func addModel(to purchase: Purchase, completionHandler: @escaping ((Result) -> Void)) {
@@ -347,18 +345,18 @@ class ModelEditTableViewController : UITableViewController {
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
-        managedObjectContext!.performAndWait {
-            self.model = Model(context: managedObjectContext!)
-            self.model!.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
+        model = Model(context: managedObjectContext!)
+        model!.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
 
-            // Use KVO to keep the save button state up to date.
-            self.observeModel()
-        }
+        // Use KVO to keep the save button state up to date.
+        observeModel()
     }
 
     var observers: [NSKeyValueObservation] = []
 
     func observeModel() {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+
         observers.removeAll()
         guard let model = model else { return }
 
@@ -396,6 +394,7 @@ class ModelEditTableViewController : UITableViewController {
 
     @objc
     func managedObjectContextObjectsDidChange(_ notification: Notification) {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
         guard let userInfo = notification.userInfo else { return }
         guard let model = model else { return }
 
@@ -407,9 +406,7 @@ class ModelEditTableViewController : UITableViewController {
                 (model.decoder.map({ refreshedObjects.contains($0) }) ?? false) ||
                 (model.trainMember.map({ refreshedObjects.contains($0) }) ?? false)
         {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            tableView.reloadData()
         }
 
         // Check for the insertion of our model object, usually as a result of our own save
@@ -427,7 +424,7 @@ class ModelEditTableViewController : UITableViewController {
     // MARK: - Actions
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.completionHandler?(.canceled)
+        completionHandler?(.canceled)
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -436,10 +433,8 @@ class ModelEditTableViewController : UITableViewController {
         guard let model = model else { return }
 
         do {
-            try managedObjectContext.performAndWait {
-                if managedObjectContext.hasChanges {
-                    try managedObjectContext.save()
-                }
+            if managedObjectContext.hasChanges {
+                try managedObjectContext.save()
             }
 
             // Give the view context a chance to receive the merge notification before grabbing
@@ -452,7 +447,7 @@ class ModelEditTableViewController : UITableViewController {
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true)
+            present(alert, animated: true)
         }
     }
 
@@ -462,11 +457,8 @@ class ModelEditTableViewController : UITableViewController {
         guard let model = model else { return }
 
         do {
-            try managedObjectContext.performAndWait {
-                managedObjectContext.delete(model)
-
-                try managedObjectContext.save()
-            }
+            managedObjectContext.delete(model)
+            try managedObjectContext.save()
 
             // Give the view context a chance to receive the merge notification before running
             // the completion handler.
@@ -477,34 +469,36 @@ class ModelEditTableViewController : UITableViewController {
         } catch {
             let alert = UIAlertController(title: "Unable to Save", message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true)
+            present(alert, animated: true)
+        }
+    }
+    
+    /// Returns `true` if `model` has changes, and is in a valid state to be saved.
+    func canSave() -> Bool {
+        guard let model = model else { return false }
+        
+        do {
+            var isChanged = false
+            
+            if model.isInserted {
+                try model.validateForInsert()
+                isChanged = true
+            } else if model.isUpdated {
+                try model.validateForUpdate()
+                isChanged = true
+            }
+            
+            // FIXME: check the decoder and train member
+            
+            return isChanged
+        } catch {
+            return false
         }
     }
 
     func updateSaveButton() {
-        guard let managedObjectContext = managedObjectContext else { return }
-        guard let model = model else { return }
-
         // Enable the save button only if there has been a change, and that the result is valid.
-        saveButton.isEnabled = managedObjectContext.performAndWait {
-            var isChanged = false
-
-            do {
-                if model.isInserted {
-                    try model.validateForInsert()
-                    isChanged = true
-                } else if model.isUpdated {
-                    try model.validateForUpdate()
-                    isChanged = true
-                }
-
-                // FIXME: check the decoder and train member
-
-                return isChanged
-            } catch {
-                return false
-            }
-        }
+        saveButton.isEnabled = canSave()
     }
 
     // MARK: - Navigation
