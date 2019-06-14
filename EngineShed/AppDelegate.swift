@@ -120,7 +120,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UISplitViewControllerDel
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-
+        
+        // Merge changes from the store into the context automatically, these include both
+        // CloudKit sync and saves from writable contexts.
+        try? container.viewContext.setQueryGenerationFrom(.current)
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        
         return container
     }()
 
