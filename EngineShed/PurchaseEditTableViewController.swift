@@ -15,7 +15,14 @@ class PurchaseEditTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?
 
-    private var managedObjectContext: NSManagedObjectContext?
+    /// Private read-write context with a main queue concurrency type.
+    private var managedObjectContext: NSManagedObjectContext? {
+        didSet {
+            // Register for notifications of changes to this context so we can update field values when changed outside this view.
+            NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+        }
+    }
+    
     private var purchase: Purchase?
 
     enum Result {
@@ -35,13 +42,6 @@ class PurchaseEditTableViewController : UITableViewController {
 
         // Set the initial save button state.
         updateSaveButton()
-
-        // Register for notifications of changes to our background context so we can update the
-        // field values when changed outside this view.
-        if let managedObjectContext = managedObjectContext {
-            let notificationCenter = NotificationCenter.default
-            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -350,6 +350,7 @@ class PurchaseEditTableViewController : UITableViewController {
     @objc
     func managedObjectContextObjectsDidChange(_ notification: Notification) {
         dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+        assert(notification.object as? NSManagedObjectContext == managedObjectContext, "Notification callback called with wrong managed object context")
         guard let userInfo = notification.userInfo else { return }
         guard let purchase = purchase else { return }
 

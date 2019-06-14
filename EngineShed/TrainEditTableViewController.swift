@@ -15,7 +15,14 @@ class TrainEditTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?
 
-    private var managedObjectContext: NSManagedObjectContext?
+    /// Private read-write context with a main queue concurrency type.
+    private var managedObjectContext: NSManagedObjectContext? {
+        didSet {
+            // Register for notifications of changes to this context so we can update field values when changed outside this view.
+            NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+        }
+    }
+    
     private var train: Train?
 
     enum Result {
@@ -35,11 +42,6 @@ class TrainEditTableViewController : UITableViewController {
 
         // Set the initial save button state.
         updateSaveButton()
-        
-        if let managedObjectContext = managedObjectContext {
-            let notificationCenter = NotificationCenter.default
-            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
     }
 
     // MARK: - Table view data source
@@ -341,6 +343,7 @@ class TrainEditTableViewController : UITableViewController {
     @objc
     func managedObjectContextObjectsDidChange(_ notification: Notification) {
         dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+        assert(notification.object as? NSManagedObjectContext == managedObjectContext, "Notification callback called with wrong managed object context")
         guard let userInfo = notification.userInfo else { return }
         guard let train = train else { return }
 
