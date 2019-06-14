@@ -12,16 +12,37 @@ Followed by any properties set by segue or before loading the view
 
 ## Core Data
 
+Treat `persistentContainer.viewContext` read-only, use for UI and fetch requests, not editing.
+ • Since this is on the main queue, no need to use `context.perform`.
+ • Guard observer and notification callbacks with a check we're still on the main queue:
+```
+    dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+```
+
+Perform any changes in a background context and save.
+
+Edit views should use a new context that uses the main queue, while saving changes back to the store:
+```
+// Use a read-write main queue context that saves to the store. In case of changes to the
+// store (e.g. from sync or save in other window), merge but keep any local changes.
+managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+managedObjectContext!.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
+managedObjectContext!.automaticallyMergesChangesFromParent = true
+managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+```
+• Since this is on the main queue, no need to use `context.perform`.
+• Guard observer and notification callbacks with a check we're still on the main queue:
+```
+dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+``` 
+
 Always execute fetch requests inside a context queue
- ```
+```
 let results = try context.performAndWait {
-    return try fetchRequest.execute()
+return try fetchRequest.execute()
 }
 ```    
 
-Treat `persistentContainer.viewContext` read-only, use for UI and fetch requests, not editing
-
-Perform all editing in a background context and save
 
 Always create and delete objects inside a `context.perform` block
 

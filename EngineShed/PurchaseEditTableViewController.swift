@@ -41,17 +41,13 @@ class PurchaseEditTableViewController : UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Set the view to editing so rows can be reordered and one-tap deleted, and also to show
-        // the insert accessory.
-//        isEditing = true
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // Set the initial save button state.
         updateSaveButton()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
     }
 
     // MARK: - Table view data source

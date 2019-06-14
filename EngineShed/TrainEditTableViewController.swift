@@ -45,7 +45,11 @@ class TrainEditTableViewController : UITableViewController {
         // Set the view to editing so rows can be reordered and one-tap deleted, and also to show
         // the insert accessory.
         isEditing = true
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // Set the initial save button state.
         updateSaveButton()
     }
