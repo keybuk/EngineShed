@@ -288,8 +288,10 @@ class PurchaseEditTableViewController : UITableViewController {
 
         self.completionHandler = completionHandler
 
-        // Merge from the store, but keep any local changes.
-        managedObjectContext = persistentContainer.newBackgroundContext()
+        // Use a read-write main queue context that saves to the store. In case of changes to the
+        // store (e.g. from sync or save in other window), merge but keep any local changes.
+        managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        managedObjectContext!.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
@@ -306,8 +308,10 @@ class PurchaseEditTableViewController : UITableViewController {
 
         self.completionHandler = completionHandler
 
-        // Merge from the store, but keep any local changes.
-        managedObjectContext = persistentContainer.newBackgroundContext()
+        // Use a read-write main queue context that saves to the store. In case of changes to the
+        // store (e.g. from sync or save in other window), merge but keep any local changes.
+        managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        managedObjectContext!.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
