@@ -131,9 +131,11 @@ class TrainTableViewController : UITableViewController {
             viewController.trainMember = trainMember
         } else if segue.identifier == "trainEdit" {
             guard let train = train else { return }
+            
             let navigationController = segue.destination as! UINavigationController
-
             let viewController = navigationController.topViewController! as! TrainEditTableViewController
+            
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
             viewController.editTrain(train) { result in
                 if case .deleted = result {

@@ -276,10 +276,11 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
             viewController.train = train
         } else if segue.identifier == "trainAdd" {
             let navigationController = segue.destination as! UINavigationController
-
             let viewController = navigationController.topViewController as! TrainEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
-            viewController.addTrain() { result in
+            viewController.addTrain { result in
                 if case .saved(let train) = result {
                     self.addedTrain = train
                     //FIXME: select the header view once I've made that selectable

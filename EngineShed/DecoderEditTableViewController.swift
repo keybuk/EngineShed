@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-class DecoderEditTableViewController : UITableViewController {
+class DecoderEditTableViewController : UITableViewController, UIAdaptivePresentationControllerDelegate {
 
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
     var persistentContainer: NSPersistentContainer?
@@ -31,14 +32,6 @@ class DecoderEditTableViewController : UITableViewController {
         }
     }
 
-    enum Result {
-        case canceled
-        case saved(Decoder)
-        case deleted
-    }
-
-    private var completionHandler: ((Result) -> Void)!
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -46,8 +39,7 @@ class DecoderEditTableViewController : UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Set the initial save button state.
-        updateSaveButton()
+        updateEditingState()
     }
 
     // MARK: - Table view data source
@@ -197,6 +189,12 @@ class DecoderEditTableViewController : UITableViewController {
         }
     }
 
+    // MARK: - Presentation Delegate
+
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        confirmDiscardChanges()
+    }
+
     // MARK: - Presenter API
 
     func editDecoder(_ decoder: Decoder, completionHandler: @escaping ((Result) -> Void)) {
@@ -242,14 +240,14 @@ class DecoderEditTableViewController : UITableViewController {
 
         // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
         // temporarily replace with Cocoa KVO if necessary.
-        observers.append(decoder.observe(\.serialNumber) { (_, _) in self.updateSaveButton() })
-        observers.append(decoder.observe(\.address) { (_, _) in self.updateSaveButton() })
-        observers.append(decoder.observe(\.firmwareVersion) { (_, _) in self.updateSaveButton() })
-        observers.append(decoder.observe(\.firmwareDate) { (_, _) in self.updateSaveButton() })
-        observers.append(decoder.observe(\.soundAuthor) { (_, _) in self.updateSaveButton() })
-        observers.append(decoder.observe(\.soundProject) { (_, _) in self.updateSaveButton() })
-        observers.append(decoder.observe(\.soundProjectVersion) { (_, _) in self.updateSaveButton() })
-        observers.append(decoder.observe(\.soundSettings) { (_, _) in self.updateSaveButton() })
+        observers.append(decoder.observe(\.serialNumber) { (_, _) in self.updateEditingState() })
+        observers.append(decoder.observe(\.address) { (_, _) in self.updateEditingState() })
+        observers.append(decoder.observe(\.firmwareVersion) { (_, _) in self.updateEditingState() })
+        observers.append(decoder.observe(\.firmwareDate) { (_, _) in self.updateEditingState() })
+        observers.append(decoder.observe(\.soundAuthor) { (_, _) in self.updateEditingState() })
+        observers.append(decoder.observe(\.soundProject) { (_, _) in self.updateEditingState() })
+        observers.append(decoder.observe(\.soundProjectVersion) { (_, _) in self.updateEditingState() })
+        observers.append(decoder.observe(\.soundSettings) { (_, _) in self.updateEditingState() })
     }
 
     // MARK: - Notifications
@@ -281,13 +279,73 @@ class DecoderEditTableViewController : UITableViewController {
         }
     }
 
-    // MARK: - Actions
+    // MARK: - Commit methods
 
-    @IBAction func cancelButtonTapped(_ sender: Any) {
+    enum Result {
+        case canceled
+        case saved(Decoder)
+        case deleted
+    }
+
+    private var completionHandler: ((Result) -> Void)!
+
+    func hasChanges() -> Bool {
+        guard let decoder = decoder else { return false }
+
+        return decoder.hasChanges
+    }
+
+    func isValid() -> Bool {
+        guard let decoder = decoder else { return false }
+        
+        do {
+            if decoder.isInserted {
+                try decoder.validateForInsert()
+            } else if decoder.isUpdated {
+                try decoder.validateForUpdate()
+            }
+            
+            return true
+        } catch {
+            return false
+        }
+    }
+
+    func updateEditingState() {
+        // Disable interaction and pull-to-dismiss when there are pending changes.
+        isModalInPresentation = hasChanges()
+        
+        // Enable the save button only if there has been a change, and that the result is valid.
+        saveButton.isEnabled = hasChanges() && isValid()
+    }
+
+    func confirmDiscardChanges() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if isValid() {
+            alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+                self.saveDecoder()
+            })
+        }
+
+        alert.addAction(UIAlertAction(title: "Discard Changes", style: .destructive) { _ in
+            self.discardChanges()
+        })
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        // Set iPad presentation.
+        if let popover = alert.popoverPresentationController {
+            popover.barButtonItem = cancelButton
+        }
+
+        present(alert, animated: true)
+    }
+
+    func discardChanges() {
         completionHandler?(.canceled)
     }
 
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    func saveDecoder() {
         guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let decoder = decoder else { return }
@@ -310,21 +368,21 @@ class DecoderEditTableViewController : UITableViewController {
             present(alert, animated: true)
         }
     }
-    
+
     func confirmDeleteDecoder(from indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Delete Decoder", style: .destructive) { action in
+        alert.addAction(UIAlertAction(title: "Delete Decoder", style: .destructive) { _ in
             self.deleteDecoder()
         })
         
         // Cancel case, deselect the table row.
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.tableView.deselectRow(at: indexPath, animated: true)
         })
         
         // Set iPad presentation.
         if let popover = alert.popoverPresentationController {
-            popover.sourceView = tableView;
+            popover.sourceView = tableView
             popover.sourceRect = tableView.rectForRow(at: indexPath)
         }
         
@@ -335,11 +393,11 @@ class DecoderEditTableViewController : UITableViewController {
         guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let decoder = decoder else { return }
-
+        
         do {
             managedObjectContext.delete(decoder)
             try managedObjectContext.save()
-
+            
             // Give the view context a chance to receive the merge notification before running
             // the completion handler.
             view.isUserInteractionEnabled = false
@@ -353,31 +411,14 @@ class DecoderEditTableViewController : UITableViewController {
         }
     }
 
-    /// Returns `true` if `decoder` has changes, and is in a valid state to be saved.
-    func canSave() -> Bool {
-        guard let decoder = decoder else { return false }
+    // MARK: - Actions
 
-        // Enable the save button only if there has been a change, and that the result is valid.
-        do {
-            var isChanged = false
-            
-            if decoder.isInserted {
-                try decoder.validateForInsert()
-                isChanged = true
-            } else if decoder.isUpdated {
-                try decoder.validateForUpdate()
-                isChanged = true
-            }
-
-            return isChanged
-        } catch {
-            return false
-        }
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        discardChanges()
     }
-    
-    func updateSaveButton() {
-        // Enable the save button only if there has been a change, and that the result is valid.
-        saveButton.isEnabled = canSave()
+
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        saveDecoder()
     }
 
 }

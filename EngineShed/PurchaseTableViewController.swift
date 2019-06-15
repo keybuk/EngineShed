@@ -131,9 +131,11 @@ class PurchaseTableViewController : UITableViewController {
             viewController.model = model
         } else if segue.identifier == "purchaseEdit" {
             guard let purchase = purchase else { return }
-            let navigationController = segue.destination as! UINavigationController
 
+            let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController! as! PurchaseEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
             viewController.editPurchase(purchase) { result in
                 if case .deleted = result {
@@ -149,9 +151,11 @@ class PurchaseTableViewController : UITableViewController {
             }
         } else if segue.identifier == "purchaseModelAdd" {
             guard let purchase = purchase else { return }
-            let navigationController = segue.destination as! UINavigationController
 
+            let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController as! ModelEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
             viewController.addModel(to: purchase) { result in
                 if case .saved(let model) = result {

@@ -141,9 +141,11 @@ class DecoderTypeTableViewController : UITableViewController {
             viewController.decoder = decoder
         } else if segue.identifier == "decoderTypeEdit" {
             guard let decoderType = decoderType else { return }
-            let navigationController = segue.destination as! UINavigationController
 
+            let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController! as! DecoderTypeEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
             viewController.editDecoderType(decoderType) { result in
                 if case .deleted = result {
@@ -159,9 +161,11 @@ class DecoderTypeTableViewController : UITableViewController {
             }
         } else if segue.identifier == "decoderTypeDecoderAdd" {
             guard let decoderType = decoderType else { return }
-            let navigationController = segue.destination as! UINavigationController
 
+            let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController as! DecoderEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
             viewController.addDecoder(type: decoderType) { result in
                 if case .saved(let decoder) = result,
@@ -175,7 +179,6 @@ class DecoderTypeTableViewController : UITableViewController {
                 self.dismiss(animated: true)
             }
         }
-
     }
 
     // MARK: - Decoders table

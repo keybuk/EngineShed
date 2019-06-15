@@ -80,10 +80,11 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
             viewController.navigationItem.leftItemsSupplementBackButton = true
         } else if segue.identifier == "purchaseAdd" {
             let navigationController = segue.destination as! UINavigationController
-
             let viewController = navigationController.topViewController as! PurchaseEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
-            viewController.addPurchase() { result in
+            viewController.addPurchase { result in
                 if case .saved(let purchase) = result,
                     let indexPath = self.fetchedResultsController.indexPath(forObject: purchase)
                 {

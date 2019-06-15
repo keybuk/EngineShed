@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-class PurchaseEditTableViewController : UITableViewController {
+class PurchaseEditTableViewController : UITableViewController, UIAdaptivePresentationControllerDelegate {
 
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
     var persistentContainer: NSPersistentContainer?
@@ -31,14 +32,6 @@ class PurchaseEditTableViewController : UITableViewController {
         }
     }
 
-    enum Result {
-        case canceled
-        case saved(Purchase)
-        case deleted
-    }
-
-    private var completionHandler: ((Result) -> Void)!
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -46,8 +39,7 @@ class PurchaseEditTableViewController : UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Set the initial save button state.
-        updateSaveButton()
+        updateEditingState()
     }
 
     // MARK: - Table view data source
@@ -263,6 +255,12 @@ class PurchaseEditTableViewController : UITableViewController {
         }
     }
 
+    // MARK: - Presentation Delegate
+
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        confirmDiscardChanges()
+    }
+
     // MARK: - Presenter API
 
     func editPurchase(_ purchase: Purchase, completionHandler: @escaping ((Result) -> Void)) {
@@ -307,20 +305,20 @@ class PurchaseEditTableViewController : UITableViewController {
 
         // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
         // temporarily replace with Cocoa KVO if necessary.
-        observers.append(purchase.observe(\.manufacturer) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.catalogNumber) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.catalogDescription) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.catalogYear) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.limitedEdition) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.limitedEditionNumber) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.limitedEditionCount) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.date) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.store) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.price) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.conditionRawValue) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.valuation) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.notes) { (_, _) in self.updateSaveButton() })
-        observers.append(purchase.observe(\.models) { (_, _) in self.updateSaveButton() })
+        observers.append(purchase.observe(\.manufacturer) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.catalogNumber) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.catalogDescription) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.catalogYear) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.limitedEdition) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.limitedEditionNumber) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.limitedEditionCount) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.date) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.store) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.price) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.conditionRawValue) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.valuation) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.notes) { (_, _) in self.updateEditingState() })
+        observers.append(purchase.observe(\.models) { (_, _) in self.updateEditingState() })
     }
 
     // MARK: - Notifications
@@ -352,13 +350,73 @@ class PurchaseEditTableViewController : UITableViewController {
         }
     }
 
-    // MARK: - Actions
+    // MARK: - Commit methods
+    
+    enum Result {
+        case canceled
+        case saved(Purchase)
+        case deleted
+    }
+    
+    private var completionHandler: ((Result) -> Void)!
 
-    @IBAction func cancelButtonTapped(_ sender: Any) {
+    func hasChanges() -> Bool {
+        guard let purchase = purchase else { return false }
+
+        return purchase.hasChanges
+    }
+    
+    func isValid() -> Bool {
+        guard let purchase = purchase else { return false }
+        
+        do {
+            if purchase.isInserted {
+                try purchase.validateForInsert()
+            } else if purchase.isUpdated {
+                try purchase.validateForUpdate()
+            }
+            
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    func updateEditingState() {
+        // Disable interaction and pull-to-dismiss when there are pending changes.
+        isModalInPresentation = hasChanges()
+        
+        // Enable the save button only if there has been a change, and that the result is valid.
+        saveButton.isEnabled = hasChanges() && isValid()
+    }
+
+    func confirmDiscardChanges() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if isValid() {
+            alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+                self.savePurchase()
+            })
+        }
+
+        alert.addAction(UIAlertAction(title: "Discard Changes", style: .destructive) { _ in
+            self.discardChanges()
+        })
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        // Set iPad presentation.
+        if let popover = alert.popoverPresentationController {
+            popover.barButtonItem = cancelButton
+        }
+
+        present(alert, animated: true)
+    }
+
+    func discardChanges() {
         completionHandler?(.canceled)
     }
 
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    func savePurchase() {
         guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let purchase = purchase else { return }
@@ -384,33 +442,33 @@ class PurchaseEditTableViewController : UITableViewController {
 
     func confirmDeletePurchase(from indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Delete Purchase", style: .destructive) { action in
+        alert.addAction(UIAlertAction(title: "Delete Purchase", style: .destructive) { _ in
             self.deletePurchase()
         })
         
         // Cancel case, deselect the table row.
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.tableView.deselectRow(at: indexPath, animated: true)
         })
         
         // Set iPad presentation.
         if let popover = alert.popoverPresentationController {
-            popover.sourceView = tableView;
+            popover.sourceView = tableView
             popover.sourceRect = tableView.rectForRow(at: indexPath)
         }
         
         present(alert, animated: true)
     }
-
+    
     func deletePurchase() {
         guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let purchase = purchase else { return }
-
+        
         do {
             managedObjectContext.delete(purchase)
             try managedObjectContext.save()
-
+            
             // Give the view context a chance to receive the merge notification before running
             // the completion handler.
             view.isUserInteractionEnabled = false
@@ -422,32 +480,16 @@ class PurchaseEditTableViewController : UITableViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             present(alert, animated: true)
         }
+    }    
+
+    // MARK: - Actions
+
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        discardChanges()
     }
 
-    /// Returns `true` if `purchase` has changes, and is in a valid state to be saved.
-    func canSave() -> Bool {
-        guard let purchase = purchase else { return false }
-
-        do {
-            var isChanged = false
-            
-            if purchase.isInserted {
-                try purchase.validateForInsert()
-                isChanged = true
-            } else if purchase.isUpdated {
-                try purchase.validateForUpdate()
-                isChanged = true
-            }
-
-            return isChanged
-        } catch {
-            return false
-        }
-    }
-    
-    func updateSaveButton() {
-        // Enable the save button only if there has been a change, and that the result is valid.
-        saveButton.isEnabled = canSave()
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        savePurchase()
     }
 
     // MARK: - Navigation

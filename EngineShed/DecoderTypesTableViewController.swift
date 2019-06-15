@@ -112,10 +112,11 @@ class DecoderTypesTableViewController : UITableViewController, NSFetchedResultsC
             viewController.navigationItem.leftItemsSupplementBackButton = true
         } else if segue.identifier == "decoderTypeAdd" {
             let navigationController = segue.destination as! UINavigationController
-
             let viewController = navigationController.topViewController as! DecoderTypeEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
-            viewController.addDecoderType() { result in
+            viewController.addDecoderType { result in
                 if case .saved(let decoderType) = result,
                     let indexPath = self.fetchedResultsController.indexPath(forObject: decoderType)
                 {

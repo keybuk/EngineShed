@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-class ModelEditTableViewController : UITableViewController {
+class ModelEditTableViewController : UITableViewController, UIAdaptivePresentationControllerDelegate {
 
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
     var persistentContainer: NSPersistentContainer?
@@ -31,14 +32,6 @@ class ModelEditTableViewController : UITableViewController {
         }
     }
 
-    enum Result {
-        case canceled
-        case saved(Model)
-        case deleted
-    }
-
-    private var completionHandler: ((Result) -> Void)!
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -46,8 +39,7 @@ class ModelEditTableViewController : UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Set the initial save button state.
-        updateSaveButton()
+        updateEditingState()
     }
 
     // MARK: - Table view data source
@@ -299,6 +291,12 @@ class ModelEditTableViewController : UITableViewController {
         }
     }
 
+    // MARK: - Presentation Delegate
+
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        confirmDiscardChanges()
+    }
+
     // MARK: - Presenter API
 
     func editModel(_ model: Model, completionHandler: @escaping ((Result) -> Void)) {
@@ -344,30 +342,30 @@ class ModelEditTableViewController : UITableViewController {
 
         // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
         // temporarily replace with Cocoa KVO if necessary.
-        observers.append(model.observe(\.imageData) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.classificationRawValue) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.modelClass) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.number) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.name) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.livery) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.details) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.eraRawValue) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.dispositionRawValue) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.motor) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.lights) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.socket) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.decoder) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.speaker) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.speakerFittings) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.couplings) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.features) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.detailParts) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.fittedDetailParts) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.modifications) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.lastRun) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.lastOil) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.tasks) { (_, _) in self.updateSaveButton() })
-        observers.append(model.observe(\.notes) { (_, _) in self.updateSaveButton() })
+        observers.append(model.observe(\.imageData) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.classificationRawValue) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.modelClass) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.number) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.name) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.livery) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.details) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.eraRawValue) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.dispositionRawValue) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.motor) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.lights) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.socket) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.decoder) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.speaker) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.speakerFittings) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.couplings) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.features) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.detailParts) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.fittedDetailParts) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.modifications) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.lastRun) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.lastOil) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.tasks) { (_, _) in self.updateEditingState() })
+        observers.append(model.observe(\.notes) { (_, _) in self.updateEditingState() })
 
         // FIXME: should observe decoder, and trainMember
     }
@@ -404,13 +402,77 @@ class ModelEditTableViewController : UITableViewController {
         }
     }
 
-    // MARK: - Actions
+    // MARK: - Commit methods
+    
+    enum Result {
+        case canceled
+        case saved(Model)
+        case deleted
+    }
+    
+    private var completionHandler: ((Result) -> Void)!
 
-    @IBAction func cancelButtonTapped(_ sender: Any) {
+    func hasChanges() -> Bool {
+        guard let model = model else { return false }
+
+        // FIXME: check the decoder and train member
+
+        return model.hasChanges
+    }
+    
+    func isValid() -> Bool {
+        guard let model = model else { return false }
+        
+        do {
+            if model.isInserted {
+                try model.validateForInsert()
+            } else if model.isUpdated {
+                try model.validateForUpdate()
+            }
+            
+            // FIXME: check the decoder and train member
+            
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    func updateEditingState() {
+        // Disable interaction and pull-to-dismiss when there are pending changes.
+        isModalInPresentation = hasChanges()
+        
+        // Enable the save button only if there has been a change, and that the result is valid.
+        saveButton.isEnabled = hasChanges() && isValid()
+    }
+
+    func confirmDiscardChanges() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if isValid() {
+            alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+                self.saveModel()
+            })
+        }
+
+        alert.addAction(UIAlertAction(title: "Discard Changes", style: .destructive) { _ in
+            self.discardChanges()
+        })
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        // Set iPad presentation.
+        if let popover = alert.popoverPresentationController {
+            popover.barButtonItem = cancelButton
+        }
+
+        present(alert, animated: true)
+    }
+
+    func discardChanges() {
         completionHandler?(.canceled)
     }
 
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    func saveModel() {
         guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let model = model else { return }
@@ -436,18 +498,18 @@ class ModelEditTableViewController : UITableViewController {
 
     func confirmDeleteModel(from indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Delete Model", style: .destructive) { action in
+        alert.addAction(UIAlertAction(title: "Delete Model", style: .destructive) { _ in
             self.deleteModel()
         })
         
         // Cancel case, deselect the table row.
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.tableView.deselectRow(at: indexPath, animated: true)
         })
         
         // Set iPad presentation.
         if let popover = alert.popoverPresentationController {
-            popover.sourceView = tableView;
+            popover.sourceView = tableView
             popover.sourceRect = tableView.rectForRow(at: indexPath)
         }
         
@@ -458,11 +520,11 @@ class ModelEditTableViewController : UITableViewController {
         guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let model = model else { return }
-
+        
         do {
             managedObjectContext.delete(model)
             try managedObjectContext.save()
-
+            
             // Give the view context a chance to receive the merge notification before running
             // the completion handler.
             view.isUserInteractionEnabled = false
@@ -475,33 +537,15 @@ class ModelEditTableViewController : UITableViewController {
             present(alert, animated: true)
         }
     }
-    
-    /// Returns `true` if `model` has changes, and is in a valid state to be saved.
-    func canSave() -> Bool {
-        guard let model = model else { return false }
-        
-        do {
-            var isChanged = false
-            
-            if model.isInserted {
-                try model.validateForInsert()
-                isChanged = true
-            } else if model.isUpdated {
-                try model.validateForUpdate()
-                isChanged = true
-            }
-            
-            // FIXME: check the decoder and train member
-            
-            return isChanged
-        } catch {
-            return false
-        }
+
+    // MARK: - Actions
+
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        discardChanges()
     }
 
-    func updateSaveButton() {
-        // Enable the save button only if there has been a change, and that the result is valid.
-        saveButton.isEnabled = canSave()
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        saveModel()
     }
 
     // MARK: - Navigation

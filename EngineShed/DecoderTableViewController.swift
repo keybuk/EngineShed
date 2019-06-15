@@ -142,9 +142,11 @@ class DecoderTableViewController : UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "decoderEdit" {
             guard let decoder = decoder else { return }
-            let navigationController = segue.destination as! UINavigationController
 
+            let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController! as! DecoderEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
             viewController.editDecoder(decoder) { result in
                 if case .deleted = result {

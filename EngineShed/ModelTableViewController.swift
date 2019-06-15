@@ -176,9 +176,11 @@ class ModelTableViewController : UITableViewController {
             viewController.purchase = model?.purchase
         } else if segue.identifier == "modelEdit" {
             guard let model = model else { return }
-            let navigationController = segue.destination as! UINavigationController
 
+            let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController! as! ModelEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
             viewController.editModel(model) { result in
                 if case .deleted = result {

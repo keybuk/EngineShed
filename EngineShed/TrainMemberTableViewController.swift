@@ -77,9 +77,11 @@ class TrainMemberTableViewController : UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "trainMemberEdit" {
             guard let trainMember = trainMember else { return }
-            let navigationController = segue.destination as! UINavigationController
 
+            let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController! as! TrainMemberEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
             viewController.persistentContainer = persistentContainer
             viewController.editTrainMember(trainMember) { result in
                 if case .deleted = result {

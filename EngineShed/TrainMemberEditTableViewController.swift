@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-class TrainMemberEditTableViewController: UITableViewController {
+class TrainMemberEditTableViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
 
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
     var persistentContainer: NSPersistentContainer?
@@ -31,14 +32,6 @@ class TrainMemberEditTableViewController: UITableViewController {
         }
     }
 
-    enum Result {
-        case canceled
-        case saved(TrainMember)
-        case deleted
-    }
-
-    private var completionHandler: ((Result) -> Void)!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,8 +45,7 @@ class TrainMemberEditTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Set the initial save button state.
-        updateSaveButton()
+        updateEditingState()
     }
 
     // MARK: - Table view data source
@@ -119,6 +111,12 @@ class TrainMemberEditTableViewController: UITableViewController {
         }
     }
 
+    // MARK: - Presentation Delegate
+
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        confirmDiscardChanges()
+    }
+
     // MARK: - Presenter API
 
     func editTrainMember(_ trainMember: TrainMember, completionHandler: @escaping ((Result) -> Void)) {
@@ -163,8 +161,8 @@ class TrainMemberEditTableViewController: UITableViewController {
 
         // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
         // temporarily replace with Cocoa KVO if necessary.
-        observers.append(trainMember.observe(\.title) { (_, _) in self.updateSaveButton() })
-        observers.append(trainMember.observe(\.isFlipped) { (_, _) in self.updateSaveButton() })
+        observers.append(trainMember.observe(\.title) { (_, _) in self.updateEditingState() })
+        observers.append(trainMember.observe(\.isFlipped) { (_, _) in self.updateEditingState() })
     }
 
     // MARK: - Notifications
@@ -185,13 +183,73 @@ class TrainMemberEditTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Actions
+    // MARK: - Commit methods
+    
+    enum Result {
+        case canceled
+        case saved(TrainMember)
+        case deleted
+    }
+    
+    private var completionHandler: ((Result) -> Void)!
+    
+    func hasChanges() -> Bool {
+        guard let trainMember = trainMember else { return false }
 
-    @IBAction func cancelButtonTapped(_ sender: Any) {
+        return trainMember.hasChanges
+    }
+
+    func isValid() -> Bool {
+        guard let trainMember = trainMember else { return false }
+        
+        do {
+            if trainMember.isInserted {
+                try trainMember.validateForInsert()
+            } else if trainMember.isUpdated {
+                try trainMember.validateForUpdate()
+            }
+            
+            return true
+        } catch {
+            return false
+        }
+    }
+    
+    func updateEditingState() {
+        // Disable interaction and pull-to-dismiss when there are pending changes.
+        isModalInPresentation = hasChanges()
+        
+        // Enable the save button only if there has been a change, and that the result is valid.
+        saveButton.isEnabled = hasChanges() && isValid()
+    }
+
+    func confirmDiscardChanges() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if isValid() {
+            alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+                self.saveTrainMember()
+            })
+        }
+
+        alert.addAction(UIAlertAction(title: "Discard Changes", style: .destructive) { _ in
+            self.discardChanges()
+        })
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        // Set iPad presentation.
+        if let popover = alert.popoverPresentationController {
+            popover.barButtonItem = cancelButton
+        }
+
+        present(alert, animated: true)
+    }
+
+    func discardChanges() {
         completionHandler?(.canceled)
     }
 
-    @IBAction func saveButtonTapped(_ sender: Any) {
+    func saveTrainMember() {
         guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let trainMember = trainMember else { return }
@@ -214,36 +272,36 @@ class TrainMemberEditTableViewController: UITableViewController {
             present(alert, animated: true)
         }
     }
-    
+
     func confirmDeleteTrainMember(from indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Delete Train Member", style: .destructive) { action in
+        alert.addAction(UIAlertAction(title: "Delete Train Member", style: .destructive) { _ in
             self.deleteTrainMember()
         })
         
         // Cancel case, deselect the table row.
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             self.tableView.deselectRow(at: indexPath, animated: true)
         })
         
         // Set iPad presentation.
         if let popover = alert.popoverPresentationController {
-            popover.sourceView = tableView;
+            popover.sourceView = tableView
             popover.sourceRect = tableView.rectForRow(at: indexPath)
         }
         
         present(alert, animated: true)
     }
-
+    
     func deleteTrainMember() {
         guard let viewContext = persistentContainer?.viewContext else { return }
         guard let managedObjectContext = managedObjectContext else { return }
         guard let trainMember = trainMember else { return }
-
+        
         do {
             managedObjectContext.delete(trainMember)
             try managedObjectContext.save()
-
+            
             // Give the view context a chance to receive the merge notification before running
             // the completion handler.
             view.isUserInteractionEnabled = false
@@ -257,30 +315,14 @@ class TrainMemberEditTableViewController: UITableViewController {
         }
     }
 
-    /// Returns `true` if `trainMember` has changes, and is in a valid state to be saved.
-    func canSave() -> Bool {
-        guard let trainMember = trainMember else { return false }
+    // MARK: - Actions
 
-        do {
-            var isChanged = false
-
-            if trainMember.isInserted {
-                try trainMember.validateForInsert()
-                isChanged = true
-            } else if trainMember.isUpdated {
-                try trainMember.validateForUpdate()
-                isChanged = true
-            }
-
-            return isChanged
-        } catch {
-            return false
-        }
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        discardChanges()
     }
-    
-    func updateSaveButton() {
-        // Enable the save button only if there has been a change, and that the result is valid.
-        saveButton.isEnabled = canSave()
+
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        saveTrainMember()
     }
 
 }
