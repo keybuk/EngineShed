@@ -17,20 +17,17 @@ class TrainMemberEditTableViewController: UITableViewController, UIAdaptivePrese
     var persistentContainer: NSPersistentContainer?
 
     /// Private read-write context with a main queue concurrency type.
+    ///
+    /// Watched for changes to update editing state of the view and refresh the view when the objects are changed in other views
+    /// or by sync.
     private var managedObjectContext: NSManagedObjectContext? {
         didSet {
-            // Register for notifications of changes to this context so we can update field values when changed outside this view.
             NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
         }
     }
     
     /// TrainMember being edited in this view, on `managedObjectContext`.
-    private var trainMember: TrainMember? {
-        didSet {
-            // Use KVO to keep the save button state up to date.
-            observeTrainMember()
-        }
-    }
+    private var trainMember: TrainMember?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,22 +146,6 @@ class TrainMemberEditTableViewController: UITableViewController, UIAdaptivePrese
         trainMember = TrainMember(context: managedObjectContext!)
     }
 
-    // MARK: - Object observation
-    
-    var observers: [NSKeyValueObservation] = []
-
-    func observeTrainMember() {
-        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
-
-        observers.removeAll()
-        guard let trainMember = trainMember else { return }
-
-        // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
-        // temporarily replace with Cocoa KVO if necessary.
-        observers.append(trainMember.observe(\.title) { (_, _) in self.updateEditingState() })
-        observers.append(trainMember.observe(\.isFlipped) { (_, _) in self.updateEditingState() })
-    }
-
     // MARK: - Notifications
 
     @objc
@@ -173,6 +154,13 @@ class TrainMemberEditTableViewController: UITableViewController, UIAdaptivePrese
         assert(notification.object as? NSManagedObjectContext == managedObjectContext, "Notification callback called with wrong managed object context")
         guard let userInfo = notification.userInfo else { return }
         guard let trainMember = trainMember else { return }
+
+        // Update editing state whenever our train member object is updated.
+        if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject>,
+            updatedObjects.contains(trainMember)
+        {
+            updateEditingState()
+        }
 
         // Check for a refresh of our train member object, by sync from cloud or merge after save
         // from other context, and reload the table.

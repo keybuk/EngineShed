@@ -17,20 +17,17 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
     var persistentContainer: NSPersistentContainer?
 
     /// Private read-write context with a main queue concurrency type.
+    ///
+    /// Watched for changes to update editing state of the view and refresh the view when the objects are changed in other views
+    /// or by sync.
     private var managedObjectContext: NSManagedObjectContext? {
         didSet {
-            // Register for notifications of changes to this context so we can update field values when changed outside this view.
             NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
         }
     }
     
     /// Model being edited in this view, on `managedObjectContext`.
-    private var model: Model? {
-        didSet {
-            // Use KVO to keep the save button state up to date.
-            observeModel()
-        }
-    }
+    private var model: Model?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -330,46 +327,6 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
         model!.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
     }
     
-    // MARK: - Object observation
-
-    var observers: [NSKeyValueObservation] = []
-
-    func observeModel() {
-        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
-
-        observers.removeAll()
-        guard let model = model else { return }
-
-        // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
-        // temporarily replace with Cocoa KVO if necessary.
-        observers.append(model.observe(\.imageData) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.classificationRawValue) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.modelClass) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.number) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.name) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.livery) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.details) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.eraRawValue) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.dispositionRawValue) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.motor) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.lights) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.socket) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.decoder) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.speaker) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.speakerFittings) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.couplings) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.features) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.detailParts) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.fittedDetailParts) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.modifications) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.lastRun) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.lastOil) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.tasks) { (_, _) in self.updateEditingState() })
-        observers.append(model.observe(\.notes) { (_, _) in self.updateEditingState() })
-
-        // FIXME: should observe decoder, and trainMember
-    }
-
     // MARK: - Notifications
 
     @objc
@@ -379,7 +336,17 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
         guard let userInfo = notification.userInfo else { return }
         guard let model = model else { return }
 
-        // Check for refreshes of our MODEL object, or its linked decoder or trainMember, meaning
+        // Update editing state whenever our model object, or its linked decoder or trainMember,
+        // are updated.
+        if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject>,
+            updatedObjects.contains(model) ||
+                (model.decoder.map({ updatedObjects.contains($0) }) ?? false) ||
+                (model.trainMember.map({ updatedObjects.contains($0) }) ?? false)
+        {
+            updateEditingState()
+        }
+
+        // Check for refreshes of our model object, or its linked decoder or trainMember, meaning
         // they were updated by sync from cloud or merge after save from other context.
         // Reload the table in either case.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,

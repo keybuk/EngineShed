@@ -17,20 +17,17 @@ class PurchaseEditTableViewController : UITableViewController, UIAdaptivePresent
     var persistentContainer: NSPersistentContainer?
 
     /// Private read-write context with a main queue concurrency type.
+    ///
+    /// Watched for changes to update editing state of the view and refresh the view when the objects are changed in other views
+    /// or by sync.
     private var managedObjectContext: NSManagedObjectContext? {
         didSet {
-            // Register for notifications of changes to this context so we can update field values when changed outside this view.
             NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
         }
     }
     
     /// Purchase being edited in this view, on `managedObjectContext`.
-    private var purchase: Purchase? {
-        didSet {
-            // Use KVO to keep the save button state up to date.
-            observePurchase()
-        }
-    }
+    private var purchase: Purchase?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -293,34 +290,6 @@ class PurchaseEditTableViewController : UITableViewController, UIAdaptivePresent
         purchase = Purchase(context: managedObjectContext!)
     }
     
-    // MARK: - Object observation
-
-    var observers: [NSKeyValueObservation] = []
-
-    func observePurchase() {
-        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
-
-        observers.removeAll()
-        guard let purchase = purchase else { return }
-
-        // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
-        // temporarily replace with Cocoa KVO if necessary.
-        observers.append(purchase.observe(\.manufacturer) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.catalogNumber) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.catalogDescription) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.catalogYear) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.limitedEdition) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.limitedEditionNumber) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.limitedEditionCount) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.date) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.store) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.price) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.conditionRawValue) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.valuation) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.notes) { (_, _) in self.updateEditingState() })
-        observers.append(purchase.observe(\.models) { (_, _) in self.updateEditingState() })
-    }
-
     // MARK: - Notifications
 
     @objc
@@ -329,6 +298,13 @@ class PurchaseEditTableViewController : UITableViewController, UIAdaptivePresent
         assert(notification.object as? NSManagedObjectContext == managedObjectContext, "Notification callback called with wrong managed object context")
         guard let userInfo = notification.userInfo else { return }
         guard let purchase = purchase else { return }
+
+        // Update editing state whenever our purchase object is updated.
+        if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject>,
+            updatedObjects.contains(purchase)
+        {
+            updateEditingState()
+        }
 
         // Check for a refresh of our purchase object, by sync from cloud or merge after save
         // from other context, and reload the table.

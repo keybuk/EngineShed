@@ -17,20 +17,17 @@ class DecoderTypeEditTableViewController : UITableViewController, UIAdaptivePres
     var persistentContainer: NSPersistentContainer?
 
     /// Private read-write context with a main queue concurrency type.
+    ///
+    /// Watched for changes to update editing state of the view and refresh the view when the objects are changed in other views
+    /// or by sync.
     private var managedObjectContext: NSManagedObjectContext? {
         didSet {
-            // Register for notifications of changes to this context so we can update field values when changed outside this view.
             NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
         }
     }
     
     /// DecoderType being edited in this view, on `managedObjectContext`.
-    private var decoderType: DecoderType? {
-        didSet {
-            // Use KVO to keep the save button state up to date.
-            observeDecoderType()
-        }
-    }
+    private var decoderType: DecoderType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,29 +175,6 @@ class DecoderTypeEditTableViewController : UITableViewController, UIAdaptivePres
         decoderType = DecoderType(context: managedObjectContext!)
     }
 
-    // MARK: - Object observation
-    
-    var observers: [NSKeyValueObservation] = []
-
-    func observeDecoderType() {
-        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
-
-        observers.removeAll()
-        guard let decoderType = decoderType else { return }
-
-        // NOTE: Swift KVO is rumored buggy across threads, so watch out for that and
-        // temporarily replace with Cocoa KVO if necessary.
-        observers.append(decoderType.observe(\.manufacturer) { (_, _) in self.updateEditingState() })
-        observers.append(decoderType.observe(\.productCode) { (_, _) in self.updateEditingState() })
-        observers.append(decoderType.observe(\.productFamily) { (_, _) in self.updateEditingState() })
-        observers.append(decoderType.observe(\.productDescription) { (_, _) in self.updateEditingState() })
-        observers.append(decoderType.observe(\.socket) { (_, _) in self.updateEditingState() })
-        observers.append(decoderType.observe(\.isProgrammable) { (_, _) in self.updateEditingState() })
-        observers.append(decoderType.observe(\.hasRailCom) { (_, _) in self.updateEditingState() })
-        observers.append(decoderType.observe(\.hasSound) { (_, _) in self.updateEditingState() })
-        observers.append(decoderType.observe(\.minimumStock) { (_, _) in self.updateEditingState() })
-    }
-
     // MARK: - Notifications
 
     @objc
@@ -209,6 +183,13 @@ class DecoderTypeEditTableViewController : UITableViewController, UIAdaptivePres
         assert(notification.object as? NSManagedObjectContext == managedObjectContext, "Notification callback called with wrong managed object context")
         guard let userInfo = notification.userInfo else { return }
         guard let decoderType = decoderType else { return }
+
+        // Update editing state whenever our decoder type object is updated.
+        if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject>,
+            updatedObjects.contains(decoderType)
+        {
+            updateEditingState()
+        }
 
         // Check for a refresh of our decoder type object, by sync from cloud or merge after save
         // from other context, and reload the table.
