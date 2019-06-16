@@ -32,12 +32,10 @@ class ModelTableViewController : UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-        // Register for notifications of changes to the view context so we can update the view
-        // when changes to the record are merged back into it.
-        if let managedObjectContext = persistentContainer?.viewContext {
-            let notificationCenter = NotificationCenter.default
-            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
+        // Watch for changes that occur as a result of changes outside the view, and sync from the
+        // cloud, including when the view is disappeared inside a navigation stack.
+        guard let managedObjectContext = persistentContainer?.viewContext else { preconditionFailure("View loaded without persistent container") }
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
     }
 
     // MARK: - Table view data source
@@ -155,6 +153,35 @@ class ModelTableViewController : UITableViewController {
     }
     */
 
+    // MARK: - Notifications
+
+    @objc
+    func managedObjectContextObjectsDidChange(_ notification: Notification) {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+        assert(notification.object as? NSManagedObjectContext == persistentContainer?.viewContext, "Notification callback called with wrong managed object context")
+        guard let userInfo = notification.userInfo else { return }
+        guard let model = model else { return }
+
+        // Check for a refresh of our model object, or linked purchase or decoder objects, by sync
+        // from cloud or merge after save from other context, and reload the table.
+        if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
+            refreshedObjects.contains(model) ||
+                (model.purchase.map({ refreshedObjects.contains($0) }) ?? false) ||
+                (model.decoder.map({ refreshedObjects.contains($0) }) ?? false) ||
+                (model.trainMember.map({ refreshedObjects.contains($0) }) ?? false)
+        {
+            tableView.reloadData()
+        }
+
+        // Check for a deletion of our model object,.
+        if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
+            deletedObjects.contains(model)
+        {
+            self.model = nil
+            tableView.reloadData()
+        }
+    }
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -183,34 +210,6 @@ class ModelTableViewController : UITableViewController {
                     self.dismiss(animated: true)
                 }
             }
-        }
-    }
-
-    // MARK: - Notifications
-
-    @objc
-    func managedObjectContextObjectsDidChange(_ notification: Notification) {
-        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
-        guard let userInfo = notification.userInfo else { return }
-        guard let model = model else { return }
-
-        // Check for a refresh of our model object, or linked purchase or decoder objects, by sync
-        // from cloud or merge after save from other context, and reload the table.
-        if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
-            refreshedObjects.contains(model) ||
-                (model.purchase.map({ refreshedObjects.contains($0) }) ?? false) ||
-                (model.decoder.map({ refreshedObjects.contains($0) }) ?? false) ||
-                (model.trainMember.map({ refreshedObjects.contains($0) }) ?? false)
-        {
-            tableView.reloadData()
-        }
-
-        // Check for a deletion of our model object,.
-        if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
-            deletedObjects.contains(model)
-        {
-            self.model = nil
-            tableView.reloadData()
         }
     }
 

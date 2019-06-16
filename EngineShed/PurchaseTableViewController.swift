@@ -30,12 +30,10 @@ class PurchaseTableViewController : UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-        // Register for notifications of changes to the view context so we can update the view
-        // when changes to the record are merged back into it.
-        if let managedObjectContext = persistentContainer?.viewContext {
-            let notificationCenter = NotificationCenter.default
-            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
+        // Watch for changes that occur as a result of changes outside the view, and sync from the
+        // cloud, including when the view is disappeared inside a navigation stack.
+        guard let managedObjectContext = persistentContainer?.viewContext else { preconditionFailure("View loaded without persistent container") }
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
     }
 
     // MARK: - Table view data source
@@ -114,6 +112,35 @@ class PurchaseTableViewController : UITableViewController {
     }
     */
 
+    // MARK: - Notifications
+
+    @objc
+    func managedObjectContextObjectsDidChange(_ notification: Notification) {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+        assert(notification.object as? NSManagedObjectContext == persistentContainer?.viewContext, "Notification callback called with wrong managed object context")
+        guard let userInfo = notification.userInfo else { return }
+        guard let purchase = purchase else { return }
+        let purchaseModels = purchase.models?.set as? Set<NSManagedObject> ?? []
+
+        // Check for refreshes of our purchase object, or its children models, meaning they
+        // were updated by sync from cloud or merge after save from other context.
+        // Reload the table in either case.
+        if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
+            refreshedObjects.contains(purchase) ||
+                !refreshedObjects.isDisjoint(with: purchaseModels)
+        {
+            tableView.reloadData()
+        }
+
+        // Check for a deletion of our purchase object.
+        if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
+            deletedObjects.contains(purchase)
+        {
+            self.purchase = nil
+            tableView.reloadData()
+        }
+    }
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -164,34 +191,6 @@ class PurchaseTableViewController : UITableViewController {
 
                 self.dismiss(animated: true)
             }
-        }
-    }
-
-    // MARK: - Notifications
-
-    @objc
-    func managedObjectContextObjectsDidChange(_ notification: Notification) {
-        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
-        guard let userInfo = notification.userInfo else { return }
-        guard let purchase = purchase else { return }
-        let purchaseModels = purchase.models?.set as? Set<NSManagedObject> ?? []
-
-        // Check for refreshes of our purchase object, or its children models, meaning they
-        // were updated by sync from cloud or merge after save from other context.
-        // Reload the table in either case.
-        if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
-            refreshedObjects.contains(purchase) ||
-                !refreshedObjects.isDisjoint(with: purchaseModels)
-        {
-            tableView.reloadData()
-        }
-
-        // Check for a deletion of our purchase object.
-        if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
-            deletedObjects.contains(purchase)
-        {
-            self.purchase = nil
-            tableView.reloadData()
         }
     }
 

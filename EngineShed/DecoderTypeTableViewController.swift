@@ -24,12 +24,10 @@ class DecoderTypeTableViewController : UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
-        // Register for notifications of changes to the view context so we can update the view
-        // when changes to the record are merged back into it.
-        if let managedObjectContext = persistentContainer?.viewContext {
-            let notificationCenter = NotificationCenter.default
-            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
+        // Watch for changes that occur as a result of changes outside the view, and sync from the
+        // cloud, including when the view is disappeared inside a navigation stack.
+        guard let managedObjectContext = persistentContainer?.viewContext else { preconditionFailure("View loaded without persistent container") }
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
     }
 
     // MARK: - Table view data source
@@ -116,6 +114,53 @@ class DecoderTypeTableViewController : UITableViewController {
         }
     }
 
+    // MARK: - Decoders table
+
+    lazy var decoders: [Decoder] = {
+        guard let managedObjectContext = persistentContainer?.viewContext, let decoderType = decoderType else { preconditionFailure("Cannot fetch decoders without viewContext and decoderType") }
+
+        let fetchRequest = decoderType.fetchRequestForDecoders()
+        let decoders = managedObjectContext.performAndWait { () -> [Decoder] in
+            do {
+                return try fetchRequest.execute()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+
+        return decoders
+    }()
+
+    // MARK: - Notifications
+
+    @objc
+    func managedObjectContextObjectsDidChange(_ notification: Notification) {
+        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
+        assert(notification.object as? NSManagedObjectContext == persistentContainer?.viewContext, "Notification callback called with wrong managed object context")
+        guard let userInfo = notification.userInfo else { return }
+        guard let decoderType = decoderType else { return }
+
+        // Check for refreshes of our decoder type object, or its children decoders, meaning they
+        // were updated by sync from cloud or merge after save from other context. Requery the
+        // set of decoders, and reload the table.
+        if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
+            refreshedObjects.contains(decoderType) ||
+                !refreshedObjects.isDisjoint(with: decoders)
+        {
+            tableView.reloadData()
+        }
+
+        // Check for a deletion of our decoder type object. We don't need to check for children
+        // because deletion of those update our object's `decoders` set.
+        if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
+            deletedObjects.contains(decoderType)
+        {
+            self.decoderType = nil
+            tableView.reloadData()
+        }
+    }
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -165,52 +210,6 @@ class DecoderTypeTableViewController : UITableViewController {
 
                 self.dismiss(animated: true)
             }
-        }
-    }
-
-    // MARK: - Decoders table
-
-    lazy var decoders: [Decoder] = {
-        guard let managedObjectContext = persistentContainer?.viewContext, let decoderType = decoderType else { preconditionFailure("Cannot fetch decoders without viewContext and decoderType") }
-
-        let fetchRequest = decoderType.fetchRequestForDecoders()
-        let decoders = managedObjectContext.performAndWait { () -> [Decoder] in
-            do {
-                return try fetchRequest.execute()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-
-        return decoders
-    }()
-
-    // MARK: - Notifications
-
-    @objc
-    func managedObjectContextObjectsDidChange(_ notification: Notification) {
-        dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
-        guard let userInfo = notification.userInfo else { return }
-        guard let decoderType = decoderType else { return }
-
-        // Check for refreshes of our decoder type object, or its children decoders, meaning they
-        // were updated by sync from cloud or merge after save from other context. Requery the
-        // set of decoders, and reload the table.
-        if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
-            refreshedObjects.contains(decoderType) ||
-                !refreshedObjects.isDisjoint(with: decoders)
-        {
-            tableView.reloadData()
-        }
-
-        // Check for a deletion of our decoder type object. We don't need to check for children
-        // because deletion of those update our object's `decoders` set.
-        if let deletedObjects = userInfo[NSDeletedObjectsKey] as? Set<NSManagedObject>,
-            deletedObjects.contains(decoderType)
-        {
-            self.decoderType = nil
-            tableView.reloadData()
         }
     }
 
