@@ -240,8 +240,6 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         let trainMember = train.members![fromIndexPath.row] as! TrainMember
         train.removeFromMembers(at: fromIndexPath.row)
         train.insertIntoMembers(trainMember, at: to.row)
-
-        tableView.moveRow(at: fromIndexPath, to: to)
     }
     
     // MARK: - Presentation Delegate
