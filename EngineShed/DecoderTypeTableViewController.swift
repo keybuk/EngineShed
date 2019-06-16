@@ -208,7 +208,8 @@ class DecoderTypeTableViewController : UITableViewController {
         // were updated by sync from cloud or merge after save from other context. Requery the
         // set of decoders, and reload the table.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
-            refreshedObjects.contains(decoderType) || !refreshedObjects.isDisjoint(with: decoders)
+            refreshedObjects.contains(decoderType) ||
+                !refreshedObjects.isDisjoint(with: decoders)
         {
             _decoders = nil
             tableView.reloadData()

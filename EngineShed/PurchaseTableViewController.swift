@@ -179,13 +179,14 @@ class PurchaseTableViewController : UITableViewController {
         dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
         guard let userInfo = notification.userInfo else { return }
         guard let purchase = purchase else { return }
+        let purchaseModels = purchase.models?.set as? Set<NSManagedObject> ?? []
 
         // Check for refreshes of our purchase object, or its children models, meaning they
         // were updated by sync from cloud or merge after save from other context.
         // Reload the table in either case.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
             refreshedObjects.contains(purchase) ||
-                !refreshedObjects.isDisjoint(with: purchase.models!.set as! Set<NSManagedObject>)
+                !refreshedObjects.isDisjoint(with: purchaseModels)
         {
             tableView.reloadData()
         }

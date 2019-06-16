@@ -288,11 +288,12 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         assert(notification.object as? NSManagedObjectContext == managedObjectContext, "Notification callback called with wrong managed object context")
         guard let userInfo = notification.userInfo else { return }
         guard let train = train else { return }
+        let trainMembers = train.members?.set as? Set<NSManagedObject> ?? []
 
         // Update editing state whenever our train object, or any of its members, are updated.
         if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject>,
             updatedObjects.contains(train) ||
-                (train.members.map({ !updatedObjects.union($0.array as! [NSManagedObject]).isEmpty }) ?? false)
+                !updatedObjects.isDisjoint(with: trainMembers)
         {
             updateEditingState()
         }
@@ -300,7 +301,8 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         // Check for a refresh of our train object, by sync from cloud or merge after save
         // from other context, and reload the table.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject>,
-            refreshedObjects.contains(train)
+            refreshedObjects.contains(train) ||
+                !refreshedObjects.isDisjoint(with: trainMembers)
         {
             tableView.reloadData()
         }
