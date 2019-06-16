@@ -356,17 +356,6 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
         {
             tableView.reloadData()
         }
-
-        // Check for the insertion of our model object, usually as a result of our own save
-        // button, and clear it. This is something of a hack to avoid inserting the "Delete" section
-        // before the picker view resigns the first responder (as a result of the user interaction
-        // going to false), and the table row for that being deleted, throwing an inconsistency
-        // exception.
-        if let insertedObjects = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject>,
-            insertedObjects.contains(model)
-        {
-            self.model = nil
-        }
     }
 
     // MARK: - Commit methods
