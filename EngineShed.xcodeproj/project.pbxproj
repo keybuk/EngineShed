@@ -762,7 +762,7 @@
 				D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */,
 				D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */,
 			);
-			name = Util;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		D2C7E20B22ADA08600A024A5 /* Model */ = {
