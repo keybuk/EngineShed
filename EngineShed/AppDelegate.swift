@@ -24,6 +24,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UISplitViewControllerDel
                 let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
                 let viewController = masterNavigationController.topViewController as! ClassificationsTableViewController
                 viewController.persistentContainer = persistentContainer
+
+                let detailNavigationController = splitViewController.viewControllers[1] as! UINavigationController
+                let detailViewController = detailNavigationController.topViewController as! ModelTableViewController
+                detailViewController.persistentContainer = persistentContainer
             }
 
             if let splitViewController = tabBarController.viewControllers?[1] as? UISplitViewController {
@@ -34,6 +38,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UISplitViewControllerDel
                 let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
                 let viewController = masterNavigationController.topViewController as! PurchasesTableViewController
                 viewController.persistentContainer = persistentContainer
+
+                let detailNavigationController = splitViewController.viewControllers[1] as! UINavigationController
+                let detailViewController = detailNavigationController.topViewController as! PurchaseTableViewController
+                detailViewController.persistentContainer = persistentContainer
             }
 
             if let navigationController = tabBarController.viewControllers?[2] as? UINavigationController {
@@ -49,6 +57,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UISplitViewControllerDel
                 let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
                 let viewController = masterNavigationController.topViewController as! DecoderTypesTableViewController
                 viewController.persistentContainer = persistentContainer
+
+                let detailNavigationController = splitViewController.viewControllers[1] as! UINavigationController
+                let detailViewController = detailNavigationController.topViewController as! DecoderTypeTableViewController
+                detailViewController.persistentContainer = persistentContainer
             }
         }
 
