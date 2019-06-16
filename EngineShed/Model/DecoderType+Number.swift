@@ -11,7 +11,7 @@ import Foundation
 extension DecoderType {
 
     /// `minimumStock` formatted as string.
-    public var minimumStockAsString: String? {
+    var minimumStockAsString: String? {
         get {
             if minimumStock == 0 { return nil }
             return String(minimumStock)

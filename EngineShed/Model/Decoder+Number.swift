@@ -11,7 +11,7 @@ import Foundation
 extension Decoder {
 
     /// `address` formatted as string.
-    public var addressAsString: String? {
+    var addressAsString: String? {
         get {
             if address == 0 { return nil }
             return String(address)

@@ -10,7 +10,7 @@ import UIKit
 
 extension Model {
 
-    public var image: UIImage? {
+    var image: UIImage? {
         get {
             return imageData.flatMap { UIImage(data: $0) }
         }

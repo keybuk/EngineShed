@@ -29,12 +29,12 @@ extension Train {
 //        guard members!.count > 0 else { throw ValidationError.noMembers }
 //    }
 //
-//    public override func validateForInsert() throws {
+//    override func validateForInsert() throws {
 //        try super.validateForInsert()
 //        try validateMembers()
 //    }
 //
-//    public override func validateForUpdate() throws {
+//    override func validateForUpdate() throws {
 //        try super.validateForUpdate()
 //        try validateMembers()
 //    }

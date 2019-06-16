@@ -11,7 +11,7 @@ import CoreData
 
 extension Decoder {
 
-    public func suggestionsForFirmwareVersion(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForFirmwareVersion(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Decoder.fetchRequest()
@@ -44,7 +44,7 @@ extension Decoder {
         return results.compactMap { $0["firmwareVersion"] }
     }
 
-    public func suggestedFirmwareDate() -> DateComponents? {
+    func suggestedFirmwareDate() -> DateComponents? {
         guard let managedObjectContext = managedObjectContext else { return nil }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Decoder.fetchRequest()
@@ -74,7 +74,7 @@ extension Decoder {
         return results.first?["firmwareDate"] ?? nil
     }
 
-    public func suggestionsForSoundAuthor(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForSoundAuthor(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Decoder.fetchRequest()
@@ -98,7 +98,7 @@ extension Decoder {
         return results.compactMap { $0["soundAuthor"] }
     }
 
-    public func suggestionsForSoundProject(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForSoundProject(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Decoder.fetchRequest()
@@ -130,7 +130,7 @@ extension Decoder {
         return results.compactMap { $0["soundProject"] }
     }
 
-    public func suggestionsForSoundProjectVersion(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForSoundProjectVersion(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Decoder.fetchRequest()

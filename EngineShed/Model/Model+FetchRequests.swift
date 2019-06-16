@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public enum ModelGrouping {
+enum ModelGrouping {
 
     case modelClass
     case era
@@ -19,7 +19,7 @@ public enum ModelGrouping {
 
 extension Model {
 
-    public static func fetchRequestForModels(classification: ModelClassification? = nil, groupBy grouping: ModelGrouping = .modelClass) -> NSFetchRequest<Model> {
+    static func fetchRequestForModels(classification: ModelClassification? = nil, groupBy grouping: ModelGrouping = .modelClass) -> NSFetchRequest<Model> {
         let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
         fetchRequest.fetchBatchSize = 20
 

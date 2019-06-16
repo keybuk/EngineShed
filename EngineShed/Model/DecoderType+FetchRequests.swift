@@ -11,7 +11,7 @@ import CoreData
 
 extension DecoderType {
 
-    public static func fetchRequestForDecoderTypes() -> NSFetchRequest<DecoderType> {
+    static func fetchRequestForDecoderTypes() -> NSFetchRequest<DecoderType> {
         let fetchRequest: NSFetchRequest<DecoderType> = DecoderType.fetchRequest()
         fetchRequest.fetchBatchSize = 20
 
@@ -26,7 +26,7 @@ extension DecoderType {
         return fetchRequest
     }
 
-    public func fetchRequestForDecoders() -> NSFetchRequest<Decoder> {
+    func fetchRequestForDecoders() -> NSFetchRequest<Decoder> {
         let fetchRequest: NSFetchRequest<Decoder> = Decoder.fetchRequest()
         fetchRequest.fetchBatchSize = 20
 

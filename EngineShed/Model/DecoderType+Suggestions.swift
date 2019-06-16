@@ -11,7 +11,7 @@ import CoreData
 
 extension DecoderType {
 
-    public func suggestionsForManufacturer(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForManufacturer(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = DecoderType.fetchRequest()
@@ -33,7 +33,7 @@ extension DecoderType {
         return results.compactMap { $0["manufacturer"] }
     }
 
-    public func suggestionsForSocket(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForSocket(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = DecoderType.fetchRequest()

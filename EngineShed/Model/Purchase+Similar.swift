@@ -74,7 +74,7 @@ extension Purchase {
     /// In either case, `manufacturer` must match.
     ///
     /// - Returns: list of matching `Purchase` objects, or empty list if none.
-    public func similar() -> [Purchase] {
+    func similar() -> [Purchase] {
         guard let manufacturer = manufacturer, manufacturer != "" else { return [] }
         guard let catalogNumber = catalogNumber, catalogNumber != "" else { return [] }
 

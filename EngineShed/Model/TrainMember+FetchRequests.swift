@@ -11,7 +11,7 @@ import CoreData
 
 extension TrainMember {
 
-    public static func fetchRequestForTrains() -> NSFetchRequest<TrainMember> {
+    static func fetchRequestForTrains() -> NSFetchRequest<TrainMember> {
         let fetchRequest: NSFetchRequest<TrainMember> = TrainMember.fetchRequest()
         fetchRequest.fetchBatchSize = 20
         fetchRequest.sortDescriptors = [

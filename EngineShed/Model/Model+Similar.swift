@@ -13,7 +13,7 @@ extension Model {
     /// Return list of similar models.
     ///
     /// - Returns: list of matching `Model` objects, or empty list if none.
-    public func similar() -> [Model] {
+    func similar() -> [Model] {
         // Bachmann Mk2F TSO
         // Bachmann Mk2F (future)
 

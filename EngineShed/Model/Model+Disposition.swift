@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum ModelDisposition : Int16, CaseIterable {
+enum ModelDisposition : Int16, CaseIterable {
     
     case normal = 1
     case collectorItem
@@ -18,7 +18,7 @@ public enum ModelDisposition : Int16, CaseIterable {
 
 extension ModelDisposition : CustomStringConvertible, ConvertibleFromString {
     
-    public var description: String {
+    var description: String {
         switch self {
         case .normal: return "Normal"
         case .collectorItem: return "Collector Item"
@@ -30,7 +30,7 @@ extension ModelDisposition : CustomStringConvertible, ConvertibleFromString {
 
 extension Model {
 
-    public var disposition: ModelDisposition? {
+    var disposition: ModelDisposition? {
         get { return ModelDisposition(rawValue: dispositionRawValue) }
         set { dispositionRawValue = newValue?.rawValue ?? 0 }
     }

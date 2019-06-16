@@ -21,7 +21,7 @@ extension Model {
     ///   - objects: set of objects in the relationship.
     ///   - titles: list of titles.
     ///   - as: type of `NSManagedObject` to construct.
-    func updateList<Entity: NSManagedObject>(_ objects: NSSet?, from titles: [String]?, as type: Entity.Type) {
+    private func updateList<Entity: NSManagedObject>(_ objects: NSSet?, from titles: [String]?, as type: Entity.Type) {
         guard let managedObjectContext = managedObjectContext else { preconditionFailure("Can't update list field outside of managed object context") }
 
         var newTitles = Set(titles ?? [])
@@ -50,7 +50,7 @@ extension Model {
     }
 
     /// Update the set of `lights` from string list.
-    public func updateLights(from titles: [String]?) {
+    func updateLights(from titles: [String]?) {
         updateList(lights, from: titles, as: Light.self)
     }
 

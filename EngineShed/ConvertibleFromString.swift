@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol ConvertibleFromString {
+protocol ConvertibleFromString {
 
     init?(describedBy: String)
 
@@ -16,7 +16,7 @@ public protocol ConvertibleFromString {
 
 extension ConvertibleFromString where Self : CaseIterable & CustomStringConvertible {
 
-    public init?(describedBy string: String) {
+    init?(describedBy string: String) {
         if let enumCase = Self.allCases.first(where: { $0.description == string }) {
             self = enumCase
         } else {

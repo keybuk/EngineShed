@@ -11,7 +11,7 @@ import Foundation
 extension Purchase {
 
     /// Formatter for date types.
-    public var dateFormatter: DateFormatter {
+    var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
@@ -19,7 +19,7 @@ extension Purchase {
     }
 
     /// `date` as `Date` in current time zone.
-    public var dateAsDate: Date? {
+    var dateAsDate: Date? {
         get {
             return date.flatMap { dateComponents -> Date? in
                 let calendar = Calendar.current
@@ -36,7 +36,7 @@ extension Purchase {
     }
 
     /// `date` formatted as string using `dateFormatter`.
-    public var dateAsString: String? {
+    var dateAsString: String? {
         get {
             return dateAsDate.flatMap { return dateFormatter.string(from: $0) }
         }
@@ -47,7 +47,7 @@ extension Purchase {
     }
 
     /// `dateForGrouping` formatted as string with format "MMMMyyyy".
-    public var dateForGroupingAsString: String? {
+    var dateForGroupingAsString: String? {
         guard let _ = date, let dateForGrouping = dateForGrouping else { return nil }
 
         let formatter = DateFormatter()

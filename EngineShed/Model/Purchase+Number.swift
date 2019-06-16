@@ -11,7 +11,7 @@ import Foundation
 extension Purchase {
 
     /// `catalogYear` formatted as string.
-    public var catalogYearAsString: String? {
+    var catalogYearAsString: String? {
         get {
             if catalogYear == 0 { return nil }
             return String(catalogYear)
@@ -23,7 +23,7 @@ extension Purchase {
     }
 
     /// `limitedEditionNumber` formatted as string.
-    public var limitedEditionNumberAsString: String? {
+    var limitedEditionNumberAsString: String? {
         get {
             if limitedEditionNumber == 0 { return nil }
             return String(limitedEditionNumber)
@@ -35,7 +35,7 @@ extension Purchase {
     }
 
     /// `limitedEditionCount` formatted as string.
-    public var limitedEditionCountAsString: String? {
+    var limitedEditionCountAsString: String? {
         get {
             if limitedEditionCount == 0 { return nil }
             return String(limitedEditionCount)

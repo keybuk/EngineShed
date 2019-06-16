@@ -11,7 +11,7 @@ import Foundation
 extension Model {
 
     /// Formatter for date types.
-    public var dateFormatter: DateFormatter {
+    var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
@@ -19,7 +19,7 @@ extension Model {
     }
 
     /// `lastOil` as `Date` in current time zone.
-    public var lastOilAsDate: Date? {
+    var lastOilAsDate: Date? {
         get {
             return lastOil.flatMap { dateComponents -> Date? in
                 let calendar = Calendar.current
@@ -36,7 +36,7 @@ extension Model {
     }
 
     /// `lastOil` formatted as string using `dateFormatter`.
-    public var lastOilAsString: String? {
+    var lastOilAsString: String? {
         get {
             return lastOilAsDate.flatMap { return dateFormatter.string(from: $0) }
         }
@@ -47,7 +47,7 @@ extension Model {
     }
 
     /// `lastRun` as `Date` in current time zone.
-    public var lastRunAsDate: Date? {
+    var lastRunAsDate: Date? {
         get {
             return lastRun.flatMap { dateComponents -> Date? in
                 let calendar = Calendar.current
@@ -64,7 +64,7 @@ extension Model {
     }
 
     /// `lastRun` formatted as string using `dateFormatter`.
-    public var lastRunAsString: String? {
+    var lastRunAsString: String? {
         get {
             return lastRunAsDate.flatMap { return dateFormatter.string(from: $0) }
         }

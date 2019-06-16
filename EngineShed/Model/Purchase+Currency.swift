@@ -11,7 +11,7 @@ import Foundation
 extension Purchase {
 
     /// Formatter for currency types.
-    public var currencyFormatter: NumberFormatter {
+    var currencyFormatter: NumberFormatter {
         let locale = Locale(identifier: "en_GB")
 
         let formatter = NumberFormatter()
@@ -22,7 +22,7 @@ extension Purchase {
     }
 
     /// `price` formatted as string using `currencyFormatter`.
-    public var priceAsString: String? {
+    var priceAsString: String? {
         get {
             return price.flatMap {
                 currencyFormatter.string(from: $0)
@@ -37,7 +37,7 @@ extension Purchase {
     }
 
     /// `valuation` formatted as string using `currencyFormatter`.
-    public var valuationAsString: String? {
+    var valuationAsString: String? {
         get {
             return valuation.flatMap {
                 currencyFormatter.string(from: $0)

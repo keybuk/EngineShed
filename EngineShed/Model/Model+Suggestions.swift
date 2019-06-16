@@ -11,7 +11,7 @@ import CoreData
 
 extension Model {
 
-    public func suggestionsForClass(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForClass(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Model.fetchRequest()
@@ -33,7 +33,7 @@ extension Model {
         return results.compactMap { $0["modelClass"] }
     }
 
-    public func suggestionsForLivery(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForLivery(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Model.fetchRequest()
@@ -55,7 +55,7 @@ extension Model {
         return results.compactMap { $0["livery"] }
     }
     
-    public func suggestionsForMotor(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForMotor(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Model.fetchRequest()
@@ -77,7 +77,7 @@ extension Model {
         return results.compactMap { $0["motor"] }
     }
 
-    public func suggestionsForSocket(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForSocket(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Model.fetchRequest()
@@ -99,7 +99,7 @@ extension Model {
         return results.compactMap { $0["socket"] }
     }
 
-    public func suggestionsForSpeaker(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForSpeaker(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Model.fetchRequest()
@@ -123,7 +123,7 @@ extension Model {
 
     // MARK: List suggestions
 
-    public func suggestionsForLights(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForLights(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Light.fetchRequest()

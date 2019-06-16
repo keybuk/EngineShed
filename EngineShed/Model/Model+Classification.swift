@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum ModelClassification : Int16, CaseIterable {
+enum ModelClassification : Int16, CaseIterable {
 
     case locomotive = 1
     case coach
@@ -22,7 +22,7 @@ public enum ModelClassification : Int16, CaseIterable {
 
 extension ModelClassification : CustomStringConvertible, ConvertibleFromString {
     
-    public var description: String {
+    var description: String {
         switch self {
         case .locomotive: return "Locomotive"
         case .coach: return "Coach"
@@ -38,7 +38,7 @@ extension ModelClassification : CustomStringConvertible, ConvertibleFromString {
 
 extension Model {
 
-    public var classification: ModelClassification? {
+    var classification: ModelClassification? {
         get { return ModelClassification(rawValue: classificationRawValue) }
         set { classificationRawValue = newValue?.rawValue ?? 0 }
     }

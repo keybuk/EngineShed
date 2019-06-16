@@ -18,7 +18,7 @@ extension NSManagedObjectContext {
     /// errors to be caught by the caller.
     ///
     /// - Parameter block: The block to perform.
-    public func performAndWait<T>(_ block: () throws -> T) rethrows -> T {
+    func performAndWait<T>(_ block: () throws -> T) rethrows -> T {
         return try _performAndWaitHelper(
             fn: performAndWait, execute: block, rescue: { throw $0 }
         )

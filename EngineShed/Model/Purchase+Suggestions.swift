@@ -11,7 +11,7 @@ import CoreData
 
 extension Purchase {
 
-    public func suggestionsForManufacturer(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForManufacturer(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Purchase.fetchRequest()
@@ -33,7 +33,7 @@ extension Purchase {
         return results.compactMap { $0["manufacturer"] }
     }
 
-    public func suggestionsForStore(startingWith prefix: String? = nil) -> [String] {
+    func suggestionsForStore(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Purchase.fetchRequest()

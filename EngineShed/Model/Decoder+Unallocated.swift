@@ -11,7 +11,7 @@ import Foundation
 extension Decoder {
 
     /// Returns `true` if the decoder is not allocated to any model or sound file.
-    public var isUnallocated: Bool {
+    var isUnallocated: Bool {
         return model == nil && (soundProject?.isEmpty ?? true)
     }
 

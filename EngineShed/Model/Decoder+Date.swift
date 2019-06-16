@@ -11,7 +11,7 @@ import Foundation
 extension Decoder {
 
     /// Formatter for date types.
-    public var dateFormatter: DateFormatter {
+    var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
@@ -19,7 +19,7 @@ extension Decoder {
     }
 
     /// `firmwareDate` as `Date` in current time zone.
-    public var firmwareDateAsDate: Date? {
+    var firmwareDateAsDate: Date? {
         get {
             return firmwareDate.flatMap { dateComponents -> Date? in
                 let calendar = Calendar.current
@@ -36,7 +36,7 @@ extension Decoder {
     }
 
     /// `firmwareDate` formatted as string using `dateFormatter`.
-    public var firmwareDateAsString: String? {
+    var firmwareDateAsString: String? {
         get {
             return firmwareDateAsDate.flatMap { return dateFormatter.string(from: $0) }
         }

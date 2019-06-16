@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum PurchaseCondition : Int16, CaseIterable {
+enum PurchaseCondition : Int16, CaseIterable {
 
     case new = 1
     case likeNew
@@ -20,7 +20,7 @@ public enum PurchaseCondition : Int16, CaseIterable {
 
 extension PurchaseCondition : CustomStringConvertible, ConvertibleFromString {
     
-    public var description: String {
+    var description: String {
         switch self {
         case .new: return "New"
         case .likeNew: return "Like New"
@@ -34,7 +34,7 @@ extension PurchaseCondition : CustomStringConvertible, ConvertibleFromString {
 
 extension Purchase {
 
-    public var condition: PurchaseCondition? {
+    var condition: PurchaseCondition? {
         get { return PurchaseCondition(rawValue: conditionRawValue) }
         set { conditionRawValue = newValue?.rawValue ?? 0 }
     }
