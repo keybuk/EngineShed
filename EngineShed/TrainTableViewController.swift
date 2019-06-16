@@ -13,12 +13,8 @@ class TrainTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?
 
-    var train: Train? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-
+    var train: Train?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -176,6 +172,7 @@ class TrainTableViewController : UITableViewController {
             deletedObjects.contains(train)
         {
             self.train = nil
+            tableView.reloadData()
         }
     }
 

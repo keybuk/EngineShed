@@ -19,12 +19,7 @@ class PurchaseTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?
 
-    var purchase: Purchase? {
-        didSet {
-            // Update the view.
-            tableView.reloadData()
-        }
-    }
+    var purchase: Purchase?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -196,6 +191,7 @@ class PurchaseTableViewController : UITableViewController {
             deletedObjects.contains(purchase)
         {
             self.purchase = nil
+            tableView.reloadData()
         }
     }
 

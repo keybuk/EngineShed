@@ -13,11 +13,7 @@ class TrainMemberTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?
 
-    var trainMember: TrainMember? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var trainMember: TrainMember?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +115,7 @@ class TrainMemberTableViewController : UITableViewController {
             deletedObjects.contains(trainMember)
         {
             self.trainMember = nil
+            tableView.reloadData()
         }
     }
 

@@ -13,12 +13,7 @@ class DecoderTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?
 
-    var decoder: Decoder? {
-        didSet {
-            // Update the view.
-            tableView.reloadData()
-        }
-    }
+    var decoder: Decoder?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -184,6 +179,7 @@ class DecoderTableViewController : UITableViewController {
             deletedObjects.contains(decoder)
         {
             self.decoder = nil
+            tableView.reloadData()
         }
     }
 

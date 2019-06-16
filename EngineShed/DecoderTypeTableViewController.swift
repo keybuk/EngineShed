@@ -13,20 +13,7 @@ class DecoderTypeTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?
 
-    var decoderType: DecoderType? {
-        didSet {
-            fetchRequest = decoderType?.fetchRequestForDecoders()
-
-            // Update the view.
-            tableView.reloadData()
-        }
-    }
-
-    var fetchRequest: NSFetchRequest<Decoder>? {
-        didSet {
-            _decoders = nil
-        }
-    }
+    var decoderType: DecoderType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -183,18 +170,21 @@ class DecoderTypeTableViewController : UITableViewController {
 
     // MARK: - Decoders table
 
-    var decoders: [Decoder] {
-        if let decoders = _decoders { return decoders }
-        guard let managedObjectContext = persistentContainer?.viewContext, let fetchRequest = fetchRequest
-            else { return [] }
+    lazy var decoders: [Decoder] = {
+        guard let managedObjectContext = persistentContainer?.viewContext, let decoderType = decoderType else { preconditionFailure("Cannot fetch decoders without viewContext and decoderType") }
 
-        _decoders = try? managedObjectContext.performAndWait {
-            return try fetchRequest.execute()
+        let fetchRequest = decoderType.fetchRequestForDecoders()
+        let decoders = managedObjectContext.performAndWait { () -> [Decoder] in
+            do {
+                return try fetchRequest.execute()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
         }
-        return _decoders ?? []
-    }
 
-    var _decoders: [Decoder]? = nil
+        return decoders
+    }()
 
     // MARK: - Notifications
 
@@ -211,7 +201,6 @@ class DecoderTypeTableViewController : UITableViewController {
             refreshedObjects.contains(decoderType) ||
                 !refreshedObjects.isDisjoint(with: decoders)
         {
-            _decoders = nil
             tableView.reloadData()
         }
 
@@ -221,6 +210,7 @@ class DecoderTypeTableViewController : UITableViewController {
             deletedObjects.contains(decoderType)
         {
             self.decoderType = nil
+            tableView.reloadData()
         }
     }
 

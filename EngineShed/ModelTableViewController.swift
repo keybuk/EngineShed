@@ -21,11 +21,7 @@ class ModelTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?
 
-    var model: Model? {
-        didSet {
-            configureView()
-        }
-    }
+    var model: Model?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +38,6 @@ class ModelTableViewController : UITableViewController {
             let notificationCenter = NotificationCenter.default
             notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
         }
-    }
-
-    func configureView() {
-        // Update the view.
-        tableView.reloadData()
-
-        similarModelsButton.isEnabled = !(model?.similar().isEmpty ?? true)
     }
 
     // MARK: - Table view data source
@@ -221,6 +210,7 @@ class ModelTableViewController : UITableViewController {
             deletedObjects.contains(model)
         {
             self.model = nil
+            tableView.reloadData()
         }
     }
 
