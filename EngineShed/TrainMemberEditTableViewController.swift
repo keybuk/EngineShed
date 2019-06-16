@@ -16,17 +16,7 @@ class TrainMemberEditTableViewController: UITableViewController, UIAdaptivePrese
 
     var persistentContainer: NSPersistentContainer?
 
-    /// Private read-write context with a main queue concurrency type.
-    ///
-    /// Watched for changes to update editing state of the view and refresh the view when the objects are changed in other views
-    /// or by sync.
-    private var managedObjectContext: NSManagedObjectContext? {
-        didSet {
-            NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
-    }
-    
-    /// TrainMember being edited in this view, on `managedObjectContext`.
+    private var managedObjectContext: NSManagedObjectContext?
     private var trainMember: TrainMember?
 
     override func viewDidLoad() {
@@ -128,6 +118,8 @@ class TrainMemberEditTableViewController: UITableViewController, UIAdaptivePrese
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+
         self.trainMember = managedObjectContext!.object(with: trainMember.objectID) as? TrainMember
     }
 
@@ -142,6 +134,8 @@ class TrainMemberEditTableViewController: UITableViewController, UIAdaptivePrese
         managedObjectContext!.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
 
         trainMember = TrainMember(context: managedObjectContext!)
     }

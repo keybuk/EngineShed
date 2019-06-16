@@ -16,17 +16,7 @@ class PurchaseEditTableViewController : UITableViewController, UIAdaptivePresent
 
     var persistentContainer: NSPersistentContainer?
 
-    /// Private read-write context with a main queue concurrency type.
-    ///
-    /// Watched for changes to update editing state of the view and refresh the view when the objects are changed in other views
-    /// or by sync.
-    private var managedObjectContext: NSManagedObjectContext? {
-        didSet {
-            NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
-    }
-    
-    /// Purchase being edited in this view, on `managedObjectContext`.
+    private var managedObjectContext: NSManagedObjectContext?
     private var purchase: Purchase?
 
     override func viewDidLoad() {
@@ -272,6 +262,8 @@ class PurchaseEditTableViewController : UITableViewController, UIAdaptivePresent
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+
         self.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
     }
 
@@ -286,6 +278,8 @@ class PurchaseEditTableViewController : UITableViewController, UIAdaptivePresent
         managedObjectContext!.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
 
         purchase = Purchase(context: managedObjectContext!)
     }

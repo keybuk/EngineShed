@@ -16,17 +16,7 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
 
     var persistentContainer: NSPersistentContainer?
 
-    /// Private read-write context with a main queue concurrency type.
-    ///
-    /// Watched for changes to update editing state of the view and refresh the view when the objects are changed in other views
-    /// or by sync.
-    private var managedObjectContext: NSManagedObjectContext? {
-        didSet {
-            NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
-    }
-    
-    /// Model being edited in this view, on `managedObjectContext`.
+    private var managedObjectContext: NSManagedObjectContext?
     private var model: Model?
 
     override func viewDidLoad() {
@@ -308,6 +298,8 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+
         self.model = managedObjectContext!.object(with: model.objectID) as? Model
     }
 
@@ -322,6 +314,8 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
         managedObjectContext!.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
 
         model = Model(context: managedObjectContext!)
         model!.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase

@@ -16,17 +16,7 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
 
     var persistentContainer: NSPersistentContainer?
 
-    /// Private read-write context with a main queue concurrency type.
-    ///
-    /// Watched for changes to update editing state of the view and refresh the view when the objects are changed in other views
-    /// or by sync.
-    private var managedObjectContext: NSManagedObjectContext? {
-        didSet {
-            NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
-    }
-    
-    /// Train being edited in this view, on `managedObjectContext`.
+    private var managedObjectContext: NSManagedObjectContext?
     private var train: Train?
 
     override func viewDidLoad() {
@@ -262,6 +252,8 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+
         self.train = managedObjectContext!.object(with: train.objectID) as? Train
     }
 
@@ -276,6 +268,8 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         managedObjectContext!.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
 
         train = Train(context: managedObjectContext!)
     }

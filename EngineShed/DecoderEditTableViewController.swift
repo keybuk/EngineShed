@@ -16,17 +16,7 @@ class DecoderEditTableViewController : UITableViewController, UIAdaptivePresenta
 
     var persistentContainer: NSPersistentContainer?
 
-    /// Private read-write context with a main queue concurrency type.
-    ///
-    /// Watched for changes to update editing state of the view and refresh the view when the objects are changed in other views
-    /// or by sync.
-    private var managedObjectContext: NSManagedObjectContext? {
-        didSet {
-            NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
-    }
-    
-    /// Decoder being edited in this view, on `managedObjectContext`.
+    private var managedObjectContext: NSManagedObjectContext?
     private var decoder: Decoder?
 
     override func viewDidLoad() {
@@ -206,6 +196,8 @@ class DecoderEditTableViewController : UITableViewController, UIAdaptivePresenta
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+
         self.decoder = managedObjectContext!.object(with: decoder.objectID) as? Decoder
     }
 
@@ -220,6 +212,8 @@ class DecoderEditTableViewController : UITableViewController, UIAdaptivePresenta
         managedObjectContext!.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
         managedObjectContext!.automaticallyMergesChangesFromParent = true
         managedObjectContext!.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
 
         decoder = Decoder(context: managedObjectContext!)
         decoder!.type = managedObjectContext!.object(with: decoderType.objectID) as? DecoderType
