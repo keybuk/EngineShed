@@ -79,9 +79,7 @@ extension ModelEra : CaseIterable, ConvertibleFromString {
 
 extension ModelEra : RawRepresentable {
 
-    var rawValue: Int16 {
-        return Int16(era)
-    }
+    var rawValue: Int16 { Int16(era) }
 
     init?(rawValue: Int16) {
         self.init(era: Int(rawValue))
@@ -92,7 +90,7 @@ extension ModelEra : RawRepresentable {
 extension Model {
 
     var era: ModelEra? {
-        get { return ModelEra(rawValue: eraRawValue) }
+        get { ModelEra(rawValue: eraRawValue) }
         set { eraRawValue = newValue?.rawValue ?? 0 }
     }
 

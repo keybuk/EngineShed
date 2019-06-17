@@ -21,7 +21,7 @@ extension Decoder {
     /// `firmwareDate` as `Date` in current time zone.
     var firmwareDateAsDate: Date? {
         get {
-            return firmwareDate.flatMap { dateComponents -> Date? in
+            firmwareDate.flatMap { dateComponents -> Date? in
                 let calendar = Calendar.current
                 return calendar.date(from: dateComponents)
             }
@@ -37,13 +37,8 @@ extension Decoder {
 
     /// `firmwareDate` formatted as string using `dateFormatter`.
     var firmwareDateAsString: String? {
-        get {
-            return firmwareDateAsDate.flatMap { return dateFormatter.string(from: $0) }
-        }
-
-        set {
-            firmwareDateAsDate = newValue.flatMap { dateFormatter.date(from: $0) }
-        }
+        get { firmwareDateAsDate.flatMap { return dateFormatter.string(from: $0) } }
+        set { firmwareDateAsDate = newValue.flatMap { dateFormatter.date(from: $0) } }
     }
 
 }

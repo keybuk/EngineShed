@@ -35,7 +35,7 @@ extension PurchaseCondition : CustomStringConvertible, ConvertibleFromString {
 extension Purchase {
 
     var condition: PurchaseCondition? {
-        get { return PurchaseCondition(rawValue: conditionRawValue) }
+        get { PurchaseCondition(rawValue: conditionRawValue) }
         set { conditionRawValue = newValue?.rawValue ?? 0 }
     }
 

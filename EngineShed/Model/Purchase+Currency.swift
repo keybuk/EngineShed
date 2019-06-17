@@ -24,7 +24,7 @@ extension Purchase {
     /// `price` formatted as string using `currencyFormatter`.
     var priceAsString: String? {
         get {
-            return price.flatMap {
+            price.flatMap {
                 currencyFormatter.string(from: $0)
             }
         }
@@ -39,7 +39,7 @@ extension Purchase {
     /// `valuation` formatted as string using `currencyFormatter`.
     var valuationAsString: String? {
         get {
-            return valuation.flatMap {
+            valuation.flatMap {
                 currencyFormatter.string(from: $0)
             }
         }

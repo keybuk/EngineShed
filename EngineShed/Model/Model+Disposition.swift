@@ -31,7 +31,7 @@ extension ModelDisposition : CustomStringConvertible, ConvertibleFromString {
 extension Model {
 
     var disposition: ModelDisposition? {
-        get { return ModelDisposition(rawValue: dispositionRawValue) }
+        get { ModelDisposition(rawValue: dispositionRawValue) }
         set { dispositionRawValue = newValue?.rawValue ?? 0 }
     }
 

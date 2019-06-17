@@ -21,7 +21,7 @@ extension Purchase {
     /// `date` as `Date` in current time zone.
     var dateAsDate: Date? {
         get {
-            return date.flatMap { dateComponents -> Date? in
+            date.flatMap { dateComponents -> Date? in
                 let calendar = Calendar.current
                 return calendar.date(from: dateComponents)
             }
@@ -38,7 +38,7 @@ extension Purchase {
     /// `date` formatted as string using `dateFormatter`.
     var dateAsString: String? {
         get {
-            return dateAsDate.flatMap { return dateFormatter.string(from: $0) }
+            dateAsDate.flatMap { return dateFormatter.string(from: $0) }
         }
 
         set {

@@ -11,7 +11,7 @@ import UIKit
 extension TrainMember {
 
     var image: UIImage? {
-        return model?.image.map {
+        model?.image.map {
             isFlipped ? $0.withHorizontallyFlippedOrientation() : $0
         }
     }

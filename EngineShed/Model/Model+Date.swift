@@ -21,7 +21,7 @@ extension Model {
     /// `lastOil` as `Date` in current time zone.
     var lastOilAsDate: Date? {
         get {
-            return lastOil.flatMap { dateComponents -> Date? in
+            lastOil.flatMap { dateComponents -> Date? in
                 let calendar = Calendar.current
                 return calendar.date(from: dateComponents)
             }
@@ -37,19 +37,14 @@ extension Model {
 
     /// `lastOil` formatted as string using `dateFormatter`.
     var lastOilAsString: String? {
-        get {
-            return lastOilAsDate.flatMap { return dateFormatter.string(from: $0) }
-        }
-
-        set {
-            lastOilAsDate = newValue.flatMap { dateFormatter.date(from: $0) }
-        }
+        get { lastOilAsDate.flatMap { return dateFormatter.string(from: $0) } }
+        set { lastOilAsDate = newValue.flatMap { dateFormatter.date(from: $0) } }
     }
 
     /// `lastRun` as `Date` in current time zone.
     var lastRunAsDate: Date? {
         get {
-            return lastRun.flatMap { dateComponents -> Date? in
+            lastRun.flatMap { dateComponents -> Date? in
                 let calendar = Calendar.current
                 return calendar.date(from: dateComponents)
             }
@@ -65,13 +60,8 @@ extension Model {
 
     /// `lastRun` formatted as string using `dateFormatter`.
     var lastRunAsString: String? {
-        get {
-            return lastRunAsDate.flatMap { return dateFormatter.string(from: $0) }
-        }
-
-        set {
-            lastRunAsDate = newValue.flatMap { dateFormatter.date(from: $0) }
-        }
+        get { lastRunAsDate.flatMap { return dateFormatter.string(from: $0) } }
+        set { lastRunAsDate = newValue.flatMap { dateFormatter.date(from: $0) } }
     }
 
 }

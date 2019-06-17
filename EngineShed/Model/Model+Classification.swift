@@ -39,7 +39,7 @@ extension ModelClassification : CustomStringConvertible, ConvertibleFromString {
 extension Model {
 
     var classification: ModelClassification? {
-        get { return ModelClassification(rawValue: classificationRawValue) }
+        get { ModelClassification(rawValue: classificationRawValue) }
         set { classificationRawValue = newValue?.rawValue ?? 0 }
     }
 

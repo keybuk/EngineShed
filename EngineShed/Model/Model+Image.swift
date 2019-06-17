@@ -11,13 +11,8 @@ import UIKit
 extension Model {
 
     var image: UIImage? {
-        get {
-            return imageData.flatMap { UIImage(data: $0) }
-        }
-
-        set {
-            imageData = newValue?.pngData()
-        }
+        get { imageData.flatMap { UIImage(data: $0) } }
+        set { imageData = newValue?.pngData() }
     }
 
 }
