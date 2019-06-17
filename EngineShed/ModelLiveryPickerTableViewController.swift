@@ -20,9 +20,6 @@ class ModelLiveryPickerTableViewController : UITableViewController {
             {
                 extraLivery = livery
             }
-
-            // Update the view.
-            tableView.reloadData()
         }
     }
 

@@ -20,9 +20,6 @@ class ModelSpeakerPickerTableViewController : UITableViewController, UITextField
             {
                 extraSpeaker = speaker
             }
-
-            // Update the view.
-            tableView.reloadData()
         }
     }
 

@@ -20,9 +20,6 @@ class DecoderTypeSocketPickerTableViewController : UITableViewController {
             {
                 extraSocket = socket
             }
-
-            // Update the view.
-            tableView.reloadData()
         }
     }
 

@@ -10,12 +10,7 @@ import UIKit
 
 class PurchaseConditionPickerTableViewController : UITableViewController {
 
-    var purchase: Purchase? {
-        didSet {
-            // Update the view.
-            tableView.reloadData()
-        }
-    }
+    var purchase: Purchase?
 
     override func viewDidLoad() {
         super.viewDidLoad()

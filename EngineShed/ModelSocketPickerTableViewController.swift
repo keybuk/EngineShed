@@ -20,9 +20,6 @@ class ModelSocketPickerTableViewController : UITableViewController {
             {
                 extraSocket = socket
             }
-
-            // Update the view.
-            tableView.reloadData()
         }
     }
 

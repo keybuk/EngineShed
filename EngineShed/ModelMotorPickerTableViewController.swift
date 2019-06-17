@@ -20,9 +20,6 @@ class ModelMotorPickerTableViewController : UITableViewController {
             {
                 extraMotor = motor
             }
-
-            // Update the view.
-            tableView.reloadData()
         }
     }
 

@@ -10,12 +10,7 @@ import UIKit
 
 class ModelEraPickerTableViewController : UITableViewController {
 
-    var model: Model? {
-        didSet {
-            // Update the view.
-            tableView.reloadData()
-        }
-    }
+    var model: Model?
 
     override func viewDidLoad() {
         super.viewDidLoad()
