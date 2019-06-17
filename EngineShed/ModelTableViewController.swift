@@ -34,8 +34,8 @@ class ModelTableViewController : UITableViewController {
 
         // Watch for changes that occur as a result of changes outside the view, and sync from the
         // cloud, including when the view is disappeared inside a navigation stack.
-        guard let managedObjectContext = persistentContainer?.viewContext else { preconditionFailure("View loaded without persistent container") }
-        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
+        assert(persistentContainer?.viewContext != nil, "View loaded without persistent container")
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: persistentContainer?.viewContext)
     }
 
     // MARK: - Table view data source
