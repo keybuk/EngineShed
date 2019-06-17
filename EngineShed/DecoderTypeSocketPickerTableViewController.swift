@@ -10,18 +10,7 @@ import UIKit
 
 class DecoderTypeSocketPickerTableViewController : UITableViewController {
 
-    var decoderType: DecoderType? {
-        didSet {
-            // If the current socket isn't in the suggestions, place it as an extra row
-            // in the first section and keep it there.
-            _sockets = nil
-            if let socket = decoderType?.socket,
-                !sockets.contains(socket)
-            {
-                extraSocket = socket
-            }
-        }
-    }
+    var decoderType: DecoderType?
 
     var extraSocket: String?
 
@@ -33,6 +22,18 @@ class DecoderTypeSocketPickerTableViewController : UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        // If the current socket isn't in the suggestions, place it as an extra row
+        // in the first section and keep it there.
+        if let socket = decoderType?.socket,
+            !sockets.contains(socket)
+        {
+            extraSocket = socket
+        }
+
+        super.viewWillAppear(animated)
     }
 
     // MARK: - Table view data source

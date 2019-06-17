@@ -10,18 +10,7 @@ import UIKit
 
 class ModelMotorPickerTableViewController : UITableViewController {
 
-    var model: Model? {
-        didSet {
-            // If the current model motor isn't in the suggestions, place it as an extra row
-            // in the first section and keep it there.
-            _motors = nil
-            if let motor = model?.motor,
-                !motors.contains(motor)
-            {
-                extraMotor = motor
-            }
-        }
-    }
+    var model: Model?
 
     var extraMotor: String?
 
@@ -33,6 +22,18 @@ class ModelMotorPickerTableViewController : UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        // If the current model motor isn't in the suggestions, place it as an extra row
+        // in the first section and keep it there.
+        if let motor = model?.motor,
+            !motors.contains(motor)
+        {
+            extraMotor = motor
+        }
+
+        super.viewWillAppear(animated)
     }
 
     // MARK: - Table view data source

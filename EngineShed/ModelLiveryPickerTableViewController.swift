@@ -10,18 +10,7 @@ import UIKit
 
 class ModelLiveryPickerTableViewController : UITableViewController {
 
-    var model: Model? {
-        didSet {
-            // If the current model livery isn't in the suggestions, place it as an extra row
-            // in the first section and keep it there.
-            _liveries = nil
-            if let livery = model?.livery,
-                !liveries.contains(livery)
-            {
-                extraLivery = livery
-            }
-        }
-    }
+    var model: Model?
 
     var extraLivery: String?
 
@@ -33,6 +22,18 @@ class ModelLiveryPickerTableViewController : UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        // If the current model livery isn't in the suggestions, place it as an extra row
+        // in the first section and keep it there.
+        if let livery = model?.livery,
+            !liveries.contains(livery)
+        {
+            extraLivery = livery
+        }
+
+        super.viewWillAppear(animated)
     }
 
     // MARK: - Table view data source

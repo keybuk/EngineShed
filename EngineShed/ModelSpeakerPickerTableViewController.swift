@@ -10,18 +10,7 @@ import UIKit
 
 class ModelSpeakerPickerTableViewController : UITableViewController, UITextFieldDelegate {
 
-    var model: Model? {
-        didSet {
-            // If the current model speaker isn't in the suggestions, place it as an extra row
-            // in the first section and keep it there.
-            _speakers = nil
-            if let speaker = model?.speaker,
-                !speakers.contains(speaker)
-            {
-                extraSpeaker = speaker
-            }
-        }
-    }
+    var model: Model?
 
     var extraSpeaker: String?
 
@@ -33,6 +22,18 @@ class ModelSpeakerPickerTableViewController : UITableViewController, UITextField
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        // If the current model speaker isn't in the suggestions, place it as an extra row
+        // in the first section and keep it there.
+        if let speaker = model?.speaker,
+            !speakers.contains(speaker)
+        {
+            extraSpeaker = speaker
+        }
+
+        super.viewWillAppear(animated)
     }
 
     // MARK: - Table view data source
