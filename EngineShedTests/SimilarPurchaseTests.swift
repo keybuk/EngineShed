@@ -19,35 +19,28 @@ class SimilarPurchaseTests : XCTestCase {
         super.setUp()
 
         container = NSPersistentContainer(name: "EngineShed")
-        container?.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
-        container?.loadPersistentStores { (storeDescription, error) in
+        container!.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+        container!.loadPersistentStores { (storeDescription, error) in
             XCTAssertNil(error)
         }
 
-        guard let context = container?.viewContext else {
-            XCTFail("missing viewContext")
-            return
-        }
+        var purchase = Purchase(context: container!.viewContext)
+        purchase.manufacturer = "Hornby"
+        purchase.catalogNumber = "R2700"
 
-        XCTAssertNoThrow(try context.performAndWait {
-            var purchase = Purchase(context: context)
-            purchase.manufacturer = "Hornby"
-            purchase.catalogNumber = "R2700"
+        purchase = Purchase(context: container!.viewContext)
+        purchase.manufacturer = "Hornby"
+        purchase.catalogNumber = "R2700A"
 
-            purchase = Purchase(context: context)
-            purchase.manufacturer = "Hornby"
-            purchase.catalogNumber = "R2700A"
+        purchase = Purchase(context: container!.viewContext)
+        purchase.manufacturer = "Hornby"
+        purchase.catalogNumber = "R2701"
 
-            purchase = Purchase(context: context)
-            purchase.manufacturer = "Hornby"
-            purchase.catalogNumber = "R2701"
+        purchase = Purchase(context: container!.viewContext)
+        purchase.manufacturer = "Not Hornby"
+        purchase.catalogNumber = "R2701"
 
-            purchase = Purchase(context: context)
-            purchase.manufacturer = "Not Hornby"
-            purchase.catalogNumber = "R2701"
-
-            try context.save()
-        })
+        XCTAssertNoThrow(try container!.viewContext.save())
     }
 
     override func tearDown() {
