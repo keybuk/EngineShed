@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20EE69822B7657A00165553 /* SplitBetweenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EE69722B7657A00165553 /* SplitBetweenTests.swift */; };
 		D212EA452150AEDA005FEED3 /* ClassificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA442150AEDA005FEED3 /* ClassificationsTableViewController.swift */; };
 		D212EA472150AF98005FEED3 /* ClassificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA462150AF98005FEED3 /* ClassificationTableViewCell.swift */; };
 		D21DD343222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */; };
@@ -259,6 +260,7 @@
 		D202D10721EAEBF2008153FB /* Purchase+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Date.swift"; sourceTree = "<group>"; };
 		D202D10A21EB0670008153FB /* Model+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Date.swift"; sourceTree = "<group>"; };
 		D202D11021EB199E008153FB /* Decoder+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Date.swift"; sourceTree = "<group>"; };
+		D20EE69722B7657A00165553 /* SplitBetweenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBetweenTests.swift; sourceTree = "<group>"; };
 		D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Similar.swift"; sourceTree = "<group>"; };
 		D212EA442150AEDA005FEED3 /* ClassificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationsTableViewController.swift; sourceTree = "<group>"; };
 		D212EA462150AF98005FEED3 /* ClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -744,6 +746,7 @@
 			children = (
 				D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */,
 				D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */,
+				D20EE69722B7657A00165553 /* SplitBetweenTests.swift */,
 				D2B7C96F20D4BA31001B51B1 /* Info.plist */,
 			);
 			path = EngineShedTests;
@@ -1276,6 +1279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20EE69822B7657A00165553 /* SplitBetweenTests.swift in Sources */,
 				D2C7E20C22ADA0A500A024A5 /* SimilarPurchaseTests.swift in Sources */,
 				D2C7E20D22ADA0A500A024A5 /* CatalogNumberPrefixTests.swift in Sources */,
 			);
