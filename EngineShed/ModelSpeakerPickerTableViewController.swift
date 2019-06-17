@@ -12,6 +12,7 @@ class ModelSpeakerPickerTableViewController : UITableViewController, UITextField
 
     var model: Model?
 
+    lazy var speakers: [String] = { model?.suggestionsForSpeaker() ?? [] }()
     var extraSpeaker: String?
 
     override func viewDidLoad() {
@@ -107,15 +108,6 @@ class ModelSpeakerPickerTableViewController : UITableViewController, UITextField
             cell.accessoryType = .checkmark
         }
     }
-
-    var speakers: [String] {
-        if let speakers = _speakers { return speakers }
-
-        _speakers = model?.suggestionsForSpeaker()
-        return _speakers ?? []
-    }
-
-    var _speakers: [String]? = nil
 
     /*
      // MARK: - Navigation

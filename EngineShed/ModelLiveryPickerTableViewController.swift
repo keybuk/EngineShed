@@ -12,6 +12,7 @@ class ModelLiveryPickerTableViewController : UITableViewController {
 
     var model: Model?
 
+    lazy var liveries: [String] = { model?.suggestionsForLivery() ?? [] }()
     var extraLivery: String?
 
     override func viewDidLoad() {
@@ -107,15 +108,6 @@ class ModelLiveryPickerTableViewController : UITableViewController {
             cell.accessoryType = .checkmark
         }
     }
-
-    var liveries: [String] {
-        if let liveries = _liveries { return liveries }
-
-        _liveries = model?.suggestionsForLivery()
-        return _liveries ?? []
-    }
-
-    var _liveries: [String]? = nil
 
     /*
     // MARK: - Navigation

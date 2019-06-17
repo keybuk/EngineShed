@@ -12,6 +12,7 @@ class ModelMotorPickerTableViewController : UITableViewController {
 
     var model: Model?
 
+    lazy var motors: [String] = { model?.suggestionsForMotor() ?? [] }()
     var extraMotor: String?
 
     override func viewDidLoad() {
@@ -107,15 +108,6 @@ class ModelMotorPickerTableViewController : UITableViewController {
             cell.accessoryType = .checkmark
         }
     }
-
-    var motors: [String] {
-        if let motors = _motors { return motors }
-
-        _motors = model?.suggestionsForMotor()
-        return _motors ?? []
-    }
-
-    var _motors: [String]? = nil
 
     /*
      // MARK: - Navigation

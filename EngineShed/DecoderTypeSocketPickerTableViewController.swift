@@ -12,6 +12,7 @@ class DecoderTypeSocketPickerTableViewController : UITableViewController {
 
     var decoderType: DecoderType?
 
+    lazy var sockets: [String] = { decoderType?.suggestionsForSocket() ?? [] }()
     var extraSocket: String?
 
     override func viewDidLoad() {
@@ -107,15 +108,6 @@ class DecoderTypeSocketPickerTableViewController : UITableViewController {
             cell.accessoryType = .checkmark
         }
     }
-
-    var sockets: [String] {
-        if let sockets = _sockets { return sockets }
-
-        _sockets = decoderType?.suggestionsForSocket()
-        return _sockets ?? []
-    }
-
-    var _sockets: [String]? = nil
 
     /*
      // MARK: - Navigation

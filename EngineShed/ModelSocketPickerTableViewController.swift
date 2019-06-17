@@ -12,6 +12,7 @@ class ModelSocketPickerTableViewController : UITableViewController {
 
     var model: Model?
 
+    lazy var sockets: [String] = { model?.suggestionsForSocket() ?? [] }()
     var extraSocket: String?
 
     override func viewDidLoad() {
@@ -107,15 +108,6 @@ class ModelSocketPickerTableViewController : UITableViewController {
             cell.accessoryType = .checkmark
         }
     }
-
-    var sockets: [String] {
-        if let sockets = _sockets { return sockets }
-
-        _sockets = model?.suggestionsForSocket()
-        return _sockets ?? []
-    }
-
-    var _sockets: [String]? = nil
 
     /*
      // MARK: - Navigation
