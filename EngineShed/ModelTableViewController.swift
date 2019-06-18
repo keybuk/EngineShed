@@ -17,8 +17,6 @@ protocol ModelSettable : class {
 
 class ModelTableViewController : UITableViewController {
 
-    @IBOutlet weak var similarModelsButton: UIBarButtonItem!
-
     var persistentContainer: NSPersistentContainer?
 
     var model: Model?
