@@ -250,6 +250,18 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
         }
     }
 
+    // MARK: - Actions
+
+    @IBAction func trainHeaderTapped(_ sender: UITapGestureRecognizer) {
+        let kind = UICollectionView.elementKindSectionHeader
+        for indexPath in collectionView.indexPathsForVisibleSupplementaryElements(ofKind: kind) {
+            if sender.view == collectionView.supplementaryView(forElementKind: kind, at: indexPath) {
+                tappedIndexPath = indexPath
+                performSegue(withIdentifier: "train", sender: sender.view)
+            }
+        }
+    }
+
     // MARK: - Navigation
 
     var tappedIndexPath: IndexPath?
@@ -289,16 +301,6 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
                 }
 
                 self.dismiss(animated: true)
-            }
-        }
-    }
-
-    @IBAction func trainHeaderTapped(_ sender: UITapGestureRecognizer) {
-        let kind = UICollectionView.elementKindSectionHeader
-        for indexPath in collectionView.indexPathsForVisibleSupplementaryElements(ofKind: kind) {
-            if sender.view == collectionView.supplementaryView(forElementKind: kind, at: indexPath) {
-                tappedIndexPath = indexPath
-                performSegue(withIdentifier: "train", sender: sender.view)
             }
         }
     }

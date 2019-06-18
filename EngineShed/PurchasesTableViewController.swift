@@ -66,51 +66,6 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
         }
     }
 
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "purchase" {
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let purchase = fetchedResultsController.object(at: indexPath)
-
-            let viewController = (segue.destination as! UINavigationController).topViewController as! PurchaseTableViewController
-            viewController.persistentContainer = persistentContainer
-            viewController.purchase = purchase
-            viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-            viewController.navigationItem.leftItemsSupplementBackButton = true
-        } else if segue.identifier == "purchaseAdd" {
-            let navigationController = segue.destination as! UINavigationController
-            let viewController = navigationController.topViewController as! PurchaseEditTableViewController
-
-            navigationController.presentationController?.delegate = viewController
-            viewController.persistentContainer = persistentContainer
-            viewController.addPurchase { result in
-                if case .saved(let purchase) = result,
-                    let indexPath = self.fetchedResultsController.indexPath(forObject: purchase)
-                {
-                    self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
-                    self.performSegue(withIdentifier: "purchase", sender: nil)
-                }
-
-                self.dismiss(animated: true)
-            }
-        }
-    }
-
-    // MARK: - Actions
-
-    @IBAction func groupChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0: ordering = .date
-        case 1: ordering = .catalog
-        default: return
-        }
-
-        _fetchedResultsController = nil
-        fetchRequest = Purchase.fetchRequestForPurchases(orderingBy: ordering)
-        tableView.reloadData()
-    }
-
     // MARK: - Fetched results controller
 
     var fetchedResultsController: NSFetchedResultsController<Purchase> {
@@ -181,6 +136,51 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+
+    // MARK: - Actions
+
+    @IBAction func groupChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0: ordering = .date
+        case 1: ordering = .catalog
+        default: return
+        }
+
+        _fetchedResultsController = nil
+        fetchRequest = Purchase.fetchRequestForPurchases(orderingBy: ordering)
+        tableView.reloadData()
+    }
+
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "purchaseDetail" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let purchase = fetchedResultsController.object(at: indexPath)
+
+            let viewController = (segue.destination as! UINavigationController).topViewController as! PurchaseTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.purchase = purchase
+            viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            viewController.navigationItem.leftItemsSupplementBackButton = true
+        } else if segue.identifier == "purchaseAdd" {
+            let navigationController = segue.destination as! UINavigationController
+            let viewController = navigationController.topViewController as! PurchaseEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
+            viewController.persistentContainer = persistentContainer
+            viewController.addPurchase { result in
+                if case .saved(let purchase) = result,
+                    let indexPath = self.fetchedResultsController.indexPath(forObject: purchase)
+                {
+                    self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                    self.performSegue(withIdentifier: "purchaseDetail", sender: nil)
+                }
+
+                self.dismiss(animated: true)
+            }
+        }
     }
 
 }

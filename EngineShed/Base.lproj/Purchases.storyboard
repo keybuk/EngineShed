@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aW7-Qc-6eA">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+    </dependencies>
+    <scenes>
+        <!--Purchases-->
+        <scene sceneID="uIp-vN-DmC">
+            <objects>
+                <splitViewController id="aW7-Qc-6eA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Purchases" image="bag" catalog="system" id="It5-WW-M3h"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="PzQ-hU-pay" kind="relationship" relationship="masterViewController" id="bQn-hw-dld"/>
+                        <segue destination="oJa-tA-Wtc" kind="relationship" relationship="detailViewController" id="DGS-4Q-vbw"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Xm-Dw-zTB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668" y="103"/>
+        </scene>
+        <!--PurchasesList-->
+        <scene sceneID="o8i-bo-MRr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PurchasesList" id="PzQ-hU-pay" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Nx-hu-qUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1229" y="9"/>
+        </scene>
+        <!--PurchaseDetail-->
+        <scene sceneID="LiH-Bo-HCJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PurchaseDetail" id="oJa-tA-Wtc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w5v-72-wNG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="190"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bag" catalog="system" width="62" height="64"/>
+    </resources>
+</document>

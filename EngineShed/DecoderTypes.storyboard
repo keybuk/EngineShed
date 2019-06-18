@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g5D-o2-eXU">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+    </dependencies>
+    <scenes>
+        <!--Decoders-->
+        <scene sceneID="4vu-XP-snN">
+            <objects>
+                <splitViewController id="g5D-o2-eXU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Decoders" image="gamecontroller" catalog="system" id="wtU-Z6-OyH"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="X1T-Jo-Ed1" kind="relationship" relationship="masterViewController" id="Fr1-85-XFc"/>
+                        <segue destination="C2l-vQ-TFr" kind="relationship" relationship="detailViewController" id="e9h-Mo-zbn"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ONt-bW-MY1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668" y="103"/>
+        </scene>
+        <!--DecoderTypesList-->
+        <scene sceneID="Fe8-Uw-60J">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DecoderTypesList" id="X1T-Jo-Ed1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5od-1G-CeB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1249" y="7"/>
+        </scene>
+        <!--DecoderTypeDetail-->
+        <scene sceneID="DjS-BQ-CIl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DecoderTypeDetail" id="C2l-vQ-TFr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TSm-fI-jb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1254" y="189"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="gamecontroller" catalog="system" width="64" height="40"/>
+    </resources>
+</document>

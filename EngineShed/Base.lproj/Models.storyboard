@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HzO-SL-Zzn">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+    </dependencies>
+    <scenes>
+        <!--Models-->
+        <scene sceneID="pD9-vx-K40">
+            <objects>
+                <splitViewController id="HzO-SL-Zzn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Models" image="cube" catalog="system" id="Z8n-vL-RnV"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="wY4-mc-3Qn" kind="relationship" relationship="masterViewController" id="qyS-No-nDQ"/>
+                        <segue destination="XJq-p5-E8F" kind="relationship" relationship="detailViewController" id="lhW-2f-xpq"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z0o-hD-Lkn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668" y="103"/>
+        </scene>
+        <!--ModelsList-->
+        <scene sceneID="HJI-0e-HWC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ModelsList" id="wY4-mc-3Qn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e0q-u5-wCq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1229" y="9"/>
+        </scene>
+        <!--ModelDetail-->
+        <scene sceneID="Li5-AE-lfI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ModelDetail" id="XJq-p5-E8F" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dEU-uL-Bb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="190"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cube" catalog="system" width="64" height="62"/>
+    </resources>
+</document>

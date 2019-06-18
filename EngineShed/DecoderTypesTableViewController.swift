@@ -98,37 +98,6 @@ class DecoderTypesTableViewController : UITableViewController, NSFetchedResultsC
     }
     */
 
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "decoderType" {
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let decoderType = fetchedResultsController.object(at: indexPath)
-
-            let viewController = (segue.destination as! UINavigationController).topViewController as! DecoderTypeTableViewController
-            viewController.persistentContainer = persistentContainer
-            viewController.decoderType = decoderType
-            viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-            viewController.navigationItem.leftItemsSupplementBackButton = true
-        } else if segue.identifier == "decoderTypeAdd" {
-            let navigationController = segue.destination as! UINavigationController
-            let viewController = navigationController.topViewController as! DecoderTypeEditTableViewController
-
-            navigationController.presentationController?.delegate = viewController
-            viewController.persistentContainer = persistentContainer
-            viewController.addDecoderType { result in
-                if case .saved(let decoderType) = result,
-                    let indexPath = self.fetchedResultsController.indexPath(forObject: decoderType)
-                {
-                    self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
-                    self.performSegue(withIdentifier: "decoderType", sender: nil)
-                }
-
-                self.dismiss(animated: true)
-            }
-        }
-    }
-
     // MARK: - Fetched results controller
 
     var fetchedResultsController: NSFetchedResultsController<DecoderType> {
@@ -196,6 +165,37 @@ class DecoderTypesTableViewController : UITableViewController, NSFetchedResultsC
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "decoderTypeDetail" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let decoderType = fetchedResultsController.object(at: indexPath)
+
+            let viewController = (segue.destination as! UINavigationController).topViewController as! DecoderTypeTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.decoderType = decoderType
+            viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            viewController.navigationItem.leftItemsSupplementBackButton = true
+        } else if segue.identifier == "decoderTypeAdd" {
+            let navigationController = segue.destination as! UINavigationController
+            let viewController = navigationController.topViewController as! DecoderTypeEditTableViewController
+
+            navigationController.presentationController?.delegate = viewController
+            viewController.persistentContainer = persistentContainer
+            viewController.addDecoderType { result in
+                if case .saved(let decoderType) = result,
+                    let indexPath = self.fetchedResultsController.indexPath(forObject: decoderType)
+                {
+                    self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                    self.performSegue(withIdentifier: "decoderType", sender: nil)
+                }
+
+                self.dismiss(animated: true)
+            }
+        }
     }
 
 }

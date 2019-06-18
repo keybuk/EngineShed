@@ -61,36 +61,6 @@ class ModelsTableViewController : UITableViewController, NSFetchedResultsControl
         }
     }
 
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "model" {
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let model = fetchedResultsController.object(at: indexPath)
-
-            let viewController = (segue.destination as! UINavigationController).topViewController as! ModelTableViewController
-            viewController.persistentContainer = persistentContainer
-            viewController.model = model
-            viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-            viewController.navigationItem.leftItemsSupplementBackButton = true
-        }
-    }
-
-    // MARK: - Actions
-
-    @IBAction func groupChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0: grouping = .modelClass
-        case 1: grouping = .era
-        case 2: grouping = .livery
-        default: return
-        }
-
-        _fetchedResultsController = nil
-        fetchRequest = Model.fetchRequestForModels(classification: classification, groupBy: grouping)
-        tableView.reloadData()
-    }
-
     // MARK: - Fetched results controller
 
     var fetchedResultsController: NSFetchedResultsController<Model> {
@@ -161,6 +131,36 @@ class ModelsTableViewController : UITableViewController, NSFetchedResultsControl
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+
+    // MARK: - Actions
+
+    @IBAction func groupChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0: grouping = .modelClass
+        case 1: grouping = .era
+        case 2: grouping = .livery
+        default: return
+        }
+
+        _fetchedResultsController = nil
+        fetchRequest = Model.fetchRequestForModels(classification: classification, groupBy: grouping)
+        tableView.reloadData()
+    }
+
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "modelDetail" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let model = fetchedResultsController.object(at: indexPath)
+
+            let viewController = (segue.destination as! UINavigationController).topViewController as! ModelTableViewController
+            viewController.persistentContainer = persistentContainer
+            viewController.model = model
+            viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            viewController.navigationItem.leftItemsSupplementBackButton = true
+        }
     }
 
 }

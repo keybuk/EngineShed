@@ -62,6 +62,22 @@
 		D25828B821DC43A10094918F /* TrainMemberEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828B721DC43A10094918F /* TrainMemberEditTableViewCell.swift */; };
 		D25828BA21DC43D70094918F /* TrainAddMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828B921DC43D70094918F /* TrainAddMemberCell.swift */; };
 		D25828BF21E0225D0094918F /* TrainDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828BE21E0225D0094918F /* TrainDeleteTableViewCell.swift */; };
+		D2599E9F22B85B3900A252C2 /* ModelDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EA122B85B3900A252C2 /* ModelDetail.storyboard */; };
+		D2599EA422B85B7400A252C2 /* ModelsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EA622B85B7400A252C2 /* ModelsList.storyboard */; };
+		D2599EAB22B85CD600A252C2 /* PurchasesList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EAD22B85CD600A252C2 /* PurchasesList.storyboard */; };
+		D2599EAE22B85CEF00A252C2 /* Models.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EB022B85CEF00A252C2 /* Models.storyboard */; };
+		D2599EB722B8660100A252C2 /* PurchaseEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EB922B8660100A252C2 /* PurchaseEdit.storyboard */; };
+		D2599EBC22B866A000A252C2 /* ModelEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EBE22B866A000A252C2 /* ModelEdit.storyboard */; };
+		D2599EC122B87D8900A252C2 /* PurchaseDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EC322B87D8900A252C2 /* PurchaseDetail.storyboard */; };
+		D2599EC422B87D8E00A252C2 /* Purchases.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EC622B87D8E00A252C2 /* Purchases.storyboard */; };
+		D2599EC722B87D9300A252C2 /* Trains.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EC922B87D9300A252C2 /* Trains.storyboard */; };
+		D2599ECC22B87DD800A252C2 /* TrainEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599ECE22B87DD800A252C2 /* TrainEdit.storyboard */; };
+		D2599ED122B87FFB00A252C2 /* TrainMemberEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599ED322B87FFB00A252C2 /* TrainMemberEdit.storyboard */; };
+		D2599ED522B8808000A252C2 /* DecoderTypes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599ED422B8808000A252C2 /* DecoderTypes.storyboard */; };
+		D2599ED822B880E700A252C2 /* DecoderTypesList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EDA22B880E700A252C2 /* DecoderTypesList.storyboard */; };
+		D2599EDD22B881DE00A252C2 /* DecoderTypeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EDF22B881DE00A252C2 /* DecoderTypeDetail.storyboard */; };
+		D2599EE222B8829900A252C2 /* DecoderEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EE422B8829900A252C2 /* DecoderEdit.storyboard */; };
+		D2599EE722B882DD00A252C2 /* DecoderTypeEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2599EE922B882DD00A252C2 /* DecoderTypeEdit.storyboard */; };
 		D269035A2234595C002C7A48 /* ModelEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26903592234595C002C7A48 /* ModelEditTableViewController.swift */; };
 		D269035C22345C5D002C7A48 /* ModelDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269035B22345C5D002C7A48 /* ModelDeleteTableViewCell.swift */; };
 		D269035E223471DB002C7A48 /* ModelImageEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269035D223471DB002C7A48 /* ModelImageEditTableViewCell.swift */; };
@@ -321,6 +337,22 @@
 		D25828B921DC43D70094918F /* TrainAddMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainAddMemberCell.swift; sourceTree = "<group>"; };
 		D25828BE21E0225D0094918F /* TrainDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		D25828C021E028920094918F /* Train+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Validate.swift"; sourceTree = "<group>"; };
+		D2599EA022B85B3900A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ModelDetail.storyboard; sourceTree = "<group>"; };
+		D2599EA522B85B7400A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ModelsList.storyboard; sourceTree = "<group>"; };
+		D2599EAC22B85CD600A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PurchasesList.storyboard; sourceTree = "<group>"; };
+		D2599EAF22B85CEF00A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Models.storyboard; sourceTree = "<group>"; };
+		D2599EB822B8660100A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PurchaseEdit.storyboard; sourceTree = "<group>"; };
+		D2599EBD22B866A000A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ModelEdit.storyboard; sourceTree = "<group>"; };
+		D2599EC222B87D8900A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PurchaseDetail.storyboard; sourceTree = "<group>"; };
+		D2599EC522B87D8E00A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Purchases.storyboard; sourceTree = "<group>"; };
+		D2599EC822B87D9300A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trains.storyboard; sourceTree = "<group>"; };
+		D2599ECD22B87DD800A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TrainEdit.storyboard; sourceTree = "<group>"; };
+		D2599ED222B87FFB00A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TrainMemberEdit.storyboard; sourceTree = "<group>"; };
+		D2599ED422B8808000A252C2 /* DecoderTypes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DecoderTypes.storyboard; sourceTree = "<group>"; };
+		D2599ED922B880E700A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DecoderTypesList.storyboard; sourceTree = "<group>"; };
+		D2599EDE22B881DE00A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DecoderTypeDetail.storyboard; sourceTree = "<group>"; };
+		D2599EE322B8829900A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DecoderEdit.storyboard; sourceTree = "<group>"; };
+		D2599EE822B882DD00A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DecoderTypeEdit.storyboard; sourceTree = "<group>"; };
 		D25AAC7921DD445700AC4359 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
 		D26903592234595C002C7A48 /* ModelEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEditTableViewController.swift; sourceTree = "<group>"; };
 		D269035B22345C5D002C7A48 /* ModelDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDeleteTableViewCell.swift; sourceTree = "<group>"; };
@@ -524,13 +556,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D23B8B8221E29502004F994D /* Classification View */ = {
+		D23B8B8221E29502004F994D /* Classifications View */ = {
 			isa = PBXGroup;
 			children = (
 				D212EA442150AEDA005FEED3 /* ClassificationsTableViewController.swift */,
 				D212EA462150AF98005FEED3 /* ClassificationTableViewCell.swift */,
 			);
-			name = "Classification View";
+			name = "Classifications View";
 			sourceTree = "<group>";
 		};
 		D23B8B8421E2951B004F994D /* Models View */ = {
@@ -627,6 +659,29 @@
 			name = "Purchase View";
 			sourceTree = "<group>";
 		};
+		D2599E6922B8432200A252C2 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D2599EB022B85CEF00A252C2 /* Models.storyboard */,
+				D2599EA622B85B7400A252C2 /* ModelsList.storyboard */,
+				D2599EA122B85B3900A252C2 /* ModelDetail.storyboard */,
+				D2599EBE22B866A000A252C2 /* ModelEdit.storyboard */,
+				D2599EC622B87D8E00A252C2 /* Purchases.storyboard */,
+				D2599EAD22B85CD600A252C2 /* PurchasesList.storyboard */,
+				D2599EC322B87D8900A252C2 /* PurchaseDetail.storyboard */,
+				D2599EB922B8660100A252C2 /* PurchaseEdit.storyboard */,
+				D2599EC922B87D9300A252C2 /* Trains.storyboard */,
+				D2599ECE22B87DD800A252C2 /* TrainEdit.storyboard */,
+				D2599ED322B87FFB00A252C2 /* TrainMemberEdit.storyboard */,
+				D2599ED422B8808000A252C2 /* DecoderTypes.storyboard */,
+				D2599EDA22B880E700A252C2 /* DecoderTypesList.storyboard */,
+				D2599EDF22B881DE00A252C2 /* DecoderTypeDetail.storyboard */,
+				D2599EE922B882DD00A252C2 /* DecoderTypeEdit.storyboard */,
+				D2599EE422B8829900A252C2 /* DecoderEdit.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		D269035822345945002C7A48 /* Model Edit View */ = {
 			isa = PBXGroup;
 			children = (
@@ -715,7 +770,8 @@
 				D2F4EF0D2231F666008FB14A /* UINavigationController+PopDetail.swift */,
 				D2C7E20722AD9FF200A024A5 /* Util */,
 				D2C7E20B22ADA08600A024A5 /* Model */,
-				D23B8B8221E29502004F994D /* Classification View */,
+				D2599E6922B8432200A252C2 /* Storyboards */,
+				D23B8B8221E29502004F994D /* Classifications View */,
 				D23B8B8421E2951B004F994D /* Models View */,
 				D23B8B8521E29527004F994D /* Model View */,
 				D269035822345945002C7A48 /* Model Edit View */,
@@ -1040,9 +1096,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2599EAB22B85CD600A252C2 /* PurchasesList.storyboard in Resources */,
+				D2599EE222B8829900A252C2 /* DecoderEdit.storyboard in Resources */,
+				D2599EC422B87D8E00A252C2 /* Purchases.storyboard in Resources */,
+				D2599ED522B8808000A252C2 /* DecoderTypes.storyboard in Resources */,
+				D2599EBC22B866A000A252C2 /* ModelEdit.storyboard in Resources */,
+				D2599E9F22B85B3900A252C2 /* ModelDetail.storyboard in Resources */,
+				D2599EB722B8660100A252C2 /* PurchaseEdit.storyboard in Resources */,
+				D2599EC122B87D8900A252C2 /* PurchaseDetail.storyboard in Resources */,
 				D2B7C96320D4BA31001B51B1 /* LaunchScreen.storyboard in Resources */,
+				D2599EAE22B85CEF00A252C2 /* Models.storyboard in Resources */,
+				D2599ED822B880E700A252C2 /* DecoderTypesList.storyboard in Resources */,
 				D27FC2402150BE0E00AA522B /* Assets.xcassets in Resources */,
+				D2599ECC22B87DD800A252C2 /* TrainEdit.storyboard in Resources */,
+				D2599EC722B87D9300A252C2 /* Trains.storyboard in Resources */,
+				D2599EDD22B881DE00A252C2 /* DecoderTypeDetail.storyboard in Resources */,
+				D2599EA422B85B7400A252C2 /* ModelsList.storyboard in Resources */,
 				D2B7C95E20D4BA30001B51B1 /* Main.storyboard in Resources */,
+				D2599EE722B882DD00A252C2 /* DecoderTypeEdit.storyboard in Resources */,
+				D2599ED122B87FFB00A252C2 /* TrainMemberEdit.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1309,6 +1381,126 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D2599EA122B85B3900A252C2 /* ModelDetail.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EA022B85B3900A252C2 /* Base */,
+			);
+			name = ModelDetail.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EA622B85B7400A252C2 /* ModelsList.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EA522B85B7400A252C2 /* Base */,
+			);
+			name = ModelsList.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EAD22B85CD600A252C2 /* PurchasesList.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EAC22B85CD600A252C2 /* Base */,
+			);
+			name = PurchasesList.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EB022B85CEF00A252C2 /* Models.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EAF22B85CEF00A252C2 /* Base */,
+			);
+			name = Models.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EB922B8660100A252C2 /* PurchaseEdit.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EB822B8660100A252C2 /* Base */,
+			);
+			name = PurchaseEdit.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EBE22B866A000A252C2 /* ModelEdit.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EBD22B866A000A252C2 /* Base */,
+			);
+			name = ModelEdit.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EC322B87D8900A252C2 /* PurchaseDetail.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EC222B87D8900A252C2 /* Base */,
+			);
+			name = PurchaseDetail.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EC622B87D8E00A252C2 /* Purchases.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EC522B87D8E00A252C2 /* Base */,
+			);
+			name = Purchases.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EC922B87D9300A252C2 /* Trains.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EC822B87D9300A252C2 /* Base */,
+			);
+			name = Trains.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599ECE22B87DD800A252C2 /* TrainEdit.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599ECD22B87DD800A252C2 /* Base */,
+			);
+			name = TrainEdit.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599ED322B87FFB00A252C2 /* TrainMemberEdit.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599ED222B87FFB00A252C2 /* Base */,
+			);
+			name = TrainMemberEdit.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EDA22B880E700A252C2 /* DecoderTypesList.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599ED922B880E700A252C2 /* Base */,
+			);
+			name = DecoderTypesList.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EDF22B881DE00A252C2 /* DecoderTypeDetail.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EDE22B881DE00A252C2 /* Base */,
+			);
+			name = DecoderTypeDetail.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EE422B8829900A252C2 /* DecoderEdit.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EE322B8829900A252C2 /* Base */,
+			);
+			name = DecoderEdit.storyboard;
+			sourceTree = "<group>";
+		};
+		D2599EE922B882DD00A252C2 /* DecoderTypeEdit.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2599EE822B882DD00A252C2 /* Base */,
+			);
+			name = DecoderTypeEdit.storyboard;
+			sourceTree = "<group>";
+		};
 		D2B7C95C20D4BA30001B51B1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
