@@ -117,19 +117,17 @@ class DecoderTypeTableViewController : UITableViewController {
     // MARK: - Decoders table
 
     lazy var decoders: [Decoder] = {
-        guard let managedObjectContext = persistentContainer?.viewContext, let decoderType = decoderType else { preconditionFailure("Cannot fetch decoders without viewContext and decoderType") }
-
-        let fetchRequest = decoderType.fetchRequestForDecoders()
-        let decoders = managedObjectContext.performAndWait { () -> [Decoder] in
+        let fetchRequest = decoderType?.fetchRequestForDecoders()
+        let decoders = persistentContainer?.viewContext.performAndWait { () -> [Decoder]? in
             do {
-                return try fetchRequest.execute()
+                return try fetchRequest?.execute()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
 
-        return decoders
+        return decoders ?? []
     }()
 
     // MARK: - Notifications
