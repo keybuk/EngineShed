@@ -16,11 +16,11 @@ struct ModelRow : View {
         HStack {
             Image(uiImage: model.image!)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .cornerRadius(4)
-                .padding(2)
                 .frame(width: 100)
                 .aspectRatio(16/9, contentMode: .fit)
+                .background(Color.white)
+                .cornerRadius(4)
+                .padding([.leading, .top, .bottom], 2)
 
             VStack(alignment: .leading) {
                 Text(model.modelClass!)
