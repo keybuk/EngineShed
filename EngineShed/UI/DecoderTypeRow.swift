@@ -62,55 +62,19 @@ struct DecoderTypeRow : View {
 }
 
 #if DEBUG
-fileprivate extension ContentSizeCategory {
-
-    static let other: [ContentSizeCategory] = [.large, .extraSmall, .extraLarge]
-
-}
-
 struct DecoderTypeRow_Previews : PreviewProvider {
     static var previews: some View {
-        let dt = DecoderType(entity: DecoderType.entity(), insertInto: nil)
-        dt.manufacturer = "ESU"
-        dt.productCode = "58429"
-        dt.productFamily = "LokSound 5 DCC"
-        dt.socket = "21MTC"
-        dt.minimumStock = 5
-
-        let dt2 = DecoderType(entity: DecoderType.entity(), insertInto: nil)
-        dt2.manufacturer = "ESU"
-        dt2.productCode = "58420"
-        dt2.productFamily = "LokSound 5 DCC"
-        dt2.socket = "8-pin NEM652"
-        dt2.minimumStock = 5
-
-        for _ in 0..<10 {
-            let d = Decoder(entity: Decoder.entity(), insertInto: nil)
-            d.type = dt2
-            dt2.addToDecoders(d)
-        }
-
-        dt2.updateRemainingStock()
-
-        let dt3 = DecoderType(entity: DecoderType.entity(), insertInto: nil)
-        dt3.manufacturer = "ESU"
-        dt3.productCode = "58828"
-        dt3.productFamily = "LokSound 5 micro DCC"
-        dt3.socket = "Next18"
-        dt3.minimumStock = 0
-
         return Group {
-            DecoderTypeRow(decoderType: dt)
+            ForEach(previewData.decoderTypes.identified(by: \.objectID)) { decoderType in
+                DecoderTypeRow(decoderType: decoderType)
+            }
 
-            DecoderTypeRow(decoderType: dt2)
-
-            DecoderTypeRow(decoderType: dt3)
             ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
-                DecoderTypeRow(decoderType: dt)
+                DecoderTypeRow(decoderType: previewData.decoderTypes.first!)
                     .environment(\.sizeCategory, item)
             }
 
-            DecoderTypeRow(decoderType: dt)
+            DecoderTypeRow(decoderType: previewData.decoderTypes.first!)
                 .environment(\.colorScheme, .dark)
         }
         .frame(width: 320, alignment: .leading)

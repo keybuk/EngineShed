@@ -35,29 +35,19 @@ struct ModelRow : View {
 }
 
 #if DEBUG
-fileprivate extension ContentSizeCategory {
-
-    static let other: [ContentSizeCategory] = [.large, .extraSmall, .extraLarge]
-
-}
-
 struct ModelRow_Previews : PreviewProvider {
     static var previews: some View {
-        let m = Model(entity: Model.entity(), insertInto: nil)
-        m.image = UIImage(named: "R3612")
-        m.modelClass = "LNER Gresley 'A4' 4-6-2"
-        m.number = "4468"
-        m.name = "Mallard"
-
         return Group {
-            ModelRow(model: m)
+            ForEach(previewData.models.identified(by: \.objectID)) { model in
+                ModelRow(model: model)
+            }
 
             ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
-                ModelRow(model: m)
+                ModelRow(model: previewData.models.first!)
                     .environment(\.sizeCategory, item)
             }
 
-            ModelRow(model: m)
+            ModelRow(model: previewData.models.first!)
                 .environment(\.colorScheme, .dark)
         }
         .frame(width: 320, alignment: .leading)
