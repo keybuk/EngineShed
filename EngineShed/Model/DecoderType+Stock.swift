@@ -10,6 +10,9 @@ import Foundation
 
 extension DecoderType {
 
+    /// Returns `true` if `remainingStock` falls below `minimumStock`
+    var isStockLow: Bool { minimumStock > 0 && remainingStock < minimumStock }
+
     /// Update the `remainingStock` field.
     func updateRemainingStock() {
         guard let decoders = decoders as? Set<Decoder> else { return }
