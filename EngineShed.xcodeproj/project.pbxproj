@@ -119,6 +119,7 @@
 		D28758262105FEEE00EF722D /* TrainMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758252105FEEE00EF722D /* TrainMemberCollectionViewCell.swift */; };
 		D287582821060FE700EF722D /* TrainHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D287582721060FE700EF722D /* TrainHeaderCollectionReusableView.swift */; };
 		D289A85022C6C6100074A3FC /* RowImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289A84F22C6C6100074A3FC /* RowImage.swift */; };
+		D289A85322C6C9AA0074A3FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D289A85222C6C9AA0074A3FC /* Preview Assets.xcassets */; };
 		D295D8A621EADCF900BBD204 /* PurchasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A521EADCF900BBD204 /* PurchasesTableViewController.swift */; };
 		D295D8A821EADD0800BBD204 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A721EADD0800BBD204 /* PurchaseTableViewCell.swift */; };
 		D2A29EB122C2F25D002A9618 /* PurchaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A29EB022C2F25D002A9618 /* PurchaseRow.swift */; };
@@ -402,6 +403,7 @@
 		D28758252105FEEE00EF722D /* TrainMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		D287582721060FE700EF722D /* TrainHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		D289A84F22C6C6100074A3FC /* RowImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowImage.swift; sourceTree = "<group>"; };
+		D289A85222C6C9AA0074A3FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D295D8A521EADCF900BBD204 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
 		D295D8A721EADD0800BBD204 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+FetchRequests.swift"; sourceTree = "<group>"; };
@@ -764,6 +766,14 @@
 			name = "Train View";
 			sourceTree = "<group>";
 		};
+		D289A85122C6C9930074A3FC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D289A85222C6C9AA0074A3FC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		D295D8A421EADCD900BBD204 /* Purchases View */ = {
 			isa = PBXGroup;
 			children = (
@@ -818,6 +828,7 @@
 				D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */,
 				D2B7C96420D4BA31001B51B1 /* Info.plist */,
 				D298CAEA20D7118A00827F68 /* EngineShed.entitlements */,
+				D289A85122C6C9930074A3FC /* Preview Content */,
 			);
 			path = EngineShed;
 			sourceTree = "<group>";
@@ -1134,6 +1145,7 @@
 				D2599EAE22B85CEF00A252C2 /* Models.storyboard in Resources */,
 				D2599ED822B880E700A252C2 /* DecoderTypesList.storyboard in Resources */,
 				D27FC2402150BE0E00AA522B /* Assets.xcassets in Resources */,
+				D289A85322C6C9AA0074A3FC /* Preview Assets.xcassets in Resources */,
 				D2599ECC22B87DD800A252C2 /* TrainEdit.storyboard in Resources */,
 				D2599EC722B87D9300A252C2 /* Trains.storyboard in Resources */,
 				D2599EDD22B881DE00A252C2 /* DecoderTypeDetail.storyboard in Resources */,
@@ -1671,6 +1683,7 @@
 				CODE_SIGN_ENTITLEMENTS = EngineShed/EngineShed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_ASSET_PATHS = "EngineShed/Preview\\ Content";
 				DEVELOPMENT_TEAM = 79P776W2YF;
 				INFOPLIST_FILE = EngineShed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1692,6 +1705,7 @@
 				CODE_SIGN_ENTITLEMENTS = EngineShed/EngineShed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_ASSET_PATHS = "EngineShed/Preview\\ Content";
 				DEVELOPMENT_TEAM = 79P776W2YF;
 				INFOPLIST_FILE = EngineShed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
