@@ -1,5 +1,5 @@
 //
-//  ContentSizeCategory+Debug.swift
+//  PreviewDebug.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 6/27/19.
@@ -12,6 +12,12 @@ import SwiftUI
 extension ContentSizeCategory {
 
     static let other: [ContentSizeCategory] = [.extraSmall, .extraLarge, .extraExtraExtraLarge]
+
+}
+
+extension ColorScheme : CaseIterable {
+
+    public static var allCases: [ColorScheme] = [.light, .dark]
 
 }
 

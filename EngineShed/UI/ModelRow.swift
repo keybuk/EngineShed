@@ -14,13 +14,7 @@ struct ModelRow : View {
 
     var body: some View {
         HStack {
-            Image(uiImage: model.image!)
-                .resizable()
-                .frame(width: 100)
-                .aspectRatio(16/9, contentMode: .fit)
-                .background(Color.white)
-                .cornerRadius(4)
-                .padding([.leading, .top, .bottom], 2)
+            RowImage(image: Image(uiImage: model.image!))
 
             VStack(alignment: .leading) {
                 Text(model.modelClass!)
@@ -37,21 +31,19 @@ struct ModelRow : View {
 #if DEBUG
 struct ModelRow_Previews : PreviewProvider {
     static var previews: some View {
-        return Group {
-            ForEach(previewData.models.identified(by: \.objectID)) { model in
-                ModelRow(model: model)
-            }
+        ForEach(ColorScheme.allCases.identified(by: \.self)) { colorScheme in
+            List {
+                ForEach(previewData.models.identified(by: \.objectID)) { model in
+                    ModelRow(model: model)
+                }
 
-            ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
-                ModelRow(model: previewData.models.first!)
-                    .environment(\.sizeCategory, item)
+                ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
+                    ModelRow(model: previewData.models.first!)
+                        .environment(\.sizeCategory, item)
+                }
             }
-
-            ModelRow(model: previewData.models.first!)
-                .environment(\.colorScheme, .dark)
+            .environment(\.colorScheme, colorScheme)
         }
-        .frame(width: 320, alignment: .leading)
-        .previewLayout(.sizeThatFits)
     }
 }
 #endif

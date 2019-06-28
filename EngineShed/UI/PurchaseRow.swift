@@ -13,16 +13,8 @@ struct PurchaseRow : View {
     var purchase: Purchase
 
     var body: some View {
-        let image = (purchase.models!.firstObject as! Model).image!
-
         return HStack {
-            Image(uiImage: image)
-                .resizable()
-                .frame(width: 100)
-                .aspectRatio(16/9, contentMode: .fit)
-                .background(Color.white)
-                .cornerRadius(4)
-                .padding([.leading, .top, .bottom], 2)
+            RowImage(image: Image(uiImage: (purchase.models!.firstObject as! Model).image!))
 
             VStack(alignment: .leading) {
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
@@ -46,21 +38,19 @@ struct PurchaseRow : View {
 #if DEBUG
 struct PurchaseRow_Previews : PreviewProvider {
     static var previews: some View {
-        return Group {
-            ForEach(previewData.purchases.identified(by: \.objectID)) { purchase in
-                PurchaseRow(purchase: purchase)
-            }
+        ForEach(ColorScheme.allCases.identified(by: \.self)) { colorScheme in
+            List {
+                ForEach(previewData.purchases.identified(by: \.objectID)) { purchase in
+                    PurchaseRow(purchase: purchase)
+                }
 
-            ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
-                PurchaseRow(purchase: previewData.purchases.first!)
-                    .environment(\.sizeCategory, item)
+                ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
+                    PurchaseRow(purchase: previewData.purchases.first!)
+                        .environment(\.sizeCategory, item)
+                }
             }
-
-            PurchaseRow(purchase: previewData.purchases.first!)
-                .environment(\.colorScheme, .dark)
+            .environment(\.colorScheme, colorScheme)
         }
-        .frame(width: 320, alignment: .leading)
-        .previewLayout(.sizeThatFits)
     }
 }
 #endif

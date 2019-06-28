@@ -14,14 +14,7 @@ struct DecoderTypeRow : View {
 
     var body: some View {
         HStack {
-            Image("58419")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100)
-                .aspectRatio(16/9, contentMode: .fit)
-                .background(Color.white)
-                .cornerRadius(4)
-                .padding([.leading, .top, .bottom], 2)
+            RowImage(image: Image("58419"))
 
             VStack(alignment: .leading) {
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
@@ -40,36 +33,45 @@ struct DecoderTypeRow : View {
 
             if decoderType.minimumStock > 0 || decoderType.remainingStock > 0 {
                 Spacer()
-                Text("\(decoderType.remainingStock)")
-                    .font(.callout)
-                    .color(decoderType.isStockLow ? Color("stockLowTextColor") : Color("stockNormalTextColor"))
-                    .padding([.leading, .trailing], 10)
-                    .padding([.top, .bottom], 4)
-                    .background(Capsule().fill(decoderType.isStockLow ? Color("stockLowColor") : Color("stockNormalColor")))
-                    .padding([.leading, .trailing])
+                DecoderTypeStock(decoderType: decoderType)
             }
         }
     }
+    
+}
+
+struct DecoderTypeStock : View {
+
+    var decoderType: DecoderType
+
+    var body: some View {
+        Text("\(decoderType.remainingStock)")
+            .font(.callout)
+            .color(Color(decoderType.isStockLow ? "stockLowTextColor" : "stockNormalTextColor"))
+            .padding([.leading, .trailing], 10)
+            .padding([.top, .bottom], 4)
+            .background(Capsule().fill(Color(decoderType.isStockLow ? "stockLowColor" : "stockNormalColor")))
+            .padding([.leading, .trailing])
+    }
+
 }
 
 #if DEBUG
 struct DecoderTypeRow_Previews : PreviewProvider {
     static var previews: some View {
-        return Group {
-            ForEach(previewData.decoderTypes.identified(by: \.objectID)) { decoderType in
-                DecoderTypeRow(decoderType: decoderType)
-            }
+        ForEach(ColorScheme.allCases.identified(by: \.self)) { colorScheme in
+            List {
+                ForEach(previewData.decoderTypes.identified(by: \.objectID)) { decoderType in
+                    DecoderTypeRow(decoderType: decoderType)
+                }
 
-            ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
-                DecoderTypeRow(decoderType: previewData.decoderTypes.first!)
-                    .environment(\.sizeCategory, item)
+                ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
+                    DecoderTypeRow(decoderType: previewData.decoderTypes.first!)
+                        .environment(\.sizeCategory, item)
+                }
             }
-
-            DecoderTypeRow(decoderType: previewData.decoderTypes.first!)
-                .environment(\.colorScheme, .dark)
+            .environment(\.colorScheme, colorScheme)
         }
-        .frame(width: 320, alignment: .leading)
-        .previewLayout(.sizeThatFits)
     }
 }
 #endif
