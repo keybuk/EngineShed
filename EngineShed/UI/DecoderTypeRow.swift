@@ -13,7 +13,9 @@ struct DecoderTypeRow : View {
     var decoderType: DecoderType
 
     var body: some View {
-        HStack {
+        let isStockLow = decoderType.remainingStock < decoderType.minimumStock
+
+        return HStack {
             Image("58419")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -39,25 +41,15 @@ struct DecoderTypeRow : View {
             }
 
             if decoderType.minimumStock > 0 {
-                if decoderType.remainingStock < decoderType.minimumStock {
-                    Text("\(decoderType.remainingStock)")
-                        .font(.callout)
-                        .color(Color("stockLowTextColor"))
-                        .padding([.leading, .trailing], 10)
-                        .padding([.top, .bottom], 4)
-                        .background(Capsule().fill(Color("stockLowColor")))
-                        .padding([.leading, .trailing])
-                } else {
-                    Text("\(decoderType.remainingStock)")
-                        .font(.callout)
-                        .color(Color("stockNormalTextColor"))
-                        .padding([.leading, .trailing], 10)
-                        .padding([.top, .bottom], 4)
-                        .background(Capsule().fill(Color("stockNormalColor")))
-                        .padding([.leading, .trailing])
-                }
+                Spacer()
+                Text("\(decoderType.remainingStock)")
+                    .font(.callout)
+                    .color(isStockLow ? Color("stockLowTextColor") : Color("stockNormalTextColor"))
+                    .padding([.leading, .trailing], 10)
+                    .padding([.top, .bottom], 4)
+                    .background(Capsule().fill(isStockLow ? Color("stockLowColor") : Color("stockNormalColor")))
+                    .padding([.leading, .trailing])
             }
-
         }
     }
 }
