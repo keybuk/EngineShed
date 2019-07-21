@@ -47,7 +47,7 @@ struct DecoderTypeStock : View {
     var body: some View {
         Text("\(decoderType.remainingStock)")
             .font(.callout)
-            .color(Color(decoderType.isStockLow ? "stockLowTextColor" : "stockNormalTextColor"))
+            .foregroundColor(Color(decoderType.isStockLow ? "stockLowTextColor" : "stockNormalTextColor"))
             .padding([.leading, .trailing], 10)
             .padding([.top, .bottom], 4)
             .background(Capsule().fill(Color(decoderType.isStockLow ? "stockLowColor" : "stockNormalColor")))

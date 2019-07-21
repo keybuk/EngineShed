@@ -22,10 +22,10 @@ struct PurchaseRow : View {
                         .font(.headline)
                     Text(" ")
                         .font(.headline)
-                        .color(Color.primary)
+                        .foregroundColor(Color.primary)
                     Text(purchase.catalogNumber!)
                         .font(.headline)
-                        .color(Color.primary)
+                        .foregroundColor(Color.primary)
                 }
                 Text("\(purchase.dateAsDate!, formatter: purchase.dateFormatter)")
                 Text(purchase.store!)
