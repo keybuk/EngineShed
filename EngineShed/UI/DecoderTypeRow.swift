@@ -59,13 +59,13 @@ struct DecoderTypeStock : View {
 #if DEBUG
 struct DecoderTypeRow_Previews : PreviewProvider {
     static var previews: some View {
-        ForEach(ColorScheme.allCases.identified(by: \.self)) { colorScheme in
+        ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
             List {
-                ForEach(previewData.decoderTypes.identified(by: \.objectID)) { decoderType in
+                ForEach(previewData.decoderTypes, id: \.objectID) { decoderType in
                     DecoderTypeRow(decoderType: decoderType)
                 }
 
-                ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
+                ForEach(ContentSizeCategory.other, id: \.self) { item in
                     DecoderTypeRow(decoderType: previewData.decoderTypes.first!)
                         .environment(\.sizeCategory, item)
                 }

@@ -38,13 +38,13 @@ struct PurchaseRow : View {
 #if DEBUG
 struct PurchaseRow_Previews : PreviewProvider {
     static var previews: some View {
-        ForEach(ColorScheme.allCases.identified(by: \.self)) { colorScheme in
+        ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
             List {
-                ForEach(previewData.purchases.identified(by: \.objectID)) { purchase in
+                ForEach(previewData.purchases, id: \.objectID) { purchase in
                     PurchaseRow(purchase: purchase)
                 }
 
-                ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
+                ForEach(ContentSizeCategory.other, id: \.self) { item in
                     PurchaseRow(purchase: previewData.purchases.first!)
                         .environment(\.sizeCategory, item)
                 }

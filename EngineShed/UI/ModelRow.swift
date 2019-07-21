@@ -31,13 +31,13 @@ struct ModelRow : View {
 #if DEBUG
 struct ModelRow_Previews : PreviewProvider {
     static var previews: some View {
-        ForEach(ColorScheme.allCases.identified(by: \.self)) { colorScheme in
+        ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
             List {
-                ForEach(previewData.models.identified(by: \.objectID)) { model in
+                ForEach(previewData.models, id: \.objectID) { model in
                     ModelRow(model: model)
                 }
 
-                ForEach(ContentSizeCategory.other.identified(by: \.self)) { item in
+                ForEach(ContentSizeCategory.other, id: \.self) { item in
                     ModelRow(model: previewData.models.first!)
                         .environment(\.sizeCategory, item)
                 }
