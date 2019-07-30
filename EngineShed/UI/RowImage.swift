@@ -11,7 +11,7 @@ import SwiftUI
 struct RowImage : View {
 
     var image: Image
-    var width: Length = 100
+    var width: CGFloat = 100
 
     var body: some View {
         Rectangle()
