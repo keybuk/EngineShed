@@ -15,10 +15,4 @@ extension ContentSizeCategory {
 
 }
 
-extension ColorScheme : CaseIterable {
-
-    public static var allCases: [ColorScheme] = [.light, .dark]
-
-}
-
 #endif
