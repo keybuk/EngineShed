@@ -17,10 +17,10 @@ struct RowImage : View {
         Rectangle()
             .fill(Color.white)
             .frame(width: width)
-            .cornerRadius(4)
             .overlay(image
                 .resizable()
                 .aspectRatio(contentMode: .fit))
+            .cornerRadius(4)
     }
 
 }
