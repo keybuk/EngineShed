@@ -81,8 +81,7 @@ struct PreviewData {
 
         for _ in 0..<10 {
             let decoder = Decoder(context: container.viewContext)
-            decoder.type = decoderType
-            decoderType.addToDecoders(decoder)
+            decoderType.addDecoder(decoder)
         }
 
         decoderTypes.append(decoderType)

@@ -216,7 +216,10 @@ class DecoderEditTableViewController : UITableViewController, UIAdaptivePresenta
         NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
 
         decoder = Decoder(context: managedObjectContext!)
-        decoder!.type = managedObjectContext!.object(with: decoderType.objectID) as? DecoderType
+
+        if let decoderType = managedObjectContext!.object(with: decoderType.objectID) as? DecoderType {
+            decoderType.addDecoder(decoder!)
+        }
     }
 
     // MARK: - Notifications

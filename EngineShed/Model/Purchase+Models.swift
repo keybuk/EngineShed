@@ -19,7 +19,7 @@ extension Purchase {
         removeFromModels(model)
     }
 
-    func moveMember(from fromIndex: Int, to toIndex: Int) {
+    func moveModel(from fromIndex: Int, to toIndex: Int) {
 
     }
 

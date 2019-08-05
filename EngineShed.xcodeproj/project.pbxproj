@@ -110,6 +110,7 @@
 		D2744E5722F48F8D00ECEFFA /* Train+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2744E5622F48F8D00ECEFFA /* Train+FetchRequests.swift */; };
 		D2744E5922F491F700ECEFFA /* Train+Members.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2744E5822F491F700ECEFFA /* Train+Members.swift */; };
 		D2744E5B22F7B6C800ECEFFA /* Purchase+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2744E5A22F7B6C800ECEFFA /* Purchase+Models.swift */; };
+		D2744E5D22F7C03F00ECEFFA /* DecoderType+Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2744E5C22F7C03F00ECEFFA /* DecoderType+Decoders.swift */; };
 		D27FC2402150BE0E00AA522B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95F20D4BA31001B51B1 /* Assets.xcassets */; };
 		D280AF8322C580960074CCCD /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D280AF8222C580960074CCCD /* PreviewData.swift */; };
 		D280AF8522C58D140074CCCD /* PreviewDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D280AF8422C58D140074CCCD /* PreviewDebug.swift */; };
@@ -394,6 +395,7 @@
 		D2744E5622F48F8D00ECEFFA /* Train+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2744E5822F491F700ECEFFA /* Train+Members.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Members.swift"; sourceTree = "<group>"; };
 		D2744E5A22F7B6C800ECEFFA /* Purchase+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Models.swift"; sourceTree = "<group>"; };
+		D2744E5C22F7C03F00ECEFFA /* DecoderType+Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Decoders.swift"; sourceTree = "<group>"; };
 		D280AF8222C580960074CCCD /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		D280AF8422C58D140074CCCD /* PreviewDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDebug.swift; sourceTree = "<group>"; };
 		D2820D062224971D00D9B3F8 /* TrainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainTableViewController.swift; sourceTree = "<group>"; };
@@ -886,6 +888,7 @@
 				D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */,
 				D269037722347330002C7A48 /* Model+Suggestions.swift */,
 				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
+				D2744E5C22F7C03F00ECEFFA /* DecoderType+Decoders.swift */,
 				D2F4EF072230991D008FB14A /* DecoderType+Number.swift */,
 				D2F4EEC6222F43C9008FB14A /* DecoderType+Stock.swift */,
 				D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */,
@@ -1370,6 +1373,7 @@
 				D2F4EED722306656008FB14A /* TrainMemberTitleEditTableViewCell.swift in Sources */,
 				D23B8BE021E2C09C004F994D /* PurchaseLimitedEditionTableViewCell.swift in Sources */,
 				D2C7E21822ADA38500A024A5 /* Purchase+Condition.swift in Sources */,
+				D2744E5D22F7C03F00ECEFFA /* DecoderType+Decoders.swift in Sources */,
 				D23B8BD621E2BEA4004F994D /* PurchaseTableViewController.swift in Sources */,
 				D2F4EF2C2233755A008FB14A /* DecoderFirmwareVersionEditTableViewCell.swift in Sources */,
 				D2F4EED52230664E008FB14A /* TrainMemberIsFlippedTableViewCell.swift in Sources */,
