@@ -39,7 +39,7 @@ class TrainTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 3
-        case 1: return train?.members!.count ?? 0
+        case 1: return trainMembers.count
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -64,7 +64,7 @@ class TrainTableViewController : UITableViewController {
             }
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "trainMember", for: indexPath) as! TrainMemberTableViewCell
-            cell.trainMember = train?.members![indexPath.row] as? TrainMember
+            cell.trainMember = trainMembers[indexPath.row]
             return cell
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
@@ -113,6 +113,22 @@ class TrainTableViewController : UITableViewController {
     }
     */
 
+    // MARK: - Train Members table
+
+    lazy var trainMembers: [TrainMember] = {
+        let fetchRequest = train?.fetchRequestForMembers()
+        let trainMembers = persistentContainer?.viewContext.performAndWait { () -> [TrainMember]? in
+            do {
+                return try fetchRequest?.execute()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+
+        return trainMembers ?? []
+    }()
+
     // MARK: - Notifications
 
     @objc
@@ -121,7 +137,6 @@ class TrainTableViewController : UITableViewController {
         assert(notification.object as? NSManagedObjectContext == persistentContainer?.viewContext, "Notification callback called with wrong managed object context")
         guard let userInfo = notification.userInfo else { return }
         guard let train = train else { return }
-        let trainMembers = train.members?.set as? Set<NSManagedObject> ?? []
 
         // Check for refreshes of our train object, or its children members, meaning they
         // were updated by sync from cloud or merge after save from other context. Reload the
@@ -147,7 +162,7 @@ class TrainTableViewController : UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "trainMember" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let trainMember = train?.members![indexPath.row] as! TrainMember?
+            let trainMember = trainMembers[indexPath.row]
 
             let viewController = segue.destination as! TrainMemberTableViewController
             viewController.persistentContainer = persistentContainer

@@ -123,7 +123,7 @@ class TrainMemberEditTableViewController: UITableViewController, UIAdaptivePrese
         self.trainMember = managedObjectContext!.object(with: trainMember.objectID) as? TrainMember
     }
 
-    func addTrainMember(completionHandler: @escaping ((Result) -> Void)) {
+    func addTrainMember(to train: Train, completionHandler: @escaping ((Result) -> Void)) {
         guard let persistentContainer = persistentContainer else { preconditionFailure("No persistent container") }
 
         self.completionHandler = completionHandler
@@ -138,6 +138,10 @@ class TrainMemberEditTableViewController: UITableViewController, UIAdaptivePrese
         NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
 
         trainMember = TrainMember(context: managedObjectContext!)
+
+        if let train = managedObjectContext!.object(with: train.objectID) as? Train {
+            train.addMember(trainMember!)
+        }
     }
 
     // MARK: - Notifications

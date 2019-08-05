@@ -69,10 +69,8 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
         do {
             try managedObjectContext.performAndWait {
                 let train = managedObjectContext.object(with: train.objectID) as! Train
-                let trainMember = managedObjectContext.object(with: trainMember.objectID) as! TrainMember
 
-                train.removeFromMembers(at: sourceIndexPath.item)
-                train.insertIntoMembers(trainMember, at: destinationIndexPath.item)
+                train.moveMember(from: sourceIndexPath.row, to: destinationIndexPath.row)
 
                 self.changeIsUserDriven = true
                 try managedObjectContext.save()
@@ -234,7 +232,7 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
         // from other context, and update their headers accordingly.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject> {
             for case let train as Train in refreshedObjects {
-                guard let trainMember = train.members!.firstObject as? TrainMember else {
+                guard let trainMember = train.members?.anyObject() as? TrainMember else {
                     assertionFailure("Train without member")
                     continue
                 }

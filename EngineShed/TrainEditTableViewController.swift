@@ -43,7 +43,7 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         switch section {
         case 0: return 2
         case 1: return 1
-        case 2: return (train?.members!.count ?? 0) + 1
+        case 2: return trainMembers.count + 1
         case 3: return 1
         default: preconditionFailure("Unexpected section: \(section)")
         }
@@ -75,7 +75,7 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
             switch indexPath.row {
             case ..<(train?.members!.count ?? 0):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "trainMemberEdit", for: indexPath) as! TrainMemberEditTableViewCell
-                cell.trainMember = train?.members![indexPath.row] as? TrainMember
+                cell.trainMember = trainMembers[indexPath.row]
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "trainMemberAdd", for: indexPath) as! TrainMemberAddTableViewCell
@@ -111,7 +111,7 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         case 1: break
         case 2:
             switch indexPath.row {
-            case ..<(train?.members!.count ?? 0): break
+            case ..<trainMembers.count: break
             default:
                 // Call the delegate method as if the insertion control was tapped directly.
                 self.tableView(tableView, commit: .insert, forRowAt: indexPath)
@@ -146,7 +146,7 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         case 1: return .none
         case 2:
             switch indexPath.row {
-            case ..<(train?.members!.count ?? 0):
+            case ..<trainMembers.count:
                 return .delete
             default:
                 return .insert
@@ -166,8 +166,8 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
 
             // Remove the member from the list, and delete it. Both are required otherwise it
             // remains as a member without a train, or a deleted member in our relationship.
-            let trainMember = train.members![indexPath.row] as! TrainMember
-            train.removeFromMembers(trainMember)
+            let trainMember = trainMembers[indexPath.row]
+            train.removeMember(trainMember)
             managedObjectContext.delete(trainMember)
 
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -177,7 +177,7 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
 
             // Insert a blank member at the end of the members list.
             let trainMember = TrainMember(context: managedObjectContext)
-            train.addToMembers(trainMember)
+            train.addMember(trainMember)
 
             // After inserting the row, select it to trigger immediate editing.
             tableView.insertRows(at: [indexPath], with: .bottom)
@@ -193,7 +193,7 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         case 1: return false
         case 2:
             switch indexPath.row {
-            case ..<(train?.members!.count ?? 0):
+            case ..<trainMembers.count:
                 return true
             default:
                 return false
@@ -205,11 +205,11 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
 
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         precondition(sourceIndexPath.section == 2, "Attempt to move cell outside of members")
-        precondition(sourceIndexPath.row < (train?.members!.count ?? 0), "Attempt to move non-member")
+        precondition(sourceIndexPath.row < trainMembers.count, "Attempt to move non-member")
 
         // Only allow reordering within the members list, not past the end, or to other sections.
         guard proposedDestinationIndexPath.section == 2 else { return sourceIndexPath }
-        guard proposedDestinationIndexPath.row < (train?.members!.count ?? 0) else { return sourceIndexPath }
+        guard proposedDestinationIndexPath.row < trainMembers.count else { return sourceIndexPath }
 
         return proposedDestinationIndexPath
     }
@@ -218,18 +218,16 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         guard let train = train else { return }
 
         precondition(fromIndexPath.section == 2, "Attempt to move cell outside of members")
-        precondition(fromIndexPath.row < train.members!.count, "Attempt to move non-member")
+        precondition(fromIndexPath.row < trainMembers.count, "Attempt to move non-member")
 
         precondition(to.section == 2, "Attempt to move cell out of members")
-        precondition(to.row < train.members!.count, "Attempt to move outside of bounds")
+        precondition(to.row < trainMembers.count, "Attempt to move outside of bounds")
 
         // Remove from the members list first, and then insert at the new index path. This will
         // do the right thing when moving up, because removing below doesn't change the above
         // objects. It will also do the right thing when moving down, because the other objects
         // move up, making way for it and leaving a gap at the new index path.
-        let trainMember = train.members![fromIndexPath.row] as! TrainMember
-        train.removeFromMembers(at: fromIndexPath.row)
-        train.insertIntoMembers(trainMember, at: to.row)
+        train.moveMember(from: fromIndexPath.row, to: to.row)
     }
     
     // MARK: - Presentation Delegate
@@ -274,6 +272,22 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         train = Train(context: managedObjectContext!)
     }
 
+    // MARK: - Train Members table
+
+    lazy var trainMembers: [TrainMember] = {
+        let fetchRequest = train?.fetchRequestForMembers()
+        let trainMembers = persistentContainer?.viewContext.performAndWait { () -> [TrainMember]? in
+            do {
+                return try fetchRequest?.execute()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+
+        return trainMembers ?? []
+    }()
+
     // MARK: - Notifications
 
     @objc
@@ -282,7 +296,6 @@ class TrainEditTableViewController : UITableViewController, UIAdaptivePresentati
         assert(notification.object as? NSManagedObjectContext == managedObjectContext, "Notification callback called with wrong managed object context")
         guard let userInfo = notification.userInfo else { return }
         guard let train = train else { return }
-        let trainMembers = train.members?.set as? Set<NSManagedObject> ?? []
 
         // Update editing state whenever our train object, or any of its members, are updated.
         if let updatedObjects = userInfo[NSUpdatedObjectsKey] as? Set<NSManagedObject>,

@@ -318,7 +318,10 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
         NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
 
         model = Model(context: managedObjectContext!)
-        model!.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
+    
+        if let purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase {
+            purchase.addModel(model!)
+        }
     }
     
     // MARK: - Notifications

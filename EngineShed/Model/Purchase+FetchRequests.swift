@@ -43,5 +43,19 @@ extension Purchase {
         return fetchRequest
     }
 
+    func fetchRequestForModels() -> NSFetchRequest<Model> {
+        let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
+        fetchRequest.fetchBatchSize = 20
+
+        fetchRequest.predicate = NSPredicate(format: "purchase = %@", self)
+
+        var sortDescriptors: [NSSortDescriptor] = []
+        sortDescriptors.append(NSSortDescriptor(key: "index", ascending: true))
+
+        fetchRequest.sortDescriptors = sortDescriptors
+
+        return fetchRequest
+    }
+
 }
 

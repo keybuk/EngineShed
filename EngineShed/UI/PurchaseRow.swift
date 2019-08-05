@@ -14,7 +14,7 @@ struct PurchaseRow : View {
 
     var body: some View {
         return HStack {
-            RowImage(image: Image(uiImage: (purchase.models!.firstObject as! Model).image!))
+            RowImage(image: Image(uiImage: (purchase.models!.anyObject() as! Model).image!))
 
             VStack(alignment: .leading) {
                 HStack(alignment: .firstTextBaseline, spacing: 0) {

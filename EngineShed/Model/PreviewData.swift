@@ -41,7 +41,7 @@ struct PreviewData {
         model.modelClass = "LNER Gresley 'A4' 4-6-2"
         model.number = "4468"
         model.name = "Mallard"
-        purchase.addToModels(model)
+        purchase.addModel(model)
         models.append(model)
 
         purchases.append(purchase)
@@ -59,7 +59,7 @@ struct PreviewData {
         model.modelClass = "LNER Gresley 'A4' 4-6-2"
         model.number = "4468"
         model.name = "Mallard"
-        purchase.addToModels(model)
+        purchase.addModel(model)
 
         purchases.append(purchase)
 

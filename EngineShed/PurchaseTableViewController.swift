@@ -45,7 +45,7 @@ class PurchaseTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 11
-        case 1: return purchase?.models!.count ?? 0
+        case 1: return purchaseModels.count
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -66,7 +66,7 @@ class PurchaseTableViewController : UITableViewController {
         case (0, 10): identifier = "purchaseNotes"
         case (1, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: "purchaseModel", for: indexPath) as! PurchaseModelTableViewCell
-            let model = purchase?.models![indexPath.row] as! Model?
+            let model = purchaseModels[indexPath.row]
             cell.model = model
             return cell
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
@@ -112,6 +112,22 @@ class PurchaseTableViewController : UITableViewController {
     }
     */
 
+    // MARK: - Models table
+
+    lazy var purchaseModels: [Model] = {
+        let fetchRequest = purchase?.fetchRequestForModels()
+        let purchaseModels = persistentContainer?.viewContext.performAndWait { () -> [Model]? in
+            do {
+                return try fetchRequest?.execute()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+
+        return purchaseModels ?? []
+    }()
+
     // MARK: - Notifications
 
     @objc
@@ -120,7 +136,6 @@ class PurchaseTableViewController : UITableViewController {
         assert(notification.object as? NSManagedObjectContext == persistentContainer?.viewContext, "Notification callback called with wrong managed object context")
         guard let userInfo = notification.userInfo else { return }
         guard let purchase = purchase else { return }
-        let purchaseModels = purchase.models?.set as? Set<NSManagedObject> ?? []
 
         // Check for refreshes of our purchase object, or its children models, meaning they
         // were updated by sync from cloud or merge after save from other context.
@@ -146,7 +161,7 @@ class PurchaseTableViewController : UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "purchaseModel" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let model = purchase?.models![indexPath.row] as! Model?
+            let model = purchaseModels[indexPath.row]
 
             let viewController = segue.destination as! ModelTableViewController
             viewController.persistentContainer = persistentContainer
@@ -181,8 +196,7 @@ class PurchaseTableViewController : UITableViewController {
             viewController.persistentContainer = persistentContainer
             viewController.addModel(to: purchase) { result in
                 if case .saved(let model) = result {
-                    let index = purchase.models!.index(of: model)
-                    if index != NSNotFound {
+                    if let index = self.purchaseModels.firstIndex(of: model) {
                         let indexPath = IndexPath(row: index, section: 1)
                         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
                         self.performSegue(withIdentifier: "purchaseModel", sender: nil)
