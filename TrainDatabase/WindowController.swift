@@ -145,6 +145,30 @@ class WindowController : NSWindowController, RecordController {
         }
     }
 
+    @IBAction func saveAction(_ sender: NSButton) {
+        let context = persistentContainer.viewContext
+
+        if !context.commitEditing() {
+            NSLog("Unable to commit editing before saving")
+        }
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                NSApplication.shared.presentError(nserror)
+                return
+            }
+        }
+
+        let alert = NSAlert()
+        alert.alertStyle = .informational
+        alert.messageText = "Saved."
+        alert.addButton(withTitle: "OK")
+
+        alert.runModal()
+    }
+
     @IBAction func showFilter(_ sender: NSButton) {
         guard let searchViewController = storyboard?.instantiateController(withIdentifier: .searchViewController) as? SearchViewController else { return }
 

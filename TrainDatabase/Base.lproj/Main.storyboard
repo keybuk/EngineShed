@@ -502,6 +502,20 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="AD8235BB-544A-42F0-B4A3-DA521597EB30" label="Save" paletteLabel="Save" sizingBehavior="auto" id="qXT-nU-l6I">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="tym-yB-ceo">
+                                        <rect key="frame" x="0.0" y="14" width="127" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Save" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="F6a-NU-iff">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="saveAction:" target="B8D-0N-5wS" id="PGc-bA-4Ed"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="Yes-WW-Jtx"/>
@@ -510,6 +524,7 @@
                                 <toolbarItem reference="ppB-md-bks"/>
                                 <toolbarItem reference="Wya-Qo-c77"/>
                                 <toolbarItem reference="Cmt-f1-upr"/>
+                                <toolbarItem reference="qXT-nU-l6I"/>
                                 <toolbarItem reference="vsb-ws-2nQ"/>
                                 <toolbarItem reference="J6x-sm-oKL"/>
                                 <toolbarItem reference="haz-jq-XtW"/>
