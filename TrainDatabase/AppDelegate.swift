@@ -129,7 +129,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func upload(callback: @escaping () -> Void) throws {
         print("Uploading to iCloud...")
 
-        let container = CKContainer(identifier: "iCloud.com.netsplit.EngineShed")
+        let container = CKContainer(identifier: "iCloud.com.netsplit.TrainDatabase")
         let database = container.privateCloudDatabase
         let zoneID = CKRecordZone.ID(zoneName: "EngineShed", ownerName: CKCurrentUserDefaultName)
         let zone = CKRecordZone(zoneID: zoneID)
@@ -435,7 +435,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func restoreFromCloud() {
-        let container = CKContainer(identifier: "iCloud.com.netsplit.EngineShed")
+        let container = CKContainer(identifier: "iCloud.com.netsplit.TrainDatabase")
         let database = container.privateCloudDatabase
         let zoneID = CKRecordZone.ID(zoneName: "EngineShed", ownerName: CKCurrentUserDefaultName)
 
