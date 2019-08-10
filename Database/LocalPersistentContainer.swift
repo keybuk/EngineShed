@@ -16,7 +16,7 @@ import CoreData
 public class LocalPersistentContainer : NSPersistentContainer {
 
     /// Container identifier for CloudKit store.
-    let cloudContainerID = "iCloud.com.netsplit.EngineShed"
+    let cloudContainerID = "iCloud.com.netsplit.TrainDatabase"
     
     /// Subscription identifier registered for notifications.
     let subscriptionID = "private-changes"
