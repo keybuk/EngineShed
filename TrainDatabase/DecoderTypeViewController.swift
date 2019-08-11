@@ -288,6 +288,7 @@ extension DecoderTypeViewController : NSTableViewDelegate {
         case .firmwareDateColumn:
             let view = tableView.makeView(withIdentifier: .firmwareDateCell, owner: self) as! NSTableCellView
             view.textField?.objectValue = decoder.firmwareDate
+            (view.textField?.formatter as? DateFormatter)?.timeZone = TimeZone(secondsFromGMT: 0)
             return view
         case .addressColumn:
             let view = tableView.makeView(withIdentifier: .addressCell, owner: self) as! NSTableCellView
