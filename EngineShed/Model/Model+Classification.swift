@@ -15,7 +15,7 @@ enum ModelClassification : Int16, CaseIterable {
     case wagon
     case multipleUnit
     case departmental
-    case maintenance
+    case noPrototype
     case accessory
     
 }
@@ -29,7 +29,7 @@ extension ModelClassification : CustomStringConvertible, ConvertibleFromString {
         case .wagon: return "Wagon"
         case .multipleUnit: return "Multiple Unit"
         case .departmental: return "Departmental"
-        case .maintenance: return "Maintenance"
+        case .noPrototype: return "No Prototype"
         case .accessory: return "Accessory"
         }
     }
