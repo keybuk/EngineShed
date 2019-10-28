@@ -77,7 +77,7 @@ private extension String {
         case "4":
             return .departmental
         case "5":
-            return .maintenance
+            return .noPrototype
         case "6":
             return .multipleUnit
         case "7":

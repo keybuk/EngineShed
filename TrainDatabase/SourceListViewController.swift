@@ -136,7 +136,7 @@ extension SourceListViewController : NSOutlineViewDataSource {
                 case 4:
                     return ModelClassification.departmental
                 case 5:
-                    return ModelClassification.maintenance
+                    return ModelClassification.noPrototype
                 default:
                     fatalError("Too many children in Models group")
                 }
@@ -202,8 +202,8 @@ extension SourceListViewController : NSOutlineViewDelegate {
                 view.textField?.stringValue = "Multiple Units"
             case .departmental:
                 view.textField?.stringValue = "Departmentals"
-            case .maintenance:
-                view.textField?.stringValue = "Maintenance"
+            case .noPrototype:
+                view.textField?.stringValue = "No Prototype"
             case .accessory:
                 view.textField?.stringValue = "Accessories"
             }
