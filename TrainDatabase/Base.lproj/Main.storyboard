@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -470,22 +470,6 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="7E8E0C13-9106-4A3D-BD73-E7B83A493C8D" label="Custom View" paletteLabel="Custom View" id="J6x-sm-oKL">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="127" height="25"/>
-                                    <size key="maxSize" width="127" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="AAA-fB-MIg">
-                                        <rect key="frame" x="0.0" y="14" width="127" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" title="Filter" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="E2P-tx-TAi">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="showFilter:" target="B8D-0N-5wS" id="eh6-cn-er2"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="B95237F0-9491-49E8-9F3E-B6542105BD94" label="Upload" paletteLabel="iCloud" image="NSNetwork" id="Cmt-f1-upr">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="25" height="25"/>
@@ -526,7 +510,6 @@
                                 <toolbarItem reference="Cmt-f1-upr"/>
                                 <toolbarItem reference="qXT-nU-l6I"/>
                                 <toolbarItem reference="vsb-ws-2nQ"/>
-                                <toolbarItem reference="J6x-sm-oKL"/>
                                 <toolbarItem reference="haz-jq-XtW"/>
                             </defaultToolbarItems>
                         </toolbar>
@@ -573,26 +556,26 @@
         <scene sceneID="e2J-wK-ooe">
             <objects>
                 <viewController id="21w-BN-HW5" userLabel="Source List View Controller" customClass="SourceListViewController" customModule="TrainDatabase" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="5tG-UJ-XF7">
-                        <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
+                    <view key="view" misplaced="YES" id="5tG-UJ-XF7">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="299"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czM-ex-Q7s">
-                                <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="180" height="298"/>
                                 <clipView key="contentView" drawsBackground="NO" id="yXg-G5-Wch">
-                                    <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="BZm-kL-zm2" id="fBK-Sm-P5e">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="298"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn width="177" minWidth="16" maxWidth="1000" id="BZm-kL-zm2">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -709,7 +692,7 @@
                     <tabView key="tabView" type="noTabsNoBorder" id="n9M-ur-8ih">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="message"/>
+                        <font key="font" metaFont="system"/>
                         <connections>
                             <outlet property="delegate" destination="8T2-8E-zw8" id="o87-rG-Ipf"/>
                         </connections>
@@ -776,7 +759,7 @@
                                             <subviews>
                                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" multipleSelection="NO" autosaveColumns="NO" rowHeight="23" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="16" indentationMarkerFollowsCell="NO" outlineTableColumn="6RC-1S-Fbi" id="cWc-h5-RzL" customClass="SearchOutlineView" customModule="TrainDatabase" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="450" height="658"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
@@ -784,7 +767,7 @@
                                                     <tableColumns>
                                                         <tableColumn width="447" minWidth="40" maxWidth="1000" id="6RC-1S-Fbi">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                <font key="font" metaFont="smallSystem"/>
+                                                                <font key="font" metaFont="label" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
@@ -806,7 +789,7 @@
                                                                                     <rect key="frame" x="2" y="4" width="46" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="All" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="6N1-1q-NKR" id="NM9-qi-nAq">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <menu key="menu" id="LoG-vQ-fAw">
                                                                                             <items>
                                                                                                 <menuItem title="All" state="on" id="6N1-1q-NKR"/>
@@ -821,7 +804,7 @@
                                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="foq-SK-F6E">
                                                                                     <rect key="frame" x="54" y="6" width="335" height="14"/>
                                                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="of the following are true" id="Jbi-xb-QpM">
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -874,10 +857,10 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="451" height="23"/>
                                                                             <subviews>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bgA-jp-Qv6">
-                                                                                    <rect key="frame" x="2" y="3" width="60" height="17"/>
+                                                                                    <rect key="frame" x="2" y="2" width="60" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="Item 1" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="eCD-Sz-16r" id="3Bv-h8-Y3c">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <menu key="menu" id="m3F-Rz-Vzf">
                                                                                             <items>
                                                                                                 <menuItem title="Item 1" state="on" id="eCD-Sz-16r"/>
@@ -888,10 +871,10 @@
                                                                                     </popUpButtonCell>
                                                                                 </popUpButton>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EHD-xO-K8n">
-                                                                                    <rect key="frame" x="70" y="3" width="114" height="17"/>
+                                                                                    <rect key="frame" x="70" y="2" width="114" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="contains" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Lbm-b0-CyV" id="f6P-nl-zqd">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <menu key="menu" id="YXl-Bl-F7I">
                                                                                             <items>
                                                                                                 <menuItem title="contains" state="on" id="Lbm-b0-CyV"/>
@@ -913,20 +896,20 @@
                                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="APJ-xd-Vt9">
                                                                                     <rect key="frame" x="192" y="2" width="199" height="19"/>
                                                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="TPv-YN-dEG">
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vov-ce-uXL">
-                                                                                    <rect key="frame" x="399" y="3" width="21" height="15"/>
+                                                                                    <rect key="frame" x="399" y="2" width="21" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sqB-XL-ggu">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="miniSystem"/>
                                                                                     </buttonCell>
                                                                                 </button>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q84-4R-oRC">
-                                                                                    <rect key="frame" x="428" y="3" width="21" height="15"/>
+                                                                                    <rect key="frame" x="428" y="2" width="21" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PIG-pY-h2W">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="miniSystem"/>
@@ -965,10 +948,10 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="451" height="23"/>
                                                                             <subviews>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dr4-T7-fWZ">
-                                                                                    <rect key="frame" x="2" y="3" width="60" height="17"/>
+                                                                                    <rect key="frame" x="2" y="2" width="60" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="Item 1" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Krv-N1-H96" id="bmZ-kW-Uvm">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <menu key="menu" id="6MX-ne-PbN">
                                                                                             <items>
                                                                                                 <menuItem title="Item 1" state="on" id="Krv-N1-H96"/>
@@ -979,10 +962,10 @@
                                                                                     </popUpButtonCell>
                                                                                 </popUpButton>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GXb-6b-iYn">
-                                                                                    <rect key="frame" x="70" y="3" width="162" height="17"/>
+                                                                                    <rect key="frame" x="70" y="2" width="162" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="is equal to" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="may-KR-xLG" id="k5f-Fw-vQQ">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <menu key="menu" id="ck0-qx-Anz">
                                                                                             <items>
                                                                                                 <menuItem title="is equal to" state="on" id="may-KR-xLG"/>
@@ -1009,20 +992,20 @@
                                                                                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="m3N-39-fAQ">
                                                                                             <real key="minimum" value="1"/>
                                                                                         </numberFormatter>
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-qQ-Bzk">
-                                                                                    <rect key="frame" x="399" y="3" width="21" height="15"/>
+                                                                                    <rect key="frame" x="399" y="2" width="21" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SOp-xL-MmX">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="miniSystem"/>
                                                                                     </buttonCell>
                                                                                 </button>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dgg-4R-xsg">
-                                                                                    <rect key="frame" x="428" y="3" width="21" height="15"/>
+                                                                                    <rect key="frame" x="428" y="2" width="21" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rDX-VJ-5VN">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="miniSystem"/>
@@ -1061,10 +1044,10 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="451" height="23"/>
                                                                             <subviews>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lql-5P-scO">
-                                                                                    <rect key="frame" x="2" y="0.0" width="60" height="17"/>
+                                                                                    <rect key="frame" x="2" y="3" width="60" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="Item 1" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="rIf-EO-kJR" id="rQ0-yf-0hy">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <menu key="menu" id="UTa-aw-23I">
                                                                                             <items>
                                                                                                 <menuItem title="Item 1" state="on" id="rIf-EO-kJR"/>
@@ -1075,10 +1058,10 @@
                                                                                     </popUpButtonCell>
                                                                                 </popUpButton>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GUO-Z0-Ip1">
-                                                                                    <rect key="frame" x="70" y="0.0" width="114" height="17"/>
+                                                                                    <rect key="frame" x="70" y="3" width="114" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="contains" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="HJQ-KX-bLt" id="mbA-w7-KVu">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <menu key="menu" id="e5h-1K-yeR">
                                                                                             <items>
                                                                                                 <menuItem title="contains" state="on" id="HJQ-KX-bLt"/>
@@ -1100,7 +1083,7 @@
                                                                                 <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OcS-RT-oyE">
                                                                                     <rect key="frame" x="192" y="0.0" width="202" height="22"/>
                                                                                     <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" numberOfVisibleItems="5" id="5ef-rk-CQZ">
-                                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                                        <font key="font" metaFont="label" size="11"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                         <objectValues>
@@ -1111,14 +1094,14 @@
                                                                                     </comboBoxCell>
                                                                                 </comboBox>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cM7-rF-W27">
-                                                                                    <rect key="frame" x="399" y="0.0" width="21" height="15"/>
+                                                                                    <rect key="frame" x="399" y="3" width="21" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hjt-KC-QeP">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="miniSystem"/>
                                                                                     </buttonCell>
                                                                                 </button>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fii-tC-vCi">
-                                                                                    <rect key="frame" x="428" y="0.0" width="21" height="15"/>
+                                                                                    <rect key="frame" x="428" y="3" width="21" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jt8-Jj-MWg">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="miniSystem"/>

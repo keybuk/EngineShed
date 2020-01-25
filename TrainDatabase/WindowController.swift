@@ -169,17 +169,6 @@ class WindowController : NSWindowController, RecordController {
         alert.runModal()
     }
 
-    @IBAction func showFilter(_ sender: NSButton) {
-        guard let searchViewController = storyboard?.instantiateController(withIdentifier: .searchViewController) as? SearchViewController else { return }
-
-        let popover = NSPopover()
-        popover.contentViewController = searchViewController
-        popover.behavior = .transient
-        popover.animates = true
-        
-        popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .maxY)
-    }
-    
     @IBAction func search(_ sender: NSSearchField) {
         guard !sender.stringValue.isEmpty else {
             modelsViewController.setFilter(search: nil)
