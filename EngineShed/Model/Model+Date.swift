@@ -9,7 +9,6 @@
 import Foundation
 
 extension Model {
-
     /// Formatter for date types.
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -63,5 +62,4 @@ extension Model {
         get { lastRunAsDate.flatMap { return dateFormatter.string(from: $0) } }
         set { lastRunAsDate = newValue.flatMap { dateFormatter.date(from: $0) } }
     }
-
 }

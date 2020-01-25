@@ -9,7 +9,6 @@
 import Foundation
 
 extension Purchase {
-
     /// Formatter for date types.
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -37,13 +36,8 @@ extension Purchase {
 
     /// `date` formatted as string using `dateFormatter`.
     var dateAsString: String? {
-        get {
-            dateAsDate.flatMap { return dateFormatter.string(from: $0) }
-        }
-
-        set {
-            dateAsDate = newValue.flatMap { dateFormatter.date(from: $0) }
-        }
+        get { dateAsDate.flatMap { dateFormatter.string(from: $0) } }
+        set { dateAsDate = newValue.flatMap { dateFormatter.date(from: $0) } }
     }
 
     /// `dateForGrouping` formatted as string with format "MMMMyyyy".
@@ -79,5 +73,4 @@ extension Purchase {
         let dateForGrouping = calendar.date(from: dateComponents)
         if self.dateForGrouping != dateForGrouping { self.dateForGrouping = dateForGrouping }
     }
-
 }
