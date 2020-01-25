@@ -31,7 +31,7 @@ class PurchaseConditionPickerTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return PurchaseCondition.allCases.count
+        case 1: return Purchase.Condition.allCases.count
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -44,7 +44,7 @@ class PurchaseConditionPickerTableViewController : UITableViewController {
             cell.textLabel?.text = "None"
             cell.accessoryType = purchase?.condition == nil ? .checkmark : .none
         case 1:
-            let condition = PurchaseCondition.allCases[indexPath.row]
+            let condition = Purchase.Condition.allCases[indexPath.row]
             cell.textLabel?.text = "\(condition)"
             cell.accessoryType = purchase?.condition == condition ? .checkmark : .none
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
@@ -95,7 +95,7 @@ class PurchaseConditionPickerTableViewController : UITableViewController {
         switch purchase?.condition {
         case nil: currentIndexPath = IndexPath(row: 0, section: 0)
         case let condition?:
-            guard let row = PurchaseCondition.allCases.firstIndex(of: condition) else { preconditionFailure("Condition not in allCases") }
+            guard let row = Purchase.Condition.allCases.firstIndex(of: condition) else { preconditionFailure("Condition not in allCases") }
             currentIndexPath = IndexPath(row: row, section: 1)
         }
 
@@ -107,7 +107,7 @@ class PurchaseConditionPickerTableViewController : UITableViewController {
         case 0:
             purchase?.condition = nil
         case 1:
-            purchase?.condition = PurchaseCondition.allCases[indexPath.row]
+            purchase?.condition = Purchase.Condition.allCases[indexPath.row]
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 

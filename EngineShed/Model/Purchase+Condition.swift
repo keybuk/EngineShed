@@ -8,18 +8,22 @@
 
 import Foundation
 
-enum PurchaseCondition : Int16, CaseIterable {
+extension Purchase {
+    enum Condition: Int16, CaseIterable {
+        case new = 1
+        case likeNew
+        case used
+        case usedInWrongBox
+        case handmade
+    }
 
-    case new = 1
-    case likeNew
-    case used
-    case usedInWrongBox
-    case handmade
-    
+    var condition: Condition? {
+        get { Condition(rawValue: conditionRawValue) }
+        set { conditionRawValue = newValue?.rawValue ?? 0 }
+    }
 }
 
-extension PurchaseCondition : CustomStringConvertible, ConvertibleFromString {
-    
+extension Purchase.Condition: CustomStringConvertible, ConvertibleFromString {
     var description: String {
         switch self {
         case .new: return "New"
@@ -29,14 +33,4 @@ extension PurchaseCondition : CustomStringConvertible, ConvertibleFromString {
         case .handmade: return "Handmade"
         }
     }
-    
-}
-
-extension Purchase {
-
-    var condition: PurchaseCondition? {
-        get { PurchaseCondition(rawValue: conditionRawValue) }
-        set { conditionRawValue = newValue?.rawValue ?? 0 }
-    }
-
 }
