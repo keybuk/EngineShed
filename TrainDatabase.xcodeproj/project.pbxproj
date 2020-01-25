@@ -40,6 +40,7 @@
 		D28A4BDE1FD67523000768D8 /* TrainDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BDD1FD67523000768D8 /* TrainDatabaseTests.swift */; };
 		D28A4BE91FD67523000768D8 /* TrainDatabaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */; };
 		D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */; };
+		D2A74D3123DC307200186E31 /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3023DC307200186E31 /* Purchase+Condition.swift */; };
 		D2B2AF5320D8661300BEFC15 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2AF5220D8661300BEFC15 /* CloudKit.framework */; };
 		D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */; };
 		D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */; };
@@ -47,7 +48,6 @@
 		D2B616871FE0A4E40065A84F /* ModelClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B616861FE0A4E40065A84F /* ModelClassification.swift */; };
 		D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B616881FE0A6110065A84F /* Model+NSImage.swift */; };
 		D2B6168B1FE0A6DE0065A84F /* ModelEra.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6168A1FE0A6DE0065A84F /* ModelEra.swift */; };
-		D2B6168D1FE0ACD70065A84F /* PurchaseCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6168C1FE0ACD70065A84F /* PurchaseCondition.swift */; };
 		D2DFF4B8200A977200259284 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4B7200A977200259284 /* HorizontalScrollView.swift */; };
 		D2DFF4BA200A998E00259284 /* EnterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4B9200A998E00259284 /* EnterTableView.swift */; };
 		D2DFF4BF200A9BCA00259284 /* SimpleComboBoxDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */; };
@@ -118,6 +118,7 @@
 		D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDatabaseUITests.swift; sourceTree = "<group>"; };
 		D28A4BEA1FD67523000768D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+CountedElements.swift"; sourceTree = "<group>"; };
+		D2A74D3023DC307200186E31 /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
 		D2B2AF5220D8661300BEFC15 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboBoxControllers.swift; sourceTree = "<group>"; };
 		D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFieldDelegates.swift; sourceTree = "<group>"; };
@@ -125,7 +126,6 @@
 		D2B616861FE0A4E40065A84F /* ModelClassification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassification.swift; sourceTree = "<group>"; };
 		D2B616881FE0A6110065A84F /* Model+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+NSImage.swift"; sourceTree = "<group>"; };
 		D2B6168A1FE0A6DE0065A84F /* ModelEra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEra.swift; sourceTree = "<group>"; };
-		D2B6168C1FE0ACD70065A84F /* PurchaseCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCondition.swift; sourceTree = "<group>"; };
 		D2DFF4B7200A977200259284 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		D2DFF4B9200A998E00259284 /* EnterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTableView.swift; sourceTree = "<group>"; };
 		D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleComboBoxDataSource.swift; sourceTree = "<group>"; };
@@ -167,8 +167,8 @@
 		D26673C31FE90B8D0069F9C7 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				D2B6168C1FE0ACD70065A84F /* PurchaseCondition.swift */,
 				D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */,
+				D2A74D3023DC307200186E31 /* Purchase+Condition.swift */,
 				D2B616861FE0A4E40065A84F /* ModelClassification.swift */,
 				D26673C11FE905950069F9C7 /* ModelDisposition.swift */,
 				D2B6168A1FE0A6DE0065A84F /* ModelEra.swift */,
@@ -454,9 +454,9 @@
 				D276FF2F1FE5D42700EA087F /* PurchaseModelsViewController.swift in Sources */,
 				D286E75A202166C50054A6A6 /* SearchViewController.swift in Sources */,
 				D26673BA1FE8F9590069F9C7 /* Train.swift in Sources */,
-				D2B6168D1FE0ACD70065A84F /* PurchaseCondition.swift in Sources */,
 				D276FF291FE4F6A600EA087F /* SourceListViewController.swift in Sources */,
 				D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */,
+				D2A74D3123DC307200186E31 /* Purchase+Condition.swift in Sources */,
 				D26673C71FE99F250069F9C7 /* ManagedObjectBacked.swift in Sources */,
 				D2FFF3BE20E20EAF000A4511 /* Shim.swift in Sources */,
 				D276FF331FE5F51500EA087F /* DecoderType.swift in Sources */,

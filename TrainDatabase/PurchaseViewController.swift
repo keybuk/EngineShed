@@ -108,7 +108,7 @@ class PurchaseViewController: NSViewController {
         
         priceTextField.objectValue = purchase.price
         
-        conditionComboBoxDataSource = EnumComboBoxDataSource(wrapping: PurchaseCondition.self)
+        conditionComboBoxDataSource = EnumComboBoxDataSource(wrapping: Purchase.Condition.self)
         conditionComboBox.dataSource = conditionComboBoxDataSource
         conditionComboBox.formatter = conditionComboBoxDataSource
         conditionComboBox.objectValue = purchase.condition.map(NSArray.init(object:))
@@ -177,7 +177,7 @@ class PurchaseViewController: NSViewController {
     }
     
     @IBAction func purchaseConditionChanged(_ sender: NSComboBox) {
-        purchase.condition = (sender.objectValue as? [PurchaseCondition])?.first
+        purchase.condition = (sender.objectValue as? [Purchase.Condition])?.first
     }
     
     @IBAction func valuationChanged(_ sender: NSTextField) {

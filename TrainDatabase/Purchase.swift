@@ -122,8 +122,8 @@ struct Purchase : ManagedObjectBacked {
         }
     }
     
-    var condition: PurchaseCondition? {
-        get { return PurchaseCondition(rawValue: managedObject.purchaseConditionRawValue) }
+    var condition: Condition? {
+        get { return Condition(rawValue: managedObject.purchaseConditionRawValue) }
         set {
             managedObject.purchaseConditionRawValue = newValue?.rawValue ?? 0
             try? managedObject.managedObjectContext?.save()
@@ -270,6 +270,8 @@ extension Purchase : CustomStringConvertible {
     }
     
 }
+
+extension Purchase.Condition: Codable {}
 
 extension Purchase : Encodable {
     
