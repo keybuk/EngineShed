@@ -17,46 +17,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        
-        let fetchRequest: NSFetchRequest<ModelManagedObject> = ModelManagedObject.fetchRequest()
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "modelClass", ascending: true),
-            NSSortDescriptor(key: "number", ascending: true),
-            NSSortDescriptor(key: "name", ascending: true),
-            NSSortDescriptor(key: "dispositionRawValue", ascending: true)
-        ]
-        
-        //fetchRequest.predicate = NSPredicate(format: "ANY tasks.title =[c] %@", "decoder", "dcc conversion")
-        //fetchRequest.predicate = NSPredicate(format: "ANY tasks.title =[c] %@ AND ANY tasks.title =[c] %@", "decoder", "dcc conversion")
-        
-        // NONE field = value get translated to ANY field != value, which is totally wrong;
-        // so we use SUBQUERY
-        //fetchRequest.predicate = NSPredicate(format: "ANY tasks.title =[c] %@ AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count = 0", "decoder", "dcc conversion")
-
-        //fetchRequest.predicate = NSPredicate(format: "(ANY tasks.title =[c] %@ OR ANY tasks.title =[c] %@) AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count = 0", "speaker", "examine speaker", "decoder")
-        
-        // probably check for pass through in couplings:
-        //fetchRequest.predicate = NSPredicate(format: "dispositionRawValue = %@ AND lightings.@count > 0 AND decoder = NULL AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count = 0", ModelDisposition.normal.rawValue, "decoder")
-
-        // usually zero:
-        //fetchRequest.predicate = NSPredicate(format: "dispositionRawValue = %@ AND motor != '' AND motor != NULL AND decoder = NULL AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count = 0", ModelDisposition.normal.rawValue, "decoder")
-        //fetchRequest.predicate = NSPredicate(format: "dispositionRawValue = %@ AND socket != '' AND socket != NULL AND lightings.@count = 0 AND motor != '' AND motor != NULL AND decoder = NULL AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count = 0", ModelDisposition.normal.rawValue, "decoder")
-
-        // Order Sound File:
-        fetchRequest.predicate = NSPredicate(format: "ANY tasks.title =[c] %@ AND decoder != NULL AND SUBQUERY(tasks, $task, $task.title =[c] %@).@count == 0", "sound file", "decoder")
-        
-
-        
-
-        
-        let modelObjects = try! persistentContainer.viewContext.fetch(fetchRequest)
-        for modelObject in modelObjects {
-            let model = Model(managedObject: modelObject)
-            print("\(model) \(model.tasks) \(model.decoder!.serialNumber)")
-        }
-        
-        print("")
-        print(modelObjects.count)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
