@@ -206,6 +206,8 @@ extension SourceListViewController : NSOutlineViewDelegate {
                 view.textField?.stringValue = "No Prototype"
             case .accessory:
                 view.textField?.stringValue = "Accessories"
+            case .vehicle:
+                view.textField?.stringValue = "Vehicles"
             }
             return view
         case let member as Member:

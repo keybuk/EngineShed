@@ -18,12 +18,13 @@ enum ModelClassification : Int16, Codable {
     case departmental
     case noPrototype
     case accessory
+    case vehicle
     
 }
 
 extension ModelClassification : EnumeratableEnum, CustomStringConvertible, ConvertibleFromString {
     
-    static let all: [ModelClassification] = [ .locomotive, .coach,. wagon, .multipleUnit, .departmental, .noPrototype, .accessory ]
+    static let all: [ModelClassification] = [ .locomotive, .coach,. wagon, .multipleUnit, .departmental, .noPrototype, .accessory, .vehicle ]
 
     var description: String {
         switch self {
@@ -41,6 +42,8 @@ extension ModelClassification : EnumeratableEnum, CustomStringConvertible, Conve
             return "No Prototype"
         case .accessory:
             return "Accessory"
+        case .vehicle:
+            return "Vehicle"
         }
     }
     
