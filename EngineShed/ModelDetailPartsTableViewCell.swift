@@ -30,7 +30,11 @@ class ModelDetailPartsTableViewCell : UITableViewCell, ModelSettable {
     }
 
     func configureCell() {
-        detailPartsLabel.text = model?.detailParts!.compactMap({ ($0 as! DetailPart).title }).sorted().joined(separator: ", ")
+        detailPartsLabel.text = model?.detailParts!
+            .filter({ !($0 as! DetailPart).isFitted })
+            .compactMap({ ($0 as! DetailPart).title })
+            .sorted()
+            .joined(separator: ", ")
     }
 
 }
