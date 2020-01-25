@@ -52,7 +52,7 @@ class DetailPartsTokenFieldDelegate : NSObject, NSTokenFieldDelegate {
         let item = NSMenuItem(title: "Fitted", action: nil, keyEquivalent: "")
         item.state = detailPart.isFitted ? .on : .off
         item.target = self
-        item.action = #selector(fittedChanged)
+        item.action = #selector(isFittedChanged)
         item.representedObject = tokenField
         menu.addItem(item)
         
@@ -60,7 +60,7 @@ class DetailPartsTokenFieldDelegate : NSObject, NSTokenFieldDelegate {
     }
     
     @objc
-    func fittedChanged(_ sender: NSMenuItem) {
+    func isFittedChanged(_ sender: NSMenuItem) {
         // This is a little bit of a hack since we need the tokenField itself to alter its objects;
         // use the representedObject
         guard let title = sender.menu?.title else { fatalError("Couldn't steal title from menu") }

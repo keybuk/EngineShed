@@ -255,25 +255,25 @@ struct Model : ManagedObjectBacked {
     var detailParts: Set<DetailPart> {
         get {
             let objects = managedObject.detailParts! as! Set<DetailPartManagedObject>
-            return Set(objects.map({ DetailPart(title: $0.title!, isFitted: $0.fitted) }))
+            return Set(objects.map({ DetailPart(title: $0.title!, isFitted: $0.isFitted) }))
         }
         
         set {
             let detailPartObjects = managedObject.detailParts! as! Set<DetailPartManagedObject>
             for detailPartObject in detailPartObjects {
                 if let detailPart = newValue.first(where: { $0.title == detailPartObject.title! }) {
-                    detailPartObject.fitted = detailPart.isFitted
+                    detailPartObject.isFitted = detailPart.isFitted
                 } else {
                     detailPartObject.model = nil
                     detailPartObject.managedObjectContext?.delete(detailPartObject)
                 }
             }
             
-            let oldValues = Set(detailPartObjects.map({ DetailPart(title: $0.title!, isFitted: $0.fitted) }))
+            let oldValues = Set(detailPartObjects.map({ DetailPart(title: $0.title!, isFitted: $0.isFitted) }))
             for newValue in newValue.subtracting(oldValues) {
                 let detailPartObject = DetailPartManagedObject(context: managedObject.managedObjectContext!)
                 detailPartObject.title = newValue.title
-                detailPartObject.fitted = newValue.isFitted
+                detailPartObject.isFitted = newValue.isFitted
                 detailPartObject.model = managedObject
             }
             
@@ -535,7 +535,7 @@ struct Model : ManagedObjectBacked {
         if let features = similarModels.flatMap({ $0.features }).repeatedValues(atLeast: similarModels.count / 2) { self.features = Set(features) }
         // modifications is omitted because that should always differ between individual models.
         
-        // detailParts gets copied over with fitted set, which may work, or may not; right now it reflects non-modified state of the world, so it works.
+        // detailParts gets copied over with isFitted set, which may work, or may not; right now it reflects non-modified state of the world, so it works.
         if let detailParts = similarModels.flatMap({ $0.detailParts }).repeatedValues(atLeast: similarModels.count / 2) { self.detailParts = Set(detailParts) }
         
         // Finally for tasks, there's simply a bunch we don't want to copy over, and some we want to sneak in regardless.

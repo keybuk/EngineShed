@@ -31,7 +31,7 @@
         <relationship name="decoders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Decoder" inverseName="type" inverseEntity="Decoder"/>
     </entity>
     <entity name="DetailPart" representedClassName="DetailPartManagedObject" syncable="YES" codeGenerationType="class">
-        <attribute name="fitted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isFitted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" elementID="fitted"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="detailParts" inverseEntity="Model"/>
     </entity>
@@ -122,7 +122,7 @@
         <element name="Coupling" positionX="-9" positionY="153" width="128" height="73"/>
         <element name="Decoder" positionX="-54" positionY="54" width="128" height="193"/>
         <element name="DecoderType" positionX="-63" positionY="-18" width="128" height="223"/>
-        <element name="DetailPart" positionX="0" positionY="126" width="128" height="30"/>
+        <element name="DetailPart" positionX="0" positionY="126" width="128" height="88"/>
         <element name="Feature" positionX="0" positionY="162" width="128" height="75"/>
         <element name="Light" positionX="-18" positionY="144" width="128" height="73"/>
         <element name="Model" positionX="-45" positionY="99" width="128" height="448"/>
