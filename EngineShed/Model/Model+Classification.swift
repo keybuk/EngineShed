@@ -17,6 +17,7 @@ extension Model {
         case departmental
         case noPrototype
         case accessory
+        case vehicle
     }
 
     var classification: Classification? {
@@ -35,6 +36,7 @@ extension Model.Classification: CustomStringConvertible, ConvertibleFromString {
         case .departmental: return "Departmental"
         case .noPrototype: return "No Prototype"
         case .accessory: return "Accessory"
+        case .vehicle: return "Vehicle"
         }
     }
 }
