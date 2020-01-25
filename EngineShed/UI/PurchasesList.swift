@@ -12,7 +12,7 @@ import CoreData
 extension Purchase : Identifiable {}
 
 struct PurchasesList : View {
-    var ordering: PurchaseOrdering = .date
+    var ordering: Purchase.Ordering = .date
 
     @FetchRequest(fetchRequest: Purchase.fetchRequestForPurchases(orderingBy: .date))
     var purchases: FetchedResults<Purchase>

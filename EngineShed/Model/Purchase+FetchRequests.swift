@@ -9,16 +9,13 @@
 import Foundation
 import CoreData
 
-enum PurchaseOrdering {
-
-    case date
-    case catalog
-
-}
-
 extension Purchase {
+    enum Ordering {
+        case date
+        case catalog
+    }
 
-    static func fetchRequestForPurchases(orderingBy ordering: PurchaseOrdering = .catalog) -> NSFetchRequest<Purchase> {
+    static func fetchRequestForPurchases(orderingBy ordering: Ordering = .catalog) -> NSFetchRequest<Purchase> {
         let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
         fetchRequest.fetchBatchSize = 20
 
@@ -56,6 +53,4 @@ extension Purchase {
 
         return fetchRequest
     }
-
 }
-

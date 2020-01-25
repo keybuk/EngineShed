@@ -16,7 +16,7 @@ class PurchaseTableViewCell : UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var storeLabel: UILabel!
 
-    var ordering: PurchaseOrdering = .catalog {
+    var ordering: Purchase.Ordering = .catalog {
         didSet {
             configureCell()
         }

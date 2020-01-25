@@ -13,7 +13,7 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
 
     var persistentContainer: NSPersistentContainer?
 
-    var ordering: PurchaseOrdering = .date
+    var ordering: Purchase.Ordering = .date
     var fetchRequest: NSFetchRequest<Purchase>?
 
     override func viewDidLoad() {
