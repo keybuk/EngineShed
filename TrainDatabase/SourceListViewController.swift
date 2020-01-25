@@ -103,7 +103,7 @@ extension SourceListViewController : NSOutlineViewDataSource {
             case .models:
                 return 6
             case .accessories:
-                return 2
+                return 3
             }
         default:
             return 0
@@ -146,6 +146,8 @@ extension SourceListViewController : NSOutlineViewDataSource {
                     return Member.decoders
                 case 1:
                     return ModelClassification.accessory
+                case 2:
+                    return ModelClassification.vehicle
                 default:
                     fatalError("Too many children in Accessories group")
                 }
