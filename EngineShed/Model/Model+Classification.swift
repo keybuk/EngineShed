@@ -8,20 +8,24 @@
 
 import Foundation
 
-enum ModelClassification : Int16, CaseIterable {
+extension Model {
+    enum Classification: Int16, CaseIterable {
+        case locomotive = 1
+        case coach
+        case wagon
+        case multipleUnit
+        case departmental
+        case noPrototype
+        case accessory
+    }
 
-    case locomotive = 1
-    case coach
-    case wagon
-    case multipleUnit
-    case departmental
-    case noPrototype
-    case accessory
-    
+    var classification: Classification? {
+        get { Classification(rawValue: classificationRawValue) }
+        set { classificationRawValue = newValue?.rawValue ?? 0 }
+    }
 }
 
-extension ModelClassification : CustomStringConvertible, ConvertibleFromString {
-    
+extension Model.Classification : CustomStringConvertible, ConvertibleFromString {
     var description: String {
         switch self {
         case .locomotive: return "Locomotive"
@@ -33,14 +37,4 @@ extension ModelClassification : CustomStringConvertible, ConvertibleFromString {
         case .accessory: return "Accessory"
         }
     }
-    
-}
-
-extension Model {
-
-    var classification: ModelClassification? {
-        get { ModelClassification(rawValue: classificationRawValue) }
-        set { classificationRawValue = newValue?.rawValue ?? 0 }
-    }
-
 }

@@ -12,7 +12,7 @@ import CoreData
 extension Model : Identifiable {}
 
 struct ModelsList : View {
-    var classification: ModelClassification?
+    var classification: Model.Classification?
     var grouping: ModelGrouping = .modelClass
 
     @FetchRequest(fetchRequest: Model.fetchRequestForModels(classification: nil, groupBy: .modelClass))

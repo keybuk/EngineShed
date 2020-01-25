@@ -31,7 +31,7 @@ class ModelClassificationPickerTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return ModelClassification.allCases.count
+        case 1: return Model.Classification.allCases.count
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -44,7 +44,7 @@ class ModelClassificationPickerTableViewController : UITableViewController {
             cell.textLabel?.text = "None"
             cell.accessoryType = model?.classification == nil ? .checkmark : .none
         case 1:
-            let classification = ModelClassification.allCases[indexPath.row]
+            let classification = Model.Classification.allCases[indexPath.row]
             cell.textLabel?.text = "\(classification)"
             cell.accessoryType = model?.classification == classification ? .checkmark : .none
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
@@ -60,7 +60,7 @@ class ModelClassificationPickerTableViewController : UITableViewController {
         switch model?.classification {
         case nil: currentIndexPath = IndexPath(row: 0, section: 0)
         case let classification?:
-            guard let row = ModelClassification.allCases.firstIndex(of: classification) else { preconditionFailure("Classification not in allCases") }
+            guard let row = Model.Classification.allCases.firstIndex(of: classification) else { preconditionFailure("Classification not in allCases") }
             currentIndexPath = IndexPath(row: row, section: 1)
         }
 
@@ -72,7 +72,7 @@ class ModelClassificationPickerTableViewController : UITableViewController {
         case 0:
             model?.classification = nil
         case 1:
-            model?.classification = ModelClassification.allCases[indexPath.row]
+            model?.classification = Model.Classification.allCases[indexPath.row]
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 

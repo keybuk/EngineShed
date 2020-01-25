@@ -30,12 +30,12 @@ class ClassificationsTableViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ModelClassification.allCases.count
+        return Model.Classification.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "classification", for: indexPath) as! ClassificationTableViewCell
-        cell.classification = ModelClassification.allCases[indexPath.row]
+        cell.classification = Model.Classification.allCases[indexPath.row]
         return cell
     }
 
@@ -47,7 +47,7 @@ class ClassificationsTableViewController : UITableViewController {
 
             let viewController = segue.destination as! ModelsTableViewController
             viewController.persistentContainer = persistentContainer
-            viewController.classification = ModelClassification.allCases[indexPath.row]
+            viewController.classification = Model.Classification.allCases[indexPath.row]
         }
     }
 

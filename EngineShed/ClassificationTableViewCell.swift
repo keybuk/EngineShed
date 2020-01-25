@@ -13,7 +13,7 @@ class ClassificationTableViewCell : UITableViewCell {
     @IBOutlet weak var classificationImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
 
-    var classification: ModelClassification? {
+    var classification: Model.Classification? {
         didSet {
             configureCell()
         }

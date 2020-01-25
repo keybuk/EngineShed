@@ -13,7 +13,7 @@ class ModelsTableViewController : UITableViewController, NSFetchedResultsControl
 
     var persistentContainer: NSPersistentContainer?
 
-    var classification: ModelClassification?
+    var classification: Model.Classification?
     var grouping: ModelGrouping = .modelClass
     var fetchRequest: NSFetchRequest<Model>?
 
