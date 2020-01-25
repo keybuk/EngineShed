@@ -16,7 +16,7 @@
 		D26673BE1FE8FB9C0069F9C7 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */; };
 		D26673C01FE8FBA10069F9C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673BF1FE8FBA10069F9C7 /* Model.swift */; };
 		D26673C21FE905950069F9C7 /* ModelDisposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C11FE905950069F9C7 /* ModelDisposition.swift */; };
-		D26673C51FE99E1D0069F9C7 /* EnumeratableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C41FE99E1D0069F9C7 /* EnumeratableEnum.swift */; };
+		D26673C51FE99E1D0069F9C7 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */; };
 		D26673C71FE99F250069F9C7 /* ManagedObjectBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */; };
 		D2709B081FF65557007029C5 /* EmptyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2709B071FF65557007029C5 /* EmptyDateFormatter.swift */; };
 		D276FF271FE4B01400EA087F /* ModelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D276FF261FE4B01400EA087F /* ModelsViewController.swift */; };
@@ -88,7 +88,7 @@
 		D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		D26673BF1FE8FBA10069F9C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D26673C11FE905950069F9C7 /* ModelDisposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDisposition.swift; sourceTree = "<group>"; };
-		D26673C41FE99E1D0069F9C7 /* EnumeratableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumeratableEnum.swift; sourceTree = "<group>"; };
+		D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
 		D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectBacked.swift; sourceTree = "<group>"; };
 		D2709B071FF65557007029C5 /* EmptyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDateFormatter.swift; sourceTree = "<group>"; };
 		D276FF261FE4B01400EA087F /* ModelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsViewController.swift; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 		D28A4BC61FD67523000768D8 /* TrainDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				D26673C41FE99E1D0069F9C7 /* EnumeratableEnum.swift */,
+				D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */,
 				D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */,
 				D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */,
 				D2FFF3BD20E20EAF000A4511 /* Shim.swift */,
@@ -490,7 +490,7 @@
 				D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */,
 				D2B616871FE0A4E40065A84F /* ModelClassification.swift in Sources */,
 				D26673C21FE905950069F9C7 /* ModelDisposition.swift in Sources */,
-				D26673C51FE99E1D0069F9C7 /* EnumeratableEnum.swift in Sources */,
+				D26673C51FE99E1D0069F9C7 /* ConvertibleFromString.swift in Sources */,
 				D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

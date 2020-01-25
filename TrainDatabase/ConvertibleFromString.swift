@@ -1,5 +1,5 @@
 //
-//  EnumeratableEnum.swift
+//  ConvertibleFromString.swift
 //  TrainDatabase
 //
 //  Created by Scott James Remnant on 12/19/17.
