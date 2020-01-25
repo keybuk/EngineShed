@@ -40,11 +40,16 @@
 		D2A74D3523DC318400186E31 /* Model+Classification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3223DC318400186E31 /* Model+Classification.swift */; };
 		D2A74D3623DC318400186E31 /* Model+Era.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3323DC318400186E31 /* Model+Era.swift */; };
 		D2A74D3723DC318400186E31 /* Model+Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3423DC318400186E31 /* Model+Disposition.swift */; };
+		D2A74D3B23DCDB8500186E31 /* DateMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3A23DCDB8500186E31 /* DateMigrationPolicy.swift */; };
 		D2B2AF5320D8661300BEFC15 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2AF5220D8661300BEFC15 /* CloudKit.framework */; };
 		D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */; };
 		D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */; };
 		D2B548381FEEFEEF00FE7ED0 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548371FEEFEEF00FE7ED0 /* PickerViewController.swift */; };
 		D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B616881FE0A6110065A84F /* Model+NSImage.swift */; };
+		D2DE8D2823DCE06700AF9344 /* Purchase+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE8D2723DCE06700AF9344 /* Purchase+Date.swift */; };
+		D2DE8D2A23DCE11200AF9344 /* Model+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE8D2923DCE11200AF9344 /* Model+Date.swift */; };
+		D2DE8D2C23DCE1B100AF9344 /* Decoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE8D2B23DCE1B100AF9344 /* Decoder+Date.swift */; };
+		D2DE8D2E23DCE71600AF9344 /* DateMappingModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D2DE8D2D23DCE71600AF9344 /* DateMappingModel.xcmappingmodel */; };
 		D2DFF4B8200A977200259284 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4B7200A977200259284 /* HorizontalScrollView.swift */; };
 		D2DFF4BA200A998E00259284 /* EnterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4B9200A998E00259284 /* EnterTableView.swift */; };
 		D2DFF4BF200A9BCA00259284 /* SimpleComboBoxDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */; };
@@ -115,11 +120,17 @@
 		D2A74D3323DC318400186E31 /* Model+Era.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Era.swift"; sourceTree = "<group>"; };
 		D2A74D3423DC318400186E31 /* Model+Disposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Disposition.swift"; sourceTree = "<group>"; };
 		D2A74D3823DCCECA00186E31 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
+		D2A74D3923DCDA6F00186E31 /* TrainDatabase 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 2.xcdatamodel"; sourceTree = "<group>"; };
+		D2A74D3A23DCDB8500186E31 /* DateMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMigrationPolicy.swift; sourceTree = "<group>"; };
 		D2B2AF5220D8661300BEFC15 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboBoxControllers.swift; sourceTree = "<group>"; };
 		D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFieldDelegates.swift; sourceTree = "<group>"; };
 		D2B548371FEEFEEF00FE7ED0 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		D2B616881FE0A6110065A84F /* Model+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+NSImage.swift"; sourceTree = "<group>"; };
+		D2DE8D2723DCE06700AF9344 /* Purchase+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Date.swift"; sourceTree = "<group>"; };
+		D2DE8D2923DCE11200AF9344 /* Model+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Date.swift"; sourceTree = "<group>"; };
+		D2DE8D2B23DCE1B100AF9344 /* Decoder+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decoder+Date.swift"; sourceTree = "<group>"; };
+		D2DE8D2D23DCE71600AF9344 /* DateMappingModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = DateMappingModel.xcmappingmodel; sourceTree = "<group>"; };
 		D2DFF4B7200A977200259284 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		D2DFF4B9200A998E00259284 /* EnterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTableView.swift; sourceTree = "<group>"; };
 		D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleComboBoxDataSource.swift; sourceTree = "<group>"; };
@@ -162,13 +173,16 @@
 			children = (
 				D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */,
 				D2A74D3023DC307200186E31 /* Purchase+Condition.swift */,
+				D2DE8D2723DCE06700AF9344 /* Purchase+Date.swift */,
 				D26673BF1FE8FBA10069F9C7 /* Model.swift */,
 				D2A74D3223DC318400186E31 /* Model+Classification.swift */,
 				D2A74D3423DC318400186E31 /* Model+Disposition.swift */,
 				D2A74D3323DC318400186E31 /* Model+Era.swift */,
+				D2DE8D2923DCE11200AF9344 /* Model+Date.swift */,
 				D2B616881FE0A6110065A84F /* Model+NSImage.swift */,
 				D276FF321FE5F51500EA087F /* DecoderType.swift */,
 				D26673B71FE8F2A40069F9C7 /* Decoder.swift */,
+				D2DE8D2B23DCE1B100AF9344 /* Decoder+Date.swift */,
 				D26673B91FE8F9590069F9C7 /* Train.swift */,
 				D26673BB1FE8F95F0069F9C7 /* TrainMember.swift */,
 				D25B47EB1FEFB6B0008A7EB1 /* TrainMember+NSImage.swift */,
@@ -224,6 +238,8 @@
 				D28A4BD31FD67523000768D8 /* Info.plist */,
 				D28A4BD41FD67523000768D8 /* TrainDatabase.entitlements */,
 				D28A4BCB1FD67523000768D8 /* TrainDatabase.xcdatamodeld */,
+				D2DE8D2D23DCE71600AF9344 /* DateMappingModel.xcmappingmodel */,
+				D2A74D3A23DCDB8500186E31 /* DateMigrationPolicy.swift */,
 			);
 			path = TrainDatabase;
 			sourceTree = "<group>";
@@ -443,6 +459,7 @@
 				D276FF2F1FE5D42700EA087F /* PurchaseModelsViewController.swift in Sources */,
 				D26673BA1FE8F9590069F9C7 /* Train.swift in Sources */,
 				D276FF291FE4F6A600EA087F /* SourceListViewController.swift in Sources */,
+				D2DE8D2A23DCE11200AF9344 /* Model+Date.swift in Sources */,
 				D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */,
 				D2A74D3123DC307200186E31 /* Purchase+Condition.swift in Sources */,
 				D26673C71FE99F250069F9C7 /* ManagedObjectBacked.swift in Sources */,
@@ -454,6 +471,7 @@
 				D276FF311FE5D43000EA087F /* ModelViewController.swift in Sources */,
 				D2B548381FEEFEEF00FE7ED0 /* PickerViewController.swift in Sources */,
 				D2709B081FF65557007029C5 /* EmptyDateFormatter.swift in Sources */,
+				D2DE8D2C23DCE1B100AF9344 /* Decoder+Date.swift in Sources */,
 				D2DFF4BA200A998E00259284 /* EnterTableView.swift in Sources */,
 				D2A74D3523DC318400186E31 /* Model+Classification.swift in Sources */,
 				D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */,
@@ -469,10 +487,13 @@
 				D2DFF4C1200A9BDC00259284 /* EnumComboBoxDataSource.swift in Sources */,
 				D2A74D3723DC318400186E31 /* Model+Disposition.swift in Sources */,
 				D2DFF4BF200A9BCA00259284 /* SimpleComboBoxDataSource.swift in Sources */,
+				D2DE8D2E23DCE71600AF9344 /* DateMappingModel.xcmappingmodel in Sources */,
+				D2DE8D2823DCE06700AF9344 /* Purchase+Date.swift in Sources */,
 				D25B47E91FEFA994008A7EB1 /* TrainMemberItem.swift in Sources */,
 				D26673B81FE8F2A40069F9C7 /* Decoder.swift in Sources */,
 				D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */,
 				D26673C51FE99E1D0069F9C7 /* ConvertibleFromString.swift in Sources */,
+				D2A74D3B23DCDB8500186E31 /* DateMigrationPolicy.swift in Sources */,
 				D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -791,9 +812,10 @@
 		D28A4BCB1FD67523000768D8 /* TrainDatabase.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D2A74D3923DCDA6F00186E31 /* TrainDatabase 2.xcdatamodel */,
 				D28A4BCC1FD67523000768D8 /* TrainDatabase.xcdatamodel */,
 			);
-			currentVersion = D28A4BCC1FD67523000768D8 /* TrainDatabase.xcdatamodel */;
+			currentVersion = D2A74D3923DCDA6F00186E31 /* TrainDatabase 2.xcdatamodel */;
 			path = TrainDatabase.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -86,10 +86,6 @@ class ModelViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        (decoderFirmwareDateTextField.formatter as? DateFormatter)?.timeZone = TimeZone(secondsFromGMT: 0)
-        (lastRunTextField.formatter as? DateFormatter)?.timeZone = TimeZone(secondsFromGMT: 0)
-        (lastOilTextField.formatter as? DateFormatter)?.timeZone = TimeZone(secondsFromGMT: 0)
-
         trainMemberCollectionView.register(TrainMemberItem.self, forItemWithIdentifier: .trainMemberItem)
         trainMemberCollectionView.registerForDraggedTypes([ .trainMemberItem ])
     }
@@ -201,8 +197,8 @@ class ModelViewController: NSViewController {
         modificationsTokenField.delegate = modificationsTokenFieldDelegate
         modificationsTokenField.objectValue = model.modifications.sorted()
 
-        lastRunTextField.objectValue = model.lastRun
-        lastOilTextField.objectValue = model.lastOil
+        lastRunTextField.objectValue = model.lastRunAsDate
+        lastOilTextField.objectValue = model.lastOilAsDate
         
         tasksTokenFieldDelegate = SimpleTokenFieldDelegate(using: model.sortedValuesForTasks(startingWith:))
         tasksTokenField.delegate = tasksTokenFieldDelegate
@@ -226,7 +222,7 @@ class ModelViewController: NSViewController {
         decoderFirmwareVersionComboBox.dataSource = decoderFirmwareVersionComboBoxDataSource
         decoderFirmwareVersionComboBox.stringValue = model.decoder?.firmwareVersion ?? ""
 
-        decoderFirmwareDateTextField.objectValue = model.decoder?.firmwareDate
+        decoderFirmwareDateTextField.objectValue = model.decoder?.firmwareDateAsDate
         decoderAddressTextField.objectValue = model.decoder?.address != 0 ? model.decoder?.address : nil
 
         decoderSoundAuthorComboBoxDataSource = model.decoder.flatMap({ try? SimpleComboBoxDataSource(using: $0.sortedValuesForSoundAuthor) })
@@ -378,7 +374,7 @@ class ModelViewController: NSViewController {
         model.decoder?.firmwareVersion = firmwareVersion
         
         if !firmwareVersion.isEmpty {
-            if let firmwareDate = try! model.decoder?.firmwareDate(for: firmwareVersion) {
+            if let firmwareDate = try! model.decoder?.suggestedFirmwareDate(for: firmwareVersion) {
                 model.decoder?.firmwareDate = firmwareDate
                 decoderFirmwareDateTextField.objectValue = firmwareDate
             }
@@ -390,7 +386,7 @@ class ModelViewController: NSViewController {
     @IBAction func decoderFirmwareDateChanged(_ sender: NSTextField) {
         let firmwareDate = sender.objectValue as? Date
         if firmwareDate != nil { model.createDecoderIfNeeded() }
-        model.decoder?.firmwareDate = firmwareDate
+        model.decoder?.firmwareDateAsDate = firmwareDate
         
         model.decoder?.deleteIfEmpty()
     }
@@ -491,11 +487,11 @@ class ModelViewController: NSViewController {
     }
     
     @IBAction func lastRunChanged(_ sender: NSTextField) {
-        model.lastRun = sender.objectValue as? Date
+        model.lastRunAsDate = sender.objectValue as? Date
     }
 
     @IBAction func lastOilChanged(_ sender: NSTextField) {
-        model.lastOil = sender.objectValue as? Date
+        model.lastOilAsDate = sender.objectValue as? Date
     }
 
     @IBAction func tasksShowPicker(_ sender: NSButton) {

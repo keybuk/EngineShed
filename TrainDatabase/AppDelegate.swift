@@ -91,11 +91,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let zoneID = CKRecordZone.ID(zoneName: "EngineShed", ownerName: CKCurrentUserDefaultName)
         let zone = CKRecordZone(zoneID: zoneID)
 
-        let calendar = Calendar(identifier: .gregorian)
-
-        var calendarInUTC = calendar
-        calendarInUTC.timeZone = TimeZone(secondsFromGMT: 0)!
-
         var records: [CKRecord] = []
         var trainMemberRecords: [TrainMember : CKRecord] = [:]
 
@@ -159,9 +154,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 decoderRecord["soundProject"] = decoder.soundProject as NSString
 
                 if let firmwareDate = decoder.firmwareDate {
-                    let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: firmwareDate)
                     let archiver = NSKeyedArchiver(requiringSecureCoding: true)
-                    archiver.encode(dateComponents, forKey: "FirmwareDate")
+                    archiver.encode(firmwareDate, forKey: "FirmwareDate")
                     archiver.finishEncoding()
                     decoderRecord["firmwareDate"] = archiver.encodedData as NSData
                 } else {
@@ -193,9 +187,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             purchaseRecord["notes"] = purchase.notes as NSString
 
             if let date = purchase.date {
-                let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: date)
                 let archiver = NSKeyedArchiver(requiringSecureCoding: true)
-                archiver.encode(dateComponents, forKey: "Date")
+                archiver.encode(date, forKey: "Date")
                 archiver.finishEncoding()
                 purchaseRecord["date"] = archiver.encodedData as NSData
             } else {
@@ -255,9 +248,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 modelRecord["notes"] = model.notes as NSString
 
                 if let lastRun = model.lastRun {
-                    let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: lastRun)
                     let archiver = NSKeyedArchiver(requiringSecureCoding: true)
-                    archiver.encode(dateComponents, forKey: "LastRun")
+                    archiver.encode(lastRun, forKey: "LastRun")
                     archiver.finishEncoding()
                     modelRecord["lastRun"] = archiver.encodedData as NSData
                 } else {
@@ -265,9 +257,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
 
                 if let lastOil = model.lastOil {
-                    let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: lastOil)
                     let archiver = NSKeyedArchiver(requiringSecureCoding: true)
-                    archiver.encode(dateComponents, forKey: "LastOil")
+                    archiver.encode(lastOil, forKey: "LastOil")
                     archiver.finishEncoding()
                     modelRecord["lastOil"] = archiver.encodedData as NSData
                 } else {
@@ -294,9 +285,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         decoderRecord["soundProject"] = decoder.soundProject as NSString
 
                         if let firmwareDate = decoder.firmwareDate {
-                            let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: firmwareDate)
                             let archiver = NSKeyedArchiver(requiringSecureCoding: true)
-                            archiver.encode(dateComponents, forKey: "FirmwareDate")
+                            archiver.encode(firmwareDate, forKey: "FirmwareDate")
                             archiver.finishEncoding()
                             decoderRecord["firmwareDate"] = archiver.encodedData as NSData
                         } else {

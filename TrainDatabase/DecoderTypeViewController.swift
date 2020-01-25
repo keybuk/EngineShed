@@ -96,7 +96,7 @@ class DecoderTypeViewController: NSViewController {
         case "firmwareVersion":
             decoders.sort(by: { $0.firmwareVersion < $1.firmwareVersion })
         case "firmwareDate":
-            decoders.sort(by: { ($0.firmwareDate ?? Date.distantPast) < ($1.firmwareDate ?? Date.distantPast) })
+            decoders.sort(by: { ($0.firmwareDateAsDate ?? Date.distantPast) < ($1.firmwareDateAsDate ?? Date.distantPast) })
         case "address":
             decoders.sort(by: { $0.address < $1.address })
         case "soundAuthor":
@@ -216,7 +216,7 @@ class DecoderTypeViewController: NSViewController {
         decoder.firmwareVersion = firmwareVersion
         
         if !firmwareVersion.isEmpty {
-            if let firmwareDate = try! decoder.firmwareDate(for: firmwareVersion) {
+            if let firmwareDate = try! decoder.suggestedFirmwareDate(for: firmwareVersion) {
                 decoder.firmwareDate = firmwareDate
                 tableView.reloadData(forRowIndexes: IndexSet(integer: tableView.selectedRow), columnIndexes: IndexSet(integer: tableView.column(withIdentifier: .firmwareDateColumn)))
             }
@@ -226,7 +226,7 @@ class DecoderTypeViewController: NSViewController {
     @IBAction func decoderFirmwareDateChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
         var decoder = decoders[tableView.selectedRow]
-        decoder.firmwareDate = sender.objectValue as? Date
+        decoder.firmwareDateAsDate = sender.objectValue as? Date
     }
     
     @IBAction func decoderAddressChanged(_ sender: NSTextField) {
@@ -287,8 +287,7 @@ extension DecoderTypeViewController : NSTableViewDelegate {
             return view
         case .firmwareDateColumn:
             let view = tableView.makeView(withIdentifier: .firmwareDateCell, owner: self) as! NSTableCellView
-            view.textField?.objectValue = decoder.firmwareDate
-            (view.textField?.formatter as? DateFormatter)?.timeZone = TimeZone(secondsFromGMT: 0)
+            view.textField?.objectValue = decoder.firmwareDateAsDate
             return view
         case .addressColumn:
             let view = tableView.makeView(withIdentifier: .addressCell, owner: self) as! NSTableCellView

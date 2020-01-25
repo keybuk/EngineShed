@@ -59,14 +59,6 @@ struct Decoder : ManagedObjectBacked {
         }
     }
     
-    var firmwareDate: Date? {
-        get { return managedObject.firmwareDate }
-        set {
-            managedObject.firmwareDate = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
     var address: Int {
         get { return Int(managedObject.address) }
         set {
@@ -165,7 +157,7 @@ struct Decoder : ManagedObjectBacked {
     }
 
 
-    func firmwareDate(for version: String) throws -> Date? {
+    func suggestedFirmwareDate(for version: String) throws -> DateComponents? {
         guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
         
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = DecoderManagedObject.fetchRequest()
@@ -181,7 +173,7 @@ struct Decoder : ManagedObjectBacked {
         
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
-        let results = try context.fetch(fetchRequest) as! [[String: Date?]]
+        let results = try context.fetch(fetchRequest) as! [[String: DateComponents?]]
         return results.first.flatMap({ $0["firmwareDate"] ?? nil })
     }
     

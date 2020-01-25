@@ -56,8 +56,6 @@ class PurchaseViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        (dateTextField.formatter as? DateFormatter)?.timeZone = TimeZone(secondsFromGMT: 0)
     }
     
     override func viewDidAppear() {
@@ -100,7 +98,7 @@ class PurchaseViewController: NSViewController {
         limitedEditionTextField.stringValue = purchase.limitedEdition
         limitedEditionNumberTextField.objectValue = purchase.limitedEditionNumber != 0 ? purchase.limitedEditionNumber : nil
         limitedEditionCountTextField.objectValue = purchase.limitedEditionCount != 0 ? purchase.limitedEditionCount : nil
-        dateTextField.objectValue = purchase.date
+        dateTextField.objectValue = purchase.dateAsDate
         
         storeComboBoxDataSource = try? SimpleComboBoxDataSource(using: purchase.sortedValuesForStore)
         storeComboBox.dataSource = storeComboBoxDataSource
@@ -165,7 +163,7 @@ class PurchaseViewController: NSViewController {
     }
     
     @IBAction func dateChanged(_ sender: NSTextField) {
-        purchase.date = sender.objectValue as? Date
+        purchase.dateAsDate = sender.objectValue as? Date
     }
     
     @IBAction func storeChanged(_ sender: NSComboBox) {

@@ -98,14 +98,6 @@ struct Purchase : ManagedObjectBacked {
         }
     }
     
-    var date: Date? {
-        get { return managedObject.date }
-        set {
-            managedObject.date = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
     var store: String {
         get { return managedObject.store ?? "" }
         set {

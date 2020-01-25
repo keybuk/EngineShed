@@ -128,22 +128,6 @@ struct Model : ManagedObjectBacked {
         }
     }
     
-    var lastRun: Date? {
-        get { return managedObject.lastRun }
-        set {
-            managedObject.lastRun = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var lastOil: Date? {
-        get { return managedObject.lastOil }
-        set {
-            managedObject.lastOil = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-
     var notes: String {
         get { return managedObject.notes ?? "" }
         set {
