@@ -22,7 +22,7 @@ struct Decoder : ManagedObjectBacked {
         managedObject.serialNumber = ""
         managedObject.firmwareVersion = ""
         managedObject.soundAuthor = ""
-        managedObject.soundFile = ""
+        managedObject.soundProject = ""
     }
 
 
@@ -83,10 +83,10 @@ struct Decoder : ManagedObjectBacked {
         }
     }
     
-    var soundFile: String {
-        get { return managedObject.soundFile ?? "" }
+    var soundProject: String {
+        get { return managedObject.soundProject ?? "" }
         set {
-            managedObject.soundFile = newValue
+            managedObject.soundProject = newValue
             try? managedObject.managedObjectContext?.save()
         }
     }
@@ -102,7 +102,7 @@ struct Decoder : ManagedObjectBacked {
         guard model == nil else { fatalError("deleteIfUnused should only be used on a decoder not in a model ")}
 
         // Discard any decoder without a type (since we can't reference it from the UI), or a typed decoder without other information.
-        if type == nil || (serialNumber.isEmpty && firmwareVersion.isEmpty && firmwareDate == nil && address == 0 && soundAuthor.isEmpty && soundFile.isEmpty) {
+        if type == nil || (serialNumber.isEmpty && firmwareVersion.isEmpty && firmwareDate == nil && address == 0 && soundAuthor.isEmpty && soundProject.isEmpty) {
             managedObject.managedObjectContext?.delete(managedObject)
             try? managedObject.managedObjectContext?.save()
             return true
@@ -117,7 +117,7 @@ struct Decoder : ManagedObjectBacked {
 
         // This is subtly different from above - this only discard a decoder if it contains no information aside from being attached to a model, while
         // the above is intended for use when a decoder is no longer attached to a model.
-        if type == nil && serialNumber.isEmpty && firmwareVersion.isEmpty && firmwareDate == nil && address == 0 && soundAuthor.isEmpty && soundFile.isEmpty {
+        if type == nil && serialNumber.isEmpty && firmwareVersion.isEmpty && firmwareDate == nil && address == 0 && soundAuthor.isEmpty && soundProject.isEmpty {
             managedObject.managedObjectContext?.delete(managedObject)
             try? managedObject.managedObjectContext?.save()
             return true
@@ -205,7 +205,7 @@ extension Decoder : Encodable {
         case firmwareDate
         case address
         case soundAuthor
-        case soundFile
+        case soundProject
         case modelID
     }
     
@@ -217,7 +217,7 @@ extension Decoder : Encodable {
         try container.encodeIfPresent(firmwareDate, forKey: .firmwareDate)
         try container.encode(address, forKey: .address)
         try container.encode(soundAuthor, forKey: .soundAuthor)
-        try container.encode(soundFile, forKey: .soundFile)
+        try container.encode(soundProject, forKey: .soundProject)
         try container.encodeIfPresent(model?.managedObject.objectID.uriRepresentation(), forKey: .modelID)
     }
     

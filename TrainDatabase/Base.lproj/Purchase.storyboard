@@ -1258,15 +1258,15 @@
                                                         <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHH-q5-hgJ">
                                                             <rect key="frame" x="20" y="853" width="594" height="44"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9IB-tj-PKL">
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9IB-tj-PKL" userLabel="Lights:">
                                                                     <rect key="frame" x="-2" y="26" width="116" height="16"/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Lighting:" id="4tf-68-JAj">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Lights:" id="4tf-68-JAj" userLabel="Lights:">
                                                                         <font key="font" metaFont="systemMedium" size="13"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <tokenField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OFN-nT-8ww">
+                                                                <tokenField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OFN-nT-8ww" userLabel="Lights Token Field">
                                                                     <rect key="frame" x="120" y="0.0" width="440" height="44"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="SoK-FV-4PA"/>
@@ -1277,7 +1277,7 @@
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </tokenFieldCell>
                                                                     <connections>
-                                                                        <action selector="lightingChanged:" target="LDT-ap-tKV" id="jhh-vg-zuX"/>
+                                                                        <action selector="lightsChanged:" target="LDT-ap-tKV" id="Xs7-We-l15"/>
                                                                     </connections>
                                                                 </tokenField>
                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0vY-nl-wIl">
@@ -1287,7 +1287,7 @@
                                                                         <font key="font" metaFont="label" size="11"/>
                                                                     </buttonCell>
                                                                     <connections>
-                                                                        <action selector="lightingShowPicker:" target="LDT-ap-tKV" id="bnk-nd-ZDl"/>
+                                                                        <action selector="lightsShowPicker:" target="LDT-ap-tKV" id="Jkd-fy-bnx"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -1558,7 +1558,7 @@
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d9t-eh-ott">
                                                                     <rect key="frame" x="-2" y="3" width="116" height="16"/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Sound File:" id="RWQ-V0-PxR">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Sound Project:" id="RWQ-V0-PxR">
                                                                         <font key="font" metaFont="systemMedium" size="13"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1572,7 +1572,7 @@
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <action selector="decoderSoundFileChanged:" target="LDT-ap-tKV" id="Aox-4g-GFK"/>
+                                                                        <action selector="decoderSoundProjectChanged:" target="LDT-ap-tKV" id="1IV-8j-gKC"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -2209,7 +2209,7 @@
                         <outlet property="decoderFirmwareVersionComboBox" destination="RAU-dM-1xs" id="86E-LE-euy"/>
                         <outlet property="decoderSerialNumberComboBox" destination="DsE-mL-zeQ" id="108-Hk-UNk"/>
                         <outlet property="decoderSoundAuthorComboBox" destination="z3T-jU-vyO" id="YpV-04-zZK"/>
-                        <outlet property="decoderSoundFileTextField" destination="rHg-rq-UhO" id="Rk6-vs-l96"/>
+                        <outlet property="decoderSoundProjectTextField" destination="rHg-rq-UhO" id="DLQ-qb-vTn"/>
                         <outlet property="decoderTypeComboBox" destination="BGc-CD-y9F" id="jPX-Qc-fwj"/>
                         <outlet property="detailPartsTokenField" destination="WKm-Dx-YoW" id="Llw-k3-GEr"/>
                         <outlet property="detailsTextField" destination="mte-YJ-LMX" id="rbs-y1-6Mv"/>
@@ -2219,7 +2219,7 @@
                         <outlet property="imageView" destination="pX6-s9-6vC" id="uz7-O4-IPd"/>
                         <outlet property="lastOilTextField" destination="Bob-zX-PAK" id="DGI-ah-Jcp"/>
                         <outlet property="lastRunTextField" destination="dvZ-cD-4xT" id="c4h-f6-Y2I"/>
-                        <outlet property="lightingTokenField" destination="OFN-nT-8ww" id="OKq-6T-bhw"/>
+                        <outlet property="lightsTokenField" destination="OFN-nT-8ww" id="IMS-1A-LWn"/>
                         <outlet property="liveryComboBox" destination="t1P-3i-KEF" id="gA9-dV-OXC"/>
                         <outlet property="modelClassTextField" destination="IL4-u8-yIU" id="nil-NT-b81"/>
                         <outlet property="modificationsTokenField" destination="zPp-8q-ktp" id="wzU-cE-V5r"/>

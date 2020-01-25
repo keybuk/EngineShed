@@ -41,7 +41,7 @@ class ModelViewController: NSViewController {
     @IBOutlet var trainComboBox: NSComboBox!
     @IBOutlet var trainMemberCollectionView: NSCollectionView!
     @IBOutlet var motorComboBox: NSComboBox!
-    @IBOutlet var lightingTokenField: NSTokenField!
+    @IBOutlet var lightsTokenField: NSTokenField!
     @IBOutlet var socketComboBox: NSComboBox!
     @IBOutlet var decoderTypeComboBox: NSComboBox!
     @IBOutlet var decoderSerialNumberComboBox: NSComboBox!
@@ -49,7 +49,7 @@ class ModelViewController: NSViewController {
     @IBOutlet var decoderFirmwareDateTextField: NSTextField!
     @IBOutlet var decoderAddressTextField: NSTextField!
     @IBOutlet var decoderSoundAuthorComboBox: NSComboBox!
-    @IBOutlet var decoderSoundFileTextField: NSTextField!
+    @IBOutlet var decoderSoundProjectTextField: NSTextField!
     @IBOutlet var speakerComboBox: NSComboBox!
     @IBOutlet var speakerFittingTokenField: NSTokenField!
     @IBOutlet var couplingsTokenField: NSTokenField!
@@ -67,7 +67,7 @@ class ModelViewController: NSViewController {
     var dispositionComboBoxDataSource: EnumComboBoxDataSource?
     var trainComboBoxController: ModelTrainComboBoxController?
     var motorComboBoxDataSource: SimpleComboBoxDataSource?
-    var lightingTokenFieldDelegate: SimpleTokenFieldDelegate?
+    var lightsTokenFieldDelegate: SimpleTokenFieldDelegate?
     var socketComboBoxDataSource: SimpleComboBoxDataSource?
     var decoderTypeComboBoxController: DecoderTypeComboBoxController?
     var decoderSerialNumberComboBoxController: DecoderSerialNumberComboBoxController?
@@ -166,9 +166,9 @@ class ModelViewController: NSViewController {
         motorComboBox.dataSource = motorComboBoxDataSource
         motorComboBox.stringValue = model.motor
         
-        lightingTokenFieldDelegate = SimpleTokenFieldDelegate(using: model.sortedValuesForLighting(startingWith:))
-        lightingTokenField.delegate = lightingTokenFieldDelegate
-        lightingTokenField.objectValue = model.lighting.sorted()
+        lightsTokenFieldDelegate = SimpleTokenFieldDelegate(using: model.sortedValuesForLights(startingWith:))
+        lightsTokenField.delegate = lightsTokenFieldDelegate
+        lightsTokenField.objectValue = model.lights.sorted()
 
         socketComboBoxDataSource = try? SimpleComboBoxDataSource(using: model.sortedValuesForSocket)
         socketComboBox.dataSource = socketComboBoxDataSource
@@ -233,7 +233,7 @@ class ModelViewController: NSViewController {
         decoderSoundAuthorComboBox.dataSource = decoderSoundAuthorComboBoxDataSource
         decoderSoundAuthorComboBox.stringValue = model.decoder?.soundAuthor ?? ""
         
-        decoderSoundFileTextField.stringValue = model.decoder?.soundFile ?? ""
+        decoderSoundProjectTextField.stringValue = model.decoder?.soundProject ?? ""
     }
     
     func fillFromSimilar() {
@@ -326,16 +326,16 @@ class ModelViewController: NSViewController {
         model.motor = sender.stringValue
     }
     
-    @IBAction func lightingShowPicker(_ sender: NSButton) {
+    @IBAction func lightsShowPicker(_ sender: NSButton) {
         guard let pickerViewController = storyboard?.instantiateController(withIdentifier: .pickerViewController) as? PickerViewController else { return }
-        pickerViewController.pick(for: lightingTokenField, from: try! model.sortedValuesForLighting(), setValues: model.lighting) {
-            self.model.lighting = $0
-            self.lightingTokenField.objectValue = self.model.lighting.sorted()
+        pickerViewController.pick(for: lightsTokenField, from: try! model.sortedValuesForLights(), setValues: model.lights) {
+            self.model.lights = $0
+            self.lightsTokenField.objectValue = self.model.lights.sorted()
         }
     }
     
-    @IBAction func lightingChanged(_ sender: NSTokenField) {
-        model.lighting = Set(sender.objectValue as! [String])
+    @IBAction func lightsChanged(_ sender: NSTokenField) {
+        model.lights = Set(sender.objectValue as! [String])
     }
     
     @IBAction func socketChanged(_ sender: NSTextField) {
@@ -411,10 +411,10 @@ class ModelViewController: NSViewController {
         model.decoder?.deleteIfEmpty()
     }
     
-    @IBAction func decoderSoundFileChanged(_ sender: NSTextField) {
-        let soundFile = sender.stringValue
-        if !soundFile.isEmpty { model.createDecoderIfNeeded() }
-        model.decoder?.soundFile = soundFile
+    @IBAction func decoderSoundProjectChanged(_ sender: NSTextField) {
+        let soundProject = sender.stringValue
+        if !soundProject.isEmpty { model.createDecoderIfNeeded() }
+        model.decoder?.soundProject = soundProject
         
         model.decoder?.deleteIfEmpty()
     }

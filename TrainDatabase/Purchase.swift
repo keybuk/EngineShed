@@ -123,9 +123,9 @@ struct Purchase : ManagedObjectBacked {
     }
     
     var condition: Condition? {
-        get { return Condition(rawValue: managedObject.purchaseConditionRawValue) }
+        get { return Condition(rawValue: managedObject.conditionRawValue) }
         set {
-            managedObject.purchaseConditionRawValue = newValue?.rawValue ?? 0
+            managedObject.conditionRawValue = newValue?.rawValue ?? 0
             try? managedObject.managedObjectContext?.save()
         }
     }

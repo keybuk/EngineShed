@@ -156,7 +156,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
                 decoderRecord["address"] = decoder.address as NSNumber
                 decoderRecord["soundAuthor"] = decoder.soundAuthor as NSString
-                decoderRecord["soundProject"] = decoder.soundFile as NSString
+                decoderRecord["soundProject"] = decoder.soundProject as NSString
 
                 if let firmwareDate = decoder.firmwareDate {
                     let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: firmwareDate)
@@ -238,7 +238,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 modelRecord["era"] = model.era?.rawValue as NSNumber?
                 modelRecord["disposition"] = model.disposition?.rawValue as NSNumber?
                 modelRecord["motor"] = model.motor as NSString
-                if !model.lighting.isEmpty { modelRecord["lights"] = Array(model.lighting) as NSArray }
+                if !model.lights.isEmpty { modelRecord["lights"] = Array(model.lights) as NSArray }
                 modelRecord["socket"] = model.socket as NSString
                 modelRecord["speaker"] = model.speaker as NSString
                 if !model.speakerFitting.isEmpty { modelRecord["speakerFittings"] = Array(model.speakerFitting) as NSArray }
@@ -291,7 +291,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         decoderRecord["firmwareVersion"] = decoder.firmwareVersion as NSString
                         decoderRecord["address"] = decoder.address as NSNumber
                         decoderRecord["soundAuthor"] = decoder.soundAuthor as NSString
-                        decoderRecord["soundProject"] = decoder.soundFile as NSString
+                        decoderRecord["soundProject"] = decoder.soundProject as NSString
 
                         if let firmwareDate = decoder.firmwareDate {
                             let dateComponents = calendarInUTC.dateComponents([ .year, .month, .day ], from: firmwareDate)
@@ -412,9 +412,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 decoderTypeObject.productFamily = decoderTypeRecord["productFamily"]
                 decoderTypeObject.productDescription = decoderTypeRecord["productDescription"]
                 decoderTypeObject.socket = decoderTypeRecord["socket"]
-                decoderTypeObject.programmable = decoderTypeRecord["isProgrammable"] ?? false
-                decoderTypeObject.sound = decoderTypeRecord["hasSound"] ?? false
-                decoderTypeObject.railCom = decoderTypeRecord["hasRailCom"] ?? false
+                decoderTypeObject.isProgrammable = decoderTypeRecord["isProgrammable"] ?? false
+                decoderTypeObject.hasSound = decoderTypeRecord["hasSound"] ?? false
+                decoderTypeObject.hasRailCom = decoderTypeRecord["hasRailCom"] ?? false
                 decoderTypeObject.minimumStock = decoderTypeRecord["minimumStock"] ?? 0
 
                 let data = NSMutableData()
@@ -441,7 +441,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         decoderObject.firmwareVersion = decoderRecord["firmwareVersion"]
                         decoderObject.address = decoderRecord["address"] ?? 0
                         decoderObject.soundAuthor = decoderRecord["soundAuthor"]
-                        decoderObject.soundFile = decoderRecord["soundProject"]
+                        decoderObject.soundProject = decoderRecord["soundProject"]
 
                         if let data = decoderRecord["firmwareDate"] as? Data,
                             let unarchiver = try? NSKeyedUnarchiver(forReadingFrom: data)
@@ -500,6 +500,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "TrainDatabase")
+
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error {
                 // Replace this implementation with code to handle the error appropriately.

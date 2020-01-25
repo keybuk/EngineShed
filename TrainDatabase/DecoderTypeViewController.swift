@@ -20,8 +20,8 @@ private extension NSUserInterfaceItemIdentifier {
     static let addressCell = NSUserInterfaceItemIdentifier("addressCell")
     static let soundAuthorColumn = NSUserInterfaceItemIdentifier("soundAuthorColumn")
     static let soundAuthorCell = NSUserInterfaceItemIdentifier("soundAuthorCell")
-    static let soundFileColumn = NSUserInterfaceItemIdentifier("soundFileColumn")
-    static let soundFileCell = NSUserInterfaceItemIdentifier("soundFileCell")
+    static let soundProjectColumn = NSUserInterfaceItemIdentifier("soundProjectColumn")
+    static let soundProjectCell = NSUserInterfaceItemIdentifier("soundProjectCell")
 
 }
 
@@ -32,9 +32,9 @@ class DecoderTypeViewController: NSViewController {
     @IBOutlet var productFamilyComboBox: NSComboBox!
     @IBOutlet var productDescriptionTextField: NSTextField!
     @IBOutlet var socketComboBox: NSComboBox!
-    @IBOutlet var programmableCheckBox: NSButton!
-    @IBOutlet var soundCheckBox: NSButton!
-    @IBOutlet var railComCheckBox: NSButton!
+    @IBOutlet var isProgrammableCheckBox: NSButton!
+    @IBOutlet var hasSoundCheckBox: NSButton!
+    @IBOutlet var hasRailComCheckBox: NSButton!
     @IBOutlet var minimumStockTextField: NSTextField!
     
     @IBOutlet var tableView: NSTableView!
@@ -101,8 +101,8 @@ class DecoderTypeViewController: NSViewController {
             decoders.sort(by: { $0.address < $1.address })
         case "soundAuthor":
             decoders.sort(by: { $0.soundAuthor < $1.soundAuthor })
-        case "soundFile":
-            decoders.sort(by: { $0.soundFile < $1.soundFile })
+        case "soundProject":
+            decoders.sort(by: { $0.soundProject < $1.soundProject })
         default:
             break
         }
@@ -129,9 +129,9 @@ class DecoderTypeViewController: NSViewController {
         socketComboBox.dataSource = socketComboBoxDataSource
         socketComboBox.stringValue = decoderType.socket
 
-        programmableCheckBox.state = decoderType.isProgrammable ? .on : .off
-        soundCheckBox.state = decoderType.hasSound ? .on : .off
-        railComCheckBox.state = decoderType.hasRailCom ? .on : .off
+        isProgrammableCheckBox.state = decoderType.isProgrammable ? .on : .off
+        hasSoundCheckBox.state = decoderType.hasSound ? .on : .off
+        hasRailComCheckBox.state = decoderType.hasRailCom ? .on : .off
         minimumStockTextField.objectValue = decoderType.minimumStock != 0 ? decoderType.minimumStock : nil
         
         tableView.reloadData()
@@ -187,15 +187,15 @@ class DecoderTypeViewController: NSViewController {
         decoderType.socket = sender.stringValue
     }
     
-    @IBAction func programmableChanged(_ sender: NSButton) {
+    @IBAction func isProgrammableChanged(_ sender: NSButton) {
         decoderType.isProgrammable = sender.state == .on
     }
     
-    @IBAction func soundChanged(_ sender: NSButton) {
+    @IBAction func hasSoundChanged(_ sender: NSButton) {
         decoderType.hasSound = sender.state == .on
     }
     
-    @IBAction func railComChanged(_ sender: NSButton) {
+    @IBAction func hasRailComChanged(_ sender: NSButton) {
         decoderType.hasRailCom = sender.state == .on
     }
     
@@ -241,10 +241,10 @@ class DecoderTypeViewController: NSViewController {
         decoder.soundAuthor = sender.stringValue
     }
 
-    @IBAction func decoderSoundFileChanged(_ sender: NSTextField) {
+    @IBAction func decoderSoundProjectChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
         var decoder = decoders[tableView.selectedRow]
-        decoder.soundFile = sender.stringValue
+        decoder.soundProject = sender.stringValue
     }
     
 }
@@ -300,9 +300,9 @@ extension DecoderTypeViewController : NSTableViewDelegate {
             view.dataSource = try? SimpleComboBoxDataSource(using: decoder.sortedValuesForSoundAuthor)
             (view.textField as? NSComboBox)?.dataSource = view.dataSource
             return view
-        case .soundFileColumn:
-            let view = tableView.makeView(withIdentifier: .soundFileCell, owner: self) as! NSTableCellView
-            view.textField?.stringValue = decoder.soundFile
+        case .soundProjectColumn:
+            let view = tableView.makeView(withIdentifier: .soundProjectCell, owner: self) as! NSTableCellView
+            view.textField?.stringValue = decoder.soundProject
             return view
         default:
             return nil

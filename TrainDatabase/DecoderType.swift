@@ -82,25 +82,25 @@ struct DecoderType : ManagedObjectBacked {
     }
     
     var isProgrammable: Bool {
-        get { return managedObject.programmable }
+        get { return managedObject.isProgrammable }
         set {
-            managedObject.programmable = newValue
+            managedObject.isProgrammable = newValue
             try? managedObject.managedObjectContext?.save()
         }
     }
     
     var hasSound: Bool {
-        get { return managedObject.sound }
+        get { return managedObject.hasSound }
         set {
-            managedObject.sound = newValue
+            managedObject.hasSound = newValue
             try? managedObject.managedObjectContext?.save()
         }
     }
     
     var hasRailCom: Bool {
-        get { return managedObject.railCom }
+        get { return managedObject.hasRailCom }
         set {
-            managedObject.railCom = newValue
+            managedObject.hasRailCom = newValue
             try? managedObject.managedObjectContext?.save()
         }
     }
@@ -160,7 +160,7 @@ struct DecoderType : ManagedObjectBacked {
     }
     
     func spareDecoderCount() -> Int {
-        return decoders.filter({ $0.model == nil && $0.soundAuthor.isEmpty && $0.soundFile.isEmpty }).count
+        return decoders.filter({ $0.model == nil && $0.soundAuthor.isEmpty && $0.soundProject.isEmpty }).count
     }
     
     

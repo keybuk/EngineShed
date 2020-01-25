@@ -197,13 +197,13 @@ struct Model : ManagedObjectBacked {
         try? managedObject.managedObjectContext?.save()
     }
 
-    var lighting: Set<String> {
+    var lights: Set<String> {
         get {
-            let objects = managedObject.lightings! as! Set<LightingManagedObject>
+            let objects = managedObject.lights! as! Set<LightManagedObject>
             return Set(objects.map({ $0.title! }))
         }
         
-        set { updateValues(using: LightingManagedObject.self, for: "lightings", from: newValue) }
+        set { updateValues(using: LightManagedObject.self, for: "lights", from: newValue) }
     }
     
     var speakerFitting: Set<String> {
@@ -341,14 +341,14 @@ struct Model : ManagedObjectBacked {
             if speaker.isEmpty {
                 tasks.insert("Speaker")
             }
-            if decoder?.soundFile.isEmpty ?? true {
+            if decoder?.soundProject.isEmpty ?? true {
                 tasks.insert("Sound File")
             }
         }
-        if !speaker.isEmpty && (decoder?.soundFile.isEmpty ?? true) {
+        if !speaker.isEmpty && (decoder?.soundProject.isEmpty ?? true) {
             tasks.insert("Sound File")
         }
-        /*if !lighting.isEmpty && decoder == nil {
+        /*if !lights.isEmpty && decoder == nil {
             tasks.insert("Decoder")
             
             if socket.isEmpty {
@@ -378,8 +378,8 @@ struct Model : ManagedObjectBacked {
     }
     
     
-    func sortedValuesForLighting(startingWith string: String? = nil) throws -> [String] {
-        return try sortedValues(from: LightingManagedObject.self, for: "title", ascending: true, startingWith: string)
+    func sortedValuesForLights(startingWith string: String? = nil) throws -> [String] {
+        return try sortedValues(from: LightManagedObject.self, for: "title", ascending: true, startingWith: string)
     }
     
     func sortedValuesForSpeakerFitting(startingWith string: String? = nil) throws -> [String] {
@@ -528,7 +528,7 @@ struct Model : ManagedObjectBacked {
         // FIXME: some notes should probably be copied.
         
         // For the lists, we look for something slightly different; we look for the values that appear in at least half of the similar models.
-        if let lighting = similarModels.flatMap({ $0.lighting }).repeatedValues(atLeast: similarModels.count / 2) { self.lighting = Set(lighting) }
+        if let lights = similarModels.flatMap({ $0.lights }).repeatedValues(atLeast: similarModels.count / 2) { self.lights = Set(lights) }
         // FIXME: speakerFitting? discuss!
         //if let speakerFitting = similarModels.flatMap({ $0.speakerFitting }).repeatedValues(atLeast: count / 2) { model.speakerFitting = Set(speakerFitting) }
         if let couplings = similarModels.flatMap({ $0.couplings }).repeatedValues(atLeast: similarModels.count / 2) { self.couplings = Set(couplings) }
@@ -605,7 +605,7 @@ extension Model : Encodable {
         case era
         case disposition
         case motor
-        case lighting
+        case lights
         case socket
         case speaker
         case speakerFitting
@@ -634,7 +634,7 @@ extension Model : Encodable {
         try container.encodeIfPresent(era, forKey: .era)
         try container.encodeIfPresent(disposition, forKey: .disposition)
         try container.encode(motor, forKey: .motor)
-        try container.encode(lighting, forKey: .lighting)
+        try container.encode(lights, forKey: .lights)
         try container.encode(socket, forKey: .socket)
         try container.encode(speaker, forKey: .speaker)
         try container.encode(speakerFitting, forKey: .speakerFitting)
