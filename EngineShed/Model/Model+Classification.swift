@@ -25,7 +25,7 @@ extension Model {
     }
 }
 
-extension Model.Classification : CustomStringConvertible, ConvertibleFromString {
+extension Model.Classification: CustomStringConvertible, ConvertibleFromString {
     var description: String {
         switch self {
         case .locomotive: return "Locomotive"

@@ -8,16 +8,20 @@
 
 import Foundation
 
-enum ModelDisposition : Int16, CaseIterable {
-    
-    case normal = 1
-    case collectorItem
-    case spareParts
-    
+extension Model {
+    enum Disposition: Int16, CaseIterable {
+        case normal = 1
+        case collectorItem
+        case spareParts
+    }
+
+    var disposition: Disposition? {
+        get { Disposition(rawValue: dispositionRawValue) }
+        set { dispositionRawValue = newValue?.rawValue ?? 0 }
+    }
 }
 
-extension ModelDisposition : CustomStringConvertible, ConvertibleFromString {
-    
+extension Model.Disposition: CustomStringConvertible, ConvertibleFromString {
     var description: String {
         switch self {
         case .normal: return "Normal"
@@ -25,14 +29,4 @@ extension ModelDisposition : CustomStringConvertible, ConvertibleFromString {
         case .spareParts: return "Spare Parts"
         }
     }
-    
-}
-
-extension Model {
-
-    var disposition: ModelDisposition? {
-        get { ModelDisposition(rawValue: dispositionRawValue) }
-        set { dispositionRawValue = newValue?.rawValue ?? 0 }
-    }
-
 }

@@ -31,7 +31,7 @@ class ModelDispositionPickerTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return ModelDisposition.allCases.count
+        case 1: return Model.Disposition.allCases.count
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -44,7 +44,7 @@ class ModelDispositionPickerTableViewController : UITableViewController {
             cell.textLabel?.text = "None"
             cell.accessoryType = model?.disposition == nil ? .checkmark : .none
         case 1:
-            let disposition = ModelDisposition.allCases[indexPath.row]
+            let disposition = Model.Disposition.allCases[indexPath.row]
             cell.textLabel?.text = "\(disposition)"
             cell.accessoryType = model?.disposition == disposition ? .checkmark : .none
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
@@ -60,7 +60,7 @@ class ModelDispositionPickerTableViewController : UITableViewController {
         switch model?.disposition {
         case nil: currentIndexPath = IndexPath(row: 0, section: 0)
         case let disposition?:
-            guard let row = ModelDisposition.allCases.firstIndex(of: disposition) else { preconditionFailure("Disposition not in allCases") }
+            guard let row = Model.Disposition.allCases.firstIndex(of: disposition) else { preconditionFailure("Disposition not in allCases") }
             currentIndexPath = IndexPath(row: row, section: 1)
         }
 
@@ -72,7 +72,7 @@ class ModelDispositionPickerTableViewController : UITableViewController {
         case 0:
             model?.disposition = nil
         case 1:
-            model?.disposition = ModelDisposition.allCases[indexPath.row]
+            model?.disposition = Model.Disposition.allCases[indexPath.row]
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 
