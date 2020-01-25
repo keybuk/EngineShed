@@ -31,7 +31,7 @@ class ModelEraPickerTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return ModelEra.allCases.count
+        case 1: return Model.Era.allCases.count
         default: preconditionFailure("Unexpected section: \(section)")
         }
     }
@@ -44,7 +44,7 @@ class ModelEraPickerTableViewController : UITableViewController {
             cell.textLabel?.text = "None"
             cell.accessoryType = model?.era == nil ? .checkmark : .none
         case 1:
-            let era = ModelEra.allCases[indexPath.row]
+            let era = Model.Era.allCases[indexPath.row]
             cell.textLabel?.text = "\(era)"
             cell.accessoryType = model?.era == era ? .checkmark : .none
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
@@ -60,7 +60,7 @@ class ModelEraPickerTableViewController : UITableViewController {
         switch model?.era {
         case nil: currentIndexPath = IndexPath(row: 0, section: 0)
         case let era?:
-            guard let row = ModelEra.allCases.firstIndex(of: era) else { preconditionFailure("Era not in allCases") }
+            guard let row = Model.Era.allCases.firstIndex(of: era) else { preconditionFailure("Era not in allCases") }
             currentIndexPath = IndexPath(row: row, section: 1)
         }
 
@@ -72,7 +72,7 @@ class ModelEraPickerTableViewController : UITableViewController {
         case 0:
             model?.era = nil
         case 1:
-            model?.era = ModelEra.allCases[indexPath.row]
+            model?.era = Model.Era.allCases[indexPath.row]
         default: preconditionFailure("Unexpected indexPath: \(indexPath)")
         }
 
