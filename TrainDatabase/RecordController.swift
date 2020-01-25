@@ -58,7 +58,7 @@ extension RecordController {
             
             if !recordStack.isEmpty {
                 recordStack = Array(recordStack.prefix(through: recordIndex))
-                while let index = recordStack.index(of: newValue) {
+                while let index = recordStack.firstIndex(of: newValue) {
                     recordStack.remove(at: index)
                 }
             }

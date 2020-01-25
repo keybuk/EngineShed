@@ -67,7 +67,7 @@ class DetailPartsTokenFieldDelegate : NSObject, NSTokenFieldDelegate {
         let tokenField = sender.representedObject as! NSTokenField
 
         var detailParts = tokenField.objectValue as! [Model.DetailPart]
-        guard let oldIndex = detailParts.index(where: { $0.title == title }) else { fatalError("Couldn't find token") }
+        guard let oldIndex = detailParts.firstIndex(where: { $0.title == title }) else { fatalError("Couldn't find token") }
         
         var detailPart = detailParts.remove(at: oldIndex)
         detailPart.isFitted = !detailPart.isFitted

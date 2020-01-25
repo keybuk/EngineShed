@@ -98,7 +98,7 @@ class PurchaseModelsViewController: NSViewController {
     func selectCurrentRecord() {
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
-        guard let row = purchase.models.index(of: model) else { return }
+        guard let row = purchase.models.firstIndex(of: model) else { return }
         
         tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
         tableView.scrollRowToVisible(row)
@@ -109,7 +109,7 @@ class PurchaseModelsViewController: NSViewController {
         guard view.window?.makeFirstResponder(nil) ?? true else { return }
         
         let model = purchase.addModel()
-        guard let row = purchase.models.index(of: model) else { fatalError("Model we just added wasn't in the list") }
+        guard let row = purchase.models.firstIndex(of: model) else { fatalError("Model we just added wasn't in the list") }
             
         tableView.insertRows(at: IndexSet(integer: row) , withAnimation: .effectFade)
         tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)

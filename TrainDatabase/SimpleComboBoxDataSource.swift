@@ -27,7 +27,7 @@ class SimpleComboBoxDataSource : NSObject, NSComboBoxDataSource {
     }
     
     func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
-        return values.index(of: string) ?? NSNotFound
+        return values.firstIndex(of: string) ?? NSNotFound
     }
     
     func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {

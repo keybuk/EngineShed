@@ -98,7 +98,7 @@ class DecoderTypesViewController: NSViewController {
     func selectCurrentRecord() {
         if let currentRecord = recordController?.currentRecord,
             case .decoderType(let decoderType) = currentRecord,
-            let row = decoderTypes.index(of: decoderType)
+            let row = decoderTypes.firstIndex(of: decoderType)
         {
             tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
             tableView.scrollRowToVisible(row)

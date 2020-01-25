@@ -31,7 +31,7 @@ class ModelTrainComboBoxController : Formatter, NSComboBoxDataSource {
     }
     
     func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
-        return trains.index(where: { $0.name == string }) ?? NSNotFound
+        return trains.firstIndex(where: { $0.name == string }) ?? NSNotFound
     }
     
     func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {
@@ -82,7 +82,7 @@ class DecoderTypeComboBoxController : Formatter, NSComboBoxDataSource {
     }
     
     func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
-        return decoderTypes.index(where: { $0.description == string }) ?? NSNotFound
+        return decoderTypes.firstIndex(where: { $0.description == string }) ?? NSNotFound
     }
     
     func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {
@@ -131,7 +131,7 @@ class DecoderSerialNumberComboBoxController : Formatter, NSComboBoxDataSource {
     }
     
     func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
-        return decoders.index(where: { $0.description == string }) ?? NSNotFound
+        return decoders.firstIndex(where: { $0.description == string }) ?? NSNotFound
     }
     
     func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {

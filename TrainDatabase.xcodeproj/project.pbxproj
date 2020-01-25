@@ -371,7 +371,7 @@
 				TargetAttributes = {
 					D28A4BC31FD67523000768D8 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -678,7 +678,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.TrainDatabase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -696,7 +696,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.TrainDatabase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
