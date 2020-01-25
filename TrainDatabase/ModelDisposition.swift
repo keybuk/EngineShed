@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-enum ModelDisposition : Int16, Codable {
+enum ModelDisposition : Int16, Codable, CaseIterable {
     
     case normal = 1
     case collectorItem
@@ -17,10 +17,8 @@ enum ModelDisposition : Int16, Codable {
     
 }
 
-extension ModelDisposition : EnumeratableEnum, CustomStringConvertible, ConvertibleFromString {
+extension ModelDisposition : CustomStringConvertible, ConvertibleFromString {
     
-    static let all: [ModelDisposition] = [ .normal, .collectorItem, .spareParts ]
-
     var description: String {
         switch self {
         case .normal:

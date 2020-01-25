@@ -21,7 +21,7 @@ protocol EnumForDataSource {
 }
 
 struct WrappedEnumForDataSource<T> : EnumForDataSource
-    where T : RawRepresentable & EnumeratableEnum & CustomStringConvertible & ConvertibleFromString,
+    where T : RawRepresentable & CaseIterable & CustomStringConvertible & ConvertibleFromString,
         T.RawValue == Int16
 {
     
@@ -38,7 +38,7 @@ struct WrappedEnumForDataSource<T> : EnumForDataSource
     //    }
     
     var count: Int {
-        return T.all.count
+        return T.allCases.count
     }
     
     func item(at index: Int) -> Any? {
@@ -50,7 +50,7 @@ struct WrappedEnumForDataSource<T> : EnumForDataSource
     }
     
     func completedString(_ string: String) -> String? {
-        return T.all.first(where: { $0.description.lowercased().starts(with: string.lowercased()) })?.description
+        return T.allCases.first(where: { $0.description.lowercased().starts(with: string.lowercased()) })?.description
     }
     
     func string(for object: Any?) -> String? {
@@ -84,7 +84,7 @@ class EnumComboBoxDataSource : Formatter, NSComboBoxDataSource {
     }
     
     convenience init<T>(wrapping: T.Type)
-        where T : RawRepresentable & EnumeratableEnum & CustomStringConvertible & ConvertibleFromString,
+        where T : RawRepresentable & CaseIterable & CustomStringConvertible & ConvertibleFromString,
         T.RawValue == Int16 {
             
             let wrapped = WrappedEnumForDataSource<T>()

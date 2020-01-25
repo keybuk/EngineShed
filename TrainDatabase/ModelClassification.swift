@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-enum ModelClassification : Int16, Codable {
+enum ModelClassification : Int16, Codable, CaseIterable {
 
     case locomotive = 1
     case coach
@@ -22,9 +22,7 @@ enum ModelClassification : Int16, Codable {
     
 }
 
-extension ModelClassification : EnumeratableEnum, CustomStringConvertible, ConvertibleFromString {
-    
-    static let all: [ModelClassification] = [ .locomotive, .coach,. wagon, .multipleUnit, .departmental, .noPrototype, .accessory, .vehicle ]
+extension ModelClassification : CustomStringConvertible, ConvertibleFromString {
 
     var description: String {
         switch self {

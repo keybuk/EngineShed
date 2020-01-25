@@ -8,22 +8,16 @@
 
 import Foundation
 
-protocol EnumeratableEnum {
-    
-    static var all: [Self] { get }
-    
-}
-
 protocol ConvertibleFromString {
     
     init?(describedBy: String)
     
 }
 
-extension ConvertibleFromString where Self : EnumeratableEnum & CustomStringConvertible {
+extension ConvertibleFromString where Self : CaseIterable & CustomStringConvertible {
     
     init?(describedBy string: String) {
-        for enumCase in Self.all {
+        for enumCase in Self.allCases {
             if string == enumCase.description {
                 self = enumCase
                 return

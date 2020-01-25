@@ -18,7 +18,7 @@ struct ModelEra : Codable {
     
 }
 
-extension ModelEra {
+extension ModelEra : CaseIterable {
 
     static let pioneering =                 ModelEra(era: 1, title: "Pioneering", startYear: 1804, endYear: 1875)
     static let preGrouping =                ModelEra(era: 2, title: "Pre-grouping", startYear: 1875, endYear: 1922)
@@ -60,13 +60,24 @@ extension ModelEra {
             return nil
         }
     }
-    
+
+    static let allCases: [ModelEra] = [
+        .pioneering,
+        .preGrouping,
+        .theBigFour,
+        .brSteamEarlyCrest,
+        .brSteamLateCrest,
+        .brCorporateBluePreTOPS,
+        .brCorporateBluePostTOPS,
+        .brSectorisation,
+        .initialPrivatisation,
+        .rebuildingOfTheRailways,
+        .currentEra
+    ]
 }
 
-extension ModelEra : EnumeratableEnum, CustomStringConvertible, ConvertibleFromString {
-    
-    static let all: [ModelEra] = [ .pioneering, .preGrouping, .theBigFour, .brSteamEarlyCrest, .brSteamLateCrest, .brCorporateBluePreTOPS, .brCorporateBluePostTOPS, .brSectorisation, .initialPrivatisation, .rebuildingOfTheRailways, .currentEra ]
-    
+extension ModelEra : CustomStringConvertible, ConvertibleFromString {
+
     var description: String {
         return "\(era): \(title) (\(startYear)—\(endYear.map(String.init) ?? ""))"
     }

@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-enum PurchaseCondition : Int16, Codable {
+enum PurchaseCondition : Int16, Codable, CaseIterable {
 
     case new = 1
     case likeNew
@@ -19,10 +19,8 @@ enum PurchaseCondition : Int16, Codable {
     
 }
 
-extension PurchaseCondition : EnumeratableEnum, CustomStringConvertible, ConvertibleFromString {
+extension PurchaseCondition : CustomStringConvertible, ConvertibleFromString {
     
-    static let all: [PurchaseCondition] = [ .new, .likeNew, .used, .usedInWrongBox, .handmade ]
-
     var description: String {
         switch self {
         case .new:
