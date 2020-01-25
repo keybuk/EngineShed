@@ -27,13 +27,13 @@ class ModelsViewController : NSViewController {
 
     var persistentContainer: NSPersistentContainer!
     
-    var classificationFilter: ModelClassification?
+    var classificationFilter: Model.Classification?
     var searchFilter: String?
     
     var models: [Model]!
     var groups: [Int : String]!
     
-    func setFilter(classification: ModelClassification) {
+    func setFilter(classification: Model.Classification) {
         classificationFilter = classification
         reloadData()
     }

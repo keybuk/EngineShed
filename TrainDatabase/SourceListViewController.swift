@@ -26,7 +26,7 @@ private enum Member {
 
 protocol SourceListDelegate {
     
-    func sourceListDidSelect(modelClassification: ModelClassification)
+    func sourceListDidSelect(modelClassification: Model.Classification)
     func sourceListDidSelectDecoders()
     
 }
@@ -35,7 +35,7 @@ class SourceListViewController : NSViewController {
 
     @IBOutlet var outlineView: NSOutlineView!
     
-    var currentItem: Any? = ModelClassification.locomotive
+    var currentItem: Any? = Model.Classification.locomotive
     
     var delegate: SourceListDelegate?
 
@@ -126,19 +126,19 @@ extension SourceListViewController : NSOutlineViewDataSource {
             case .models:
                 switch index {
                 case 0:
-                    return ModelClassification.locomotive
+                    return Model.Classification.locomotive
                 case 1:
-                    return ModelClassification.coach
+                    return Model.Classification.coach
                 case 2:
-                    return ModelClassification.wagon
+                    return Model.Classification.wagon
                 case 3:
-                    return ModelClassification.multipleUnit
+                    return Model.Classification.multipleUnit
                 case 4:
-                    return ModelClassification.departmental
+                    return Model.Classification.departmental
                 case 5:
-                    return ModelClassification.noPrototype
+                    return Model.Classification.noPrototype
                 case 6:
-                    return ModelClassification.vehicle
+                    return Model.Classification.vehicle
                 default:
                     fatalError("Too many children in Models group")
                 }
@@ -147,7 +147,7 @@ extension SourceListViewController : NSOutlineViewDataSource {
                 case 0:
                     return Member.decoders
                 case 1:
-                    return ModelClassification.accessory
+                    return Model.Classification.accessory
                 default:
                     fatalError("Too many children in Accessories group")
                 }
@@ -191,7 +191,7 @@ extension SourceListViewController : NSOutlineViewDelegate {
                 view.textField?.stringValue = "Accessories"
             }
             return view
-        case let classification as ModelClassification:
+        case let classification as Model.Classification:
             let view = outlineView.makeView(withIdentifier: .sourceCell, owner: self) as! NSTableCellView
             switch classification {
             case .locomotive:
@@ -235,7 +235,7 @@ extension SourceListViewController : NSOutlineViewDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         switch item {
-        case is ModelClassification:
+        case is Model.Classification:
             return true
         case is Member:
             return true
@@ -250,7 +250,7 @@ extension SourceListViewController : NSOutlineViewDelegate {
         currentItem = item
         
         switch item {
-        case let classification as ModelClassification:
+        case let classification as Model.Classification:
             delegate?.sourceListDidSelect(modelClassification: classification)
         case Member.decoders:
             delegate?.sourceListDidSelectDecoders()

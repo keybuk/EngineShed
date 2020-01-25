@@ -56,8 +56,8 @@ struct Model : ManagedObjectBacked {
     }
     
     
-    var classification: ModelClassification? {
-        get { return ModelClassification(rawValue: managedObject.classificationRawValue) }
+    var classification: Classification? {
+        get { return Classification(rawValue: managedObject.classificationRawValue) }
         set {
             managedObject.classificationRawValue = newValue?.rawValue ?? 0
             try? managedObject.managedObjectContext?.save()
@@ -112,16 +112,16 @@ struct Model : ManagedObjectBacked {
         }
     }
     
-    var era: ModelEra? {
-        get { return ModelEra(rawValue: managedObject.eraRawValue) }
+    var era: Era? {
+        get { return Era(rawValue: managedObject.eraRawValue) }
         set {
             managedObject.eraRawValue = newValue?.rawValue ?? 0
             try? managedObject.managedObjectContext?.save()
         }
     }
     
-    var disposition: ModelDisposition? {
-        get { return ModelDisposition(rawValue: managedObject.dispositionRawValue) }
+    var disposition: Disposition? {
+        get { return Disposition(rawValue: managedObject.dispositionRawValue) }
         set {
             managedObject.dispositionRawValue = newValue?.rawValue ?? 0
             try? managedObject.managedObjectContext?.save()
@@ -546,7 +546,7 @@ struct Model : ManagedObjectBacked {
     }
 
     
-    static func matching(classification: ModelClassification, in context: NSManagedObjectContext) throws -> [Model] {
+    static func matching(classification: Classification, in context: NSManagedObjectContext) throws -> [Model] {
         let fetchRequest: NSFetchRequest<ModelManagedObject> = ModelManagedObject.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "classificationRawValue = \(classification.rawValue)")
         fetchRequest.sortDescriptors = [
@@ -586,6 +586,10 @@ extension Model : CustomStringConvertible {
     }
     
 }
+
+extension Model.Classification: Codable {}
+extension Model.Disposition: Codable {}
+extension Model.Era: Codable {}
 
 extension Model : Encodable {
     

@@ -15,7 +15,6 @@
 		D26673BC1FE8F95F0069F9C7 /* TrainMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673BB1FE8F95F0069F9C7 /* TrainMember.swift */; };
 		D26673BE1FE8FB9C0069F9C7 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */; };
 		D26673C01FE8FBA10069F9C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673BF1FE8FBA10069F9C7 /* Model.swift */; };
-		D26673C21FE905950069F9C7 /* ModelDisposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C11FE905950069F9C7 /* ModelDisposition.swift */; };
 		D26673C51FE99E1D0069F9C7 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */; };
 		D26673C71FE99F250069F9C7 /* ManagedObjectBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */; };
 		D2709B081FF65557007029C5 /* EmptyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2709B071FF65557007029C5 /* EmptyDateFormatter.swift */; };
@@ -38,13 +37,14 @@
 		D28A4BE91FD67523000768D8 /* TrainDatabaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */; };
 		D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */; };
 		D2A74D3123DC307200186E31 /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3023DC307200186E31 /* Purchase+Condition.swift */; };
+		D2A74D3523DC318400186E31 /* Model+Classification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3223DC318400186E31 /* Model+Classification.swift */; };
+		D2A74D3623DC318400186E31 /* Model+Era.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3323DC318400186E31 /* Model+Era.swift */; };
+		D2A74D3723DC318400186E31 /* Model+Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3423DC318400186E31 /* Model+Disposition.swift */; };
 		D2B2AF5320D8661300BEFC15 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2AF5220D8661300BEFC15 /* CloudKit.framework */; };
 		D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */; };
 		D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */; };
 		D2B548381FEEFEEF00FE7ED0 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548371FEEFEEF00FE7ED0 /* PickerViewController.swift */; };
-		D2B616871FE0A4E40065A84F /* ModelClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B616861FE0A4E40065A84F /* ModelClassification.swift */; };
 		D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B616881FE0A6110065A84F /* Model+NSImage.swift */; };
-		D2B6168B1FE0A6DE0065A84F /* ModelEra.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6168A1FE0A6DE0065A84F /* ModelEra.swift */; };
 		D2DFF4B8200A977200259284 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4B7200A977200259284 /* HorizontalScrollView.swift */; };
 		D2DFF4BA200A998E00259284 /* EnterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4B9200A998E00259284 /* EnterTableView.swift */; };
 		D2DFF4BF200A9BCA00259284 /* SimpleComboBoxDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */; };
@@ -82,7 +82,6 @@
 		D26673BB1FE8F95F0069F9C7 /* TrainMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMember.swift; sourceTree = "<group>"; };
 		D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		D26673BF1FE8FBA10069F9C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		D26673C11FE905950069F9C7 /* ModelDisposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDisposition.swift; sourceTree = "<group>"; };
 		D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
 		D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectBacked.swift; sourceTree = "<group>"; };
 		D2709B071FF65557007029C5 /* EmptyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDateFormatter.swift; sourceTree = "<group>"; };
@@ -112,13 +111,14 @@
 		D28A4BEA1FD67523000768D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+CountedElements.swift"; sourceTree = "<group>"; };
 		D2A74D3023DC307200186E31 /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
+		D2A74D3223DC318400186E31 /* Model+Classification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Classification.swift"; sourceTree = "<group>"; };
+		D2A74D3323DC318400186E31 /* Model+Era.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Era.swift"; sourceTree = "<group>"; };
+		D2A74D3423DC318400186E31 /* Model+Disposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Disposition.swift"; sourceTree = "<group>"; };
 		D2B2AF5220D8661300BEFC15 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboBoxControllers.swift; sourceTree = "<group>"; };
 		D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFieldDelegates.swift; sourceTree = "<group>"; };
 		D2B548371FEEFEEF00FE7ED0 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
-		D2B616861FE0A4E40065A84F /* ModelClassification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassification.swift; sourceTree = "<group>"; };
 		D2B616881FE0A6110065A84F /* Model+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+NSImage.swift"; sourceTree = "<group>"; };
-		D2B6168A1FE0A6DE0065A84F /* ModelEra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEra.swift; sourceTree = "<group>"; };
 		D2DFF4B7200A977200259284 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		D2DFF4B9200A998E00259284 /* EnterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTableView.swift; sourceTree = "<group>"; };
 		D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleComboBoxDataSource.swift; sourceTree = "<group>"; };
@@ -161,10 +161,10 @@
 			children = (
 				D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */,
 				D2A74D3023DC307200186E31 /* Purchase+Condition.swift */,
-				D2B616861FE0A4E40065A84F /* ModelClassification.swift */,
-				D26673C11FE905950069F9C7 /* ModelDisposition.swift */,
-				D2B6168A1FE0A6DE0065A84F /* ModelEra.swift */,
 				D26673BF1FE8FBA10069F9C7 /* Model.swift */,
+				D2A74D3223DC318400186E31 /* Model+Classification.swift */,
+				D2A74D3423DC318400186E31 /* Model+Disposition.swift */,
+				D2A74D3323DC318400186E31 /* Model+Era.swift */,
 				D2B616881FE0A6110065A84F /* Model+NSImage.swift */,
 				D276FF321FE5F51500EA087F /* DecoderType.swift */,
 				D26673B71FE8F2A40069F9C7 /* Decoder.swift */,
@@ -434,7 +434,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D276FF2D1FE5D40300EA087F /* PurchaseViewController.swift in Sources */,
-				D2B6168B1FE0A6DE0065A84F /* ModelEra.swift in Sources */,
 				D2DFF4C3200A9C2E00259284 /* SimpleTokenFieldDelegate.swift in Sources */,
 				D26673BE1FE8FB9C0069F9C7 /* Purchase.swift in Sources */,
 				D2EC18661FFC5D4700DF1ED4 /* PurchaseWindowController.swift in Sources */,
@@ -454,22 +453,23 @@
 				D2B548381FEEFEEF00FE7ED0 /* PickerViewController.swift in Sources */,
 				D2709B081FF65557007029C5 /* EmptyDateFormatter.swift in Sources */,
 				D2DFF4BA200A998E00259284 /* EnterTableView.swift in Sources */,
+				D2A74D3523DC318400186E31 /* Model+Classification.swift in Sources */,
 				D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */,
 				D2EC18641FFC262100DF1ED4 /* RecordController.swift in Sources */,
 				D27DF7261FF48E79003C7AAB /* DecoderTypeViewController.swift in Sources */,
 				D26673BC1FE8F95F0069F9C7 /* TrainMember.swift in Sources */,
 				D28A4BCD1FD67523000768D8 /* TrainDatabase.xcdatamodeld in Sources */,
+				D2A74D3623DC318400186E31 /* Model+Era.swift in Sources */,
 				D2DFF4B8200A977200259284 /* HorizontalScrollView.swift in Sources */,
 				D26673C01FE8FBA10069F9C7 /* Model.swift in Sources */,
 				D2EC18681FFC60DA00DF1ED4 /* DecoderTypeWindowController.swift in Sources */,
 				D25B47EC1FEFB6B0008A7EB1 /* TrainMember+NSImage.swift in Sources */,
 				D2DFF4C1200A9BDC00259284 /* EnumComboBoxDataSource.swift in Sources */,
+				D2A74D3723DC318400186E31 /* Model+Disposition.swift in Sources */,
 				D2DFF4BF200A9BCA00259284 /* SimpleComboBoxDataSource.swift in Sources */,
 				D25B47E91FEFA994008A7EB1 /* TrainMemberItem.swift in Sources */,
 				D26673B81FE8F2A40069F9C7 /* Decoder.swift in Sources */,
 				D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */,
-				D2B616871FE0A4E40065A84F /* ModelClassification.swift in Sources */,
-				D26673C21FE905950069F9C7 /* ModelDisposition.swift in Sources */,
 				D26673C51FE99E1D0069F9C7 /* ConvertibleFromString.swift in Sources */,
 				D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */,
 			);

@@ -184,7 +184,7 @@ class WindowController : NSWindowController, RecordController {
 
 extension WindowController : SourceListDelegate {
     
-    func sourceListDidSelect(modelClassification: ModelClassification) {
+    func sourceListDidSelect(modelClassification: Model.Classification) {
         tabViewController.selectedTabViewItemIndex = 0
         modelsViewController.setFilter(classification: modelClassification)
     }

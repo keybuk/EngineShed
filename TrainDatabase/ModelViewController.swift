@@ -130,7 +130,7 @@ class ModelViewController: NSViewController {
     func reloadData() {
         imageView.image = model.image
         
-        classificationComboBoxDataSource = EnumComboBoxDataSource(wrapping: ModelClassification.self)
+        classificationComboBoxDataSource = EnumComboBoxDataSource(wrapping: Model.Classification.self)
         classificationComboBox.dataSource = classificationComboBoxDataSource
         classificationComboBox.formatter = classificationComboBoxDataSource
         classificationComboBox.objectValue = model.classification.map(NSArray.init(object:))
@@ -145,12 +145,12 @@ class ModelViewController: NSViewController {
         
         detailsTextField.stringValue = model.details
         
-        eraComboBoxDataSource = EnumComboBoxDataSource(wrapping: ModelEra.self)
+        eraComboBoxDataSource = EnumComboBoxDataSource(wrapping: Model.Era.self)
         eraComboBox.dataSource = eraComboBoxDataSource
         eraComboBox.formatter = eraComboBoxDataSource
         eraComboBox.objectValue = model.era.map(NSArray.init(object:))
         
-        dispositionComboBoxDataSource = EnumComboBoxDataSource(wrapping: ModelDisposition.self)
+        dispositionComboBoxDataSource = EnumComboBoxDataSource(wrapping: Model.Disposition.self)
         dispositionComboBox.dataSource = dispositionComboBoxDataSource
         dispositionComboBox.formatter = dispositionComboBoxDataSource
         dispositionComboBox.objectValue = model.disposition.map(NSArray.init(object:))
@@ -247,7 +247,7 @@ class ModelViewController: NSViewController {
     }
     
     @IBAction func classificationChanged(_ sender: NSComboBox) {
-        let classification = (sender.objectValue as? [ModelClassification])?.first
+        let classification = (sender.objectValue as? [Model.Classification])?.first
         let tryFill = model.classification != classification
         model.classification = classification
         
@@ -283,11 +283,11 @@ class ModelViewController: NSViewController {
     }
 
     @IBAction func eraChanged(_ sender: NSComboBox) {
-        model.era = (sender.objectValue as? [ModelEra])?.first
+        model.era = (sender.objectValue as? [Model.Era])?.first
     }
     
     @IBAction func dispositionChanged(_ sender: NSComboBox) {
-        model.disposition = (sender.objectValue as? [ModelDisposition])?.first
+        model.disposition = (sender.objectValue as? [Model.Disposition])?.first
     }
 
     @IBAction func trainChanged(_ sender: NSComboBox) {
