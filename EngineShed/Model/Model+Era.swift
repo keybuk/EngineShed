@@ -9,7 +9,7 @@
 import Foundation
 
 extension Model {
-    struct Era: Equatable, Hashable {
+    struct Era {
         var era: Int
         var title: String
         var startYear: Int
@@ -19,6 +19,14 @@ extension Model {
     var era: Era? {
         get { Era(rawValue: eraRawValue) }
         set { eraRawValue = newValue?.rawValue ?? 0 }
+    }
+}
+
+extension Model.Era: Equatable, Hashable {
+    static func == (lhs: Model.Era, rhs: Model.Era) -> Bool { lhs.era == rhs.era }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(era)
     }
 }
 
