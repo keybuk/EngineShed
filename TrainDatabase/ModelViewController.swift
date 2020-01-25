@@ -593,6 +593,9 @@ extension ModelViewController : NSCollectionViewDelegate {
                 afterItem.dropAfterIndicator.isHidden = false
             }
             return .move
+        @unknown default:
+            assertionFailure("Unknown drop operation: \(proposedDropOperation.pointee)")
+            return []
         }
     }
     
@@ -634,6 +637,9 @@ extension ModelViewController : NSCollectionViewDelegate {
             }
             
             return true
+        @unknown default:
+            assertionFailure("Unknown drop operation: \(dropOperation)")
+            return false
         }
     }
     
