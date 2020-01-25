@@ -47,11 +47,11 @@ class WindowController : NSWindowController, RecordController {
         //         +- Purchase View
         
         let splitViewController = contentViewController as! NSSplitViewController
-        sourceListViewController = splitViewController.splitViewItems[0].viewController as! SourceListViewController
-        tabViewController = splitViewController.splitViewItems[1].viewController as! NSTabViewController
+        sourceListViewController = (splitViewController.splitViewItems[0].viewController as! SourceListViewController)
+        tabViewController = (splitViewController.splitViewItems[1].viewController as! NSTabViewController)
         
         let purchaseSplitViewController = tabViewController.children[0] as! NSSplitViewController
-        modelsViewController = purchaseSplitViewController.splitViewItems[0].viewController as! ModelsViewController
+        modelsViewController = (purchaseSplitViewController.splitViewItems[0].viewController as! ModelsViewController)
  
         sourceListViewController.delegate = self
     }
