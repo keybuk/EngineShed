@@ -98,8 +98,8 @@ extension ModelEra : RawRepresentable {
 
 extension ModelEra : Hashable {
 
-    var hashValue: Int {
-        return era.hashValue
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(era)
     }
     
 }

@@ -246,10 +246,10 @@ struct Model : ManagedObjectBacked {
             return lhs.title < rhs.title
         }
 
-        var hashValue: Int {
-            return title.hashValue
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(title)
         }
-        
+
     }
     
     var detailParts: Set<DetailPart> {

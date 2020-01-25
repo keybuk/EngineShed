@@ -26,9 +26,9 @@ extension ManagedObjectBacked {
     static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.managedObject.objectID == rhs.managedObject.objectID
     }
-    
-    var hashValue: Int {
-        return managedObject.hashValue
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(managedObject)
     }
 
     func sortedValues<T: NSManagedObject>(from entity: T.Type, for key: String, ascending: Bool, startingWith string: String? = nil) throws -> [String] {
