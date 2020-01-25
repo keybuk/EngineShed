@@ -101,9 +101,9 @@ extension SourceListViewController : NSOutlineViewDataSource {
         case let group as Group:
             switch group {
             case .models:
-                return 6
+                return 7
             case .accessories:
-                return 3
+                return 2
             }
         default:
             return 0
@@ -137,6 +137,8 @@ extension SourceListViewController : NSOutlineViewDataSource {
                     return ModelClassification.departmental
                 case 5:
                     return ModelClassification.noPrototype
+                case 6:
+                    return ModelClassification.vehicle
                 default:
                     fatalError("Too many children in Models group")
                 }
@@ -146,8 +148,6 @@ extension SourceListViewController : NSOutlineViewDataSource {
                     return Member.decoders
                 case 1:
                     return ModelClassification.accessory
-                case 2:
-                    return ModelClassification.vehicle
                 default:
                     fatalError("Too many children in Accessories group")
                 }
