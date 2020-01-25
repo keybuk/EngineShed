@@ -18,9 +18,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-        //let importer = Importer(directory: "/Users/scott/Downloads/Model Railway Export", into: persistentContainer.viewContext)
-        //importer.start()
-
         let fetchRequest: NSFetchRequest<ModelManagedObject> = ModelManagedObject.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "modelClass", ascending: true),

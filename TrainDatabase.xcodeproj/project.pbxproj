@@ -48,7 +48,6 @@
 		D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B616881FE0A6110065A84F /* Model+NSImage.swift */; };
 		D2B6168B1FE0A6DE0065A84F /* ModelEra.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6168A1FE0A6DE0065A84F /* ModelEra.swift */; };
 		D2B6168D1FE0ACD70065A84F /* PurchaseCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B6168C1FE0ACD70065A84F /* PurchaseCondition.swift */; };
-		D2CA9AF51FE1C00200D56B0F /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA9AF41FE1C00200D56B0F /* Importer.swift */; };
 		D2DFF4B8200A977200259284 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4B7200A977200259284 /* HorizontalScrollView.swift */; };
 		D2DFF4BA200A998E00259284 /* EnterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4B9200A998E00259284 /* EnterTableView.swift */; };
 		D2DFF4BF200A9BCA00259284 /* SimpleComboBoxDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */; };
@@ -127,7 +126,6 @@
 		D2B616881FE0A6110065A84F /* Model+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+NSImage.swift"; sourceTree = "<group>"; };
 		D2B6168A1FE0A6DE0065A84F /* ModelEra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEra.swift; sourceTree = "<group>"; };
 		D2B6168C1FE0ACD70065A84F /* PurchaseCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCondition.swift; sourceTree = "<group>"; };
-		D2CA9AF41FE1C00200D56B0F /* Importer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
 		D2DFF4B7200A977200259284 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		D2DFF4B9200A998E00259284 /* EnterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTableView.swift; sourceTree = "<group>"; };
 		D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleComboBoxDataSource.swift; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 				D26673C31FE90B8D0069F9C7 /* Data Model */,
 				D2DFF4BB200A9A0C00259284 /* Cocoa Extensions */,
 				D28A4BC71FD67523000768D8 /* AppDelegate.swift */,
-				D2CA9AF41FE1C00200D56B0F /* Importer.swift */,
 				D2DFF4BC200A9AAC00259284 /* Window Controllers */,
 				D2DFF4BD200A9B9100259284 /* View Controllers */,
 				D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */,
@@ -458,7 +455,6 @@
 				D286E75A202166C50054A6A6 /* SearchViewController.swift in Sources */,
 				D26673BA1FE8F9590069F9C7 /* Train.swift in Sources */,
 				D2B6168D1FE0ACD70065A84F /* PurchaseCondition.swift in Sources */,
-				D2CA9AF51FE1C00200D56B0F /* Importer.swift in Sources */,
 				D276FF291FE4F6A600EA087F /* SourceListViewController.swift in Sources */,
 				D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */,
 				D26673C71FE99F250069F9C7 /* ManagedObjectBacked.swift in Sources */,
