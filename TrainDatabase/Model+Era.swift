@@ -16,10 +16,13 @@ extension Model {
         var endYear: Int?
     }
 
-//    var era: Era? {
-//        get { Era(rawValue: eraRawValue) }
-//        set { eraRawValue = newValue?.rawValue ?? 0 }
-//    }
+    var era: Era? {
+        get { Era(rawValue: managedObject.eraRawValue) }
+        set {
+            managedObject.eraRawValue = newValue?.rawValue ?? 0
+            try? managedObject.managedObjectContext?.save() // FIXME!
+        }
+    }
 }
 
 extension Model.Era: Equatable, Hashable {

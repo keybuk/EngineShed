@@ -56,14 +56,6 @@ struct Model : ManagedObjectBacked {
     }
     
     
-    var classification: Classification? {
-        get { return Classification(rawValue: managedObject.classificationRawValue) }
-        set {
-            managedObject.classificationRawValue = newValue?.rawValue ?? 0
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
     var modelClass: String {
         get { return managedObject.modelClass ?? "" }
         set {
@@ -108,22 +100,6 @@ struct Model : ManagedObjectBacked {
         get { return managedObject.details ?? "" }
         set {
             managedObject.details = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var era: Era? {
-        get { return Era(rawValue: managedObject.eraRawValue) }
-        set {
-            managedObject.eraRawValue = newValue?.rawValue ?? 0
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var disposition: Disposition? {
-        get { return Disposition(rawValue: managedObject.dispositionRawValue) }
-        set {
-            managedObject.dispositionRawValue = newValue?.rawValue ?? 0
             try? managedObject.managedObjectContext?.save()
         }
     }

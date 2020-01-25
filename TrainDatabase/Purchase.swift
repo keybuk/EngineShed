@@ -122,14 +122,6 @@ struct Purchase : ManagedObjectBacked {
         }
     }
     
-    var condition: Condition? {
-        get { return Condition(rawValue: managedObject.conditionRawValue) }
-        set {
-            managedObject.conditionRawValue = newValue?.rawValue ?? 0
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
     var valuation: Decimal? {
         get { return managedObject.valuation as Decimal? }
         set {

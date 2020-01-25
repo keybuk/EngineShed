@@ -20,10 +20,13 @@ extension Model {
         case vehicle
     }
 
-//    var classification: Classification? {
-//        get { Classification(rawValue: classificationRawValue) }
-//        set { classificationRawValue = newValue?.rawValue ?? 0 }
-//    }
+    var classification: Classification? {
+        get { Classification(rawValue: managedObject.classificationRawValue) }
+        set {
+            managedObject.classificationRawValue = newValue?.rawValue ?? 0
+            try? managedObject.managedObjectContext?.save() // FIXME!
+        }
+    }
 }
 
 extension Model.Classification: CustomStringConvertible, ConvertibleFromString {

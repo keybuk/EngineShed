@@ -17,10 +17,13 @@ extension Purchase {
         case handmade
     }
 
-//    var condition: Condition? {
-//        get { Condition(rawValue: conditionRawValue) }
-//        set { conditionRawValue = newValue?.rawValue ?? 0 }
-//    }
+    var condition: Condition? {
+        get { Condition(rawValue: managedObject.conditionRawValue) }
+        set {
+            managedObject.conditionRawValue = newValue?.rawValue ?? 0
+            try? managedObject.managedObjectContext?.save() // FIXME!
+        }
+    }
 }
 
 extension Purchase.Condition: CustomStringConvertible, ConvertibleFromString {
