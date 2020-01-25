@@ -7,11 +7,11 @@
     <entity name="Decoder" representedClassName="DecoderManagedObject" syncable="YES" codeGenerationType="class">
         <attribute name="address" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="firmwareDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="firmwareVersion" attributeType="String"/>
+        <attribute name="firmwareVersion" optional="YES" attributeType="String"/>
         <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID"/>
-        <attribute name="serialNumber" attributeType="String"/>
-        <attribute name="soundAuthor" attributeType="String"/>
-        <attribute name="soundProject" attributeType="String" elementID="soundFile"/>
+        <attribute name="serialNumber" optional="YES" attributeType="String"/>
+        <attribute name="soundAuthor" optional="YES" attributeType="String"/>
+        <attribute name="soundProject" optional="YES" attributeType="String" elementID="soundFile"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="decoder" inverseEntity="Model"/>
         <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DecoderType" inverseName="decoders" inverseEntity="DecoderType"/>
@@ -20,13 +20,13 @@
         <attribute name="hasRailCom" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" elementID="railCom"/>
         <attribute name="hasSound" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" elementID="sound"/>
         <attribute name="isProgrammable" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" elementID="programmable"/>
-        <attribute name="manufacturer" attributeType="String"/>
+        <attribute name="manufacturer" attributeType="String" defaultValueString=""/>
         <attribute name="minimumStock" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="productCode" attributeType="String"/>
-        <attribute name="productDescription" attributeType="String"/>
-        <attribute name="productFamily" attributeType="String"/>
+        <attribute name="productCode" attributeType="String" defaultValueString=""/>
+        <attribute name="productDescription" optional="YES" attributeType="String"/>
+        <attribute name="productFamily" optional="YES" attributeType="String"/>
         <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID"/>
-        <attribute name="socket" attributeType="String"/>
+        <attribute name="socket" optional="YES" attributeType="String"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary"/>
         <relationship name="decoders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Decoder" inverseName="type" inverseEntity="Decoder"/>
     </entity>
@@ -45,21 +45,21 @@
     </entity>
     <entity name="Model" representedClassName="ModelManagedObject" syncable="YES" codeGenerationType="class">
         <attribute name="classificationRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="details" attributeType="String"/>
+        <attribute name="details" optional="YES" attributeType="String"/>
         <attribute name="dispositionRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="eraRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="imageFilename" optional="YES" attributeType="String"/>
         <attribute name="lastOil" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastRun" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="livery" attributeType="String"/>
-        <attribute name="modelClass" attributeType="String"/>
-        <attribute name="motor" attributeType="String"/>
-        <attribute name="name" attributeType="String"/>
-        <attribute name="notes" attributeType="String"/>
-        <attribute name="number" attributeType="String"/>
+        <attribute name="livery" optional="YES" attributeType="String"/>
+        <attribute name="modelClass" attributeType="String" defaultValueString=""/>
+        <attribute name="motor" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
         <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID"/>
-        <attribute name="socket" attributeType="String"/>
-        <attribute name="speaker" attributeType="String"/>
+        <attribute name="socket" optional="YES" attributeType="String"/>
+        <attribute name="speaker" optional="YES" attributeType="String"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary"/>
         <relationship name="couplings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Coupling" inverseName="model" inverseEntity="Coupling"/>
         <relationship name="decoder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Decoder" inverseName="model" inverseEntity="Decoder"/>
@@ -77,19 +77,19 @@
         <relationship name="model" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="modifications" inverseEntity="Model"/>
     </entity>
     <entity name="Purchase" representedClassName="PurchaseManagedObject" syncable="YES" codeGenerationType="class">
-        <attribute name="catalogDescription" attributeType="String"/>
-        <attribute name="catalogNumber" attributeType="String"/>
+        <attribute name="catalogDescription" optional="YES" attributeType="String"/>
+        <attribute name="catalogNumber" attributeType="String" defaultValueString=""/>
         <attribute name="catalogYear" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="conditionRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" elementID="purchaseConditionRawValue"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="limitedEdition" attributeType="String"/>
+        <attribute name="limitedEdition" optional="YES" attributeType="String"/>
         <attribute name="limitedEditionCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="limitedEditionNumber" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="manufacturer" attributeType="String"/>
-        <attribute name="notes" attributeType="String"/>
+        <attribute name="manufacturer" attributeType="String" defaultValueString=""/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="Decimal"/>
         <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID"/>
-        <attribute name="store" attributeType="String"/>
+        <attribute name="store" optional="YES" attributeType="String"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary"/>
         <attribute name="valuation" optional="YES" attributeType="Decimal"/>
         <relationship name="models" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Model" inverseName="purchase" inverseEntity="Model"/>
@@ -104,7 +104,7 @@
     </entity>
     <entity name="Train" representedClassName="TrainManagedObject" syncable="YES" codeGenerationType="class">
         <attribute name="details" optional="YES" attributeType="String"/>
-        <attribute name="name" attributeType="String"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID"/>
         <attribute name="systemFields" optional="YES" attributeType="Binary"/>
@@ -119,7 +119,7 @@
         <relationship name="train" maxCount="1" deletionRule="Nullify" destinationEntity="Train" inverseName="members" inverseEntity="Train"/>
     </entity>
     <elements>
-        <element name="Coupling" positionX="-9" positionY="153" width="128" height="75"/>
+        <element name="Coupling" positionX="-9" positionY="153" width="128" height="73"/>
         <element name="Decoder" positionX="-54" positionY="54" width="128" height="193"/>
         <element name="DecoderType" positionX="-63" positionY="-18" width="128" height="223"/>
         <element name="DetailPart" positionX="0" positionY="126" width="128" height="30"/>
@@ -130,7 +130,7 @@
         <element name="Purchase" positionX="9" positionY="171" width="128" height="283"/>
         <element name="SpeakerFitting" positionX="-36" positionY="108" width="128" height="30"/>
         <element name="Task" positionX="-27" positionY="117" width="128" height="30"/>
-        <element name="Train" positionX="18" positionY="180" width="128" height="135"/>
-        <element name="TrainMember" positionX="27" positionY="189" width="128" height="135"/>
+        <element name="Train" positionX="18" positionY="180" width="128" height="133"/>
+        <element name="TrainMember" positionX="27" positionY="189" width="128" height="133"/>
     </elements>
 </model>
