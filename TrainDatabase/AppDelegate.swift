@@ -140,6 +140,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 decoderRecord["address"] = decoder.address as NSNumber
                 decoderRecord["soundAuthor"] = decoder.soundAuthor as NSString
                 decoderRecord["soundProject"] = decoder.soundProject as NSString
+                decoderRecord["soundProjectVersion"] = decoder.soundProjectVersion as NSString
+                decoderRecord["soundProjectSettings"] = decoder.soundProjectSettings as NSString
 
                 if let firmwareDate = decoder.firmwareDate {
                     let archiver = NSKeyedArchiver(requiringSecureCoding: true)
@@ -271,6 +273,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         decoderRecord["address"] = decoder.address as NSNumber
                         decoderRecord["soundAuthor"] = decoder.soundAuthor as NSString
                         decoderRecord["soundProject"] = decoder.soundProject as NSString
+                        decoderRecord["soundProjectVersion"] = decoder.soundProjectVersion as NSString
+                        decoderRecord["soundProjectSettings"] = decoder.soundProjectSettings as NSString
 
                         if let firmwareDate = decoder.firmwareDate {
                             let archiver = NSKeyedArchiver(requiringSecureCoding: true)

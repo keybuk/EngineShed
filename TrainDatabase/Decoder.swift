@@ -23,6 +23,8 @@ struct Decoder : ManagedObjectBacked {
         managedObject.firmwareVersion = ""
         managedObject.soundAuthor = ""
         managedObject.soundProject = ""
+        managedObject.soundProjectVersion = ""
+        managedObject.soundProjectSettings = ""
     }
 
 
@@ -82,7 +84,23 @@ struct Decoder : ManagedObjectBacked {
             try? managedObject.managedObjectContext?.save()
         }
     }
-    
+
+    var soundProjectVersion: String {
+        get { return managedObject.soundProjectVersion ?? "" }
+        set {
+            managedObject.soundProjectVersion = newValue
+            try? managedObject.managedObjectContext?.save()
+        }
+    }
+
+    var soundProjectSettings: String {
+        get { return managedObject.soundProjectSettings ?? "" }
+        set {
+            managedObject.soundProjectSettings = newValue
+            try? managedObject.managedObjectContext?.save()
+        }
+    }
+
     
     func delete() {
         managedObject.managedObjectContext?.delete(managedObject)
@@ -198,6 +216,8 @@ extension Decoder : Encodable {
         case address
         case soundAuthor
         case soundProject
+        case soundProjectVersion
+        case soundProjectSettings
         case modelID
     }
     
@@ -210,6 +230,8 @@ extension Decoder : Encodable {
         try container.encode(address, forKey: .address)
         try container.encode(soundAuthor, forKey: .soundAuthor)
         try container.encode(soundProject, forKey: .soundProject)
+        try container.encode(soundProjectVersion, forKey: .soundProjectVersion)
+        try container.encode(soundProjectSettings, forKey: .soundProjectSettings)
         try container.encodeIfPresent(model?.managedObject.objectID.uriRepresentation(), forKey: .modelID)
     }
     

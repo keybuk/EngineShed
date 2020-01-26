@@ -22,6 +22,10 @@ private extension NSUserInterfaceItemIdentifier {
     static let soundAuthorCell = NSUserInterfaceItemIdentifier("soundAuthorCell")
     static let soundProjectColumn = NSUserInterfaceItemIdentifier("soundProjectColumn")
     static let soundProjectCell = NSUserInterfaceItemIdentifier("soundProjectCell")
+    static let soundProjectVersionColumn = NSUserInterfaceItemIdentifier("soundProjectVersionColumn")
+    static let soundProjectVersionCell = NSUserInterfaceItemIdentifier("soundProjectVersionCell")
+    static let soundProjectSettingsColumn = NSUserInterfaceItemIdentifier("soundProjectSettingsColumn")
+    static let soundProjectSettingsCell = NSUserInterfaceItemIdentifier("soundProjectSettingsCell")
 
 }
 
@@ -103,6 +107,10 @@ class DecoderTypeViewController: NSViewController {
             decoders.sort(by: { $0.soundAuthor < $1.soundAuthor })
         case "soundProject":
             decoders.sort(by: { $0.soundProject < $1.soundProject })
+        case "soundProjectVersion":
+            decoders.sort(by: { $0.soundProjectVersion < $1.soundProjectVersion })
+        case "soundProjectSettings":
+            decoders.sort(by: { $0.soundProjectSettings < $1.soundProjectSettings })
         default:
             break
         }
@@ -246,7 +254,19 @@ class DecoderTypeViewController: NSViewController {
         var decoder = decoders[tableView.selectedRow]
         decoder.soundProject = sender.stringValue
     }
-    
+
+    @IBAction func decoderSoundProjectVersionChanged(_ sender: NSTextField) {
+        guard tableView.selectedRow >= 0 else { return }
+        var decoder = decoders[tableView.selectedRow]
+        decoder.soundProjectVersion = sender.stringValue
+    }
+
+    @IBAction func decoderSoundProjectSettingsChanged(_ sender: NSTextField) {
+        guard tableView.selectedRow >= 0 else { return }
+        var decoder = decoders[tableView.selectedRow]
+        decoder.soundProjectSettings = sender.stringValue
+    }
+
 }
     
 class RetainingCellView : NSTableCellView {
@@ -302,6 +322,14 @@ extension DecoderTypeViewController : NSTableViewDelegate {
         case .soundProjectColumn:
             let view = tableView.makeView(withIdentifier: .soundProjectCell, owner: self) as! NSTableCellView
             view.textField?.stringValue = decoder.soundProject
+            return view
+        case .soundProjectVersionColumn:
+            let view = tableView.makeView(withIdentifier: .soundProjectVersionCell, owner: self) as! NSTableCellView
+            view.textField?.stringValue = decoder.soundProjectVersion
+            return view
+        case .soundProjectSettingsColumn:
+            let view = tableView.makeView(withIdentifier: .soundProjectSettingsCell, owner: self) as! NSTableCellView
+            view.textField?.stringValue = decoder.soundProjectSettings
             return view
         default:
             return nil

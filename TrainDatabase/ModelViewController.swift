@@ -50,6 +50,8 @@ class ModelViewController: NSViewController {
     @IBOutlet var decoderAddressTextField: NSTextField!
     @IBOutlet var decoderSoundAuthorComboBox: NSComboBox!
     @IBOutlet var decoderSoundProjectTextField: NSTextField!
+    @IBOutlet var decoderSoundProjectVersionTextField: NSTextField!
+    @IBOutlet var decoderSoundProjectSettingsTextField: NSTextField!
     @IBOutlet var speakerComboBox: NSComboBox!
     @IBOutlet var speakerFittingTokenField: NSTokenField!
     @IBOutlet var couplingsTokenField: NSTokenField!
@@ -230,6 +232,8 @@ class ModelViewController: NSViewController {
         decoderSoundAuthorComboBox.stringValue = model.decoder?.soundAuthor ?? ""
         
         decoderSoundProjectTextField.stringValue = model.decoder?.soundProject ?? ""
+        decoderSoundProjectVersionTextField.stringValue = model.decoder?.soundProjectVersion ?? ""
+        decoderSoundProjectSettingsTextField.stringValue = model.decoder?.soundProjectSettings ?? ""
     }
     
     func fillFromSimilar() {
@@ -412,6 +416,22 @@ class ModelViewController: NSViewController {
         if !soundProject.isEmpty { model.createDecoderIfNeeded() }
         model.decoder?.soundProject = soundProject
         
+        model.decoder?.deleteIfEmpty()
+    }
+
+    @IBAction func decoderSoundProjectVersionChanged(_ sender: NSTextField) {
+        let soundProjectVersion = sender.stringValue
+        if !soundProjectVersion.isEmpty { model.createDecoderIfNeeded() }
+        model.decoder?.soundProjectVersion = soundProjectVersion
+
+        model.decoder?.deleteIfEmpty()
+    }
+
+    @IBAction func decoderSoundProjectSettingsChanged(_ sender: NSTextField) {
+        let soundProjectSettings = sender.stringValue
+        if !soundProjectSettings.isEmpty { model.createDecoderIfNeeded() }
+        model.decoder?.soundProjectSettings = soundProjectSettings
+
         model.decoder?.deleteIfEmpty()
     }
 
