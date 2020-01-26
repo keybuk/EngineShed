@@ -49,18 +49,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         try encoder.encode(trains).write(to: backupURL.appendingPathComponent("Trains.json"))
         print("Trains done")
 
-        let imagesURL = backupURL.appendingPathComponent("Images", isDirectory: true)
-        try fileManager.createDirectory(at: imagesURL, withIntermediateDirectories: true, attributes: nil)
-
-        for purchase in purchases {
-            for model in purchase.models {
-                if let imageFilename = model.imageFilename, let imageURL = model.imageURL {
-                    try fileManager.copyItem(at: imageURL, to: imagesURL.appendingPathComponent(imageFilename))
-                }
-            }
-        }
-        print("Images done")
-        
         let downloadsURL = fileManager.urls(for: .downloadsDirectory, in: .userDomainMask).first!
         let backupFile = downloadsURL.appendingPathComponent("Backup \(backupName).zip")
         
@@ -222,7 +210,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     orCreate: "Model", in: zoneID)
                 modelRecord["purchase"] = CKRecord.Reference(record: purchaseRecord, action: .deleteSelf)
                 modelRecord["classification"] = model.classification?.rawValue as NSNumber?
-                modelRecord["image"] = model.imageURL.flatMap({ CKAsset(fileURL: $0) })
+                modelRecord["image"] = model.imageData.flatMap({ (try? CKDataAsset(data: $0)) as CKAsset? })
                 modelRecord["class"] = model.modelClass as NSString
                 modelRecord["number"] = model.number as NSString
                 modelRecord["name"] = model.name as NSString

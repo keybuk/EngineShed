@@ -64,14 +64,6 @@ struct Model : ManagedObjectBacked {
         }
     }
     
-    var imageFilename: String? {
-        get { return managedObject.imageFilename }
-        set {
-            managedObject.imageFilename = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
     var number: String {
         get { return managedObject.number ?? "" }
         set {
@@ -556,7 +548,7 @@ extension Model : Encodable {
     enum CodingKeys : String, CodingKey {
         case id
         case classification
-        case imageFilename
+        case imageData
         case modelClass = "class"
         case number
         case name
@@ -585,7 +577,7 @@ extension Model : Encodable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(managedObject.objectID.uriRepresentation(), forKey: .id)
         try container.encodeIfPresent(classification, forKey: .classification)
-        try container.encodeIfPresent(imageFilename, forKey: .imageFilename)
+        try container.encodeIfPresent(imageData, forKey: .imageData)
         try container.encode(modelClass, forKey: .modelClass)
         try container.encode(number, forKey: .number)
         try container.encode(name, forKey: .name)

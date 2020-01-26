@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D229995B23DD099800F28499 /* ImageMappingModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D229995A23DD099800F28499 /* ImageMappingModel.xcmappingmodel */; };
+		D229995D23DD09E500F28499 /* ImageMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229995C23DD09E500F28499 /* ImageMigrationPolicy.swift */; };
+		D229995F23DD0ECC00F28499 /* CKDataAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229995E23DD0ECB00F28499 /* CKDataAsset.swift */; };
 		D25B47E91FEFA994008A7EB1 /* TrainMemberItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */; };
 		D25B47EA1FEFA994008A7EB1 /* TrainMemberItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D25B47E81FEFA994008A7EB1 /* TrainMemberItem.xib */; };
 		D25B47EC1FEFB6B0008A7EB1 /* TrainMember+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B47EB1FEFB6B0008A7EB1 /* TrainMember+NSImage.swift */; };
@@ -79,6 +82,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D229995923DD090C00F28499 /* TrainDatabase 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 3.xcdatamodel"; sourceTree = "<group>"; };
+		D229995A23DD099800F28499 /* ImageMappingModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = ImageMappingModel.xcmappingmodel; sourceTree = "<group>"; };
+		D229995C23DD09E500F28499 /* ImageMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMigrationPolicy.swift; sourceTree = "<group>"; };
+		D229995E23DD0ECB00F28499 /* CKDataAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKDataAsset.swift; sourceTree = "<group>"; };
 		D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberItem.swift; sourceTree = "<group>"; };
 		D25B47E81FEFA994008A7EB1 /* TrainMemberItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainMemberItem.xib; sourceTree = "<group>"; };
 		D25B47EB1FEFB6B0008A7EB1 /* TrainMember+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+NSImage.swift"; sourceTree = "<group>"; };
@@ -219,6 +226,7 @@
 				D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */,
 				D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */,
 				D2FFF3BD20E20EAF000A4511 /* Shim.swift */,
+				D229995E23DD0ECB00F28499 /* CKDataAsset.swift */,
 				D26673C31FE90B8D0069F9C7 /* Data Model */,
 				D2DFF4BB200A9A0C00259284 /* Cocoa Extensions */,
 				D28A4BC71FD67523000768D8 /* AppDelegate.swift */,
@@ -239,7 +247,9 @@
 				D28A4BD41FD67523000768D8 /* TrainDatabase.entitlements */,
 				D28A4BCB1FD67523000768D8 /* TrainDatabase.xcdatamodeld */,
 				D2DE8D2D23DCE71600AF9344 /* DateMappingModel.xcmappingmodel */,
+				D229995A23DD099800F28499 /* ImageMappingModel.xcmappingmodel */,
 				D2A74D3A23DCDB8500186E31 /* DateMigrationPolicy.swift */,
+				D229995C23DD09E500F28499 /* ImageMigrationPolicy.swift */,
 			);
 			path = TrainDatabase;
 			sourceTree = "<group>";
@@ -467,6 +477,7 @@
 				D276FF331FE5F51500EA087F /* DecoderType.swift in Sources */,
 				D27DF7231FF48B1E003C7AAB /* DecoderTypesViewController.swift in Sources */,
 				D276FF2B1FE5C5E600EA087F /* WindowController.swift in Sources */,
+				D229995D23DD09E500F28499 /* ImageMigrationPolicy.swift in Sources */,
 				D28A4BC81FD67523000768D8 /* AppDelegate.swift in Sources */,
 				D276FF311FE5D43000EA087F /* ModelViewController.swift in Sources */,
 				D2B548381FEEFEEF00FE7ED0 /* PickerViewController.swift in Sources */,
@@ -477,6 +488,7 @@
 				D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */,
 				D2EC18641FFC262100DF1ED4 /* RecordController.swift in Sources */,
 				D27DF7261FF48E79003C7AAB /* DecoderTypeViewController.swift in Sources */,
+				D229995F23DD0ECC00F28499 /* CKDataAsset.swift in Sources */,
 				D26673BC1FE8F95F0069F9C7 /* TrainMember.swift in Sources */,
 				D28A4BCD1FD67523000768D8 /* TrainDatabase.xcdatamodeld in Sources */,
 				D2A74D3623DC318400186E31 /* Model+Era.swift in Sources */,
@@ -491,6 +503,7 @@
 				D2DE8D2823DCE06700AF9344 /* Purchase+Date.swift in Sources */,
 				D25B47E91FEFA994008A7EB1 /* TrainMemberItem.swift in Sources */,
 				D26673B81FE8F2A40069F9C7 /* Decoder.swift in Sources */,
+				D229995B23DD099800F28499 /* ImageMappingModel.xcmappingmodel in Sources */,
 				D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */,
 				D26673C51FE99E1D0069F9C7 /* ConvertibleFromString.swift in Sources */,
 				D2A74D3B23DCDB8500186E31 /* DateMigrationPolicy.swift in Sources */,
@@ -812,10 +825,11 @@
 		D28A4BCB1FD67523000768D8 /* TrainDatabase.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D229995923DD090C00F28499 /* TrainDatabase 3.xcdatamodel */,
 				D2A74D3923DCDA6F00186E31 /* TrainDatabase 2.xcdatamodel */,
 				D28A4BCC1FD67523000768D8 /* TrainDatabase.xcdatamodel */,
 			);
-			currentVersion = D2A74D3923DCDA6F00186E31 /* TrainDatabase 2.xcdatamodel */;
+			currentVersion = D229995923DD090C00F28499 /* TrainDatabase 3.xcdatamodel */;
 			path = TrainDatabase.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

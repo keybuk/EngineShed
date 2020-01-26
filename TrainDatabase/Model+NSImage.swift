@@ -11,45 +11,33 @@ import CoreData
 
 private extension NSImage {
 
-    func saveAsPNG(to url: URL) throws {
+    func pngData() throws -> Data {
         guard let imageData = self.tiffRepresentation else { throw NSError() }
         guard let imageRep = NSBitmapImageRep(data: imageData) else { throw NSError() }
         guard let pngData = imageRep.representation(using: .png, properties: [:]) else { throw NSError() }
-        try pngData.write(to: url)
+        return pngData
+    }
+
+    func saveAsPNG(to url: URL) throws {
+        try pngData().write(to: url)
     }
 
 }
 
     
 extension Model {
-    
-    private var imagesURL: URL {
-        return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!.appendingPathComponent("ModelImages", isDirectory: true)
-    }
-    
-    var imageURL: URL? {
-        guard let imageFilename = imageFilename else { return nil }
-        return imagesURL.appendingPathComponent(imageFilename)
+
+    var imageData: Data? {
+        get { managedObject.imageData }
+        set {
+            managedObject.imageData = newValue
+            try? managedObject.managedObjectContext?.save() // FIXME!
+        }
     }
     
     var image: NSImage? {
-        get {
-            guard let imageURL = imageURL else { return nil }
-            return NSImage(contentsOf: imageURL)
-        }
-        
-        set {
-            if let imageURL = imageURL {
-                try! FileManager.default.removeItem(at: imageURL)
-            }
-            
-            imageFilename = nil
-            
-            if let image = newValue {
-                imageFilename = UUID().uuidString
-                try! image.saveAsPNG(to: imageURL!)
-            }
-        }
+        get { managedObject.imageData.flatMap { NSImage(data: $0) } }
+        set { managedObject.imageData = try? newValue?.pngData() }
     }
     
 }
