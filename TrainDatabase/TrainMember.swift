@@ -66,26 +66,4 @@ struct TrainMember : ManagedObjectBacked {
             return false
         }
     }
-    
 }
-
-
-extension TrainMember : Encodable {
-    
-    enum CodingKeys : String, CodingKey {
-        case id
-        case title
-        case isFlipped
-        case modelID
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(managedObject.objectID.uriRepresentation(), forKey: .id)
-        try container.encode(title, forKey: .title)
-        try container.encode(isFlipped, forKey: .isFlipped)
-        try container.encodeIfPresent(model?.managedObject.objectID.uriRepresentation(), forKey: .modelID)
-    }
-    
-}
-

@@ -204,35 +204,3 @@ extension Decoder : CustomStringConvertible {
     }
     
 }
-
-
-extension Decoder : Encodable {
-
-    enum CodingKeys : String, CodingKey {
-        case id
-        case serialNumber
-        case firmwareVersion
-        case firmwareDate
-        case address
-        case soundAuthor
-        case soundProject
-        case soundProjectVersion
-        case soundProjectSettings
-        case modelID
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(managedObject.objectID.uriRepresentation(), forKey: .id)
-        try container.encode(serialNumber, forKey: .serialNumber)
-        try container.encode(firmwareVersion, forKey: .firmwareVersion)
-        try container.encodeIfPresent(firmwareDate, forKey: .firmwareDate)
-        try container.encode(address, forKey: .address)
-        try container.encode(soundAuthor, forKey: .soundAuthor)
-        try container.encode(soundProject, forKey: .soundProject)
-        try container.encode(soundProjectVersion, forKey: .soundProjectVersion)
-        try container.encode(soundProjectSettings, forKey: .soundProjectSettings)
-        try container.encodeIfPresent(model?.managedObject.objectID.uriRepresentation(), forKey: .modelID)
-    }
-    
-}

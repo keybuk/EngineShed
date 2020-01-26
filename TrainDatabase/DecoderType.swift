@@ -186,34 +186,3 @@ extension DecoderType : CustomStringConvertible {
     }
     
 }
-
-extension DecoderType : Encodable {
-    
-    enum CodingKeys : String, CodingKey {
-        case manufacturer
-        case productCode
-        case productFamily
-        case productDescription
-        case socket
-        case isProgrammable
-        case hasSound
-        case hasRailCom
-        case minimumStock
-        case decoders
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(manufacturer, forKey: .manufacturer)
-        try container.encode(productCode, forKey: .productCode)
-        try container.encode(productFamily, forKey: .productFamily)
-        try container.encode(productDescription, forKey: .productDescription)
-        try container.encode(socket, forKey: .socket)
-        try container.encode(isProgrammable, forKey: .isProgrammable)
-        try container.encode(hasSound, forKey: .hasSound)
-        try container.encode(hasRailCom, forKey: .hasRailCom)
-        try container.encode(minimumStock, forKey: .minimumStock)
-        try container.encode(decoders, forKey: .decoders)
-    }
-    
-}

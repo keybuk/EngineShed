@@ -454,38 +454,6 @@
                                         </connections>
                                     </searchField>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="61C3129F-A22B-4384-A929-50086A958600" label="Backup" paletteLabel="Backup" id="Wya-Qo-c77">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="80" height="25"/>
-                                    <size key="maxSize" width="80" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="od4-hE-PkR">
-                                        <rect key="frame" x="0.0" y="14" width="80" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" title="Backup" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Izh-m7-iby">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="backupAction:" target="B8D-0N-5wS" id="01e-7A-A93"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="B95237F0-9491-49E8-9F3E-B6542105BD94" label="Upload" paletteLabel="iCloud" image="NSNetwork" id="Cmt-f1-upr">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="25" height="25"/>
-                                    <size key="maxSize" width="127" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="2Yd-aj-UcO">
-                                        <rect key="frame" x="0.0" y="14" width="127" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSNetwork" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DI6-6g-apE">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="uploadAction:" target="B8D-0N-5wS" id="vGM-ed-6vO"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="AD8235BB-544A-42F0-B4A3-DA521597EB30" label="Save" paletteLabel="Save" sizingBehavior="auto" id="qXT-nU-l6I">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="tym-yB-ceo">
@@ -506,8 +474,6 @@
                                 <toolbarItem reference="ppB-md-bks"/>
                                 <toolbarItem reference="u22-QA-QMA"/>
                                 <toolbarItem reference="ppB-md-bks"/>
-                                <toolbarItem reference="Wya-Qo-c77"/>
-                                <toolbarItem reference="Cmt-f1-upr"/>
                                 <toolbarItem reference="qXT-nU-l6I"/>
                                 <toolbarItem reference="vsb-ws-2nQ"/>
                                 <toolbarItem reference="haz-jq-XtW"/>
@@ -561,13 +527,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czM-ex-Q7s">
-                                <rect key="frame" x="0.0" y="0.0" width="180" height="298"/>
+                                <rect key="frame" x="0.0" y="0.0" width="180" height="296"/>
                                 <clipView key="contentView" drawsBackground="NO" id="yXg-G5-Wch">
-                                    <rect key="frame" x="0.0" y="0.0" width="180" height="298"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="296"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="BZm-kL-zm2" id="fBK-Sm-P5e">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="298"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="296"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1218,7 +1184,6 @@ DQ
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSGoBackTemplate" width="9" height="12"/>
         <image name="NSGoForwardTemplate" width="9" height="12"/>
-        <image name="NSNetwork" width="32" height="32"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
     </resources>
 </document>
