@@ -35,7 +35,7 @@ class ModelTrainComboBoxController : Formatter, NSComboBoxDataSource {
     }
     
     func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {
-        return trains.first(where: { $0.name.lowercased().starts(with: string.lowercased()) })?.name
+        return trains.first(where: { $0.name?.lowercased().starts(with: string.lowercased()) ?? false })?.name
     }
     
     override func string(for obj: Any?) -> String? {

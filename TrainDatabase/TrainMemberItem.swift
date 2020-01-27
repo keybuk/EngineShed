@@ -50,9 +50,9 @@ class TrainMemberItem: NSCollectionViewItem {
     }
     
     @IBAction func flipChanged(_ sender: NSMenuItem) {
-        if var trainMember = trainMember {
+        if let trainMember = trainMember {
             trainMember.isFlipped = !trainMember.isFlipped
-            self.trainMember = trainMember
+            try? trainMember.managedObjectContext?.save() // FIXME
         }
     }
     

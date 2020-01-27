@@ -9,7 +9,6 @@
 import AppKit
 
 extension NSImage {
-    
     public func flippedHorizontally() -> NSImage {
         let flipped = NSImage(size: size)
         flipped.lockFocus()
@@ -24,15 +23,12 @@ extension NSImage {
         
         return flipped
     }
-
 }
 
 
 extension TrainMember {
-    
     var image: NSImage? {
-        guard let originalImage = model?.image else { return nil }
+        guard let originalImage = model.map({ Model(managedObject: $0) })?.image else { return nil }
         return isFlipped ? originalImage.flippedHorizontally() : originalImage
     }
-    
 }

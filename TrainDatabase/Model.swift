@@ -40,10 +40,10 @@ struct Model : ManagedObjectBacked {
     }
     
     var trainMember: TrainMember? {
-        get { return managedObject.trainMember.map(TrainMember.init(managedObject:)) }
+        get { return managedObject.trainMember }
         set {
-            managedObject.trainMember = newValue?.managedObject
-            try? managedObject.managedObjectContext?.save()
+            managedObject.trainMember = newValue
+            try? managedObject.managedObjectContext?.save() // FIXME
         }
     }
     
@@ -262,16 +262,16 @@ struct Model : ManagedObjectBacked {
     mutating func createTrainMember(in train: Train) {
         trainMember = TrainMember(context: managedObject.managedObjectContext!)
         trainMember?.train = train
-        try? managedObject.managedObjectContext?.save()
+        try? managedObject.managedObjectContext?.save() // FIXME
     }
     
     mutating func createTrain(named name: String) {
-        var train = Train(context: managedObject.managedObjectContext!)
+        let train = Train(context: managedObject.managedObjectContext!)
         train.name = name
             
         trainMember = TrainMember(context: managedObject.managedObjectContext!)
         trainMember?.train = train
-        try? managedObject.managedObjectContext?.save()
+        try? managedObject.managedObjectContext?.save() // FIXME
     }
     
     func delete() {
@@ -407,15 +407,15 @@ struct Model : ManagedObjectBacked {
     func sortedValuesForTrain(startingWith string: String? = nil) throws -> [Train] {
         guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
         
-        let fetchRequest: NSFetchRequest<TrainManagedObject> = TrainManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<Train> = Train.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "name", ascending: true),
         ]
         
         fetchRequest.predicate = NSPredicate(format: "name != ''")
         
-        let trainObjects = try! context.fetch(fetchRequest)
-        return trainObjects.map(Train.init(managedObject:))
+        let trains = try! context.fetch(fetchRequest)
+        return trains
     }
     
     

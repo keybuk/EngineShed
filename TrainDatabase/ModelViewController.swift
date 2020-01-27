@@ -156,7 +156,7 @@ class ModelViewController: NSViewController {
         trainComboBoxController = try? ModelTrainComboBoxController(model: model)
         trainComboBox.dataSource = trainComboBoxController
         trainComboBox.formatter = trainComboBoxController
-        trainComboBox.stringValue = model.trainMember?.train.name ?? ""
+        trainComboBox.stringValue = model.trainMember?.train?.name ?? ""
         
         trainMemberCollectionView.reloadData()
 
@@ -301,14 +301,14 @@ class ModelViewController: NSViewController {
             }
             
             model.createTrainMember(in: train)
-        } else if let trainMember = model.trainMember, trainMember.train.members.count == 1 {
+            try? model.managedObject.managedObjectContext?.save() // FIXME
+        } else if let trainMember = model.trainMember, let train = trainMember.train, (train.members?.count ?? 0) == 1 {
             // Rename the existing train.
-            var train = trainMember.train
             train.name = sender.stringValue
+            try? train.managedObjectContext?.save() // FIXME
         } else {
             // Before creating a new train, detach the existing member record, and discard if necessary.
-            if let trainMember = model.trainMember {
-                let train = trainMember.train
+            if let trainMember = model.trainMember, let train = trainMember.train {
                 model.trainMember = nil
                 trainMember.deleteIfUnused()
                 train.deleteIfUnused()
@@ -317,6 +317,8 @@ class ModelViewController: NSViewController {
             if !sender.stringValue.isEmpty {
                 model.createTrain(named: sender.stringValue)
             }
+
+            try? model.managedObject.managedObjectContext?.save() // FIXME
         }
         
         trainMemberCollectionView.reloadData()
@@ -541,14 +543,14 @@ extension ModelViewController : NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let trainMember = model?.trainMember else { return 0 }
         
-        return trainMember.train.members.count
+        return trainMember.train?.members?.count ?? 0
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: .trainMemberItem, for: indexPath) as! TrainMemberItem
         guard let train = model.trainMember?.train else { return item }
 
-        let trainMember = train.members[indexPath.item]
+        let trainMember = train.members![indexPath.item] as! TrainMember
         item.trainMember = trainMember
         item.isCurrentItem = trainMember == model.trainMember
         
@@ -596,7 +598,7 @@ extension ModelViewController : NSCollectionViewDelegate {
         switch proposedDropOperation.pointee {
         case .on:
             guard let oldIndexPath = draggingIndexPath(collectionView: collectionView, draggingInfo: draggingInfo) else { return [] }
-            guard let _ = train.members[oldIndexPath.item].model else { return [] }
+            guard let _ = (train.members![oldIndexPath.item] as! TrainMember).model else { return [] }
             
             if let onItem = collectionView.item(at: indexPath) as? TrainMemberItem {
                 onItem.dropOnIndicator.isHidden = false
@@ -617,18 +619,18 @@ extension ModelViewController : NSCollectionViewDelegate {
     
     func collectionView(_ collectionView: NSCollectionView, acceptDrop draggingInfo: NSDraggingInfo, indexPath: IndexPath, dropOperation: NSCollectionView.DropOperation) -> Bool {
         guard let oldIndexPath = draggingIndexPath(collectionView: collectionView, draggingInfo: draggingInfo) else { return false }
-        guard var train = model.trainMember?.train else { return false }
+        guard let train = model.trainMember?.train else { return false }
         
-        let oldMember = train.members[oldIndexPath.item]
+        let oldMember = train.members![oldIndexPath.item] as! TrainMember
         
         switch dropOperation {
         case .on:
             // Dropping on replaces the model, but leaves the old member.
             guard oldIndexPath.item != indexPath.item else { return false }
-            train.members[indexPath.item].model = oldMember.model
-            train.members[oldIndexPath.item].model = nil
+            (train.members![indexPath.item] as! TrainMember).model = oldMember.model
+            (train.members![oldIndexPath.item] as! TrainMember).model = nil
             
-            if train.members[oldIndexPath.item].deleteIfUnused() == true {
+            if (train.members![oldIndexPath.item] as! TrainMember).deleteIfUnused() == true {
                 collectionView.performBatchUpdates({
                     collectionView.deleteItems(at: Set([oldIndexPath]))
                     collectionView.reloadItems(at: Set([indexPath]))
@@ -636,19 +638,20 @@ extension ModelViewController : NSCollectionViewDelegate {
             } else {
                 collectionView.reloadItems(at: Set([oldIndexPath, indexPath]))
             }
-            
+            try? train.managedObjectContext?.save() // FIXME
+
             return true
         case .before:
             // Dropping between members rearranges the train.
             if oldIndexPath.item < indexPath.item {
-                train.members.remove(at: oldIndexPath.item)
-                train.members.insert(oldMember, at: indexPath.item - 1)
-                
+                train.removeFromMembers(at: oldIndexPath.item)
+                train.insertIntoMembers(oldMember, at: indexPath.item - 1)
+
                 collectionView.moveItem(at: oldIndexPath, to: IndexPath(item: indexPath.item - 1, section: indexPath.section))
             } else {
-                train.members.remove(at: oldIndexPath.item)
-                train.members.insert(oldMember, at: indexPath.item)
-                
+                train.removeFromMembers(at: oldIndexPath.item)
+                train.insertIntoMembers(oldMember, at: indexPath.item)
+
                 collectionView.moveItem(at: oldIndexPath, to: indexPath)
             }
             

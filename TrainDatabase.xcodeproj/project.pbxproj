@@ -101,6 +101,7 @@
 		D229996F23DD496700F28499 /* TrainDatabase 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 5.xcdatamodel"; sourceTree = "<group>"; };
 		D229997023DD4D3400F28499 /* DerivedMappingModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = DerivedMappingModel.xcmappingmodel; sourceTree = "<group>"; };
 		D229997223DD559400F28499 /* TrainDatabase 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 6.xcdatamodel"; sourceTree = "<group>"; };
+		D229997323DD672600F28499 /* TrainDatabase 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 7.xcdatamodel"; sourceTree = "<group>"; };
 		D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberItem.swift; sourceTree = "<group>"; };
 		D25B47E81FEFA994008A7EB1 /* TrainMemberItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainMemberItem.xib; sourceTree = "<group>"; };
 		D25B47EB1FEFB6B0008A7EB1 /* TrainMember+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+NSImage.swift"; sourceTree = "<group>"; };
@@ -852,6 +853,7 @@
 		D28A4BCB1FD67523000768D8 /* TrainDatabase.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D229997323DD672600F28499 /* TrainDatabase 7.xcdatamodel */,
 				D229997223DD559400F28499 /* TrainDatabase 6.xcdatamodel */,
 				D229996F23DD496700F28499 /* TrainDatabase 5.xcdatamodel */,
 				D229996023DD18D500F28499 /* TrainDatabase 4.xcdatamodel */,
@@ -859,7 +861,7 @@
 				D2A74D3923DCDA6F00186E31 /* TrainDatabase 2.xcdatamodel */,
 				D28A4BCC1FD67523000768D8 /* TrainDatabase.xcdatamodel */,
 			);
-			currentVersion = D229997223DD559400F28499 /* TrainDatabase 6.xcdatamodel */;
+			currentVersion = D229997323DD672600F28499 /* TrainDatabase 7.xcdatamodel */;
 			path = TrainDatabase.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
