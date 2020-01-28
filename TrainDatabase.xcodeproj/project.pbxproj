@@ -144,7 +144,6 @@
 		D2A74D3223DC318400186E31 /* Model+Classification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Classification.swift"; sourceTree = "<group>"; };
 		D2A74D3323DC318400186E31 /* Model+Era.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Era.swift"; sourceTree = "<group>"; };
 		D2A74D3423DC318400186E31 /* Model+Disposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Disposition.swift"; sourceTree = "<group>"; };
-		D2A74D3823DCCECA00186E31 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
 		D2A74D3923DCDA6F00186E31 /* TrainDatabase 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 2.xcdatamodel"; sourceTree = "<group>"; };
 		D2A74D3A23DCDB8500186E31 /* DateMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMigrationPolicy.swift; sourceTree = "<group>"; };
 		D2B2AF5220D8661300BEFC15 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -221,7 +220,6 @@
 		D28A4BBB1FD67523000768D8 = {
 			isa = PBXGroup;
 			children = (
-				D2A74D3823DCCECA00186E31 /* Coding Style.md */,
 				D28A4BC61FD67523000768D8 /* TrainDatabase */,
 				D28A4BDC1FD67523000768D8 /* TrainDatabaseTests */,
 				D28A4BE71FD67523000768D8 /* TrainDatabaseUITests */,

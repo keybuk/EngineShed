@@ -364,7 +364,6 @@
 		D2599EDE22B881DE00A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DecoderTypeDetail.storyboard; sourceTree = "<group>"; };
 		D2599EE322B8829900A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DecoderEdit.storyboard; sourceTree = "<group>"; };
 		D2599EE822B882DD00A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DecoderTypeEdit.storyboard; sourceTree = "<group>"; };
-		D25AAC7921DD445700AC4359 /* Coding Style.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Coding Style.md"; sourceTree = "<group>"; };
 		D26903592234595C002C7A48 /* ModelEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEditTableViewController.swift; sourceTree = "<group>"; };
 		D269035B22345C5D002C7A48 /* ModelDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		D269035D223471DB002C7A48 /* ModelImageEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelImageEditTableViewCell.swift; sourceTree = "<group>"; };
@@ -559,7 +558,6 @@
 		D215BE9520D4B5380054FDCC = {
 			isa = PBXGroup;
 			children = (
-				D25AAC7921DD445700AC4359 /* Coding Style.md */,
 				D2B7C95220D4BA30001B51B1 /* EngineShed */,
 				D2B7C96C20D4BA31001B51B1 /* EngineShedTests */,
 				D2B7C97720D4BA31001B51B1 /* EngineShedUITests */,
