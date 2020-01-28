@@ -10,6 +10,8 @@ import Cocoa
 import CoreData
 import CloudKit
 
+import Database // NEW
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -17,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        DatabaseTest().test()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
