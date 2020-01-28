@@ -41,6 +41,16 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D213DF2B23E0B0F50003C771"
+               BuildableName = "DatabaseTests.xctest"
+               BlueprintName = "DatabaseTests"
+               ReferencedContainer = "container:Database/Database.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2B7C96820D4BA31001B51B1"
                BuildableName = "EngineShedTests.xctest"
                BlueprintName = "EngineShedTests"
