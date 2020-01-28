@@ -275,7 +275,7 @@ extension Model {
 
         // Find the models that exist along similar models within the same purchase (multiple units, Class 43, etc. but also box sets).
         // FIXME: since this now behaves like a filter, the != purchase here actually means we DO include models from the current purchase. Handy for BSK-sets, but wrong for 43-sets? Will see over time if this is more annoying than useful.
-        let modelsInMultiples = models.reduce(into: [Purchase: [Model]](), { $0[Purchase(managedObject: $1.purchase!), default: []].append($1) }).filter({ $0.key.managedObject != purchase && $0.value.count > 1 }).flatMap({ $0.value })
+        let modelsInMultiples = models.reduce(into: [Purchase: [Model]](), { $0[$1.purchase!, default: []].append($1) }).filter({ $0.key != purchase && $0.value.count > 1 }).flatMap({ $0.value })
 
         // Further filter to the set of models within those purchases that are at the same position within the purchase as this model. This should correctly match the front or rear equivalent of a multiple unit, where such things are common.
         let position = (purchase!.models!.array as! [Model]).firstIndex(of: self)

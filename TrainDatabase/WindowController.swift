@@ -75,7 +75,7 @@ class WindowController : NSWindowController, RecordController {
 
         let context = persistentContainer.viewContext
 
-        var purchase = Purchase(context: context)
+        let purchase = Purchase(context: context)
         let model = purchase.addModel()
         
         currentRecord = .model(model)

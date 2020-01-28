@@ -9,135 +9,23 @@
 import Foundation
 import CoreData
 
-struct Purchase : ManagedObjectBacked {
-    
-    var managedObject: PurchaseManagedObject
-
-    init(managedObject: PurchaseManagedObject) {
-        self.managedObject = managedObject
+extension Purchase {
+    var priceAsDecimal: Decimal? {
+        get { price as Decimal? }
+        set { price = newValue as NSDecimalNumber? }
     }
     
-    init(context: NSManagedObjectContext) {
-        managedObject = PurchaseManagedObject(context: context)
-        managedObject.manufacturer = ""
-        managedObject.catalogNumber = ""
-        managedObject.catalogDescription = ""
-        managedObject.limitedEdition = ""
-        managedObject.store = ""
-        managedObject.notes = ""
+    var valuationAsDecimal: Decimal? {
+        get { valuation as Decimal? }
+        set { valuation = newValue as NSDecimalNumber? }
     }
     
-
-    var models: [Model] {
-        get {
-            let modelObjects = managedObject.models!.array as! [Model]
-            return modelObjects
-        }
-        
-        set {
-            managedObject.models = NSOrderedSet(array: newValue)
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-
-    var manufacturer: String {
-        get { return managedObject.manufacturer ?? "" }
-        set {
-            managedObject.manufacturer = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var catalogNumber: String {
-        get { return managedObject.catalogNumber ?? "" }
-        set {
-            managedObject.catalogNumber = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-
-    var catalogDescription: String {
-        get { return managedObject.catalogDescription ?? "" }
-        set {
-            managedObject.catalogDescription = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var catalogYear: Int {
-        get { return Int(managedObject.catalogYear) }
-        set {
-            managedObject.catalogYear = Int16(newValue)
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var limitedEdition: String {
-        get { return managedObject.limitedEdition ?? "" }
-        set {
-            managedObject.limitedEdition = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var limitedEditionNumber: Int {
-        get { return Int(managedObject.limitedEditionNumber) }
-        set {
-            managedObject.limitedEditionNumber = Int16(newValue)
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var limitedEditionCount: Int {
-        get { return Int(managedObject.limitedEditionCount) }
-        set {
-            managedObject.limitedEditionCount = Int16(newValue)
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var store: String {
-        get { return managedObject.store ?? "" }
-        set {
-            managedObject.store = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var price: Decimal? {
-        get { return managedObject.price as Decimal? }
-        set {
-            managedObject.price = newValue as NSDecimalNumber?
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var valuation: Decimal? {
-        get { return managedObject.valuation as Decimal? }
-        set {
-            managedObject.valuation = newValue as NSDecimalNumber?
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var notes: String {
-        get { return managedObject.notes ?? "" }
-        set {
-            managedObject.notes = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    
-    mutating func addModel() -> Model {
-        let model = Model(context: managedObject.managedObjectContext!)
-        model.purchase = self.managedObject
-        try? managedObject.managedObjectContext?.save()
+    func addModel() -> Model {
+        let model = Model(context: managedObjectContext!)
+        model.purchase = self
         return model
     }
-    
-    
+
     func sortedValuesForManufacturer(startingWith string: String? = nil) throws -> [String] {
         return try sortedValues(for: "manufacturer", ascending: true, startingWith: string)
     }
@@ -151,8 +39,8 @@ struct Purchase : ManagedObjectBacked {
     ///
     /// A similar purchase is one that has the same manufacturer and catalog number, or the same manufacturer and a catalog number that indicates the same model but with only a running number variation. Where an exact match exists, only those are returned.
     func similar() throws -> Set<Purchase>? {
-        guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
-        guard !manufacturer.isEmpty && !catalogNumber.isEmpty else { return nil }
+        guard let context = managedObjectContext else { fatalError("No context to make query with") }
+        guard let manufacturer = manufacturer, let catalogNumber = catalogNumber, !manufacturer.isEmpty && !catalogNumber.isEmpty else { return nil }
 
         var catalogNumberBase = catalogNumber
         if catalogNumberBase.filter({ $0 == "-" }).count > 1 {
@@ -168,39 +56,40 @@ struct Purchase : ManagedObjectBacked {
         }
 
 
-        let fetchRequest: NSFetchRequest<PurchaseManagedObject> = PurchaseManagedObject.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "SELF != %@ && manufacturer == %@ && catalogNumber BEGINSWITH[c] %@", managedObject, manufacturer, catalogNumberBase)
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "SELF != %@ && manufacturer == %@ && catalogNumber BEGINSWITH[c] %@", self, manufacturer, catalogNumberBase)
 
-        let purchaseObjects = try context.fetch(fetchRequest)
-        if purchaseObjects.isEmpty {
+        let purchases = try context.fetch(fetchRequest)
+        if purchases.isEmpty {
             return nil
         }
         
         // Look for exact matches, but also double-check that the "begins with" didn't pick up R3001 for R300 and other errors we don't intend.
-        var matches: [PurchaseManagedObject] = []
+        var matches: [Purchase] = []
         var exactOnly = false
-        for purchaseObject in purchaseObjects {
-            if purchaseObject.catalogNumber == catalogNumber {
+        for purchase in purchases {
+            if purchase.catalogNumber == catalogNumber {
                 if !exactOnly {
                     matches.removeAll()
                     exactOnly = true
                 }
                 
-                matches.append(purchaseObject)
+                matches.append(purchase)
             } else if !exactOnly {
-                let suffix = purchaseObject.catalogNumber!.dropFirst(catalogNumberBase.count)
-                guard suffix.drop(while: ("A"..."Z").contains).isEmpty || purchaseObject.catalogNumber!.filter({ $0 == "-" }).count > 1 else { continue }
+                let suffix = purchase.catalogNumber!.dropFirst(catalogNumberBase.count)
+                guard suffix.drop(while: ("A"..."Z").contains).isEmpty || purchase.catalogNumber!.filter({ $0 == "-" }).count > 1 else { continue }
 
-                matches.append(purchaseObject)
+                matches.append(purchase)
             }
             
         }
 
-        return matches.count > 0 ? Set(matches.map(Purchase.init(managedObject:))) : nil
+        return matches.count > 0 ? Set(matches) : nil
     }
     
-    mutating func fillFromSimilar() throws -> Bool {
+    func fillFromSimilar() throws -> Bool {
         guard let similarPurchases = try similar() else { return false }
+        guard let catalogNumber = catalogNumber else { return false }
         let exactMatch = similarPurchases.first?.catalogNumber == catalogNumber
         
         // For exact match purchases, we copy the product particulars over. Otherwise we assume an A-Z variant will have a different catalog year, as well as a different description (because of the number), etc. so we actually copy none of the product information over in that case.
@@ -214,16 +103,16 @@ struct Purchase : ManagedObjectBacked {
         }
         
         // Don't do model copying if they're already filled out, since we wipe it.
+        let models = self.models!.array as! [Model]
         guard models.count <= 1 else { return exactMatch }
         guard models.first?.classification == nil else { return exactMatch }
         models.first?.delete()
-        try? managedObject.managedObjectContext?.save()
 
         // This is a weird bit, see what the most frequent number of models is - it should always be the same, but keep our "going for the mode" approach.
         // Right now this simply ignores missing models, or extra models, but keeps looking at the rest of the box rather than excluding the purchase altogether; can change that with the flatMap below to check the count matches, rather than checking against index.
-        guard let count = similarPurchases.map({ $0.models.count }).mostFrequent() else { return exactMatch }
+        guard let count = similarPurchases.map({ $0.models!.count }).mostFrequent() else { return exactMatch }
         for index in 0..<count {
-            let similarModels = Set(similarPurchases.compactMap({ $0.models.count > index ? $0.models[index] : nil }))
+            let similarModels = Set(similarPurchases.compactMap({ $0.models!.count > index ? $0.models!.array[index] as? Model : nil }))
             
             let model: Model = addModel()
             let _ = try model.fillFromSimilar(models: similarModels, exactMatch: exactMatch)
@@ -234,23 +123,23 @@ struct Purchase : ManagedObjectBacked {
 
     
     static func all(in context: NSManagedObjectContext) throws -> [Purchase] {
-        let fetchRequest: NSFetchRequest<PurchaseManagedObject> = PurchaseManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "manufacturer", ascending: true),
             NSSortDescriptor(key: "catalogNumber", ascending: true),
             NSSortDescriptor(key: "date", ascending: true)
         ]
         
-        let purchaseObjects = try context.fetch(fetchRequest)
-        return purchaseObjects.map(Purchase.init(managedObject:))
+        let results = try context.fetch(fetchRequest)
+        return results
     }
 
 }
 
-extension Purchase : CustomStringConvertible {
+extension Purchase/* : CustomStringConvertible*/ {
     
-    var description: String {
-        return [ manufacturer, catalogNumber ].filter({ !$0.isEmpty }).joined(separator: " ")
+    override public var description: String {
+        [ manufacturer, catalogNumber ].compactMap({ $0 }).filter({ !$0.isEmpty }).joined(separator: " ")
     }
     
 }

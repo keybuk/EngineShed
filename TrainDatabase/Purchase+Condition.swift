@@ -18,11 +18,8 @@ extension Purchase {
     }
 
     var condition: Condition? {
-        get { Condition(rawValue: managedObject.conditionRawValue) }
-        set {
-            managedObject.conditionRawValue = newValue?.rawValue ?? 0
-            try? managedObject.managedObjectContext?.save() // FIXME!
-        }
+        get { Condition(rawValue: conditionRawValue) }
+        set { conditionRawValue = newValue?.rawValue ?? 0 }
     }
 }
 

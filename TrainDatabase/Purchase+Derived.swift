@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension PurchaseManagedObject {
+extension Purchase {
     /// Returns the common catalog number prefix for a catalog number.
     ///
     /// Most model railway manufacturers use a system where common models differing only in running

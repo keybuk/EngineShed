@@ -9,14 +9,6 @@
 import Foundation
 
 extension Purchase {
-    var date: DateComponents? {
-        get { managedObject.date }
-        set {
-            managedObject.date = newValue
-            try? managedObject.managedObjectContext?.save() // FIXME!
-        }
-    }
-
     /// Formatter for date types.
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()

@@ -79,7 +79,7 @@
         <attribute name="title" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="modifications" inverseEntity="Model"/>
     </entity>
-    <entity name="Purchase" representedClassName="PurchaseManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="Purchase" representedClassName="Purchase" syncable="YES" codeGenerationType="class">
         <attribute name="catalogDescription" optional="YES" attributeType="String"/>
         <attribute name="catalogNumber" attributeType="String" defaultValueString=""/>
         <attribute name="catalogNumberPrefix" attributeType="String"/>

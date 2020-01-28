@@ -78,11 +78,11 @@ class PurchaseViewController: NSViewController {
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
         
-        purchase = Purchase(managedObject: model.purchase!)
+        purchase = model.purchase!
         
         reloadData()
         
-        if purchase.manufacturer.isEmpty {
+        if purchase.manufacturer?.isEmpty ?? true {
             view.window?.makeFirstResponder(self.manufacturerComboBox)
         }
     }
@@ -90,35 +90,36 @@ class PurchaseViewController: NSViewController {
     func reloadData() {
         manufacturerComboBoxDataSource = try? SimpleComboBoxDataSource(using: purchase.sortedValuesForManufacturer)
         manufacturerComboBox.dataSource = manufacturerComboBoxDataSource
-        manufacturerComboBox.stringValue = purchase.manufacturer
+        manufacturerComboBox.stringValue = purchase.manufacturer ?? ""
         
-        catalogNumberTextField.stringValue = purchase.catalogNumber
+        catalogNumberTextField.stringValue = purchase.catalogNumber ?? ""
         catalogYearTextField.objectValue = purchase.catalogYear != 0 ? purchase.catalogYear : nil
-        catalogDescriptionTextField.stringValue = purchase.catalogDescription
-        limitedEditionTextField.stringValue = purchase.limitedEdition
+        catalogDescriptionTextField.stringValue = purchase.catalogDescription ?? ""
+        limitedEditionTextField.stringValue = purchase.limitedEdition ?? ""
         limitedEditionNumberTextField.objectValue = purchase.limitedEditionNumber != 0 ? purchase.limitedEditionNumber : nil
         limitedEditionCountTextField.objectValue = purchase.limitedEditionCount != 0 ? purchase.limitedEditionCount : nil
         dateTextField.objectValue = purchase.dateAsDate
         
         storeComboBoxDataSource = try? SimpleComboBoxDataSource(using: purchase.sortedValuesForStore)
         storeComboBox.dataSource = storeComboBoxDataSource
-        storeComboBox.stringValue = purchase.store
+        storeComboBox.stringValue = purchase.store ?? ""
         
-        priceTextField.objectValue = purchase.price
+        priceTextField.objectValue = purchase.priceAsDecimal
         
         conditionComboBoxDataSource = EnumComboBoxDataSource(wrapping: Purchase.Condition.self)
         conditionComboBox.dataSource = conditionComboBoxDataSource
         conditionComboBox.formatter = conditionComboBoxDataSource
         conditionComboBox.objectValue = purchase.condition.map(NSArray.init(object:))
     
-        valuationTextField.objectValue = purchase.valuation
-        notesTextField.stringValue = purchase.notes
+        valuationTextField.objectValue = purchase.valuationAsDecimal
+        notesTextField.stringValue = purchase.notes ?? ""
     }
     
     func fillFromSimilar() {
         if (try? purchase.fillFromSimilar()) == true {
+            try? purchase.managedObjectContext?.save() // FIXME
             reloadData()
-            recordController?.currentRecord = .model(purchase.models[0])
+            recordController?.currentRecord = .model(purchase.models!.array[0] as! Model)
         }
     }
     
@@ -130,6 +131,7 @@ class PurchaseViewController: NSViewController {
         if tryFill {
             fillFromSimilar()
         }
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func catalogNumberChanged(_ sender: NSTextField) {
@@ -140,50 +142,62 @@ class PurchaseViewController: NSViewController {
         if tryFill {
             fillFromSimilar()
         }
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func catalogYearChanged(_ sender: NSTextField) {
-        purchase.catalogYear = sender.objectValue != nil ? sender.integerValue : 0
+        purchase.catalogYear = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func catalogDescriptionChanged(_ sender: NSTextField) {
         purchase.catalogDescription = sender.stringValue
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func limitedEditionChanged(_ sender: NSTextField) {
         purchase.limitedEdition = sender.stringValue
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func limitedEditionNumberChanged(_ sender: NSTextField) {
-        purchase.limitedEditionNumber = sender.objectValue != nil ? sender.integerValue : 0
+        purchase.limitedEditionNumber = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func limitedEditionCountChanged(_ sender: NSTextField) {
-        purchase.limitedEditionCount = sender.objectValue != nil ? sender.integerValue : 0
+        purchase.limitedEditionCount = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func dateChanged(_ sender: NSTextField) {
         purchase.dateAsDate = sender.objectValue as? Date
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func storeChanged(_ sender: NSComboBox) {
         purchase.store = sender.stringValue
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func priceChanged(_ sender: NSTextField) {
-        purchase.price = sender.objectValue as? Decimal
+        purchase.priceAsDecimal = sender.objectValue as? Decimal
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func purchaseConditionChanged(_ sender: NSComboBox) {
         purchase.condition = (sender.objectValue as? [Purchase.Condition])?.first
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func valuationChanged(_ sender: NSTextField) {
-        purchase.valuation = sender.objectValue as? Decimal
+        purchase.valuationAsDecimal = sender.objectValue as? Decimal
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func notesChanged(_ sender: NSTextField) {
         purchase.notes = sender.stringValue
+        try? purchase.managedObjectContext?.save() // FIXME
     }
     
 }

@@ -17,7 +17,7 @@ final class PurchaseDerivedMigrationPolicy: NSEntityMigrationPolicy {
         guard let dInstance = manager.destinationInstances(forEntityMappingName: mapping.name, sourceInstances: [sInstance]).first
             else { fatalError("must return purchase") }
 
-        let temporary = PurchaseManagedObject(entity: manager.sourceEntity(for: mapping)!, insertInto: nil)
+        let temporary = Purchase(entity: manager.sourceEntity(for: mapping)!, insertInto: nil)
 
         let catalogNumber = dInstance.value(forKey: "catalogNumber") as! String?
         dInstance.setValue(catalogNumber.map { temporary.makeCatalogNumberPrefix(from: $0) }, forKey: "catalogNumberPrefix")
