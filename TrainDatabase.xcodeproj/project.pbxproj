@@ -44,6 +44,7 @@
 		D28A4BD21FD67523000768D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A4BD01FD67523000768D8 /* Main.storyboard */; };
 		D28A4BDE1FD67523000768D8 /* TrainDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BDD1FD67523000768D8 /* TrainDatabaseTests.swift */; };
 		D28A4BE91FD67523000768D8 /* TrainDatabaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */; };
+		D2978EDC23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2978EDB23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */; };
 		D2A74D3123DC307200186E31 /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3023DC307200186E31 /* Purchase+Condition.swift */; };
 		D2A74D3523DC318400186E31 /* Model+Classification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3223DC318400186E31 /* Model+Classification.swift */; };
@@ -137,6 +138,7 @@
 		D28A4BE41FD67523000768D8 /* TrainDatabaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainDatabaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDatabaseUITests.swift; sourceTree = "<group>"; };
 		D28A4BEA1FD67523000768D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2978EDB23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSecureUnarchiveDateComponentsFromDataTransformer.swift; sourceTree = "<group>"; };
 		D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+CountedElements.swift"; sourceTree = "<group>"; };
 		D2A74D3023DC307200186E31 /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
 		D2A74D3223DC318400186E31 /* Model+Classification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Classification.swift"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */,
 				D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */,
 				D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */,
+				D2978EDB23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift */,
 				D2FFF3BD20E20EAF000A4511 /* Shim.swift */,
 				D229995E23DD0ECB00F28499 /* CKDataAsset.swift */,
 				D26673C31FE90B8D0069F9C7 /* Data Model */,
@@ -492,6 +495,7 @@
 				D26673BA1FE8F9590069F9C7 /* Train.swift in Sources */,
 				D276FF291FE4F6A600EA087F /* SourceListViewController.swift in Sources */,
 				D229996B23DD452D00F28499 /* Purchase+Derived.swift in Sources */,
+				D2978EDC23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
 				D2DE8D2A23DCE11200AF9344 /* Model+Date.swift in Sources */,
 				D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */,
 				D2A74D3123DC307200186E31 /* Purchase+Condition.swift in Sources */,
