@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension DecoderTypeManagedObject {
+extension DecoderType {
     func makeRemainingStock() -> Int16 {
-        guard let decoders = decoders as? Set<DecoderManagedObject> else { return 0 }
+        guard let decoders = decoders as? Set<Decoder> else { return 0 }
         return Int16(clamping: decoders.filter({ $0.isUnallocated }).count)
     }
 

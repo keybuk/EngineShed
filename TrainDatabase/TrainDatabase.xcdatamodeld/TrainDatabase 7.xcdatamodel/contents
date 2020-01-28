@@ -4,7 +4,7 @@
         <attribute name="title" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="couplings" inverseEntity="Model"/>
     </entity>
-    <entity name="Decoder" representedClassName="DecoderManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="Decoder" representedClassName="Decoder" syncable="YES" codeGenerationType="class">
         <attribute name="address" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="firmwareDate" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="DateComponents"/>
         <attribute name="firmwareVersion" optional="YES" attributeType="String"/>
@@ -18,7 +18,7 @@
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="decoder" inverseEntity="Model"/>
         <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DecoderType" inverseName="decoders" inverseEntity="DecoderType"/>
     </entity>
-    <entity name="DecoderType" representedClassName="DecoderTypeManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="DecoderType" representedClassName="DecoderType" syncable="YES" codeGenerationType="class">
         <attribute name="hasRailCom" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="hasSound" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isProgrammable" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>

@@ -84,7 +84,7 @@ class DecoderTypeViewController: NSViewController {
         
         reloadData()
         
-        if decoderType.manufacturer.isEmpty {
+        if decoderType.manufacturer?.isEmpty ?? true {
             view.window?.makeFirstResponder(manufacturerComboBox)
         }
     }
@@ -96,21 +96,21 @@ class DecoderTypeViewController: NSViewController {
         
         switch sortDescriptor.key! {
         case "serialNumber":
-            decoders.sort(by: { $0.serialNumber < $1.serialNumber })
+            decoders.sort(by: { ($0.serialNumber ?? "") < ($1.serialNumber ?? "") })
         case "firmwareVersion":
-            decoders.sort(by: { $0.firmwareVersion < $1.firmwareVersion })
+            decoders.sort(by: { ($0.firmwareVersion ?? "") < ($1.firmwareVersion ?? "") })
         case "firmwareDate":
             decoders.sort(by: { ($0.firmwareDateAsDate ?? Date.distantPast) < ($1.firmwareDateAsDate ?? Date.distantPast) })
         case "address":
             decoders.sort(by: { $0.address < $1.address })
         case "soundAuthor":
-            decoders.sort(by: { $0.soundAuthor < $1.soundAuthor })
+            decoders.sort(by: { ($0.soundAuthor ?? "") < ($1.soundAuthor ?? "") })
         case "soundProject":
-            decoders.sort(by: { $0.soundProject < $1.soundProject })
+            decoders.sort(by: { ($0.soundProject ?? "") < ($1.soundProject ?? "") })
         case "soundProjectVersion":
-            decoders.sort(by: { $0.soundProjectVersion < $1.soundProjectVersion })
+            decoders.sort(by: { ($0.soundProjectVersion ?? "") < ($1.soundProjectVersion ?? "") })
         case "soundProjectSettings":
-            decoders.sort(by: { $0.soundProjectSettings < $1.soundProjectSettings })
+            decoders.sort(by: { ($0.soundProjectSettings ?? "") < ($1.soundProjectSettings ?? "") })
         default:
             break
         }
@@ -123,19 +123,19 @@ class DecoderTypeViewController: NSViewController {
     func reloadData() {
         manufacturerComboBoxDataSource = try? SimpleComboBoxDataSource(using: decoderType.sortedValuesForManufacturer)
         manufacturerComboBox.dataSource = manufacturerComboBoxDataSource
-        manufacturerComboBox.stringValue = decoderType.manufacturer
+        manufacturerComboBox.stringValue = decoderType.manufacturer ?? ""
 
-        productCodeTextField.stringValue = decoderType.productCode
+        productCodeTextField.stringValue = decoderType.productCode ?? ""
 
         productFamilyComboBoxDataSource = try? SimpleComboBoxDataSource(using: decoderType.sortedValuesForProductFamily)
         productFamilyComboBox.dataSource = productFamilyComboBoxDataSource
-        productFamilyComboBox.stringValue = decoderType.productFamily
+        productFamilyComboBox.stringValue = decoderType.productFamily ?? ""
 
-        productDescriptionTextField.stringValue = decoderType.productDescription
+        productDescriptionTextField.stringValue = decoderType.productDescription ?? ""
 
         socketComboBoxDataSource = try? SimpleComboBoxDataSource(using: decoderType.sortedValuesForSocket)
         socketComboBox.dataSource = socketComboBoxDataSource
-        socketComboBox.stringValue = decoderType.socket
+        socketComboBox.stringValue = decoderType.socket ?? ""
 
         isProgrammableCheckBox.state = decoderType.isProgrammable ? .on : .off
         hasSoundCheckBox.state = decoderType.hasSound ? .on : .off
@@ -148,7 +148,8 @@ class DecoderTypeViewController: NSViewController {
     @IBAction func addRecord(_ sender: NSButton) {
         let decoder = decoderType.addDecoder()
         decoders.append(decoder)
-        
+        try? decoderType.managedObjectContext?.save() // FIXME
+
         let indexSet = IndexSet(integer: decoders.count - 1)
         
         tableView.insertRows(at: indexSet, withAnimation: .slideDown)
@@ -170,101 +171,120 @@ class DecoderTypeViewController: NSViewController {
         if alert.runModal() == .alertSecondButtonReturn {
             let decoder = decoders.remove(at: tableView.selectedRow)
             decoder.delete()
-                        
+            try? decoder.managedObjectContext?.save() // FIXME
+
             tableView.removeRows(at: IndexSet(integer: tableView.selectedRow), withAnimation: .slideUp)
         }
     }
     
     @IBAction func manufacturerChanged(_ sender: NSComboBox) {
         decoderType.manufacturer = sender.stringValue
+        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func productCodeChanged(_ sender: NSTextField) {
         decoderType.productCode = sender.stringValue
+        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func productFamilyChanged(_ sender: NSComboBox) {
         decoderType.productFamily = sender.stringValue
+        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func productDescriptionChanged(_ sender: NSTextField) {
         decoderType.productDescription = sender.stringValue
+        try? decoderType.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func socketChanged(_ sender: NSComboBox) {
         decoderType.socket = sender.stringValue
+        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func isProgrammableChanged(_ sender: NSButton) {
         decoderType.isProgrammable = sender.state == .on
+        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func hasSoundChanged(_ sender: NSButton) {
         decoderType.hasSound = sender.state == .on
+        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func hasRailComChanged(_ sender: NSButton) {
         decoderType.hasRailCom = sender.state == .on
+        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func minimumStockChanged(_ sender: NSTextField) {
-        decoderType.minimumStock = sender.objectValue != nil ? sender.integerValue : 0
+        decoderType.minimumStock = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
+        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderSerialNumberChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
-        var decoder = decoders[tableView.selectedRow]
+        let decoder = decoders[tableView.selectedRow]
         decoder.serialNumber = sender.stringValue
+        try? decoder.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderFirmwareVersionChanged(_ sender: NSComboBox) {
         guard tableView.selectedRow >= 0 else { return }
-        var decoder = decoders[tableView.selectedRow]
+        let decoder = decoders[tableView.selectedRow]
         let firmwareVersion = sender.stringValue
         decoder.firmwareVersion = firmwareVersion
-        
+
         if !firmwareVersion.isEmpty {
             if let firmwareDate = try! decoder.suggestedFirmwareDate(for: firmwareVersion) {
                 decoder.firmwareDate = firmwareDate
                 tableView.reloadData(forRowIndexes: IndexSet(integer: tableView.selectedRow), columnIndexes: IndexSet(integer: tableView.column(withIdentifier: .firmwareDateColumn)))
             }
         }
+
+        try? decoder.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderFirmwareDateChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
-        var decoder = decoders[tableView.selectedRow]
+        let decoder = decoders[tableView.selectedRow]
         decoder.firmwareDateAsDate = sender.objectValue as? Date
+        try? decoder.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderAddressChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
-        var decoder = decoders[tableView.selectedRow]
-        decoder.address = sender.objectValue != nil ? sender.integerValue : 0
+        let decoder = decoders[tableView.selectedRow]
+        decoder.address = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
+        try? decoder.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderSoundAuthorChanged(_ sender: NSComboBox) {
         guard tableView.selectedRow >= 0 else { return }
-        var decoder = decoders[tableView.selectedRow]
+        let decoder = decoders[tableView.selectedRow]
         decoder.soundAuthor = sender.stringValue
+        try? decoder.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundProjectChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
-        var decoder = decoders[tableView.selectedRow]
+        let decoder = decoders[tableView.selectedRow]
         decoder.soundProject = sender.stringValue
+        try? decoder.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundProjectVersionChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
-        var decoder = decoders[tableView.selectedRow]
+        let decoder = decoders[tableView.selectedRow]
         decoder.soundProjectVersion = sender.stringValue
+        try? decoder.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundProjectSettingsChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
-        var decoder = decoders[tableView.selectedRow]
+        let decoder = decoders[tableView.selectedRow]
         decoder.soundProjectSettings = sender.stringValue
+        try? decoder.managedObjectContext?.save() // FIXME
     }
 
 }
@@ -297,11 +317,11 @@ extension DecoderTypeViewController : NSTableViewDelegate {
         switch columnIdentifier {
         case .serialNumberColumn:
             let view = tableView.makeView(withIdentifier: .serialNumberCell, owner: self) as! NSTableCellView
-            view.textField?.stringValue = decoder.serialNumber
+            view.textField?.stringValue = decoder.serialNumber ?? ""
             return view
         case .firmwareVersionColumn:
             let view = tableView.makeView(withIdentifier: .firmwareVersionCell, owner: self) as! RetainingCellView
-            view.textField?.stringValue = decoder.firmwareVersion
+            view.textField?.stringValue = decoder.firmwareVersion ?? ""
             view.dataSource = try? SimpleComboBoxDataSource(using: decoder.sortedValuesForFirmwareVersion)
             (view.textField as? NSComboBox)?.dataSource = view.dataSource
             return view
@@ -315,21 +335,21 @@ extension DecoderTypeViewController : NSTableViewDelegate {
             return view
         case .soundAuthorColumn:
             let view = tableView.makeView(withIdentifier: .soundAuthorCell, owner: self) as! RetainingCellView
-            view.textField?.stringValue = decoder.soundAuthor
+            view.textField?.stringValue = decoder.soundAuthor ?? ""
             view.dataSource = try? SimpleComboBoxDataSource(using: decoder.sortedValuesForSoundAuthor)
             (view.textField as? NSComboBox)?.dataSource = view.dataSource
             return view
         case .soundProjectColumn:
             let view = tableView.makeView(withIdentifier: .soundProjectCell, owner: self) as! NSTableCellView
-            view.textField?.stringValue = decoder.soundProject
+            view.textField?.stringValue = decoder.soundProject ?? ""
             return view
         case .soundProjectVersionColumn:
             let view = tableView.makeView(withIdentifier: .soundProjectVersionCell, owner: self) as! NSTableCellView
-            view.textField?.stringValue = decoder.soundProjectVersion
+            view.textField?.stringValue = decoder.soundProjectVersion ?? ""
             return view
         case .soundProjectSettingsColumn:
             let view = tableView.makeView(withIdentifier: .soundProjectSettingsCell, owner: self) as! NSTableCellView
-            view.textField?.stringValue = decoder.soundProjectSettings
+            view.textField?.stringValue = decoder.soundProjectSettings ?? ""
             return view
         default:
             return nil

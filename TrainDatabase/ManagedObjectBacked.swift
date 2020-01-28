@@ -20,6 +20,33 @@ protocol ManagedObjectBacked : Hashable {
     
 }
 
+extension NSManagedObject {
+    func sortedValues<T: NSManagedObject>(from entity: T.Type, for key: String, ascending: Bool, startingWith string: String? = nil) throws -> [String] {
+        guard let managedObjectContext = managedObjectContext else { fatalError("No context to make query with") }
+
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
+        fetchRequest.resultType = .dictionaryResultType
+        fetchRequest.returnsDistinctResults = true
+        fetchRequest.propertiesToFetch = [ key ]
+        fetchRequest.sortDescriptors = [ NSSortDescriptor(key: key, ascending: ascending) ]
+
+        var predicates: [NSPredicate] = []
+        predicates.append(NSPredicate(format: "\(key) != ''"))
+
+        if let string = string {
+            predicates.append(NSPredicate(format: "\(key) BEGINSWITH[c] %@", string))
+        }
+
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+
+        let results = try managedObjectContext.fetch(fetchRequest) as! [[String: String]]
+        return results.map({ $0[key]! })
+    }
+
+    func sortedValues(for key: String, ascending: Bool, startingWith string: String? = nil) throws -> [String] {
+        return try sortedValues(from: Self.self, for: key, ascending: ascending, startingWith: string)
+    }
+}
 
 extension ManagedObjectBacked {
     
@@ -32,29 +59,11 @@ extension ManagedObjectBacked {
     }
 
     func sortedValues<T: NSManagedObject>(from entity: T.Type, for key: String, ascending: Bool, startingWith string: String? = nil) throws -> [String] {
-        guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
-        
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
-        fetchRequest.resultType = .dictionaryResultType
-        fetchRequest.returnsDistinctResults = true
-        fetchRequest.propertiesToFetch = [ key ]
-        fetchRequest.sortDescriptors = [ NSSortDescriptor(key: key, ascending: ascending) ]
-        
-        var predicates: [NSPredicate] = []
-        predicates.append(NSPredicate(format: "\(key) != ''"))
-        
-        if let string = string {
-            predicates.append(NSPredicate(format: "\(key) BEGINSWITH[c] %@", string))
-        }
-        
-        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-        
-        let results = try context.fetch(fetchRequest) as! [[String: String]]
-        return results.map({ $0[key]! })
+        try managedObject.sortedValues(from: entity, for: key, ascending: ascending, startingWith: string)
     }
 
     func sortedValues(for key: String, ascending: Bool, startingWith string: String? = nil) throws -> [String] {
-        return try sortedValues(from: ManagedObjectType.self, for: key, ascending: ascending, startingWith: string)
+        try managedObject.sortedValues(from: ManagedObjectType.self, for: key, ascending: ascending, startingWith: string)
     }
 
     static func changed(in notification: Notification) -> (inserted: Set<Self>, updated: Set<Self>, deleted: Set<Self>) {

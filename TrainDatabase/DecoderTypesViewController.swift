@@ -139,12 +139,12 @@ extension DecoderTypesViewController : NSTableViewDelegate {
 
         let view = tableView.makeView(withIdentifier: .decoderTypeCell, owner: self) as! DecoderTypeCellView
 
-        view.productField.stringValue = [ decoderType.manufacturer, decoderType.productCode ].joined(separator: " ")
+        view.productField.stringValue = [ decoderType.manufacturer, decoderType.productCode ].compactMap({ $0 }).joined(separator: " ")
         
-        view.familyField.stringValue = decoderType.productFamily
-        view.familyField.isHidden = decoderType.productFamily.isEmpty
+        view.familyField.stringValue = decoderType.productFamily ?? ""
+        view.familyField.isHidden = decoderType.productFamily?.isEmpty ?? true
         
-        view.socketField.stringValue = decoderType.socket
+        view.socketField.stringValue = decoderType.socket ?? ""
         
         let count = decoderType.spareDecoderCount()
         view.countButton.title = "\(count)"

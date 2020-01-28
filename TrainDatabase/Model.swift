@@ -48,10 +48,10 @@ struct Model : ManagedObjectBacked {
     }
     
     var decoder: Decoder? {
-        get { return managedObject.decoder.map(Decoder.init(managedObject:)) }
+        get { return managedObject.decoder }
         set {
-            managedObject.decoder = newValue?.managedObject
-            try? managedObject.managedObjectContext?.save()
+            managedObject.decoder = newValue
+            try? managedObject.managedObjectContext?.save() // FIXME
         }
     }
     
@@ -255,7 +255,6 @@ struct Model : ManagedObjectBacked {
     mutating func createDecoderIfNeeded() {
         if decoder == nil {
             decoder = Decoder(context: managedObject.managedObjectContext!)
-            try? managedObject.managedObjectContext?.save()
         }
     }
     
@@ -293,11 +292,11 @@ struct Model : ManagedObjectBacked {
             if speaker.isEmpty {
                 tasks.insert("Speaker")
             }
-            if decoder?.soundProject.isEmpty ?? true {
+            if decoder?.soundProject?.isEmpty ?? true {
                 tasks.insert("Sound File")
             }
         }
-        if !speaker.isEmpty && (decoder?.soundProject.isEmpty ?? true) {
+        if !speaker.isEmpty && (decoder?.soundProject?.isEmpty ?? true) {
             tasks.insert("Sound File")
         }
         /*if !lights.isEmpty && decoder == nil {
@@ -362,7 +361,7 @@ struct Model : ManagedObjectBacked {
     func sortedValuesForDecoderType(startingWith string: String? = nil) throws -> [DecoderType] {
         guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
 
-        let fetchRequest: NSFetchRequest<DecoderTypeManagedObject> = DecoderTypeManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<DecoderType> = DecoderType.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "manufacturer", ascending: true),
             NSSortDescriptor(key: "productCode", ascending: true),
@@ -374,14 +373,14 @@ struct Model : ManagedObjectBacked {
             fetchRequest.predicate = NSPredicate(format: "socket = %@", socket)
         }
         
-        let typeObjects = try! context.fetch(fetchRequest)
-        return typeObjects.map(DecoderType.init(managedObject:))
+        let results = try! context.fetch(fetchRequest)
+        return results
     }
 
     func sortedValuesForDecoder(startingWith string: String? = nil) throws -> [Decoder] {
         guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
         
-        let fetchRequest: NSFetchRequest<DecoderManagedObject> = DecoderManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<Decoder> = Decoder.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "serialNumber", ascending: true),
         ]
@@ -393,15 +392,15 @@ struct Model : ManagedObjectBacked {
         // If there's already a decoder with a type assigned, limit the serial numbers to the same type.
         // Otherwise limit the serial numbers to those types at least matching the same socket.
         if let decoderType = decoder?.type {
-            predicates.append(NSPredicate(format: "type = %@", decoderType.managedObject))
+            predicates.append(NSPredicate(format: "type = %@", decoderType))
         } else if !socket.isEmpty {
             predicates.append(NSPredicate(format: "type.socket = %@", socket))
         }
         
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
 
-        let typeObjects = try! context.fetch(fetchRequest)
-        return typeObjects.map(Decoder.init(managedObject:))
+        let results = try! context.fetch(fetchRequest)
+        return results
     }
     
     func sortedValuesForTrain(startingWith string: String? = nil) throws -> [Train] {

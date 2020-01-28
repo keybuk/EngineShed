@@ -9,127 +9,21 @@
 import Foundation
 import CoreData
 
-struct DecoderType : ManagedObjectBacked {
-    
-    var managedObject: DecoderTypeManagedObject
-    
-    init(managedObject: DecoderTypeManagedObject) {
-        self.managedObject = managedObject
-    }
-
-    init(context: NSManagedObjectContext) {
-        managedObject = DecoderTypeManagedObject(context: context)
-        managedObject.manufacturer = ""
-        managedObject.productCode = ""
-        managedObject.productFamily = ""
-        managedObject.productDescription = ""
-        managedObject.socket = ""
-    }
-
-    
-    var decoders: Set<Decoder> {
-        get {
-            let decoderObjects = managedObject.decoders! as! Set<DecoderManagedObject>
-            return Set(decoderObjects.map(Decoder.init(managedObject:)))
-        }
-        
-        set {
-            let decoderObjects = newValue.map({ $0.managedObject })
-            managedObject.decoders = Set(decoderObjects) as NSSet
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-
-    
-    var manufacturer: String {
-        get { return managedObject.manufacturer ?? "" }
-        set {
-            managedObject.manufacturer = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var productCode: String {
-        get { return managedObject.productCode ?? "" }
-        set {
-            managedObject.productCode = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var productFamily: String {
-        get { return managedObject.productFamily ?? "" }
-        set {
-            managedObject.productFamily = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var productDescription: String {
-        get { return managedObject.productDescription ?? "" }
-        set {
-            managedObject.productDescription = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var socket: String {
-        get { return managedObject.socket ?? "" }
-        set {
-            managedObject.socket = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var isProgrammable: Bool {
-        get { return managedObject.isProgrammable }
-        set {
-            managedObject.isProgrammable = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var hasSound: Bool {
-        get { return managedObject.hasSound }
-        set {
-            managedObject.hasSound = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var hasRailCom: Bool {
-        get { return managedObject.hasRailCom }
-        set {
-            managedObject.hasRailCom = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var minimumStock: Int {
-        get { return Int(managedObject.minimumStock) }
-        set {
-            managedObject.minimumStock = Int16(newValue)
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    
-    mutating func addDecoder() -> Decoder {
-        var decoder = Decoder(context: managedObject.managedObjectContext!)
+extension DecoderType {
+    func addDecoder() -> Decoder {
+        let decoder = Decoder(context: managedObjectContext!)
         decoder.type = self
-        try? managedObject.managedObjectContext?.save()
         return decoder
     }
-    
-    
+
     func sortedValuesForManufacturer(startingWith string: String? = nil) throws -> [String] {
         return try sortedValues(for: "manufacturer", ascending: true, startingWith: string)
     }
 
     func sortedValuesForProductFamily(startingWith string: String? = nil) throws -> [String] {
-        guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
+        guard let managedObjectContext = managedObjectContext else { fatalError("No context to make query with") }
         
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = DecoderTypeManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = DecoderType.fetchRequest()
         fetchRequest.resultType = .dictionaryResultType
         fetchRequest.returnsDistinctResults = true
         fetchRequest.propertiesToFetch = [ "productFamily" ]
@@ -140,13 +34,13 @@ struct DecoderType : ManagedObjectBacked {
         var predicates: [NSPredicate] = []
         predicates.append(NSPredicate(format: "productFamily != ''"))
         
-        if !manufacturer.isEmpty {
+        if let manufacturer = manufacturer, !manufacturer.isEmpty {
             predicates.append(NSPredicate(format: "manufacturer = %@", manufacturer))
         }
         
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
-        let results = try context.fetch(fetchRequest) as! [[String: String]]
+        let results = try managedObjectContext.fetch(fetchRequest) as! [[String: String]]
         return results.map({ $0["productFamily"]! })
     }
 
@@ -154,35 +48,30 @@ struct DecoderType : ManagedObjectBacked {
         return try sortedValues(for: "socket", ascending: true, startingWith: string)
     }
     
-    
+    // FIXME: this means decoders with no model, not unallocated in the newer sense.
     func unallocatedDecoders() -> Set<Decoder> {
-        return decoders.filter({ $0.model == nil })
+        return (decoders! as! Set<Decoder>).filter({ $0.model == nil })
     }
     
     func spareDecoderCount() -> Int {
-        return decoders.filter({ $0.model == nil && $0.soundAuthor.isEmpty && $0.soundProject.isEmpty }).count
+        return (decoders! as! Set<Decoder>).filter({ $0.isUnallocated }).count
     }
     
-    
     static func all(in context: NSManagedObjectContext) throws -> [DecoderType] {
-        let fetchRequest: NSFetchRequest<DecoderTypeManagedObject> = DecoderTypeManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<DecoderType> = DecoderType.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "manufacturer", ascending: true),
             NSSortDescriptor(key: "productCode", ascending: true)
         ]
         
-        let typeObjects = try context.fetch(fetchRequest)
-        return typeObjects.map(DecoderType.init(managedObject:))
+        let results = try context.fetch(fetchRequest)
+        return results
     }
-
 }
 
-
-extension DecoderType : CustomStringConvertible {
-    
-    var description: String {
-        let description = [ manufacturer, productCode, productFamily ].filter({ !$0.isEmpty }).joined(separator: " ")
-        return socket.isEmpty ? description : description + " (\(socket))"
+extension DecoderType/* : CustomStringConvertible*/ {
+    override public var description: String {
+        let description = [ manufacturer, productCode, productFamily ].compactMap({ $0 }).filter({ !$0.isEmpty }).joined(separator: " ")
+        return (socket?.isEmpty ?? true) ? description : description + " (\(socket!))"
     }
-    
 }

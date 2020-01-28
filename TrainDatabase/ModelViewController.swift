@@ -350,7 +350,8 @@ class ModelViewController: NSViewController {
         let decoderType = (sender.objectValue as? [DecoderType])?.first
         if decoderType != nil { model.createDecoderIfNeeded() }
         model.decoder?.type = decoderType
-        
+
+        try? model.managedObject.managedObjectContext?.save() // FIXME
         reloadDecoderFields()
     }
     
@@ -361,7 +362,7 @@ class ModelViewController: NSViewController {
             if oldDecoder != decoder { oldDecoder?.deleteIfUnused() }
         } else {
             // If there is already a decoder attached, and that decoder has a serial number, we actually don't want to change the serial number of the existing decoder and probably want a new record.
-            if let oldDecoder = model.decoder, !oldDecoder.serialNumber.isEmpty {
+            if let oldDecoder = model.decoder, let serialNumber = oldDecoder.serialNumber, !serialNumber.isEmpty {
                 model.decoder = nil
                 oldDecoder.deleteIfUnused()
             }
@@ -371,6 +372,7 @@ class ModelViewController: NSViewController {
             model.decoder?.serialNumber = serialNumber
         }
 
+        try? model.managedObject.managedObjectContext?.save() // FIXME
         reloadDecoderFields()
     }
     
@@ -387,22 +389,25 @@ class ModelViewController: NSViewController {
         }
         
         model.decoder?.deleteIfEmpty()
+        try? model.managedObject.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderFirmwareDateChanged(_ sender: NSTextField) {
         let firmwareDate = sender.objectValue as? Date
         if firmwareDate != nil { model.createDecoderIfNeeded() }
         model.decoder?.firmwareDateAsDate = firmwareDate
-        
+
         model.decoder?.deleteIfEmpty()
+        try? model.managedObject.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderAddressChanged(_ sender: NSTextField) {
-        let address = sender.objectValue != nil ? sender.integerValue : 0
+        let address = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
         if address != 0 { model.createDecoderIfNeeded() }
         model.decoder?.address = address
-        
+
         model.decoder?.deleteIfEmpty()
+        try? model.managedObject.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundAuthorChanged(_ sender: NSTextField) {
@@ -411,6 +416,7 @@ class ModelViewController: NSViewController {
         model.decoder?.soundAuthor = soundAuthor
         
         model.decoder?.deleteIfEmpty()
+        try? model.managedObject.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderSoundProjectChanged(_ sender: NSTextField) {
@@ -419,6 +425,7 @@ class ModelViewController: NSViewController {
         model.decoder?.soundProject = soundProject
         
         model.decoder?.deleteIfEmpty()
+        try? model.managedObject.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundProjectVersionChanged(_ sender: NSTextField) {
@@ -427,6 +434,7 @@ class ModelViewController: NSViewController {
         model.decoder?.soundProjectVersion = soundProjectVersion
 
         model.decoder?.deleteIfEmpty()
+        try? model.managedObject.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundProjectSettingsChanged(_ sender: NSTextField) {
@@ -435,6 +443,7 @@ class ModelViewController: NSViewController {
         model.decoder?.soundProjectSettings = soundProjectSettings
 
         model.decoder?.deleteIfEmpty()
+        try? model.managedObject.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func speakerChanged(_ sender: NSTextField) {

@@ -9,14 +9,6 @@
 import Foundation
 
 extension Decoder {
-    var firmwareDate: DateComponents? {
-        get { managedObject.firmwareDate }
-        set {
-            managedObject.firmwareDate = newValue
-            try? managedObject.managedObjectContext?.save() // FIXME!
-        }
-    }
-
     /// Formatter for date types.
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
