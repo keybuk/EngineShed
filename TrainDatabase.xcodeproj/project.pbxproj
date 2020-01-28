@@ -25,7 +25,7 @@
 		D26673BE1FE8FB9C0069F9C7 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */; };
 		D26673C01FE8FBA10069F9C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673BF1FE8FBA10069F9C7 /* Model.swift */; };
 		D26673C51FE99E1D0069F9C7 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */; };
-		D26673C71FE99F250069F9C7 /* ManagedObjectBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */; };
+		D26673C71FE99F250069F9C7 /* NSManagedObject+SortedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C61FE99F250069F9C7 /* NSManagedObject+SortedValues.swift */; };
 		D2709B081FF65557007029C5 /* EmptyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2709B071FF65557007029C5 /* EmptyDateFormatter.swift */; };
 		D276FF271FE4B01400EA087F /* ModelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D276FF261FE4B01400EA087F /* ModelsViewController.swift */; };
 		D276FF291FE4F6A600EA087F /* SourceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D276FF281FE4F6A600EA087F /* SourceListViewController.swift */; };
@@ -112,7 +112,7 @@
 		D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		D26673BF1FE8FBA10069F9C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
-		D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectBacked.swift; sourceTree = "<group>"; };
+		D26673C61FE99F250069F9C7 /* NSManagedObject+SortedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+SortedValues.swift"; sourceTree = "<group>"; };
 		D2709B071FF65557007029C5 /* EmptyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDateFormatter.swift; sourceTree = "<group>"; };
 		D276FF261FE4B01400EA087F /* ModelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsViewController.swift; sourceTree = "<group>"; };
 		D276FF281FE4F6A600EA087F /* SourceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceListViewController.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 			children = (
 				D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */,
 				D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */,
-				D26673C61FE99F250069F9C7 /* ManagedObjectBacked.swift */,
+				D26673C61FE99F250069F9C7 /* NSManagedObject+SortedValues.swift */,
 				D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */,
 				D2978EDB23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift */,
 				D2FFF3BD20E20EAF000A4511 /* Shim.swift */,
@@ -500,7 +500,7 @@
 				D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */,
 				D2A74D3123DC307200186E31 /* Purchase+Condition.swift in Sources */,
 				D229997123DD4D3400F28499 /* DerivedMappingModel.xcmappingmodel in Sources */,
-				D26673C71FE99F250069F9C7 /* ManagedObjectBacked.swift in Sources */,
+				D26673C71FE99F250069F9C7 /* NSManagedObject+SortedValues.swift in Sources */,
 				D2FFF3BE20E20EAF000A4511 /* Shim.swift in Sources */,
 				D276FF331FE5F51500EA087F /* DecoderType.swift in Sources */,
 				D27DF7231FF48B1E003C7AAB /* DecoderTypesViewController.swift in Sources */,

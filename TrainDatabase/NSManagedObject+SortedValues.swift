@@ -1,5 +1,5 @@
 //
-//  ManagedObjectBacked.swift
+//  NSManagedObject+SortedValues.swift.swift
 //  TrainDatabase
 //
 //  Created by Scott James Remnant on 12/19/17.
@@ -8,17 +8,6 @@
 
 import Foundation
 import CoreData
-
-protocol ManagedObjectBacked : Hashable {
-    
-    associatedtype ManagedObjectType : NSManagedObject
-    
-    var managedObject: ManagedObjectType { get set }
-    
-    init(managedObject: ManagedObjectType)
-    init(context: NSManagedObjectContext)
-    
-}
 
 extension NSManagedObject {
     func sortedValues<T: NSManagedObject>(from entity: T.Type, for key: String, ascending: Bool, startingWith string: String? = nil) throws -> [String] {
@@ -48,24 +37,7 @@ extension NSManagedObject {
     }
 }
 
-extension ManagedObjectBacked {
-    
-    static func ==(lhs: Self, rhs: Self) -> Bool {
-        return lhs.managedObject.objectID == rhs.managedObject.objectID
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(managedObject)
-    }
-
-    func sortedValues<T: NSManagedObject>(from entity: T.Type, for key: String, ascending: Bool, startingWith string: String? = nil) throws -> [String] {
-        try managedObject.sortedValues(from: entity, for: key, ascending: ascending, startingWith: string)
-    }
-
-    func sortedValues(for key: String, ascending: Bool, startingWith string: String? = nil) throws -> [String] {
-        try managedObject.sortedValues(from: ManagedObjectType.self, for: key, ascending: ascending, startingWith: string)
-    }
-
+/*extension ManagedObjectBacked {
     static func changed(in notification: Notification) -> (inserted: Set<Self>, updated: Set<Self>, deleted: Set<Self>) {
         var inserted: Set<Self> = Set()
         if let insertedObjects = notification.userInfo?[NSInsertedObjectsKey] as? Set<NSManagedObject> {
@@ -85,5 +57,5 @@ extension ManagedObjectBacked {
         return (inserted, updated, deleted)
     }
     
-}
+}*/
 
