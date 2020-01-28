@@ -10,6 +10,11 @@ import Foundation
 import CoreData
 
 extension Model {
+    func getValues<T>(using entity: T.Type, for key: String) -> Set<String> where T : NSManagedObject {
+        let objects = value(forKey: key) as! Set<T>
+        return Set(objects.map({ $0.value(forKey: "title") as! String }))
+    }
+
     func updateValues<T>(using entity: T.Type, for key: String, from newValues: Set<String>) where T : NSManagedObject {
         let objects = value(forKey: key) as! Set<T>
         for object in objects {
@@ -29,47 +34,27 @@ extension Model {
     }
 
     var lightsAsStrings: Set<String> {
-        get {
-            let objects = lights! as! Set<Light>
-            return Set(objects.map({ $0.title! }))
-        }
-        
+        get { getValues(using: Light.self, for: "lights") }
         set { updateValues(using: Light.self, for: "lights", from: newValue) }
     }
     
     var speakerFittingsAsStrings: Set<String> {
-        get {
-            let objects = speakerFittings! as! Set<SpeakerFitting>
-            return Set(objects.map({ $0.title! }))
-        }
-        
+        get { getValues(using: SpeakerFitting.self, for: "speakerFittings") }
         set { updateValues(using: SpeakerFitting.self, for: "speakerFittings", from: newValue) }
     }
 
     var couplingsAsStrings: Set<String> {
-        get {
-            let objects = couplings! as! Set<Coupling>
-            return Set(objects.map({ $0.title! }))
-        }
-        
+        get { getValues(using: Coupling.self, for: "couplings") }
         set { updateValues(using: Coupling.self, for: "couplings", from: newValue) }
     }
 
     var featuresAsStrings: Set<String> {
-        get {
-            let objects = features! as! Set<Feature>
-            return Set(objects.map({ $0.title! }))
-        }
-        
+        get { getValues(using: Feature.self, for: "features") }
         set { updateValues(using: Feature.self, for: "features", from: newValue) }
     }
 
     var detailPartsAsStrings: Set<String> {
-        get {
-            let objects = detailParts! as! Set<DetailPart>
-            return Set(objects.map({ $0.title! }))
-        }
-
+        get { getValues(using: DetailPart.self, for: "detailParts") }
         set { updateValues(using: DetailPart.self, for: "detailParts", from: newValue) }
     }
 
@@ -102,20 +87,12 @@ extension Model {
     }
 
     var modificationsAsStrings: Set<String> {
-        get {
-            let objects = modifications! as! Set<Modification>
-            return Set(objects.map({ $0.title! }))
-        }
-        
+        get { getValues(using: Modification.self, for: "modifications") }
         set { updateValues(using: Modification.self, for: "modifications", from: newValue) }
     }
 
     var tasksAsStrings: Set<String> {
-        get {
-            let objects = tasks! as! Set<Task>
-            return Set(objects.map({ $0.title! }))
-        }
-        
+        get { getValues(using: Task.self, for: "tasks") }
         set { updateValues(using: Task.self, for: "tasks", from: newValue) }
     }
 
