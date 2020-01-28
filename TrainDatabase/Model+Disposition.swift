@@ -16,11 +16,8 @@ extension Model {
     }
 
     var disposition: Disposition? {
-        get { Disposition(rawValue: managedObject.dispositionRawValue) }
-        set {
-            managedObject.dispositionRawValue = newValue?.rawValue ?? 0
-            try? managedObject.managedObjectContext?.save() // FIXME!
-        }
+        get { Disposition(rawValue: dispositionRawValue) }
+        set { dispositionRawValue = newValue?.rawValue ?? 0 }
     }
 }
 

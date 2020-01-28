@@ -17,7 +17,7 @@ class PurchaseWindowController : NSWindowController, RecordController {
         guard let currentRecord = currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
         
-        window?.title = model.purchase.description
+        window?.title = model.purchase?.description ?? ""
     }
 
     override func windowDidLoad() {

@@ -217,10 +217,10 @@ extension ModelsViewController : NSTableViewDelegate {
             let view = tableView.makeView(withIdentifier: .modelCell, owner: self) as! ModelCellView
             
             view.imageView?.image = model.image
-            view.numberField?.stringValue = model.number
-            view.numberField?.isHidden = model.number.isEmpty
-            view.nameField?.stringValue = model.name
-            view.nameField?.isHidden = model.name.isEmpty
+            view.numberField?.stringValue = model.number ?? ""
+            view.numberField?.isHidden = model.number?.isEmpty ?? true
+            view.nameField?.stringValue = model.name ?? ""
+            view.nameField?.isHidden = model.name?.isEmpty ?? true
             
             return view
         }

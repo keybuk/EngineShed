@@ -21,11 +21,8 @@ extension Model {
     }
 
     var classification: Classification? {
-        get { Classification(rawValue: managedObject.classificationRawValue) }
-        set {
-            managedObject.classificationRawValue = newValue?.rawValue ?? 0
-            try? managedObject.managedObjectContext?.save() // FIXME!
-        }
+        get { Classification(rawValue: classificationRawValue) }
+        set { classificationRawValue = newValue?.rawValue ?? 0 }
     }
 }
 

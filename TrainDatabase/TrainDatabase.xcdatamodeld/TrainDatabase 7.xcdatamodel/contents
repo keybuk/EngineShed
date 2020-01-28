@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Coupling" representedClassName="CouplingManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="Coupling" representedClassName="Coupling" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="couplings" inverseEntity="Model"/>
     </entity>
@@ -33,20 +33,20 @@
         <attribute name="systemFields" optional="YES" attributeType="Binary"/>
         <relationship name="decoders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Decoder" inverseName="type" inverseEntity="Decoder"/>
     </entity>
-    <entity name="DetailPart" representedClassName="DetailPartManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="DetailPart" representedClassName="DetailPart" syncable="YES" codeGenerationType="class">
         <attribute name="isFitted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="detailParts" inverseEntity="Model"/>
     </entity>
-    <entity name="Feature" representedClassName="FeatureManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="Feature" representedClassName="Feature" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="features" inverseEntity="Model"/>
     </entity>
-    <entity name="Light" representedClassName="LightManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="Light" representedClassName="Light" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="lights" inverseEntity="Model"/>
     </entity>
-    <entity name="Model" representedClassName="ModelManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="Model" representedClassName="Model" syncable="YES" codeGenerationType="class">
         <attribute name="classificationRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="details" optional="YES" attributeType="String"/>
         <attribute name="dispositionRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -75,7 +75,7 @@
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="model" inverseEntity="Task"/>
         <relationship name="trainMember" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrainMember" inverseName="model" inverseEntity="TrainMember"/>
     </entity>
-    <entity name="Modification" representedClassName="ModificationManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="Modification" representedClassName="Modification" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="modifications" inverseEntity="Model"/>
     </entity>
@@ -100,11 +100,11 @@
         <attribute name="valuation" optional="YES" attributeType="Decimal"/>
         <relationship name="models" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Model" inverseName="purchase" inverseEntity="Model"/>
     </entity>
-    <entity name="SpeakerFitting" representedClassName="SpeakerFittingManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="SpeakerFitting" representedClassName="SpeakerFitting" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="speakerFittings" inverseEntity="Model"/>
     </entity>
-    <entity name="Task" representedClassName="TaskManagedObject" syncable="YES" codeGenerationType="class">
+    <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
         <attribute name="title" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="tasks" inverseEntity="Model"/>
     </entity>
@@ -129,12 +129,12 @@
         <element name="Decoder" positionX="-54" positionY="54" width="128" height="223"/>
         <element name="DecoderType" positionX="-63" positionY="-18" width="128" height="238"/>
         <element name="DetailPart" positionX="0" positionY="126" width="128" height="88"/>
-        <element name="Feature" positionX="0" positionY="162" width="128" height="75"/>
+        <element name="Feature" positionX="0" positionY="162" width="128" height="73"/>
         <element name="Light" positionX="-18" positionY="144" width="128" height="73"/>
         <element name="Model" positionX="-45" positionY="99" width="128" height="448"/>
         <element name="Modification" positionX="18" positionY="153" width="128" height="73"/>
         <element name="Purchase" positionX="9" positionY="171" width="128" height="328"/>
-        <element name="SpeakerFitting" positionX="-36" positionY="108" width="128" height="30"/>
+        <element name="SpeakerFitting" positionX="-36" positionY="108" width="128" height="73"/>
         <element name="Task" positionX="-27" positionY="117" width="128" height="73"/>
         <element name="Train" positionX="18" positionY="180" width="128" height="133"/>
         <element name="TrainMember" positionX="27" positionY="189" width="128" height="133"/>

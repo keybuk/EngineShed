@@ -23,21 +23,21 @@ class DetailPartsTokenFieldDelegate : NSObject, NSTokenFieldDelegate {
     }
     
     func tokenField(_ tokenField: NSTokenField, representedObjectForEditing editingString: String) -> Any? {
-        if let detailPart = model.detailParts.first(where: { $0.title == editingString }) {
-            return detailPart
-        } else {
-            return Model.DetailPart(title: editingString, isFitted: false)
-        }
+        return editingString
     }
     
     func tokenField(_ tokenField: NSTokenField, displayStringForRepresentedObject representedObject: Any) -> String? {
-        guard let detailPart = representedObject as? Model.DetailPart else { return nil }
-        return detailPart.title + (detailPart.isFitted ? " ✓" : "")
+        guard let title = representedObject as? String else { return nil }
+
+        if let detailPart = model.detailPartForTitle(title) {
+            return title + (detailPart.isFitted ? " ✓" : "")
+        } else {
+            return title
+        }
     }
     
     func tokenField(_ tokenField: NSTokenField, editingStringForRepresentedObject representedObject: Any) -> String? {
-        guard let detailPart = representedObject as? Model.DetailPart else { return nil }
-        return detailPart.title
+        return representedObject as? String
     }
     
     func tokenField(_ tokenField: NSTokenField, hasMenuForRepresentedObject representedObject: Any) -> Bool {
@@ -45,9 +45,10 @@ class DetailPartsTokenFieldDelegate : NSObject, NSTokenFieldDelegate {
     }
     
     func tokenField(_ tokenField: NSTokenField, menuForRepresentedObject representedObject: Any) -> NSMenu? {
-        guard let detailPart = representedObject as? Model.DetailPart else { return nil }
+        guard let title = representedObject as? String else { return nil }
+        guard let detailPart = model.detailPartForTitle(title) else { return nil }
 
-        let menu = NSMenu(title: detailPart.title)
+        let menu = NSMenu(title: detailPart.title!)
         
         let item = NSMenuItem(title: "Fitted", action: nil, keyEquivalent: "")
         item.state = detailPart.isFitted ? .on : .off
@@ -64,19 +65,24 @@ class DetailPartsTokenFieldDelegate : NSObject, NSTokenFieldDelegate {
         // This is a little bit of a hack since we need the tokenField itself to alter its objects;
         // use the representedObject
         guard let title = sender.menu?.title else { fatalError("Couldn't steal title from menu") }
-        let tokenField = sender.representedObject as! NSTokenField
+//        let tokenField = sender.representedObject as! NSTokenField
 
-        var detailParts = tokenField.objectValue as! [Model.DetailPart]
-        guard let oldIndex = detailParts.firstIndex(where: { $0.title == title }) else { fatalError("Couldn't find token") }
+        if let detailPart = model.detailPartForTitle(title) {
+            detailPart.isFitted = !detailPart.isFitted
+            sender.state = detailPart.isFitted ? .on : .off
+
+            try? model.managedObjectContext?.save() // FIXME
+        }
+
+//        var detailParts = tokenField.objectValue as! [DetailPart]
+//        guard let oldIndex = detailParts.firstIndex(where: { $0.title == title }) else { fatalError("Couldn't find token") }
+//
+//        let detailPart = detailParts.remove(at: oldIndex)
+//        detailPart.isFitted = !detailPart.isFitted
+//        detailParts.insert(detailPart, at: oldIndex)
         
-        var detailPart = detailParts.remove(at: oldIndex)
-        detailPart.isFitted = !detailPart.isFitted
-        detailParts.insert(detailPart, at: oldIndex)
-        
-        tokenField.objectValue = detailParts
-        model.detailParts = Set(detailParts)
-    
-        sender.state = detailPart.isFitted ? .on : .off
+//        tokenField.objectValue = detailParts
+//        model.detailPartsAsSet = Set(detailParts)
     }
     
 }

@@ -30,13 +30,12 @@ struct Purchase : ManagedObjectBacked {
 
     var models: [Model] {
         get {
-            let modelObjects = managedObject.models!.array as! [ModelManagedObject]
-            return modelObjects.map(Model.init(managedObject:))
+            let modelObjects = managedObject.models!.array as! [Model]
+            return modelObjects
         }
         
         set {
-            let modelObjects = newValue.map({ $0.managedObject })
-            managedObject.models = NSOrderedSet(array: modelObjects)
+            managedObject.models = NSOrderedSet(array: newValue)
             try? managedObject.managedObjectContext?.save()
         }
     }
@@ -132,8 +131,8 @@ struct Purchase : ManagedObjectBacked {
     
     
     mutating func addModel() -> Model {
-        var model = Model(context: managedObject.managedObjectContext!)
-        model.purchase = self
+        let model = Model(context: managedObject.managedObjectContext!)
+        model.purchase = self.managedObject
         try? managedObject.managedObjectContext?.save()
         return model
     }
@@ -218,14 +217,15 @@ struct Purchase : ManagedObjectBacked {
         guard models.count <= 1 else { return exactMatch }
         guard models.first?.classification == nil else { return exactMatch }
         models.first?.delete()
-        
+        try? managedObject.managedObjectContext?.save()
+
         // This is a weird bit, see what the most frequent number of models is - it should always be the same, but keep our "going for the mode" approach.
         // Right now this simply ignores missing models, or extra models, but keeps looking at the rest of the box rather than excluding the purchase altogether; can change that with the flatMap below to check the count matches, rather than checking against index.
         guard let count = similarPurchases.map({ $0.models.count }).mostFrequent() else { return exactMatch }
         for index in 0..<count {
             let similarModels = Set(similarPurchases.compactMap({ $0.models.count > index ? $0.models[index] : nil }))
             
-            var model: Model = addModel()
+            let model: Model = addModel()
             let _ = try model.fillFromSimilar(models: similarModels, exactMatch: exactMatch)
         }
         

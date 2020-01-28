@@ -9,14 +9,6 @@
 import Foundation
 
 extension Model {
-    var lastOil: DateComponents? {
-        get { managedObject.lastOil }
-        set {
-            managedObject.lastOil = newValue
-            try? managedObject.managedObjectContext?.save() // FIXME!
-        }
-    }
-
     /// Formatter for date types.
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -46,14 +38,6 @@ extension Model {
     var lastOilAsString: String? {
         get { lastOilAsDate.flatMap { return dateFormatter.string(from: $0) } }
         set { lastOilAsDate = newValue.flatMap { dateFormatter.date(from: $0) } }
-    }
-
-    var lastRun: DateComponents? {
-        get { managedObject.lastRun }
-        set {
-            managedObject.lastRun = newValue
-            try? managedObject.managedObjectContext?.save() // FIXME!
-        }
     }
 
     /// `lastRun` as `Date` in current time zone.

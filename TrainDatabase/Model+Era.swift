@@ -17,11 +17,8 @@ extension Model {
     }
 
     var era: Era? {
-        get { Era(rawValue: managedObject.eraRawValue) }
-        set {
-            managedObject.eraRawValue = newValue?.rawValue ?? 0
-            try? managedObject.managedObjectContext?.save() // FIXME!
-        }
+        get { Era(rawValue: eraRawValue) }
+        set { eraRawValue = newValue?.rawValue ?? 0 }
     }
 }
 

@@ -28,7 +28,7 @@ extension NSImage {
 
 extension TrainMember {
     var image: NSImage? {
-        guard let originalImage = model.map({ Model(managedObject: $0) })?.image else { return nil }
+        guard let originalImage = model?.image else { return nil }
         return isFlipped ? originalImage.flippedHorizontally() : originalImage
     }
 }

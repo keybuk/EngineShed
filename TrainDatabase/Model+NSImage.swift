@@ -10,7 +10,6 @@ import Cocoa
 import CoreData
 
 private extension NSImage {
-
     func pngData() throws -> Data {
         guard let imageData = self.tiffRepresentation else { throw NSError() }
         guard let imageRep = NSBitmapImageRep(data: imageData) else { throw NSError() }
@@ -21,23 +20,11 @@ private extension NSImage {
     func saveAsPNG(to url: URL) throws {
         try pngData().write(to: url)
     }
-
 }
 
-    
 extension Model {
-
-    var imageData: Data? {
-        get { managedObject.imageData }
-        set {
-            managedObject.imageData = newValue
-            try? managedObject.managedObjectContext?.save() // FIXME!
-        }
-    }
-    
     var image: NSImage? {
-        get { managedObject.imageData.flatMap { NSImage(data: $0) } }
-        set { managedObject.imageData = try? newValue?.pngData() }
+        get { imageData.flatMap { NSImage(data: $0) } }
+        set { imageData = try? newValue?.pngData() }
     }
-    
 }

@@ -57,7 +57,7 @@ class PurchaseModelsViewController: NSViewController {
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
         
-        purchase = model.purchase
+        purchase = Purchase(managedObject: model.purchase!)
         reloadData()
     }
     
@@ -182,7 +182,7 @@ extension PurchaseModelsViewController : NSTableViewDelegate {
         let model = purchase.models[row]
         
         view.imageView?.image = model.image
-        view.textField?.stringValue = model.modelClass
+        view.textField?.stringValue = model.modelClass ?? ""
         
         return view
     }

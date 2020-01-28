@@ -9,128 +9,9 @@
 import Foundation
 import CoreData
 
-struct Model : ManagedObjectBacked {
-    
-    var managedObject: ModelManagedObject
-    
-    init(managedObject: ModelManagedObject) {
-        self.managedObject = managedObject
-    }
-    
-    init(context: NSManagedObjectContext) {
-        managedObject = ModelManagedObject(context: context)
-        managedObject.modelClass = ""
-        managedObject.number = ""
-        managedObject.name = ""
-        managedObject.livery = ""
-        managedObject.details = ""
-        managedObject.motor = ""
-        managedObject.socket = ""
-        managedObject.speaker = ""
-        managedObject.notes = ""
-    }
-
-    
-    var purchase: Purchase {
-        get { return Purchase(managedObject: managedObject.purchase!) }
-        set {
-            managedObject.purchase = newValue.managedObject
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var trainMember: TrainMember? {
-        get { return managedObject.trainMember }
-        set {
-            managedObject.trainMember = newValue
-            try? managedObject.managedObjectContext?.save() // FIXME
-        }
-    }
-    
-    var decoder: Decoder? {
-        get { return managedObject.decoder }
-        set {
-            managedObject.decoder = newValue
-            try? managedObject.managedObjectContext?.save() // FIXME
-        }
-    }
-    
-    
-    var modelClass: String {
-        get { return managedObject.modelClass ?? "" }
-        set {
-            managedObject.modelClass = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var number: String {
-        get { return managedObject.number ?? "" }
-        set {
-            managedObject.number = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var name: String {
-        get { return managedObject.name ?? "" }
-        set {
-            managedObject.name = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var livery: String {
-        get { return managedObject.livery ?? "" }
-        set {
-            managedObject.livery = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var details: String {
-        get { return managedObject.details ?? "" }
-        set {
-            managedObject.details = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var motor: String {
-        get { return managedObject.motor ?? "" }
-        set {
-            managedObject.motor = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var socket: String {
-        get { return managedObject.socket ?? "" }
-        set {
-            managedObject.socket = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-
-    var speaker: String {
-        get { return managedObject.speaker ?? "" }
-        set {
-            managedObject.speaker = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    var notes: String {
-        get { return managedObject.notes ?? "" }
-        set {
-            managedObject.notes = newValue
-            try? managedObject.managedObjectContext?.save()
-        }
-    }
-    
-    
+extension Model {
     func updateValues<T>(using entity: T.Type, for key: String, from newValues: Set<String>) where T : NSManagedObject {
-        let objects = managedObject.value(forKey: key) as! Set<T>
+        let objects = value(forKey: key) as! Set<T>
         for object in objects {
             let objectValue = object.value(forKey: "title") as! String
             if !newValues.contains(objectValue) {
@@ -141,77 +22,69 @@ struct Model : ManagedObjectBacked {
         
         let oldValues = Set(objects.map({ $0.value(forKey: "title") as! String }))
         for newValue in newValues.subtracting(oldValues) {
-            let object = T(context: managedObject.managedObjectContext!)
+            let object = T(context: managedObjectContext!)
             object.setValue(newValue, forKey: "title")
-            object.setValue(managedObject, forKey: "model")
+            object.setValue(self, forKey: "model")
         }
-        
-        try? managedObject.managedObjectContext?.save()
     }
 
-    var lights: Set<String> {
+    var lightsAsStrings: Set<String> {
         get {
-            let objects = managedObject.lights! as! Set<LightManagedObject>
+            let objects = lights! as! Set<Light>
             return Set(objects.map({ $0.title! }))
         }
         
-        set { updateValues(using: LightManagedObject.self, for: "lights", from: newValue) }
+        set { updateValues(using: Light.self, for: "lights", from: newValue) }
     }
     
-    var speakerFitting: Set<String> {
+    var speakerFittingsAsStrings: Set<String> {
         get {
-            let objects = managedObject.speakerFittings! as! Set<SpeakerFittingManagedObject>
+            let objects = speakerFittings! as! Set<SpeakerFitting>
             return Set(objects.map({ $0.title! }))
         }
         
-        set { updateValues(using: SpeakerFittingManagedObject.self, for: "speakerFittings", from: newValue) }
+        set { updateValues(using: SpeakerFitting.self, for: "speakerFittings", from: newValue) }
     }
 
-    var couplings: Set<String> {
+    var couplingsAsStrings: Set<String> {
         get {
-            let objects = managedObject.couplings! as! Set<CouplingManagedObject>
+            let objects = couplings! as! Set<Coupling>
             return Set(objects.map({ $0.title! }))
         }
         
-        set { updateValues(using: CouplingManagedObject.self, for: "couplings", from: newValue) }
+        set { updateValues(using: Coupling.self, for: "couplings", from: newValue) }
     }
 
-    var features: Set<String> {
+    var featuresAsStrings: Set<String> {
         get {
-            let objects = managedObject.features! as! Set<FeatureManagedObject>
+            let objects = features! as! Set<Feature>
             return Set(objects.map({ $0.title! }))
         }
         
-        set { updateValues(using: FeatureManagedObject.self, for: "features", from: newValue) }
+        set { updateValues(using: Feature.self, for: "features", from: newValue) }
     }
 
-    struct DetailPart : Codable, Equatable, Hashable, Comparable {
-        
-        var title: String
-        var isFitted: Bool = false
-
-        static func ==(lhs: Model.DetailPart, rhs: Model.DetailPart) -> Bool {
-            return lhs.title == rhs.title
-        }
-        
-        static func <(lhs: Model.DetailPart, rhs: Model.DetailPart) -> Bool {
-            return lhs.title < rhs.title
-        }
-
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(title)
-        }
-
-    }
-    
-    var detailParts: Set<DetailPart> {
+    var detailPartsAsStrings: Set<String> {
         get {
-            let objects = managedObject.detailParts! as! Set<DetailPartManagedObject>
-            return Set(objects.map({ DetailPart(title: $0.title!, isFitted: $0.isFitted) }))
+            let objects = detailParts! as! Set<DetailPart>
+            return Set(objects.map({ $0.title! }))
+        }
+
+        set { updateValues(using: DetailPart.self, for: "detailParts", from: newValue) }
+    }
+
+    func detailPartForTitle(_ title: String) -> DetailPart? {
+        (detailParts! as! Set<DetailPart>).first(where: { $0.title == title })
+    }
+
+    var detailPartsAsSet: Set<DetailPart> {
+        get {
+            let objects = detailParts! as! Set<DetailPart>
+            return objects
         }
         
         set {
-            let detailPartObjects = managedObject.detailParts! as! Set<DetailPartManagedObject>
+            let detailPartObjects = detailParts! as! Set<DetailPart>
             for detailPartObject in detailPartObjects {
                 if let detailPart = newValue.first(where: { $0.title == detailPartObject.title! }) {
                     detailPartObject.isFitted = detailPart.isFitted
@@ -221,83 +94,74 @@ struct Model : ManagedObjectBacked {
                 }
             }
             
-            let oldValues = Set(detailPartObjects.map({ DetailPart(title: $0.title!, isFitted: $0.isFitted) }))
+            let oldValues = detailPartObjects
             for newValue in newValue.subtracting(oldValues) {
-                let detailPartObject = DetailPartManagedObject(context: managedObject.managedObjectContext!)
-                detailPartObject.title = newValue.title
-                detailPartObject.isFitted = newValue.isFitted
-                detailPartObject.model = managedObject
+                newValue.model = self
             }
-            
-            try? managedObject.managedObjectContext?.save()
         }
     }
 
-    var modifications: Set<String> {
+    var modificationsAsStrings: Set<String> {
         get {
-            let objects = managedObject.modifications! as! Set<ModificationManagedObject>
+            let objects = modifications! as! Set<Modification>
             return Set(objects.map({ $0.title! }))
         }
         
-        set { updateValues(using: ModificationManagedObject.self, for: "modifications", from: newValue) }
+        set { updateValues(using: Modification.self, for: "modifications", from: newValue) }
     }
 
-    var tasks: Set<String> {
+    var tasksAsStrings: Set<String> {
         get {
-            let objects = managedObject.tasks! as! Set<TaskManagedObject>
+            let objects = tasks! as! Set<Task>
             return Set(objects.map({ $0.title! }))
         }
         
-        set { updateValues(using: TaskManagedObject.self, for: "tasks", from: newValue) }
+        set { updateValues(using: Task.self, for: "tasks", from: newValue) }
     }
-    
-    
-    mutating func createDecoderIfNeeded() {
+
+    func createDecoderIfNeeded() {
         if decoder == nil {
-            decoder = Decoder(context: managedObject.managedObjectContext!)
+            decoder = Decoder(context: managedObjectContext!)
         }
     }
     
-    mutating func createTrainMember(in train: Train) {
-        trainMember = TrainMember(context: managedObject.managedObjectContext!)
+    func createTrainMember(in train: Train) {
+        trainMember = TrainMember(context: managedObjectContext!)
         trainMember?.train = train
-        try? managedObject.managedObjectContext?.save() // FIXME
     }
     
-    mutating func createTrain(named name: String) {
-        let train = Train(context: managedObject.managedObjectContext!)
+    func createTrain(named name: String) {
+        let train = Train(context: managedObjectContext!)
         train.name = name
             
-        trainMember = TrainMember(context: managedObject.managedObjectContext!)
+        trainMember = TrainMember(context: managedObjectContext!)
         trainMember?.train = train
-        try? managedObject.managedObjectContext?.save() // FIXME
     }
     
     func delete() {
-        managedObject.managedObjectContext?.delete(managedObject)
-        try? managedObject.managedObjectContext?.save()
+        managedObjectContext?.delete(self)
     }
     
     static let unwantedTasks = [ "Renumber", "Relabel", "Repair" ]
 
-    mutating func addSuggestedTasks() {
-        if !motor.isEmpty {
+    func addSuggestedTasks() {
+        if let motor = motor, !motor.isEmpty {
             if decoder == nil {
-                tasks.insert("Decoder")
+                tasksAsStrings.insert("Decoder")
                 
-                if socket.isEmpty {
-                    tasks.insert("DCC Conversion")
+                if socket?.isEmpty ?? true {
+                    tasksAsStrings.insert("DCC Conversion")
                 }
             }
-            if speaker.isEmpty {
-                tasks.insert("Speaker")
+            if speaker?.isEmpty ?? true {
+                tasksAsStrings.insert("Speaker")
             }
             if decoder?.soundProject?.isEmpty ?? true {
-                tasks.insert("Sound File")
+                tasksAsStrings.insert("Sound File")
             }
         }
-        if !speaker.isEmpty && (decoder?.soundProject?.isEmpty ?? true) {
-            tasks.insert("Sound File")
+        if let speaker = speaker, !speaker.isEmpty && (decoder?.soundProject?.isEmpty ?? true) {
+            tasksAsStrings.insert("Sound File")
         }
         /*if !lights.isEmpty && decoder == nil {
             tasks.insert("Decoder")
@@ -306,8 +170,8 @@ struct Model : ManagedObjectBacked {
                 tasks.insert("DCC Conversion")
             }
         }*/
-        if !detailParts.filter({ !$0.isFitted }).isEmpty {
-            tasks.insert("Detail Parts")
+        if !detailPartsAsSet.filter({ !$0.isFitted }).isEmpty {
+            tasksAsStrings.insert("Detail Parts")
         }
     }
     
@@ -330,36 +194,36 @@ struct Model : ManagedObjectBacked {
     
     
     func sortedValuesForLights(startingWith string: String? = nil) throws -> [String] {
-        return try sortedValues(from: LightManagedObject.self, for: "title", ascending: true, startingWith: string)
+        return try sortedValues(from: Light.self, for: "title", ascending: true, startingWith: string)
     }
     
     func sortedValuesForSpeakerFitting(startingWith string: String? = nil) throws -> [String] {
-        return try sortedValues(from: SpeakerFittingManagedObject.self, for: "title", ascending: true, startingWith: string)
+        return try sortedValues(from: SpeakerFitting.self, for: "title", ascending: true, startingWith: string)
     }
 
     func sortedValuesForCouplings(startingWith string: String? = nil) throws -> [String] {
-        return try sortedValues(from: CouplingManagedObject.self, for: "title", ascending: true, startingWith: string)
+        return try sortedValues(from: Coupling.self, for: "title", ascending: true, startingWith: string)
     }
 
     func sortedValuesForFeatures(startingWith string: String? = nil) throws -> [String] {
-        return try sortedValues(from: FeatureManagedObject.self, for: "title", ascending: true, startingWith: string)
+        return try sortedValues(from: Feature.self, for: "title", ascending: true, startingWith: string)
     }
 
     func sortedValuesForDetailParts(startingWith string: String? = nil) throws -> [String] {
-        return try sortedValues(from: DetailPartManagedObject.self, for: "title", ascending: true, startingWith: string)
+        return try sortedValues(from: DetailPart.self, for: "title", ascending: true, startingWith: string)
     }
 
     func sortedValuesForModifications(startingWith string: String? = nil) throws -> [String] {
-        return try sortedValues(from: ModificationManagedObject.self, for: "title", ascending: true, startingWith: string)
+        return try sortedValues(from: Modification.self, for: "title", ascending: true, startingWith: string)
     }
 
     func sortedValuesForTasks(startingWith string: String? = nil) throws -> [String] {
-        return try sortedValues(from: TaskManagedObject.self, for: "title", ascending: true, startingWith: string)
+        return try sortedValues(from: Task.self, for: "title", ascending: true, startingWith: string)
     }
     
     
     func sortedValuesForDecoderType(startingWith string: String? = nil) throws -> [DecoderType] {
-        guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
+        guard let context = managedObjectContext else { fatalError("No context to make query with") }
 
         let fetchRequest: NSFetchRequest<DecoderType> = DecoderType.fetchRequest()
         fetchRequest.sortDescriptors = [
@@ -369,7 +233,7 @@ struct Model : ManagedObjectBacked {
             NSSortDescriptor(key: "socket", ascending: true)
         ]
 
-        if !socket.isEmpty {
+        if let socket = socket, !socket.isEmpty {
             fetchRequest.predicate = NSPredicate(format: "socket = %@", socket)
         }
         
@@ -378,7 +242,7 @@ struct Model : ManagedObjectBacked {
     }
 
     func sortedValuesForDecoder(startingWith string: String? = nil) throws -> [Decoder] {
-        guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
+        guard let context = managedObjectContext else { fatalError("No context to make query with") }
         
         let fetchRequest: NSFetchRequest<Decoder> = Decoder.fetchRequest()
         fetchRequest.sortDescriptors = [
@@ -387,13 +251,13 @@ struct Model : ManagedObjectBacked {
         
         var predicates: [NSPredicate] = []
         predicates.append(NSPredicate(format: "serialNumber != ''"))
-        predicates.append(NSPredicate(format: "model = NULL OR model = %@", managedObject))
+        predicates.append(NSPredicate(format: "model = NULL OR model = %@", self))
 
         // If there's already a decoder with a type assigned, limit the serial numbers to the same type.
         // Otherwise limit the serial numbers to those types at least matching the same socket.
         if let decoderType = decoder?.type {
             predicates.append(NSPredicate(format: "type = %@", decoderType))
-        } else if !socket.isEmpty {
+        } else if let socket = socket, !socket.isEmpty {
             predicates.append(NSPredicate(format: "type.socket = %@", socket))
         }
         
@@ -404,7 +268,7 @@ struct Model : ManagedObjectBacked {
     }
     
     func sortedValuesForTrain(startingWith string: String? = nil) throws -> [Train] {
-        guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
+        guard let context = managedObjectContext else { fatalError("No context to make query with") }
         
         let fetchRequest: NSFetchRequest<Train> = Train.fetchRequest()
         fetchRequest.sortDescriptors = [
@@ -422,25 +286,23 @@ struct Model : ManagedObjectBacked {
     ///
     /// Similar models are those which have the same classification and class, from the same manufacturer. e.g. all Bachmann Mk1 BSK coaches would be classified as "similar", but a Mk1 BSK from Hornby would not be, because it's likely to have somewhat different details; also a Mk1 BCK from Bachmann would not be either for the same reason.
     func similar() throws -> Set<Model>? {
-        guard let context = managedObject.managedObjectContext else { fatalError("No context to make query with") }
+        guard let context = managedObjectContext else { fatalError("No context to make query with") }
         
-        let fetchRequest: NSFetchRequest<ModelManagedObject> = ModelManagedObject.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "SELF != %@ && purchase.manufacturer == %@ && classificationRawValue == %d && modelClass == %@", managedObject, purchase.manufacturer, classification?.rawValue ?? 0, modelClass)
+        let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "SELF != %@ && purchase.manufacturer == %@ && classificationRawValue == %d && modelClass == %@", self, purchase?.manufacturer ?? "", classification?.rawValue ?? 0, modelClass ?? "")
         
-        let modelObjects = try context.fetch(fetchRequest)
-        if modelObjects.isEmpty {
+        let models = try context.fetch(fetchRequest)
+        if models.isEmpty {
             return nil
         }
-        
-        let models = modelObjects.map(Model.init(managedObject:))
-       
+
         // Find the models that exist along similar models within the same purchase (multiple units, Class 43, etc. but also box sets).
         // FIXME: since this now behaves like a filter, the != purchase here actually means we DO include models from the current purchase. Handy for BSK-sets, but wrong for 43-sets? Will see over time if this is more annoying than useful.
-        let modelsInMultiples = models.reduce(into: [Purchase: [Model]](), { $0[$1.purchase, default: []].append($1) }).filter({ $0.key != purchase && $0.value.count > 1 }).flatMap({ $0.value })
+        let modelsInMultiples = models.reduce(into: [Purchase: [Model]](), { $0[Purchase(managedObject: $1.purchase!), default: []].append($1) }).filter({ $0.key.managedObject != purchase && $0.value.count > 1 }).flatMap({ $0.value })
 
         // Further filter to the set of models within those purchases that are at the same position within the purchase as this model. This should correctly match the front or rear equivalent of a multiple unit, where such things are common.
-        let position = purchase.models.firstIndex(of: self)
-        let equivalentModels = modelsInMultiples.filter({ $0.purchase.models.firstIndex(of: $0) == position })
+        let position = (purchase!.models!.array as! [Model]).firstIndex(of: self)
+        let equivalentModels = modelsInMultiples.filter({ ($0.purchase!.models!.array as! [Model]).firstIndex(of: $0) == position })
         
         // Add in any model that is not a multiple in a purchase.
         let results = Set(models).subtracting(modelsInMultiples).union(equivalentModels)
@@ -451,7 +313,7 @@ struct Model : ManagedObjectBacked {
         return results
     }
     
-    mutating func fillFromSimilar(models purchaseModels: Set<Model>? = nil, exactMatch: Bool = false) throws -> Bool {
+    func fillFromSimilar(models purchaseModels: Set<Model>? = nil, exactMatch: Bool = false) throws -> Bool {
         guard let similarModels = try purchaseModels ?? similar() else { return false }
 
         if exactMatch {
@@ -479,18 +341,18 @@ struct Model : ManagedObjectBacked {
         // FIXME: some notes should probably be copied.
         
         // For the lists, we look for something slightly different; we look for the values that appear in at least half of the similar models.
-        if let lights = similarModels.flatMap({ $0.lights }).repeatedValues(atLeast: similarModels.count / 2) { self.lights = Set(lights) }
+        if let lights = similarModels.flatMap({ $0.lightsAsStrings }).repeatedValues(atLeast: similarModels.count / 2) { self.lightsAsStrings = Set(lights) }
         // FIXME: speakerFitting? discuss!
         //if let speakerFitting = similarModels.flatMap({ $0.speakerFitting }).repeatedValues(atLeast: count / 2) { model.speakerFitting = Set(speakerFitting) }
-        if let couplings = similarModels.flatMap({ $0.couplings }).repeatedValues(atLeast: similarModels.count / 2) { self.couplings = Set(couplings) }
-        if let features = similarModels.flatMap({ $0.features }).repeatedValues(atLeast: similarModels.count / 2) { self.features = Set(features) }
+        if let couplings = similarModels.flatMap({ $0.couplingsAsStrings }).repeatedValues(atLeast: similarModels.count / 2) { self.couplingsAsStrings = Set(couplings) }
+        if let features = similarModels.flatMap({ $0.featuresAsStrings }).repeatedValues(atLeast: similarModels.count / 2) { self.featuresAsStrings = Set(features) }
         // modifications is omitted because that should always differ between individual models.
         
         // detailParts gets copied over with isFitted set, which may work, or may not; right now it reflects non-modified state of the world, so it works.
-        if let detailParts = similarModels.flatMap({ $0.detailParts }).repeatedValues(atLeast: similarModels.count / 2) { self.detailParts = Set(detailParts) }
+        if let detailParts = similarModels.flatMap({ $0.detailPartsAsSet }).repeatedValues(atLeast: similarModels.count / 2) { self.detailPartsAsSet = Set(detailParts) }
         
         // Finally for tasks, there's simply a bunch we don't want to copy over, and some we want to sneak in regardless.
-        if let tasks = similarModels.flatMap({ $0.tasks }).filter({ !Model.unwantedTasks.contains($0) }).repeatedValues(atLeast: similarModels.count / 2) { self.tasks = Set(tasks) }
+        if let tasks = similarModels.flatMap({ $0.tasksAsStrings }).filter({ !Model.unwantedTasks.contains($0) }).repeatedValues(atLeast: similarModels.count / 2) { self.tasksAsStrings = Set(tasks) }
         addSuggestedTasks()
 
         return true
@@ -498,7 +360,7 @@ struct Model : ManagedObjectBacked {
 
     
     static func matching(classification: Classification, in context: NSManagedObjectContext) throws -> [Model] {
-        let fetchRequest: NSFetchRequest<ModelManagedObject> = ModelManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "classificationRawValue = \(classification.rawValue)")
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "modelClass", ascending: true),
@@ -507,14 +369,14 @@ struct Model : ManagedObjectBacked {
             NSSortDescriptor(key: "dispositionRawValue", ascending: true)
         ]
         
-        let modelObjects = try context.fetch(fetchRequest)
-        return modelObjects.map(Model.init(managedObject:))
+        let results = try context.fetch(fetchRequest)
+        return results
     }
     
     static let searchFields = [ "modelClass", "number", "name", "purchase.catalogNumber", "purchase.catalogDescription", "decoder.serialNumber" ]
     
     static func matching(search: String, in context: NSManagedObjectContext) throws -> [Model] {
-        let fetchRequest: NSFetchRequest<ModelManagedObject> = ModelManagedObject.fetchRequest()
+        let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "modelClass", ascending: true),
             NSSortDescriptor(key: "number", ascending: true),
@@ -524,16 +386,14 @@ struct Model : ManagedObjectBacked {
 
         fetchRequest.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: searchFields.map({ NSPredicate(format: "\($0) CONTAINS[c] %@", search) }))
         
-        let modelObjects = try context.fetch(fetchRequest)
-        return modelObjects.map(Model.init(managedObject:))
+        let results = try context.fetch(fetchRequest)
+        return results
     }
 
 }
 
-extension Model : CustomStringConvertible {
-    
-    var description: String {
-        return [ modelClass, number, name ].filter({ !$0.isEmpty }).joined(separator: " ")
+extension Model/* : CustomStringConvertible*/ {
+    override public var description: String {
+        [ modelClass, number, name ].compactMap({ $0 }).filter({ !$0.isEmpty }).joined(separator: " ")
     }
-    
 }
