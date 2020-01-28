@@ -37,6 +37,36 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D213DF4B23E0B57B0003C771"
+               BuildableName = "DatabaseTests.xctest"
+               BlueprintName = "DatabaseTests (macOS)"
+               ReferencedContainer = "container:Database/Database.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D28A4BE31FD67523000768D8"
+               BuildableName = "TrainDatabaseUITests.xctest"
+               BlueprintName = "TrainDatabaseUITests"
+               ReferencedContainer = "container:TrainDatabase.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D28A4BD81FD67523000768D8"
+               BuildableName = "TrainDatabaseTests.xctest"
+               BlueprintName = "TrainDatabaseTests"
+               ReferencedContainer = "container:TrainDatabase.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
