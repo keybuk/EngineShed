@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+import Database // NEW
+
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
@@ -18,6 +20,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UISplitViewControllerDel
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        DatabaseTest().test()
         return true
     }
 
