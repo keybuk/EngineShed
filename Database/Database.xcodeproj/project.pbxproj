@@ -11,6 +11,10 @@
 		D213DF3223E0B0F50003C771 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213DF3123E0B0F50003C771 /* DatabaseTests.swift */; };
 		D213DF3423E0B0F50003C771 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = D213DF2623E0B0F40003C771 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D213DF3E23E0B3CA0003C771 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213DF3D23E0B3CA0003C771 /* Test.swift */; };
+		D213DF4D23E0B57B0003C771 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D213DF4423E0B57B0003C771 /* Database.framework */; };
+		D213DF5B23E0B5BE0003C771 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213DF3D23E0B3CA0003C771 /* Test.swift */; };
+		D213DF5C23E0B5CE0003C771 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = D213DF2623E0B0F40003C771 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D213DF5D23E0B6040003C771 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213DF3123E0B0F50003C771 /* DatabaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,6 +24,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D213DF2223E0B0F40003C771;
 			remoteInfo = Database;
+		};
+		D213DF4E23E0B57B0003C771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D213DF1A23E0B0F40003C771 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D213DF4323E0B57B0003C771;
+			remoteInfo = "Database (macOS)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -31,6 +42,8 @@
 		D213DF3123E0B0F50003C771 /* DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
 		D213DF3323E0B0F50003C771 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D213DF3D23E0B3CA0003C771 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		D213DF4423E0B57B0003C771 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D213DF4C23E0B57B0003C771 /* DatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +59,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D213DF2D23E0B0F50003C771 /* Database.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D213DF4123E0B57B0003C771 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D213DF4923E0B57B0003C771 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D213DF4D23E0B57B0003C771 /* Database.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +94,8 @@
 			children = (
 				D213DF2323E0B0F40003C771 /* Database.framework */,
 				D213DF2C23E0B0F50003C771 /* DatabaseTests.xctest */,
+				D213DF4423E0B57B0003C771 /* Database.framework */,
+				D213DF4C23E0B57B0003C771 /* DatabaseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +127,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D213DF3423E0B0F50003C771 /* Database.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D213DF3F23E0B57B0003C771 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D213DF5C23E0B5CE0003C771 /* Database.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +177,42 @@
 			productReference = D213DF2C23E0B0F50003C771 /* DatabaseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D213DF4323E0B57B0003C771 /* Database (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D213DF5523E0B57B0003C771 /* Build configuration list for PBXNativeTarget "Database (macOS)" */;
+			buildPhases = (
+				D213DF3F23E0B57B0003C771 /* Headers */,
+				D213DF4023E0B57B0003C771 /* Sources */,
+				D213DF4123E0B57B0003C771 /* Frameworks */,
+				D213DF4223E0B57B0003C771 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Database (macOS)";
+			productName = "Database (macOS)";
+			productReference = D213DF4423E0B57B0003C771 /* Database.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D213DF4B23E0B57B0003C771 /* DatabaseTests (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D213DF5823E0B57B0003C771 /* Build configuration list for PBXNativeTarget "DatabaseTests (macOS)" */;
+			buildPhases = (
+				D213DF4823E0B57B0003C771 /* Sources */,
+				D213DF4923E0B57B0003C771 /* Frameworks */,
+				D213DF4A23E0B57B0003C771 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D213DF4F23E0B57B0003C771 /* PBXTargetDependency */,
+			);
+			name = "DatabaseTests (macOS)";
+			productName = "Database (macOS)Tests";
+			productReference = D213DF4C23E0B57B0003C771 /* DatabaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -154,6 +228,12 @@
 						LastSwiftMigration = 1130;
 					};
 					D213DF2B23E0B0F50003C771 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					D213DF4323E0B57B0003C771 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					D213DF4B23E0B57B0003C771 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
@@ -173,6 +253,8 @@
 			targets = (
 				D213DF2223E0B0F40003C771 /* Database */,
 				D213DF2B23E0B0F50003C771 /* DatabaseTests */,
+				D213DF4323E0B57B0003C771 /* Database (macOS) */,
+				D213DF4B23E0B57B0003C771 /* DatabaseTests (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -186,6 +268,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D213DF2A23E0B0F50003C771 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D213DF4223E0B57B0003C771 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D213DF4A23E0B57B0003C771 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -211,6 +307,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D213DF4023E0B57B0003C771 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D213DF5B23E0B5BE0003C771 /* Test.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D213DF4823E0B57B0003C771 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D213DF5D23E0B6040003C771 /* DatabaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -218,6 +330,11 @@
 			isa = PBXTargetDependency;
 			target = D213DF2223E0B0F40003C771 /* Database */;
 			targetProxy = D213DF2E23E0B0F50003C771 /* PBXContainerItemProxy */;
+		};
+		D213DF4F23E0B57B0003C771 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D213DF4323E0B57B0003C771 /* Database (macOS) */;
+			targetProxy = D213DF4E23E0B57B0003C771 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -431,6 +548,100 @@
 			};
 			name = Release;
 		};
+		D213DF5623E0B57B0003C771 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Database/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.Database;
+				PRODUCT_NAME = Database;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D213DF5723E0B57B0003C771 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Database/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.Database;
+				PRODUCT_NAME = Database;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D213DF5923E0B57B0003C771 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = DatabaseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.DatabaseTests;
+				PRODUCT_NAME = DatabaseTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D213DF5A23E0B57B0003C771 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = DatabaseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.DatabaseTests;
+				PRODUCT_NAME = DatabaseTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -457,6 +668,24 @@
 			buildConfigurations = (
 				D213DF3B23E0B0F50003C771 /* Debug */,
 				D213DF3C23E0B0F50003C771 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D213DF5523E0B57B0003C771 /* Build configuration list for PBXNativeTarget "Database (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D213DF5623E0B57B0003C771 /* Debug */,
+				D213DF5723E0B57B0003C771 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D213DF5823E0B57B0003C771 /* Build configuration list for PBXNativeTarget "DatabaseTests (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D213DF5923E0B57B0003C771 /* Debug */,
+				D213DF5A23E0B57B0003C771 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
