@@ -11,8 +11,8 @@
         <attribute name="serialNumber" optional="YES" attributeType="String"/>
         <attribute name="soundAuthor" optional="YES" attributeType="String"/>
         <attribute name="soundProject" optional="YES" attributeType="String"/>
-        <attribute name="soundProjectSettings" optional="YES" attributeType="String"/>
         <attribute name="soundProjectVersion" optional="YES" attributeType="String"/>
+        <attribute name="soundSettings" optional="YES" attributeType="String" elementID="soundProjectSettings"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="decoder" inverseEntity="Model"/>
         <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DecoderType" inverseName="decoders" inverseEntity="DecoderType"/>
     </entity>

@@ -24,8 +24,8 @@ private extension NSUserInterfaceItemIdentifier {
     static let soundProjectCell = NSUserInterfaceItemIdentifier("soundProjectCell")
     static let soundProjectVersionColumn = NSUserInterfaceItemIdentifier("soundProjectVersionColumn")
     static let soundProjectVersionCell = NSUserInterfaceItemIdentifier("soundProjectVersionCell")
-    static let soundProjectSettingsColumn = NSUserInterfaceItemIdentifier("soundProjectSettingsColumn")
-    static let soundProjectSettingsCell = NSUserInterfaceItemIdentifier("soundProjectSettingsCell")
+    static let soundSettingsColumn = NSUserInterfaceItemIdentifier("soundSettingsColumn")
+    static let soundSettingsCell = NSUserInterfaceItemIdentifier("soundSettingsCell")
 
 }
 
@@ -109,8 +109,8 @@ class DecoderTypeViewController: NSViewController {
             decoders.sort(by: { ($0.soundProject ?? "") < ($1.soundProject ?? "") })
         case "soundProjectVersion":
             decoders.sort(by: { ($0.soundProjectVersion ?? "") < ($1.soundProjectVersion ?? "") })
-        case "soundProjectSettings":
-            decoders.sort(by: { ($0.soundProjectSettings ?? "") < ($1.soundProjectSettings ?? "") })
+        case "soundSettings":
+            decoders.sort(by: { ($0.soundSettings ?? "") < ($1.soundSettings ?? "") })
         default:
             break
         }
@@ -280,10 +280,10 @@ class DecoderTypeViewController: NSViewController {
         try? decoder.managedObjectContext?.save() // FIXME
     }
 
-    @IBAction func decoderSoundProjectSettingsChanged(_ sender: NSTextField) {
+    @IBAction func decoderSoundSettingsChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
         let decoder = decoders[tableView.selectedRow]
-        decoder.soundProjectSettings = sender.stringValue
+        decoder.soundSettings = sender.stringValue
         try? decoder.managedObjectContext?.save() // FIXME
     }
 
@@ -347,9 +347,9 @@ extension DecoderTypeViewController : NSTableViewDelegate {
             let view = tableView.makeView(withIdentifier: .soundProjectVersionCell, owner: self) as! NSTableCellView
             view.textField?.stringValue = decoder.soundProjectVersion ?? ""
             return view
-        case .soundProjectSettingsColumn:
-            let view = tableView.makeView(withIdentifier: .soundProjectSettingsCell, owner: self) as! NSTableCellView
-            view.textField?.stringValue = decoder.soundProjectSettings ?? ""
+        case .soundSettingsColumn:
+            let view = tableView.makeView(withIdentifier: .soundSettingsCell, owner: self) as! NSTableCellView
+            view.textField?.stringValue = decoder.soundSettings ?? ""
             return view
         default:
             return nil

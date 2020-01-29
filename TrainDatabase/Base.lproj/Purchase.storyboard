@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Y5H-Uq-gdA">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1636,7 +1635,7 @@
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <action selector="decoderSoundProjectSettingsChanged:" target="LDT-ap-tKV" id="DIF-G4-ez8"/>
+                                                                        <action selector="decoderSoundSettingsChanged:" target="LDT-ap-tKV" id="4TR-gk-Qyc"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -2258,7 +2257,7 @@
                                     <rect key="frame" x="0.0" y="1677" width="671" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="yVU-WZ-jOD">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yVU-WZ-jOD">
                                     <rect key="frame" x="655" y="0.0" width="16" height="1693"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -2279,9 +2278,9 @@
                         <outlet property="decoderFirmwareVersionComboBox" destination="RAU-dM-1xs" id="86E-LE-euy"/>
                         <outlet property="decoderSerialNumberComboBox" destination="DsE-mL-zeQ" id="108-Hk-UNk"/>
                         <outlet property="decoderSoundAuthorComboBox" destination="z3T-jU-vyO" id="YpV-04-zZK"/>
-                        <outlet property="decoderSoundProjectSettingsTextField" destination="H6G-A9-iue" id="eOL-OM-aXy"/>
                         <outlet property="decoderSoundProjectTextField" destination="rHg-rq-UhO" id="DLQ-qb-vTn"/>
                         <outlet property="decoderSoundProjectVersionTextField" destination="BW7-QB-gPE" id="HLl-Ok-8ge"/>
+                        <outlet property="decoderSoundSettingsTextField" destination="H6G-A9-iue" id="PYY-yb-cWB"/>
                         <outlet property="decoderTypeComboBox" destination="BGc-CD-y9F" id="jPX-Qc-fwj"/>
                         <outlet property="detailPartsTokenField" destination="WKm-Dx-YoW" id="Llw-k3-GEr"/>
                         <outlet property="detailsTextField" destination="mte-YJ-LMX" id="rbs-y1-6Mv"/>
