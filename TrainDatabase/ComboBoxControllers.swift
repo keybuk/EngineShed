@@ -8,6 +8,8 @@
 
 import AppKit
 
+import Database
+
 @objc
 class ModelTrainComboBoxController : Formatter, NSComboBoxDataSource {
     

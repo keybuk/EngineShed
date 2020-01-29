@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension DecoderType {
 
     static func fetchRequestForDecoderTypes() -> NSFetchRequest<DecoderType> {

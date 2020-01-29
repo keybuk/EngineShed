@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelSocketTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var socketLabel: UILabel!

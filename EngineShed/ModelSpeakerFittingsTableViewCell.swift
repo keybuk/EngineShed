@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelSpeakerFittingsTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var speakerFittingsLabel: UILabel!

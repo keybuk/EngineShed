@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Purchase {
 
     enum ValidationError : Error {

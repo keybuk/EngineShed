@@ -8,13 +8,15 @@
 
 import SwiftUI
 
+import Database
+
 struct PurchaseRow : View {
 
     var purchase: Purchase
 
     var body: some View {
         return HStack {
-            RowImage(image: Image(uiImage: (purchase.models!.anyObject() as! Model).image!))
+            RowImage(image: Image(uiImage: (purchase.models!.firstObject! as! Model).image!))
 
             VStack(alignment: .leading) {
                 HStack(alignment: .firstTextBaseline, spacing: 0) {

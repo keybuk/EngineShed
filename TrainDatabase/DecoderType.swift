@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension DecoderType {
     func addDecoder() -> Decoder {
         let decoder = Decoder(context: managedObjectContext!)

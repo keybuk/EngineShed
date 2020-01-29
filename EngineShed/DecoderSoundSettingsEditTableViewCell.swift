@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class DecoderSoundSettingsEditTableViewCell : UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var textView: UITextView!

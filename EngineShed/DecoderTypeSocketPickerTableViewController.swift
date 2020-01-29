@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class DecoderTypeSocketPickerTableViewController : UITableViewController {
 
     var decoderType: DecoderType?

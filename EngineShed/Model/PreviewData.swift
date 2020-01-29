@@ -10,6 +10,8 @@
 import SwiftUI
 import CoreData
 
+import Database
+
 struct PreviewData {
 
     let container: NSPersistentContainer
@@ -19,7 +21,7 @@ struct PreviewData {
     let decoderTypes: [DecoderType]
 
     init() {
-        container = NSPersistentContainer(name: "EngineShed")
+        container = PersistentContainer(name: "EngineShed")
         container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         container.loadPersistentStores { (storeDescription, error) in
             if let error = error { fatalError("\(error.localizedDescription)") }

@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Purchase {
 
     /// Formatter for currency types.

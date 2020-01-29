@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Decoder {
 
     /// Formatter for date types.

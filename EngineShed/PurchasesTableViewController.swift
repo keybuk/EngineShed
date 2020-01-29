@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+import Database
+
 class PurchasesTableViewController : UITableViewController, NSFetchedResultsControllerDelegate {
 
     var persistentContainer: NSPersistentContainer?

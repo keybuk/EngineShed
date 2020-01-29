@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelDecoderAddressTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var addressLabel: UILabel!

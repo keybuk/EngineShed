@@ -9,6 +9,8 @@
 import SwiftUI
 import CoreData
 
+import Database
+
 extension Model : Identifiable {}
 
 struct ModelsList : View {

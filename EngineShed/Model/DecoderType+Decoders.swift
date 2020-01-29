@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension DecoderType {
 
     func addDecoder(_ decoder: Decoder) {

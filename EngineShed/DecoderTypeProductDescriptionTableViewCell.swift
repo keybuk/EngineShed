@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class DecoderTypeProductDescriptionTableViewCell : UITableViewCell {
 
     @IBOutlet weak var productDescriptionLabel: UILabel!

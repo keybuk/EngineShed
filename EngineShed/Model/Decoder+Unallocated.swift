@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Decoder {
 
     /// Returns `true` if the decoder is not allocated to any model or sound file.

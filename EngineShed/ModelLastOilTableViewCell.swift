@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelLastOilTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var lastOilLabel: UILabel!

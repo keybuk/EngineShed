@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 enum ModelGrouping {
 
     case modelClass

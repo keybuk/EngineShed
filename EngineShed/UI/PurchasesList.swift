@@ -9,6 +9,8 @@
 import SwiftUI
 import CoreData
 
+import Database
+
 extension Purchase : Identifiable {}
 
 struct PurchasesList : View {

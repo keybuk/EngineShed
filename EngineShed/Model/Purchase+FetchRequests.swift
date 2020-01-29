@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension Purchase {
     enum Ordering {
         case date

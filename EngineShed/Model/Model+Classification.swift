@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Model {
     enum Classification: Int16, CaseIterable {
         case locomotive = 1

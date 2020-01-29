@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+import Database
+
 protocol PurchaseSettable : class {
 
     var purchase: Purchase? { get set }

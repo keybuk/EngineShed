@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension Decoder {
     func delete() {
         managedObjectContext?.delete(self)

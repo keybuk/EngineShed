@@ -9,6 +9,8 @@
 import Cocoa
 import CoreData
 
+import Database
+
 extension NSUserInterfaceItemIdentifier {
     
     static let modelCell = NSUserInterfaceItemIdentifier("modelCell")

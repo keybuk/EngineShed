@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension DecoderType {
 
     public override func willSave() {

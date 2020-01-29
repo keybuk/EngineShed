@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelCouplingsTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var couplingsLabel: UILabel!

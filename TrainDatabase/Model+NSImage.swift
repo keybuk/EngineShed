@@ -9,6 +9,8 @@
 import Cocoa
 import CoreData
 
+import Database
+
 private extension NSImage {
     func pngData() throws -> Data {
         guard let imageData = self.tiffRepresentation else { throw NSError() }

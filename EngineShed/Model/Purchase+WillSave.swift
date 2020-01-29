@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Purchase {
 
     public override func willSave() {

@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension Purchase {
 
     /// Returns the common catalog number prefix for a catalog number.

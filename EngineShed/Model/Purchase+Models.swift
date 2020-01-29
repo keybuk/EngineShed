@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension Purchase {
 
     func addModel(_ model: Model) {

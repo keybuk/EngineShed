@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelTasksTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var tasksLabel: UILabel!

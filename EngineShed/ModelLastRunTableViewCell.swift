@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelLastRunTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var lastRunLabel: UILabel!

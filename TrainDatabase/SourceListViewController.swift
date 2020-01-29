@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import Database
+
 extension NSUserInterfaceItemIdentifier {
     
     static let sourceCell = NSUserInterfaceItemIdentifier("sourceCell")

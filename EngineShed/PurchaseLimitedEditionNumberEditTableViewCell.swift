@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class PurchaseLimitedEditionNumberEditTableViewCell : UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!

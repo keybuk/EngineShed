@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension DecoderType {
 
     /// Returns `true` if `remainingStock` falls below `minimumStock`

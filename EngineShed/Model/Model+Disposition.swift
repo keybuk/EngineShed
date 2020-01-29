@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Model {
     enum Disposition: Int16, CaseIterable {
         case normal = 1

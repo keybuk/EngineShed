@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class DecoderFirmwareDateTableViewCell : UITableViewCell {
 
     @IBOutlet weak var firmwareDateLabel: UILabel!

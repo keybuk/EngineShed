@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class DecoderFirmwareDatePickerTableViewCell : UITableViewCell {
 
     @IBOutlet weak var datePicker: UIDatePicker!

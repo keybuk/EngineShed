@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension Train {
     @discardableResult
     func deleteIfUnused() -> Bool {

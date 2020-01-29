@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+import Database
+
 struct ModelRow : View {
 
     var model: Model

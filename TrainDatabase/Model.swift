@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension Model {
     func getValues<T>(using entity: T.Type, for key: String) -> Set<String> where T : NSManagedObject {
         let objects = value(forKey: key) as! Set<T>

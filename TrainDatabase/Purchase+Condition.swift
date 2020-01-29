@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Purchase {
     enum Condition: Int16, CaseIterable {
         case new = 1

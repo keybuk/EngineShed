@@ -8,6 +8,8 @@
 
 import AppKit
 
+import Database
+
 extension NSImage {
     public func flippedHorizontally() -> NSImage {
         let flipped = NSImage(size: size)

@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelDecoderSoundSettingsTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var soundSettingsLabel: UILabel!

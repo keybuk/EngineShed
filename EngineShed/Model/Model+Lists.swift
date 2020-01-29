@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension Model {
 
     /// Update list of relationship objects from a string list.

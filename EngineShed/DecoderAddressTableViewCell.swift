@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class DecoderAddressTableViewCell : UITableViewCell {
 
     @IBOutlet weak var addressLabel: UILabel!

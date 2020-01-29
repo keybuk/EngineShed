@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+import Database
+
 struct DecoderTypeRow : View {
 
     var decoderType: DecoderType

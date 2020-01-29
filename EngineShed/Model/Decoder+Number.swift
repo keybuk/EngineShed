@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Decoder {
 
     /// `address` formatted as string.

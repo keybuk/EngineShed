@@ -176,7 +176,6 @@
 		D2C7E23222ADA38500A024A5 /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
 		D2C7E23322ADA38500A024A5 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
 		D2C7E23422ADA38500A024A5 /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
-		D2C7E23522ADA39500A024A5 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */; };
 		D2C7E23822ADA5AE00A024A5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C7E23722ADA5AE00A024A5 /* CloudKit.framework */; };
 		D2C978662227733200AB3C1C /* PurchaseDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C978652227733200AB3C1C /* PurchaseDeleteTableViewCell.swift */; };
 		D2C97868222790E000AB3C1C /* PurchaseManufacturerEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C97867222790E000AB3C1C /* PurchaseManufacturerEditTableViewCell.swift */; };
@@ -430,7 +429,6 @@
 		D2B7C96420D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2B7C96920D4BA31001B51B1 /* EngineShedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineShedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C96F20D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2B7C9D120D4D905001B51B1 /* EngineShed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EngineShed.xcdatamodel; sourceTree = "<group>"; };
 		D2B9A1B32150C74600156100 /* ModelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTableViewController.swift; sourceTree = "<group>"; };
 		D2B9A1B52150C77000156100 /* ModelImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelImageTableViewCell.swift; sourceTree = "<group>"; };
 		D2B9A1B72150D35D00156100 /* ModelPurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPurchaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -851,7 +849,6 @@
 		D2C7E20B22ADA08600A024A5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */,
 				D2744E5A22F7B6C800ECEFFA /* Purchase+Models.swift */,
 				D21DD33F222B5D550065D934 /* Purchase+Number.swift */,
 				D202D10721EAEBF2008153FB /* Purchase+Date.swift */,
@@ -1311,7 +1308,6 @@
 				D2820D0D2224A53000D9B3F8 /* TrainNotesTableViewCell.swift in Sources */,
 				D23B8BA721E2AE57004F994D /* ModelDecoderSerialNumberTableViewCell.swift in Sources */,
 				D26903832234BAFC002C7A48 /* ModelSpeakerPickerTableViewController.swift in Sources */,
-				D2C7E23522ADA39500A024A5 /* EngineShed.xcdatamodeld in Sources */,
 				D2F4EEE822307458008FB14A /* DecoderTypeIsProgrammableTableViewCell.swift in Sources */,
 				D23B8B9D21E2A18E004F994D /* ModelLightsTableViewCell.swift in Sources */,
 				D2C7E21B22ADA38500A024A5 /* Purchase+WillSave.swift in Sources */,
@@ -1740,19 +1736,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D2B7C9D020D4D905001B51B1 /* EngineShed.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D2B7C9D120D4D905001B51B1 /* EngineShed.xcdatamodel */,
-			);
-			currentVersion = D2B7C9D120D4D905001B51B1 /* EngineShed.xcdatamodel */;
-			path = EngineShed.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D215BE9620D4B5380054FDCC /* Project object */;
 }

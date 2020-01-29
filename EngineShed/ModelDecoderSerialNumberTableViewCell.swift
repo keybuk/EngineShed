@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelDecoderSerialNumberTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var serialNumberLabel: UILabel!

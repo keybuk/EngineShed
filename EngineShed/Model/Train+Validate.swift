@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Train {
 
     enum ValidationError : Error {

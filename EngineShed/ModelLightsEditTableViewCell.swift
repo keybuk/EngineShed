@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelLightsEditTableViewCell : UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var textView: UITextView!

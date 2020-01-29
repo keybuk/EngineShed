@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import Database
+
 extension NSStoryboard.SceneIdentifier {
     
     static let pickerViewController = "pickerViewController"

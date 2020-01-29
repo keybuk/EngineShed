@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class PurchasePriceTableViewCell : UITableViewCell, PurchaseSettable {
 
     @IBOutlet weak var priceLabel: UILabel!

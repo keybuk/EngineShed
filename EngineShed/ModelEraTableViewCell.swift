@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelEraTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var eraLabel: UILabel!

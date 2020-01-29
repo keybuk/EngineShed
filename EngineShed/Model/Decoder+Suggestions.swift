@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension Decoder {
 
     func suggestionsForFirmwareVersion(startingWith prefix: String? = nil) -> [String] {

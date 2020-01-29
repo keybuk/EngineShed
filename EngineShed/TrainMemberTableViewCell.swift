@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class TrainMemberTableViewCell : UITableViewCell {
 
     @IBOutlet weak var modelImageView: UIImageView!

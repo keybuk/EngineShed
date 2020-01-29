@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension DecoderType {
 
     func suggestionsForManufacturer(startingWith prefix: String? = nil) -> [String] {

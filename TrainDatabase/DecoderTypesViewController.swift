@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import Database
+
 private extension NSUserInterfaceItemIdentifier {
     
     static let decoderTypeCell = NSUserInterfaceItemIdentifier("decoderTypeCell")

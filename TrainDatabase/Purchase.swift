@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension Purchase {
     var priceAsDecimal: Decimal? {
         get { price as Decimal? }

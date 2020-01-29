@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class TrainMemberIsFlippedEditTableViewCell : UITableViewCell {
 
     @IBOutlet weak var isFlippedSwitch: UISwitch!

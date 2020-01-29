@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import Database
+
 class PurchaseWindowController : NSWindowController, RecordController {
 
     var recordStack: [CurrentRecord] = []

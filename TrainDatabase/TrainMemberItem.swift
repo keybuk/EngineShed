@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import Database
+
 extension NSImage.Name {
     
     static let missingModelImage = "739-question"

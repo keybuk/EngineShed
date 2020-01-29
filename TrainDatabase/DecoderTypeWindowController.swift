@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import Database
+
 class DecoderTypeWindowController : NSWindowController, RecordController {
 
     var recordStack: [CurrentRecord] = []

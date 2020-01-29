@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class TrainNotesEditTableViewCell : UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var textView: UITextView!

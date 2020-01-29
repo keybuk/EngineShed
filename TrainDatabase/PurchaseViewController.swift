@@ -9,6 +9,8 @@
 import Cocoa
 import CoreData
 
+import Database
+
 extension NSStoryboardSegue.Identifier {
     
     static let purchaseModelsSegue = "purchaseModelsSegue"

@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class DecoderTypeIsProgrammableTableViewCell : UITableViewCell {
 
     @IBOutlet weak var isProgrammableLabel: UILabel!

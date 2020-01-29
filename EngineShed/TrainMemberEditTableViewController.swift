@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+import Database
+
 class TrainMemberEditTableViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
 
     @IBOutlet weak var cancelButton: UIBarButtonItem!

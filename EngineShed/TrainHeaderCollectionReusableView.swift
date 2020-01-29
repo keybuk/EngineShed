@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class TrainHeaderCollectionReusableView : UICollectionReusableView {
 
     @IBOutlet weak var nameLabel: UILabel!

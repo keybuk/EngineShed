@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import Database
+
 enum CurrentRecord : Equatable {
     
     case model(Model)

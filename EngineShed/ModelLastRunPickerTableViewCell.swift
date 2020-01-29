@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelLastRunPickerTableViewCell : UITableViewCell {
 
     @IBOutlet weak var datePicker: UIDatePicker!

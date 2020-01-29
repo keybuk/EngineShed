@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class PurchaseCatalogDescriptionEditTableViewCell : UITableViewCell, UITextViewDelegate {
 
     @IBOutlet weak var textView: UITextView!

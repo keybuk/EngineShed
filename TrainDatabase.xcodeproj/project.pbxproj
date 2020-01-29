@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D229995B23DD099800F28499 /* ImageMappingModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D229995A23DD099800F28499 /* ImageMappingModel.xcmappingmodel */; };
-		D229995D23DD09E500F28499 /* ImageMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229995C23DD09E500F28499 /* ImageMigrationPolicy.swift */; };
 		D229995F23DD0ECC00F28499 /* CKDataAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229995E23DD0ECB00F28499 /* CKDataAsset.swift */; };
 		D229996423DD1D9100F28499 /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */; };
 		D229996823DD1ED300F28499 /* Decoder+Unallocated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229996723DD1ED300F28499 /* Decoder+Unallocated.swift */; };
 		D229996B23DD452D00F28499 /* Purchase+Derived.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229996123DD1C8500F28499 /* Purchase+Derived.swift */; };
 		D229996C23DD453000F28499 /* DecoderType+Derived.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229996523DD1E5300F28499 /* DecoderType+Derived.swift */; };
-		D229996E23DD457200F28499 /* DerivedMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229996D23DD457200F28499 /* DerivedMigrationPolicy.swift */; };
-		D229997123DD4D3400F28499 /* DerivedMappingModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D229997023DD4D3400F28499 /* DerivedMappingModel.xcmappingmodel */; };
 		D23132FA23E143FB0001812F /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23132F923E143FB0001812F /* Database.framework */; };
 		D23132FB23E143FB0001812F /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23132F923E143FB0001812F /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D25B47E91FEFA994008A7EB1 /* TrainMemberItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */; };
@@ -41,17 +37,14 @@
 		D27DF72D1FF4E721003C7AAB /* DecoderTypes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27DF72F1FF4E721003C7AAB /* DecoderTypes.storyboard */; };
 		D27DF7321FF4E74F003C7AAB /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27DF7341FF4E74F003C7AAB /* Purchase.storyboard */; };
 		D28A4BC81FD67523000768D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BC71FD67523000768D8 /* AppDelegate.swift */; };
-		D28A4BCD1FD67523000768D8 /* TrainDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BCB1FD67523000768D8 /* TrainDatabase.xcdatamodeld */; };
 		D28A4BCF1FD67523000768D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D28A4BCE1FD67523000768D8 /* Assets.xcassets */; };
 		D28A4BD21FD67523000768D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A4BD01FD67523000768D8 /* Main.storyboard */; };
 		D28A4BDE1FD67523000768D8 /* TrainDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BDD1FD67523000768D8 /* TrainDatabaseTests.swift */; };
-		D2978EDC23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2978EDB23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */; };
 		D2A74D3123DC307200186E31 /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3023DC307200186E31 /* Purchase+Condition.swift */; };
 		D2A74D3523DC318400186E31 /* Model+Classification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3223DC318400186E31 /* Model+Classification.swift */; };
 		D2A74D3623DC318400186E31 /* Model+Era.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3323DC318400186E31 /* Model+Era.swift */; };
 		D2A74D3723DC318400186E31 /* Model+Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3423DC318400186E31 /* Model+Disposition.swift */; };
-		D2A74D3B23DCDB8500186E31 /* DateMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3A23DCDB8500186E31 /* DateMigrationPolicy.swift */; };
 		D2B2AF5320D8661300BEFC15 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2AF5220D8661300BEFC15 /* CloudKit.framework */; };
 		D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */; };
 		D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */; };
@@ -60,7 +53,6 @@
 		D2DE8D2823DCE06700AF9344 /* Purchase+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE8D2723DCE06700AF9344 /* Purchase+Date.swift */; };
 		D2DE8D2A23DCE11200AF9344 /* Model+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE8D2923DCE11200AF9344 /* Model+Date.swift */; };
 		D2DE8D2C23DCE1B100AF9344 /* Decoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE8D2B23DCE1B100AF9344 /* Decoder+Date.swift */; };
-		D2DE8D2E23DCE71600AF9344 /* DateMappingModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D2DE8D2D23DCE71600AF9344 /* DateMappingModel.xcmappingmodel */; };
 		D2DFF4B8200A977200259284 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4B7200A977200259284 /* HorizontalScrollView.swift */; };
 		D2DFF4BA200A998E00259284 /* EnterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4B9200A998E00259284 /* EnterTableView.swift */; };
 		D2DFF4BF200A9BCA00259284 /* SimpleComboBoxDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */; };
@@ -97,20 +89,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D229995923DD090C00F28499 /* TrainDatabase 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 3.xcdatamodel"; sourceTree = "<group>"; };
-		D229995A23DD099800F28499 /* ImageMappingModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = ImageMappingModel.xcmappingmodel; sourceTree = "<group>"; };
-		D229995C23DD09E500F28499 /* ImageMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMigrationPolicy.swift; sourceTree = "<group>"; };
 		D229995E23DD0ECB00F28499 /* CKDataAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKDataAsset.swift; sourceTree = "<group>"; };
-		D229996023DD18D500F28499 /* TrainDatabase 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 4.xcdatamodel"; sourceTree = "<group>"; };
 		D229996123DD1C8500F28499 /* Purchase+Derived.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Derived.swift"; sourceTree = "<group>"; };
 		D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+SplitBetween.swift"; sourceTree = "<group>"; };
 		D229996523DD1E5300F28499 /* DecoderType+Derived.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Derived.swift"; sourceTree = "<group>"; };
 		D229996723DD1ED300F28499 /* Decoder+Unallocated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Unallocated.swift"; sourceTree = "<group>"; };
-		D229996D23DD457200F28499 /* DerivedMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedMigrationPolicy.swift; sourceTree = "<group>"; };
-		D229996F23DD496700F28499 /* TrainDatabase 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 5.xcdatamodel"; sourceTree = "<group>"; };
-		D229997023DD4D3400F28499 /* DerivedMappingModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = DerivedMappingModel.xcmappingmodel; sourceTree = "<group>"; };
-		D229997223DD559400F28499 /* TrainDatabase 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 6.xcdatamodel"; sourceTree = "<group>"; };
-		D229997323DD672600F28499 /* TrainDatabase 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 7.xcdatamodel"; sourceTree = "<group>"; };
 		D23132F923E143FB0001812F /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberItem.swift; sourceTree = "<group>"; };
 		D25B47E81FEFA994008A7EB1 /* TrainMemberItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainMemberItem.xib; sourceTree = "<group>"; };
@@ -136,7 +119,6 @@
 		D27DF7331FF4E74F003C7AAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Purchase.storyboard; sourceTree = "<group>"; };
 		D28A4BC41FD67523000768D8 /* TrainDatabase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainDatabase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A4BC71FD67523000768D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 0; };
-		D28A4BCC1FD67523000768D8 /* TrainDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrainDatabase.xcdatamodel; sourceTree = "<group>"; };
 		D28A4BCE1FD67523000768D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D28A4BD11FD67523000768D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D28A4BD31FD67523000768D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,14 +126,11 @@
 		D28A4BD91FD67523000768D8 /* TrainDatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainDatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A4BDD1FD67523000768D8 /* TrainDatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDatabaseTests.swift; sourceTree = "<group>"; };
 		D28A4BDF1FD67523000768D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2978EDB23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSecureUnarchiveDateComponentsFromDataTransformer.swift; sourceTree = "<group>"; };
 		D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+CountedElements.swift"; sourceTree = "<group>"; };
 		D2A74D3023DC307200186E31 /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
 		D2A74D3223DC318400186E31 /* Model+Classification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Classification.swift"; sourceTree = "<group>"; };
 		D2A74D3323DC318400186E31 /* Model+Era.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Era.swift"; sourceTree = "<group>"; };
 		D2A74D3423DC318400186E31 /* Model+Disposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Disposition.swift"; sourceTree = "<group>"; };
-		D2A74D3923DCDA6F00186E31 /* TrainDatabase 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 2.xcdatamodel"; sourceTree = "<group>"; };
-		D2A74D3A23DCDB8500186E31 /* DateMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMigrationPolicy.swift; sourceTree = "<group>"; };
 		D2B2AF5220D8661300BEFC15 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D2B548311FEA558300FE7ED0 /* ComboBoxControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboBoxControllers.swift; sourceTree = "<group>"; };
 		D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenFieldDelegates.swift; sourceTree = "<group>"; };
@@ -160,13 +139,11 @@
 		D2DE8D2723DCE06700AF9344 /* Purchase+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Date.swift"; sourceTree = "<group>"; };
 		D2DE8D2923DCE11200AF9344 /* Model+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Date.swift"; sourceTree = "<group>"; };
 		D2DE8D2B23DCE1B100AF9344 /* Decoder+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decoder+Date.swift"; sourceTree = "<group>"; };
-		D2DE8D2D23DCE71600AF9344 /* DateMappingModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = DateMappingModel.xcmappingmodel; sourceTree = "<group>"; };
 		D2DFF4B7200A977200259284 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		D2DFF4B9200A998E00259284 /* EnterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTableView.swift; sourceTree = "<group>"; };
 		D2DFF4BE200A9BCA00259284 /* SimpleComboBoxDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleComboBoxDataSource.swift; sourceTree = "<group>"; };
 		D2DFF4C0200A9BDC00259284 /* EnumComboBoxDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumComboBoxDataSource.swift; sourceTree = "<group>"; };
 		D2DFF4C2200A9C2E00259284 /* SimpleTokenFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTokenFieldDelegate.swift; sourceTree = "<group>"; };
-		D2E458C523E1513800EC76E0 /* TrainDatabase 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrainDatabase 8.xcdatamodel"; sourceTree = "<group>"; };
 		D2EC18631FFC262100DF1ED4 /* RecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordController.swift; sourceTree = "<group>"; };
 		D2EC18651FFC5D4700DF1ED4 /* PurchaseWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseWindowController.swift; sourceTree = "<group>"; };
 		D2EC18671FFC60DA00DF1ED4 /* DecoderTypeWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeWindowController.swift; sourceTree = "<group>"; };
@@ -244,7 +221,6 @@
 				D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */,
 				D26673C61FE99F250069F9C7 /* NSManagedObject+SortedValues.swift */,
 				D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */,
-				D2978EDB23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift */,
 				D2FFF3BD20E20EAF000A4511 /* Shim.swift */,
 				D229995E23DD0ECB00F28499 /* CKDataAsset.swift */,
 				D26673C31FE90B8D0069F9C7 /* Data Model */,
@@ -265,13 +241,6 @@
 				D25B47E81FEFA994008A7EB1 /* TrainMemberItem.xib */,
 				D28A4BD31FD67523000768D8 /* Info.plist */,
 				D28A4BD41FD67523000768D8 /* TrainDatabase.entitlements */,
-				D28A4BCB1FD67523000768D8 /* TrainDatabase.xcdatamodeld */,
-				D2DE8D2D23DCE71600AF9344 /* DateMappingModel.xcmappingmodel */,
-				D229995A23DD099800F28499 /* ImageMappingModel.xcmappingmodel */,
-				D229997023DD4D3400F28499 /* DerivedMappingModel.xcmappingmodel */,
-				D2A74D3A23DCDB8500186E31 /* DateMigrationPolicy.swift */,
-				D229995C23DD09E500F28499 /* ImageMigrationPolicy.swift */,
-				D229996D23DD457200F28499 /* DerivedMigrationPolicy.swift */,
 			);
 			path = TrainDatabase;
 			sourceTree = "<group>";
@@ -454,17 +423,14 @@
 				D26673BA1FE8F9590069F9C7 /* Train.swift in Sources */,
 				D276FF291FE4F6A600EA087F /* SourceListViewController.swift in Sources */,
 				D229996B23DD452D00F28499 /* Purchase+Derived.swift in Sources */,
-				D2978EDC23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
 				D2DE8D2A23DCE11200AF9344 /* Model+Date.swift in Sources */,
 				D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */,
 				D2A74D3123DC307200186E31 /* Purchase+Condition.swift in Sources */,
-				D229997123DD4D3400F28499 /* DerivedMappingModel.xcmappingmodel in Sources */,
 				D26673C71FE99F250069F9C7 /* NSManagedObject+SortedValues.swift in Sources */,
 				D2FFF3BE20E20EAF000A4511 /* Shim.swift in Sources */,
 				D276FF331FE5F51500EA087F /* DecoderType.swift in Sources */,
 				D27DF7231FF48B1E003C7AAB /* DecoderTypesViewController.swift in Sources */,
 				D276FF2B1FE5C5E600EA087F /* WindowController.swift in Sources */,
-				D229995D23DD09E500F28499 /* ImageMigrationPolicy.swift in Sources */,
 				D28A4BC81FD67523000768D8 /* AppDelegate.swift in Sources */,
 				D276FF311FE5D43000EA087F /* ModelViewController.swift in Sources */,
 				D2B548381FEEFEEF00FE7ED0 /* PickerViewController.swift in Sources */,
@@ -479,7 +445,6 @@
 				D27DF7261FF48E79003C7AAB /* DecoderTypeViewController.swift in Sources */,
 				D229995F23DD0ECC00F28499 /* CKDataAsset.swift in Sources */,
 				D26673BC1FE8F95F0069F9C7 /* TrainMember.swift in Sources */,
-				D28A4BCD1FD67523000768D8 /* TrainDatabase.xcdatamodeld in Sources */,
 				D2A74D3623DC318400186E31 /* Model+Era.swift in Sources */,
 				D229996C23DD453000F28499 /* DecoderType+Derived.swift in Sources */,
 				D2DFF4B8200A977200259284 /* HorizontalScrollView.swift in Sources */,
@@ -488,16 +453,12 @@
 				D25B47EC1FEFB6B0008A7EB1 /* TrainMember+NSImage.swift in Sources */,
 				D2DFF4C1200A9BDC00259284 /* EnumComboBoxDataSource.swift in Sources */,
 				D2A74D3723DC318400186E31 /* Model+Disposition.swift in Sources */,
-				D229996E23DD457200F28499 /* DerivedMigrationPolicy.swift in Sources */,
 				D2DFF4BF200A9BCA00259284 /* SimpleComboBoxDataSource.swift in Sources */,
-				D2DE8D2E23DCE71600AF9344 /* DateMappingModel.xcmappingmodel in Sources */,
 				D2DE8D2823DCE06700AF9344 /* Purchase+Date.swift in Sources */,
 				D25B47E91FEFA994008A7EB1 /* TrainMemberItem.swift in Sources */,
 				D26673B81FE8F2A40069F9C7 /* Decoder.swift in Sources */,
-				D229995B23DD099800F28499 /* ImageMappingModel.xcmappingmodel in Sources */,
 				D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */,
 				D26673C51FE99E1D0069F9C7 /* ConvertibleFromString.swift in Sources */,
-				D2A74D3B23DCDB8500186E31 /* DateMigrationPolicy.swift in Sources */,
 				D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -759,26 +720,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D28A4BCB1FD67523000768D8 /* TrainDatabase.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D2E458C523E1513800EC76E0 /* TrainDatabase 8.xcdatamodel */,
-				D229997323DD672600F28499 /* TrainDatabase 7.xcdatamodel */,
-				D229997223DD559400F28499 /* TrainDatabase 6.xcdatamodel */,
-				D229996F23DD496700F28499 /* TrainDatabase 5.xcdatamodel */,
-				D229996023DD18D500F28499 /* TrainDatabase 4.xcdatamodel */,
-				D229995923DD090C00F28499 /* TrainDatabase 3.xcdatamodel */,
-				D2A74D3923DCDA6F00186E31 /* TrainDatabase 2.xcdatamodel */,
-				D28A4BCC1FD67523000768D8 /* TrainDatabase.xcdatamodel */,
-			);
-			currentVersion = D2E458C523E1513800EC76E0 /* TrainDatabase 8.xcdatamodel */;
-			path = TrainDatabase.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D28A4BBC1FD67523000768D8 /* Project object */;
 }

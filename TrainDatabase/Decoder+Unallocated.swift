@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Decoder {
     /// Is the decoder not allocated to any model or sound file.
     var isUnallocated: Bool { model == nil && (soundProject?.isEmpty ?? true) }

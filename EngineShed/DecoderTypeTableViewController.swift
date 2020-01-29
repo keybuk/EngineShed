@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+import Database
+
 class DecoderTypeTableViewController : UITableViewController {
 
     var persistentContainer: NSPersistentContainer?

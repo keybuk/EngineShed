@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class PurchaseCatalogYearTableViewCell : UITableViewCell, PurchaseSettable {
 
     @IBOutlet weak var catalogYearLabel: UILabel!

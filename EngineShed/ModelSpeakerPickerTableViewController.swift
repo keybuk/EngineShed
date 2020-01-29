@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelSpeakerPickerTableViewController : UITableViewController, UITextFieldDelegate {
 
     var model: Model?

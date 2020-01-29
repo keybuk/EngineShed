@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 extension TrainMember {
 
     var image: UIImage? {

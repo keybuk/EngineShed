@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension DecoderType {
 
     /// `minimumStock` formatted as string.

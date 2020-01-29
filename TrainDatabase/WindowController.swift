@@ -9,6 +9,8 @@
 import Cocoa
 import CoreData
 
+import Database
+
 extension NSStoryboard.SceneIdentifier {
     
     static let searchViewController = "searchViewController"

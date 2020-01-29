@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class PurchaseLimitedEditionTableViewCell : UITableViewCell, PurchaseSettable {
 
     @IBOutlet weak var limitedEditionLabel: UILabel!

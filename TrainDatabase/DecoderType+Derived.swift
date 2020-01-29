@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension DecoderType {
     func makeRemainingStock() -> Int16 {
         guard let decoders = decoders as? Set<Decoder> else { return 0 }

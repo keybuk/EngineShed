@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Model {
     /// Formatter for date types.
     var dateFormatter: DateFormatter {

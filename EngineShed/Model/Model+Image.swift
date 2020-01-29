@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 extension Model {
 
     var image: UIImage? {

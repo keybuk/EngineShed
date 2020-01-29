@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "TrainDatabase")
+        let container = PersistentContainer(name: "EngineShed")
 
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error {

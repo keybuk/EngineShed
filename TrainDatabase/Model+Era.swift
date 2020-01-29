@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Model {
     struct Era {
         var era: Int

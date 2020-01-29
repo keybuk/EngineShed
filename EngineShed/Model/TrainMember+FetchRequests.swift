@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension TrainMember {
 
     static func fetchRequestForTrains() -> NSFetchRequest<TrainMember> {

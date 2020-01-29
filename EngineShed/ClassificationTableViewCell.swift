@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ClassificationTableViewCell : UITableViewCell {
 
     @IBOutlet weak var classificationImageView: UIImageView!

@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+import Database
+
 extension Model {
 
     func suggestionsForClass(startingWith prefix: String? = nil) -> [String] {

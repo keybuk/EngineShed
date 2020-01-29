@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Database
+
 class ModelDecoderFirmwareVersionTableViewCell : UITableViewCell, ModelSettable {
 
     @IBOutlet weak var firmwareVersionLabel: UILabel!

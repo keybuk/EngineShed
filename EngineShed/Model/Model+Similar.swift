@@ -8,6 +8,8 @@
 
 import Foundation
 
+import Database
+
 extension Model {
 
     /// Return list of similar models.
