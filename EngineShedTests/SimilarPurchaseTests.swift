@@ -9,6 +9,7 @@
 import XCTest
 import CoreData
 
+import Database
 @testable import EngineShed
 
 class SimilarPurchaseTests : XCTestCase {
@@ -18,7 +19,7 @@ class SimilarPurchaseTests : XCTestCase {
     override func setUp() {
         super.setUp()
 
-        container = NSPersistentContainer(name: "EngineShed")
+        container = PersistentContainer(name: "EngineShed")
         container!.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         container!.loadPersistentStores { (storeDescription, error) in
             XCTAssertNil(error)
