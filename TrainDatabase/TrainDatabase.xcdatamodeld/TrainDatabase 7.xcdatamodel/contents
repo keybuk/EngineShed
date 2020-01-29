@@ -6,7 +6,7 @@
     </entity>
     <entity name="Decoder" representedClassName="Decoder" syncable="YES" codeGenerationType="class">
         <attribute name="address" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="firmwareDate" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveDateComponentsFromDataTransformer" customClassName="DateComponents"/>
+        <attribute name="firmwareDate" optional="YES" attributeType="Transformable" valueTransformerName="TrainDatabase.NSSecureUnarchiveDateComponentsFromDataTransformer" customClassName="DateComponents"/>
         <attribute name="firmwareVersion" optional="YES" attributeType="String"/>
         <attribute name="recordID" optional="YES" attributeType="Transformable" customClassName="CKRecord_ID"/>
         <attribute name="serialNumber" optional="YES" attributeType="String"/>
@@ -52,8 +52,8 @@
         <attribute name="dispositionRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="eraRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="lastOil" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveDateComponentsFromDataTransformer" customClassName="DateComponents"/>
-        <attribute name="lastRun" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveDateComponentsFromDataTransformer" customClassName="DateComponents"/>
+        <attribute name="lastOil" optional="YES" attributeType="Transformable" valueTransformerName="TrainDatabase.NSSecureUnarchiveDateComponentsFromDataTransformer" customClassName="DateComponents"/>
+        <attribute name="lastRun" optional="YES" attributeType="Transformable" valueTransformerName="TrainDatabase.NSSecureUnarchiveDateComponentsFromDataTransformer" customClassName="DateComponents"/>
         <attribute name="livery" optional="YES" attributeType="String"/>
         <attribute name="modelClass" optional="YES" attributeType="String"/>
         <attribute name="motor" optional="YES" attributeType="String"/>
@@ -85,7 +85,7 @@
         <attribute name="catalogNumberPrefix" optional="YES" attributeType="String"/>
         <attribute name="catalogYear" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="conditionRawValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="date" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveDateComponentsFromDataTransformer" customClassName="DateComponents"/>
+        <attribute name="date" optional="YES" attributeType="Transformable" valueTransformerName="TrainDatabase.NSSecureUnarchiveDateComponentsFromDataTransformer" customClassName="DateComponents"/>
         <attribute name="dateForGrouping" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateForSort" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="limitedEdition" optional="YES" attributeType="String"/>
