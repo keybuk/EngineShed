@@ -57,16 +57,6 @@
                ReferencedContainer = "container:EngineShed.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2B7C97320D4BA31001B51B1"
-               BuildableName = "EngineShedUITests.xctest"
-               BlueprintName = "EngineShedUITests"
-               ReferencedContainer = "container:EngineShed.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -45,7 +45,6 @@
 		D28A4BCF1FD67523000768D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D28A4BCE1FD67523000768D8 /* Assets.xcassets */; };
 		D28A4BD21FD67523000768D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28A4BD01FD67523000768D8 /* Main.storyboard */; };
 		D28A4BDE1FD67523000768D8 /* TrainDatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BDD1FD67523000768D8 /* TrainDatabaseTests.swift */; };
-		D28A4BE91FD67523000768D8 /* TrainDatabaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */; };
 		D2978EDC23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2978EDB23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */; };
 		D2A74D3123DC307200186E31 /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A74D3023DC307200186E31 /* Purchase+Condition.swift */; };
@@ -75,13 +74,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		D28A4BDA1FD67523000768D8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D28A4BBC1FD67523000768D8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D28A4BC31FD67523000768D8;
-			remoteInfo = TrainDatabase;
-		};
-		D28A4BE51FD67523000768D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D28A4BBC1FD67523000768D8 /* Project object */;
 			proxyType = 1;
@@ -152,9 +144,6 @@
 		D28A4BD91FD67523000768D8 /* TrainDatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainDatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D28A4BDD1FD67523000768D8 /* TrainDatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDatabaseTests.swift; sourceTree = "<group>"; };
 		D28A4BDF1FD67523000768D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D28A4BE41FD67523000768D8 /* TrainDatabaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainDatabaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDatabaseUITests.swift; sourceTree = "<group>"; };
-		D28A4BEA1FD67523000768D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2978EDB23E0007000F6D401 /* NSSecureUnarchiveDateComponentsFromDataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSecureUnarchiveDateComponentsFromDataTransformer.swift; sourceTree = "<group>"; };
 		D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+CountedElements.swift"; sourceTree = "<group>"; };
 		D2A74D3023DC307200186E31 /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
@@ -200,13 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D28A4BE11FD67523000768D8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -240,7 +222,6 @@
 			children = (
 				D28A4BC61FD67523000768D8 /* TrainDatabase */,
 				D28A4BDC1FD67523000768D8 /* TrainDatabaseTests */,
-				D28A4BE71FD67523000768D8 /* TrainDatabaseUITests */,
 				D28A4BC51FD67523000768D8 /* Products */,
 				D2B2AF5120D8661300BEFC15 /* Frameworks */,
 			);
@@ -251,7 +232,6 @@
 			children = (
 				D28A4BC41FD67523000768D8 /* TrainDatabase.app */,
 				D28A4BD91FD67523000768D8 /* TrainDatabaseTests.xctest */,
-				D28A4BE41FD67523000768D8 /* TrainDatabaseUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -302,15 +282,6 @@
 				D28A4BDF1FD67523000768D8 /* Info.plist */,
 			);
 			path = TrainDatabaseTests;
-			sourceTree = "<group>";
-		};
-		D28A4BE71FD67523000768D8 /* TrainDatabaseUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D28A4BE81FD67523000768D8 /* TrainDatabaseUITests.swift */,
-				D28A4BEA1FD67523000768D8 /* Info.plist */,
-			);
-			path = TrainDatabaseUITests;
 			sourceTree = "<group>";
 		};
 		D2B2AF5120D8661300BEFC15 /* Frameworks */ = {
@@ -397,24 +368,6 @@
 			productReference = D28A4BD91FD67523000768D8 /* TrainDatabaseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D28A4BE31FD67523000768D8 /* TrainDatabaseUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D28A4BF31FD67523000768D8 /* Build configuration list for PBXNativeTarget "TrainDatabaseUITests" */;
-			buildPhases = (
-				D28A4BE01FD67523000768D8 /* Sources */,
-				D28A4BE11FD67523000768D8 /* Frameworks */,
-				D28A4BE21FD67523000768D8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D28A4BE61FD67523000768D8 /* PBXTargetDependency */,
-			);
-			name = TrainDatabaseUITests;
-			productName = TrainDatabaseUITests;
-			productReference = D28A4BE41FD67523000768D8 /* TrainDatabaseUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -443,11 +396,6 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = D28A4BC31FD67523000768D8;
 					};
-					D28A4BE31FD67523000768D8 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = D28A4BC31FD67523000768D8;
-					};
 				};
 			};
 			buildConfigurationList = D28A4BBF1FD67523000768D8 /* Build configuration list for PBXProject "TrainDatabase" */;
@@ -465,7 +413,6 @@
 			targets = (
 				D28A4BC31FD67523000768D8 /* TrainDatabase */,
 				D28A4BD81FD67523000768D8 /* TrainDatabaseTests */,
-				D28A4BE31FD67523000768D8 /* TrainDatabaseUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -484,13 +431,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D28A4BD71FD67523000768D8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D28A4BE21FD67523000768D8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -569,14 +509,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D28A4BE01FD67523000768D8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D28A4BE91FD67523000768D8 /* TrainDatabaseUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -584,11 +516,6 @@
 			isa = PBXTargetDependency;
 			target = D28A4BC31FD67523000768D8 /* TrainDatabase */;
 			targetProxy = D28A4BDA1FD67523000768D8 /* PBXContainerItemProxy */;
-		};
-		D28A4BE61FD67523000768D8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D28A4BC31FD67523000768D8 /* TrainDatabase */;
-			targetProxy = D28A4BE51FD67523000768D8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -800,36 +727,6 @@
 			};
 			name = Release;
 		};
-		D28A4BF41FD67523000768D8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = TrainDatabaseUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.TrainDatabaseUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = TrainDatabase;
-			};
-			name = Debug;
-		};
-		D28A4BF51FD67523000768D8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = TrainDatabaseUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.TrainDatabaseUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = TrainDatabase;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -856,15 +753,6 @@
 			buildConfigurations = (
 				D28A4BF11FD67523000768D8 /* Debug */,
 				D28A4BF21FD67523000768D8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D28A4BF31FD67523000768D8 /* Build configuration list for PBXNativeTarget "TrainDatabaseUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D28A4BF41FD67523000768D8 /* Debug */,
-				D28A4BF51FD67523000768D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

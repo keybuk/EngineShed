@@ -137,7 +137,6 @@
 		D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C95320D4BA30001B51B1 /* AppDelegate.swift */; };
 		D2B7C95E20D4BA30001B51B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C95C20D4BA30001B51B1 /* Main.storyboard */; };
 		D2B7C96320D4BA31001B51B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B7C96120D4BA31001B51B1 /* LaunchScreen.storyboard */; };
-		D2B7C97920D4BA31001B51B1 /* EngineShedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7C97820D4BA31001B51B1 /* EngineShedUITests.swift */; };
 		D2B9A1B42150C74600156100 /* ModelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B32150C74600156100 /* ModelTableViewController.swift */; };
 		D2B9A1B62150C77000156100 /* ModelImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B52150C77000156100 /* ModelImageTableViewCell.swift */; };
 		D2B9A1B82150D35D00156100 /* ModelPurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B72150D35D00156100 /* ModelPurchaseTableViewCell.swift */; };
@@ -253,13 +252,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		D2B7C96A20D4BA31001B51B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D2B7C95020D4BA30001B51B1;
-			remoteInfo = EngineShed;
-		};
-		D2B7C97520D4BA31001B51B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D215BE9620D4B5380054FDCC /* Project object */;
 			proxyType = 1;
@@ -438,9 +430,6 @@
 		D2B7C96420D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2B7C96920D4BA31001B51B1 /* EngineShedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineShedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B7C96F20D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2B7C97420D4BA31001B51B1 /* EngineShedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineShedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2B7C97820D4BA31001B51B1 /* EngineShedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedUITests.swift; sourceTree = "<group>"; };
-		D2B7C97A20D4BA31001B51B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2B7C9D120D4D905001B51B1 /* EngineShed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EngineShed.xcdatamodel; sourceTree = "<group>"; };
 		D2B9A1B32150C74600156100 /* ModelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTableViewController.swift; sourceTree = "<group>"; };
 		D2B9A1B52150C77000156100 /* ModelImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -550,13 +539,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2B7C97120D4BA31001B51B1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -565,7 +547,6 @@
 			children = (
 				D2B7C95220D4BA30001B51B1 /* EngineShed */,
 				D2B7C96C20D4BA31001B51B1 /* EngineShedTests */,
-				D2B7C97720D4BA31001B51B1 /* EngineShedUITests */,
 				D215BE9F20D4B5380054FDCC /* Products */,
 				D2C7E23622ADA5AE00A024A5 /* Frameworks */,
 			);
@@ -576,7 +557,6 @@
 			children = (
 				D2B7C95120D4BA30001B51B1 /* EngineShed.app */,
 				D2B7C96920D4BA31001B51B1 /* EngineShedTests.xctest */,
-				D2B7C97420D4BA31001B51B1 /* EngineShedUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -858,15 +838,6 @@
 			path = EngineShedTests;
 			sourceTree = "<group>";
 		};
-		D2B7C97720D4BA31001B51B1 /* EngineShedUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D2B7C97820D4BA31001B51B1 /* EngineShedUITests.swift */,
-				D2B7C97A20D4BA31001B51B1 /* Info.plist */,
-			);
-			path = EngineShedUITests;
-			sourceTree = "<group>";
-		};
 		D2C7E20722AD9FF200A024A5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1069,24 +1040,6 @@
 			productReference = D2B7C96920D4BA31001B51B1 /* EngineShedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D2B7C97320D4BA31001B51B1 /* EngineShedUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D2B7C98120D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShedUITests" */;
-			buildPhases = (
-				D2B7C97020D4BA31001B51B1 /* Sources */,
-				D2B7C97120D4BA31001B51B1 /* Frameworks */,
-				D2B7C97220D4BA31001B51B1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D2B7C97620D4BA31001B51B1 /* PBXTargetDependency */,
-			);
-			name = EngineShedUITests;
-			productName = EngineShedUITests;
-			productReference = D2B7C97420D4BA31001B51B1 /* EngineShedUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1117,11 +1070,6 @@
 						LastSwiftMigration = 1020;
 						TestTargetID = D2B7C95020D4BA30001B51B1;
 					};
-					D2B7C97320D4BA31001B51B1 = {
-						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1020;
-						TestTargetID = D2B7C95020D4BA30001B51B1;
-					};
 				};
 			};
 			buildConfigurationList = D215BE9920D4B5380054FDCC /* Build configuration list for PBXProject "EngineShed" */;
@@ -1139,7 +1087,6 @@
 			targets = (
 				D2B7C95020D4BA30001B51B1 /* EngineShed */,
 				D2B7C96820D4BA31001B51B1 /* EngineShedTests */,
-				D2B7C97320D4BA31001B51B1 /* EngineShedUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1173,13 +1120,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D2B7C96720D4BA31001B51B1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D2B7C97220D4BA31001B51B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1421,14 +1361,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2B7C97020D4BA31001B51B1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D2B7C97920D4BA31001B51B1 /* EngineShedUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1436,11 +1368,6 @@
 			isa = PBXTargetDependency;
 			target = D2B7C95020D4BA30001B51B1 /* EngineShed */;
 			targetProxy = D2B7C96A20D4BA31001B51B1 /* PBXContainerItemProxy */;
-		};
-		D2B7C97620D4BA31001B51B1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D2B7C95020D4BA30001B51B1 /* EngineShed */;
-			targetProxy = D2B7C97520D4BA31001B51B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1782,46 +1709,6 @@
 			};
 			name = Release;
 		};
-		D2B7C98220D4BA31001B51B1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = EngineShedUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = EngineShed;
-			};
-			name = Debug;
-		};
-		D2B7C98320D4BA31001B51B1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = EngineShedUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = EngineShed;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1848,15 +1735,6 @@
 			buildConfigurations = (
 				D2B7C97F20D4BA31001B51B1 /* Debug */,
 				D2B7C98020D4BA31001B51B1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D2B7C98120D4BA31001B51B1 /* Build configuration list for PBXNativeTarget "EngineShedUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D2B7C98220D4BA31001B51B1 /* Debug */,
-				D2B7C98320D4BA31001B51B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
