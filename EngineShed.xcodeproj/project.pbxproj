@@ -12,6 +12,8 @@
 		D212EA472150AF98005FEED3 /* ClassificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA462150AF98005FEED3 /* ClassificationTableViewCell.swift */; };
 		D21DD343222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */; };
 		D21DD34B222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD34A222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift */; };
+		D23132F723E1408E0001812F /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23132F623E1408E0001812F /* Database.framework */; };
+		D23132F823E1408E0001812F /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23132F623E1408E0001812F /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D23B8B8921E29A37004F994D /* ModelClassificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B8821E29A37004F994D /* ModelClassificationTableViewCell.swift */; };
 		D23B8B8B21E29BF3004F994D /* ModelClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B8A21E29BF3004F994D /* ModelClassTableViewCell.swift */; };
 		D23B8B8D21E29C0E004F994D /* ModelNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23B8B8C21E29C0E004F994D /* ModelNumberTableViewCell.swift */; };
@@ -273,6 +275,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D23132F823E1408E0001812F /* Database.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +299,7 @@
 		D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		D21DD344222C835A0065D934 /* Purchase+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Validate.swift"; sourceTree = "<group>"; };
 		D21DD34A222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConditionPickerTableViewController.swift; sourceTree = "<group>"; };
+		D23132F623E1408E0001812F /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23B8B8821E29A37004F994D /* ModelClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassificationTableViewCell.swift; sourceTree = "<group>"; };
 		D23B8B8A21E29BF3004F994D /* ModelClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassTableViewCell.swift; sourceTree = "<group>"; };
 		D23B8B8C21E29C0E004F994D /* ModelNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNumberTableViewCell.swift; sourceTree = "<group>"; };
@@ -535,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2C7E23822ADA5AE00A024A5 /* CloudKit.framework in Frameworks */,
+				D23132F723E1408E0001812F /* Database.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,6 +923,7 @@
 		D2C7E23622ADA5AE00A024A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D23132F623E1408E0001812F /* Database.framework */,
 				D2C7E23722ADA5AE00A024A5 /* CloudKit.framework */,
 			);
 			name = Frameworks;
