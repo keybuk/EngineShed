@@ -44,7 +44,7 @@
                BlueprintIdentifier = "D213DF4B23E0B57B0003C771"
                BuildableName = "DatabaseTests.xctest"
                BlueprintName = "DatabaseTests (macOS)"
-               ReferencedContainer = "container:Database/Database.xcodeproj">
+               ReferencedContainer = "container:Database.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
