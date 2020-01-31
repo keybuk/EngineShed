@@ -5,7 +5,7 @@
       location = "group:Coding Style.md">
    </FileRef>
    <FileRef
-      location = "group:Database/Database.xcodeproj">
+      location = "group:Database.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:TrainDatabase.xcodeproj">

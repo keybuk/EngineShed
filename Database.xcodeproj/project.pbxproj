@@ -92,9 +92,6 @@
 		D213DF1923E0B0F40003C771 = {
 			isa = PBXGroup;
 			children = (
-				D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */,
-				D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */,
-				D24D474B23E162D0001F09C2 /* PersistentContainer.swift */,
 				D213DF2523E0B0F40003C771 /* Database */,
 				D213DF3023E0B0F50003C771 /* DatabaseTests */,
 				D213DF2423E0B0F40003C771 /* Products */,
@@ -115,6 +112,9 @@
 		D213DF2523E0B0F40003C771 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */,
+				D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */,
+				D24D474B23E162D0001F09C2 /* PersistentContainer.swift */,
 				D213DF2623E0B0F40003C771 /* Database.h */,
 				D213DF2723E0B0F40003C771 /* Info.plist */,
 				D213DF3D23E0B3CA0003C771 /* Test.swift */,
