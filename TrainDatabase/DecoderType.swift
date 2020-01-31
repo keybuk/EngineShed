@@ -56,7 +56,7 @@ extension DecoderType {
     }
     
     func spareDecoderCount() -> Int {
-        return (decoders! as! Set<Decoder>).filter({ $0.isUnallocated }).count
+        return (decoders! as! Set<Decoder>).count(where: { $0.isUnallocated })
     }
     
     static func all(in context: NSManagedObjectContext) throws -> [DecoderType] {

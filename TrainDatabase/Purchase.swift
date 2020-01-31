@@ -45,7 +45,7 @@ extension Purchase {
         guard let manufacturer = manufacturer, let catalogNumber = catalogNumber, !manufacturer.isEmpty && !catalogNumber.isEmpty else { return nil }
 
         var catalogNumberBase = catalogNumber
-        if catalogNumberBase.filter({ $0 == "-" }).count > 1 {
+        if catalogNumberBase.count(where: { $0 == "-" }) > 1 {
             // XX-XX-999Z style (Dapol, Hattons)
             while catalogNumberBase.suffix(1) != "-" {
                 catalogNumberBase.removeLast()
@@ -79,7 +79,7 @@ extension Purchase {
                 matches.append(purchase)
             } else if !exactOnly {
                 let suffix = purchase.catalogNumber!.dropFirst(catalogNumberBase.count)
-                guard suffix.drop(while: ("A"..."Z").contains).isEmpty || purchase.catalogNumber!.filter({ $0 == "-" }).count > 1 else { continue }
+                guard suffix.drop(while: ("A"..."Z").contains).isEmpty || purchase.catalogNumber!.count(where: { $0 == "-" }) > 1 else { continue }
 
                 matches.append(purchase)
             }

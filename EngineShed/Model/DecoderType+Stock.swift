@@ -18,7 +18,7 @@ extension DecoderType {
     /// Update the `remainingStock` field.
     func updateRemainingStock() {
         guard let decoders = decoders as? Set<Decoder> else { return }
-        let remainingStock = decoders.filter({ $0.isUnallocated }).count
+        let remainingStock = decoders.count(where: { $0.isUnallocated })
         if self.remainingStock != remainingStock {
             self.remainingStock = Int16(truncatingIfNeeded: remainingStock)
         }

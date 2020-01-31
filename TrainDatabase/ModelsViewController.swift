@@ -47,7 +47,7 @@ class ModelsViewController : NSViewController {
 
     func rowOf(_ model: Model, in models: [Model], groupOffsets: [Int]) -> Int? {
         guard let index = models.firstIndex(of: model) else { return nil }
-        let groupOffset = groupOffsets.enumerated().filter({ $1 - $0 <= index }).count
+        let groupOffset = groupOffsets.enumerated().count(where: { $1 - $0 <= index })
         return index + groupOffset
     }
     
@@ -56,7 +56,7 @@ class ModelsViewController : NSViewController {
     }
     
     func modelAt(_ row: Int) -> Model {
-        let groupOffset = groups.filter({ $0.key < row }).count
+        let groupOffset = groups.count(where: { $0.key < row })
         let index = row - groupOffset
         return models[index]
     }

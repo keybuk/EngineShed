@@ -15,6 +15,10 @@
 		D213DF5B23E0B5BE0003C771 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213DF3D23E0B3CA0003C771 /* Test.swift */; };
 		D213DF5C23E0B5CE0003C771 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = D213DF2623E0B0F40003C771 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D213DF5D23E0B6040003C771 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213DF3123E0B0F50003C771 /* DatabaseTests.swift */; };
+		D22B4D0A23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D0923E4E7EE00CB1F6E /* Sequence+CountWhere.swift */; };
+		D22B4D0B23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D0923E4E7EE00CB1F6E /* Sequence+CountWhere.swift */; };
+		D22B4D0D23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D0C23E4EA4D00CB1F6E /* CountWhereTests.swift */; };
+		D22B4D0E23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D0C23E4EA4D00CB1F6E /* CountWhereTests.swift */; };
 		D24D474723E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D24D474823E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */; };
@@ -50,6 +54,8 @@
 		D213DF3D23E0B3CA0003C771 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		D213DF4423E0B57B0003C771 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D213DF4C23E0B57B0003C771 /* DatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D22B4D0923E4E7EE00CB1F6E /* Sequence+CountWhere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+CountWhere.swift"; sourceTree = "<group>"; };
+		D22B4D0C23E4EA4D00CB1F6E /* CountWhereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWhereTests.swift; sourceTree = "<group>"; };
 		D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureUnarchiveDateComponentsFromDataTransformer.swift; sourceTree = "<group>"; };
 		D24D474B23E162D0001F09C2 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		D2E458C323E147FF00EC76E0 /* EngineShed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EngineShed.xcdatamodel; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 		D213DF2523E0B0F40003C771 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				D22B4D0823E4E7C800CB1F6E /* Extensions */,
 				D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */,
 				D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */,
 				D24D474B23E162D0001F09C2 /* PersistentContainer.swift */,
@@ -125,10 +132,19 @@
 		D213DF3023E0B0F50003C771 /* DatabaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				D22B4D0C23E4EA4D00CB1F6E /* CountWhereTests.swift */,
 				D213DF3123E0B0F50003C771 /* DatabaseTests.swift */,
 				D213DF3323E0B0F50003C771 /* Info.plist */,
 			);
 			path = DatabaseTests;
+			sourceTree = "<group>";
+		};
+		D22B4D0823E4E7C800CB1F6E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D22B4D0923E4E7EE00CB1F6E /* Sequence+CountWhere.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +326,7 @@
 				D24D474C23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
 				D213DF3E23E0B3CA0003C771 /* Test.swift in Sources */,
 				D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
+				D22B4D0A23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */,
 				D24D474723E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D213DF3223E0B0F50003C771 /* DatabaseTests.swift in Sources */,
+				D22B4D0D23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +347,7 @@
 				D24D474D23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
 				D213DF5B23E0B5BE0003C771 /* Test.swift in Sources */,
 				D24D474A23E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
+				D22B4D0B23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */,
 				D24D474823E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D213DF5D23E0B6040003C771 /* DatabaseTests.swift in Sources */,
+				D22B4D0E23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

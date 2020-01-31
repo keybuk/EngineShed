@@ -13,7 +13,7 @@ import Database
 extension DecoderType {
     func makeRemainingStock() -> Int16 {
         guard let decoders = decoders as? Set<Decoder> else { return 0 }
-        return Int16(clamping: decoders.filter({ $0.isUnallocated }).count)
+        return Int16(clamping: decoders.count(where: { $0.isUnallocated }))
     }
 
     public override func willSave() {
