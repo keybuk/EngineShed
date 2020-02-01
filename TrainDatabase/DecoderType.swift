@@ -55,10 +55,6 @@ extension DecoderType {
         return (decoders! as! Set<Decoder>).filter({ $0.model == nil })
     }
     
-    func spareDecoderCount() -> Int {
-        return (decoders! as! Set<Decoder>).count(where: { $0.isUnallocated })
-    }
-    
     static func all(in context: NSManagedObjectContext) throws -> [DecoderType] {
         let fetchRequest: NSFetchRequest<DecoderType> = DecoderType.fetchRequest()
         fetchRequest.sortDescriptors = [
