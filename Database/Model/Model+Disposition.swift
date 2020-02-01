@@ -8,23 +8,21 @@
 
 import Foundation
 
-import Database
-
 extension Model {
-    enum Disposition: Int16, CaseIterable {
+    public enum Disposition: Int16, CaseIterable {
         case normal = 1
         case collectorItem
         case spareParts
     }
 
-    var disposition: Disposition? {
+    public var disposition: Disposition? {
         get { Disposition(rawValue: dispositionRawValue) }
         set { dispositionRawValue = newValue?.rawValue ?? 0 }
     }
 }
 
 extension Model.Disposition: CustomStringConvertible, ConvertibleFromString {
-    var description: String {
+    public var description: String {
         switch self {
         case .normal: return "Normal"
         case .collectorItem: return "Collector Item"

@@ -8,10 +8,8 @@
 
 import Foundation
 
-import Database
-
 extension Purchase {
-    enum Condition: Int16, CaseIterable {
+    public enum Condition: Int16, CaseIterable {
         case new = 1
         case likeNew
         case used
@@ -19,14 +17,14 @@ extension Purchase {
         case handmade
     }
 
-    var condition: Condition? {
+    public var condition: Condition? {
         get { Condition(rawValue: conditionRawValue) }
         set { conditionRawValue = newValue?.rawValue ?? 0 }
     }
 }
 
 extension Purchase.Condition: CustomStringConvertible, ConvertibleFromString {
-    var description: String {
+    public var description: String {
         switch self {
         case .new: return "New"
         case .likeNew: return "Like New"

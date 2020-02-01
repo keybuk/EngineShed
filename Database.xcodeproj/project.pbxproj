@@ -27,6 +27,12 @@
 		D22B4D2423E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D2223E50CD500CB1F6E /* ConvertibleFromString.swift */; };
 		D22B4D2623E50E7800CB1F6E /* ConvertibleFromStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D2523E50E7800CB1F6E /* ConvertibleFromStringTests.swift */; };
 		D22B4D2723E50E7800CB1F6E /* ConvertibleFromStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D2523E50E7800CB1F6E /* ConvertibleFromStringTests.swift */; };
+		D22B4D2A23E5102700CB1F6E /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D2923E5102700CB1F6E /* Purchase+Condition.swift */; };
+		D22B4D2B23E5102700CB1F6E /* Purchase+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D2923E5102700CB1F6E /* Purchase+Condition.swift */; };
+		D22B4D3023E5105200CB1F6E /* Model+Classification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D2F23E5105200CB1F6E /* Model+Classification.swift */; };
+		D22B4D3123E5105200CB1F6E /* Model+Classification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D2F23E5105200CB1F6E /* Model+Classification.swift */; };
+		D22B4D3323E5108B00CB1F6E /* Model+Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D3223E5108B00CB1F6E /* Model+Disposition.swift */; };
+		D22B4D3423E5108B00CB1F6E /* Model+Disposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D3223E5108B00CB1F6E /* Model+Disposition.swift */; };
 		D24D474723E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D24D474823E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */; };
@@ -68,6 +74,9 @@
 		D22B4D1823E4FA3500CB1F6E /* SplitBetweenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitBetweenTests.swift; sourceTree = "<group>"; };
 		D22B4D2223E50CD500CB1F6E /* ConvertibleFromString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
 		D22B4D2523E50E7800CB1F6E /* ConvertibleFromStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromStringTests.swift; sourceTree = "<group>"; };
+		D22B4D2923E5102700CB1F6E /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
+		D22B4D2F23E5105200CB1F6E /* Model+Classification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Classification.swift"; sourceTree = "<group>"; };
+		D22B4D3223E5108B00CB1F6E /* Model+Disposition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Disposition.swift"; sourceTree = "<group>"; };
 		D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureUnarchiveDateComponentsFromDataTransformer.swift; sourceTree = "<group>"; };
 		D24D474B23E162D0001F09C2 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		D2E458C323E147FF00EC76E0 /* EngineShed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EngineShed.xcdatamodel; sourceTree = "<group>"; };
@@ -132,7 +141,7 @@
 			children = (
 				D22B4D2123E50CCF00CB1F6E /* Protocols */,
 				D22B4D0823E4E7C800CB1F6E /* Extensions */,
-				D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */,
+				D22B4D2823E5101B00CB1F6E /* Model */,
 				D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */,
 				D24D474B23E162D0001F09C2 /* PersistentContainer.swift */,
 				D213DF2623E0B0F40003C771 /* Database.h */,
@@ -169,6 +178,17 @@
 				D22B4D2223E50CD500CB1F6E /* ConvertibleFromString.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D22B4D2823E5101B00CB1F6E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */,
+				D22B4D2923E5102700CB1F6E /* Purchase+Condition.swift */,
+				D22B4D2F23E5105200CB1F6E /* Model+Classification.swift */,
+				D22B4D3223E5108B00CB1F6E /* Model+Disposition.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,9 +367,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D22B4D2A23E5102700CB1F6E /* Purchase+Condition.swift in Sources */,
+				D22B4D3023E5105200CB1F6E /* Model+Classification.swift in Sources */,
 				D24D474C23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
 				D213DF3E23E0B3CA0003C771 /* Test.swift in Sources */,
 				D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
+				D22B4D3323E5108B00CB1F6E /* Model+Disposition.swift in Sources */,
 				D22B4D0A23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */,
 				D24D474723E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
 				D22B4D2323E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */,
@@ -372,9 +395,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D22B4D2B23E5102700CB1F6E /* Purchase+Condition.swift in Sources */,
+				D22B4D3123E5105200CB1F6E /* Model+Classification.swift in Sources */,
 				D24D474D23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
 				D213DF5B23E0B5BE0003C771 /* Test.swift in Sources */,
 				D24D474A23E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
+				D22B4D3423E5108B00CB1F6E /* Model+Disposition.swift in Sources */,
 				D22B4D0B23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */,
 				D24D474823E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
 				D22B4D2423E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */,

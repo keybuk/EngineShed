@@ -8,10 +8,8 @@
 
 import Foundation
 
-import Database
-
 extension Model {
-    enum Classification: Int16, CaseIterable {
+    public enum Classification: Int16, CaseIterable {
         case locomotive = 1
         case coach
         case wagon
@@ -22,14 +20,14 @@ extension Model {
         case vehicle
     }
 
-    var classification: Classification? {
+    public var classification: Classification? {
         get { Classification(rawValue: classificationRawValue) }
         set { classificationRawValue = newValue?.rawValue ?? 0 }
     }
 }
 
 extension Model.Classification: CustomStringConvertible, ConvertibleFromString {
-    var description: String {
+    public var description: String {
         switch self {
         case .locomotive: return "Locomotive"
         case .coach: return "Coach"
