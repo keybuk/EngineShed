@@ -91,11 +91,11 @@ class DecoderTypeTableViewController : UITableViewController {
                 cell.decoderType = decoderType
                 return cell
             case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeHasRailCom", for: indexPath) as! DecoderTypeHasRailComTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeIsRailComSupported", for: indexPath) as! DecoderTypeIsRailComSupportedTableViewCell
                 cell.decoderType = decoderType
                 return cell
             case 3:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeHasSound", for: indexPath) as! DecoderTypeHasSoundTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeIsSoundSupported", for: indexPath) as! DecoderTypeIsSoundSupportedTableViewCell
                 cell.decoderType = decoderType
                 return cell
             default: preconditionFailure("Unexpected indexPath: \(indexPath)")

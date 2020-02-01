@@ -1,5 +1,5 @@
 //
-//  DecoderTypeHasSoundEditTableViewCell.swift
+//  DecoderTypeIsSoundSupportedTableViewCell.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 3/6/19.
@@ -10,13 +10,13 @@ import UIKit
 
 import Database
 
-class DecoderTypeHasSoundEditTableViewCell : UITableViewCell {
+class DecoderTypeIsSoundSupportedTableViewCell : UITableViewCell {
 
-    @IBOutlet weak var hasSoundSwitch: UISwitch!
+    @IBOutlet weak var isSoundSupportedLabel: UILabel!
 
     var decoderType: DecoderType? {
         didSet {
-            configureView()
+            configureCell()
         }
     }
 
@@ -31,14 +31,8 @@ class DecoderTypeHasSoundEditTableViewCell : UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureView() {
-        hasSoundSwitch.isOn = decoderType?.hasSound ?? false
-    }
-
-    // MARK: - Actions
-
-    @IBAction func switchValueChanged(_ sender: UISwitch) {
-        decoderType?.hasSound = hasSoundSwitch.isOn
+    func configureCell() {
+        isSoundSupportedLabel.text = (decoderType?.isSoundSupported ?? false) ? "Yes" : "No"
     }
 
 }

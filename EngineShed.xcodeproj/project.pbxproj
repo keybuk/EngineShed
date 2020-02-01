@@ -198,8 +198,8 @@
 		D2F4EEE422307439008FB14A /* DecoderTypeProductFamilyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEE322307439008FB14A /* DecoderTypeProductFamilyTableViewCell.swift */; };
 		D2F4EEE622307442008FB14A /* DecoderTypeProductDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEE522307442008FB14A /* DecoderTypeProductDescriptionTableViewCell.swift */; };
 		D2F4EEE822307458008FB14A /* DecoderTypeIsProgrammableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEE722307458008FB14A /* DecoderTypeIsProgrammableTableViewCell.swift */; };
-		D2F4EEEA2230746F008FB14A /* DecoderTypeHasRailComTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEE92230746F008FB14A /* DecoderTypeHasRailComTableViewCell.swift */; };
-		D2F4EEEC2230747B008FB14A /* DecoderTypeHasSoundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEEB2230747B008FB14A /* DecoderTypeHasSoundTableViewCell.swift */; };
+		D2F4EEEA2230746F008FB14A /* DecoderTypeIsRailComSupportedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEE92230746F008FB14A /* DecoderTypeIsRailComSupportedTableViewCell.swift */; };
+		D2F4EEEC2230747B008FB14A /* DecoderTypeIsSoundSupportedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEEB2230747B008FB14A /* DecoderTypeIsSoundSupportedTableViewCell.swift */; };
 		D2F4EEEE22307484008FB14A /* DecoderTypeMinimumStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEED22307484008FB14A /* DecoderTypeMinimumStockTableViewCell.swift */; };
 		D2F4EEF02230748B008FB14A /* DecoderTypeDecoderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEEF2230748B008FB14A /* DecoderTypeDecoderTableViewCell.swift */; };
 		D2F4EEF22230749D008FB14A /* DecoderTypeManufacturerEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEF12230749D008FB14A /* DecoderTypeManufacturerEditTableViewCell.swift */; };
@@ -209,8 +209,8 @@
 		D2F4EEFA223094C3008FB14A /* DecoderTypeSocketEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEF9223094C3008FB14A /* DecoderTypeSocketEditTableViewCell.swift */; };
 		D2F4EEFC223094CE008FB14A /* DecoderTypeSocketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEFB223094CE008FB14A /* DecoderTypeSocketTableViewCell.swift */; };
 		D2F4EEFE223094D9008FB14A /* DecoderTypeIsProgrammableEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEFD223094D9008FB14A /* DecoderTypeIsProgrammableEditTableViewCell.swift */; };
-		D2F4EF00223094E6008FB14A /* DecoderTypeHasRailComEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEFF223094E6008FB14A /* DecoderTypeHasRailComEditTableViewCell.swift */; };
-		D2F4EF02223094ED008FB14A /* DecoderTypeHasSoundEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF01223094ED008FB14A /* DecoderTypeHasSoundEditTableViewCell.swift */; };
+		D2F4EF00223094E6008FB14A /* DecoderTypeIsRailComSupportedEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEFF223094E6008FB14A /* DecoderTypeIsRailComSupportedEditTableViewCell.swift */; };
+		D2F4EF02223094ED008FB14A /* DecoderTypeIsSoundSupportedEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF01223094ED008FB14A /* DecoderTypeIsSoundSupportedEditTableViewCell.swift */; };
 		D2F4EF04223094F8008FB14A /* DecoderTypeMinimumStockEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF03223094F8008FB14A /* DecoderTypeMinimumStockEditTableViewCell.swift */; };
 		D2F4EF06223094FF008FB14A /* DecoderTypeDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF05223094FF008FB14A /* DecoderTypeDeleteTableViewCell.swift */; };
 		D2F4EF0E2231F666008FB14A /* UINavigationController+PopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF0D2231F666008FB14A /* UINavigationController+PopDetail.swift */; };
@@ -454,8 +454,8 @@
 		D2F4EEE322307439008FB14A /* DecoderTypeProductFamilyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeProductFamilyTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EEE522307442008FB14A /* DecoderTypeProductDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeProductDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EEE722307458008FB14A /* DecoderTypeIsProgrammableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeIsProgrammableTableViewCell.swift; sourceTree = "<group>"; };
-		D2F4EEE92230746F008FB14A /* DecoderTypeHasRailComTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeHasRailComTableViewCell.swift; sourceTree = "<group>"; };
-		D2F4EEEB2230747B008FB14A /* DecoderTypeHasSoundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeHasSoundTableViewCell.swift; sourceTree = "<group>"; };
+		D2F4EEE92230746F008FB14A /* DecoderTypeIsRailComSupportedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeIsRailComSupportedTableViewCell.swift; sourceTree = "<group>"; };
+		D2F4EEEB2230747B008FB14A /* DecoderTypeIsSoundSupportedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeIsSoundSupportedTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EEED22307484008FB14A /* DecoderTypeMinimumStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeMinimumStockTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EEEF2230748B008FB14A /* DecoderTypeDecoderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeDecoderTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EEF12230749D008FB14A /* DecoderTypeManufacturerEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeManufacturerEditTableViewCell.swift; sourceTree = "<group>"; };
@@ -465,8 +465,8 @@
 		D2F4EEF9223094C3008FB14A /* DecoderTypeSocketEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeSocketEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EEFB223094CE008FB14A /* DecoderTypeSocketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeSocketTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EEFD223094D9008FB14A /* DecoderTypeIsProgrammableEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeIsProgrammableEditTableViewCell.swift; sourceTree = "<group>"; };
-		D2F4EEFF223094E6008FB14A /* DecoderTypeHasRailComEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeHasRailComEditTableViewCell.swift; sourceTree = "<group>"; };
-		D2F4EF01223094ED008FB14A /* DecoderTypeHasSoundEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeHasSoundEditTableViewCell.swift; sourceTree = "<group>"; };
+		D2F4EEFF223094E6008FB14A /* DecoderTypeIsRailComSupportedEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeIsRailComSupportedEditTableViewCell.swift; sourceTree = "<group>"; };
+		D2F4EF01223094ED008FB14A /* DecoderTypeIsSoundSupportedEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeIsSoundSupportedEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF03223094F8008FB14A /* DecoderTypeMinimumStockEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeMinimumStockEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF05223094FF008FB14A /* DecoderTypeDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Suggestions.swift"; sourceTree = "<group>"; };
@@ -877,8 +877,8 @@
 				D2F4EEE522307442008FB14A /* DecoderTypeProductDescriptionTableViewCell.swift */,
 				D2F4EEFB223094CE008FB14A /* DecoderTypeSocketTableViewCell.swift */,
 				D2F4EEE722307458008FB14A /* DecoderTypeIsProgrammableTableViewCell.swift */,
-				D2F4EEE92230746F008FB14A /* DecoderTypeHasRailComTableViewCell.swift */,
-				D2F4EEEB2230747B008FB14A /* DecoderTypeHasSoundTableViewCell.swift */,
+				D2F4EEE92230746F008FB14A /* DecoderTypeIsRailComSupportedTableViewCell.swift */,
+				D2F4EEEB2230747B008FB14A /* DecoderTypeIsSoundSupportedTableViewCell.swift */,
 				D2F4EEED22307484008FB14A /* DecoderTypeMinimumStockTableViewCell.swift */,
 				D2F4EEEF2230748B008FB14A /* DecoderTypeDecoderTableViewCell.swift */,
 			);
@@ -917,8 +917,8 @@
 				D2F4EEF9223094C3008FB14A /* DecoderTypeSocketEditTableViewCell.swift */,
 				D26903862234BC0D002C7A48 /* DecoderTypeSocketPickerTableViewController.swift */,
 				D2F4EEFD223094D9008FB14A /* DecoderTypeIsProgrammableEditTableViewCell.swift */,
-				D2F4EEFF223094E6008FB14A /* DecoderTypeHasRailComEditTableViewCell.swift */,
-				D2F4EF01223094ED008FB14A /* DecoderTypeHasSoundEditTableViewCell.swift */,
+				D2F4EEFF223094E6008FB14A /* DecoderTypeIsRailComSupportedEditTableViewCell.swift */,
+				D2F4EF01223094ED008FB14A /* DecoderTypeIsSoundSupportedEditTableViewCell.swift */,
 				D2F4EF03223094F8008FB14A /* DecoderTypeMinimumStockEditTableViewCell.swift */,
 				D2F4EF05223094FF008FB14A /* DecoderTypeDeleteTableViewCell.swift */,
 			);
@@ -1092,7 +1092,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23B8B9321E29C54004F994D /* ModelDetailsTableViewCell.swift in Sources */,
-				D2F4EEEC2230747B008FB14A /* DecoderTypeHasSoundTableViewCell.swift in Sources */,
+				D2F4EEEC2230747B008FB14A /* DecoderTypeIsSoundSupportedTableViewCell.swift in Sources */,
 				D26903722234724C002C7A48 /* ModelEraPickerTableViewController.swift in Sources */,
 				D269037F2234BAEB002C7A48 /* ModelSpeakerEditTableViewCell.swift in Sources */,
 				D23B8BC521E2B5B3004F994D /* ModelModificationsTableViewCell.swift in Sources */,
@@ -1106,7 +1106,7 @@
 				D269035E223471DB002C7A48 /* ModelImageEditTableViewCell.swift in Sources */,
 				D280AF8322C580960074CCCD /* PreviewData.swift in Sources */,
 				D25828B821DC43A10094918F /* TrainMemberEditTableViewCell.swift in Sources */,
-				D2F4EF00223094E6008FB14A /* DecoderTypeHasRailComEditTableViewCell.swift in Sources */,
+				D2F4EF00223094E6008FB14A /* DecoderTypeIsRailComSupportedEditTableViewCell.swift in Sources */,
 				D2F4EF3422337580008FB14A /* DecoderSoundProjectVersionEditTableViewCell.swift in Sources */,
 				D2B6F08C22C2EF4700FF73F3 /* ModelRow.swift in Sources */,
 				D2F4EF362233758A008FB14A /* DecoderSoundSettingsEditTableViewCell.swift in Sources */,
@@ -1196,9 +1196,9 @@
 				D23B8BB521E2AF13004F994D /* ModelDecoderSoundSettingsTableViewCell.swift in Sources */,
 				D23B8BEC21E2C160004F994D /* PurchaseValuationTableViewCell.swift in Sources */,
 				D27300342224F9390002CEF9 /* PurchaseEditTableViewController.swift in Sources */,
-				D2F4EF02223094ED008FB14A /* DecoderTypeHasSoundEditTableViewCell.swift in Sources */,
+				D2F4EF02223094ED008FB14A /* DecoderTypeIsSoundSupportedEditTableViewCell.swift in Sources */,
 				D23B8BC921E2B7C1004F994D /* ModelLastRunTableViewCell.swift in Sources */,
-				D2F4EEEA2230746F008FB14A /* DecoderTypeHasRailComTableViewCell.swift in Sources */,
+				D2F4EEEA2230746F008FB14A /* DecoderTypeIsRailComSupportedTableViewCell.swift in Sources */,
 				D2690364223471F4002C7A48 /* ModelNumberEditTableViewCell.swift in Sources */,
 				D2DE5CC720F8A60000CABE34 /* TrainsCollectionViewController.swift in Sources */,
 				D2F4EF06223094FF008FB14A /* DecoderTypeDeleteTableViewCell.swift in Sources */,

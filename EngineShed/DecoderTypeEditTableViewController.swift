@@ -80,11 +80,11 @@ class DecoderTypeEditTableViewController : UITableViewController, UIAdaptivePres
                 cell.decoderType = decoderType
                 return cell
             case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeHasRailComEdit", for: indexPath) as! DecoderTypeHasRailComEditTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeIsRailComSupportedEdit", for: indexPath) as! DecoderTypeIsRailComSupportedEditTableViewCell
                 cell.decoderType = decoderType
                 return cell
             case 3:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeHasSoundEdit", for: indexPath) as! DecoderTypeHasSoundEditTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "decoderTypeIsSoundSupportedEdit", for: indexPath) as! DecoderTypeIsSoundSupportedEditTableViewCell
                 cell.decoderType = decoderType
                 return cell
             default: preconditionFailure("Unexpected indexPath: \(indexPath)")

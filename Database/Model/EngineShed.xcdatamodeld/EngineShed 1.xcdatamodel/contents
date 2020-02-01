@@ -17,9 +17,9 @@
         <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DecoderType" inverseName="decoders" inverseEntity="DecoderType"/>
     </entity>
     <entity name="DecoderType" representedClassName="DecoderType" syncable="YES" codeGenerationType="class">
+        <attribute name="hasRailCom" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="hasSound" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isProgrammable" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="isRailComSupported" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" elementID="hasRailCom"/>
-        <attribute name="isSoundSupported" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" elementID="hasSound"/>
         <attribute name="manufacturer" optional="YES" attributeType="String"/>
         <attribute name="minimumStock" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="productCode" optional="YES" attributeType="String"/>

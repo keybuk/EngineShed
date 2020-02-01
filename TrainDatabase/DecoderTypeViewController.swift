@@ -39,8 +39,8 @@ class DecoderTypeViewController: NSViewController {
     @IBOutlet var productDescriptionTextField: NSTextField!
     @IBOutlet var socketComboBox: NSComboBox!
     @IBOutlet var isProgrammableCheckBox: NSButton!
-    @IBOutlet var hasSoundCheckBox: NSButton!
-    @IBOutlet var hasRailComCheckBox: NSButton!
+    @IBOutlet var isSoundSupportedCheckBox: NSButton!
+    @IBOutlet var isRailComSupportedCheckBox: NSButton!
     @IBOutlet var minimumStockTextField: NSTextField!
     
     @IBOutlet var tableView: NSTableView!
@@ -140,8 +140,8 @@ class DecoderTypeViewController: NSViewController {
         socketComboBox.stringValue = decoderType.socket ?? ""
 
         isProgrammableCheckBox.state = decoderType.isProgrammable ? .on : .off
-        hasSoundCheckBox.state = decoderType.hasSound ? .on : .off
-        hasRailComCheckBox.state = decoderType.hasRailCom ? .on : .off
+        isSoundSupportedCheckBox.state = decoderType.isSoundSupported ? .on : .off
+        isRailComSupportedCheckBox.state = decoderType.isRailComSupported ? .on : .off
         minimumStockTextField.objectValue = decoderType.minimumStock != 0 ? decoderType.minimumStock : nil
         
         tableView.reloadData()
@@ -209,13 +209,13 @@ class DecoderTypeViewController: NSViewController {
         try? decoderType.managedObjectContext?.save() // FIXME
     }
     
-    @IBAction func hasSoundChanged(_ sender: NSButton) {
-        decoderType.hasSound = sender.state == .on
+    @IBAction func isSoundSupportedChanged(_ sender: NSButton) {
+        decoderType.isSoundSupported = sender.state == .on
         try? decoderType.managedObjectContext?.save() // FIXME
     }
     
-    @IBAction func hasRailComChanged(_ sender: NSButton) {
-        decoderType.hasRailCom = sender.state == .on
+    @IBAction func isRailComSupportedChanged(_ sender: NSButton) {
+        decoderType.isRailComSupported = sender.state == .on
         try? decoderType.managedObjectContext?.save() // FIXME
     }
     

@@ -443,7 +443,7 @@
                                                                             <font key="font" metaFont="system"/>
                                                                         </buttonCell>
                                                                         <connections>
-                                                                            <action selector="hasSoundChanged:" target="mfM-Sx-3LS" id="c4g-UP-18E"/>
+                                                                            <action selector="isSoundSupportedChanged:" target="mfM-Sx-3LS" id="kYN-eU-3z7"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FBG-dV-YbH">
@@ -453,7 +453,7 @@
                                                                             <font key="font" metaFont="system"/>
                                                                         </buttonCell>
                                                                         <connections>
-                                                                            <action selector="hasRailComChanged:" target="mfM-Sx-3LS" id="Jly-0h-sxj"/>
+                                                                            <action selector="isRailComSupportedChanged:" target="mfM-Sx-3LS" id="aHR-Xq-hwi"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -953,9 +953,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="hasRailComCheckBox" destination="FBG-dV-YbH" id="whl-vA-kFb"/>
-                        <outlet property="hasSoundCheckBox" destination="VaI-Ho-JZe" id="cEu-5g-Ba2"/>
                         <outlet property="isProgrammableCheckBox" destination="fFK-gM-G27" id="7Ob-Pb-9xn"/>
+                        <outlet property="isRailComSupportedCheckBox" destination="FBG-dV-YbH" id="7L8-Qh-fMW"/>
+                        <outlet property="isSoundSupportedCheckBox" destination="VaI-Ho-JZe" id="1fS-Kd-2gg"/>
                         <outlet property="manufacturerComboBox" destination="8Vs-sD-cwn" id="cxQ-UV-bRQ"/>
                         <outlet property="minimumStockTextField" destination="mF4-6t-m5Y" id="cK5-UA-INJ"/>
                         <outlet property="productCodeTextField" destination="JTR-WT-aTP" id="V40-Kz-Qtv"/>

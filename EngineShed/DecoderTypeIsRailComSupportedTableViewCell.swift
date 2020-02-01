@@ -1,5 +1,5 @@
 //
-//  DecoderTypeHasRailComEditTableViewCell.swift
+//  DecoderTypeIsRailComSupportedTableViewCell.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 3/6/19.
@@ -10,13 +10,13 @@ import UIKit
 
 import Database
 
-class DecoderTypeHasRailComEditTableViewCell : UITableViewCell {
+class DecoderTypeIsRailComSupportedTableViewCell : UITableViewCell {
 
-    @IBOutlet weak var hasRailComSwitch: UISwitch!
+    @IBOutlet weak var isRailComSupportedLabel: UILabel!
 
     var decoderType: DecoderType? {
         didSet {
-            configureView()
+            configureCell()
         }
     }
 
@@ -31,14 +31,8 @@ class DecoderTypeHasRailComEditTableViewCell : UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureView() {
-        hasRailComSwitch.isOn = decoderType?.hasRailCom ?? false
-    }
-
-    // MARK: - Actions
-
-    @IBAction func switchValueChanged(_ sender: UISwitch) {
-        decoderType?.hasRailCom = hasRailComSwitch.isOn
+    func configureCell() {
+        isRailComSupportedLabel.text = (decoderType?.isRailComSupported ?? false) ? "Yes" : "No"
     }
 
 }
