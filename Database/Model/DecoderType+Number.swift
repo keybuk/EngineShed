@@ -17,4 +17,7 @@ extension DecoderType {
         }
         set { minimumStock = newValue.flatMap { Int16($0) } ?? 0 }
     }
+
+    /// `remainingStock` formatted as string.
+    public var remainingStockAsString: String { String(remainingStock) }
 }
