@@ -8,6 +8,8 @@
 
 import AppKit
 
+import Database
+
 protocol EnumForDataSource {
     
     var count: Int { get }

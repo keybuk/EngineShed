@@ -22,7 +22,6 @@
 		D26673BC1FE8F95F0069F9C7 /* TrainMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673BB1FE8F95F0069F9C7 /* TrainMember.swift */; };
 		D26673BE1FE8FB9C0069F9C7 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */; };
 		D26673C01FE8FBA10069F9C7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673BF1FE8FBA10069F9C7 /* Model.swift */; };
-		D26673C51FE99E1D0069F9C7 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */; };
 		D26673C71FE99F250069F9C7 /* NSManagedObject+SortedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26673C61FE99F250069F9C7 /* NSManagedObject+SortedValues.swift */; };
 		D2709B081FF65557007029C5 /* EmptyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2709B071FF65557007029C5 /* EmptyDateFormatter.swift */; };
 		D276FF271FE4B01400EA087F /* ModelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D276FF261FE4B01400EA087F /* ModelsViewController.swift */; };
@@ -103,7 +102,6 @@
 		D26673BB1FE8F95F0069F9C7 /* TrainMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMember.swift; sourceTree = "<group>"; };
 		D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		D26673BF1FE8FBA10069F9C7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
 		D26673C61FE99F250069F9C7 /* NSManagedObject+SortedValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+SortedValues.swift"; sourceTree = "<group>"; };
 		D2709B071FF65557007029C5 /* EmptyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDateFormatter.swift; sourceTree = "<group>"; };
 		D276FF261FE4B01400EA087F /* ModelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsViewController.swift; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 		D28A4BC61FD67523000768D8 /* TrainDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				D26673C41FE99E1D0069F9C7 /* ConvertibleFromString.swift */,
 				D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */,
 				D26673C61FE99F250069F9C7 /* NSManagedObject+SortedValues.swift */,
 				D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */,
@@ -458,7 +455,6 @@
 				D25B47E91FEFA994008A7EB1 /* TrainMemberItem.swift in Sources */,
 				D26673B81FE8F2A40069F9C7 /* Decoder.swift in Sources */,
 				D2B548321FEA558300FE7ED0 /* ComboBoxControllers.swift in Sources */,
-				D26673C51FE99E1D0069F9C7 /* ConvertibleFromString.swift in Sources */,
 				D298CAE620D4F70D00827F68 /* Array+CountedElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
