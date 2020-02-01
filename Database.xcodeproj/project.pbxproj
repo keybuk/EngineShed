@@ -53,12 +53,20 @@
 		D22B4D5123E6364D00CB1F6E /* Purchase+CatalogNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D4F23E6364D00CB1F6E /* Purchase+CatalogNumber.swift */; };
 		D22B4D5323E636F900CB1F6E /* CatalogNumberPrefixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D5223E636F900CB1F6E /* CatalogNumberPrefixTests.swift */; };
 		D22B4D5423E636F900CB1F6E /* CatalogNumberPrefixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D5223E636F900CB1F6E /* CatalogNumberPrefixTests.swift */; };
+		D22B4D5623E6389E00CB1F6E /* Purchase+DerivedDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D5523E6389E00CB1F6E /* Purchase+DerivedDates.swift */; };
+		D22B4D5723E6389E00CB1F6E /* Purchase+DerivedDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D5523E6389E00CB1F6E /* Purchase+DerivedDates.swift */; };
+		D22B4D5923E638B500CB1F6E /* Purchase+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D5823E638B500CB1F6E /* Purchase+WillSave.swift */; };
+		D22B4D5A23E638B500CB1F6E /* Purchase+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D5823E638B500CB1F6E /* Purchase+WillSave.swift */; };
 		D24D474723E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D24D474823E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */; };
 		D24D474A23E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */; };
 		D24D474C23E162D0001F09C2 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474B23E162D0001F09C2 /* PersistentContainer.swift */; };
 		D24D474D23E162D0001F09C2 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474B23E162D0001F09C2 /* PersistentContainer.swift */; };
+		D2FF6E6723E63E380063257D /* DerivedDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6623E63E380063257D /* DerivedDatesTests.swift */; };
+		D2FF6E6823E63E380063257D /* DerivedDatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6623E63E380063257D /* DerivedDatesTests.swift */; };
+		D2FF6E6A23E640F40063257D /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */; };
+		D2FF6E6B23E640F40063257D /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,9 +116,13 @@
 		D22B4D4E23E633DE00CB1F6E /* EngineShed 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "EngineShed 1.xcdatamodel"; sourceTree = "<group>"; };
 		D22B4D4F23E6364D00CB1F6E /* Purchase+CatalogNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+CatalogNumber.swift"; sourceTree = "<group>"; };
 		D22B4D5223E636F900CB1F6E /* CatalogNumberPrefixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNumberPrefixTests.swift; sourceTree = "<group>"; };
+		D22B4D5523E6389E00CB1F6E /* Purchase+DerivedDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+DerivedDates.swift"; sourceTree = "<group>"; };
+		D22B4D5823E638B500CB1F6E /* Purchase+WillSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+WillSave.swift"; sourceTree = "<group>"; };
 		D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureUnarchiveDateComponentsFromDataTransformer.swift; sourceTree = "<group>"; };
 		D24D474B23E162D0001F09C2 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		D2E458C323E147FF00EC76E0 /* EngineShed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EngineShed.xcdatamodel; sourceTree = "<group>"; };
+		D2FF6E6623E63E380063257D /* DerivedDatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedDatesTests.swift; sourceTree = "<group>"; };
+		D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+FetchRequests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +201,7 @@
 				D22B4D0C23E4EA4D00CB1F6E /* CountWhereTests.swift */,
 				D22B4D1823E4FA3500CB1F6E /* SplitBetweenTests.swift */,
 				D22B4D5223E636F900CB1F6E /* CatalogNumberPrefixTests.swift */,
+				D2FF6E6623E63E380063257D /* DerivedDatesTests.swift */,
 				D213DF3123E0B0F50003C771 /* DatabaseTests.swift */,
 				D213DF3323E0B0F50003C771 /* Info.plist */,
 			);
@@ -219,8 +232,11 @@
 				D22B4D4F23E6364D00CB1F6E /* Purchase+CatalogNumber.swift */,
 				D22B4D4523E51EBE00CB1F6E /* Purchase+Number.swift */,
 				D22B4D3923E5167E00CB1F6E /* Purchase+Date.swift */,
+				D22B4D5523E6389E00CB1F6E /* Purchase+DerivedDates.swift */,
 				D22B4D4223E51C9A00CB1F6E /* Purchase+Currency.swift */,
 				D22B4D2923E5102700CB1F6E /* Purchase+Condition.swift */,
+				D22B4D5823E638B500CB1F6E /* Purchase+WillSave.swift */,
+				D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */,
 				D22B4D2F23E5105200CB1F6E /* Model+Classification.swift */,
 				D22B4D3523E511C300CB1F6E /* Model+Era.swift */,
 				D22B4D3223E5108B00CB1F6E /* Model+Disposition.swift */,
@@ -411,6 +427,7 @@
 				D22B4D4123E51AA300CB1F6E /* Decoder+Date.swift in Sources */,
 				D22B4D2A23E5102700CB1F6E /* Purchase+Condition.swift in Sources */,
 				D22B4D4923E51F8200CB1F6E /* DecoderType+Number.swift in Sources */,
+				D2FF6E6A23E640F40063257D /* Purchase+FetchRequests.swift in Sources */,
 				D22B4D3023E5105200CB1F6E /* Model+Classification.swift in Sources */,
 				D22B4D4323E51C9A00CB1F6E /* Purchase+Currency.swift in Sources */,
 				D24D474C23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
@@ -419,6 +436,7 @@
 				D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
 				D22B4D3D23E51A8300CB1F6E /* Model+Date.swift in Sources */,
 				D22B4D5023E6364D00CB1F6E /* Purchase+CatalogNumber.swift in Sources */,
+				D22B4D5923E638B500CB1F6E /* Purchase+WillSave.swift in Sources */,
 				D22B4D3323E5108B00CB1F6E /* Model+Disposition.swift in Sources */,
 				D22B4D0A23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */,
 				D24D474723E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
@@ -426,6 +444,7 @@
 				D22B4D1B23E4FA3900CB1F6E /* Collection+SplitBetween.swift in Sources */,
 				D22B4D3A23E5167F00CB1F6E /* Purchase+Date.swift in Sources */,
 				D22B4D3623E511C300CB1F6E /* Model+Era.swift in Sources */,
+				D22B4D5623E6389E00CB1F6E /* Purchase+DerivedDates.swift in Sources */,
 				D22B4D4723E51EBE00CB1F6E /* Purchase+Number.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +458,7 @@
 				D213DF3223E0B0F50003C771 /* DatabaseTests.swift in Sources */,
 				D22B4D5423E636F900CB1F6E /* CatalogNumberPrefixTests.swift in Sources */,
 				D22B4D0D23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */,
+				D2FF6E6723E63E380063257D /* DerivedDatesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +469,7 @@
 				D22B4D4023E51AA300CB1F6E /* Decoder+Date.swift in Sources */,
 				D22B4D2B23E5102700CB1F6E /* Purchase+Condition.swift in Sources */,
 				D22B4D4A23E51F8200CB1F6E /* DecoderType+Number.swift in Sources */,
+				D2FF6E6B23E640F40063257D /* Purchase+FetchRequests.swift in Sources */,
 				D22B4D3123E5105200CB1F6E /* Model+Classification.swift in Sources */,
 				D22B4D4423E51C9A00CB1F6E /* Purchase+Currency.swift in Sources */,
 				D24D474D23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
@@ -457,6 +478,7 @@
 				D24D474A23E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
 				D22B4D3E23E51A8300CB1F6E /* Model+Date.swift in Sources */,
 				D22B4D5123E6364D00CB1F6E /* Purchase+CatalogNumber.swift in Sources */,
+				D22B4D5A23E638B500CB1F6E /* Purchase+WillSave.swift in Sources */,
 				D22B4D3423E5108B00CB1F6E /* Model+Disposition.swift in Sources */,
 				D22B4D0B23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */,
 				D24D474823E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
@@ -464,6 +486,7 @@
 				D22B4D1C23E4FA3900CB1F6E /* Collection+SplitBetween.swift in Sources */,
 				D22B4D3B23E5167F00CB1F6E /* Purchase+Date.swift in Sources */,
 				D22B4D3723E511C300CB1F6E /* Model+Era.swift in Sources */,
+				D22B4D5723E6389E00CB1F6E /* Purchase+DerivedDates.swift in Sources */,
 				D22B4D4623E51EBE00CB1F6E /* Purchase+Number.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +500,7 @@
 				D213DF5D23E0B6040003C771 /* DatabaseTests.swift in Sources */,
 				D22B4D5323E636F900CB1F6E /* CatalogNumberPrefixTests.swift in Sources */,
 				D22B4D0E23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */,
+				D2FF6E6823E63E380063257D /* DerivedDatesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

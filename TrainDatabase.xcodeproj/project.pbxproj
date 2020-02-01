@@ -10,7 +10,6 @@
 		D229995F23DD0ECC00F28499 /* CKDataAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229995E23DD0ECB00F28499 /* CKDataAsset.swift */; };
 		D229996423DD1D9100F28499 /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */; };
 		D229996823DD1ED300F28499 /* Decoder+Unallocated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229996723DD1ED300F28499 /* Decoder+Unallocated.swift */; };
-		D229996B23DD452D00F28499 /* Purchase+Derived.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229996123DD1C8500F28499 /* Purchase+Derived.swift */; };
 		D229996C23DD453000F28499 /* DecoderType+Derived.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229996523DD1E5300F28499 /* DecoderType+Derived.swift */; };
 		D23132FA23E143FB0001812F /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23132F923E143FB0001812F /* Database.framework */; };
 		D23132FB23E143FB0001812F /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23132F923E143FB0001812F /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -82,7 +81,6 @@
 
 /* Begin PBXFileReference section */
 		D229995E23DD0ECB00F28499 /* CKDataAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKDataAsset.swift; sourceTree = "<group>"; };
-		D229996123DD1C8500F28499 /* Purchase+Derived.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Derived.swift"; sourceTree = "<group>"; };
 		D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+SplitBetween.swift"; sourceTree = "<group>"; };
 		D229996523DD1E5300F28499 /* DecoderType+Derived.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Derived.swift"; sourceTree = "<group>"; };
 		D229996723DD1ED300F28499 /* Decoder+Unallocated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Unallocated.swift"; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				D26673BD1FE8FB9C0069F9C7 /* Purchase.swift */,
-				D229996123DD1C8500F28499 /* Purchase+Derived.swift */,
 				D26673BF1FE8FBA10069F9C7 /* Model.swift */,
 				D2B616881FE0A6110065A84F /* Model+NSImage.swift */,
 				D276FF321FE5F51500EA087F /* DecoderType.swift */,
@@ -398,7 +395,6 @@
 				D276FF2F1FE5D42700EA087F /* PurchaseModelsViewController.swift in Sources */,
 				D26673BA1FE8F9590069F9C7 /* Train.swift in Sources */,
 				D276FF291FE4F6A600EA087F /* SourceListViewController.swift in Sources */,
-				D229996B23DD452D00F28499 /* Purchase+Derived.swift in Sources */,
 				D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */,
 				D26673C71FE99F250069F9C7 /* NSManagedObject+SortedValues.swift in Sources */,
 				D2FFF3BE20E20EAF000A4511 /* Shim.swift in Sources */,

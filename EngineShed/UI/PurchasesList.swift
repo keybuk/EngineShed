@@ -14,9 +14,9 @@ import Database
 extension Purchase : Identifiable {}
 
 struct PurchasesList : View {
-    var ordering: Purchase.Ordering = .date
+    var sort: Purchase.Sort = .date
 
-    @FetchRequest(fetchRequest: Purchase.fetchRequestForPurchases(orderingBy: .date))
+    @FetchRequest(fetchRequest: Purchase.fetchRequestForPurchases(sortedBy: .date))
     var purchases: FetchedResults<Purchase>
 
     var body: some View {

@@ -15,7 +15,7 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
 
     var persistentContainer: NSPersistentContainer?
 
-    var ordering: Purchase.Ordering = .date
+    var sort: Purchase.Sort = .date
     var fetchRequest: NSFetchRequest<Purchase>?
 
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         if fetchRequest == nil {
-            fetchRequest = Purchase.fetchRequestForPurchases(orderingBy: ordering)
+            fetchRequest = Purchase.fetchRequestForPurchases(sortedBy: sort)
         }
     }
 
@@ -53,13 +53,13 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "purchase", for: indexPath) as! PurchaseTableViewCell
         let purchase = fetchedResultsController.object(at: indexPath)
-        cell.ordering = ordering
+        cell.sort = sort
         cell.purchase = purchase
         return cell
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch ordering {
+        switch sort {
         case .date:
             let purchase = fetchedResultsController.sections?[section].objects?.first as? Purchase
             return purchase?.dateForGroupingAsString ?? "Unknown"
@@ -79,7 +79,7 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
             else { preconditionFailure("Cannot construct controller without fetchRequest and context") }
 
         let sectionNameKeyPath = fetchRequest.sortDescriptors?.first?.key
-//        let cacheName = "PurchasesViewController.\(ordering)"
+//        let cacheName = "PurchasesViewController.\(sort)"
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil /*cacheName*/)
         fetchedResultsController.delegate = self
@@ -122,12 +122,12 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
             if let cell = tableView.cellForRow(at: indexPath!) as? PurchaseTableViewCell {
-                cell.ordering = ordering
+                cell.sort = sort
                 cell.purchase = anObject as? Purchase
             }
         case .move:
             if let cell = tableView.cellForRow(at: indexPath!) as? PurchaseTableViewCell {
-                cell.ordering = ordering
+                cell.sort = sort
                 cell.purchase = anObject as? Purchase
             }
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
@@ -144,13 +144,13 @@ class PurchasesTableViewController : UITableViewController, NSFetchedResultsCont
 
     @IBAction func groupChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0: ordering = .date
-        case 1: ordering = .catalog
+        case 0: sort = .date
+        case 1: sort = .catalog
         default: return
         }
 
         _fetchedResultsController = nil
-        fetchRequest = Purchase.fetchRequestForPurchases(orderingBy: ordering)
+        fetchRequest = Purchase.fetchRequestForPurchases(sortedBy: sort)
         tableView.reloadData()
     }
 

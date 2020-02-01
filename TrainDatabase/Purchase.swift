@@ -122,20 +122,6 @@ extension Purchase {
         
         return true
     }
-
-    
-    static func all(in context: NSManagedObjectContext) throws -> [Purchase] {
-        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "manufacturer", ascending: true),
-            NSSortDescriptor(key: "catalogNumber", ascending: true),
-            NSSortDescriptor(key: "date", ascending: true)
-        ]
-        
-        let results = try context.fetch(fetchRequest)
-        return results
-    }
-
 }
 
 extension Purchase/* : CustomStringConvertible*/ {

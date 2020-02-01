@@ -18,7 +18,7 @@ class PurchaseTableViewCell : UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var storeLabel: UILabel!
 
-    var ordering: Purchase.Ordering = .catalog {
+    var sort: Purchase.Sort = .catalog {
         didSet {
             configureCell()
         }
@@ -45,7 +45,7 @@ class PurchaseTableViewCell : UITableViewCell {
         modelImageView.image = (purchase?.models?.firstObject as? Model)?.image
 
         manufacturerLabel.text = purchase?.manufacturer
-        manufacturerLabel.isHidden = ordering == .catalog
+        manufacturerLabel.isHidden = sort == .catalog
         catalogNumberLabel.text = purchase?.catalogNumber
 
         dateLabel.text = purchase?.dateAsString

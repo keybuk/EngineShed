@@ -12,19 +12,6 @@ import CoreData
 import Database
 
 extension Purchase {
-    /// Update the catalogNumberPrefix field.
-    func updateCatalogNumberPrefix() {
-        // Update the `catalogNumberPrefix` field on save from `catalogNumber`.
-        if let catalogNumber = catalogNumber {
-            let catalogNumberPrefix = makeCatalogNumberPrefix(from: catalogNumber)
-            if self.catalogNumberPrefix != catalogNumberPrefix {
-                self.catalogNumberPrefix = catalogNumberPrefix
-            }
-        } else if catalogNumberPrefix != nil {
-            catalogNumberPrefix = nil
-        }
-    }
-
     /// Return list of similar purchases.
     ///
     /// Similar purchases are those where the `catalogNumber` matches, or if no exact match, where

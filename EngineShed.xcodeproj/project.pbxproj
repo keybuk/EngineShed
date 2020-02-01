@@ -142,10 +142,8 @@
 		D2C7E20A22ADA05A00A024A5 /* NSManagedObjectContext+PerformAndWait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */; };
 		D2C7E20C22ADA0A500A024A5 /* SimilarPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */; };
 		D2C7E21422ADA37700A024A5 /* Collection+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */; };
-		D2C7E21622ADA38500A024A5 /* Purchase+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D202D10721EAEBF2008153FB /* Purchase+Date.swift */; };
 		D2C7E21922ADA38500A024A5 /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
 		D2C7E21A22ADA38500A024A5 /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */; };
-		D2C7E21B22ADA38500A024A5 /* Purchase+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28AC2110277300374975 /* Purchase+WillSave.swift */; };
 		D2C7E21C22ADA38500A024A5 /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */; };
 		D2C7E21D22ADA38500A024A5 /* Purchase+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD344222C835A0065D934 /* Purchase+Validate.swift */; };
 		D2C7E22122ADA38500A024A5 /* Model+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1920D8143900827F68 /* Model+Image.swift */; };
@@ -262,7 +260,6 @@
 /* Begin PBXFileReference section */
 		D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Similar.swift"; sourceTree = "<group>"; };
 		D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CountedElements.swift"; sourceTree = "<group>"; };
-		D202D10721EAEBF2008153FB /* Purchase+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Date.swift"; sourceTree = "<group>"; };
 		D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Similar.swift"; sourceTree = "<group>"; };
 		D212EA442150AEDA005FEED3 /* ClassificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationsTableViewController.swift; sourceTree = "<group>"; };
 		D212EA462150AF98005FEED3 /* ClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -396,7 +393,6 @@
 		D2A29EB022C2F25D002A9618 /* PurchaseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRow.swift; sourceTree = "<group>"; };
 		D2A29EB222C2F8F6002A9618 /* DecoderTypeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeRow.swift; sourceTree = "<group>"; };
 		D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimilarPurchaseTests.swift; sourceTree = "<group>"; };
-		D2AF28AC2110277300374975 /* Purchase+WillSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+WillSave.swift"; sourceTree = "<group>"; };
 		D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+Image.swift"; sourceTree = "<group>"; };
 		D2B6F08B22C2EF4700FF73F3 /* ModelRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRow.swift; sourceTree = "<group>"; };
@@ -818,10 +814,8 @@
 			isa = PBXGroup;
 			children = (
 				D2744E5A22F7B6C800ECEFFA /* Purchase+Models.swift */,
-				D202D10721EAEBF2008153FB /* Purchase+Date.swift */,
 				D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */,
 				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
-				D2AF28AC2110277300374975 /* Purchase+WillSave.swift */,
 				D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */,
 				D21DD344222C835A0065D934 /* Purchase+Validate.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
@@ -1257,7 +1251,6 @@
 				D26903832234BAFC002C7A48 /* ModelSpeakerPickerTableViewController.swift in Sources */,
 				D2F4EEE822307458008FB14A /* DecoderTypeIsProgrammableTableViewCell.swift in Sources */,
 				D23B8B9D21E2A18E004F994D /* ModelLightsTableViewCell.swift in Sources */,
-				D2C7E21B22ADA38500A024A5 /* Purchase+WillSave.swift in Sources */,
 				D2A29EB322C2F8F6002A9618 /* DecoderTypeRow.swift in Sources */,
 				D2F4EF0E2231F666008FB14A /* UINavigationController+PopDetail.swift in Sources */,
 				D2C7E23322ADA38500A024A5 /* TrainMember+Image.swift in Sources */,
@@ -1280,7 +1273,6 @@
 				D2C9787A2227913800AB3C1C /* PurchasePriceEditTableViewCell.swift in Sources */,
 				D2F4EEF4223074A8008FB14A /* DecoderTypeProductCodeEditTableViewCell.swift in Sources */,
 				D23B8BCD21E2B895004F994D /* ModelNotesTableViewCell.swift in Sources */,
-				D2C7E21622ADA38500A024A5 /* Purchase+Date.swift in Sources */,
 				D2C7E21A22ADA38500A024A5 /* Purchase+Similar.swift in Sources */,
 				D2F4EEBA222F2B22008FB14A /* DecoderTypesTableViewController.swift in Sources */,
 				D2C7E21D22ADA38500A024A5 /* Purchase+Validate.swift in Sources */,
