@@ -41,6 +41,19 @@ class SplitBetweenTests: XCTestCase {
         XCTAssertEqual(result, [[ 1, 2, 3, 2, 3, 4, 4, 3, 4, 6, 1, 1 ]])
     }
 
+    enum IntegerError: Error {
+        case gapTooLarge
+    }
+
+    /// Check that we can throw an error from the closure and catch it.
+    func testThrowingClosure() {
+        let integers = [ 1, 2, 3, 2, 3, 4, 4, 3, 4, 6, 1, 1 ]
+        XCTAssertThrowsError(try integers.split(between: {
+            guard abs($0 - $1) < 4 else { throw IntegerError.gapTooLarge }
+            return $1 - $0 > 2
+        }))
+    }
+
     // MARK: indexOfAdjacent
 
     /// Check that the function works as expected on Array.
@@ -65,5 +78,14 @@ class SplitBetweenTests: XCTestCase {
     func testIndexOfAdjacentMissing() {
         let integers = [ 1, 2, 3, 2, 3, 4, 4, 3, 4, 6, 1, 1 ]
         XCTAssertEqual(integers.indexOfAdjacent(where: { $1 - $0 > 2 }), nil)
+    }
+
+    /// Check that we can throw an error from the closure and catch it.
+    func testIndexOfThrowingClosure() {
+        let integers = [ 1, 2, 3, 2, 3, 4, 4, 3, 4, 6, 1, 1 ]
+        XCTAssertThrowsError(try integers.indexOfAdjacent(where: {
+            guard abs($0 - $1) < 4 else { throw IntegerError.gapTooLarge }
+            return $1 - $0 > 2
+        }))
     }
 }

@@ -26,12 +26,12 @@ extension Collection {
     ///   split between its first and second arguments.
     /// - Returns: An array of subsequences, split from this collection's elements.
     /// - Complexity: O(*n*), where *n* is the length of the collection.
-    public func split(between predicate: (Element, Element) -> Bool) -> [SubSequence] {
+    public func split(between predicate: (Element, Element) throws -> Bool) rethrows -> [SubSequence] {
         var parts: [SubSequence] = []
 
         var i = startIndex
         while i != endIndex {
-            if let j = self[i...].indexOfAdjacent(where: predicate) {
+            if let j = try self[i...].indexOfAdjacent(where: predicate) {
                 parts.append(self[i...j])
                 i = index(after: j)
             } else {
@@ -49,10 +49,10 @@ extension Collection {
     /// - Returns: Index in the collection where `predicate` returns `true` for the element at
     ///   that index, and its successor.
     /// - Complexity: O(*n*), where *n* is the length of the collection.
-    public func indexOfAdjacent(where predicate: (Element, Element) -> Bool) -> Index? {
-        return indices.first {
+    public func indexOfAdjacent(where predicate: (Element, Element) throws -> Bool) rethrows -> Index? {
+        return try indices.first {
             let successor = index(after: $0)
-            return successor != endIndex && predicate(self[$0], self[successor])
+            return try successor != endIndex && predicate(self[$0], self[successor])
         }
     }
 }
