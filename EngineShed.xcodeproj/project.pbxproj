@@ -143,7 +143,6 @@
 		D2C7E20C22ADA0A500A024A5 /* SimilarPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */; };
 		D2C7E20D22ADA0A500A024A5 /* CatalogNumberPrefixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */; };
 		D2C7E21422ADA37700A024A5 /* Collection+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */; };
-		D2C7E21522ADA38500A024A5 /* Purchase+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33F222B5D550065D934 /* Purchase+Number.swift */; };
 		D2C7E21622ADA38500A024A5 /* Purchase+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D202D10721EAEBF2008153FB /* Purchase+Date.swift */; };
 		D2C7E21922ADA38500A024A5 /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
 		D2C7E21A22ADA38500A024A5 /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */; };
@@ -155,12 +154,10 @@
 		D2C7E22422ADA38500A024A5 /* Model+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */; };
 		D2C7E22522ADA38500A024A5 /* Model+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269037722347330002C7A48 /* Model+Suggestions.swift */; };
 		D2C7E22622ADA38500A024A5 /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */; };
-		D2C7E22722ADA38500A024A5 /* DecoderType+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF072230991D008FB14A /* DecoderType+Number.swift */; };
 		D2C7E22822ADA38500A024A5 /* DecoderType+Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC6222F43C9008FB14A /* DecoderType+Stock.swift */; };
 		D2C7E22922ADA38500A024A5 /* DecoderType+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */; };
 		D2C7E22A22ADA38500A024A5 /* DecoderType+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC3222F43A4008FB14A /* DecoderType+WillSave.swift */; };
 		D2C7E22B22ADA38500A024A5 /* DecoderType+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */; };
-		D2C7E22C22ADA38500A024A5 /* Decoder+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF37223376C1008FB14A /* Decoder+Number.swift */; };
 		D2C7E22E22ADA38500A024A5 /* Decoder+Unallocated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC9222F4489008FB14A /* Decoder+Unallocated.swift */; };
 		D2C7E22F22ADA38500A024A5 /* Decoder+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */; };
 		D2C7E23222ADA38500A024A5 /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
@@ -271,7 +268,6 @@
 		D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Similar.swift"; sourceTree = "<group>"; };
 		D212EA442150AEDA005FEED3 /* ClassificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationsTableViewController.swift; sourceTree = "<group>"; };
 		D212EA462150AF98005FEED3 /* ClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationTableViewCell.swift; sourceTree = "<group>"; };
-		D21DD33F222B5D550065D934 /* Purchase+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Number.swift"; sourceTree = "<group>"; };
 		D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		D21DD344222C835A0065D934 /* Purchase+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Validate.swift"; sourceTree = "<group>"; };
 		D21DD34A222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConditionPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -473,7 +469,6 @@
 		D2F4EF01223094ED008FB14A /* DecoderTypeHasSoundEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeHasSoundEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF03223094F8008FB14A /* DecoderTypeMinimumStockEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeMinimumStockEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF05223094FF008FB14A /* DecoderTypeDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeDeleteTableViewCell.swift; sourceTree = "<group>"; };
-		D2F4EF072230991D008FB14A /* DecoderType+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Number.swift"; sourceTree = "<group>"; };
 		D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Suggestions.swift"; sourceTree = "<group>"; };
 		D2F4EF0D2231F666008FB14A /* UINavigationController+PopDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+PopDetail.swift"; sourceTree = "<group>"; };
 		D2F4EF1122335F2E008FB14A /* DecoderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTableViewController.swift; sourceTree = "<group>"; };
@@ -495,7 +490,6 @@
 		D2F4EF3122337578008FB14A /* DecoderSoundProjectEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderSoundProjectEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF3322337580008FB14A /* DecoderSoundProjectVersionEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderSoundProjectVersionEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF352233758A008FB14A /* DecoderSoundSettingsEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderSoundSettingsEditTableViewCell.swift; sourceTree = "<group>"; };
-		D2F4EF37223376C1008FB14A /* Decoder+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Number.swift"; sourceTree = "<group>"; };
 		D2F4EF3A22337B72008FB14A /* DecoderFirmwareDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderFirmwareDatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Suggestions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -827,7 +821,6 @@
 			isa = PBXGroup;
 			children = (
 				D2744E5A22F7B6C800ECEFFA /* Purchase+Models.swift */,
-				D21DD33F222B5D550065D934 /* Purchase+Number.swift */,
 				D202D10721EAEBF2008153FB /* Purchase+Date.swift */,
 				D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */,
 				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
@@ -840,12 +833,10 @@
 				D269037722347330002C7A48 /* Model+Suggestions.swift */,
 				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
 				D2744E5C22F7C03F00ECEFFA /* DecoderType+Decoders.swift */,
-				D2F4EF072230991D008FB14A /* DecoderType+Number.swift */,
 				D2F4EEC6222F43C9008FB14A /* DecoderType+Stock.swift */,
 				D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */,
 				D2F4EEC3222F43A4008FB14A /* DecoderType+WillSave.swift */,
 				D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */,
-				D2F4EF37223376C1008FB14A /* Decoder+Number.swift */,
 				D2F4EEC9222F4489008FB14A /* Decoder+Unallocated.swift */,
 				D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */,
 				D25828C021E028920094918F /* Train+Validate.swift */,
@@ -1108,7 +1099,6 @@
 				D2C7E23222ADA38500A024A5 /* Train+Validate.swift in Sources */,
 				D2820D0F2224A55E00D9B3F8 /* TrainMemberTableViewCell.swift in Sources */,
 				D269035C22345C5D002C7A48 /* ModelDeleteTableViewCell.swift in Sources */,
-				D2C7E22722ADA38500A024A5 /* DecoderType+Number.swift in Sources */,
 				D2C7E22422ADA38500A024A5 /* Model+Similar.swift in Sources */,
 				D2F4EEDE22307412008FB14A /* DecoderTypeEditTableViewController.swift in Sources */,
 				D2F4EF1222335F2E008FB14A /* DecoderTableViewController.swift in Sources */,
@@ -1182,7 +1172,6 @@
 				D295D8A621EADCF900BBD204 /* PurchasesTableViewController.swift in Sources */,
 				D2C7E22A22ADA38500A024A5 /* DecoderType+WillSave.swift in Sources */,
 				D28758262105FEEE00EF722D /* TrainMemberCollectionViewCell.swift in Sources */,
-				D2C7E21522ADA38500A024A5 /* Purchase+Number.swift in Sources */,
 				D2F4EF20223374B7008FB14A /* DecoderSoundProjectTableViewCell.swift in Sources */,
 				D2C978782227912E00AB3C1C /* PurchaseStoreEditTableViewCell.swift in Sources */,
 				D2744E5F22F7C21200ECEFFA /* ModelsList.swift in Sources */,
@@ -1231,7 +1220,6 @@
 				D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */,
 				D269037B2234B574002C7A48 /* ModelMotorPickerTableViewController.swift in Sources */,
 				D23B8BE621E2C129004F994D /* PurchasePriceTableViewCell.swift in Sources */,
-				D2C7E22C22ADA38500A024A5 /* Decoder+Number.swift in Sources */,
 				D2F4EF22223374BE008FB14A /* DecoderSoundProjectVersionTableViewCell.swift in Sources */,
 				D2744E6122F7C5FB00ECEFFA /* PurchasesList.swift in Sources */,
 				D2820D072224971D00D9B3F8 /* TrainTableViewController.swift in Sources */,

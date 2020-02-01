@@ -8,20 +8,13 @@
 
 import Foundation
 
-import Database
-
 extension Decoder {
-
     /// `address` formatted as string.
     var addressAsString: String? {
         get {
             if address == 0 { return nil }
             return String(address)
         }
-
-        set {
-            address = newValue.flatMap { Int16($0) } ?? 0
-        }
+        set { address = newValue.flatMap { Int16($0) } ?? 0 }
     }
-
 }

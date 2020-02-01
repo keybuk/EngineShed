@@ -8,20 +8,14 @@
 
 import Foundation
 
-import Database
-
 extension Purchase {
-
     /// `catalogYear` formatted as string.
     var catalogYearAsString: String? {
         get {
             if catalogYear == 0 { return nil }
             return String(catalogYear)
         }
-
-        set {
-            catalogYear = newValue.flatMap { Int16($0) } ?? 0
-        }
+        set { catalogYear = newValue.flatMap { Int16($0) } ?? 0 }
     }
 
     /// `limitedEditionNumber` formatted as string.
@@ -30,10 +24,7 @@ extension Purchase {
             if limitedEditionNumber == 0 { return nil }
             return String(limitedEditionNumber)
         }
-
-        set {
-            limitedEditionNumber = newValue.flatMap { Int16($0) } ?? 0
-        }
+        set { limitedEditionNumber = newValue.flatMap { Int16($0) } ?? 0 }
     }
 
     /// `limitedEditionCount` formatted as string.
@@ -42,10 +33,6 @@ extension Purchase {
             if limitedEditionCount == 0 { return nil }
             return String(limitedEditionCount)
         }
-
-        set {
-            limitedEditionCount = newValue.flatMap { Int16($0) } ?? 0
-        }
+        set { limitedEditionCount = newValue.flatMap { Int16($0) } ?? 0 }
     }
-
 }
