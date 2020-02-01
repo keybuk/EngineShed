@@ -145,7 +145,6 @@
 		D2C7E21422ADA37700A024A5 /* Collection+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */; };
 		D2C7E21522ADA38500A024A5 /* Purchase+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33F222B5D550065D934 /* Purchase+Number.swift */; };
 		D2C7E21622ADA38500A024A5 /* Purchase+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D202D10721EAEBF2008153FB /* Purchase+Date.swift */; };
-		D2C7E21722ADA38500A024A5 /* Purchase+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33C222B524B0065D934 /* Purchase+Currency.swift */; };
 		D2C7E21922ADA38500A024A5 /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
 		D2C7E21A22ADA38500A024A5 /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */; };
 		D2C7E21B22ADA38500A024A5 /* Purchase+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28AC2110277300374975 /* Purchase+WillSave.swift */; };
@@ -272,7 +271,6 @@
 		D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Similar.swift"; sourceTree = "<group>"; };
 		D212EA442150AEDA005FEED3 /* ClassificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationsTableViewController.swift; sourceTree = "<group>"; };
 		D212EA462150AF98005FEED3 /* ClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationTableViewCell.swift; sourceTree = "<group>"; };
-		D21DD33C222B524B0065D934 /* Purchase+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Currency.swift"; sourceTree = "<group>"; };
 		D21DD33F222B5D550065D934 /* Purchase+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Number.swift"; sourceTree = "<group>"; };
 		D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		D21DD344222C835A0065D934 /* Purchase+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Validate.swift"; sourceTree = "<group>"; };
@@ -831,7 +829,6 @@
 				D2744E5A22F7B6C800ECEFFA /* Purchase+Models.swift */,
 				D21DD33F222B5D550065D934 /* Purchase+Number.swift */,
 				D202D10721EAEBF2008153FB /* Purchase+Date.swift */,
-				D21DD33C222B524B0065D934 /* Purchase+Currency.swift */,
 				D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */,
 				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
 				D2AF28AC2110277300374975 /* Purchase+WillSave.swift */,
@@ -1159,7 +1156,6 @@
 				D23B8BA521E2AD6E004F994D /* ModelDecoderTypeTableViewCell.swift in Sources */,
 				D2C978662227733200AB3C1C /* PurchaseDeleteTableViewCell.swift in Sources */,
 				D2C7E21422ADA37700A024A5 /* Collection+CountedElements.swift in Sources */,
-				D2C7E21722ADA38500A024A5 /* Purchase+Currency.swift in Sources */,
 				D2C7E22622ADA38500A024A5 /* Model+FetchRequests.swift in Sources */,
 				D23B8BC721E2B79F004F994D /* ModelTasksTableViewCell.swift in Sources */,
 				D2C7E21C22ADA38500A024A5 /* Purchase+FetchRequests.swift in Sources */,

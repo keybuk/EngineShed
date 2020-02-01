@@ -41,6 +41,8 @@
 		D22B4D3E23E51A8300CB1F6E /* Model+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D3C23E51A8300CB1F6E /* Model+Date.swift */; };
 		D22B4D4023E51AA300CB1F6E /* Decoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D3F23E51AA300CB1F6E /* Decoder+Date.swift */; };
 		D22B4D4123E51AA300CB1F6E /* Decoder+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D3F23E51AA300CB1F6E /* Decoder+Date.swift */; };
+		D22B4D4323E51C9A00CB1F6E /* Purchase+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D4223E51C9A00CB1F6E /* Purchase+Currency.swift */; };
+		D22B4D4423E51C9A00CB1F6E /* Purchase+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D4223E51C9A00CB1F6E /* Purchase+Currency.swift */; };
 		D24D474723E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D24D474823E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */; };
 		D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */; };
@@ -89,6 +91,7 @@
 		D22B4D3923E5167E00CB1F6E /* Purchase+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Date.swift"; sourceTree = "<group>"; };
 		D22B4D3C23E51A8300CB1F6E /* Model+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Date.swift"; sourceTree = "<group>"; };
 		D22B4D3F23E51AA300CB1F6E /* Decoder+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Decoder+Date.swift"; sourceTree = "<group>"; };
+		D22B4D4223E51C9A00CB1F6E /* Purchase+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Currency.swift"; sourceTree = "<group>"; };
 		D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureUnarchiveDateComponentsFromDataTransformer.swift; sourceTree = "<group>"; };
 		D24D474B23E162D0001F09C2 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		D2E458C323E147FF00EC76E0 /* EngineShed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EngineShed.xcdatamodel; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 				D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */,
 				D22B4D2923E5102700CB1F6E /* Purchase+Condition.swift */,
 				D22B4D3923E5167E00CB1F6E /* Purchase+Date.swift */,
+				D22B4D4223E51C9A00CB1F6E /* Purchase+Currency.swift */,
 				D22B4D2F23E5105200CB1F6E /* Model+Classification.swift */,
 				D22B4D3523E511C300CB1F6E /* Model+Era.swift */,
 				D22B4D3223E5108B00CB1F6E /* Model+Disposition.swift */,
@@ -386,6 +390,7 @@
 				D22B4D4123E51AA300CB1F6E /* Decoder+Date.swift in Sources */,
 				D22B4D2A23E5102700CB1F6E /* Purchase+Condition.swift in Sources */,
 				D22B4D3023E5105200CB1F6E /* Model+Classification.swift in Sources */,
+				D22B4D4323E51C9A00CB1F6E /* Purchase+Currency.swift in Sources */,
 				D24D474C23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
 				D213DF3E23E0B3CA0003C771 /* Test.swift in Sources */,
 				D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
@@ -418,6 +423,7 @@
 				D22B4D4023E51AA300CB1F6E /* Decoder+Date.swift in Sources */,
 				D22B4D2B23E5102700CB1F6E /* Purchase+Condition.swift in Sources */,
 				D22B4D3123E5105200CB1F6E /* Model+Classification.swift in Sources */,
+				D22B4D4423E51C9A00CB1F6E /* Purchase+Currency.swift in Sources */,
 				D24D474D23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
 				D213DF5B23E0B5BE0003C771 /* Test.swift in Sources */,
 				D24D474A23E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,

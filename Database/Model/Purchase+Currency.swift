@@ -8,12 +8,9 @@
 
 import Foundation
 
-import Database
-
 extension Purchase {
-
     /// Formatter for currency types.
-    var currencyFormatter: NumberFormatter {
+    public var currencyFormatter: NumberFormatter {
         let locale = Locale(identifier: "en_GB")
 
         let formatter = NumberFormatter()
@@ -24,13 +21,8 @@ extension Purchase {
     }
 
     /// `price` formatted as string using `currencyFormatter`.
-    var priceAsString: String? {
-        get {
-            price.flatMap {
-                currencyFormatter.string(from: $0)
-            }
-        }
-
+    public var priceAsString: String? {
+        get { price.flatMap { currencyFormatter.string(from: $0) } }
         set {
             price = newValue.flatMap {
                 currencyFormatter.number(from: $0) as? NSDecimalNumber
@@ -39,18 +31,12 @@ extension Purchase {
     }
 
     /// `valuation` formatted as string using `currencyFormatter`.
-    var valuationAsString: String? {
-        get {
-            valuation.flatMap {
-                currencyFormatter.string(from: $0)
-            }
-        }
-
+    public var valuationAsString: String? {
+        get { valuation.flatMap { currencyFormatter.string(from: $0) } }
         set {
             valuation = newValue.flatMap {
                 currencyFormatter.number(from: $0) as? NSDecimalNumber
             }
         }
     }
-
 }
