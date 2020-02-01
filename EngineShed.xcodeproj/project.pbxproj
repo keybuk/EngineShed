@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D20EE69822B7657A00165553 /* SplitBetweenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EE69722B7657A00165553 /* SplitBetweenTests.swift */; };
 		D212EA452150AEDA005FEED3 /* ClassificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA442150AEDA005FEED3 /* ClassificationsTableViewController.swift */; };
 		D212EA472150AF98005FEED3 /* ClassificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212EA462150AF98005FEED3 /* ClassificationTableViewCell.swift */; };
 		D21DD343222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */; };
@@ -144,7 +143,6 @@
 		D2C7E20C22ADA0A500A024A5 /* SimilarPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */; };
 		D2C7E20D22ADA0A500A024A5 /* CatalogNumberPrefixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */; };
 		D2C7E21022ADA37200A024A5 /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */; };
-		D2C7E21322ADA37700A024A5 /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */; };
 		D2C7E21422ADA37700A024A5 /* Collection+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */; };
 		D2C7E21522ADA38500A024A5 /* Purchase+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD33F222B5D550065D934 /* Purchase+Number.swift */; };
 		D2C7E21622ADA38500A024A5 /* Purchase+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D202D10721EAEBF2008153FB /* Purchase+Date.swift */; };
@@ -274,14 +272,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SplitBetween.swift"; sourceTree = "<group>"; };
 		D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Similar.swift"; sourceTree = "<group>"; };
 		D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CountedElements.swift"; sourceTree = "<group>"; };
 		D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNumberPrefixTests.swift; sourceTree = "<group>"; };
 		D202D10721EAEBF2008153FB /* Purchase+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Date.swift"; sourceTree = "<group>"; };
 		D202D10A21EB0670008153FB /* Model+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Date.swift"; sourceTree = "<group>"; };
 		D202D11021EB199E008153FB /* Decoder+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Date.swift"; sourceTree = "<group>"; };
-		D20EE69722B7657A00165553 /* SplitBetweenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBetweenTests.swift; sourceTree = "<group>"; };
 		D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Similar.swift"; sourceTree = "<group>"; };
 		D212EA442150AEDA005FEED3 /* ClassificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationsTableViewController.swift; sourceTree = "<group>"; };
 		D212EA462150AF98005FEED3 /* ClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -830,7 +826,6 @@
 			children = (
 				D200F97920E07D2C003BC8D1 /* CatalogNumberPrefixTests.swift */,
 				D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */,
-				D20EE69722B7657A00165553 /* SplitBetweenTests.swift */,
 				D2B7C96F20D4BA31001B51B1 /* Info.plist */,
 			);
 			path = EngineShedTests;
@@ -839,7 +834,6 @@
 		D2C7E20722AD9FF200A024A5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				D200F96F20DE23BA003BC8D1 /* Collection+SplitBetween.swift */,
 				D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */,
 				D2DE5CC220F8550A00CABE34 /* ConvertibleFromString.swift */,
 			);
@@ -1184,7 +1178,6 @@
 				D2DE5CB520F82CAB00CABE34 /* ModelTableViewCell.swift in Sources */,
 				D23B8B8F21E29C2B004F994D /* ModelNameTableViewCell.swift in Sources */,
 				D2C9787C2227913E00AB3C1C /* PurchaseConditionEditTableViewCell.swift in Sources */,
-				D2C7E21322ADA37700A024A5 /* Collection+SplitBetween.swift in Sources */,
 				D23B8BDC21E2C042004F994D /* PurchaseCatalogDescriptionTableViewCell.swift in Sources */,
 				D23B8BA921E2AE7D004F994D /* ModelDecoderFirmwareVersionTableViewCell.swift in Sources */,
 				D23B8BA521E2AD6E004F994D /* ModelDecoderTypeTableViewCell.swift in Sources */,
@@ -1351,7 +1344,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D20EE69822B7657A00165553 /* SplitBetweenTests.swift in Sources */,
 				D2C7E20C22ADA0A500A024A5 /* SimilarPurchaseTests.swift in Sources */,
 				D2C7E20D22ADA0A500A024A5 /* CatalogNumberPrefixTests.swift in Sources */,
 			);
