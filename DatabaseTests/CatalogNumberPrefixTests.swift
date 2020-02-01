@@ -1,6 +1,6 @@
 //
 //  CatalogNumberPrefixTests.swift
-//  EngineShedTests
+//  EngineShed
 //
 //  Created by Scott James Remnant on 6/24/18.
 //  Copyright © 2018 Scott James Remnant. All rights reserved.
@@ -9,11 +9,9 @@
 import XCTest
 import CoreData
 
-import Database
-@testable import EngineShed
+@testable import Database
 
-class CatalogNumberPrefixTests : XCTestCase {
-
+class CatalogNumberPrefixTests: XCTestCase {
     var container: NSPersistentContainer?
 
     override func setUp() {
@@ -32,8 +30,6 @@ class CatalogNumberPrefixTests : XCTestCase {
         super.tearDown()
     }
 
-    // MARK: - catalogNumberPrefix
-
     // MARK: Hornby
 
     /// Check that a basic Hornby R2702 number isn't modified.
@@ -42,7 +38,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Hornby"
         purchase.catalogNumber = "R2702"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "R2702")
     }
 
@@ -52,7 +48,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Hornby"
         purchase.catalogNumber = "R296"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "R296")
     }
 
@@ -62,7 +58,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Hornby"
         purchase.catalogNumber = "R2290D"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "R2290")
     }
 
@@ -72,7 +68,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Hornby"
         purchase.catalogNumber = "R3390TTS"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "R3390")
     }
 
@@ -84,7 +80,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Bachmann"
         purchase.catalogNumber = "31-654"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "31-654")
     }
 
@@ -94,7 +90,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Bachmann"
         purchase.catalogNumber = "32-452A"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "32-452")
     }
 
@@ -104,7 +100,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Bachmann"
         purchase.catalogNumber = "31-657Z"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "31-657")
     }
 
@@ -114,7 +110,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Bachmann"
         purchase.catalogNumber = "31-650QDS"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "31-650")
     }
 
@@ -126,7 +122,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Dapol"
         purchase.catalogNumber = "4D-006-000"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "4D-006-")
     }
 
@@ -136,7 +132,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Dapol"
         purchase.catalogNumber = "4D-022-001S"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "4D-022-")
     }
 
@@ -146,7 +142,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Dapol"
         purchase.catalogNumber = "4D-009-HAT05"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "4D-009-")
     }
 
@@ -156,7 +152,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Dapol"
         purchase.catalogNumber = "4D-009-DCC1"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "4D-009-")
     }
 
@@ -166,7 +162,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Dapol"
         purchase.catalogNumber = "DAGM101"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "DAGM101")
     }
 
@@ -176,7 +172,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Dapol"
         purchase.catalogNumber = "OLIV001"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "OLIV001")
     }
 
@@ -188,7 +184,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Hattons"
         purchase.catalogNumber = "H4-P-012"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "H4-P-")
     }
 
@@ -200,7 +196,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Realtrack"
         purchase.catalogNumber = "143-212"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "143-")
     }
 
@@ -212,7 +208,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Oxford Rail"
         purchase.catalogNumber = "OR763TO002"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "OR763TO002")
     }
 
@@ -222,7 +218,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Oxford Rail"
         purchase.catalogNumber = "OR763TO002B"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "OR763TO002")
     }
 
@@ -232,7 +228,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Oxford Diecast"
         purchase.catalogNumber = "76CONT001"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "76CONT001")
     }
 
@@ -242,7 +238,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Oxford Diecast"
         purchase.catalogNumber = "76CONT00124"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "76CONT001")
     }
 
@@ -254,7 +250,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Heljan"
         purchase.catalogNumber = "3356"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "3356")
     }
 
@@ -264,7 +260,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Rapido"
         purchase.catalogNumber = "13501"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "13501")
     }
 
@@ -274,8 +270,7 @@ class CatalogNumberPrefixTests : XCTestCase {
         purchase.manufacturer = "Britannia Models"
         purchase.catalogNumber = "GLV"
 
-        let catalogNumberPrefix = purchase.makePrefix(from: purchase.catalogNumber!)
+        let catalogNumberPrefix = purchase.makeCatalogNumberPrefix(from: purchase.catalogNumber!)
         XCTAssertEqual(catalogNumberPrefix, "GLV")
     }
-
 }
