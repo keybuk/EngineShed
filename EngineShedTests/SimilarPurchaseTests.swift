@@ -19,7 +19,7 @@ class SimilarPurchaseTests : XCTestCase {
     override func setUp() {
         super.setUp()
 
-        container = PersistentContainer(name: "EngineShed")
+        container = NSPersistentContainer(name: "EngineShed", managedObjectModel: PersistentContainer.shared.managedObjectModel)
         container!.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         container!.loadPersistentStores { (storeDescription, error) in
             XCTAssertNil(error)
