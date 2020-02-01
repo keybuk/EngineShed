@@ -8,12 +8,9 @@
 
 import Foundation
 
-import Database
-
 extension Decoder {
-
     /// Formatter for date types.
-    var dateFormatter: DateFormatter {
+    public var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
@@ -21,26 +18,18 @@ extension Decoder {
     }
 
     /// `firmwareDate` as `Date` in current time zone.
-    var firmwareDateAsDate: Date? {
-        get {
-            firmwareDate.flatMap { dateComponents -> Date? in
-                let calendar = Calendar.current
-                return calendar.date(from: dateComponents)
-            }
-        }
-
+    public var firmwareDateAsDate: Date? {
+        get { firmwareDate.flatMap { Calendar.current.date(from: $0) } }
         set {
-            firmwareDate = newValue.flatMap {
-                let calendar = Calendar.current
-                return calendar.dateComponents([ .year, .month, .day ], from: $0)
+            firmwareDate = newValue.map {
+                Calendar.current.dateComponents([ .year, .month, .day ], from: $0)
             }
         }
     }
 
     /// `firmwareDate` formatted as string using `dateFormatter`.
-    var firmwareDateAsString: String? {
-        get { firmwareDateAsDate.flatMap { return dateFormatter.string(from: $0) } }
+    public var firmwareDateAsString: String? {
+        get { firmwareDateAsDate.map { dateFormatter.string(from: $0) } }
         set { firmwareDateAsDate = newValue.flatMap { dateFormatter.date(from: $0) } }
     }
-
 }
