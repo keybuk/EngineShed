@@ -56,7 +56,7 @@ extension Model {
             NSSortDescriptor(key: "modelClass", ascending: true),
             NSSortDescriptor(key: "number", ascending: true),
             NSSortDescriptor(key: "name", ascending: true),
-            NSSortDescriptor(key: "dispositionRawValue", ascending: true)
+            NSSortDescriptor(key: "dispositionRawValue", ascending: true),
         ])
         fetchRequest.sortDescriptors = sortDescriptors
 

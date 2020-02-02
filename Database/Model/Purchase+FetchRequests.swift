@@ -31,14 +31,14 @@ extension Purchase {
                 NSSortDescriptor(key: "dateForSort", ascending: false),
                 NSSortDescriptor(key: "store", ascending: true),
                 NSSortDescriptor(key: "manufacturer", ascending: true),
-                NSSortDescriptor(key: "catalogNumber", ascending: true)
+                NSSortDescriptor(key: "catalogNumber", ascending: true),
             ])
         case .catalog:
             sortDescriptors.append(contentsOf: [
                 NSSortDescriptor(key: "manufacturer", ascending: true),
                 NSSortDescriptor(key: "catalogNumber", ascending: true),
                 NSSortDescriptor(key: "dateForSort", ascending: true),
-                NSSortDescriptor(key: "store", ascending: true)
+                NSSortDescriptor(key: "store", ascending: true),
             ])
         }
         fetchRequest.sortDescriptors = sortDescriptors

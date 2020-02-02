@@ -62,7 +62,7 @@ extension Model.Era: CaseIterable {
         .brSectorisation,
         .initialPrivatisation,
         .rebuildingOfTheRailways,
-        .currentEra
+        .currentEra,
     ]
 
     /// Initialize a structure from a standard era.

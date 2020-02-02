@@ -19,7 +19,7 @@ extension DecoderType {
             NSSortDescriptor(key: "minimumStock", ascending: false),
             NSSortDescriptor(key: "manufacturer", ascending: true),
             NSSortDescriptor(key: "productCode", ascending: true),
-            NSSortDescriptor(key: "socket", ascending: true)
+            NSSortDescriptor(key: "socket", ascending: true),
         ])
         fetchRequest.sortDescriptors = sortDescriptors
 
@@ -43,7 +43,7 @@ extension DecoderType {
                 NSPredicate(format: "soundAuthor = nil OR soundAuthor = ''"),
                 NSPredicate(format: "soundProject = nil OR soundProject = ''"),
                 NSPredicate(format: "soundProjectVersion = nil OR soundProjectVersion = ''"),
-                NSPredicate(format: "soundSettings = nil OR soundSettings = ''")
+                NSPredicate(format: "soundSettings = nil OR soundSettings = ''"),
             ]))
         }
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
