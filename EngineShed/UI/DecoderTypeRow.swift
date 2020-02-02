@@ -33,7 +33,7 @@ struct DecoderTypeRow : View {
                     .font(.caption)
             }
 
-            if decoderType.minimumStock > 0 || decoderType.remainingStock > 0 {
+            if decoderType.isStocked {
                 Spacer()
                 DecoderTypeStock(decoderType: decoderType)
             }

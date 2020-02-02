@@ -149,7 +149,7 @@ extension DecoderTypesViewController : NSTableViewDelegate {
         view.socketField.stringValue = decoderType.socket ?? ""
 
         view.countButton.title = "\(decoderType.remainingStockAsString)"
-        view.countButton.isHidden = decoderType.minimumStock == 0
+        view.countButton.isHidden = !decoderType.isStocked
 
         return view
     }

@@ -81,7 +81,7 @@ class DecoderTypeViewController: NSViewController {
         guard case .decoderType(let decoderType) = currentRecord else { return }
         
         self.decoderType = decoderType
-        decoders = Array(decoderType.unallocatedDecoders())
+        decoders = decoderType.unallocatedDecoders()
         sortDecoders()
         
         reloadData()

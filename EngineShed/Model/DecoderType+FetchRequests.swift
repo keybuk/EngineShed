@@ -27,20 +27,5 @@ extension DecoderType {
 
         return fetchRequest
     }
-
-    func fetchRequestForDecoders() -> NSFetchRequest<Decoder> {
-        let fetchRequest: NSFetchRequest<Decoder> = Decoder.fetchRequest()
-        fetchRequest.fetchBatchSize = 20
-
-        fetchRequest.predicate = NSPredicate(format: "type = %@ AND model = NULL", self)
-
-        var sortDescriptors: [NSSortDescriptor] = []
-        sortDescriptors.append(NSSortDescriptor(key: "serialNumber", ascending: true))
-
-        fetchRequest.sortDescriptors = sortDescriptors
-
-        return fetchRequest
-    }
-
 }
 

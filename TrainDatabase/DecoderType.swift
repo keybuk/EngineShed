@@ -51,8 +51,11 @@ extension DecoderType {
     }
     
     // FIXME: this means decoders with no model, not unallocated in the newer sense.
-    func unallocatedDecoders() -> Set<Decoder> {
-        return (decoders! as! Set<Decoder>).filter({ $0.model == nil })
+    func unallocatedDecoders() -> [Decoder] {
+        let fetchRequest = fetchRequestForDecoders()
+
+        let results = try! managedObjectContext!.fetch(fetchRequest)
+        return results
     }
     
     static func all(in context: NSManagedObjectContext) throws -> [DecoderType] {

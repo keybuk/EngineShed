@@ -40,14 +40,11 @@ class DecoderTypeTableViewCell : UITableViewCell {
         productFamilyLabel.text = decoderType?.productFamily
         socketLabel.text = decoderType?.socket
 
-        if let minimumStock = decoderType?.minimumStock,
-            let remainingStock = decoderType?.remainingStock,
-            minimumStock > 0
-        {
-            stockButton.setTitle("\(remainingStock)", for: .normal)
+        if decoderType?.isStocked ?? false {
+            stockButton.setTitle("\(decoderType?.remainingStockAsString ?? "")", for: .normal)
             stockButton.isHidden = false
 
-            if remainingStock < minimumStock {
+            if decoderType?.isStockLow ?? false {
                 stockButton.tintColor = UIColor(named: "stockLowColor")
             } else {
                 stockButton.tintColor = UIColor(named: "stockNormalColor")

@@ -151,11 +151,8 @@
 		D2C7E22422ADA38500A024A5 /* Model+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */; };
 		D2C7E22522ADA38500A024A5 /* Model+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269037722347330002C7A48 /* Model+Suggestions.swift */; };
 		D2C7E22622ADA38500A024A5 /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */; };
-		D2C7E22822ADA38500A024A5 /* DecoderType+Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC6222F43C9008FB14A /* DecoderType+Stock.swift */; };
 		D2C7E22922ADA38500A024A5 /* DecoderType+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */; };
-		D2C7E22A22ADA38500A024A5 /* DecoderType+WillSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC3222F43A4008FB14A /* DecoderType+WillSave.swift */; };
 		D2C7E22B22ADA38500A024A5 /* DecoderType+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */; };
-		D2C7E22E22ADA38500A024A5 /* Decoder+Unallocated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEC9222F4489008FB14A /* Decoder+Unallocated.swift */; };
 		D2C7E22F22ADA38500A024A5 /* Decoder+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */; };
 		D2C7E23222ADA38500A024A5 /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
 		D2C7E23322ADA38500A024A5 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
@@ -432,9 +429,6 @@
 		D2F4EEBB222F2E07008FB14A /* DecoderTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2F4EEC1222F3175008FB14A /* DecoderTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeTableViewController.swift; sourceTree = "<group>"; };
-		D2F4EEC3222F43A4008FB14A /* DecoderType+WillSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+WillSave.swift"; sourceTree = "<group>"; };
-		D2F4EEC6222F43C9008FB14A /* DecoderType+Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Stock.swift"; sourceTree = "<group>"; };
-		D2F4EEC9222F4489008FB14A /* Decoder+Unallocated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Unallocated.swift"; sourceTree = "<group>"; };
 		D2F4EECE2230662F008FB14A /* TrainMemberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberTableViewController.swift; sourceTree = "<group>"; };
 		D2F4EED022306638008FB14A /* TrainMemberEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberEditTableViewController.swift; sourceTree = "<group>"; };
 		D2F4EED222306647008FB14A /* TrainMemberTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberTitleTableViewCell.swift; sourceTree = "<group>"; };
@@ -824,11 +818,8 @@
 				D269037722347330002C7A48 /* Model+Suggestions.swift */,
 				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
 				D2744E5C22F7C03F00ECEFFA /* DecoderType+Decoders.swift */,
-				D2F4EEC6222F43C9008FB14A /* DecoderType+Stock.swift */,
 				D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */,
-				D2F4EEC3222F43A4008FB14A /* DecoderType+WillSave.swift */,
 				D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */,
-				D2F4EEC9222F4489008FB14A /* Decoder+Unallocated.swift */,
 				D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */,
 				D25828C021E028920094918F /* Train+Validate.swift */,
 				D2744E5822F491F700ECEFFA /* Train+Members.swift */,
@@ -1161,7 +1152,6 @@
 				D2F4EECF2230662F008FB14A /* TrainMemberTableViewController.swift in Sources */,
 				D23B8BAD21E2AEAF004F994D /* ModelDecoderAddressTableViewCell.swift in Sources */,
 				D295D8A621EADCF900BBD204 /* PurchasesTableViewController.swift in Sources */,
-				D2C7E22A22ADA38500A024A5 /* DecoderType+WillSave.swift in Sources */,
 				D28758262105FEEE00EF722D /* TrainMemberCollectionViewCell.swift in Sources */,
 				D2F4EF20223374B7008FB14A /* DecoderSoundProjectTableViewCell.swift in Sources */,
 				D2C978782227912E00AB3C1C /* PurchaseStoreEditTableViewCell.swift in Sources */,
@@ -1207,7 +1197,6 @@
 				D2C978742227911A00AB3C1C /* PurchaseLimitedEditionCountEditTableViewCell.swift in Sources */,
 				D23B8BEE21E2C172004F994D /* PurchaseNotesTableViewCell.swift in Sources */,
 				D23B8B8921E29A37004F994D /* ModelClassificationTableViewCell.swift in Sources */,
-				D2C7E22E22ADA38500A024A5 /* Decoder+Unallocated.swift in Sources */,
 				D2B7C95420D4BA30001B51B1 /* AppDelegate.swift in Sources */,
 				D269037B2234B574002C7A48 /* ModelMotorPickerTableViewController.swift in Sources */,
 				D23B8BE621E2C129004F994D /* PurchasePriceTableViewCell.swift in Sources */,
@@ -1233,7 +1222,6 @@
 				D2744E5722F48F8D00ECEFFA /* Train+FetchRequests.swift in Sources */,
 				D23B8BCB21E2B7DD004F994D /* ModelLastOilTableViewCell.swift in Sources */,
 				D2F4EF26223374D0008FB14A /* DecoderDeleteTableViewCell.swift in Sources */,
-				D2C7E22822ADA38500A024A5 /* DecoderType+Stock.swift in Sources */,
 				D2F4EF1E223374AF008FB14A /* DecoderSoundAuthorTableViewCell.swift in Sources */,
 				D2A29EB122C2F25D002A9618 /* PurchaseRow.swift in Sources */,
 				D2F4EF2822337549008FB14A /* DecoderSerialNumberEditTableViewCell.swift in Sources */,

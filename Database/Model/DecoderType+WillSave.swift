@@ -8,12 +8,9 @@
 
 import Foundation
 
-import Database
-
 extension DecoderType {
-
     public override func willSave() {
-        updateRemainingStock()
+        let newRemainingStock = makeRemainingStock()
+        if remainingStock != newRemainingStock { remainingStock = newRemainingStock }
     }
-
 }
