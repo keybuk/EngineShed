@@ -15,9 +15,9 @@ extension Model : Identifiable {}
 
 struct ModelsList : View {
     var classification: Model.Classification?
-    var grouping: ModelGrouping = .modelClass
+    var sort: Model.Sort = .modelClass
 
-    @FetchRequest(fetchRequest: Model.fetchRequestForModels(classification: nil, groupBy: .modelClass))
+    @FetchRequest(fetchRequest: Model.fetchRequestForModels(classification: nil, sortedBy: .modelClass))
     var models: FetchedResults<Model>
 
     var body: some View {

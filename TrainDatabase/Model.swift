@@ -339,32 +339,15 @@ extension Model {
 
     
     static func matching(classification: Classification, in context: NSManagedObjectContext) throws -> [Model] {
-        let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "classificationRawValue = \(classification.rawValue)")
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "modelClass", ascending: true),
-            NSSortDescriptor(key: "number", ascending: true),
-            NSSortDescriptor(key: "name", ascending: true),
-            NSSortDescriptor(key: "dispositionRawValue", ascending: true)
-        ]
-        
+        let fetchRequest = Model.fetchRequestForModels(classification: classification)
+
         let results = try context.fetch(fetchRequest)
         return results
     }
-    
-    static let searchFields = [ "modelClass", "number", "name", "purchase.catalogNumber", "purchase.catalogDescription", "decoder.serialNumber" ]
-    
-    static func matching(search: String, in context: NSManagedObjectContext) throws -> [Model] {
-        let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "modelClass", ascending: true),
-            NSSortDescriptor(key: "number", ascending: true),
-            NSSortDescriptor(key: "name", ascending: true),
-            NSSortDescriptor(key: "dispositionRawValue", ascending: true)
-        ]
 
-        fetchRequest.predicate = NSCompoundPredicate(orPredicateWithSubpredicates: searchFields.map({ NSPredicate(format: "\($0) CONTAINS[c] %@", search) }))
-        
+    static func matching(search: String, in context: NSManagedObjectContext) throws -> [Model] {
+        let fetchRequest = Model.fetchRequestForModels(matching: search)
+
         let results = try context.fetch(fetchRequest)
         return results
     }

@@ -16,14 +16,14 @@ class ModelsTableViewController : UITableViewController, NSFetchedResultsControl
     var persistentContainer: NSPersistentContainer?
 
     var classification: Model.Classification?
-    var grouping: ModelGrouping = .modelClass
+    var sort: Model.Sort = .modelClass
     var fetchRequest: NSFetchRequest<Model>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if fetchRequest == nil {
-            fetchRequest = Model.fetchRequestForModels(classification: classification, groupBy: grouping)
+            fetchRequest = Model.fetchRequestForModels(classification: classification, sortedBy: sort)
         }
     }
 
@@ -48,13 +48,13 @@ class ModelsTableViewController : UITableViewController, NSFetchedResultsControl
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "model", for: indexPath) as! ModelTableViewCell
         let model = fetchedResultsController.object(at: indexPath)
-        cell.grouping = grouping
+        cell.sort = sort
         cell.model = model
         return cell
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch grouping {
+        switch sort {
         case .era:
             let model = fetchedResultsController.sections?[section].objects?.first as? Model
             return model?.era?.description
@@ -74,7 +74,7 @@ class ModelsTableViewController : UITableViewController, NSFetchedResultsControl
             else { preconditionFailure("Cannot construct controller without fetchRequest and context") }
 
         let sectionNameKeyPath = fetchRequest.sortDescriptors?.first?.key
-        let cacheName = classification.flatMap { "ModelTable.\($0).\(grouping)" } ?? "ModelTable.all.\(grouping)"
+        let cacheName = classification.flatMap { "ModelTable.\($0).\(sort)" } ?? "ModelTable.all.\(sort)"
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
         fetchedResultsController.delegate = self
@@ -117,12 +117,12 @@ class ModelsTableViewController : UITableViewController, NSFetchedResultsControl
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
             if let cell = tableView.cellForRow(at: indexPath!) as? ModelTableViewCell {
-                cell.grouping = grouping
+                cell.sort = sort
                 cell.model = anObject as? Model
             }
         case .move:
             if let cell = tableView.cellForRow(at: indexPath!) as? ModelTableViewCell {
-                cell.grouping = grouping
+                cell.sort = sort
                 cell.model = anObject as? Model
             }
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
@@ -139,14 +139,14 @@ class ModelsTableViewController : UITableViewController, NSFetchedResultsControl
 
     @IBAction func groupChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0: grouping = .modelClass
-        case 1: grouping = .era
-        case 2: grouping = .livery
+        case 0: sort = .modelClass
+        case 1: sort = .era
+        case 2: sort = .livery
         default: return
         }
 
         _fetchedResultsController = nil
-        fetchRequest = Model.fetchRequestForModels(classification: classification, groupBy: grouping)
+        fetchRequest = Model.fetchRequestForModels(classification: classification, sortedBy: sort)
         tableView.reloadData()
     }
 

@@ -73,6 +73,8 @@
 		D2FF6E7923E64D160063257D /* DecoderType+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E7723E64D160063257D /* DecoderType+FetchRequests.swift */; };
 		D2FF6E7B23E6530F0063257D /* DecoderStockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E7A23E6530F0063257D /* DecoderStockTests.swift */; };
 		D2FF6E7C23E6530F0063257D /* DecoderStockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E7A23E6530F0063257D /* DecoderStockTests.swift */; };
+		D2FF6E7E23E6808E0063257D /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E7D23E6808E0063257D /* Model+FetchRequests.swift */; };
+		D2FF6E7F23E6808E0063257D /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E7D23E6808E0063257D /* Model+FetchRequests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +134,7 @@
 		D2FF6E7423E6463A0063257D /* Decoder+Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Stock.swift"; sourceTree = "<group>"; };
 		D2FF6E7723E64D160063257D /* DecoderType+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2FF6E7A23E6530F0063257D /* DecoderStockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderStockTests.swift; sourceTree = "<group>"; };
+		D2FF6E7D23E6808E0063257D /* Model+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+FetchRequests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +253,7 @@
 				D22B4D3523E511C300CB1F6E /* Model+Era.swift */,
 				D22B4D3223E5108B00CB1F6E /* Model+Disposition.swift */,
 				D22B4D3C23E51A8300CB1F6E /* Model+Date.swift */,
+				D2FF6E7D23E6808E0063257D /* Model+FetchRequests.swift */,
 				D2FF6E6E23E6461B0063257D /* DecoderType+Stock.swift */,
 				D2FF6E7123E646240063257D /* DecoderType+WillSave.swift */,
 				D2FF6E7723E64D160063257D /* DecoderType+FetchRequests.swift */,
@@ -452,6 +456,7 @@
 				D22B4D5023E6364D00CB1F6E /* Purchase+CatalogNumber.swift in Sources */,
 				D22B4D5923E638B500CB1F6E /* Purchase+WillSave.swift in Sources */,
 				D22B4D3323E5108B00CB1F6E /* Model+Disposition.swift in Sources */,
+				D2FF6E7E23E6808E0063257D /* Model+FetchRequests.swift in Sources */,
 				D22B4D0A23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */,
 				D24D474723E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
 				D22B4D2323E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */,
@@ -497,6 +502,7 @@
 				D22B4D5123E6364D00CB1F6E /* Purchase+CatalogNumber.swift in Sources */,
 				D22B4D5A23E638B500CB1F6E /* Purchase+WillSave.swift in Sources */,
 				D22B4D3423E5108B00CB1F6E /* Model+Disposition.swift in Sources */,
+				D2FF6E7F23E6808E0063257D /* Model+FetchRequests.swift in Sources */,
 				D22B4D0B23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */,
 				D24D474823E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
 				D22B4D2423E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */,

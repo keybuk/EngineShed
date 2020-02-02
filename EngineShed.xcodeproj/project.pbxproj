@@ -149,7 +149,6 @@
 		D2C7E22322ADA38500A024A5 /* Model+Lists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */; };
 		D2C7E22422ADA38500A024A5 /* Model+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */; };
 		D2C7E22522ADA38500A024A5 /* Model+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269037722347330002C7A48 /* Model+Suggestions.swift */; };
-		D2C7E22622ADA38500A024A5 /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */; };
 		D2C7E22922ADA38500A024A5 /* DecoderType+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */; };
 		D2C7E22F22ADA38500A024A5 /* Decoder+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */; };
 		D2C7E23322ADA38500A024A5 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
@@ -385,7 +384,6 @@
 		D2A29EB022C2F25D002A9618 /* PurchaseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRow.swift; sourceTree = "<group>"; };
 		D2A29EB222C2F8F6002A9618 /* DecoderTypeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeRow.swift; sourceTree = "<group>"; };
 		D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimilarPurchaseTests.swift; sourceTree = "<group>"; };
-		D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+Image.swift"; sourceTree = "<group>"; };
 		D2B6F08B22C2EF4700FF73F3 /* ModelRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRow.swift; sourceTree = "<group>"; };
 		D2B7C95120D4BA30001B51B1 /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -809,7 +807,6 @@
 				D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */,
 				D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */,
 				D269037722347330002C7A48 /* Model+Suggestions.swift */,
-				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
 				D2744E5C22F7C03F00ECEFFA /* DecoderType+Decoders.swift */,
 				D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */,
 				D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */,
@@ -1118,7 +1115,6 @@
 				D23B8BA521E2AD6E004F994D /* ModelDecoderTypeTableViewCell.swift in Sources */,
 				D2C978662227733200AB3C1C /* PurchaseDeleteTableViewCell.swift in Sources */,
 				D2C7E21422ADA37700A024A5 /* Collection+CountedElements.swift in Sources */,
-				D2C7E22622ADA38500A024A5 /* Model+FetchRequests.swift in Sources */,
 				D23B8BC721E2B79F004F994D /* ModelTasksTableViewCell.swift in Sources */,
 				D2C7E21C22ADA38500A024A5 /* Purchase+FetchRequests.swift in Sources */,
 				D23B8BB121E2AEE6004F994D /* ModelDecoderSoundProjectTableViewCell.swift in Sources */,

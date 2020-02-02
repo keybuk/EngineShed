@@ -17,7 +17,7 @@ class ModelTableViewCell : UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
 
-    var grouping: ModelGrouping?
+    var sort: Model.Sort?
 
     var model: Model? {
         didSet {
@@ -39,7 +39,7 @@ class ModelTableViewCell : UITableViewCell {
     func configureCell() {
         modelImageView.image = model?.image
         modelClassLabel.text = model?.modelClass
-        modelClassLabel.isHidden = grouping == .modelClass
+        modelClassLabel.isHidden = sort == .modelClass
         numberLabel.text = model?.number
         nameLabel.text = model?.name
     }
