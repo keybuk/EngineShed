@@ -21,25 +21,4 @@ extension Train {
             return false
         }
     }
-
-    static func fetchRequestForTrains() -> NSFetchRequest<Train> {
-        let fetchRequest: NSFetchRequest<Train> = Train.fetchRequest()
-
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "name", ascending: true)
-        ]
-
-        return fetchRequest
-    }
-
-    func fetchRequestForMembers() -> NSFetchRequest<TrainMember> {
-        let fetchRequest: NSFetchRequest<TrainMember> = TrainMember.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "train = %@", self)
-
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "train", ascending: true)
-        ]
-
-        return fetchRequest
-    }
 }
