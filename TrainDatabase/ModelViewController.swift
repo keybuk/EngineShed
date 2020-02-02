@@ -698,10 +698,10 @@ extension ModelViewController : NSCollectionViewDelegate {
         case .before:
             // Dropping between members rearranges the train.
             if oldIndexPath.item < indexPath.item {
-                train.moveMember(trainMembers[oldIndexPath.item], before: trainMembers[indexPath.item - 1])
+                train.moveMemberAt(oldIndexPath.item, to: indexPath.item - 1)
                 collectionView.moveItem(at: oldIndexPath, to: IndexPath(item: indexPath.item - 1, section: indexPath.section))
             } else {
-                train.moveMember(trainMembers[oldIndexPath.item], before: trainMembers[indexPath.item])
+                train.moveMemberAt(oldIndexPath.item, to: indexPath.item)
                 collectionView.moveItem(at: oldIndexPath, to: indexPath)
             }
             try? train.managedObjectContext?.save() // FIXME
