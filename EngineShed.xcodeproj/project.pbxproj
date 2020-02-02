@@ -145,7 +145,6 @@
 		D2C7E21922ADA38500A024A5 /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
 		D2C7E21A22ADA38500A024A5 /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */; };
 		D2C7E21C22ADA38500A024A5 /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */; };
-		D2C7E21D22ADA38500A024A5 /* Purchase+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DD344222C835A0065D934 /* Purchase+Validate.swift */; };
 		D2C7E22122ADA38500A024A5 /* Model+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1920D8143900827F68 /* Model+Image.swift */; };
 		D2C7E22322ADA38500A024A5 /* Model+Lists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */; };
 		D2C7E22422ADA38500A024A5 /* Model+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */; };
@@ -153,7 +152,6 @@
 		D2C7E22622ADA38500A024A5 /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */; };
 		D2C7E22922ADA38500A024A5 /* DecoderType+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */; };
 		D2C7E22F22ADA38500A024A5 /* Decoder+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */; };
-		D2C7E23222ADA38500A024A5 /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
 		D2C7E23322ADA38500A024A5 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
 		D2C7E23422ADA38500A024A5 /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
 		D2C7E23822ADA5AE00A024A5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C7E23722ADA5AE00A024A5 /* CloudKit.framework */; };
@@ -260,7 +258,6 @@
 		D212EA442150AEDA005FEED3 /* ClassificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationsTableViewController.swift; sourceTree = "<group>"; };
 		D212EA462150AF98005FEED3 /* ClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationTableViewCell.swift; sourceTree = "<group>"; };
 		D21DD342222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDatePickerTableViewCell.swift; sourceTree = "<group>"; };
-		D21DD344222C835A0065D934 /* Purchase+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Validate.swift"; sourceTree = "<group>"; };
 		D21DD34A222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConditionPickerTableViewController.swift; sourceTree = "<group>"; };
 		D23132F623E1408E0001812F /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23B8B8821E29A37004F994D /* ModelClassificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelClassificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -314,7 +311,6 @@
 		D25828B721DC43A10094918F /* TrainMemberEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberEditTableViewCell.swift; sourceTree = "<group>"; };
 		D25828B921DC43D70094918F /* TrainAddMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainAddMemberCell.swift; sourceTree = "<group>"; };
 		D25828BE21E0225D0094918F /* TrainDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDeleteTableViewCell.swift; sourceTree = "<group>"; };
-		D25828C021E028920094918F /* Train+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Validate.swift"; sourceTree = "<group>"; };
 		D2599EA022B85B3900A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ModelDetail.storyboard; sourceTree = "<group>"; };
 		D2599EA522B85B7400A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ModelsList.storyboard; sourceTree = "<group>"; };
 		D2599EAC22B85CD600A252C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PurchasesList.storyboard; sourceTree = "<group>"; };
@@ -809,7 +805,6 @@
 				D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */,
 				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
 				D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */,
-				D21DD344222C835A0065D934 /* Purchase+Validate.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
 				D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */,
 				D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */,
@@ -818,7 +813,6 @@
 				D2744E5C22F7C03F00ECEFFA /* DecoderType+Decoders.swift */,
 				D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */,
 				D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */,
-				D25828C021E028920094918F /* Train+Validate.swift */,
 				D2744E5822F491F700ECEFFA /* Train+Members.swift */,
 				D2744E5622F48F8D00ECEFFA /* Train+FetchRequests.swift */,
 				D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */,
@@ -1075,7 +1069,6 @@
 				D26903722234724C002C7A48 /* ModelEraPickerTableViewController.swift in Sources */,
 				D269037F2234BAEB002C7A48 /* ModelSpeakerEditTableViewCell.swift in Sources */,
 				D23B8BC521E2B5B3004F994D /* ModelModificationsTableViewCell.swift in Sources */,
-				D2C7E23222ADA38500A024A5 /* Train+Validate.swift in Sources */,
 				D2820D0F2224A55E00D9B3F8 /* TrainMemberTableViewCell.swift in Sources */,
 				D269035C22345C5D002C7A48 /* ModelDeleteTableViewCell.swift in Sources */,
 				D2C7E22422ADA38500A024A5 /* Model+Similar.swift in Sources */,
@@ -1259,7 +1252,6 @@
 				D23B8BCD21E2B895004F994D /* ModelNotesTableViewCell.swift in Sources */,
 				D2C7E21A22ADA38500A024A5 /* Purchase+Similar.swift in Sources */,
 				D2F4EEBA222F2B22008FB14A /* DecoderTypesTableViewController.swift in Sources */,
-				D2C7E21D22ADA38500A024A5 /* Purchase+Validate.swift in Sources */,
 				D2C978702227910900AB3C1C /* PurchaseLimitedEditionEditTableViewCell.swift in Sources */,
 				D271A9FA22B700460083E9AA /* SceneDelegate.swift in Sources */,
 				D269036A2234720E002C7A48 /* ModelDetailsEditTableViewCell.swift in Sources */,
