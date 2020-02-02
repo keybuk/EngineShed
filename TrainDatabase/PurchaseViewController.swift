@@ -79,9 +79,9 @@ class PurchaseViewController: NSViewController {
     func updateCurrentRecord() {
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
-        
-        purchase = model.purchase!
-        
+        guard let modelPurchase = model.purchase else { return }
+
+        purchase = modelPurchase
         reloadData()
         
         if purchase.manufacturer?.isEmpty ?? true {
