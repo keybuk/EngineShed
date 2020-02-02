@@ -1,5 +1,5 @@
 //
-//  DerivedDatesTests.swift
+//  PurchaseDateTests.swift
 //  EngineShed
 //
 //  Created by Scott James Remnant on 2/1/20.
@@ -11,7 +11,7 @@ import CoreData
 
 @testable import Database
 
-class DerivedDatesTests: XCTestCase {
+class PurchaseDateTests: XCTestCase {
     var container: NSPersistentContainer?
 
     override func setUp() {
