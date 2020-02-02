@@ -12,4 +12,5 @@ import Foundation
 final class SecureUnarchiveDateComponentsFromDataTransformer: NSSecureUnarchiveFromDataTransformer {
     override class var allowedTopLevelClasses: [AnyClass] { [NSDateComponents.self] }
     override class func allowsReverseTransformation() -> Bool { true }
+    override class func transformedValueClass() -> AnyClass { NSData.self }
 }

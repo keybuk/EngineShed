@@ -12,7 +12,15 @@ import CoreData
 ///
 /// This also turns out to be a useful place to connect the core data persistent store with the
 /// CloudKit observer and provider.
-public final class PersistentContainer: NSPersistentContainer {
+public final class PersistentContainer: NSPersistentCloudKitContainer {
+    private override init(name: String, managedObjectModel model: NSManagedObjectModel) {
+        ValueTransformer.setValueTransformer(
+            SecureUnarchiveDateComponentsFromDataTransformer(),
+            forName: NSValueTransformerName(rawValue: "SecureUnarchiveDateComponentsFromDataTransformer"))
+
+        super.init(name: name, managedObjectModel: model)
+    }
+
     /// Shared container instance.
     ///
     /// This is used to ensure the running app, and unit tests running within it, share the same
