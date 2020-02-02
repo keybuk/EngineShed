@@ -59,12 +59,8 @@ extension DecoderType {
     }
     
     static func all(in context: NSManagedObjectContext) throws -> [DecoderType] {
-        let fetchRequest: NSFetchRequest<DecoderType> = DecoderType.fetchRequest()
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "manufacturer", ascending: true),
-            NSSortDescriptor(key: "productCode", ascending: true)
-        ]
-        
+        let fetchRequest = fetchRequestForDecoderTypes()
+
         let results = try context.fetch(fetchRequest)
         return results
     }

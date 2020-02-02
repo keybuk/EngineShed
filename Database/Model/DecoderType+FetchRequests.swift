@@ -10,6 +10,20 @@ import Foundation
 import CoreData
 
 extension DecoderType {
+    /// Returns an `NSFetchRequest` for all decoder types.
+    public static func fetchRequestForDecoderTypes() -> NSFetchRequest<DecoderType> {
+        let fetchRequest: NSFetchRequest<DecoderType> = DecoderType.fetchRequest()
+
+        var sortDescriptors: [NSSortDescriptor] = []
+        sortDescriptors.append(NSSortDescriptor(key: "minimumStock", ascending: false))
+        sortDescriptors.append(NSSortDescriptor(key: "manufacturer", ascending: true))
+        sortDescriptors.append(NSSortDescriptor(key: "productCode", ascending: true))
+        sortDescriptors.append(NSSortDescriptor(key: "socket", ascending: true))
+        fetchRequest.sortDescriptors = sortDescriptors
+
+        return fetchRequest
+    }
+
     /// Returns an `NSFetchRequest` for all decoders of this type.
     /// - Parameter includingFitted: `true` if decoders fitted to models should be included, default: `false`.
     /// - Parameter includingAllocated: `true` if decoders allocated to sound projects should be included, default `true`.

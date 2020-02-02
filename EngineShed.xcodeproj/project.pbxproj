@@ -152,7 +152,6 @@
 		D2C7E22522ADA38500A024A5 /* Model+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269037722347330002C7A48 /* Model+Suggestions.swift */; };
 		D2C7E22622ADA38500A024A5 /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */; };
 		D2C7E22922ADA38500A024A5 /* DecoderType+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */; };
-		D2C7E22B22ADA38500A024A5 /* DecoderType+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */; };
 		D2C7E22F22ADA38500A024A5 /* Decoder+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */; };
 		D2C7E23222ADA38500A024A5 /* Train+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25828C021E028920094918F /* Train+Validate.swift */; };
 		D2C7E23322ADA38500A024A5 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
@@ -427,7 +426,6 @@
 		D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Suggestions.swift"; sourceTree = "<group>"; };
 		D2F4EEB9222F2B22008FB14A /* DecoderTypesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypesTableViewController.swift; sourceTree = "<group>"; };
 		D2F4EEBB222F2E07008FB14A /* DecoderTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeTableViewCell.swift; sourceTree = "<group>"; };
-		D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2F4EEC1222F3175008FB14A /* DecoderTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeTableViewController.swift; sourceTree = "<group>"; };
 		D2F4EECE2230662F008FB14A /* TrainMemberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberTableViewController.swift; sourceTree = "<group>"; };
 		D2F4EED022306638008FB14A /* TrainMemberEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberEditTableViewController.swift; sourceTree = "<group>"; };
@@ -819,7 +817,6 @@
 				D2AF28B821102DBC00374975 /* Model+FetchRequests.swift */,
 				D2744E5C22F7C03F00ECEFFA /* DecoderType+Decoders.swift */,
 				D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */,
-				D2F4EEBD222F2F61008FB14A /* DecoderType+FetchRequests.swift */,
 				D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */,
 				D25828C021E028920094918F /* Train+Validate.swift */,
 				D2744E5822F491F700ECEFFA /* Train+Members.swift */,
@@ -1165,7 +1162,6 @@
 				D2820D092224A52000D9B3F8 /* TrainNameTableViewCell.swift in Sources */,
 				D23B8BAF21E2AECB004F994D /* ModelDecoderSoundAuthorTableViewCell.swift in Sources */,
 				D269035A2234595C002C7A48 /* ModelEditTableViewController.swift in Sources */,
-				D2C7E22B22ADA38500A024A5 /* DecoderType+FetchRequests.swift in Sources */,
 				D25828B021DC39AC0094918F /* TrainEditTableViewController.swift in Sources */,
 				D23B8BAB21E2AE96004F994D /* ModelDecoderFirmwareDateTableViewCell.swift in Sources */,
 				D23B8B9121E29C3E004F994D /* ModelLiveryTableViewCell.swift in Sources */,
