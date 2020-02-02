@@ -26,16 +26,20 @@ extension Purchase {
         var sortDescriptors: [NSSortDescriptor] = []
         switch sort {
         case .date:
-            sortDescriptors.append(NSSortDescriptor(key: "dateForGrouping", ascending: false))
-            sortDescriptors.append(NSSortDescriptor(key: "dateForSort", ascending: false))
-            sortDescriptors.append(NSSortDescriptor(key: "store", ascending: true))
-            sortDescriptors.append(NSSortDescriptor(key: "manufacturer", ascending: true))
-            sortDescriptors.append(NSSortDescriptor(key: "catalogNumber", ascending: true))
+            sortDescriptors.append(contentsOf: [
+                NSSortDescriptor(key: "dateForGrouping", ascending: false),
+                NSSortDescriptor(key: "dateForSort", ascending: false),
+                NSSortDescriptor(key: "store", ascending: true),
+                NSSortDescriptor(key: "manufacturer", ascending: true),
+                NSSortDescriptor(key: "catalogNumber", ascending: true)
+            ])
         case .catalog:
-            sortDescriptors.append(NSSortDescriptor(key: "manufacturer", ascending: true))
-            sortDescriptors.append(NSSortDescriptor(key: "catalogNumber", ascending: true))
-            sortDescriptors.append(NSSortDescriptor(key: "dateForSort", ascending: true))
-            sortDescriptors.append(NSSortDescriptor(key: "store", ascending: true))
+            sortDescriptors.append(contentsOf: [
+                NSSortDescriptor(key: "manufacturer", ascending: true),
+                NSSortDescriptor(key: "catalogNumber", ascending: true),
+                NSSortDescriptor(key: "dateForSort", ascending: true),
+                NSSortDescriptor(key: "store", ascending: true)
+            ])
         }
         fetchRequest.sortDescriptors = sortDescriptors
 

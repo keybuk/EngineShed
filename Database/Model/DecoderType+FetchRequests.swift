@@ -15,10 +15,12 @@ extension DecoderType {
         let fetchRequest: NSFetchRequest<DecoderType> = DecoderType.fetchRequest()
 
         var sortDescriptors: [NSSortDescriptor] = []
-        sortDescriptors.append(NSSortDescriptor(key: "minimumStock", ascending: false))
-        sortDescriptors.append(NSSortDescriptor(key: "manufacturer", ascending: true))
-        sortDescriptors.append(NSSortDescriptor(key: "productCode", ascending: true))
-        sortDescriptors.append(NSSortDescriptor(key: "socket", ascending: true))
+        sortDescriptors.append(contentsOf: [
+            NSSortDescriptor(key: "minimumStock", ascending: false),
+            NSSortDescriptor(key: "manufacturer", ascending: true),
+            NSSortDescriptor(key: "productCode", ascending: true),
+            NSSortDescriptor(key: "socket", ascending: true)
+        ])
         fetchRequest.sortDescriptors = sortDescriptors
 
         return fetchRequest
