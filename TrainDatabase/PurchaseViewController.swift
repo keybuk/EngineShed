@@ -106,14 +106,14 @@ class PurchaseViewController: NSViewController {
         storeComboBox.dataSource = storeComboBoxDataSource
         storeComboBox.stringValue = purchase.store ?? ""
         
-        priceTextField.objectValue = purchase.priceAsDecimal
+        priceTextField.objectValue = purchase.price
         
         conditionComboBoxDataSource = EnumComboBoxDataSource(wrapping: Purchase.Condition.self)
         conditionComboBox.dataSource = conditionComboBoxDataSource
         conditionComboBox.formatter = conditionComboBoxDataSource
         conditionComboBox.objectValue = purchase.condition.map(NSArray.init(object:))
     
-        valuationTextField.objectValue = purchase.valuationAsDecimal
+        valuationTextField.objectValue = purchase.valuation
         notesTextField.stringValue = purchase.notes ?? ""
     }
     
@@ -183,7 +183,7 @@ class PurchaseViewController: NSViewController {
     }
     
     @IBAction func priceChanged(_ sender: NSTextField) {
-        purchase.priceAsDecimal = sender.objectValue as? Decimal
+        purchase.price = sender.objectValue as? NSDecimalNumber
         try? purchase.managedObjectContext?.save() // FIXME
     }
     
@@ -193,7 +193,7 @@ class PurchaseViewController: NSViewController {
     }
     
     @IBAction func valuationChanged(_ sender: NSTextField) {
-        purchase.valuationAsDecimal = sender.objectValue as? Decimal
+        purchase.valuation = sender.objectValue as? NSDecimalNumber
         try? purchase.managedObjectContext?.save() // FIXME
     }
     

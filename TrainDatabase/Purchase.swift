@@ -12,16 +12,6 @@ import CoreData
 import Database
 
 extension Purchase {
-    var priceAsDecimal: Decimal? {
-        get { price as Decimal? }
-        set { price = newValue as NSDecimalNumber? }
-    }
-    
-    var valuationAsDecimal: Decimal? {
-        get { valuation as Decimal? }
-        set { valuation = newValue as NSDecimalNumber? }
-    }
-    
     func addModel() -> Model {
         let model = Model(context: managedObjectContext!)
         model.purchase = self
