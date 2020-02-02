@@ -108,9 +108,7 @@
 		D26903912234E536002C7A48 /* ModelNotesEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26903902234E536002C7A48 /* ModelNotesEditTableViewCell.swift */; };
 		D271A9FA22B700460083E9AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D271A9F922B700460083E9AA /* SceneDelegate.swift */; };
 		D27300342224F9390002CEF9 /* PurchaseEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27300332224F9390002CEF9 /* PurchaseEditTableViewController.swift */; };
-		D2744E5722F48F8D00ECEFFA /* Train+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2744E5622F48F8D00ECEFFA /* Train+FetchRequests.swift */; };
 		D2744E5922F491F700ECEFFA /* Train+Members.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2744E5822F491F700ECEFFA /* Train+Members.swift */; };
-		D2744E5B22F7B6C800ECEFFA /* Purchase+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2744E5A22F7B6C800ECEFFA /* Purchase+Models.swift */; };
 		D2744E5D22F7C03F00ECEFFA /* DecoderType+Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2744E5C22F7C03F00ECEFFA /* DecoderType+Decoders.swift */; };
 		D2744E5F22F7C21200ECEFFA /* ModelsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2744E5E22F7C21200ECEFFA /* ModelsList.swift */; };
 		D2744E6122F7C5FB00ECEFFA /* PurchasesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2744E6022F7C5FB00ECEFFA /* PurchasesList.swift */; };
@@ -142,7 +140,6 @@
 		D2C7E20A22ADA05A00A024A5 /* NSManagedObjectContext+PerformAndWait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */; };
 		D2C7E21422ADA37700A024A5 /* Collection+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */; };
 		D2C7E21922ADA38500A024A5 /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
-		D2C7E21C22ADA38500A024A5 /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */; };
 		D2C7E22122ADA38500A024A5 /* Model+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1920D8143900827F68 /* Model+Image.swift */; };
 		D2C7E22322ADA38500A024A5 /* Model+Lists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */; };
 		D2C7E22422ADA38500A024A5 /* Model+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */; };
@@ -150,7 +147,6 @@
 		D2C7E22922ADA38500A024A5 /* DecoderType+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */; };
 		D2C7E22F22ADA38500A024A5 /* Decoder+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */; };
 		D2C7E23322ADA38500A024A5 /* TrainMember+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */; };
-		D2C7E23422ADA38500A024A5 /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */; };
 		D2C7E23822ADA5AE00A024A5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C7E23722ADA5AE00A024A5 /* CloudKit.framework */; };
 		D2C978662227733200AB3C1C /* PurchaseDeleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C978652227733200AB3C1C /* PurchaseDeleteTableViewCell.swift */; };
 		D2C97868222790E000AB3C1C /* PurchaseManufacturerEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C97867222790E000AB3C1C /* PurchaseManufacturerEditTableViewCell.swift */; };
@@ -354,9 +350,7 @@
 		D26903902234E536002C7A48 /* ModelNotesEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNotesEditTableViewCell.swift; sourceTree = "<group>"; };
 		D271A9F922B700460083E9AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D27300332224F9390002CEF9 /* PurchaseEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseEditTableViewController.swift; sourceTree = "<group>"; };
-		D2744E5622F48F8D00ECEFFA /* Train+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2744E5822F491F700ECEFFA /* Train+Members.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Members.swift"; sourceTree = "<group>"; };
-		D2744E5A22F7B6C800ECEFFA /* Purchase+Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Models.swift"; sourceTree = "<group>"; };
 		D2744E5C22F7C03F00ECEFFA /* DecoderType+Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+Decoders.swift"; sourceTree = "<group>"; };
 		D2744E5E22F7C21200ECEFFA /* ModelsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsList.swift; sourceTree = "<group>"; };
 		D2744E6022F7C5FB00ECEFFA /* PurchasesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesList.swift; sourceTree = "<group>"; };
@@ -369,14 +363,12 @@
 		D2820D0C2224A53000D9B3F8 /* TrainNotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainNotesTableViewCell.swift; sourceTree = "<group>"; };
 		D2820D0E2224A55E00D9B3F8 /* TrainMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberTableViewCell.swift; sourceTree = "<group>"; };
 		D2820D102224AF9400D9B3F8 /* PurchaseModelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModelTableViewCell.swift; sourceTree = "<group>"; };
-		D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
 		D28758252105FEEE00EF722D /* TrainMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		D287582721060FE700EF722D /* TrainHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		D289A84F22C6C6100074A3FC /* RowImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowImage.swift; sourceTree = "<group>"; };
 		D289A85222C6C9AA0074A3FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D295D8A521EADCF900BBD204 /* PurchasesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewController.swift; sourceTree = "<group>"; };
 		D295D8A721EADD0800BBD204 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
-		D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+FetchRequests.swift"; sourceTree = "<group>"; };
 		D298CAEA20D7118A00827F68 /* EngineShed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EngineShed.entitlements; sourceTree = "<group>"; };
 		D298CB1920D8143900827F68 /* Model+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Image.swift"; sourceTree = "<group>"; };
 		D2A29EB022C2F25D002A9618 /* PurchaseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRow.swift; sourceTree = "<group>"; };
@@ -797,9 +789,7 @@
 		D2C7E20B22ADA08600A024A5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D2744E5A22F7B6C800ECEFFA /* Purchase+Models.swift */,
 				D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */,
-				D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
 				D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */,
 				D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */,
@@ -808,9 +798,7 @@
 				D2F4EF0A2230995E008FB14A /* DecoderType+Suggestions.swift */,
 				D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */,
 				D2744E5822F491F700ECEFFA /* Train+Members.swift */,
-				D2744E5622F48F8D00ECEFFA /* Train+FetchRequests.swift */,
 				D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */,
-				D28758222105FB7400EF722D /* TrainMember+FetchRequests.swift */,
 				D280AF8222C580960074CCCD /* PreviewData.swift */,
 			);
 			path = Model;
@@ -1113,11 +1101,9 @@
 				D2C978662227733200AB3C1C /* PurchaseDeleteTableViewCell.swift in Sources */,
 				D2C7E21422ADA37700A024A5 /* Collection+CountedElements.swift in Sources */,
 				D23B8BC721E2B79F004F994D /* ModelTasksTableViewCell.swift in Sources */,
-				D2C7E21C22ADA38500A024A5 /* Purchase+FetchRequests.swift in Sources */,
 				D23B8BB121E2AEE6004F994D /* ModelDecoderSoundProjectTableViewCell.swift in Sources */,
 				D269036C22347215002C7A48 /* ModelEraEditTableViewCell.swift in Sources */,
 				D21DD343222C64FC0065D934 /* PurchaseDatePickerTableViewCell.swift in Sources */,
-				D2C7E23422ADA38500A024A5 /* TrainMember+FetchRequests.swift in Sources */,
 				D25828B621DC43950094918F /* TrainNotesEditTableViewCell.swift in Sources */,
 				D23B8B9721E29CD2004F994D /* ModelDispositionTableViewCell.swift in Sources */,
 				D2F4EED922306660008FB14A /* TrainMemberIsFlippedEditTableViewCell.swift in Sources */,
@@ -1194,14 +1180,12 @@
 				D23B8BB921E2AF3A004F994D /* ModelSpeakerTableViewCell.swift in Sources */,
 				D21DD34B222D9E0D0065D934 /* PurchaseConditionPickerTableViewController.swift in Sources */,
 				D269037422347253002C7A48 /* ModelClassificationPickerTableViewController.swift in Sources */,
-				D2744E5B22F7B6C800ECEFFA /* Purchase+Models.swift in Sources */,
 				D2C978762227912200AB3C1C /* PurchaseDateEditTableViewCell.swift in Sources */,
 				D2F4EEF22230749D008FB14A /* DecoderTypeManufacturerEditTableViewCell.swift in Sources */,
 				D2F4EEEE22307484008FB14A /* DecoderTypeMinimumStockTableViewCell.swift in Sources */,
 				D2DE5CB320F82A3100CABE34 /* ModelsTableViewController.swift in Sources */,
 				D280AF8522C58D140074CCCD /* PreviewDebug.swift in Sources */,
 				D289A85022C6C6100074A3FC /* RowImage.swift in Sources */,
-				D2744E5722F48F8D00ECEFFA /* Train+FetchRequests.swift in Sources */,
 				D23B8BCB21E2B7DD004F994D /* ModelLastOilTableViewCell.swift in Sources */,
 				D2F4EF26223374D0008FB14A /* DecoderDeleteTableViewCell.swift in Sources */,
 				D2F4EF1E223374AF008FB14A /* DecoderSoundAuthorTableViewCell.swift in Sources */,

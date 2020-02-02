@@ -45,4 +45,17 @@ extension Purchase {
 
         return fetchRequest
     }
+
+    /// Returns an `NSFetchRequest` for all models in this purchase.
+    public func fetchRequestForModels() -> NSFetchRequest<Model> {
+        let fetchRequest: NSFetchRequest<Model> = Model.fetchRequest()
+
+        fetchRequest.predicate = NSPredicate(format: "purchase = %@", self)
+
+        var sortDescriptors: [NSSortDescriptor] = []
+        sortDescriptors.append(NSSortDescriptor(key: "index", ascending: true))
+        fetchRequest.sortDescriptors = sortDescriptors
+
+        return fetchRequest
+    }
 }

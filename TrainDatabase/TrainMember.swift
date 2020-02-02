@@ -15,8 +15,7 @@ extension TrainMember {
     @discardableResult
     func deleteIfUnused() -> Bool {
         if model == nil && (title?.isEmpty ?? true) {
-            managedObjectContext?.delete(self)
-            try? managedObjectContext?.save() // FIXME
+            train?.removeMember(self)
             return true
         } else {
             return false

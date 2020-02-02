@@ -21,4 +21,11 @@ extension Train {
             return false
         }
     }
+
+    func members() -> [TrainMember] {
+        let fetchRequest = fetchRequestForMembers()
+
+        let results = try! managedObjectContext!.fetch(fetchRequest)
+        return results
+    }
 }

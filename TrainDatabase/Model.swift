@@ -117,10 +117,6 @@ extension Model {
         trainMember?.train = train
     }
     
-    func delete() {
-        managedObjectContext?.delete(self)
-    }
-    
     static let unwantedTasks = [ "Renumber", "Relabel", "Repair" ]
 
     func addSuggestedTasks() {
@@ -280,8 +276,8 @@ extension Model {
         let modelsInMultiples = models.reduce(into: [Purchase: [Model]](), { $0[$1.purchase!, default: []].append($1) }).filter({ $0.key != purchase && $0.value.count > 1 }).flatMap({ $0.value })
 
         // Further filter to the set of models within those purchases that are at the same position within the purchase as this model. This should correctly match the front or rear equivalent of a multiple unit, where such things are common.
-        let position = (purchase!.models!.array as! [Model]).firstIndex(of: self)
-        let equivalentModels = modelsInMultiples.filter({ ($0.purchase!.models!.array as! [Model]).firstIndex(of: $0) == position })
+        let position = purchase!.models().firstIndex(of: self)
+        let equivalentModels = modelsInMultiples.filter({ $0.purchase!.models().firstIndex(of: $0) == position })
         
         // Add in any model that is not a multiple in a purchase.
         let results = Set(models).subtracting(modelsInMultiples).union(equivalentModels)

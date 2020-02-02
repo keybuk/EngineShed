@@ -319,10 +319,8 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
 
         NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange(_:)), name: .NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
 
-        model = Model(context: managedObjectContext!)
-    
         if let purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase {
-            purchase.addModel(model!)
+            model = purchase.addModel()
         }
     }
     
@@ -477,7 +475,7 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
         guard let model = model else { return }
         
         do {
-            managedObjectContext.delete(model)
+            model.purchase?.removeModel(model)
             try managedObjectContext.save()
             
             // Give the view context a chance to receive the merge notification before running

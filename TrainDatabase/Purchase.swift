@@ -12,12 +12,6 @@ import CoreData
 import Database
 
 extension Purchase {
-    func addModel() -> Model {
-        let model = Model(context: managedObjectContext!)
-        model.purchase = self
-        return model
-    }
-
     func sortedValuesForManufacturer(startingWith string: String? = nil) throws -> [String] {
         return try sortedValues(for: "manufacturer", ascending: true, startingWith: string)
     }
@@ -25,7 +19,6 @@ extension Purchase {
     func sortedValuesForStore(startingWith string: String? = nil) throws -> [String] {
         return try sortedValues(for: "store", ascending: true, startingWith: string)
     }
-    
     
     func fillFromSimilar() throws -> Bool {
         let similarPurchases = similar()
@@ -44,16 +37,21 @@ extension Purchase {
         }
         
         // Don't do model copying if they're already filled out, since we wipe it.
-        let models = self.models!.array as! [Model]
+        let models = self.models()
         guard models.count <= 1 else { return exactMatch }
         guard models.first?.classification == nil else { return exactMatch }
-        models.first?.delete()
+        if let existingModel = models.first {
+            removeModel(existingModel)
+        }
 
         // This is a weird bit, see what the most frequent number of models is - it should always be the same, but keep our "going for the mode" approach.
         // Right now this simply ignores missing models, or extra models, but keeps looking at the rest of the box rather than excluding the purchase altogether; can change that with the flatMap below to check the count matches, rather than checking against index.
         guard let count = similarPurchases.map({ $0.models!.count }).mostFrequent() else { return exactMatch }
         for index in 0..<count {
-            let similarModels = Set(similarPurchases.compactMap({ $0.models!.count > index ? $0.models!.array[index] as? Model : nil }))
+            let similarModels = Set<Model>(similarPurchases.compactMap({
+                let models = $0.models()
+                return models.count > index ? models[index] : nil
+            }))
             
             let model: Model = addModel()
             let _ = try model.fillFromSimilar(models: similarModels, exactMatch: exactMatch)
@@ -61,6 +59,14 @@ extension Purchase {
         
         return true
     }
+
+    func models() -> [Model] {
+        let fetchRequest = fetchRequestForModels()
+
+        let results = try! managedObjectContext!.fetch(fetchRequest)
+        return results
+    }
+
 }
 
 extension Purchase/* : CustomStringConvertible*/ {

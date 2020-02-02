@@ -29,6 +29,7 @@ class PurchaseModelsViewController: NSViewController {
 
     var persistentContainer: NSPersistentContainer!
     var purchase: Purchase!
+    var models: [Model] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,7 @@ class PurchaseModelsViewController: NSViewController {
         guard case .model(let model) = currentRecord else { return }
         
         purchase = model.purchase!
+        models = purchase.models()
         reloadData()
     }
     
@@ -100,7 +102,7 @@ class PurchaseModelsViewController: NSViewController {
     func selectCurrentRecord() {
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
-        guard let row = (purchase.models!.array as! [Model]).firstIndex(of: model) else { return }
+        guard let row = models.firstIndex(of: model) else { return }
         
         tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
         tableView.scrollRowToVisible(row)
@@ -111,7 +113,8 @@ class PurchaseModelsViewController: NSViewController {
         guard view.window?.makeFirstResponder(nil) ?? true else { return }
         
         let model = purchase.addModel()
-        guard let row = (purchase.models!.array as! [Model]).firstIndex(of: model) else { fatalError("Model we just added wasn't in the list") }
+        models = purchase.models()
+        guard let row = models.firstIndex(of: model) else { fatalError("Model we just added wasn't in the list") }
             
         tableView.insertRows(at: IndexSet(integer: row) , withAnimation: .effectFade)
         tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
@@ -122,7 +125,7 @@ class PurchaseModelsViewController: NSViewController {
 extension PurchaseModelsViewController : NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return purchase?.models!.count ?? 0
+        return models.count
     }
     
     func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
@@ -155,24 +158,21 @@ extension PurchaseModelsViewController : NSTableViewDataSource {
         tableView.beginUpdates()
         for oldRow in oldRows {
             if oldRow < row {
-                let oldModel = purchase.models!.array[oldRow + oldRowOffset] as! Model
-                purchase.removeFromModels(at: oldRow + oldRowOffset)
-                purchase.insertIntoModels(oldModel, at: row - 1)
+                purchase.moveModel(models[oldRow + oldRowOffset], before: models[row - 1])
 
                 tableView.moveRow(at: oldRow + oldRowOffset, to: row - 1)
                 oldRowOffset -= 1
             } else {
-                let oldModel = purchase.models![oldRow] as! Model
-                purchase.removeFromModels(at: oldRow)
-                purchase.insertIntoModels(oldModel, at: row + newRowOffset)
+                purchase.moveModel(models[oldRow], before: models[row + newRowOffset])
 
                 tableView.moveRow(at: oldRow, to: row + newRowOffset)
                 newRowOffset += 1
             }
         }
-        tableView.endUpdates()
-
         try? purchase.managedObjectContext?.save() // FIXME
+        models = purchase.models()
+
+        tableView.endUpdates()
         return true
     }
     
@@ -182,7 +182,7 @@ extension PurchaseModelsViewController : NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let view = tableView.makeView(withIdentifier: .purchaseModelCell, owner: self) as! NSTableCellView
-        let model = purchase.models!.array[row] as! Model
+        let model = models[row]
         
         view.imageView?.image = model.image
         view.textField?.stringValue = model.modelClass ?? ""
@@ -194,7 +194,7 @@ extension PurchaseModelsViewController : NSTableViewDelegate {
         guard let tableView = notification.object as? NSTableView else { fatalError("Notification not from table view") }
         guard tableView.selectedRow >= 0 else { return }
 
-        let model = purchase.models!.array[tableView.selectedRow] as! Model
+        let model = models[tableView.selectedRow]
         
         recordController?.currentRecord = .model(model)
     }

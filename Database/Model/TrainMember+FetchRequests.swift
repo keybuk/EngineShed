@@ -9,19 +9,19 @@
 import Foundation
 import CoreData
 
-import Database
-
 extension TrainMember {
-
-    static func fetchRequestForTrains() -> NSFetchRequest<TrainMember> {
+    /// Returns an `NSFetchRequest` for all train members, grouped by train.
+    public static func fetchRequestForTrains() -> NSFetchRequest<TrainMember> {
         let fetchRequest: NSFetchRequest<TrainMember> = TrainMember.fetchRequest()
-        fetchRequest.fetchBatchSize = 20
-        fetchRequest.sortDescriptors = [
+
+        var sortDescriptors: [NSSortDescriptor] = []
+        sortDescriptors.append(contentsOf: [
             NSSortDescriptor(key: "train.name", ascending: true),
+            NSSortDescriptor(key: "train", ascending: true),
             NSSortDescriptor(key: "index", ascending: true),
-        ]
+        ])
+        fetchRequest.sortDescriptors = sortDescriptors
 
         return fetchRequest
     }
-
 }

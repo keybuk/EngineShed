@@ -86,6 +86,7 @@ class ModelViewController: NSViewController {
     var tasksTokenFieldDelegate: SimpleTokenFieldDelegate?
     
     var model: Model!
+    var trainMembers: [TrainMember] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +124,8 @@ class ModelViewController: NSViewController {
         guard case .model(let model) = currentRecord else { return }
 
         self.model = model
-        
+        self.trainMembers = self.model.trainMember?.train?.members() ?? []
+
         reloadData()
     }
     
@@ -331,6 +333,7 @@ class ModelViewController: NSViewController {
         }
 
         try? model.managedObjectContext?.save() // FIXME
+        trainMembers = model.trainMember?.train?.members() ?? []
         trainMemberCollectionView.reloadData()
     }
     
@@ -587,16 +590,16 @@ extension ModelViewController : NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let trainMember = model?.trainMember else { return 0 }
+        guard let _ = model?.trainMember?.train else { return 0 }
         
-        return trainMember.train?.members?.count ?? 0
+        return trainMembers.count
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: .trainMemberItem, for: indexPath) as! TrainMemberItem
-        guard let train = model.trainMember?.train else { return item }
+        guard let _ = model.trainMember?.train else { return item }
 
-        let trainMember = train.members![indexPath.item] as! TrainMember
+        let trainMember = trainMembers[indexPath.item]
         item.trainMember = trainMember
         item.isCurrentItem = trainMember == model.trainMember
         
@@ -637,14 +640,14 @@ extension ModelViewController : NSCollectionViewDelegate {
     
     func collectionView(_ collectionView: NSCollectionView, validateDrop draggingInfo: NSDraggingInfo, proposedIndexPath proposedDropIndexPath: AutoreleasingUnsafeMutablePointer<NSIndexPath>, dropOperation proposedDropOperation: UnsafeMutablePointer<NSCollectionView.DropOperation>) -> NSDragOperation {
         resetDragIndicators(collectionView: collectionView)
-        guard let train = model.trainMember?.train else { return [] }
+        guard let _ = model.trainMember?.train else { return [] }
 
         let indexPath = proposedDropIndexPath.pointee as IndexPath
         
         switch proposedDropOperation.pointee {
         case .on:
             guard let oldIndexPath = draggingIndexPath(collectionView: collectionView, draggingInfo: draggingInfo) else { return [] }
-            guard let _ = (train.members![oldIndexPath.item] as! TrainMember).model else { return [] }
+            guard let _ = trainMembers[oldIndexPath.item].model else { return [] }
             
             if let onItem = collectionView.item(at: indexPath) as? TrainMemberItem {
                 onItem.dropOnIndicator.isHidden = false
@@ -667,40 +670,42 @@ extension ModelViewController : NSCollectionViewDelegate {
         guard let oldIndexPath = draggingIndexPath(collectionView: collectionView, draggingInfo: draggingInfo) else { return false }
         guard let train = model.trainMember?.train else { return false }
         
-        let oldMember = train.members![oldIndexPath.item] as! TrainMember
+        let oldMember = trainMembers[oldIndexPath.item]
         
         switch dropOperation {
         case .on:
             // Dropping on replaces the model, but leaves the old member.
             guard oldIndexPath.item != indexPath.item else { return false }
-            (train.members![indexPath.item] as! TrainMember).model = oldMember.model
-            (train.members![oldIndexPath.item] as! TrainMember).model = nil
+            trainMembers[indexPath.item].model = oldMember.model
+            trainMembers[oldIndexPath.item].model = nil
             
-            if (train.members![oldIndexPath.item] as! TrainMember).deleteIfUnused() == true {
+            if trainMembers[oldIndexPath.item].deleteIfUnused() == true {
+                try? train.managedObjectContext?.save() // FIXME
+                trainMembers = model.trainMember?.train?.members() ?? []
+
                 collectionView.performBatchUpdates({
                     collectionView.deleteItems(at: Set([oldIndexPath]))
                     collectionView.reloadItems(at: Set([indexPath]))
                 })
             } else {
+                try? train.managedObjectContext?.save() // FIXME
+                trainMembers = model.trainMember?.train?.members() ?? []
+
                 collectionView.reloadItems(at: Set([oldIndexPath, indexPath]))
             }
-            try? train.managedObjectContext?.save() // FIXME
 
             return true
         case .before:
             // Dropping between members rearranges the train.
             if oldIndexPath.item < indexPath.item {
-                train.removeFromMembers(at: oldIndexPath.item)
-                train.insertIntoMembers(oldMember, at: indexPath.item - 1)
-
+                train.moveMember(trainMembers[oldIndexPath.item], before: trainMembers[indexPath.item - 1])
                 collectionView.moveItem(at: oldIndexPath, to: IndexPath(item: indexPath.item - 1, section: indexPath.section))
             } else {
-                train.removeFromMembers(at: oldIndexPath.item)
-                train.insertIntoMembers(oldMember, at: indexPath.item)
-
+                train.moveMember(trainMembers[oldIndexPath.item], before: trainMembers[indexPath.item])
                 collectionView.moveItem(at: oldIndexPath, to: indexPath)
             }
             try? train.managedObjectContext?.save() // FIXME
+            trainMembers = model.trainMember?.train?.members() ?? []
 
             return true
         @unknown default:

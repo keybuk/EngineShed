@@ -59,6 +59,24 @@
 		D24D474A23E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */; };
 		D24D474C23E162D0001F09C2 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474B23E162D0001F09C2 /* PersistentContainer.swift */; };
 		D24D474D23E162D0001F09C2 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24D474B23E162D0001F09C2 /* PersistentContainer.swift */; };
+		D2A3A0FA23E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A0F923E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel */; };
+		D2A3A0FB23E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A0F923E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel */; };
+		D2A3A0FD23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A0FC23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift */; };
+		D2A3A0FE23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A0FC23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift */; };
+		D2A3A10023E6903E00D65C14 /* Train+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A0FF23E6903E00D65C14 /* Train+FetchRequests.swift */; };
+		D2A3A10123E6903E00D65C14 /* Train+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A0FF23E6903E00D65C14 /* Train+FetchRequests.swift */; };
+		D2A3A10323E690B400D65C14 /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10223E690B400D65C14 /* TrainMember+FetchRequests.swift */; };
+		D2A3A10423E690B400D65C14 /* TrainMember+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10223E690B400D65C14 /* TrainMember+FetchRequests.swift */; };
+		D2A3A10623E696BF00D65C14 /* TrainMemberIndexMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10523E696BF00D65C14 /* TrainMemberIndexMigrationPolicy.swift */; };
+		D2A3A10723E696BF00D65C14 /* TrainMemberIndexMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10523E696BF00D65C14 /* TrainMemberIndexMigrationPolicy.swift */; };
+		D2A3A10923E6A11500D65C14 /* Purchase+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10823E6A11400D65C14 /* Purchase+Models.swift */; };
+		D2A3A10A23E6A11500D65C14 /* Purchase+Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10823E6A11400D65C14 /* Purchase+Models.swift */; };
+		D2A3A10C23E6A90A00D65C14 /* PurchaseModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10B23E6A90A00D65C14 /* PurchaseModelsTests.swift */; };
+		D2A3A10D23E6A90A00D65C14 /* PurchaseModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10B23E6A90A00D65C14 /* PurchaseModelsTests.swift */; };
+		D2A3A10F23E6C2CD00D65C14 /* Train+Members.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10E23E6C2CD00D65C14 /* Train+Members.swift */; };
+		D2A3A11023E6C2CD00D65C14 /* Train+Members.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10E23E6C2CD00D65C14 /* Train+Members.swift */; };
+		D2A3A11223E6C3EA00D65C14 /* TrainMembersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A11123E6C3EA00D65C14 /* TrainMembersTests.swift */; };
+		D2A3A11323E6C3EA00D65C14 /* TrainMembersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A11123E6C3EA00D65C14 /* TrainMembersTests.swift */; };
 		D2FF6E6723E63E380063257D /* PurchaseDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */; };
 		D2FF6E6823E63E380063257D /* PurchaseDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */; };
 		D2FF6E6A23E640F40063257D /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */; };
@@ -130,6 +148,16 @@
 		D22B4D5823E638B500CB1F6E /* Purchase+WillSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+WillSave.swift"; sourceTree = "<group>"; };
 		D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureUnarchiveDateComponentsFromDataTransformer.swift; sourceTree = "<group>"; };
 		D24D474B23E162D0001F09C2 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		D2A3A0F723E68BBB00D65C14 /* EngineShed 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "EngineShed 2.xcdatamodel"; sourceTree = "<group>"; };
+		D2A3A0F923E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = IndexMigrationModel.xcmappingmodel; sourceTree = "<group>"; };
+		D2A3A0FC23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelIndexMigrationPolicy.swift; sourceTree = "<group>"; };
+		D2A3A0FF23E6903E00D65C14 /* Train+FetchRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Train+FetchRequests.swift"; sourceTree = "<group>"; };
+		D2A3A10223E690B400D65C14 /* TrainMember+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+FetchRequests.swift"; sourceTree = "<group>"; };
+		D2A3A10523E696BF00D65C14 /* TrainMemberIndexMigrationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberIndexMigrationPolicy.swift; sourceTree = "<group>"; };
+		D2A3A10823E6A11400D65C14 /* Purchase+Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Models.swift"; sourceTree = "<group>"; };
+		D2A3A10B23E6A90A00D65C14 /* PurchaseModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModelsTests.swift; sourceTree = "<group>"; };
+		D2A3A10E23E6C2CD00D65C14 /* Train+Members.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Members.swift"; sourceTree = "<group>"; };
+		D2A3A11123E6C3EA00D65C14 /* TrainMembersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMembersTests.swift; sourceTree = "<group>"; };
 		D2E458C323E147FF00EC76E0 /* EngineShed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EngineShed.xcdatamodel; sourceTree = "<group>"; };
 		D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDateTests.swift; sourceTree = "<group>"; };
 		D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+FetchRequests.swift"; sourceTree = "<group>"; };
@@ -203,6 +231,7 @@
 				D22B4D2123E50CCF00CB1F6E /* Protocols */,
 				D22B4D0823E4E7C800CB1F6E /* Extensions */,
 				D22B4D2823E5101B00CB1F6E /* Model */,
+				D2A3A0F823E68C0700D65C14 /* Migrations */,
 				D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */,
 				D24D474B23E162D0001F09C2 /* PersistentContainer.swift */,
 				D213DF2623E0B0F40003C771 /* Database.h */,
@@ -221,7 +250,9 @@
 				D22B4D5223E636F900CB1F6E /* CatalogNumberPrefixTests.swift */,
 				D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */,
 				D2FF6E8323E6871C0063257D /* SimilarPurchaseTests.swift */,
+				D2A3A10B23E6A90A00D65C14 /* PurchaseModelsTests.swift */,
 				D2FF6E7A23E6530F0063257D /* DecoderStockTests.swift */,
+				D2A3A11123E6C3EA00D65C14 /* TrainMembersTests.swift */,
 				D213DF3123E0B0F50003C771 /* DatabaseTests.swift */,
 				D213DF3323E0B0F50003C771 /* Info.plist */,
 			);
@@ -256,6 +287,7 @@
 				D22B4D2923E5102700CB1F6E /* Purchase+Condition.swift */,
 				D2FF6E8023E686360063257D /* Purchase+Similar.swift */,
 				D22B4D5823E638B500CB1F6E /* Purchase+WillSave.swift */,
+				D2A3A10823E6A11400D65C14 /* Purchase+Models.swift */,
 				D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */,
 				D22B4D2F23E5105200CB1F6E /* Model+Classification.swift */,
 				D22B4D3523E511C300CB1F6E /* Model+Era.swift */,
@@ -268,8 +300,21 @@
 				D22B4D4B23E51F9700CB1F6E /* Decoder+Address.swift */,
 				D22B4D3F23E51AA300CB1F6E /* Decoder+Date.swift */,
 				D2FF6E7423E6463A0063257D /* Decoder+Stock.swift */,
+				D2A3A10E23E6C2CD00D65C14 /* Train+Members.swift */,
+				D2A3A0FF23E6903E00D65C14 /* Train+FetchRequests.swift */,
+				D2A3A10223E690B400D65C14 /* TrainMember+FetchRequests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D2A3A0F823E68C0700D65C14 /* Migrations */ = {
+			isa = PBXGroup;
+			children = (
+				D2A3A0F923E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel */,
+				D2A3A0FC23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift */,
+				D2A3A10523E696BF00D65C14 /* TrainMemberIndexMigrationPolicy.swift */,
+			);
+			path = Migrations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +493,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A3A10623E696BF00D65C14 /* TrainMemberIndexMigrationPolicy.swift in Sources */,
 				D2FF6E8223E686370063257D /* Purchase+Similar.swift in Sources */,
 				D22B4D4123E51AA300CB1F6E /* Decoder+Date.swift in Sources */,
 				D22B4D2A23E5102700CB1F6E /* Purchase+Condition.swift in Sources */,
@@ -460,7 +506,9 @@
 				D2FF6E7823E64D160063257D /* DecoderType+FetchRequests.swift in Sources */,
 				D22B4D4C23E51F9700CB1F6E /* Decoder+Address.swift in Sources */,
 				D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
+				D2A3A10F23E6C2CD00D65C14 /* Train+Members.swift in Sources */,
 				D22B4D3D23E51A8300CB1F6E /* Model+Date.swift in Sources */,
+				D2A3A10023E6903E00D65C14 /* Train+FetchRequests.swift in Sources */,
 				D2FF6E7623E6463A0063257D /* Decoder+Stock.swift in Sources */,
 				D22B4D5023E6364D00CB1F6E /* Purchase+CatalogNumber.swift in Sources */,
 				D22B4D5923E638B500CB1F6E /* Purchase+WillSave.swift in Sources */,
@@ -468,12 +516,16 @@
 				D2FF6E7E23E6808E0063257D /* Model+FetchRequests.swift in Sources */,
 				D22B4D0A23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */,
 				D24D474723E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
+				D2A3A0FD23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift in Sources */,
 				D22B4D2323E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */,
 				D2FF6E6F23E6461B0063257D /* DecoderType+Stock.swift in Sources */,
 				D22B4D1B23E4FA3900CB1F6E /* Collection+SplitBetween.swift in Sources */,
+				D2A3A10923E6A11500D65C14 /* Purchase+Models.swift in Sources */,
+				D2A3A0FA23E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel in Sources */,
 				D22B4D3A23E5167F00CB1F6E /* Purchase+Date.swift in Sources */,
 				D22B4D3623E511C300CB1F6E /* Model+Era.swift in Sources */,
 				D22B4D4723E51EBE00CB1F6E /* Purchase+Number.swift in Sources */,
+				D2A3A10423E690B400D65C14 /* TrainMember+FetchRequests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +535,9 @@
 			files = (
 				D22B4D2623E50E7800CB1F6E /* ConvertibleFromStringTests.swift in Sources */,
 				D22B4D1923E4FA3500CB1F6E /* SplitBetweenTests.swift in Sources */,
+				D2A3A10C23E6A90A00D65C14 /* PurchaseModelsTests.swift in Sources */,
 				D213DF3223E0B0F50003C771 /* DatabaseTests.swift in Sources */,
+				D2A3A11223E6C3EA00D65C14 /* TrainMembersTests.swift in Sources */,
 				D22B4D5423E636F900CB1F6E /* CatalogNumberPrefixTests.swift in Sources */,
 				D2FF6E8423E6871C0063257D /* SimilarPurchaseTests.swift in Sources */,
 				D22B4D0D23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */,
@@ -496,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A3A10723E696BF00D65C14 /* TrainMemberIndexMigrationPolicy.swift in Sources */,
 				D2FF6E8123E686370063257D /* Purchase+Similar.swift in Sources */,
 				D22B4D4023E51AA300CB1F6E /* Decoder+Date.swift in Sources */,
 				D22B4D2B23E5102700CB1F6E /* Purchase+Condition.swift in Sources */,
@@ -508,7 +563,9 @@
 				D2FF6E7923E64D160063257D /* DecoderType+FetchRequests.swift in Sources */,
 				D22B4D4D23E51F9700CB1F6E /* Decoder+Address.swift in Sources */,
 				D24D474A23E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
+				D2A3A11023E6C2CD00D65C14 /* Train+Members.swift in Sources */,
 				D22B4D3E23E51A8300CB1F6E /* Model+Date.swift in Sources */,
+				D2A3A10123E6903E00D65C14 /* Train+FetchRequests.swift in Sources */,
 				D2FF6E7523E6463A0063257D /* Decoder+Stock.swift in Sources */,
 				D22B4D5123E6364D00CB1F6E /* Purchase+CatalogNumber.swift in Sources */,
 				D22B4D5A23E638B500CB1F6E /* Purchase+WillSave.swift in Sources */,
@@ -516,12 +573,16 @@
 				D2FF6E7F23E6808E0063257D /* Model+FetchRequests.swift in Sources */,
 				D22B4D0B23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */,
 				D24D474823E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift in Sources */,
+				D2A3A0FE23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift in Sources */,
 				D22B4D2423E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */,
 				D2FF6E7023E6461B0063257D /* DecoderType+Stock.swift in Sources */,
 				D22B4D1C23E4FA3900CB1F6E /* Collection+SplitBetween.swift in Sources */,
+				D2A3A10A23E6A11500D65C14 /* Purchase+Models.swift in Sources */,
+				D2A3A0FB23E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel in Sources */,
 				D22B4D3B23E5167F00CB1F6E /* Purchase+Date.swift in Sources */,
 				D22B4D3723E511C300CB1F6E /* Model+Era.swift in Sources */,
 				D22B4D4623E51EBE00CB1F6E /* Purchase+Number.swift in Sources */,
+				D2A3A10323E690B400D65C14 /* TrainMember+FetchRequests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,7 +592,9 @@
 			files = (
 				D22B4D2723E50E7800CB1F6E /* ConvertibleFromStringTests.swift in Sources */,
 				D22B4D1A23E4FA3500CB1F6E /* SplitBetweenTests.swift in Sources */,
+				D2A3A10D23E6A90A00D65C14 /* PurchaseModelsTests.swift in Sources */,
 				D213DF5D23E0B6040003C771 /* DatabaseTests.swift in Sources */,
+				D2A3A11323E6C3EA00D65C14 /* TrainMembersTests.swift in Sources */,
 				D22B4D5323E636F900CB1F6E /* CatalogNumberPrefixTests.swift in Sources */,
 				D2FF6E8523E6871C0063257D /* SimilarPurchaseTests.swift in Sources */,
 				D22B4D0E23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */,
@@ -913,6 +976,7 @@
 		D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D2A3A0F723E68BBB00D65C14 /* EngineShed 2.xcdatamodel */,
 				D22B4D4E23E633DE00CB1F6E /* EngineShed 1.xcdatamodel */,
 				D2E458C323E147FF00EC76E0 /* EngineShed.xcdatamodel */,
 			);

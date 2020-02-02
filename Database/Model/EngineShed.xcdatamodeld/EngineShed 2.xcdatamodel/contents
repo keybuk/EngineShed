@@ -48,7 +48,6 @@
         <attribute name="dispositionRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="eraRawValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastOil" optional="YES" attributeType="Transformable" valueTransformerName="Database.SecureUnarchiveDateComponentsFromDataTransformer" customClassName=".DateComponents"/>
         <attribute name="lastRun" optional="YES" attributeType="Transformable" valueTransformerName="Database.SecureUnarchiveDateComponentsFromDataTransformer" customClassName=".DateComponents"/>
         <attribute name="livery" optional="YES" attributeType="String"/>
@@ -91,7 +90,7 @@
         <attribute name="price" optional="YES" attributeType="Decimal"/>
         <attribute name="store" optional="YES" attributeType="String"/>
         <attribute name="valuation" optional="YES" attributeType="Decimal"/>
-        <relationship name="models" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Model" inverseName="purchase" inverseEntity="Model"/>
+        <relationship name="models" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Model" inverseName="purchase" inverseEntity="Model"/>
     </entity>
     <entity name="SpeakerFitting" representedClassName="SpeakerFitting" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String"/>
@@ -105,10 +104,9 @@
         <attribute name="details" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
-        <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TrainMember" inverseName="train" inverseEntity="TrainMember"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TrainMember" inverseName="train" inverseEntity="TrainMember"/>
     </entity>
     <entity name="TrainMember" representedClassName="TrainMember" syncable="YES" codeGenerationType="class">
-        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isFlipped" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="trainMember" inverseEntity="Model"/>
@@ -121,12 +119,12 @@
         <element name="DetailPart" positionX="-27" positionY="135" width="128" height="88"/>
         <element name="Feature" positionX="-18" positionY="144" width="128" height="73"/>
         <element name="Light" positionX="-9" positionY="153" width="128" height="73"/>
-        <element name="Model" positionX="-54" positionY="108" width="128" height="433"/>
+        <element name="Model" positionX="-54" positionY="108" width="128" height="418"/>
         <element name="Modification" positionX="0" positionY="162" width="128" height="73"/>
         <element name="Purchase" positionX="-63" positionY="-18" width="128" height="298"/>
         <element name="SpeakerFitting" positionX="9" positionY="171" width="128" height="73"/>
         <element name="Task" positionX="18" positionY="180" width="128" height="73"/>
         <element name="Train" positionX="-36" positionY="153" width="128" height="103"/>
-        <element name="TrainMember" positionX="-27" positionY="162" width="128" height="118"/>
+        <element name="TrainMember" positionX="-27" positionY="162" width="128" height="103"/>
     </elements>
 </model>

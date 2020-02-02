@@ -234,7 +234,7 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
         // from other context, and update their headers accordingly.
         if let refreshedObjects = userInfo[NSRefreshedObjectsKey] as? Set<NSManagedObject> {
             for case let train as Train in refreshedObjects {
-                guard let trainMember = train.members?.firstObject as? TrainMember else {
+                guard let trainMember = train.members?.anyObject() as? TrainMember else {
                     assertionFailure("Train without member")
                     continue
                 }

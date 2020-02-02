@@ -42,7 +42,7 @@ class PurchaseTableViewCell : UITableViewCell {
     }
 
     func configureCell() {
-        modelImageView.image = (purchase?.models?.firstObject as? Model)?.image
+        modelImageView.image = (purchase?.models?.anyObject() as? Model)?.image
 
         manufacturerLabel.text = purchase?.manufacturer
         manufacturerLabel.isHidden = sort == .catalog

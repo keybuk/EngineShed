@@ -121,7 +121,7 @@ class PurchaseViewController: NSViewController {
         if (try? purchase.fillFromSimilar()) == true {
             try? purchase.managedObjectContext?.save() // FIXME
             reloadData()
-            recordController?.currentRecord = .model(purchase.models!.array[0] as! Model)
+            recordController?.currentRecord = .model(purchase.models()[0])
         }
     }
     

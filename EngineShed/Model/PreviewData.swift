@@ -37,13 +37,12 @@ struct PreviewData {
         purchase.date = DateComponents(year: 2018, month: 8, day: 1)
         purchase.store = "Hattons"
 
-        var model = Model(context: container.viewContext)
+        var model = purchase.addModel()
         model.purchase = purchase
         model.image = UIImage(named: "R3612")
         model.modelClass = "LNER Gresley 'A4' 4-6-2"
         model.number = "4468"
         model.name = "Mallard"
-        purchase.addModel(model)
         models.append(model)
 
         purchases.append(purchase)
@@ -55,13 +54,12 @@ struct PreviewData {
         purchase.date = DateComponents(year: 2018, month: 12, day: 27)
         purchase.store = "Locomotion Models"
 
-        model = Model(context: container.viewContext)
+        model = purchase.addModel()
         model.purchase = purchase
         model.image = UIImage(named: "R3612")
         model.modelClass = "LNER Gresley 'A4' 4-6-2"
         model.number = "4468"
         model.name = "Mallard"
-        purchase.addModel(model)
 
         purchases.append(purchase)
 
