@@ -140,10 +140,8 @@
 		D2B9A1B62150C77000156100 /* ModelImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B52150C77000156100 /* ModelImageTableViewCell.swift */; };
 		D2B9A1B82150D35D00156100 /* ModelPurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B72150D35D00156100 /* ModelPurchaseTableViewCell.swift */; };
 		D2C7E20A22ADA05A00A024A5 /* NSManagedObjectContext+PerformAndWait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */; };
-		D2C7E20C22ADA0A500A024A5 /* SimilarPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */; };
 		D2C7E21422ADA37700A024A5 /* Collection+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */; };
 		D2C7E21922ADA38500A024A5 /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
-		D2C7E21A22ADA38500A024A5 /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */; };
 		D2C7E21C22ADA38500A024A5 /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */; };
 		D2C7E22122ADA38500A024A5 /* Model+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D298CB1920D8143900827F68 /* Model+Image.swift */; };
 		D2C7E22322ADA38500A024A5 /* Model+Lists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */; };
@@ -224,6 +222,7 @@
 		D2F4EF3422337580008FB14A /* DecoderSoundProjectVersionEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF3322337580008FB14A /* DecoderSoundProjectVersionEditTableViewCell.swift */; };
 		D2F4EF362233758A008FB14A /* DecoderSoundSettingsEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF352233758A008FB14A /* DecoderSoundSettingsEditTableViewCell.swift */; };
 		D2F4EF3B22337B72008FB14A /* DecoderFirmwareDatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EF3A22337B72008FB14A /* DecoderFirmwareDatePickerTableViewCell.swift */; };
+		D2FF6E8723E687A10063257D /* EngineShedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E8623E687A10063257D /* EngineShedTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,7 +250,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Similar.swift"; sourceTree = "<group>"; };
 		D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+CountedElements.swift"; sourceTree = "<group>"; };
 		D210EDCD21F14E5F00467AF2 /* Model+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Similar.swift"; sourceTree = "<group>"; };
 		D212EA442150AEDA005FEED3 /* ClassificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationsTableViewController.swift; sourceTree = "<group>"; };
@@ -383,7 +381,6 @@
 		D298CB1920D8143900827F68 /* Model+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+Image.swift"; sourceTree = "<group>"; };
 		D2A29EB022C2F25D002A9618 /* PurchaseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRow.swift; sourceTree = "<group>"; };
 		D2A29EB222C2F8F6002A9618 /* DecoderTypeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeRow.swift; sourceTree = "<group>"; };
-		D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimilarPurchaseTests.swift; sourceTree = "<group>"; };
 		D2B2AF4E20D81A7B00BEFC15 /* TrainMember+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrainMember+Image.swift"; sourceTree = "<group>"; };
 		D2B6F08B22C2EF4700FF73F3 /* ModelRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRow.swift; sourceTree = "<group>"; };
 		D2B7C95120D4BA30001B51B1 /* EngineShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EngineShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -472,6 +469,7 @@
 		D2F4EF352233758A008FB14A /* DecoderSoundSettingsEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderSoundSettingsEditTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF3A22337B72008FB14A /* DecoderFirmwareDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderFirmwareDatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		D2F4EF3C22337BED008FB14A /* Decoder+Suggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Suggestions.swift"; sourceTree = "<group>"; };
+		D2FF6E8623E687A10063257D /* EngineShedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineShedTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -782,7 +780,7 @@
 		D2B7C96C20D4BA31001B51B1 /* EngineShedTests */ = {
 			isa = PBXGroup;
 			children = (
-				D2A411C5212633AA00B6C198 /* SimilarPurchaseTests.swift */,
+				D2FF6E8623E687A10063257D /* EngineShedTests.swift */,
 				D2B7C96F20D4BA31001B51B1 /* Info.plist */,
 			);
 			path = EngineShedTests;
@@ -801,7 +799,6 @@
 			children = (
 				D2744E5A22F7B6C800ECEFFA /* Purchase+Models.swift */,
 				D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */,
-				D200F97220DE23EB003BC8D1 /* Purchase+Similar.swift */,
 				D295D8A921EADDDE00BBD204 /* Purchase+FetchRequests.swift */,
 				D298CB1920D8143900827F68 /* Model+Image.swift */,
 				D2DE2DB4223886E7005D4CFD /* Model+Lists.swift */,
@@ -995,7 +992,7 @@
 					};
 					D2B7C96820D4BA31001B51B1 = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1130;
 						TestTargetID = D2B7C95020D4BA30001B51B1;
 					};
 				};
@@ -1246,7 +1243,6 @@
 				D2C9787A2227913800AB3C1C /* PurchasePriceEditTableViewCell.swift in Sources */,
 				D2F4EEF4223074A8008FB14A /* DecoderTypeProductCodeEditTableViewCell.swift in Sources */,
 				D23B8BCD21E2B895004F994D /* ModelNotesTableViewCell.swift in Sources */,
-				D2C7E21A22ADA38500A024A5 /* Purchase+Similar.swift in Sources */,
 				D2F4EEBA222F2B22008FB14A /* DecoderTypesTableViewController.swift in Sources */,
 				D2C978702227910900AB3C1C /* PurchaseLimitedEditionEditTableViewCell.swift in Sources */,
 				D271A9FA22B700460083E9AA /* SceneDelegate.swift in Sources */,
@@ -1261,7 +1257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2C7E20C22ADA0A500A024A5 /* SimilarPurchaseTests.swift in Sources */,
+				D2FF6E8723E687A10063257D /* EngineShedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1576,6 +1572,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
 				INFOPLIST_FILE = EngineShedTests/Info.plist;
@@ -1586,6 +1583,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EngineShed.app/EngineShed";
@@ -1597,6 +1595,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
 				INFOPLIST_FILE = EngineShedTests/Info.plist;

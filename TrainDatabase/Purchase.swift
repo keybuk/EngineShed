@@ -37,60 +37,9 @@ extension Purchase {
     }
     
     
-    /// Return a set of similar models.
-    ///
-    /// A similar purchase is one that has the same manufacturer and catalog number, or the same manufacturer and a catalog number that indicates the same model but with only a running number variation. Where an exact match exists, only those are returned.
-    func similar() throws -> Set<Purchase>? {
-        guard let context = managedObjectContext else { fatalError("No context to make query with") }
-        guard let manufacturer = manufacturer, let catalogNumber = catalogNumber, !manufacturer.isEmpty && !catalogNumber.isEmpty else { return nil }
-
-        var catalogNumberBase = catalogNumber
-        if catalogNumberBase.count(where: { $0 == "-" }) > 1 {
-            // XX-XX-999Z style (Dapol, Hattons)
-            while catalogNumberBase.suffix(1) != "-" {
-                catalogNumberBase.removeLast()
-            }
-        } else {
-            // XXXXZ style (Bachmann and Hornby)
-            while ("A"..."Z").contains(catalogNumberBase.suffix(1)) {
-                catalogNumberBase.removeLast()
-            }
-        }
-
-
-        let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "SELF != %@ && manufacturer == %@ && catalogNumber BEGINSWITH[c] %@", self, manufacturer, catalogNumberBase)
-
-        let purchases = try context.fetch(fetchRequest)
-        if purchases.isEmpty {
-            return nil
-        }
-        
-        // Look for exact matches, but also double-check that the "begins with" didn't pick up R3001 for R300 and other errors we don't intend.
-        var matches: [Purchase] = []
-        var exactOnly = false
-        for purchase in purchases {
-            if purchase.catalogNumber == catalogNumber {
-                if !exactOnly {
-                    matches.removeAll()
-                    exactOnly = true
-                }
-                
-                matches.append(purchase)
-            } else if !exactOnly {
-                let suffix = purchase.catalogNumber!.dropFirst(catalogNumberBase.count)
-                guard suffix.drop(while: ("A"..."Z").contains).isEmpty || purchase.catalogNumber!.count(where: { $0 == "-" }) > 1 else { continue }
-
-                matches.append(purchase)
-            }
-            
-        }
-
-        return matches.count > 0 ? Set(matches) : nil
-    }
-    
     func fillFromSimilar() throws -> Bool {
-        guard let similarPurchases = try similar() else { return false }
+        let similarPurchases = similar()
+        guard !similarPurchases.isEmpty else { return false }
         guard let catalogNumber = catalogNumber else { return false }
         let exactMatch = similarPurchases.first?.catalogNumber == catalogNumber
         

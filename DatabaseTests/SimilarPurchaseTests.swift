@@ -1,6 +1,6 @@
 //
 //  SimilarPurchaseTests.swift
-//  EngineShedTests
+//  EngineShed
 //
 //  Created by Scott James Remnant on 6/24/18.
 //  Copyright © 2018 Scott James Remnant. All rights reserved.
@@ -9,11 +9,9 @@
 import XCTest
 import CoreData
 
-import Database
-@testable import EngineShed
+@testable import Database
 
-class SimilarPurchaseTests : XCTestCase {
-
+class SimilarPurchaseTests: XCTestCase {
     var container: NSPersistentContainer?
 
     override func setUp() {
@@ -116,5 +114,4 @@ class SimilarPurchaseTests : XCTestCase {
 
         XCTAssertEqual(results, [ "Hornby/R2700" ])
     }
-
 }

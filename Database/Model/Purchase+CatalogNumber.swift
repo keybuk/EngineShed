@@ -18,7 +18,7 @@ extension Purchase {
     ///
     /// - Parameter catalogNumber: full catalog number.
     /// - Returns: `catalogNumber` or the common prefix equivalent, which is always shorter.
-    public func makeCatalogNumberPrefix(from catalogNumber: String) -> String {
+    func makeCatalogNumberPrefix(from catalogNumber: String) -> String {
         let parts = catalogNumber.split(between: {
             if $0.isWhitespace && $1.isWhitespace { return false }
             if $0.isLetter && $1.isLetter { return false }

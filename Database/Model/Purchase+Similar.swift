@@ -9,8 +9,6 @@
 import Foundation
 import CoreData
 
-import Database
-
 extension Purchase {
     /// Return list of similar purchases.
     ///
@@ -21,7 +19,8 @@ extension Purchase {
     /// In either case, `manufacturer` must match.
     ///
     /// - Returns: list of matching `Purchase` objects, or empty list if none.
-    func similar() -> [Purchase] {
+    public func similar() -> [Purchase] {
+        guard let managedObjectContext = managedObjectContext else { return [] }
         guard let manufacturer = manufacturer, manufacturer != "" else { return [] }
         guard let catalogNumber = catalogNumber, catalogNumber != "" else { return [] }
 
@@ -34,9 +33,15 @@ extension Purchase {
         let fetchRequest: NSFetchRequest<Purchase> = Purchase.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "SELF != %@ && manufacturer = %@ && catalogNumberPrefix = %@", self, manufacturer, catalogNumberPrefix)
 
-        let purchases = (try? managedObjectContext?.performAndWait {
-            return try fetchRequest.execute()
-        }) ?? []
+        // FIXME any way to make this not block?
+        var purchases: [Purchase] = []
+        managedObjectContext.performAndWait {
+            do {
+                purchases = try fetchRequest.execute()
+            } catch let error as NSError {
+                print("Fetch request failed finding similar purchases: \(error.localizedDescription)")
+            }
+        }
 
         let exactMatches = purchases.filter { $0.catalogNumber == catalogNumber }
         if !exactMatches.isEmpty {
@@ -45,5 +50,4 @@ extension Purchase {
             return purchases
         }
     }
-
 }

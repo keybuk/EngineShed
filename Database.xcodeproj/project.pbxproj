@@ -75,6 +75,10 @@
 		D2FF6E7C23E6530F0063257D /* DecoderStockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E7A23E6530F0063257D /* DecoderStockTests.swift */; };
 		D2FF6E7E23E6808E0063257D /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E7D23E6808E0063257D /* Model+FetchRequests.swift */; };
 		D2FF6E7F23E6808E0063257D /* Model+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E7D23E6808E0063257D /* Model+FetchRequests.swift */; };
+		D2FF6E8123E686370063257D /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E8023E686360063257D /* Purchase+Similar.swift */; };
+		D2FF6E8223E686370063257D /* Purchase+Similar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E8023E686360063257D /* Purchase+Similar.swift */; };
+		D2FF6E8423E6871C0063257D /* SimilarPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E8323E6871C0063257D /* SimilarPurchaseTests.swift */; };
+		D2FF6E8523E6871C0063257D /* SimilarPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E8323E6871C0063257D /* SimilarPurchaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +139,8 @@
 		D2FF6E7723E64D160063257D /* DecoderType+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DecoderType+FetchRequests.swift"; sourceTree = "<group>"; };
 		D2FF6E7A23E6530F0063257D /* DecoderStockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderStockTests.swift; sourceTree = "<group>"; };
 		D2FF6E7D23E6808E0063257D /* Model+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+FetchRequests.swift"; sourceTree = "<group>"; };
+		D2FF6E8023E686360063257D /* Purchase+Similar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+Similar.swift"; sourceTree = "<group>"; };
+		D2FF6E8323E6871C0063257D /* SimilarPurchaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimilarPurchaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +220,7 @@
 				D22B4D1823E4FA3500CB1F6E /* SplitBetweenTests.swift */,
 				D22B4D5223E636F900CB1F6E /* CatalogNumberPrefixTests.swift */,
 				D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */,
+				D2FF6E8323E6871C0063257D /* SimilarPurchaseTests.swift */,
 				D2FF6E7A23E6530F0063257D /* DecoderStockTests.swift */,
 				D213DF3123E0B0F50003C771 /* DatabaseTests.swift */,
 				D213DF3323E0B0F50003C771 /* Info.plist */,
@@ -247,6 +254,7 @@
 				D22B4D3923E5167E00CB1F6E /* Purchase+Date.swift */,
 				D22B4D4223E51C9A00CB1F6E /* Purchase+Currency.swift */,
 				D22B4D2923E5102700CB1F6E /* Purchase+Condition.swift */,
+				D2FF6E8023E686360063257D /* Purchase+Similar.swift */,
 				D22B4D5823E638B500CB1F6E /* Purchase+WillSave.swift */,
 				D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */,
 				D22B4D2F23E5105200CB1F6E /* Model+Classification.swift */,
@@ -440,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FF6E8223E686370063257D /* Purchase+Similar.swift in Sources */,
 				D22B4D4123E51AA300CB1F6E /* Decoder+Date.swift in Sources */,
 				D22B4D2A23E5102700CB1F6E /* Purchase+Condition.swift in Sources */,
 				D2FF6E6A23E640F40063257D /* Purchase+FetchRequests.swift in Sources */,
@@ -476,6 +485,7 @@
 				D22B4D1923E4FA3500CB1F6E /* SplitBetweenTests.swift in Sources */,
 				D213DF3223E0B0F50003C771 /* DatabaseTests.swift in Sources */,
 				D22B4D5423E636F900CB1F6E /* CatalogNumberPrefixTests.swift in Sources */,
+				D2FF6E8423E6871C0063257D /* SimilarPurchaseTests.swift in Sources */,
 				D22B4D0D23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */,
 				D2FF6E7B23E6530F0063257D /* DecoderStockTests.swift in Sources */,
 				D2FF6E6723E63E380063257D /* PurchaseDateTests.swift in Sources */,
@@ -486,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FF6E8123E686370063257D /* Purchase+Similar.swift in Sources */,
 				D22B4D4023E51AA300CB1F6E /* Decoder+Date.swift in Sources */,
 				D22B4D2B23E5102700CB1F6E /* Purchase+Condition.swift in Sources */,
 				D2FF6E6B23E640F40063257D /* Purchase+FetchRequests.swift in Sources */,
@@ -522,6 +533,7 @@
 				D22B4D1A23E4FA3500CB1F6E /* SplitBetweenTests.swift in Sources */,
 				D213DF5D23E0B6040003C771 /* DatabaseTests.swift in Sources */,
 				D22B4D5323E636F900CB1F6E /* CatalogNumberPrefixTests.swift in Sources */,
+				D2FF6E8523E6871C0063257D /* SimilarPurchaseTests.swift in Sources */,
 				D22B4D0E23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */,
 				D2FF6E7C23E6530F0063257D /* DecoderStockTests.swift in Sources */,
 				D2FF6E6823E63E380063257D /* PurchaseDateTests.swift in Sources */,
