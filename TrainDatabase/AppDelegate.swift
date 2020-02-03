@@ -10,7 +10,13 @@ import Cocoa
 import CoreData
 import CloudKit
 
-import Database // NEW
+import Database
+
+extension NSNotification.Name {
+
+    static let saveChanges = NSNotification.Name("saveChanges")
+
+}
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -87,6 +93,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         // Save changes in the application's managed object context before the application terminates.
+        NotificationCenter.default.post(name: .saveChanges, object: sender)
+
         let context = persistentContainer.viewContext
         
         if !context.commitEditing() {
@@ -125,7 +133,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         // If we got here, it is time to quit.
-        return .terminateNow
+        DispatchQueue.main.async {
+            NSApplication.shared.reply(toApplicationShouldTerminate: true)
+        }
+        return .terminateLater
     }
 
     @IBAction func selectSearchField(_ sender: Any) {

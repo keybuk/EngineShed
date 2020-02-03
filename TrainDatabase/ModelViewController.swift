@@ -105,7 +105,8 @@ class ModelViewController: NSViewController {
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(currentRecordChanged), name: .currentRecordChanged, object: view.window)
-        
+        notificationCenter.addObserver(self, selector: #selector(saveChanges), name: .saveChanges, object: NSApplication.shared)
+
         updateCurrentRecord()
         scrollToTop()
     }
@@ -123,15 +124,24 @@ class ModelViewController: NSViewController {
             self.updateCurrentRecord()
         }
     }
-    
-    func updateCurrentRecord() {
-        if let previousManagedObjectContext = managedObjectContext, previousManagedObjectContext.hasChanges {
+
+    @objc
+    func saveChanges(_ notification: Notification) {
+        self.saveAnyChanges()
+    }
+
+    func saveAnyChanges() {
+        if let managedObjectContext = managedObjectContext, managedObjectContext.hasChanges {
             do {
-                try previousManagedObjectContext.save()
+                try managedObjectContext.save()
             } catch let error as NSError {
                 NSApplication.shared.presentError(error)
             }
         }
+    }
+
+    func updateCurrentRecord() {
+        saveAnyChanges()
 
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
