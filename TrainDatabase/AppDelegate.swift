@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: - Core Data stack
 
-    lazy var persistentContainer: NSPersistentContainer = {
+    lazy var persistentContainer: PersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the

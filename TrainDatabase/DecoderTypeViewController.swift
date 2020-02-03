@@ -49,14 +49,19 @@ class DecoderTypeViewController: NSViewController {
     var manufacturerComboBoxDataSource: SimpleComboBoxDataSource?
     var productFamilyComboBoxDataSource: SimpleComboBoxDataSource?
     var socketComboBoxDataSource: SimpleComboBoxDataSource?
-    
+
+    var persistentContainer: PersistentContainer!
+    var managedObjectContext: NSManagedObjectContext?
+
     var decoderType: DecoderType!
     var decoders: [Decoder]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        
+
+        persistentContainer = (NSApplication.shared.delegate! as! AppDelegate).persistentContainer
+
         tableView.sortDescriptors = [ NSSortDescriptor(key: "serialNumber", ascending: true) ]
     }
     
@@ -79,11 +84,24 @@ class DecoderTypeViewController: NSViewController {
     func updateCurrentRecord() {
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .decoderType(let decoderType) = currentRecord else { return }
-        
-        self.decoderType = decoderType
-        decoders = decoderType.unallocatedDecoders()
+
+        if let previousManagedObjectContext = managedObjectContext, previousManagedObjectContext.hasChanges {
+            do {
+                try previousManagedObjectContext.save()
+            } catch let error as NSError {
+                NSApplication.shared.presentError(error)
+            }
+        }
+
+        managedObjectContext = persistentContainer.newEditingContext()
+        self.decoderType = managedObjectContext!.object(with: decoderType.objectID) as? DecoderType
+
+        let fetchRequest = decoderType.fetchRequestForDecoders()
+        managedObjectContext!.performAndWait {
+            decoders = try! fetchRequest.execute()
+        }
+
         sortDecoders()
-        
         reloadData()
         
         if decoderType.manufacturer?.isEmpty ?? true {
@@ -150,7 +168,6 @@ class DecoderTypeViewController: NSViewController {
     @IBAction func addRecord(_ sender: NSButton) {
         let decoder = decoderType.addDecoder()
         decoders.append(decoder)
-        try? decoderType.managedObjectContext?.save() // FIXME
 
         let indexSet = IndexSet(integer: decoders.count - 1)
         
@@ -173,7 +190,6 @@ class DecoderTypeViewController: NSViewController {
         if alert.runModal() == .alertSecondButtonReturn {
             let decoder = decoders.remove(at: tableView.selectedRow)
             decoder.delete()
-            try? decoder.managedObjectContext?.save() // FIXME
 
             tableView.removeRows(at: IndexSet(integer: tableView.selectedRow), withAnimation: .slideUp)
         }
@@ -181,54 +197,44 @@ class DecoderTypeViewController: NSViewController {
     
     @IBAction func manufacturerChanged(_ sender: NSComboBox) {
         decoderType.manufacturer = sender.stringValue
-        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func productCodeChanged(_ sender: NSTextField) {
         decoderType.productCode = sender.stringValue
-        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func productFamilyChanged(_ sender: NSComboBox) {
         decoderType.productFamily = sender.stringValue
-        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func productDescriptionChanged(_ sender: NSTextField) {
         decoderType.productDescription = sender.stringValue
-        try? decoderType.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func socketChanged(_ sender: NSComboBox) {
         decoderType.socket = sender.stringValue
-        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func isProgrammableChanged(_ sender: NSButton) {
         decoderType.isProgrammable = sender.state == .on
-        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func isSoundSupportedChanged(_ sender: NSButton) {
         decoderType.isSoundSupported = sender.state == .on
-        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func isRailComSupportedChanged(_ sender: NSButton) {
         decoderType.isRailComSupported = sender.state == .on
-        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func minimumStockChanged(_ sender: NSTextField) {
         decoderType.minimumStock = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
-        try? decoderType.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderSerialNumberChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
         let decoder = decoders[tableView.selectedRow]
         decoder.serialNumber = sender.stringValue
-        try? decoder.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderFirmwareVersionChanged(_ sender: NSComboBox) {
@@ -243,50 +249,43 @@ class DecoderTypeViewController: NSViewController {
                 tableView.reloadData(forRowIndexes: IndexSet(integer: tableView.selectedRow), columnIndexes: IndexSet(integer: tableView.column(withIdentifier: .firmwareDateColumn)))
             }
         }
-
-        try? decoder.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderFirmwareDateChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
         let decoder = decoders[tableView.selectedRow]
         decoder.firmwareDateAsDate = sender.objectValue as? Date
-        try? decoder.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderAddressChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
         let decoder = decoders[tableView.selectedRow]
         decoder.address = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
-        try? decoder.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderSoundAuthorChanged(_ sender: NSComboBox) {
         guard tableView.selectedRow >= 0 else { return }
         let decoder = decoders[tableView.selectedRow]
         decoder.soundAuthor = sender.stringValue
-        try? decoder.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundProjectChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
         let decoder = decoders[tableView.selectedRow]
         decoder.soundProject = sender.stringValue
-        try? decoder.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundProjectVersionChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
         let decoder = decoders[tableView.selectedRow]
         decoder.soundProjectVersion = sender.stringValue
-        try? decoder.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundSettingsChanged(_ sender: NSTextField) {
         guard tableView.selectedRow >= 0 else { return }
         let decoder = decoders[tableView.selectedRow]
         decoder.soundSettings = sender.stringValue
-        try? decoder.managedObjectContext?.save() // FIXME
+
     }
 
 }
