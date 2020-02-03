@@ -159,13 +159,11 @@ extension PurchaseModelsViewController : NSTableViewDataSource {
         tableView.beginUpdates()
         for oldRow in oldRows {
             if oldRow < row {
-                purchase.moveModel(models[oldRow + oldRowOffset], before: models[row - 1])
-
+                purchase.moveModelAt(oldRow + oldRowOffset, to: row - 1)
                 tableView.moveRow(at: oldRow + oldRowOffset, to: row - 1)
                 oldRowOffset -= 1
             } else {
-                purchase.moveModel(models[oldRow], before: models[row + newRowOffset])
-
+                purchase.moveModelAt(oldRow, to: row + newRowOffset)
                 tableView.moveRow(at: oldRow, to: row + newRowOffset)
                 newRowOffset += 1
             }

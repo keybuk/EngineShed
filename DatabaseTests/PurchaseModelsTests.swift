@@ -48,9 +48,13 @@ class PurchaseModelsTests: XCTestCase {
     func testAddSecondModel() {
         let purchase = Purchase(context: container!.viewContext)
 
-        let existingModel = Model(context: container!.viewContext)
-        existingModel.index = 0
-        purchase.addToModels(existingModel)
+        var models: [Model] = []
+        for index in [0] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
         let model = purchase.addModel()
 
@@ -59,44 +63,21 @@ class PurchaseModelsTests: XCTestCase {
         XCTAssertTrue(purchase.models?.contains(model) ?? false)
 
         XCTAssertEqual(model.index, 1)
+
+        XCTAssertEqual(models[0].index, 0)
     }
 
-    /// Check that if there's a gap in indexes, things still work out.
+    /// Check that if there's a gap in indexes, we can still add a new model, and the existing indexes get fixed.
     func testAddModelWithGap() {
         let purchase = Purchase(context: container!.viewContext)
 
-        var existingModel = Model(context: container!.viewContext)
-        existingModel.index = 0
-        purchase.addToModels(existingModel)
-
-        existingModel = Model(context: container!.viewContext)
-        existingModel.index = 2
-        purchase.addToModels(existingModel)
-
-        let model = purchase.addModel()
-
-        XCTAssertEqual(model.purchase, purchase)
-        XCTAssertNotNil(purchase.models)
-        XCTAssertTrue(purchase.models?.contains(model) ?? false)
-
-        XCTAssertEqual(model.index, 3)
-    }
-
-    /// Check that if there's a duplication in indexes, things still work out.
-    func testAddModelWithDuplicate() {
-        let purchase = Purchase(context: container!.viewContext)
-
-        var existingModel = Model(context: container!.viewContext)
-        existingModel.index = 0
-        purchase.addToModels(existingModel)
-
-        existingModel = Model(context: container!.viewContext)
-        existingModel.index = 1
-        purchase.addToModels(existingModel)
-
-        existingModel = Model(context: container!.viewContext)
-        existingModel.index = 1
-        purchase.addToModels(existingModel)
+        var models: [Model] = []
+        for index in [0, 2] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
         let model = purchase.addModel()
 
@@ -105,6 +86,59 @@ class PurchaseModelsTests: XCTestCase {
         XCTAssertTrue(purchase.models?.contains(model) ?? false)
 
         XCTAssertEqual(model.index, 2)
+
+        XCTAssertEqual(models[0].index, 0)
+        XCTAssertEqual(models[1].index, 1)
+    }
+
+    /// Check that if there's a duplication in indexes, they're cleaned up, and a new model added afterwards..
+    func testAddModelWithDuplicate() {
+        let purchase = Purchase(context: container!.viewContext)
+
+        var models: [Model] = []
+        for index in [0, 1, 1] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
+
+        let model = purchase.addModel()
+
+        XCTAssertEqual(model.purchase, purchase)
+        XCTAssertNotNil(purchase.models)
+        XCTAssertTrue(purchase.models?.contains(model) ?? false)
+
+        XCTAssertEqual(model.index, 3)
+
+        XCTAssertEqual(models[0].index, 0)
+        // Cleanup of duplicate indexes is non-deterministic.
+        if models[1].index == 1 {
+            XCTAssertEqual(models[1].index, 1)
+            XCTAssertEqual(models[2].index, 2)
+        } else {
+            XCTAssertEqual(models[2].index, 1)
+            XCTAssertEqual(models[1].index, 2)
+        }
+    }
+
+    /// Check that adding a model makes minimal changes to indexes.
+    func testAddMinimizesChanges() {
+        let purchase = Purchase(context: container!.viewContext)
+
+        var models: [Model] = []
+        for index in [0] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
+
+        try! container!.viewContext.save()
+
+        let _ = purchase.addModel()
+
+        XCTAssertFalse(models[0].hasChanges)
     }
 
     // MARK: removeModel
@@ -113,205 +147,194 @@ class PurchaseModelsTests: XCTestCase {
     func testRemoveModel() {
         let purchase = Purchase(context: container!.viewContext)
 
-        let model = Model(context: container!.viewContext)
-        model.index = 0
-        purchase.addToModels(model)
+        var models: [Model] = []
+        for index in [0] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
-        purchase.removeModel(model)
+        purchase.removeModel(models[0])
 
-        XCTAssertTrue(model.isDeleted)
-        XCTAssertNil(model.purchase)
-        XCTAssertFalse(purchase.models?.contains(model) ?? false)
+        XCTAssertTrue(models[0].isDeleted)
+        XCTAssertNil(models[0].purchase)
+        XCTAssertFalse(purchase.models?.contains(models[0]) ?? false)
     }
 
     /// Check that we can remove a second model from a purchase.
     func testRemoveSecondModel() {
         let purchase = Purchase(context: container!.viewContext)
 
-        let existingModel = Model(context: container!.viewContext)
-        existingModel.index = 0
-        purchase.addToModels(existingModel)
+        var models: [Model] = []
+        for index in [0, 1] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
-        let model = Model(context: container!.viewContext)
-        model.index = 1
-        purchase.addToModels(model)
+        purchase.removeModel(models[1])
 
-        purchase.removeModel(model)
+        XCTAssertTrue(models[1].isDeleted)
+        XCTAssertNil(models[1].purchase)
+        XCTAssertFalse(purchase.models?.contains(models[1]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[0]) ?? false)
 
-        XCTAssertTrue(model.isDeleted)
-        XCTAssertNil(model.purchase)
-        XCTAssertFalse(purchase.models?.contains(model) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel) ?? false)
-
-        XCTAssertEqual(existingModel.index, 0)
+        XCTAssertEqual(models[0].index, 0)
     }
 
     /// Check that we can remove the first of two models from a purchase, and the second is reindexed.
     func testRemoveFirstModelOfTwo() {
         let purchase = Purchase(context: container!.viewContext)
 
-        let model = Model(context: container!.viewContext)
-        model.index = 0
-        purchase.addToModels(model)
+        var models: [Model] = []
+        for index in [0, 1] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
-        let existingModel = Model(context: container!.viewContext)
-        existingModel.index = 1
-        purchase.addToModels(existingModel)
+        purchase.removeModel(models[0])
 
-        purchase.removeModel(model)
+        XCTAssertTrue(models[0].isDeleted)
+        XCTAssertNil(models[0].purchase)
+        XCTAssertFalse(purchase.models?.contains(models[0]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[1]) ?? false)
 
-        XCTAssertTrue(model.isDeleted)
-        XCTAssertNil(model.purchase)
-        XCTAssertFalse(purchase.models?.contains(model) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel) ?? false)
-
-        XCTAssertEqual(existingModel.index, 0)
+        XCTAssertEqual(models[1].index, 0)
     }
 
     /// Check that we can remove the first of three models from a purchase, and the second and third are reindexed.
     func testRemoveFirstModelOfThree() {
         let purchase = Purchase(context: container!.viewContext)
 
-        let model = Model(context: container!.viewContext)
-        model.index = 0
-        purchase.addToModels(model)
+        var models: [Model] = []
+        for index in [0, 1, 2] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
-        let existingModel1 = Model(context: container!.viewContext)
-        existingModel1.index = 1
-        purchase.addToModels(existingModel1)
+        purchase.removeModel(models[0])
 
-        let existingModel2 = Model(context: container!.viewContext)
-        existingModel2.index = 2
-        purchase.addToModels(existingModel2)
+        XCTAssertTrue(models[0].isDeleted)
+        XCTAssertNil(models[0].purchase)
+        XCTAssertFalse(purchase.models?.contains(models[0]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[1]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[2]) ?? false)
 
-        purchase.removeModel(model)
-
-        XCTAssertTrue(model.isDeleted)
-        XCTAssertNil(model.purchase)
-        XCTAssertFalse(purchase.models?.contains(model) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel1) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel2) ?? false)
-
-        XCTAssertEqual(existingModel1.index, 0)
-        XCTAssertEqual(existingModel2.index, 1)
+        XCTAssertEqual(models[1].index, 0)
+        XCTAssertEqual(models[2].index, 1)
     }
 
-    /// Check that gaps before a model index aren't affected up by remove.
+    /// Check that gaps before a model index are cleaned up after a remove.
     func testRemoveModelAfterGap() {
         let purchase = Purchase(context: container!.viewContext)
 
-        let existingModel1 = Model(context: container!.viewContext)
-        existingModel1.index = 0
-        purchase.addToModels(existingModel1)
+        var models: [Model] = []
+        for index in [0, 2, 3] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
-        let existingModel2 = Model(context: container!.viewContext)
-        existingModel2.index = 2
-        purchase.addToModels(existingModel2)
+        purchase.removeModel(models[2])
 
-        let model = Model(context: container!.viewContext)
-        model.index = 3
-        purchase.addToModels(model)
+        XCTAssertTrue(models[2].isDeleted)
+        XCTAssertNil(models[2].purchase)
+        XCTAssertFalse(purchase.models?.contains(models[2]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[0]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[1]) ?? false)
 
-        purchase.removeModel(model)
-
-        XCTAssertTrue(model.isDeleted)
-        XCTAssertNil(model.purchase)
-        XCTAssertFalse(purchase.models?.contains(model) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel1) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel2) ?? false)
-
-        XCTAssertEqual(existingModel1.index, 0)
-        XCTAssertEqual(existingModel2.index, 2)
+        XCTAssertEqual(models[0].index, 0)
+        XCTAssertEqual(models[1].index, 1)
     }
 
     /// Check that gaps after a model index are cleaned up by remove.
     func testRemoveModelBeforeGap() {
         let purchase = Purchase(context: container!.viewContext)
 
-        let model = Model(context: container!.viewContext)
-        model.index = 0
-        purchase.addToModels(model)
+        var models: [Model] = []
+        for index in [0, 1, 3] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
-        let existingModel1 = Model(context: container!.viewContext)
-        existingModel1.index = 1
-        purchase.addToModels(existingModel1)
+        purchase.removeModel(models[0])
 
-        let existingModel2 = Model(context: container!.viewContext)
-        existingModel2.index = 3
-        purchase.addToModels(existingModel2)
+        XCTAssertTrue(models[0].isDeleted)
+        XCTAssertNil(models[0].purchase)
+        XCTAssertFalse(purchase.models?.contains(models[0]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[1]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[2]) ?? false)
 
-        purchase.removeModel(model)
-
-        XCTAssertTrue(model.isDeleted)
-        XCTAssertNil(model.purchase)
-        XCTAssertFalse(purchase.models?.contains(model) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel1) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel2) ?? false)
-
-        XCTAssertEqual(existingModel1.index, 0)
-        XCTAssertEqual(existingModel2.index, 1)
+        XCTAssertEqual(models[1].index, 0)
+        XCTAssertEqual(models[2].index, 1)
     }
 
-    /// Check that duplicates before a model index aren't affected up by remove.
+    /// Check that duplicates before a model index are cleaned up by a remove.
     func testRemoveModelAfterDuplicate() {
         let purchase = Purchase(context: container!.viewContext)
 
-        let existingModel1 = Model(context: container!.viewContext)
-        existingModel1.index = 0
-        purchase.addToModels(existingModel1)
+        var models: [Model] = []
+        for index in [0, 0, 1] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
-        let existingModel2 = Model(context: container!.viewContext)
-        existingModel2.index = 0
-        purchase.addToModels(existingModel2)
+        purchase.removeModel(models[2])
 
-        let model = Model(context: container!.viewContext)
-        model.index = 1
-        purchase.addToModels(model)
+        XCTAssertTrue(models[2].isDeleted)
+        XCTAssertNil(models[2].purchase)
+        XCTAssertFalse(purchase.models?.contains(models[2]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[0]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[1]) ?? false)
 
-        purchase.removeModel(model)
-
-        XCTAssertTrue(model.isDeleted)
-        XCTAssertNil(model.purchase)
-        XCTAssertFalse(purchase.models?.contains(model) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel1) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel2) ?? false)
-
-        XCTAssertEqual(existingModel1.index, 0)
-        XCTAssertEqual(existingModel2.index, 0)
+        // Cleanup of duplicate indexes is non-deterministic.
+        if models[0].index == 0 {
+            XCTAssertEqual(models[0].index, 0)
+            XCTAssertEqual(models[1].index, 1)
+        } else {
+            XCTAssertEqual(models[1].index, 0)
+            XCTAssertEqual(models[0].index, 1)
+        }
     }
 
     /// Check that duplicates after a model index are cleaned up by remove.
     func testRemoveModelBeforeDuplicate() {
         let purchase = Purchase(context: container!.viewContext)
 
-        let model = Model(context: container!.viewContext)
-        model.index = 0
-        purchase.addToModels(model)
+        var models: [Model] = []
+        for index in [0, 1, 1] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
-        let existingModel1 = Model(context: container!.viewContext)
-        existingModel1.index = 1
-        purchase.addToModels(existingModel1)
+        purchase.removeModel(models[0])
 
-        let existingModel2 = Model(context: container!.viewContext)
-        existingModel2.index = 1
-        purchase.addToModels(existingModel2)
+        XCTAssertTrue(models[0].isDeleted)
+        XCTAssertNil(models[0].purchase)
+        XCTAssertFalse(purchase.models?.contains(models[0]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[1]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[2]) ?? false)
 
-
-        purchase.removeModel(model)
-
-        XCTAssertTrue(model.isDeleted)
-        XCTAssertNil(model.purchase)
-        XCTAssertFalse(purchase.models?.contains(model) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel1) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel2) ?? false)
-
-        // Non-deterministic which way the cleanup works.
-        if existingModel1.index == 0 {
-            XCTAssertEqual(existingModel1.index, 0)
-            XCTAssertEqual(existingModel2.index, 1)
+        // Cleanup of duplicate indexes is non-deterministic.
+        if models[1].index == 0 {
+            XCTAssertEqual(models[1].index, 0)
+            XCTAssertEqual(models[2].index, 1)
         } else {
-            XCTAssertEqual(existingModel2.index, 0)
-            XCTAssertEqual(existingModel1.index, 1)
+            XCTAssertEqual(models[2].index, 0)
+            XCTAssertEqual(models[1].index, 1)
         }
     }
 
@@ -319,28 +342,43 @@ class PurchaseModelsTests: XCTestCase {
     func testRemoveModelFromDuplicate() {
         let purchase = Purchase(context: container!.viewContext)
 
-        let model = Model(context: container!.viewContext)
-        model.index = 0
-        purchase.addToModels(model)
+        var models: [Model] = []
+        for index in [0, 0, 1] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
 
-        let existingModel1 = Model(context: container!.viewContext)
-        existingModel1.index = 0
-        purchase.addToModels(existingModel1)
+        purchase.removeModel(models[0])
 
-        let existingModel2 = Model(context: container!.viewContext)
-        existingModel2.index = 1
-        purchase.addToModels(existingModel2)
+        XCTAssertTrue(models[0].isDeleted)
+        XCTAssertNil(models[0].purchase)
+        XCTAssertFalse(purchase.models?.contains(models[0]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[1]) ?? false)
+        XCTAssertTrue(purchase.models?.contains(models[2]) ?? false)
 
-        purchase.removeModel(model)
+        XCTAssertEqual(models[1].index, 0)
+        XCTAssertEqual(models[2].index, 1)
+    }
 
-        XCTAssertTrue(model.isDeleted)
-        XCTAssertNil(model.purchase)
-        XCTAssertFalse(purchase.models?.contains(model) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel1) ?? false)
-        XCTAssertTrue(purchase.models?.contains(existingModel2) ?? false)
+    /// Check that removing a model makes minimal changes to indxes.
+    func testRemoveMinimxesChanges() {
+        let purchase = Purchase(context: container!.viewContext)
 
-        XCTAssertEqual(existingModel1.index, 0)
-        XCTAssertEqual(existingModel2.index, 1)
+        var models: [Model] = []
+        for index in [0, 1] {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
+
+        try! container!.viewContext.save()
+
+        purchase.removeModel(models[1])
+
+        XCTAssertFalse(models[0].hasChanges)
     }
 
     // MARK: moveModel
@@ -357,7 +395,7 @@ class PurchaseModelsTests: XCTestCase {
             models.append(model)
         }
 
-        purchase.moveModel(models[4], before: models[2])
+        purchase.moveModelAt(4, to: 2)
 
         XCTAssertEqual(models[0].index, 0)
         XCTAssertEqual(models[1].index, 1)
@@ -379,7 +417,7 @@ class PurchaseModelsTests: XCTestCase {
             models.append(model)
         }
 
-        purchase.moveModel(models[1], before: models[4])
+        purchase.moveModelAt(1, to: 3)
 
         XCTAssertEqual(models[0].index, 0)
         XCTAssertEqual(models[1].index, 3)
@@ -401,14 +439,94 @@ class PurchaseModelsTests: XCTestCase {
             models.append(model)
         }
 
-        purchase.moveModel(models[4], before: models[4])
+        purchase.moveModelAt(4, to: 4)
 
         for (index, model) in models.enumerated() {
             XCTAssertEqual(model.index, Int16(clamping: index))
         }
     }
 
-    /// Check that a gap before the move isn't cleaned up.
+    /// Check that swapping two models forward in the middle of the set works.
+    func testMoveModelSwapForwards() {
+        let purchase = Purchase(context: container!.viewContext)
+
+        var models: [Model] = []
+        for index in 0...5 {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
+
+        purchase.moveModelAt(2, to: 3)
+
+        XCTAssertEqual(models[0].index, 0)
+        XCTAssertEqual(models[1].index, 1)
+        XCTAssertEqual(models[2].index, 3)
+        XCTAssertEqual(models[3].index, 2)
+        XCTAssertEqual(models[4].index, 4)
+        XCTAssertEqual(models[5].index, 5)
+    }
+
+    /// Check that swapping two models backward in the middle of the set works.
+    func testMoveModelSwapBackwards() {
+        let purchase = Purchase(context: container!.viewContext)
+
+        var models: [Model] = []
+        for index in 0...5 {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
+
+        purchase.moveModelAt(3, to: 2)
+
+        XCTAssertEqual(models[0].index, 0)
+        XCTAssertEqual(models[1].index, 1)
+        XCTAssertEqual(models[2].index, 3)
+        XCTAssertEqual(models[3].index, 2)
+        XCTAssertEqual(models[4].index, 4)
+        XCTAssertEqual(models[5].index, 5)
+    }
+
+    /// Check that we can swap two models forward.
+    func testMoveModelSwapTwoForwards() {
+        let purchase = Purchase(context: container!.viewContext)
+
+        var models: [Model] = []
+        for index in 0...1 {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
+
+        purchase.moveModelAt(1, to: 0)
+
+        XCTAssertEqual(models[0].index, 1)
+        XCTAssertEqual(models[1].index, 0)
+    }
+
+    /// Check that we can swap two models backward.
+    func testMoveModelSwapTwoBackwards() {
+        let purchase = Purchase(context: container!.viewContext)
+
+        var models: [Model] = []
+        for index in 0...1 {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
+
+        purchase.moveModelAt(0, to: 1)
+
+        XCTAssertEqual(models[0].index, 1)
+        XCTAssertEqual(models[1].index, 0)
+    }
+
+    /// Check that a gap before the move is cleaned up.
     func testMoveModelGapBefore() {
         let purchase = Purchase(context: container!.viewContext)
 
@@ -420,17 +538,17 @@ class PurchaseModelsTests: XCTestCase {
             models.append(model)
         }
 
-        purchase.moveModel(models[4], before: models[2])
+        purchase.moveModelAt(4, to: 2)
 
         XCTAssertEqual(models[0].index, 0)
-        XCTAssertEqual(models[1].index, 2)
-        XCTAssertEqual(models[2].index, 4)
-        XCTAssertEqual(models[3].index, 5)
-        XCTAssertEqual(models[4].index, 3)
-        XCTAssertEqual(models[5].index, 6)
+        XCTAssertEqual(models[1].index, 1)
+        XCTAssertEqual(models[2].index, 3)
+        XCTAssertEqual(models[3].index, 4)
+        XCTAssertEqual(models[4].index, 2)
+        XCTAssertEqual(models[5].index, 5)
     }
 
-    /// Check that a gap after the move isn't cleaned up.
+    /// Check that a gap after the move is cleaned up.
     func testMoveModelGapAfter() {
         let purchase = Purchase(context: container!.viewContext)
 
@@ -442,17 +560,17 @@ class PurchaseModelsTests: XCTestCase {
             models.append(model)
         }
 
-        purchase.moveModel(models[1], before: models[4])
+        purchase.moveModelAt(1, to: 3)
 
         XCTAssertEqual(models[0].index, 0)
         XCTAssertEqual(models[1].index, 3)
         XCTAssertEqual(models[2].index, 1)
         XCTAssertEqual(models[3].index, 2)
         XCTAssertEqual(models[4].index, 4)
-        XCTAssertEqual(models[5].index, 6)
+        XCTAssertEqual(models[5].index, 5)
     }
 
-    /// Check that a duplicate within the move segment is cleaned up, and following models reindexed because they have to be.
+    /// Check that a duplicate within the move segment is cleaned up, and models reindexed.
     func testMoveModelDuplicateWithin() {
         let purchase = Purchase(context: container!.viewContext)
 
@@ -464,11 +582,11 @@ class PurchaseModelsTests: XCTestCase {
             models.append(model)
         }
 
-        purchase.moveModel(models[1], before: models[4])
+        purchase.moveModelAt(1, to: 3)
 
         XCTAssertEqual(models[0].index, 0)
         XCTAssertEqual(models[1].index, 3)
-        // Non-deterministic which way the cleanup works.
+        // Cleanup of duplicate indexes is non-deterministic.
         if models[2].index == 1 {
             XCTAssertEqual(models[2].index, 1)
             XCTAssertEqual(models[3].index, 2)
@@ -478,5 +596,25 @@ class PurchaseModelsTests: XCTestCase {
         }
         XCTAssertEqual(models[4].index, 4)
         XCTAssertEqual(models[5].index, 5)
+    }
+
+    /// Check that moving a model makes minimal changes to indexes.
+    func testMoveMinimizesChanges() {
+        let purchase = Purchase(context: container!.viewContext)
+
+        var models: [Model] = []
+        for index in 0...5 {
+            let model = Model(context: container!.viewContext)
+            model.index = Int16(clamping: index)
+            purchase.addToModels(model)
+            models.append(model)
+        }
+
+        try! container!.viewContext.save()
+
+        purchase.moveModelAt(1, to: 3)
+
+        XCTAssertFalse(models[0].hasChanges)
+        XCTAssertFalse(models[4].hasChanges)
     }
 }

@@ -10,30 +10,40 @@ import Foundation
 import CoreData
 
 extension Purchase {
+    /// Update the indexes of the `models`.
+    ///
+    /// - Parameter changing: closure to make changes to the `models` list, invoked between sorting `models` and
+    /// applying new indexes.
+    func updateModelIndexes(changing: ((inout [Model]) -> Void)? = nil) {
+        guard let models = models as? Set<Model> else { return }
+
+        var sortedModels = models.sorted { $0.index < $1.index }
+        changing?(&sortedModels)
+
+        for (newIndex, model) in sortedModels.enumerated() {
+            if model.index != newIndex { model.index = Int16(clamping: newIndex) }
+        }
+    }
+
     /// Add a new `Model` to the purchase.
     ///
     /// The new `Model` is inserted into the same `managedObjectContext` as this purchase, added to the `models`
     /// set, and the `index` set to the next value in sequence.
+    ///
     /// - Returns: `Model` now present in `models`.
     public func addModel() -> Model {
-        var maxIndex: Int16?
-        if let models = models {
-            for case let model as Model in models {
-                if maxIndex == nil || model.index > maxIndex! {
-                    maxIndex = model.index
-                }
+        guard let managedObjectContext = managedObjectContext else {
+            preconditionFailure("Cannot add a model to a purchase without a managed object context")
+        }
+
+        var model: Model!
+        managedObjectContext.performAndWait {
+            model = Model(context: managedObjectContext)
+            updateModelIndexes {
+                $0.append(model)
             }
+            addToModels(model)
         }
-
-        let model = Model(entity: Model.entity(), insertInto: managedObjectContext)
-        if let maxIndex = maxIndex {
-            model.index = maxIndex + 1
-        } else {
-            model.index = 0
-        }
-
-        addToModels(model)
-
         return model
     }
 
@@ -41,58 +51,43 @@ extension Purchase {
     ///
     /// `model` is removed from the `models` set, deleted from its `managedObjectContext` and all `index` of each
     /// other model in `models` adjusted.
+    ///
     /// - Parameter model: `Model` to be removed.
     public func removeModel(_ model: Model) {
-        removeFromModels(model)
-
-        if let models = models {
-            var followingModels: [Model] = []
-            for case let followingModel as Model in models {
-                if followingModel.index >= model.index {
-                    followingModels.append(followingModel)
-                }
-            }
-
-            followingModels.sort { $0.index < $1.index }
-            for (offset, followingModel) in followingModels.enumerated() {
-                followingModel.index = model.index + Int16(clamping: offset)
-            }
+        guard let managedObjectContext = managedObjectContext else {
+            preconditionFailure("Cannot remove a model from a purchase without a managed object context")
         }
 
-        managedObjectContext?.delete(model)
+        managedObjectContext.performAndWait {
+            removeFromModels(model)
+            updateModelIndexes()
+            managedObjectContext.delete(model)
+        }
     }
 
-    /// Move a `Model` within the purchase.
+    /// Move a `Model` within the purchase from one position to another.
+    ///
+    /// After calling this method, the model at the zero-indexes `origin` position with the set of `models`
+    /// will have the new index `destination` with all indexes adjusted.
+    ///
+    /// Note that when moving a model to a lower position, after calling this method, the model will be placed **before**
+    /// the model currently at the `destination` indxes; while when moving a model to a higher position, the model
+    /// will be placed **after** the model currently at the `destination`.
+    ///
     /// - Parameters:
-    ///   - model: `Model` to be moved.
-    ///   - otherModel: `Model` that `model` is to be placed before.
-    public func moveModel(_ model: Model, before otherModel: Model) {
-        guard model != otherModel else { return }
+    ///   - origin: The position of the model that you want to move.
+    ///   - destination: The model's new position.
+    public func moveModelAt(_ origin: Int, to destination: Int) {
+        guard let managedObjectContext = managedObjectContext else {
+            preconditionFailure("Cannot move a model within a purchase without a managed object context")
+        }
 
-        let indexes = min(model.index, otherModel.index)...max(model.index, otherModel.index)
-
-        if let models = models {
-            var reoderModels: [Model] = []
-            var followingModels: [Model] = []
-            for case let reoderModel as Model in models {
-                guard reoderModel != model else { continue }
-                if indexes.contains(reoderModel.index) {
-                    reoderModels.append(reoderModel)
-                } else if reoderModel.index > indexes.upperBound {
-                    followingModels.append(reoderModel)
-                }
-            }
-
-            reoderModels.sort { $0.index < $1.index }
-            reoderModels.insert(model, at: reoderModels.firstIndex(of: otherModel)!)
-            if reoderModels.count > indexes.count {
-                print("FIXING: more models within move than indexes available")
-                followingModels.sort { $0.index < $1.index }
-                reoderModels.append(contentsOf: followingModels)
-            }
-
-            for (offset, reoderModel) in reoderModels.enumerated() {
-                reoderModel.index = indexes.lowerBound + Int16(clamping: offset)
+        guard origin != destination else { return }
+        managedObjectContext.performAndWait {
+            updateModelIndexes() {
+                let originIndex = $0.index($0.startIndex, offsetBy: origin)
+                let destinationIndex = $0.index($0.startIndex, offsetBy: destination)
+                $0.insert($0.remove(at: originIndex), at: destinationIndex)
             }
         }
     }
