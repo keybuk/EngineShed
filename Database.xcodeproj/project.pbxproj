@@ -10,9 +10,7 @@
 		D213DF2D23E0B0F50003C771 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D213DF2323E0B0F40003C771 /* Database.framework */; };
 		D213DF3223E0B0F50003C771 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213DF3123E0B0F50003C771 /* DatabaseTests.swift */; };
 		D213DF3423E0B0F50003C771 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = D213DF2623E0B0F40003C771 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D213DF3E23E0B3CA0003C771 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213DF3D23E0B3CA0003C771 /* Test.swift */; };
 		D213DF4D23E0B57B0003C771 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D213DF4423E0B57B0003C771 /* Database.framework */; };
-		D213DF5B23E0B5BE0003C771 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213DF3D23E0B3CA0003C771 /* Test.swift */; };
 		D213DF5C23E0B5CE0003C771 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = D213DF2623E0B0F40003C771 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D213DF5D23E0B6040003C771 /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D213DF3123E0B0F50003C771 /* DatabaseTests.swift */; };
 		D22B4D0A23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D0923E4E7EE00CB1F6E /* Sequence+CountWhere.swift */; };
@@ -123,7 +121,6 @@
 		D213DF2C23E0B0F50003C771 /* DatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D213DF3123E0B0F50003C771 /* DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
 		D213DF3323E0B0F50003C771 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D213DF3D23E0B3CA0003C771 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		D213DF4423E0B57B0003C771 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D213DF4C23E0B57B0003C771 /* DatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22B4D0923E4E7EE00CB1F6E /* Sequence+CountWhere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+CountWhere.swift"; sourceTree = "<group>"; };
@@ -236,7 +233,6 @@
 				D24D474B23E162D0001F09C2 /* PersistentContainer.swift */,
 				D213DF2623E0B0F40003C771 /* Database.h */,
 				D213DF2723E0B0F40003C771 /* Info.plist */,
-				D213DF3D23E0B3CA0003C771 /* Test.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -502,7 +498,6 @@
 				D22B4D4323E51C9A00CB1F6E /* Purchase+Currency.swift in Sources */,
 				D24D474C23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
 				D2FF6E7223E646240063257D /* DecoderType+WillSave.swift in Sources */,
-				D213DF3E23E0B3CA0003C771 /* Test.swift in Sources */,
 				D2FF6E7823E64D160063257D /* DecoderType+FetchRequests.swift in Sources */,
 				D22B4D4C23E51F9700CB1F6E /* Decoder+Address.swift in Sources */,
 				D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
@@ -559,7 +554,6 @@
 				D22B4D4423E51C9A00CB1F6E /* Purchase+Currency.swift in Sources */,
 				D24D474D23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
 				D2FF6E7323E646240063257D /* DecoderType+WillSave.swift in Sources */,
-				D213DF5B23E0B5BE0003C771 /* Test.swift in Sources */,
 				D2FF6E7923E64D160063257D /* DecoderType+FetchRequests.swift in Sources */,
 				D22B4D4D23E51F9700CB1F6E /* Decoder+Address.swift in Sources */,
 				D24D474A23E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
