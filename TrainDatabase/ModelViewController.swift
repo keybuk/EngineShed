@@ -84,7 +84,10 @@ class ModelViewController: NSViewController {
     var detailPartsTokenFieldDelegate: DetailPartsTokenFieldDelegate?
     var modificationsTokenFieldDelegate: SimpleTokenFieldDelegate?
     var tasksTokenFieldDelegate: SimpleTokenFieldDelegate?
-    
+
+    var persistentContainer: PersistentContainer!
+    var managedObjectContext: NSManagedObjectContext?
+
     var model: Model!
     var trainMembers: [TrainMember] = []
 
@@ -93,6 +96,8 @@ class ModelViewController: NSViewController {
         
         trainMemberCollectionView.register(TrainMemberItem.self, forItemWithIdentifier: .trainMemberItem)
         trainMemberCollectionView.registerForDraggedTypes([ .trainMemberItem ])
+
+        persistentContainer = (NSApplication.shared.delegate! as! AppDelegate).persistentContainer
     }
  
     override func viewDidAppear() {
@@ -120,10 +125,20 @@ class ModelViewController: NSViewController {
     }
     
     func updateCurrentRecord() {
+        if let previousManagedObjectContext = managedObjectContext, previousManagedObjectContext.hasChanges {
+            do {
+                try previousManagedObjectContext.save()
+            } catch let error as NSError {
+                NSApplication.shared.presentError(error)
+            }
+        }
+
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
 
-        self.model = model
+        managedObjectContext = persistentContainer.newEditingContext()
+        self.model = managedObjectContext!.object(with: model.objectID) as? Model
+
         self.trainMembers = self.model.trainMember?.train?.members() ?? []
 
         reloadData()
@@ -248,7 +263,6 @@ class ModelViewController: NSViewController {
     
     @IBAction func imageChanged(_ sender: NSImageView) {
         model.image = sender.image
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func classificationChanged(_ sender: NSComboBox) {
@@ -259,8 +273,6 @@ class ModelViewController: NSViewController {
         if tryFill {
             fillFromSimilar()
         }
-
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func modelClassChanged(_ sender: NSTextField) {
@@ -271,38 +283,30 @@ class ModelViewController: NSViewController {
         if tryFill {
             fillFromSimilar()
         }
-
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func numberChanged(_ sender: NSTextField) {
         model.number = sender.stringValue
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func nameChanged(_ sender: NSTextField) {
         model.name = sender.stringValue
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func liveryChanged(_ sender: NSTextField) {
         model.livery = sender.stringValue
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func detailsChanged(_ sender: NSTextField) {
         model.details = sender.stringValue
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func eraChanged(_ sender: NSComboBox) {
         model.era = (sender.objectValue as? [Model.Era])?.first
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func dispositionChanged(_ sender: NSComboBox) {
         model.disposition = (sender.objectValue as? [Model.Disposition])?.first
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func trainChanged(_ sender: NSComboBox) {
@@ -332,34 +336,29 @@ class ModelViewController: NSViewController {
             }
         }
 
-        try? model.managedObjectContext?.save() // FIXME
         trainMembers = model.trainMember?.train?.members() ?? []
         trainMemberCollectionView.reloadData()
     }
     
     @IBAction func motorChanged(_ sender: NSTextField) {
         model.motor = sender.stringValue
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func lightsShowPicker(_ sender: NSButton) {
         guard let pickerViewController = storyboard?.instantiateController(withIdentifier: .pickerViewController) as? PickerViewController else { return }
         pickerViewController.pick(for: lightsTokenField, from: try! model.sortedValuesForLights(), setValues: model.lightsAsStrings) {
             self.model.lightsAsStrings = $0
-            try? self.model.managedObjectContext?.save() // FIXME
             self.lightsTokenField.objectValue = self.model.lightsAsStrings.sorted()
         }
     }
     
     @IBAction func lightsChanged(_ sender: NSTokenField) {
         model.lightsAsStrings = Set(sender.objectValue as! [String])
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func socketChanged(_ sender: NSTextField) {
         model.socket = sender.stringValue
 
-        try? model.managedObjectContext?.save() // FIXME
         reloadDecoderFields()
     }
     
@@ -368,7 +367,6 @@ class ModelViewController: NSViewController {
         if decoderType != nil { model.createDecoderIfNeeded() }
         model.decoder?.type = decoderType
 
-        try? model.managedObjectContext?.save() // FIXME
         reloadDecoderFields()
     }
     
@@ -389,7 +387,6 @@ class ModelViewController: NSViewController {
             model.decoder?.serialNumber = serialNumber
         }
 
-        try? model.managedObjectContext?.save() // FIXME
         reloadDecoderFields()
     }
     
@@ -406,7 +403,6 @@ class ModelViewController: NSViewController {
         }
         
         model.decoder?.deleteIfEmpty()
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderFirmwareDateChanged(_ sender: NSTextField) {
@@ -415,7 +411,6 @@ class ModelViewController: NSViewController {
         model.decoder?.firmwareDateAsDate = firmwareDate
 
         model.decoder?.deleteIfEmpty()
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderAddressChanged(_ sender: NSTextField) {
@@ -424,7 +419,6 @@ class ModelViewController: NSViewController {
         model.decoder?.address = address
 
         model.decoder?.deleteIfEmpty()
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundAuthorChanged(_ sender: NSTextField) {
@@ -433,7 +427,6 @@ class ModelViewController: NSViewController {
         model.decoder?.soundAuthor = soundAuthor
         
         model.decoder?.deleteIfEmpty()
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func decoderSoundProjectChanged(_ sender: NSTextField) {
@@ -442,7 +435,6 @@ class ModelViewController: NSViewController {
         model.decoder?.soundProject = soundProject
         
         model.decoder?.deleteIfEmpty()
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundProjectVersionChanged(_ sender: NSTextField) {
@@ -451,7 +443,6 @@ class ModelViewController: NSViewController {
         model.decoder?.soundProjectVersion = soundProjectVersion
 
         model.decoder?.deleteIfEmpty()
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func decoderSoundSettingsChanged(_ sender: NSTextField) {
@@ -460,54 +451,46 @@ class ModelViewController: NSViewController {
         model.decoder?.soundSettings = soundSettings
 
         model.decoder?.deleteIfEmpty()
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func speakerChanged(_ sender: NSTextField) {
         model.speaker = sender.stringValue
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func speakerFittingShowPicker(_ sender: NSButton) {
         guard let pickerViewController = storyboard?.instantiateController(withIdentifier: .pickerViewController) as? PickerViewController else { return }
         pickerViewController.pick(for: speakerFittingTokenField, from: try! model.sortedValuesForSpeakerFitting(), setValues: model.speakerFittingsAsStrings) {
             self.model.speakerFittingsAsStrings = $0
-            try? self.model.managedObjectContext?.save() // FIXME
             self.speakerFittingTokenField.objectValue = self.model.speakerFittingsAsStrings.sorted()
         }
     }
 
     @IBAction func speakerFittingChanged(_ sender: NSTokenField) {
         model.speakerFittingsAsStrings = Set(sender.objectValue as! [String])
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func couplingsShowPicker(_ sender: NSButton) {
         guard let pickerViewController = storyboard?.instantiateController(withIdentifier: .pickerViewController) as? PickerViewController else { return }
         pickerViewController.pick(for: couplingsTokenField, from: try! model.sortedValuesForCouplings(), setValues: model.couplingsAsStrings) {
             self.model.couplingsAsStrings = $0
-            try? self.model.managedObjectContext?.save() // FIXME
             self.couplingsTokenField.objectValue = self.model.couplingsAsStrings.sorted()
         }
     }
 
     @IBAction func couplingsChanged(_ sender: NSTokenField) {
         model.couplingsAsStrings = Set(sender.objectValue as! [String])
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func featuresShowPicker(_ sender: NSButton) {
         guard let pickerViewController = storyboard?.instantiateController(withIdentifier: .pickerViewController) as? PickerViewController else { return }
         pickerViewController.pick(for: featuresTokenField, from: try! model.sortedValuesForFeatures(), setValues: model.featuresAsStrings) {
             self.model.featuresAsStrings = $0
-            try? self.model.managedObjectContext?.save() // FIXME
             self.featuresTokenField.objectValue = self.model.featuresAsStrings.sorted()
         }
     }
 
     @IBAction func featuresChanged(_ sender: NSTokenField) {
         model.featuresAsStrings = Set(sender.objectValue as! [String])
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func detailPartsShowPicker(_ sender: NSButton) {
@@ -515,7 +498,6 @@ class ModelViewController: NSViewController {
         guard let pickerViewController = storyboard?.instantiateController(withIdentifier: .pickerViewController) as? PickerViewController else { return }
         pickerViewController.pick(for: detailPartsTokenField, from: try! model.sortedValuesForDetailParts(), setValues: model.detailPartsAsStrings) {
             self.model.detailPartsAsStrings = $0
-            try? self.model.managedObjectContext?.save() // FIXME
 
             self.detailPartsTokenField.objectValue = nil
             self.detailPartsTokenField.objectValue = self.model.detailPartsAsStrings.sorted()
@@ -535,50 +517,42 @@ class ModelViewController: NSViewController {
 //        }
 //
         model.detailPartsAsStrings = Set(sender.objectValue as! [String])
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func modificationsShowPicker(_ sender: NSButton) {
         guard let pickerViewController = storyboard?.instantiateController(withIdentifier: .pickerViewController) as? PickerViewController else { return }
         pickerViewController.pick(for: modificationsTokenField, from: try! model.sortedValuesForModifications(), setValues: model.modificationsAsStrings) {
             self.model.modificationsAsStrings = $0
-            try? self.model.managedObjectContext?.save() // FIXME
             self.modificationsTokenField.objectValue = self.model.modificationsAsStrings.sorted()
         }
     }
 
     @IBAction func modificationsChanged(_ sender: NSTokenField) {
         model.modificationsAsStrings = Set(sender.objectValue as! [String])
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func lastRunChanged(_ sender: NSTextField) {
         model.lastRunAsDate = sender.objectValue as? Date
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func lastOilChanged(_ sender: NSTextField) {
         model.lastOilAsDate = sender.objectValue as? Date
-        try? model.managedObjectContext?.save() // FIXME
     }
 
     @IBAction func tasksShowPicker(_ sender: NSButton) {
         guard let pickerViewController = storyboard?.instantiateController(withIdentifier: .pickerViewController) as? PickerViewController else { return }
         pickerViewController.pick(for: tasksTokenField, from: try! model.sortedValuesForTasks(), setValues: model.tasksAsStrings) {
             self.model.tasksAsStrings = $0
-            try? self.model.managedObjectContext?.save() // FIXME
             self.tasksTokenField.objectValue = self.model.tasksAsStrings.sorted()
         }
     }
 
     @IBAction func tasksChanged(_ sender: NSTokenField) {
         model.tasksAsStrings = Set(sender.objectValue as! [String])
-        try? model.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func notesChanged(_ sender: NSTextField) {
         model.notes = sender.stringValue
-        try? model.managedObjectContext?.save() // FIXME
     }
 
 }
@@ -680,7 +654,6 @@ extension ModelViewController : NSCollectionViewDelegate {
             trainMembers[oldIndexPath.item].model = nil
             
             if trainMembers[oldIndexPath.item].deleteIfUnused() == true {
-                try? train.managedObjectContext?.save() // FIXME
                 trainMembers = model.trainMember?.train?.members() ?? []
 
                 collectionView.performBatchUpdates({
@@ -688,7 +661,6 @@ extension ModelViewController : NSCollectionViewDelegate {
                     collectionView.reloadItems(at: Set([indexPath]))
                 })
             } else {
-                try? train.managedObjectContext?.save() // FIXME
                 trainMembers = model.trainMember?.train?.members() ?? []
 
                 collectionView.reloadItems(at: Set([oldIndexPath, indexPath]))
@@ -704,7 +676,6 @@ extension ModelViewController : NSCollectionViewDelegate {
                 train.moveMemberAt(oldIndexPath.item, to: indexPath.item)
                 collectionView.moveItem(at: oldIndexPath, to: indexPath)
             }
-            try? train.managedObjectContext?.save() // FIXME
             trainMembers = model.trainMember?.train?.members() ?? []
 
             return true
@@ -719,4 +690,5 @@ extension ModelViewController : NSCollectionViewDelegate {
     }
     
 }
+
 
