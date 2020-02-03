@@ -41,6 +41,9 @@ class PurchaseViewController: NSViewController {
     var storeComboBoxDataSource: SimpleComboBoxDataSource?
     var conditionComboBoxDataSource: EnumComboBoxDataSource?
 
+    var persistentContainer: PersistentContainer!
+    var managedObjectContext: NSManagedObjectContext?
+
     var purchase: Purchase!
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -58,6 +61,8 @@ class PurchaseViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        persistentContainer = (NSApplication.shared.delegate! as! AppDelegate).persistentContainer
     }
     
     override func viewDidAppear() {
@@ -79,9 +84,19 @@ class PurchaseViewController: NSViewController {
     func updateCurrentRecord() {
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
-        guard let modelPurchase = model.purchase else { return }
+        guard let purchase = model.purchase else { return }
 
-        purchase = modelPurchase
+        if let previousManagedObjectContext = managedObjectContext, previousManagedObjectContext.hasChanges {
+            do {
+                try previousManagedObjectContext.save()
+            } catch let error as NSError {
+                NSApplication.shared.presentError(error)
+            }
+        }
+
+        managedObjectContext = persistentContainer.newEditingContext()
+        self.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
+
         reloadData()
         
         if purchase.manufacturer?.isEmpty ?? true {
@@ -119,7 +134,6 @@ class PurchaseViewController: NSViewController {
     
     func fillFromSimilar() {
         if (try? purchase.fillFromSimilar()) == true {
-            try? purchase.managedObjectContext?.save() // FIXME
             reloadData()
             recordController?.currentRecord = .model(purchase.models()[0])
         }
@@ -133,7 +147,6 @@ class PurchaseViewController: NSViewController {
         if tryFill {
             fillFromSimilar()
         }
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func catalogNumberChanged(_ sender: NSTextField) {
@@ -144,62 +157,49 @@ class PurchaseViewController: NSViewController {
         if tryFill {
             fillFromSimilar()
         }
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func catalogYearChanged(_ sender: NSTextField) {
         purchase.catalogYear = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func catalogDescriptionChanged(_ sender: NSTextField) {
         purchase.catalogDescription = sender.stringValue
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func limitedEditionChanged(_ sender: NSTextField) {
         purchase.limitedEdition = sender.stringValue
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func limitedEditionNumberChanged(_ sender: NSTextField) {
         purchase.limitedEditionNumber = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func limitedEditionCountChanged(_ sender: NSTextField) {
         purchase.limitedEditionCount = sender.objectValue != nil ? Int16(clamping: sender.integerValue) : 0
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func dateChanged(_ sender: NSTextField) {
         purchase.dateAsDate = sender.objectValue as? Date
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func storeChanged(_ sender: NSComboBox) {
         purchase.store = sender.stringValue
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func priceChanged(_ sender: NSTextField) {
         purchase.price = sender.objectValue as? NSDecimalNumber
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func purchaseConditionChanged(_ sender: NSComboBox) {
         purchase.condition = (sender.objectValue as? [Purchase.Condition])?.first
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func valuationChanged(_ sender: NSTextField) {
         purchase.valuation = sender.objectValue as? NSDecimalNumber
-        try? purchase.managedObjectContext?.save() // FIXME
     }
     
     @IBAction func notesChanged(_ sender: NSTextField) {
         purchase.notes = sender.stringValue
-        try? purchase.managedObjectContext?.save() // FIXME
-    }
-    
+    }    
 }
