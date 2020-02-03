@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D229995F23DD0ECC00F28499 /* CKDataAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229995E23DD0ECB00F28499 /* CKDataAsset.swift */; };
-		D229996423DD1D9100F28499 /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */; };
 		D23132FA23E143FB0001812F /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23132F923E143FB0001812F /* Database.framework */; };
 		D23132FB23E143FB0001812F /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23132F923E143FB0001812F /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D25B47E91FEFA994008A7EB1 /* TrainMemberItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */; };
@@ -50,7 +48,6 @@
 		D2EC18641FFC262100DF1ED4 /* RecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EC18631FFC262100DF1ED4 /* RecordController.swift */; };
 		D2EC18661FFC5D4700DF1ED4 /* PurchaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EC18651FFC5D4700DF1ED4 /* PurchaseWindowController.swift */; };
 		D2EC18681FFC60DA00DF1ED4 /* DecoderTypeWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EC18671FFC60DA00DF1ED4 /* DecoderTypeWindowController.swift */; };
-		D2FFF3BE20E20EAF000A4511 /* Shim.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FFF3BD20E20EAF000A4511 /* Shim.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +75,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D229995E23DD0ECB00F28499 /* CKDataAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKDataAsset.swift; sourceTree = "<group>"; };
-		D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+SplitBetween.swift"; sourceTree = "<group>"; };
 		D23132F923E143FB0001812F /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberItem.swift; sourceTree = "<group>"; };
 		D25B47E81FEFA994008A7EB1 /* TrainMemberItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainMemberItem.xib; sourceTree = "<group>"; };
@@ -125,7 +120,6 @@
 		D2EC18631FFC262100DF1ED4 /* RecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordController.swift; sourceTree = "<group>"; };
 		D2EC18651FFC5D4700DF1ED4 /* PurchaseWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseWindowController.swift; sourceTree = "<group>"; };
 		D2EC18671FFC60DA00DF1ED4 /* DecoderTypeWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeWindowController.swift; sourceTree = "<group>"; };
-		D2FFF3BD20E20EAF000A4511 /* Shim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shim.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,11 +179,8 @@
 		D28A4BC61FD67523000768D8 /* TrainDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				D229996323DD1D9100F28499 /* Collection+SplitBetween.swift */,
 				D26673C61FE99F250069F9C7 /* NSManagedObject+SortedValues.swift */,
 				D298CAE520D4F70D00827F68 /* Array+CountedElements.swift */,
-				D2FFF3BD20E20EAF000A4511 /* Shim.swift */,
-				D229995E23DD0ECB00F28499 /* CKDataAsset.swift */,
 				D26673C31FE90B8D0069F9C7 /* Data Model */,
 				D2DFF4BB200A9A0C00259284 /* Cocoa Extensions */,
 				D28A4BC71FD67523000768D8 /* AppDelegate.swift */,
@@ -391,7 +382,6 @@
 				D276FF291FE4F6A600EA087F /* SourceListViewController.swift in Sources */,
 				D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */,
 				D26673C71FE99F250069F9C7 /* NSManagedObject+SortedValues.swift in Sources */,
-				D2FFF3BE20E20EAF000A4511 /* Shim.swift in Sources */,
 				D276FF331FE5F51500EA087F /* DecoderType.swift in Sources */,
 				D27DF7231FF48B1E003C7AAB /* DecoderTypesViewController.swift in Sources */,
 				D276FF2B1FE5C5E600EA087F /* WindowController.swift in Sources */,
@@ -399,12 +389,10 @@
 				D276FF311FE5D43000EA087F /* ModelViewController.swift in Sources */,
 				D2B548381FEEFEEF00FE7ED0 /* PickerViewController.swift in Sources */,
 				D2709B081FF65557007029C5 /* EmptyDateFormatter.swift in Sources */,
-				D229996423DD1D9100F28499 /* Collection+SplitBetween.swift in Sources */,
 				D2DFF4BA200A998E00259284 /* EnterTableView.swift in Sources */,
 				D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */,
 				D2EC18641FFC262100DF1ED4 /* RecordController.swift in Sources */,
 				D27DF7261FF48E79003C7AAB /* DecoderTypeViewController.swift in Sources */,
-				D229995F23DD0ECC00F28499 /* CKDataAsset.swift in Sources */,
 				D26673BC1FE8F95F0069F9C7 /* TrainMember.swift in Sources */,
 				D2DFF4B8200A977200259284 /* HorizontalScrollView.swift in Sources */,
 				D26673C01FE8FBA10069F9C7 /* Model.swift in Sources */,
