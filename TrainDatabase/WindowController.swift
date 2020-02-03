@@ -83,30 +83,6 @@ class WindowController : NSWindowController, RecordController {
         currentRecord = .model(model)
     }
     
-    @IBAction func saveAction(_ sender: NSButton) {
-        let context = persistentContainer.viewContext
-
-        if !context.commitEditing() {
-            NSLog("Unable to commit editing before saving")
-        }
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                NSApplication.shared.presentError(nserror)
-                return
-            }
-        }
-
-        let alert = NSAlert()
-        alert.alertStyle = .informational
-        alert.messageText = "Saved."
-        alert.addButton(withTitle: "OK")
-
-        alert.runModal()
-    }
-
     @IBAction func search(_ sender: NSSearchField) {
         guard !sender.stringValue.isEmpty else {
             modelsViewController.setFilter(search: nil)
