@@ -72,8 +72,6 @@ class DetailPartsTokenFieldDelegate : NSObject, NSTokenFieldDelegate {
         if let detailPart = model.detailPartForTitle(title) {
             detailPart.isFitted = !detailPart.isFitted
             sender.state = detailPart.isFitted ? .on : .off
-
-            try? model.managedObjectContext?.save() // FIXME
         }
 
 //        var detailParts = tokenField.objectValue as! [DetailPart]
