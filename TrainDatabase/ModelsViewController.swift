@@ -91,17 +91,19 @@ class ModelsViewController : NSViewController {
     }
     
     func reloadData(notification: Notification? = nil) {
-        //        let oldGroups = groups
-        //        let oldModels = models
-
+        let fetchRequest: NSFetchRequest<Model>
         if let search = searchFilter {
-            models = try! Model.matching(search: search, in: persistentContainer.viewContext)
+            fetchRequest = Model.fetchRequestForModels(matching: search)
         } else if let classification = classificationFilter {
-            models = try! Model.matching(classification: classification, in: persistentContainer.viewContext)
+            fetchRequest = Model.fetchRequestForModels(classification: classification)
         } else {
             return
         }
-        
+
+        persistentContainer.viewContext.performAndWait {
+            models = try! fetchRequest.execute()
+        }
+
         groups = [:]
         var lastClass: String? = nil
         for (index, model) in models.enumerated() {

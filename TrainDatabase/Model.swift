@@ -332,22 +332,6 @@ extension Model {
 
         return true
     }
-
-    
-    static func matching(classification: Classification, in context: NSManagedObjectContext) throws -> [Model] {
-        let fetchRequest = Model.fetchRequestForModels(classification: classification)
-
-        let results = try context.fetch(fetchRequest)
-        return results
-    }
-
-    static func matching(search: String, in context: NSManagedObjectContext) throws -> [Model] {
-        let fetchRequest = Model.fetchRequestForModels(matching: search)
-
-        let results = try context.fetch(fetchRequest)
-        return results
-    }
-
 }
 
 extension Model/* : CustomStringConvertible*/ {
