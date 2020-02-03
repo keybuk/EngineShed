@@ -82,9 +82,6 @@ class DecoderTypeViewController: NSViewController {
     }
     
     func updateCurrentRecord() {
-        guard let currentRecord = recordController?.currentRecord else { return }
-        guard case .decoderType(let decoderType) = currentRecord else { return }
-
         if let previousManagedObjectContext = managedObjectContext, previousManagedObjectContext.hasChanges {
             do {
                 try previousManagedObjectContext.save()
@@ -92,6 +89,9 @@ class DecoderTypeViewController: NSViewController {
                 NSApplication.shared.presentError(error)
             }
         }
+
+        guard let currentRecord = recordController?.currentRecord else { return }
+        guard case .decoderType(let decoderType) = currentRecord else { return }
 
         managedObjectContext = persistentContainer.newEditingContext()
         self.decoderType = managedObjectContext!.object(with: decoderType.objectID) as? DecoderType

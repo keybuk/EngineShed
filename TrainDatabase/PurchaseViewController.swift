@@ -82,10 +82,6 @@ class PurchaseViewController: NSViewController {
     }
     
     func updateCurrentRecord() {
-        guard let currentRecord = recordController?.currentRecord else { return }
-        guard case .model(let model) = currentRecord else { return }
-        guard let purchase = model.purchase else { return }
-
         if let previousManagedObjectContext = managedObjectContext, previousManagedObjectContext.hasChanges {
             do {
                 try previousManagedObjectContext.save()
@@ -93,6 +89,10 @@ class PurchaseViewController: NSViewController {
                 NSApplication.shared.presentError(error)
             }
         }
+
+        guard let currentRecord = recordController?.currentRecord else { return }
+        guard case .model(let model) = currentRecord else { return }
+        guard let purchase = model.purchase else { return }
 
         managedObjectContext = persistentContainer.newEditingContext()
         self.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
@@ -201,5 +201,5 @@ class PurchaseViewController: NSViewController {
     
     @IBAction func notesChanged(_ sender: NSTextField) {
         purchase.notes = sender.stringValue
-    }    
+    }
 }

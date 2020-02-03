@@ -27,7 +27,9 @@ class PurchaseModelsViewController: NSViewController {
 
     @IBOutlet var tableView: NSTableView!
 
-    var persistentContainer: NSPersistentContainer!
+    var persistentContainer: PersistentContainer!
+    var managedObjectContext: NSManagedObjectContext?
+
     var purchase: Purchase!
     var models: [Model] = []
     
@@ -44,8 +46,7 @@ class PurchaseModelsViewController: NSViewController {
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(currentRecordChanged), name: .currentRecordChanged, object: view.window)
-        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: .NSManagedObjectContextObjectsDidChange, object: persistentContainer.viewContext)
-        
+
         updateCurrentRecord()
     }
     
@@ -57,11 +58,24 @@ class PurchaseModelsViewController: NSViewController {
     }
     
     func updateCurrentRecord() {
+        if let previousManagedObjectContext = managedObjectContext, previousManagedObjectContext.hasChanges {
+            do {
+                try previousManagedObjectContext.save()
+            } catch let error as NSError {
+                NSApplication.shared.presentError(error)
+            }
+        }
+
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
-        guard let modelPurchase = model.purchase else { return }
+        guard let purchase = model.purchase else { return }
 
-        purchase = modelPurchase
+        managedObjectContext = persistentContainer.newEditingContext()
+        self.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: .NSManagedObjectContextObjectsDidChange, object: managedObjectContext!)
+
         models = purchase.models()
         reloadData()
     }
@@ -168,7 +182,6 @@ extension PurchaseModelsViewController : NSTableViewDataSource {
                 newRowOffset += 1
             }
         }
-        try? purchase.managedObjectContext?.save() // FIXME
         models = purchase.models()
 
         tableView.endUpdates()
