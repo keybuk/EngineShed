@@ -38,4 +38,23 @@ extension PersistentContainer {
 
         return PersistentContainer(name: "EngineShed")
     }()
+
+    /// Creates a main-queue managed object context.
+    ///
+    /// Invoking this method causes the persistent container to create and return a new `NSManagedObjectContext` with
+    /// the `concurrencyType` of `.mainQueueConcurrencyType`. This new context will be associated with the
+    /// `NSPersistentStoreCoordinator` directly and is set to consume `NSManagedObjectContextDidSave`
+    /// broadcasts automatically. The `mergePolicy` is set to `.mergeByPropertyObjectTrump` so that local changes
+    /// within the context are kept.
+    ///
+    /// - Returns: a newly created managed object context.
+    public func newEditingContext() -> NSManagedObjectContext {
+        // Use a read-write main queue context that saves to the store. In case of changes to the
+        // store (e.g. from sync or save in other window), merge but keep any local changes.
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
+        managedObjectContext.automaticallyMergesChangesFromParent = true
+        managedObjectContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        return managedObjectContext
+    }
 }
