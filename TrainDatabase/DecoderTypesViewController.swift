@@ -60,8 +60,10 @@ class DecoderTypesViewController: NSViewController {
     }
 
     func reloadData(notification: Notification? = nil) {
-//        let oldDecoderTypes = decoderTypes
-        decoderTypes = try! DecoderType.all(in: persistentContainer.viewContext)
+        let fetchRequest = DecoderType.fetchRequestForDecoderTypes()
+        persistentContainer.viewContext.performAndWait {
+            decoderTypes = try! fetchRequest.execute()
+        }
 
 //        if let notification = notification, let oldDecoderTypes = oldDecoderTypes {
 //            let (inserted, updated, deleted) = DecoderType.changed(in: notification)

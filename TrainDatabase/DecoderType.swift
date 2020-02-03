@@ -56,14 +56,7 @@ extension DecoderType {
 
         let results = try! managedObjectContext!.fetch(fetchRequest)
         return results
-    }
-    
-    static func all(in context: NSManagedObjectContext) throws -> [DecoderType] {
-        let fetchRequest = fetchRequestForDecoderTypes()
-
-        let results = try context.fetch(fetchRequest)
-        return results
-    }
+    }    
 }
 
 extension DecoderType/* : CustomStringConvertible*/ {
