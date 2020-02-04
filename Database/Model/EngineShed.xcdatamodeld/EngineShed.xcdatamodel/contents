@@ -106,6 +106,8 @@
         <attribute name="details" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
+        <attribute name="trainDescription" optional="YES" attributeType="String"/>
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TrainMember" inverseName="train" inverseEntity="TrainMember"/>
     </entity>
     <entity name="TrainMember" representedClassName="TrainMember" syncable="YES" codeGenerationType="class">
@@ -130,7 +132,7 @@
         <element name="Purchase" positionX="-63" positionY="-18" width="128" height="298"/>
         <element name="SpeakerFitting" positionX="9" positionY="171" width="128" height="73"/>
         <element name="Task" positionX="18" positionY="180" width="128" height="73"/>
-        <element name="Train" positionX="-36" positionY="153" width="128" height="103"/>
+        <element name="Train" positionX="-36" positionY="153" width="128" height="133"/>
         <element name="TrainMember" positionX="-27" positionY="162" width="128" height="163"/>
     </elements>
 </model>
