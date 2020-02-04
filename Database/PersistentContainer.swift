@@ -12,19 +12,11 @@ import CoreData
 ///
 /// This also turns out to be a useful place to connect the core data persistent store with the
 /// CloudKit observer and provider.
-#if DEBUG
 public final class PersistentContainer: NSPersistentCloudKitContainer {
     private override init(name: String, managedObjectModel model: NSManagedObjectModel) {
         super.init(name: name, managedObjectModel: model)
     }
 }
-#else
-public final class PersistentContainer: NSPersistentContainer {
-    private override init(name: String, managedObjectModel model: NSManagedObjectModel) {
-        super.init(name: name, managedObjectModel: model)
-    }
-}
-#endif
 
 extension PersistentContainer {
     /// Shared container instance.
