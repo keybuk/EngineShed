@@ -28,7 +28,7 @@ class TrainMemberCollectionViewCell : UICollectionViewCell {
             modelImageView.image = UIImage(named: "missing-model")
         }
 
-        titleLabel.text = trainMember?.title
+        titleLabel.text = trainMember?.details
     }
 
 }

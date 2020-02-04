@@ -32,7 +32,7 @@ class TrainMemberTitleTableViewCell: UITableViewCell {
     }
 
     func configureCell() {
-        titleLabel.text = trainMember?.title
+        titleLabel.text = trainMember?.details
     }
 
 }

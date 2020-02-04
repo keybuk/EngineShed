@@ -14,7 +14,7 @@ import Database
 extension TrainMember {
     @discardableResult
     func deleteIfUnused() -> Bool {
-        if model == nil && (title?.isEmpty ?? true) {
+        if model == nil && (details?.isEmpty ?? true) {
             train?.removeMember(self)
             return true
         } else {

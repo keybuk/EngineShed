@@ -27,7 +27,7 @@ class TrainMemberItem: NSCollectionViewItem {
     var trainMember: TrainMember? {
         didSet {
             imageView?.image = trainMember?.model != nil ? trainMember?.image : NSImage(named: .missingModelImage)
-            titleField.stringValue = trainMember?.title ?? ""
+            titleField.stringValue = trainMember?.details ?? ""
         }
     }
     

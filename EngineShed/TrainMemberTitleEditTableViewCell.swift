@@ -35,7 +35,7 @@ class TrainMemberTitleEditTableViewCell : UITableViewCell, UITextFieldDelegate {
     }
 
     func configureView() {
-        textField.text = trainMember?.title
+        textField.text = trainMember?.details
     }
 
     // MARK: - UIResponder
@@ -60,14 +60,14 @@ class TrainMemberTitleEditTableViewCell : UITableViewCell, UITextFieldDelegate {
         // Strictly speaking this isn't necessary, but make sure the value is set at the end of
         // editing just in case something changes it during resigning of the responder, before we
         // process the notification.
-        trainMember?.title = textField.text
+        trainMember?.details = textField.text
     }
 
     // MARK: - Notifications
 
     @objc
     func textDidChange(_ notification: Notification) {
-        trainMember?.title = textField.text
+        trainMember?.details = textField.text
     }
 
 }

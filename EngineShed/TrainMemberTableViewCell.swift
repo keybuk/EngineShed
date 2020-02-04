@@ -39,7 +39,7 @@ class TrainMemberTableViewCell : UITableViewCell {
             modelImageView.image = UIImage(named: "missing-model")
         }
 
-        titleLabel.text = trainMember?.title
+        titleLabel.text = trainMember?.details
     }
 
 }

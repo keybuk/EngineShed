@@ -109,16 +109,19 @@
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TrainMember" inverseName="train" inverseEntity="TrainMember"/>
     </entity>
     <entity name="TrainMember" representedClassName="TrainMember" syncable="YES" codeGenerationType="class">
+        <attribute name="details" optional="YES" attributeType="String" elementID="title"/>
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isFlipped" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="modelClass" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="numberOrName" optional="YES" attributeType="String"/>
         <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Model" inverseName="trainMember" inverseEntity="Model"/>
         <relationship name="train" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Train" inverseName="members" inverseEntity="Train"/>
     </entity>
     <elements>
         <element name="Coupling" positionX="27" positionY="189" width="128" height="73"/>
         <element name="Decoder" positionX="0" positionY="180" width="128" height="193"/>
-        <element name="DecoderType" positionX="-9" positionY="171" width="128" height="208"/>
+        <element name="DecoderType" positionX="-9" positionY="171" width="128" height="223"/>
         <element name="DetailPart" positionX="-27" positionY="135" width="128" height="88"/>
         <element name="Feature" positionX="-18" positionY="144" width="128" height="73"/>
         <element name="Light" positionX="-9" positionY="153" width="128" height="73"/>
@@ -128,6 +131,6 @@
         <element name="SpeakerFitting" positionX="9" positionY="171" width="128" height="73"/>
         <element name="Task" positionX="18" positionY="180" width="128" height="73"/>
         <element name="Train" positionX="-36" positionY="153" width="128" height="103"/>
-        <element name="TrainMember" positionX="-27" positionY="162" width="128" height="118"/>
+        <element name="TrainMember" positionX="-27" positionY="162" width="128" height="163"/>
     </elements>
 </model>
