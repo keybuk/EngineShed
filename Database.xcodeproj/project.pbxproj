@@ -143,6 +143,7 @@
 		D22B4D4F23E6364D00CB1F6E /* Purchase+CatalogNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+CatalogNumber.swift"; sourceTree = "<group>"; };
 		D22B4D5223E636F900CB1F6E /* CatalogNumberPrefixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNumberPrefixTests.swift; sourceTree = "<group>"; };
 		D22B4D5823E638B500CB1F6E /* Purchase+WillSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+WillSave.swift"; sourceTree = "<group>"; };
+		D24A485123E8F8D90090E5F8 /* EngineShed 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "EngineShed 3.xcdatamodel"; sourceTree = "<group>"; };
 		D24D474623E1600E001F09C2 /* SecureUnarchiveDateComponentsFromDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureUnarchiveDateComponentsFromDataTransformer.swift; sourceTree = "<group>"; };
 		D24D474B23E162D0001F09C2 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		D2A3A0F723E68BBB00D65C14 /* EngineShed 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "EngineShed 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -970,6 +971,7 @@
 		D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D24A485123E8F8D90090E5F8 /* EngineShed 3.xcdatamodel */,
 				D2A3A0F723E68BBB00D65C14 /* EngineShed 2.xcdatamodel */,
 				D22B4D4E23E633DE00CB1F6E /* EngineShed 1.xcdatamodel */,
 				D2E458C323E147FF00EC76E0 /* EngineShed.xcdatamodel */,

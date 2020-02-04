@@ -17,7 +17,6 @@
         <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DecoderType" inverseName="decoders" inverseEntity="DecoderType"/>
     </entity>
     <entity name="DecoderType" representedClassName="DecoderType" syncable="YES" codeGenerationType="class">
-        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="isProgrammable" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isRailComSupported" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" elementID="hasRailCom"/>
         <attribute name="isSoundSupported" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" elementID="hasSound"/>
