@@ -28,7 +28,13 @@ extension PersistentContainer {
             SecureUnarchiveDateComponentsFromDataTransformer(),
             forName: NSValueTransformerName(rawValue: "SecureUnarchiveDateComponentsFromDataTransformer"))
 
-        return PersistentContainer(name: "EngineShed")
+        let container = PersistentContainer(name: "EngineShed")
+        guard let containerStoreDescription = container.persistentStoreDescriptions.first else {
+            preconditionFailure("Missing persistent store description")
+        }
+        containerStoreDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+
+        return container
     }()
 
     /// Creates a main-queue managed object context.
