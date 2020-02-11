@@ -75,12 +75,20 @@ class WindowController : NSWindowController, RecordController {
         // Clear the current responder first (end editing).
         guard window?.makeFirstResponder(nil) ?? true else { return }
 
-        let context = persistentContainer.viewContext
+        let managedObjectContext = persistentContainer.newBackgroundContext()
 
-        let purchase = Purchase(context: context)
-        let model = purchase.addModel()
-        
-        currentRecord = .model(model)
+        managedObjectContext.performAndWait {
+            let purchase = Purchase(context: managedObjectContext)
+            let model = purchase.addModel()
+
+            do {
+                try managedObjectContext.save()
+
+                self.currentRecord = .model(model)
+            } catch let error as NSError {
+                NSApplication.shared.presentError(error)
+            }
+        }
     }
     
     @IBAction func search(_ sender: NSSearchField) {

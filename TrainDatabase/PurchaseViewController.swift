@@ -52,8 +52,10 @@ class PurchaseViewController: NSViewController {
         switch identifier {
         case .purchaseModelsSegue:
             purchaseModelsViewController = segue.destinationController as? PurchaseModelsViewController
+            purchaseModelsViewController.managedObjectContext = managedObjectContext
         case .modelSegue:
             modelViewController = segue.destinationController as? ModelViewController
+            modelViewController.managedObjectContext = managedObjectContext
         default:
             break
         }
