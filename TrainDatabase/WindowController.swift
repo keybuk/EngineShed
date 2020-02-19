@@ -92,7 +92,7 @@ class WindowController : NSWindowController, RecordController {
     }
     
     @IBAction func save(_ sender: NSButton) {
-        NotificationCenter.default.post(name: .saveChanges, object: sender)
+        NotificationCenter.default.post(name: .saveChanges, object: NSApplication.shared)
     }
     
     @IBAction func search(_ sender: NSSearchField) {
