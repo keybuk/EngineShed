@@ -136,13 +136,25 @@ class PurchaseModelsViewController: NSViewController {
     @IBAction func addModel(_ sender: NSButton) {
         // Clear the current responder first (end editing).
         guard view.window?.makeFirstResponder(nil) ?? true else { return }
-        
-        let model = purchase.addModel()
-        models = purchase.models()
-        guard let row = models.firstIndex(of: model) else { fatalError("Model we just added wasn't in the list") }
-            
-        tableView.insertRows(at: IndexSet(integer: row) , withAnimation: .effectFade)
-        tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
+
+        let managedObjectContext = persistentContainer.newBackgroundContext()
+
+        managedObjectContext.performAndWait {
+            let purchase = managedObjectContext.object(with: self.purchase.objectID) as! Purchase
+            let model = purchase.addModel()
+
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                NSApplication.shared.presentError(error)
+            }
+
+            models = purchase.models()
+            guard let row = models.firstIndex(of: model) else { fatalError("Model we just added wasn't in the list") }
+
+            tableView.insertRows(at: IndexSet(integer: row) , withAnimation: .effectFade)
+            tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
+        }
     }
     
 }
