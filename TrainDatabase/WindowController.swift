@@ -91,6 +91,10 @@ class WindowController : NSWindowController, RecordController {
         }
     }
     
+    @IBAction func save(_ sender: NSButton) {
+        NotificationCenter.default.post(name: .saveChanges, object: sender)
+    }
+    
     @IBAction func search(_ sender: NSSearchField) {
         guard !sender.stringValue.isEmpty else {
             modelsViewController.setFilter(search: nil)
