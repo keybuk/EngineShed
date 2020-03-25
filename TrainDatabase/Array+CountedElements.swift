@@ -27,7 +27,7 @@ extension Array where Element : Hashable {
     
     /// Returns an array of elements with at least `minimum` repeated values.
     func repeatedValues(atLeast minimum: Int) -> [Element]? {
-        return countedElements().filter({ $0.value >= minimum }).map({ $0.key }).nilIfEmpty
+        return countedElements().filter({ $0.value >= minimum }).map(\.key).nilIfEmpty
     }
     
 }

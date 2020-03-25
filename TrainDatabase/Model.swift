@@ -292,42 +292,42 @@ extension Model {
         guard let similarModels = try purchaseModels ?? similar() else { return false }
 
         if exactMatch {
-            if let image = similarModels.compactMap({ $0.image }).mostFrequent() { self.image = image }
+            if let image = similarModels.compactMap(\.image).mostFrequent() { self.image = image }
         }
-        if let classification = similarModels.compactMap({ $0.classification }).mostFrequent() { self.classification = classification }
-        if let modelClass = similarModels.map({ $0.modelClass }).mostFrequent() { self.modelClass = modelClass }
+        if let classification = similarModels.compactMap(\.classification).mostFrequent() { self.classification = classification }
+        if let modelClass = similarModels.map(\.modelClass).mostFrequent() { self.modelClass = modelClass }
         if exactMatch {
-            if let number = similarModels.map({ $0.number }).mostFrequent() { self.number = number }
-            if let name = similarModels.map({ $0.name }).mostFrequent() { self.name = name }
+            if let number = similarModels.map(\.number).mostFrequent() { self.number = number }
+            if let name = similarModels.map(\.name).mostFrequent() { self.name = name }
         }
         // These are a bit of a toss-up, right now I think they only make sense to set when we're coming from the same basic catalog range (with an A/B).
         if let _ = purchaseModels {
-            if let livery = similarModels.map({ $0.livery }).mostFrequent() { self.livery = livery }
-            if let details = similarModels.map({ $0.details }).mostFrequent() { self.details = details }
-            if let era = similarModels.compactMap({ $0.era }).mostFrequent() { self.era = era }
+            if let livery = similarModels.map(\.livery).mostFrequent() { self.livery = livery }
+            if let details = similarModels.map(\.details).mostFrequent() { self.details = details }
+            if let era = similarModels.compactMap(\.era).mostFrequent() { self.era = era }
         }
         // disposition is omitted because that's chosen on a per-model basis.
         
-        if let motor = similarModels.map({ $0.motor }).mostFrequent() { self.motor = motor }
-        if let socket = similarModels.map({ $0.socket }).mostFrequent() { self.socket = socket }
+        if let motor = similarModels.map(\.motor).mostFrequent() { self.motor = motor }
+        if let socket = similarModels.map(\.socket).mostFrequent() { self.socket = socket }
         // FIXME: speaker? discuss!
-        //if let speaker = similarModels.map({ $0.speaker }).mostFrequent() { model.speaker = speaker }
+        //if let speaker = similarModels.map(\.speaker).mostFrequent() { model.speaker = speaker }
         // notes, lastRun & lastOil are omitted because they should always differ between individual models.
         // FIXME: some notes should probably be copied.
         
         // For the lists, we look for something slightly different; we look for the values that appear in at least half of the similar models.
-        if let lights = similarModels.flatMap({ $0.lightsAsStrings }).repeatedValues(atLeast: similarModels.count / 2) { self.lightsAsStrings = Set(lights) }
+        if let lights = similarModels.flatMap(\.lightsAsStrings).repeatedValues(atLeast: similarModels.count / 2) { self.lightsAsStrings = Set(lights) }
         // FIXME: speakerFitting? discuss!
-        //if let speakerFitting = similarModels.flatMap({ $0.speakerFitting }).repeatedValues(atLeast: count / 2) { model.speakerFitting = Set(speakerFitting) }
-        if let couplings = similarModels.flatMap({ $0.couplingsAsStrings }).repeatedValues(atLeast: similarModels.count / 2) { self.couplingsAsStrings = Set(couplings) }
-        if let features = similarModels.flatMap({ $0.featuresAsStrings }).repeatedValues(atLeast: similarModels.count / 2) { self.featuresAsStrings = Set(features) }
+        //if let speakerFitting = similarModels.flatMap(\.speakerFitting).repeatedValues(atLeast: count / 2) { model.speakerFitting = Set(speakerFitting) }
+        if let couplings = similarModels.flatMap(\.couplingsAsStrings).repeatedValues(atLeast: similarModels.count / 2) { self.couplingsAsStrings = Set(couplings) }
+        if let features = similarModels.flatMap(\.featuresAsStrings).repeatedValues(atLeast: similarModels.count / 2) { self.featuresAsStrings = Set(features) }
         // modifications is omitted because that should always differ between individual models.
         
         // detailParts gets copied over with isFitted set, which may work, or may not; right now it reflects non-modified state of the world, so it works.
-        if let detailParts = similarModels.flatMap({ $0.detailPartsAsSet }).repeatedValues(atLeast: similarModels.count / 2) { self.detailPartsAsSet = Set(detailParts) }
+        if let detailParts = similarModels.flatMap(\.detailPartsAsSet).repeatedValues(atLeast: similarModels.count / 2) { self.detailPartsAsSet = Set(detailParts) }
         
         // Finally for tasks, there's simply a bunch we don't want to copy over, and some we want to sneak in regardless.
-        if let tasks = similarModels.flatMap({ $0.tasksAsStrings }).filter({ !Model.unwantedTasks.contains($0) }).repeatedValues(atLeast: similarModels.count / 2) { self.tasksAsStrings = Set(tasks) }
+        if let tasks = similarModels.flatMap(\.tasksAsStrings).filter({ !Model.unwantedTasks.contains($0) }).repeatedValues(atLeast: similarModels.count / 2) { self.tasksAsStrings = Set(tasks) }
         addSuggestedTasks()
 
         return true

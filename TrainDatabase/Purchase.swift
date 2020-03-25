@@ -28,12 +28,12 @@ extension Purchase {
         
         // For exact match purchases, we copy the product particulars over. Otherwise we assume an A-Z variant will have a different catalog year, as well as a different description (because of the number), etc. so we actually copy none of the product information over in that case.
         if exactMatch {
-            if let catalogDescription = similarPurchases.map({ $0.catalogDescription }).mostFrequent() { self.catalogDescription = catalogDescription }
-            if let catalogYear = similarPurchases.map({ $0.catalogYear }).mostFrequent() { self.catalogYear = catalogYear }
-            if let limitedEdition = similarPurchases.map({ $0.limitedEdition }).mostFrequent() { self.limitedEdition = limitedEdition }
+            if let catalogDescription = similarPurchases.map(\.catalogDescription).mostFrequent() { self.catalogDescription = catalogDescription }
+            if let catalogYear = similarPurchases.map(\.catalogYear).mostFrequent() { self.catalogYear = catalogYear }
+            if let limitedEdition = similarPurchases.map(\.limitedEdition).mostFrequent() { self.limitedEdition = limitedEdition }
             // limitedEditionNumber is omitted because that should always differ between individual models.
-            if let limitedEditionCount = similarPurchases.map({ $0.limitedEditionCount }).mostFrequent() { self.limitedEditionCount = limitedEditionCount }
-            if let valuation = similarPurchases.compactMap({ $0.valuation }).mostFrequent() { self.valuation = valuation }
+            if let limitedEditionCount = similarPurchases.map(\.limitedEditionCount).mostFrequent() { self.limitedEditionCount = limitedEditionCount }
+            if let valuation = similarPurchases.compactMap(\.valuation).mostFrequent() { self.valuation = valuation }
         }
         
         // Don't do model copying if they're already filled out, since we wipe it.

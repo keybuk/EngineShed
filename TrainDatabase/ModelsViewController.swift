@@ -125,7 +125,7 @@ class ModelsViewController : NSViewController {
 //            tableView.noteNumberOfRowsChanged()
 //
 //            let insertedIndexes = IndexSet(inserted.flatMap(rowOf(_:)))
-////            insertedIndexes.formUnion(IndexSet(groups.filter({ oldGroups[$0.key] == nil }).map({ $0.key })))
+////            insertedIndexes.formUnion(IndexSet(groups.filter({ oldGroups[$0.key] == nil }).map(\.key)))
 //            tableView.insertRows(at: insertedIndexes, withAnimation: .effectFade)
 //
 //            for updatedDecoderType in updated {
@@ -138,11 +138,11 @@ class ModelsViewController : NSViewController {
 //            }
 //
 //            let updatedIndexes = IndexSet(updated.flatMap(rowOf(_:)))
-////            updatedIndexes.formUnion(IndexSet(groups.filter({ oldGroups[$0.key] != $0.value }).map({ $0.key })))
+////            updatedIndexes.formUnion(IndexSet(groups.filter({ oldGroups[$0.key] != $0.value }).map(\.key)))
 //            tableView.reloadData(forRowIndexes: updatedIndexes, columnIndexes: IndexSet(integer: 0))
 //
 //            let deletedIndexes = IndexSet(deleted.flatMap(rowInOldGroupsOf))
-////            de3etedIndexes.formUnion(IndexSet(oldGroups.filter({ groups[$0.key] == nil }).map({ $0.key })))
+////            de3etedIndexes.formUnion(IndexSet(oldGroups.filter({ groups[$0.key] == nil }).map(\.key)))
 //            tableView.removeRows(at: deletedIndexes, withAnimation: .effectFade)
 //
 //            tableView.endUpdates()

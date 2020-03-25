@@ -25,7 +25,7 @@ extension Collection where Element : Hashable {
     /// - Parameter minimum: minimum number of element occurrences to be returned.
     /// - Returns: array of elements that were repeated at least `minimum` times.
     func repeatedValues(atLeast minimum: Int) -> [Element] {
-        return countedElements().filter({ $0.value >= minimum }).map({ $0.key })
+        return countedElements().filter({ $0.value >= minimum }).map(\.key)
     }
 
 }
