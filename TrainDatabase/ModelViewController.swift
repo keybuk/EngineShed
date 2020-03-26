@@ -409,7 +409,7 @@ class ModelViewController: NSViewController {
         if !firmwareVersion.isEmpty {
             if let firmwareDate = try! model.decoder?.suggestedFirmwareDate(for: firmwareVersion) {
                 model.decoder?.firmwareDate = firmwareDate
-                decoderFirmwareDateTextField.objectValue = firmwareDate
+                decoderFirmwareDateTextField.objectValue = model.decoder?.firmwareDateAsDate
             }
         }
         
