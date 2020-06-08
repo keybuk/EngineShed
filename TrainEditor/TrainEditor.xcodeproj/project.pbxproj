@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D2B881F6248DFEC600705847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B881F5248DFEC600705847 /* AppDelegate.swift */; };
 		D2B881F8248DFEC600705847 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B881F7248DFEC600705847 /* SceneDelegate.swift */; };
-		D2B881FB248DFEC600705847 /* TrainEditor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B881F9248DFEC600705847 /* TrainEditor.xcdatamodeld */; };
 		D2B881FD248DFEC600705847 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B881FC248DFEC600705847 /* ContentView.swift */; };
 		D2B881FF248DFEC700705847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B881FE248DFEC700705847 /* Assets.xcassets */; };
 		D2B88202248DFEC700705847 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B88201248DFEC700705847 /* Preview Assets.xcassets */; };
@@ -48,7 +47,6 @@
 		D2B881F2248DFEC600705847 /* TrainEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B881F5248DFEC600705847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2B881F7248DFEC600705847 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D2B881FA248DFEC600705847 /* TrainEditor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrainEditor.xcdatamodel; sourceTree = "<group>"; };
 		D2B881FC248DFEC600705847 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D2B881FE248DFEC700705847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2B88201248DFEC700705847 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				D2B881FE248DFEC700705847 /* Assets.xcassets */,
 				D2B88203248DFEC700705847 /* LaunchScreen.storyboard */,
 				D2B88206248DFEC700705847 /* Info.plist */,
-				D2B881F9248DFEC600705847 /* TrainEditor.xcdatamodeld */,
 				D2B88221248DFF6200705847 /* TrainEditor.entitlements */,
 				D2B88200248DFEC700705847 /* Preview Content */,
 			);
@@ -246,7 +243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B881F6248DFEC600705847 /* AppDelegate.swift in Sources */,
-				D2B881FB248DFEC600705847 /* TrainEditor.xcdatamodeld in Sources */,
 				D2B881FD248DFEC600705847 /* ContentView.swift in Sources */,
 				D2B881F8248DFEC600705847 /* SceneDelegate.swift in Sources */,
 			);
@@ -515,19 +511,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D2B881F9248DFEC600705847 /* TrainEditor.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D2B881FA248DFEC600705847 /* TrainEditor.xcdatamodel */,
-			);
-			currentVersion = D2B881FA248DFEC600705847 /* TrainEditor.xcdatamodel */;
-			path = TrainEditor.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D2B881EA248DFEC600705847 /* Project object */;
 }
