@@ -15,6 +15,9 @@
 		D2B88202248DFEC700705847 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B88201248DFEC700705847 /* Preview Assets.xcassets */; };
 		D2B88205248DFEC700705847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B88203248DFEC700705847 /* LaunchScreen.storyboard */; };
 		D2B88210248DFEC700705847 /* TrainEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8820F248DFEC700705847 /* TrainEditorTests.swift */; };
+		D2B8821C248DFF1900705847 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B8821B248DFF1900705847 /* CloudKit.framework */; };
+		D2B8821E248DFF3F00705847 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B8821D248DFF3F00705847 /* Database.framework */; };
+		D2B8821F248DFF3F00705847 /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2B8821D248DFF3F00705847 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +29,20 @@
 			remoteInfo = TrainEditor;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D2B88220248DFF3F00705847 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D2B8821F248DFF3F00705847 /* Database.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D2B881F2248DFEC600705847 /* TrainEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +57,8 @@
 		D2B8820B248DFEC700705847 /* TrainEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B8820F248DFEC700705847 /* TrainEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainEditorTests.swift; sourceTree = "<group>"; };
 		D2B88211248DFEC700705847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B8821B248DFF1900705847 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D2B8821D248DFF3F00705847 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B8821C248DFF1900705847 /* CloudKit.framework in Frameworks */,
+				D2B8821E248DFF3F00705847 /* Database.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +87,7 @@
 				D2B881F4248DFEC600705847 /* TrainEditor */,
 				D2B8820E248DFEC700705847 /* TrainEditorTests */,
 				D2B881F3248DFEC600705847 /* Products */,
+				D2B8821A248DFF1900705847 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +132,15 @@
 			path = TrainEditorTests;
 			sourceTree = "<group>";
 		};
+		D2B8821A248DFF1900705847 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2B8821D248DFF3F00705847 /* Database.framework */,
+				D2B8821B248DFF1900705847 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -120,6 +151,7 @@
 				D2B881EE248DFEC600705847 /* Sources */,
 				D2B881EF248DFEC600705847 /* Frameworks */,
 				D2B881F0248DFEC600705847 /* Resources */,
+				D2B88220248DFF3F00705847 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
