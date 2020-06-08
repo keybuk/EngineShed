@@ -59,6 +59,7 @@
 		D2B88211248DFEC700705847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2B8821B248DFF1900705847 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D2B8821D248DFF3F00705847 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2B88221248DFF6200705847 /* TrainEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TrainEditor.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +104,7 @@
 		D2B881F4248DFEC600705847 /* TrainEditor */ = {
 			isa = PBXGroup;
 			children = (
+				D2B88221248DFF6200705847 /* TrainEditor.entitlements */,
 				D2B881F5248DFEC600705847 /* AppDelegate.swift */,
 				D2B881F7248DFEC600705847 /* SceneDelegate.swift */,
 				D2B881FC248DFEC600705847 /* ContentView.swift */,
@@ -398,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TrainEditor/TrainEditor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TrainEditor/Preview Content\"";
 				DEVELOPMENT_TEAM = 79P776W2YF;
@@ -409,6 +412,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.TrainEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TrainEditor/TrainEditor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TrainEditor/Preview Content\"";
 				DEVELOPMENT_TEAM = 79P776W2YF;
@@ -429,6 +434,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.TrainEditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
