@@ -8,7 +8,7 @@
       location = "group:Database.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:TrainEditor/TrainEditor.xcodeproj">
+      location = "group:TrainEditor.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:TrainDatabase.xcodeproj">
