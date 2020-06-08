@@ -104,7 +104,6 @@
 		D2B881F4248DFEC600705847 /* TrainEditor */ = {
 			isa = PBXGroup;
 			children = (
-				D2B88221248DFF6200705847 /* TrainEditor.entitlements */,
 				D2B881F5248DFEC600705847 /* AppDelegate.swift */,
 				D2B881F7248DFEC600705847 /* SceneDelegate.swift */,
 				D2B881FC248DFEC600705847 /* ContentView.swift */,
@@ -112,6 +111,7 @@
 				D2B88203248DFEC700705847 /* LaunchScreen.storyboard */,
 				D2B88206248DFEC700705847 /* Info.plist */,
 				D2B881F9248DFEC600705847 /* TrainEditor.xcdatamodeld */,
+				D2B88221248DFF6200705847 /* TrainEditor.entitlements */,
 				D2B88200248DFEC700705847 /* Preview Content */,
 			);
 			path = TrainEditor;
