@@ -33,7 +33,7 @@ class PurchaseViewController: NSViewController {
     @IBOutlet var conditionComboBox: NSComboBox!
     @IBOutlet var valuationTextField: NSTextField!
     @IBOutlet var notesTextField: NSTextField!
-    
+
     var purchaseModelsViewController: PurchaseModelsViewController!
     var modelViewController: ModelViewController!
     
@@ -132,15 +132,22 @@ class PurchaseViewController: NSViewController {
         storeComboBoxDataSource = try? SimpleComboBoxDataSource(using: purchase.sortedValuesForStore)
         storeComboBox.dataSource = storeComboBoxDataSource
         storeComboBox.stringValue = purchase.store ?? ""
-        
+
+        let priceFormatter = purchase.priceFormatter
+        priceFormatter.isLenient = true
+        priceTextField.formatter = priceFormatter
         priceTextField.objectValue = purchase.price
-        
+
         conditionComboBoxDataSource = EnumComboBoxDataSource(wrapping: Purchase.Condition.self)
         conditionComboBox.dataSource = conditionComboBoxDataSource
         conditionComboBox.formatter = conditionComboBoxDataSource
         conditionComboBox.objectValue = purchase.condition.map(NSArray.init(object:))
     
         valuationTextField.objectValue = purchase.valuation
+        let valuationFormatter = purchase.valuationFormatter
+        valuationFormatter.isLenient = true
+        valuationTextField.formatter = valuationFormatter
+
         notesTextField.stringValue = purchase.notes ?? ""
     }
     

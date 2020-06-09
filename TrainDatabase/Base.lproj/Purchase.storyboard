@@ -2291,7 +2291,7 @@
                                     <rect key="frame" x="0.0" y="1677" width="701" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.578125" horizontal="NO" id="yVU-WZ-jOD">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yVU-WZ-jOD">
                                     <rect key="frame" x="685" y="0.0" width="16" height="1693"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
