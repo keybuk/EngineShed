@@ -56,7 +56,29 @@ extension Model {
 
         return results.compactMap { $0["livery"] }
     }
-    
+
+    func suggestionsForGauge(startingWith prefix: String? = nil) -> [String] {
+        guard let managedObjectContext = managedObjectContext else { return [] }
+
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Model.fetchRequest()
+        fetchRequest.resultType = .dictionaryResultType
+        fetchRequest.propertiesToFetch = [ "gauge" ]
+        fetchRequest.returnsDistinctResults = true
+        fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "gauge", ascending: true) ]
+
+        if let prefix = prefix, !prefix.isEmpty {
+            fetchRequest.predicate = NSPredicate(format: "gauge BEGINSWITH %@", prefix)
+        } else {
+            fetchRequest.predicate = NSPredicate(format: "gauge != NULL AND gauge != ''")
+        }
+
+        let results = (try? managedObjectContext.performAndWait {
+            return try fetchRequest.execute() as! [[String: String]]
+            }) ?? []
+
+        return results.compactMap { $0["gauge"] }
+    }
+
     func suggestionsForMotor(startingWith prefix: String? = nil) -> [String] {
         guard let managedObjectContext = managedObjectContext else { return [] }
 

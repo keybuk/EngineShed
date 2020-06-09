@@ -9,9 +9,9 @@
 import Foundation
 
 extension Purchase {
-    /// Formatter for currency types.
-    public var currencyFormatter: NumberFormatter {
-        let locale = Locale(identifier: "en_GB")
+    /// Formatter for `price`.
+    public var priceFormatter: NumberFormatter {
+        let locale = Locale(identifier: priceCurrency ?? "")
 
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -20,22 +20,33 @@ extension Purchase {
         return formatter
     }
 
-    /// `price` formatted as string using `currencyFormatter`.
+    /// `price` formatted as string using `priceFormatter`.
     public var priceAsString: String? {
-        get { price.flatMap { currencyFormatter.string(from: $0) } }
+        get { price.flatMap { priceFormatter.string(from: $0) } }
         set {
             price = newValue.flatMap {
-                currencyFormatter.number(from: $0) as? NSDecimalNumber
+                priceFormatter.number(from: $0) as? NSDecimalNumber
             }
         }
     }
 
-    /// `valuation` formatted as string using `currencyFormatter`.
+    /// Formatter for `valuation`.
+    public var valuationFormatter: NumberFormatter {
+        let locale = Locale(identifier: valuationCurrency ?? "")
+
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = locale
+        formatter.generatesDecimalNumbers = true
+        return formatter
+    }
+
+    /// `valuation` formatted as string using `valuationFormatter`.
     public var valuationAsString: String? {
-        get { valuation.flatMap { currencyFormatter.string(from: $0) } }
+        get { valuation.flatMap { valuationFormatter.string(from: $0) } }
         set {
             valuation = newValue.flatMap {
-                currencyFormatter.number(from: $0) as? NSDecimalNumber
+                valuationFormatter.number(from: $0) as? NSDecimalNumber
             }
         }
     }

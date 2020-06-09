@@ -39,6 +39,7 @@ class ModelViewController: NSViewController {
     @IBOutlet var liveryComboBox: NSComboBox!
     @IBOutlet var detailsTextField: NSTextField!
     @IBOutlet var eraComboBox: NSComboBox!
+    @IBOutlet var gaugeComboBox: NSComboBox!
     @IBOutlet var dispositionComboBox: NSComboBox!
     @IBOutlet var trainComboBox: NSComboBox!
     @IBOutlet var trainMemberCollectionView: NSCollectionView!
@@ -68,6 +69,7 @@ class ModelViewController: NSViewController {
     var classificationComboBoxDataSource: EnumComboBoxDataSource?
     var liveryComboBoxDataSource: SimpleComboBoxDataSource?
     var eraComboBoxDataSource: EnumComboBoxDataSource?
+    var gaugeComboBoxDataSource: SimpleComboBoxDataSource?
     var dispositionComboBoxDataSource: EnumComboBoxDataSource?
     var trainComboBoxController: ModelTrainComboBoxController?
     var motorComboBoxDataSource: SimpleComboBoxDataSource?
@@ -176,7 +178,11 @@ class ModelViewController: NSViewController {
         eraComboBox.dataSource = eraComboBoxDataSource
         eraComboBox.formatter = eraComboBoxDataSource
         eraComboBox.objectValue = model.era.map(NSArray.init(object:))
-        
+
+        gaugeComboBoxDataSource = try? SimpleComboBoxDataSource(using: model.sortedValuesForGauge)
+        gaugeComboBox.dataSource = gaugeComboBoxDataSource
+        gaugeComboBox.stringValue = model.gauge ?? ""
+
         dispositionComboBoxDataSource = EnumComboBoxDataSource(wrapping: Model.Disposition.self)
         dispositionComboBox.dataSource = dispositionComboBoxDataSource
         dispositionComboBox.formatter = dispositionComboBoxDataSource
@@ -315,7 +321,11 @@ class ModelViewController: NSViewController {
     @IBAction func eraChanged(_ sender: NSComboBox) {
         model.era = (sender.objectValue as? [Model.Era])?.first
     }
-    
+
+    @IBAction func gaugeChanged(_ sender: NSTextField) {
+        model.gauge = sender.stringValue
+    }
+
     @IBAction func dispositionChanged(_ sender: NSComboBox) {
         model.disposition = (sender.objectValue as? [Model.Disposition])?.first
     }

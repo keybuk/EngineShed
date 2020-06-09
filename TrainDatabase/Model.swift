@@ -155,6 +155,10 @@ extension Model {
         return try sortedValues(for: "livery", ascending: true, startingWith: string)
     }
 
+    func sortedValuesForGauge(startingWith string: String? = nil) throws -> [String] {
+        return try sortedValues(for: "gauge", ascending: true, startingWith: string)
+    }
+
     func sortedValuesForMotor(startingWith string: String? = nil) throws -> [String] {
         return try sortedValues(for: "motor", ascending: true, startingWith: string)
     }
@@ -306,6 +310,7 @@ extension Model {
             if let details = similarModels.map(\.details).mostFrequent() { self.details = details }
             if let era = similarModels.compactMap(\.era).mostFrequent() { self.era = era }
         }
+        if let gauge = similarModels.map(\.gauge).mostFrequent() { self.gauge = gauge }
         // disposition is omitted because that's chosen on a per-model basis.
         
         if let motor = similarModels.map(\.motor).mostFrequent() { self.motor = motor }

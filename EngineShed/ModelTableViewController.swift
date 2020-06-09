@@ -46,7 +46,7 @@ class ModelTableViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 10
+        case 0: return 11
         case 1: return 2
         case 2: return 12
         case 3: return 5
@@ -68,7 +68,8 @@ class ModelTableViewController : UITableViewController {
         case (0, 6): identifier = "modelLivery"
         case (0, 7): identifier = "modelDetails"
         case (0, 8): identifier = "modelEra"
-        case (0, 9): identifier = "modelDisposition"
+        case (0, 9): identifier = "modelGauge"
+        case (0, 10): identifier = "modelDisposition"
         // Electrical
         case (1, 0): identifier = "modelMotor"
         case (1, 1): identifier = "modelLights"

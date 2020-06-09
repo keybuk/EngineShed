@@ -43,7 +43,7 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return 8
+        case 1: return 9
         case 2: return 3
         case 3: return 1
         case 4: return 2 + (lastRunPickerVisible ? 1 : 0) + (lastOilPickerVisible ? 1 : 0)
@@ -107,6 +107,10 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
                 cell.model = model
                 return cell
             case 7:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelGaugeEdit", for: indexPath) as! ModelGaugeEditTableViewCell
+                cell.model = model
+                return cell
+            case 8:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "modelDispositionEdit", for: indexPath) as! ModelDispositionEditTableViewCell
                 cell.model = model
                 return cell
@@ -512,6 +516,9 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
             viewController.model = model
         } else if segue.identifier == "modelEraPicker" {
             let viewController = segue.destination as! ModelEraPickerTableViewController
+            viewController.model = model
+        } else if segue.identifier == "modelGaugePicker" {
+            let viewController = segue.destination as! ModelGaugePickerTableViewController
             viewController.model = model
         } else if segue.identifier == "modelDispositionPicker" {
             let viewController = segue.destination as! ModelDispositionPickerTableViewController

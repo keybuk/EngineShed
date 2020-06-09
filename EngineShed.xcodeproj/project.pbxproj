@@ -137,6 +137,9 @@
 		D2B9A1B42150C74600156100 /* ModelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B32150C74600156100 /* ModelTableViewController.swift */; };
 		D2B9A1B62150C77000156100 /* ModelImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B52150C77000156100 /* ModelImageTableViewCell.swift */; };
 		D2B9A1B82150D35D00156100 /* ModelPurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A1B72150D35D00156100 /* ModelPurchaseTableViewCell.swift */; };
+		D2BD1A2B248F529A005E89FC /* ModelGaugeEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD1A2A248F529A005E89FC /* ModelGaugeEditTableViewCell.swift */; };
+		D2BD1A2D248F534F005E89FC /* ModelGaugePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD1A2C248F534F005E89FC /* ModelGaugePickerTableViewController.swift */; };
+		D2BD1A2F248F5441005E89FC /* ModelGaugeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD1A2E248F5441005E89FC /* ModelGaugeTableViewCell.swift */; };
 		D2C7E20A22ADA05A00A024A5 /* NSManagedObjectContext+PerformAndWait.swift in Sources */ = {isa = PBXBuildFile; fileRef = D248355F21D8480A00495FC0 /* NSManagedObjectContext+PerformAndWait.swift */; };
 		D2C7E21422ADA37700A024A5 /* Collection+CountedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D200F97520DEC104003BC8D1 /* Collection+CountedElements.swift */; };
 		D2C7E21922ADA38500A024A5 /* Purchase+Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4EE97222E2245008FB14A /* Purchase+Suggestions.swift */; };
@@ -386,6 +389,9 @@
 		D2B9A1B32150C74600156100 /* ModelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTableViewController.swift; sourceTree = "<group>"; };
 		D2B9A1B52150C77000156100 /* ModelImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelImageTableViewCell.swift; sourceTree = "<group>"; };
 		D2B9A1B72150D35D00156100 /* ModelPurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPurchaseTableViewCell.swift; sourceTree = "<group>"; };
+		D2BD1A2A248F529A005E89FC /* ModelGaugeEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelGaugeEditTableViewCell.swift; sourceTree = "<group>"; };
+		D2BD1A2C248F534F005E89FC /* ModelGaugePickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelGaugePickerTableViewController.swift; sourceTree = "<group>"; };
+		D2BD1A2E248F5441005E89FC /* ModelGaugeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelGaugeTableViewCell.swift; sourceTree = "<group>"; };
 		D2C7E23722ADA5AE00A024A5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D2C978652227733200AB3C1C /* PurchaseDeleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDeleteTableViewCell.swift; sourceTree = "<group>"; };
 		D2C97867222790E000AB3C1C /* PurchaseManufacturerEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManufacturerEditTableViewCell.swift; sourceTree = "<group>"; };
@@ -534,6 +540,7 @@
 				D23B8B9021E29C3E004F994D /* ModelLiveryTableViewCell.swift */,
 				D23B8B9221E29C54004F994D /* ModelDetailsTableViewCell.swift */,
 				D23B8B9421E29C69004F994D /* ModelEraTableViewCell.swift */,
+				D2BD1A2E248F5441005E89FC /* ModelGaugeTableViewCell.swift */,
 				D23B8B9621E29CD2004F994D /* ModelDispositionTableViewCell.swift */,
 				D23B8B9821E2A167004F994D /* ModelMotorTableViewCell.swift */,
 				D23B8B9C21E2A18E004F994D /* ModelLightsTableViewCell.swift */,
@@ -644,6 +651,8 @@
 				D26903692234720E002C7A48 /* ModelDetailsEditTableViewCell.swift */,
 				D269036B22347215002C7A48 /* ModelEraEditTableViewCell.swift */,
 				D26903712234724C002C7A48 /* ModelEraPickerTableViewController.swift */,
+				D2BD1A2A248F529A005E89FC /* ModelGaugeEditTableViewCell.swift */,
+				D2BD1A2C248F534F005E89FC /* ModelGaugePickerTableViewController.swift */,
 				D269036D2234721E002C7A48 /* ModelDispositionEditTableViewCell.swift */,
 				D2690375223472CF002C7A48 /* ModelDispositionPickerTableViewController.swift */,
 				D269037C2234B57F002C7A48 /* ModelMotorEditTableViewCell.swift */,
@@ -1069,6 +1078,7 @@
 				D23B8BD821E2BFD1004F994D /* PurchaseManufacturerTableViewCell.swift in Sources */,
 				D2690368223471FF002C7A48 /* ModelLiveryEditTableViewCell.swift in Sources */,
 				D25828BA21DC43D70094918F /* TrainAddMemberCell.swift in Sources */,
+				D2BD1A2B248F529A005E89FC /* ModelGaugeEditTableViewCell.swift in Sources */,
 				D23B8B8B21E29BF3004F994D /* ModelClassTableViewCell.swift in Sources */,
 				D2C978802227914B00AB3C1C /* PurchaseNotesEditTableViewCell.swift in Sources */,
 				D23B8BE821E2C137004F994D /* PurchaseConditionTableViewCell.swift in Sources */,
@@ -1207,6 +1217,7 @@
 				D23B8B9D21E2A18E004F994D /* ModelLightsTableViewCell.swift in Sources */,
 				D2A29EB322C2F8F6002A9618 /* DecoderTypeRow.swift in Sources */,
 				D2F4EF0E2231F666008FB14A /* UINavigationController+PopDetail.swift in Sources */,
+				D2BD1A2F248F5441005E89FC /* ModelGaugeTableViewCell.swift in Sources */,
 				D2C7E23322ADA38500A024A5 /* TrainMember+Image.swift in Sources */,
 				D2C7E21922ADA38500A024A5 /* Purchase+Suggestions.swift in Sources */,
 				D2F4EF302233756F008FB14A /* DecoderSoundAuthorEditTableViewCell.swift in Sources */,
@@ -1218,6 +1229,7 @@
 				D2690376223472CF002C7A48 /* ModelDispositionPickerTableViewController.swift in Sources */,
 				D2F4EED722306656008FB14A /* TrainMemberTitleEditTableViewCell.swift in Sources */,
 				D23B8BE021E2C09C004F994D /* PurchaseLimitedEditionTableViewCell.swift in Sources */,
+				D2BD1A2D248F534F005E89FC /* ModelGaugePickerTableViewController.swift in Sources */,
 				D2744E5D22F7C03F00ECEFFA /* DecoderType+Decoders.swift in Sources */,
 				D23B8BD621E2BEA4004F994D /* PurchaseTableViewController.swift in Sources */,
 				D2F4EF2C2233755A008FB14A /* DecoderFirmwareVersionEditTableViewCell.swift in Sources */,

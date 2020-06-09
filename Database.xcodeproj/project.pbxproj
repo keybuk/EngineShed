@@ -73,6 +73,8 @@
 		D2A3A11023E6C2CD00D65C14 /* Train+Members.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A10E23E6C2CD00D65C14 /* Train+Members.swift */; };
 		D2A3A11223E6C3EA00D65C14 /* TrainMembersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A11123E6C3EA00D65C14 /* TrainMembersTests.swift */; };
 		D2A3A11323E6C3EA00D65C14 /* TrainMembersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A11123E6C3EA00D65C14 /* TrainMembersTests.swift */; };
+		D2BD1A32248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D2BD1A31248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel */; };
+		D2BD1A33248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D2BD1A31248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel */; };
 		D2FF6E6723E63E380063257D /* PurchaseDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */; };
 		D2FF6E6823E63E380063257D /* PurchaseDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */; };
 		D2FF6E6A23E640F40063257D /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */; };
@@ -153,6 +155,8 @@
 		D2A3A10B23E6A90A00D65C14 /* PurchaseModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModelsTests.swift; sourceTree = "<group>"; };
 		D2A3A10E23E6C2CD00D65C14 /* Train+Members.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Train+Members.swift"; sourceTree = "<group>"; };
 		D2A3A11123E6C3EA00D65C14 /* TrainMembersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMembersTests.swift; sourceTree = "<group>"; };
+		D2BD1A30248F55E4005E89FC /* EngineShed 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "EngineShed 4.xcdatamodel"; sourceTree = "<group>"; };
+		D2BD1A31248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = GaugeCurrencyMigrationModel.xcmappingmodel; sourceTree = "<group>"; };
 		D2E458C323E147FF00EC76E0 /* EngineShed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EngineShed.xcdatamodel; sourceTree = "<group>"; };
 		D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDateTests.swift; sourceTree = "<group>"; };
 		D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Purchase+FetchRequests.swift"; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				D2A3A0F923E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel */,
 				D2A3A0FC23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift */,
 				D2A3A10523E696BF00D65C14 /* TrainMemberIndexMigrationPolicy.swift */,
+				D2BD1A31248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel */,
 			);
 			path = Migrations;
 			sourceTree = "<group>";
@@ -515,6 +520,7 @@
 				D2A3A10923E6A11500D65C14 /* Purchase+Models.swift in Sources */,
 				D2A3A0FA23E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel in Sources */,
 				D22B4D3A23E5167F00CB1F6E /* Purchase+Date.swift in Sources */,
+				D2BD1A32248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel in Sources */,
 				D22B4D3623E511C300CB1F6E /* Model+Era.swift in Sources */,
 				D22B4D4723E51EBE00CB1F6E /* Purchase+Number.swift in Sources */,
 				D2A3A10423E690B400D65C14 /* TrainMember+FetchRequests.swift in Sources */,
@@ -570,6 +576,7 @@
 				D2A3A10A23E6A11500D65C14 /* Purchase+Models.swift in Sources */,
 				D2A3A0FB23E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel in Sources */,
 				D22B4D3B23E5167F00CB1F6E /* Purchase+Date.swift in Sources */,
+				D2BD1A33248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel in Sources */,
 				D22B4D3723E511C300CB1F6E /* Model+Era.swift in Sources */,
 				D22B4D4623E51EBE00CB1F6E /* Purchase+Number.swift in Sources */,
 				D2A3A10323E690B400D65C14 /* TrainMember+FetchRequests.swift in Sources */,
@@ -965,6 +972,7 @@
 		D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D2BD1A30248F55E4005E89FC /* EngineShed 4.xcdatamodel */,
 				D24A485123E8F8D90090E5F8 /* EngineShed 3.xcdatamodel */,
 				D2A3A0F723E68BBB00D65C14 /* EngineShed 2.xcdatamodel */,
 				D22B4D4E23E633DE00CB1F6E /* EngineShed 1.xcdatamodel */,
