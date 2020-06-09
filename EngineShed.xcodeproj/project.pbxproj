@@ -1522,7 +1522,7 @@
 		D2B7C97C20D4BA31001B51B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Debug";
 				CODE_SIGN_ENTITLEMENTS = EngineShed/EngineShed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "EngineShed/Preview\\ Content";
