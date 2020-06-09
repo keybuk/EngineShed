@@ -94,6 +94,39 @@ class WindowController : NSWindowController, RecordController {
     @IBAction func save(_ sender: NSButton) {
         NotificationCenter.default.post(name: .saveChanges, object: NSApplication.shared)
     }
+
+    @IBAction func backup(_ sender: NSButton) {
+        let context = persistentContainer.viewContext
+        context.performAndWait {
+            let coordinator = self.persistentContainer.persistentStoreCoordinator
+            let store = coordinator.persistentStores.last!
+
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH-mm-ss"
+
+            let filename = "EngineShed Backup \(formatter.string(from: Date()))"
+            let directoryURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).last?
+                .appendingPathComponent(filename, isDirectory: true)
+
+            try! FileManager.default.createDirectory(at: directoryURL!, withIntermediateDirectories: true, attributes: nil)
+            let fileURL = directoryURL!.appendingPathComponent("EngineShed.sqlite")
+
+            let options: [AnyHashable: Any] = [
+                NSPersistentHistoryTrackingKey: true as NSNumber
+            ]
+
+            try! coordinator.migratePersistentStore(store, to: fileURL, options: options, withType: NSSQLiteStoreType)
+
+            let alert = NSAlert()
+            alert.messageText = "Saved"
+            alert.informativeText = filename
+            alert.addButton(withTitle: "OK")
+            alert.alertStyle = .informational
+            alert.runModal()
+        }
+
+    }
+
     
     @IBAction func search(_ sender: NSSearchField) {
         guard !sender.stringValue.isEmpty else {
