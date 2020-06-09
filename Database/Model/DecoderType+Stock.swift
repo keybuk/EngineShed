@@ -35,13 +35,15 @@ extension DecoderType {
         let fetchRequest = fetchRequestForDecoders(includingFitted: false, includingAllocated: false)
 
         var count: Int = 0
-        managedObjectContext.performAndWait {
+// TODO: this is called on save() and should be already on a queue, but it might be called during
+// migrate which doesn't... think through this more
+//        managedObjectContext.performAndWait {
             do {
                 count = try managedObjectContext.count(for: fetchRequest)
             } catch let error as NSError {
                 print("Fetch request failed making remainingStock: \(error.localizedDescription)")
             }
-        }
+//        }
         return Int16(clamping: count)
     }
 }
