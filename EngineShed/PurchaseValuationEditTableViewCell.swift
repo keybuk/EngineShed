@@ -59,7 +59,7 @@ class PurchaseValuationEditTableViewCell : UITableViewCell, UITextFieldDelegate 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Place the currency symbol at the start of the text field when editing an empty value.
         if purchase?.valuation == nil {
-            textField.text = purchase?.currencyFormatter.currencySymbol
+            textField.text = purchase?.valuationFormatter.currencySymbol
         }
     }
 
@@ -70,8 +70,8 @@ class PurchaseValuationEditTableViewCell : UITableViewCell, UITextFieldDelegate 
 
         // Allow a valid currency number, and just the currency symbol; but don't allow that to be
         // deleted.
-        let asNumber = purchase?.currencyFormatter.number(from: text)
-        return asNumber != nil || text == purchase?.currencyFormatter.currencySymbol
+        let asNumber = purchase?.valuationFormatter.number(from: text)
+        return asNumber != nil || text == purchase?.valuationFormatter.currencySymbol
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
