@@ -10,25 +10,12 @@ import Foundation
 import CoreData
 
 extension Train {
-    /// Update the indexes of the `members`.
-    ///
-    /// - Parameter changing: closure to make changes to the `members` list, invoked between sorting `members` and
-    /// applying new indexes.
-    func updateMemberIndexes(changing: ((inout [TrainMember]) -> Void)? = nil) {
-        guard let members = members as? Set<TrainMember> else { return }
-
-        var sortedMembers = members.sorted { $0.index < $1.index }
-        changing?(&sortedMembers)
-
-        for (newIndex, member) in sortedMembers.enumerated() {
-            if member.index != newIndex { member.index = Int16(clamping: newIndex) }
-        }
-    }
-
     /// Add a new `TrainMember` to the train.
     ///
     /// The new `TrainMember` is inserted into the same `managedObjectContext` as this train, added to the `members`
     /// set, and the `index` set to the next value in sequence.
+    ///
+    /// This method must be called within a `perform` block of `managedObjectContext`.
     ///
     /// - Returns: `TrainMember` now present in `members`.
     public func addMember() -> TrainMember {
@@ -36,14 +23,11 @@ extension Train {
             preconditionFailure("Cannot add a member to a train without a managed object context")
         }
 
-        var member: TrainMember!
-        managedObjectContext.performAndWait {
-            member = TrainMember(context: managedObjectContext)
-            updateMemberIndexes {
-                $0.append(member)
-            }
-            addToMembers(member)
-        }
+        let member = TrainMember(context: managedObjectContext)
+        member.index = maxMemberIndex + 1
+        maxMemberIndex = member.index
+        addToMembers(member)
+
         return member
     }
 
@@ -51,18 +35,27 @@ extension Train {
     ///
     /// `member` is removed from the `members` set, deleted from its `managedObjectContext` and all `index` of each
     /// other member in `members` adjusted.
-    /// 
+    ///
+    /// This method must be called within a `perform` block of `managedObjectContext`.
+    ///
     /// - Parameter member: `TrainMember` to be removed.
     public func removeMember(_ member: TrainMember) {
         guard let managedObjectContext = managedObjectContext else {
             preconditionFailure("Cannot remove a member from a train without a managed object context")
         }
 
-        managedObjectContext.performAndWait {
-            removeFromMembers(member)
-            updateMemberIndexes()
-            managedObjectContext.delete(member)
+        guard let members = members as? Set<TrainMember> else { return }
+
+        removeFromMembers(member)
+
+        for other in members {
+            if other.index > member.index {
+                other.index -= 1
+            }
         }
+
+        maxMemberIndex -= 1
+        managedObjectContext.delete(member)
     }
 
     /// Move a `TrainMember` within the train from one position to another.
@@ -74,20 +67,26 @@ extension Train {
     /// the member currently at the `destination` index; while when moving a member to a higher position, the member
     /// will be placed **after** the member currently at the `destination`.
     ///
+    /// This method must be called within a `perform` block of `managedObjectContext`.
+    ///
     /// - Parameters:
     ///   - origin: The position of the member that you want to move.
     ///   - destination: The member's new position.
     public func moveMemberAt(_ origin: Int, to destination: Int) {
-        guard let managedObjectContext = managedObjectContext else {
+        guard let _ = managedObjectContext else {
             preconditionFailure("Cannot move a member within a train without a managed object context")
         }
 
         guard origin != destination else { return }
-        managedObjectContext.performAndWait {
-            updateMemberIndexes {
-                let originIndex = $0.index($0.startIndex, offsetBy: origin)
-                let destinationIndex = $0.index($0.startIndex, offsetBy: destination)
-                $0.insert($0.remove(at: originIndex), at: destinationIndex)
+        guard let members = members as? Set<TrainMember> else { return }
+
+        for member in members {
+            if (member.index == origin) {
+                member.index = Int16(clamping: destination)
+            } else if (destination > origin && member.index > origin && member.index <= destination) {
+                member.index -= 1
+            } else if (destination < origin && member.index >= destination && member.index < origin) {
+                member.index += 1
             }
         }
     }

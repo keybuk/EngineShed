@@ -49,11 +49,12 @@ class TrainMembersTests: XCTestCase {
         let train = Train(context: container!.viewContext)
 
         var members: [TrainMember] = []
-        for index in [0] {
+        for index in 0...0 {
             let member = TrainMember(context: container!.viewContext)
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         let member = train.addMember()
@@ -74,11 +75,12 @@ class TrainMembersTests: XCTestCase {
         let train = Train(context: container!.viewContext)
 
         var members: [TrainMember] = []
-        for index in [0] {
+        for index in 0...0 {
             let member = TrainMember(context: container!.viewContext)
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.removeMember(members[0])
@@ -93,11 +95,12 @@ class TrainMembersTests: XCTestCase {
         let train = Train(context: container!.viewContext)
 
         var members: [TrainMember] = []
-        for index in [0, 1] {
+        for index in 0...1 {
             let member = TrainMember(context: container!.viewContext)
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.removeMember(members[1])
@@ -115,11 +118,12 @@ class TrainMembersTests: XCTestCase {
         let train = Train(context: container!.viewContext)
 
         var members: [TrainMember] = []
-        for index in [0, 1] {
+        for index in 0...1 {
             let member = TrainMember(context: container!.viewContext)
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.removeMember(members[0])
@@ -137,11 +141,12 @@ class TrainMembersTests: XCTestCase {
         let train = Train(context: container!.viewContext)
 
         var members: [TrainMember] = []
-        for index in [0, 1, 2] {
+        for index in 0...2 {
             let member = TrainMember(context: container!.viewContext)
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.removeMember(members[0])
@@ -161,11 +166,12 @@ class TrainMembersTests: XCTestCase {
         let train = Train(context: container!.viewContext)
 
         var members: [TrainMember] = []
-        for index in [0, 1] {
+        for index in 0...1 {
             let member = TrainMember(context: container!.viewContext)
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         try! container!.viewContext.save()
@@ -187,6 +193,7 @@ class TrainMembersTests: XCTestCase {
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.moveMemberAt(4, to: 2)
@@ -209,6 +216,7 @@ class TrainMembersTests: XCTestCase {
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.moveMemberAt(1, to: 3)
@@ -231,6 +239,7 @@ class TrainMembersTests: XCTestCase {
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.moveMemberAt(4, to: 4)
@@ -250,6 +259,7 @@ class TrainMembersTests: XCTestCase {
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.moveMemberAt(2, to: 3)
@@ -272,6 +282,7 @@ class TrainMembersTests: XCTestCase {
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.moveMemberAt(3, to: 2)
@@ -294,6 +305,7 @@ class TrainMembersTests: XCTestCase {
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.moveMemberAt(1, to: 0)
@@ -312,6 +324,7 @@ class TrainMembersTests: XCTestCase {
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         train.moveMemberAt(0, to: 1)
@@ -330,6 +343,7 @@ class TrainMembersTests: XCTestCase {
             member.index = Int16(clamping: index)
             train.addToMembers(member)
             members.append(member)
+            train.maxMemberIndex = member.index
         }
 
         try! container!.viewContext.save()
