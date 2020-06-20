@@ -89,7 +89,6 @@
         <attribute name="limitedEditionCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="limitedEditionNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="manufacturer" optional="YES" attributeType="String"/>
-        <attribute name="maxModelIndex" optional="YES" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="Decimal"/>
         <attribute name="priceCurrency" optional="YES" attributeType="String" defaultValueString="en_GB"/>
@@ -108,7 +107,6 @@
     </entity>
     <entity name="Train" representedClassName="Train" syncable="YES" codeGenerationType="class">
         <attribute name="details" optional="YES" attributeType="String"/>
-        <attribute name="maxMemberIndex" optional="YES" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="number" optional="YES" attributeType="String"/>
@@ -134,10 +132,10 @@
         <element name="Light" positionX="-9" positionY="153" width="128" height="73"/>
         <element name="Model" positionX="-54" positionY="108" width="128" height="448"/>
         <element name="Modification" positionX="0" positionY="162" width="128" height="73"/>
-        <element name="Purchase" positionX="-63" positionY="-18" width="128" height="343"/>
+        <element name="Purchase" positionX="-63" positionY="-18" width="128" height="328"/>
         <element name="SpeakerFitting" positionX="9" positionY="171" width="128" height="73"/>
         <element name="Task" positionX="18" positionY="180" width="128" height="73"/>
-        <element name="Train" positionX="-36" positionY="153" width="128" height="148"/>
+        <element name="Train" positionX="-36" positionY="153" width="128" height="133"/>
         <element name="TrainMember" positionX="-27" positionY="162" width="128" height="163"/>
     </elements>
 </model>

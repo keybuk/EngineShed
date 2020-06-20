@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20D2374249DB6D900FF9071 /* MaxIndexMigrationModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D20D2373249DB6D900FF9071 /* MaxIndexMigrationModel.xcmappingmodel */; };
+		D20D2375249DB6D900FF9071 /* MaxIndexMigrationModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D20D2373249DB6D900FF9071 /* MaxIndexMigrationModel.xcmappingmodel */; };
 		D213DF2D23E0B0F50003C771 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D213DF2323E0B0F40003C771 /* Database.framework */; };
 		D213DF3423E0B0F50003C771 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = D213DF2623E0B0F40003C771 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D213DF4D23E0B57B0003C771 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D213DF4423E0B57B0003C771 /* Database.framework */; };
@@ -115,6 +117,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D20D2372249DB68B00FF9071 /* EngineShed 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "EngineShed 5.xcdatamodel"; sourceTree = "<group>"; };
+		D20D2373249DB6D900FF9071 /* MaxIndexMigrationModel.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = MaxIndexMigrationModel.xcmappingmodel; sourceTree = "<group>"; };
 		D213DF2323E0B0F40003C771 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D213DF2623E0B0F40003C771 /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		D213DF2723E0B0F40003C771 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 				D2A3A0FC23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift */,
 				D2A3A10523E696BF00D65C14 /* TrainMemberIndexMigrationPolicy.swift */,
 				D2BD1A31248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel */,
+				D20D2373249DB6D900FF9071 /* MaxIndexMigrationModel.xcmappingmodel */,
 			);
 			path = Migrations;
 			sourceTree = "<group>";
@@ -501,6 +506,7 @@
 				D24D474C23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
 				D2FF6E7223E646240063257D /* DecoderType+WillSave.swift in Sources */,
 				D2FF6E7823E64D160063257D /* DecoderType+FetchRequests.swift in Sources */,
+				D20D2374249DB6D900FF9071 /* MaxIndexMigrationModel.xcmappingmodel in Sources */,
 				D22B4D4C23E51F9700CB1F6E /* Decoder+Address.swift in Sources */,
 				D24D474923E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
 				D2A3A10F23E6C2CD00D65C14 /* Train+Members.swift in Sources */,
@@ -557,6 +563,7 @@
 				D24D474D23E162D0001F09C2 /* PersistentContainer.swift in Sources */,
 				D2FF6E7323E646240063257D /* DecoderType+WillSave.swift in Sources */,
 				D2FF6E7923E64D160063257D /* DecoderType+FetchRequests.swift in Sources */,
+				D20D2375249DB6D900FF9071 /* MaxIndexMigrationModel.xcmappingmodel in Sources */,
 				D22B4D4D23E51F9700CB1F6E /* Decoder+Address.swift in Sources */,
 				D24D474A23E1602E001F09C2 /* EngineShed.xcdatamodeld in Sources */,
 				D2A3A11023E6C2CD00D65C14 /* Train+Members.swift in Sources */,
@@ -972,6 +979,7 @@
 		D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D20D2372249DB68B00FF9071 /* EngineShed 5.xcdatamodel */,
 				D2BD1A30248F55E4005E89FC /* EngineShed 4.xcdatamodel */,
 				D24A485123E8F8D90090E5F8 /* EngineShed 3.xcdatamodel */,
 				D2A3A0F723E68BBB00D65C14 /* EngineShed 2.xcdatamodel */,
