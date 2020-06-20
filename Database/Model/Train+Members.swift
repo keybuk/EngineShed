@@ -34,7 +34,7 @@ extension Train {
     /// Remove a `TrainMember` from the train.
     ///
     /// `member` is removed from the `members` set, deleted from its `managedObjectContext` and all `index` of each
-    /// other member in `members` adjusted.
+    /// following member in `members` adjusted.
     ///
     /// This method must be called within a `perform` block of `managedObjectContext`.
     ///
@@ -43,7 +43,6 @@ extension Train {
         guard let managedObjectContext = managedObjectContext else {
             preconditionFailure("Cannot remove a member from a train without a managed object context")
         }
-
         guard let members = members as? Set<TrainMember> else { return }
 
         removeFromMembers(member)
@@ -61,7 +60,7 @@ extension Train {
     /// Move a `TrainMember` within the train from one position to another.
     ///
     /// After calling this method, the member at the zero-indexed `origin` position within the set of `members`
-    /// will have the new index `destination` with all indexes adjusted
+    /// will have the new index `destination` with intermediate indexes adjusted
     ///
     /// Note that when moving a member to a lower position, after calling this method, the member will be placed **before**
     /// the member currently at the `destination` index; while when moving a member to a higher position, the member

@@ -49,11 +49,12 @@ class PurchaseModelsTests: XCTestCase {
         let purchase = Purchase(context: container!.viewContext)
 
         var models: [Model] = []
-        for index in [0] {
+        for index in 0...0 {
             let model = Model(context: container!.viewContext)
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         let model = purchase.addModel()
@@ -72,11 +73,12 @@ class PurchaseModelsTests: XCTestCase {
         let purchase = Purchase(context: container!.viewContext)
 
         var models: [Model] = []
-        for index in [0] {
+        for index in 0...0 {
             let model = Model(context: container!.viewContext)
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         try! container!.viewContext.save()
@@ -93,11 +95,12 @@ class PurchaseModelsTests: XCTestCase {
         let purchase = Purchase(context: container!.viewContext)
 
         var models: [Model] = []
-        for index in [0] {
+        for index in 0...0 {
             let model = Model(context: container!.viewContext)
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.removeModel(models[0])
@@ -112,11 +115,12 @@ class PurchaseModelsTests: XCTestCase {
         let purchase = Purchase(context: container!.viewContext)
 
         var models: [Model] = []
-        for index in [0, 1] {
+        for index in 0...1 {
             let model = Model(context: container!.viewContext)
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.removeModel(models[1])
@@ -134,11 +138,12 @@ class PurchaseModelsTests: XCTestCase {
         let purchase = Purchase(context: container!.viewContext)
 
         var models: [Model] = []
-        for index in [0, 1] {
+        for index in 0...1 {
             let model = Model(context: container!.viewContext)
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.removeModel(models[0])
@@ -156,11 +161,12 @@ class PurchaseModelsTests: XCTestCase {
         let purchase = Purchase(context: container!.viewContext)
 
         var models: [Model] = []
-        for index in [0, 1, 2] {
+        for index in 0...2 {
             let model = Model(context: container!.viewContext)
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.removeModel(models[0])
@@ -180,11 +186,12 @@ class PurchaseModelsTests: XCTestCase {
         let purchase = Purchase(context: container!.viewContext)
 
         var models: [Model] = []
-        for index in [0, 1] {
+        for index in 0...1 {
             let model = Model(context: container!.viewContext)
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         try! container!.viewContext.save()
@@ -206,6 +213,7 @@ class PurchaseModelsTests: XCTestCase {
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.moveModelAt(4, to: 2)
@@ -228,6 +236,7 @@ class PurchaseModelsTests: XCTestCase {
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.moveModelAt(1, to: 3)
@@ -250,6 +259,7 @@ class PurchaseModelsTests: XCTestCase {
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.moveModelAt(4, to: 4)
@@ -269,6 +279,7 @@ class PurchaseModelsTests: XCTestCase {
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.moveModelAt(2, to: 3)
@@ -291,6 +302,7 @@ class PurchaseModelsTests: XCTestCase {
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.moveModelAt(3, to: 2)
@@ -313,6 +325,7 @@ class PurchaseModelsTests: XCTestCase {
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.moveModelAt(1, to: 0)
@@ -331,6 +344,7 @@ class PurchaseModelsTests: XCTestCase {
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         purchase.moveModelAt(0, to: 1)
@@ -349,6 +363,7 @@ class PurchaseModelsTests: XCTestCase {
             model.index = Int16(clamping: index)
             purchase.addToModels(model)
             models.append(model)
+            purchase.maxModelIndex = model.index
         }
 
         try! container!.viewContext.save()
