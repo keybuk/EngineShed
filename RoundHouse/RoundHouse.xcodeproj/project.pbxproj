@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D2109A3824A169B800DE0131 /* RoundHouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A3724A169B800DE0131 /* RoundHouseApp.swift */; };
+		D2109A3A24A169B800DE0131 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A3924A169B800DE0131 /* ContentView.swift */; };
+		D2109A3C24A169B900DE0131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3B24A169B900DE0131 /* Assets.xcassets */; };
+		D2109A3F24A169B900DE0131 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3E24A169B900DE0131 /* Preview Assets.xcassets */; };
+		D2109A4A24A169B900DE0131 /* RoundHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A4924A169B900DE0131 /* RoundHouseTests.swift */; };
+		D2109A5524A169B900DE0131 /* RoundHouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A5424A169B900DE0131 /* RoundHouseUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D2109A4624A169B900DE0131 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2109A2C24A169B800DE0131 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2109A3324A169B800DE0131;
+			remoteInfo = RoundHouse;
+		};
+		D2109A5124A169B900DE0131 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2109A2C24A169B800DE0131 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2109A3324A169B800DE0131;
+			remoteInfo = RoundHouse;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D2109A3424A169B800DE0131 /* RoundHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoundHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2109A3724A169B800DE0131 /* RoundHouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundHouseApp.swift; sourceTree = "<group>"; };
+		D2109A3924A169B800DE0131 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D2109A3B24A169B900DE0131 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2109A3E24A169B900DE0131 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D2109A4024A169B900DE0131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2109A4524A169B900DE0131 /* RoundHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2109A4924A169B900DE0131 /* RoundHouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundHouseTests.swift; sourceTree = "<group>"; };
+		D2109A4B24A169B900DE0131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2109A5024A169B900DE0131 /* RoundHouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundHouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2109A5424A169B900DE0131 /* RoundHouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundHouseUITests.swift; sourceTree = "<group>"; };
+		D2109A5624A169B900DE0131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2109A3124A169B800DE0131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2109A4224A169B900DE0131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2109A4D24A169B900DE0131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D2109A2B24A169B800DE0131 = {
+			isa = PBXGroup;
+			children = (
+				D2109A3624A169B800DE0131 /* RoundHouse */,
+				D2109A4824A169B900DE0131 /* RoundHouseTests */,
+				D2109A5324A169B900DE0131 /* RoundHouseUITests */,
+				D2109A3524A169B800DE0131 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D2109A3524A169B800DE0131 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2109A3424A169B800DE0131 /* RoundHouse.app */,
+				D2109A4524A169B900DE0131 /* RoundHouseTests.xctest */,
+				D2109A5024A169B900DE0131 /* RoundHouseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2109A3624A169B800DE0131 /* RoundHouse */ = {
+			isa = PBXGroup;
+			children = (
+				D2109A3724A169B800DE0131 /* RoundHouseApp.swift */,
+				D2109A3924A169B800DE0131 /* ContentView.swift */,
+				D2109A3B24A169B900DE0131 /* Assets.xcassets */,
+				D2109A4024A169B900DE0131 /* Info.plist */,
+				D2109A3D24A169B900DE0131 /* Preview Content */,
+			);
+			path = RoundHouse;
+			sourceTree = "<group>";
+		};
+		D2109A3D24A169B900DE0131 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D2109A3E24A169B900DE0131 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D2109A4824A169B900DE0131 /* RoundHouseTests */ = {
+			isa = PBXGroup;
+			children = (
+				D2109A4924A169B900DE0131 /* RoundHouseTests.swift */,
+				D2109A4B24A169B900DE0131 /* Info.plist */,
+			);
+			path = RoundHouseTests;
+			sourceTree = "<group>";
+		};
+		D2109A5324A169B900DE0131 /* RoundHouseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D2109A5424A169B900DE0131 /* RoundHouseUITests.swift */,
+				D2109A5624A169B900DE0131 /* Info.plist */,
+			);
+			path = RoundHouseUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D2109A3324A169B800DE0131 /* RoundHouse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2109A5924A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouse" */;
+			buildPhases = (
+				D2109A3024A169B800DE0131 /* Sources */,
+				D2109A3124A169B800DE0131 /* Frameworks */,
+				D2109A3224A169B800DE0131 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoundHouse;
+			productName = RoundHouse;
+			productReference = D2109A3424A169B800DE0131 /* RoundHouse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2109A4424A169B900DE0131 /* RoundHouseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2109A5C24A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouseTests" */;
+			buildPhases = (
+				D2109A4124A169B900DE0131 /* Sources */,
+				D2109A4224A169B900DE0131 /* Frameworks */,
+				D2109A4324A169B900DE0131 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2109A4724A169B900DE0131 /* PBXTargetDependency */,
+			);
+			name = RoundHouseTests;
+			productName = RoundHouseTests;
+			productReference = D2109A4524A169B900DE0131 /* RoundHouseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D2109A4F24A169B900DE0131 /* RoundHouseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2109A5F24A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouseUITests" */;
+			buildPhases = (
+				D2109A4C24A169B900DE0131 /* Sources */,
+				D2109A4D24A169B900DE0131 /* Frameworks */,
+				D2109A4E24A169B900DE0131 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2109A5224A169B900DE0131 /* PBXTargetDependency */,
+			);
+			name = RoundHouseUITests;
+			productName = RoundHouseUITests;
+			productReference = D2109A5024A169B900DE0131 /* RoundHouseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2109A2C24A169B800DE0131 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					D2109A3324A169B800DE0131 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					D2109A4424A169B900DE0131 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = D2109A3324A169B800DE0131;
+					};
+					D2109A4F24A169B900DE0131 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = D2109A3324A169B800DE0131;
+					};
+				};
+			};
+			buildConfigurationList = D2109A2F24A169B800DE0131 /* Build configuration list for PBXProject "RoundHouse" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D2109A2B24A169B800DE0131;
+			productRefGroup = D2109A3524A169B800DE0131 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2109A3324A169B800DE0131 /* RoundHouse */,
+				D2109A4424A169B900DE0131 /* RoundHouseTests */,
+				D2109A4F24A169B900DE0131 /* RoundHouseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2109A3224A169B800DE0131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2109A3F24A169B900DE0131 /* Preview Assets.xcassets in Resources */,
+				D2109A3C24A169B900DE0131 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2109A4324A169B900DE0131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2109A4E24A169B900DE0131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2109A3024A169B800DE0131 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2109A3A24A169B800DE0131 /* ContentView.swift in Sources */,
+				D2109A3824A169B800DE0131 /* RoundHouseApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2109A4124A169B900DE0131 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2109A4A24A169B900DE0131 /* RoundHouseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2109A4C24A169B900DE0131 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2109A5524A169B900DE0131 /* RoundHouseUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D2109A4724A169B900DE0131 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2109A3324A169B800DE0131 /* RoundHouse */;
+			targetProxy = D2109A4624A169B900DE0131 /* PBXContainerItemProxy */;
+		};
+		D2109A5224A169B900DE0131 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2109A3324A169B800DE0131 /* RoundHouse */;
+			targetProxy = D2109A5124A169B900DE0131 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D2109A5724A169B900DE0131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D2109A5824A169B900DE0131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D2109A5A24A169B900DE0131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"RoundHouse/Preview Content\"";
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RoundHouse/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2109A5B24A169B900DE0131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"RoundHouse/Preview Content\"";
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = RoundHouse/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D2109A5D24A169B900DE0131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = RoundHouseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoundHouse.app/RoundHouse";
+			};
+			name = Debug;
+		};
+		D2109A5E24A169B900DE0131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = RoundHouseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoundHouse.app/RoundHouse";
+			};
+			name = Release;
+		};
+		D2109A6024A169B900DE0131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = RoundHouseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RoundHouse;
+			};
+			name = Debug;
+		};
+		D2109A6124A169B900DE0131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = RoundHouseUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RoundHouse;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D2109A2F24A169B800DE0131 /* Build configuration list for PBXProject "RoundHouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2109A5724A169B900DE0131 /* Debug */,
+				D2109A5824A169B900DE0131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2109A5924A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2109A5A24A169B900DE0131 /* Debug */,
+				D2109A5B24A169B900DE0131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2109A5C24A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2109A5D24A169B900DE0131 /* Debug */,
+				D2109A5E24A169B900DE0131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2109A5F24A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2109A6024A169B900DE0131 /* Debug */,
+				D2109A6124A169B900DE0131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2109A2C24A169B800DE0131 /* Project object */;
+}
