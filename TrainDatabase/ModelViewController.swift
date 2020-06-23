@@ -189,7 +189,7 @@ class ModelViewController: NSViewController {
         dispositionComboBox.objectValue = model.disposition.map(NSArray.init(object:))
 
         trainComboBoxController = try? ModelTrainComboBoxController(model: model)
-        trainComboBox.stringValue = ""
+        trainComboBox.formatter = nil
         trainComboBox.dataSource = trainComboBoxController
         trainComboBox.formatter = trainComboBoxController
         trainComboBox.stringValue = model.trainMember?.train?.name ?? ""
