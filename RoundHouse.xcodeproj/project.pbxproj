@@ -16,6 +16,8 @@
 		D2F7BF9C24A16CE50017B7F2 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F7BF9B24A16CE50017B7F2 /* Database.framework */; };
 		D2F7BF9D24A16CE50017B7F2 /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2F7BF9B24A16CE50017B7F2 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2F7BFA024A16D670017B7F2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F7BF9F24A16D670017B7F2 /* CloudKit.framework */; };
+		D2F7BFA224A180CA0017B7F2 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7BFA124A180CA0017B7F2 /* Sidebar.swift */; };
+		D2F7BFA424A181410017B7F2 /* TrainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7BFA324A181410017B7F2 /* TrainsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		D2F7BF9924A16BCB0017B7F2 /* RoundHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RoundHouse.entitlements; sourceTree = "<group>"; };
 		D2F7BF9B24A16CE50017B7F2 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7BF9F24A16D670017B7F2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D2F7BFA124A180CA0017B7F2 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		D2F7BFA324A181410017B7F2 /* TrainsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,11 +122,13 @@
 		D2109A3624A169B800DE0131 /* RoundHouse */ = {
 			isa = PBXGroup;
 			children = (
-				D2F7BF9924A16BCB0017B7F2 /* RoundHouse.entitlements */,
 				D2109A3724A169B800DE0131 /* RoundHouseApp.swift */,
 				D2109A3924A169B800DE0131 /* ContentView.swift */,
+				D2F7BFA124A180CA0017B7F2 /* Sidebar.swift */,
+				D2F7BFA324A181410017B7F2 /* TrainsView.swift */,
 				D2109A3B24A169B900DE0131 /* Assets.xcassets */,
 				D2109A4024A169B900DE0131 /* Info.plist */,
+				D2F7BF9924A16BCB0017B7F2 /* RoundHouse.entitlements */,
 				D2109A3D24A169B900DE0131 /* Preview Content */,
 			);
 			path = RoundHouse;
@@ -294,7 +300,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2109A3A24A169B800DE0131 /* ContentView.swift in Sources */,
+				D2F7BFA224A180CA0017B7F2 /* Sidebar.swift in Sources */,
 				D2109A3824A169B800DE0131 /* RoundHouseApp.swift in Sources */,
+				D2F7BFA424A181410017B7F2 /* TrainsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
