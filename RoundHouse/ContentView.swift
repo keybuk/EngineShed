@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
+    @ViewBuilder var body: some View {
+        #if os(iOS)
         AppSidebarNavigation()
+        #elseif os(macOS)
+        AppSidebarNavigation()
+            .frame(minWidth: 900, maxWidth: .infinity,
+                   minHeight: 500, maxHeight: .infinity)
+        #endif
     }
 }
 
