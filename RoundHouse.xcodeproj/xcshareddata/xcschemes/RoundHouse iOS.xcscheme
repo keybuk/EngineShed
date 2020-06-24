@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2109A3324A169B800DE0131"
                BuildableName = "RoundHouse.app"
-               BlueprintName = "RoundHouse"
+               BlueprintName = "RoundHouse iOS"
                ReferencedContainer = "container:RoundHouse.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -90,7 +90,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2109A3324A169B800DE0131"
             BuildableName = "RoundHouse.app"
-            BlueprintName = "RoundHouse"
+            BlueprintName = "RoundHouse iOS"
             ReferencedContainer = "container:RoundHouse.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -107,7 +107,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D2109A3324A169B800DE0131"
             BuildableName = "RoundHouse.app"
-            BlueprintName = "RoundHouse"
+            BlueprintName = "RoundHouse iOS"
             ReferencedContainer = "container:RoundHouse.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
