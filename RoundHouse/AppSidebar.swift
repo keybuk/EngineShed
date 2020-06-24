@@ -35,7 +35,7 @@ struct AppSidebar: View {
     }
 }
 
-struct Sidebar_Previews: PreviewProvider {
+struct AppSidebar_Previews: PreviewProvider {
     static var previews: some View {
         AppSidebar()
     }

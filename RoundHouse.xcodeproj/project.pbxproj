@@ -20,7 +20,7 @@
 		D2C18F5424A2F18100B3A8F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3B24A169B900DE0131 /* Assets.xcassets */; };
 		D2C18F5524A2F18600B3A8F7 /* PreviewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */; };
 		D2C18F5624A2F18900B3A8F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3E24A169B900DE0131 /* Preview Assets.xcassets */; };
-		D2C18F5724A2F18C00B3A8F7 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7BFA124A180CA0017B7F2 /* Sidebar.swift */; };
+		D2C18F5724A2F18C00B3A8F7 /* AppSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7BFA124A180CA0017B7F2 /* AppSidebar.swift */; };
 		D2C18F5824A2F18C00B3A8F7 /* TrainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7BFA324A181410017B7F2 /* TrainsView.swift */; };
 		D2C18F5924A2F18C00B3A8F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A3924A169B800DE0131 /* ContentView.swift */; };
 		D2C18F5A24A2F18C00B3A8F7 /* RoundHouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A3724A169B800DE0131 /* RoundHouseApp.swift */; };
@@ -30,7 +30,7 @@
 		D2F7BF9C24A16CE50017B7F2 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F7BF9B24A16CE50017B7F2 /* Database.framework */; };
 		D2F7BF9D24A16CE50017B7F2 /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2F7BF9B24A16CE50017B7F2 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2F7BFA024A16D670017B7F2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F7BF9F24A16D670017B7F2 /* CloudKit.framework */; };
-		D2F7BFA224A180CA0017B7F2 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7BFA124A180CA0017B7F2 /* Sidebar.swift */; };
+		D2F7BFA224A180CA0017B7F2 /* AppSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7BFA124A180CA0017B7F2 /* AppSidebar.swift */; };
 		D2F7BFA424A181410017B7F2 /* TrainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F7BFA324A181410017B7F2 /* TrainsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,7 +99,7 @@
 		D2F7BF9924A16BCB0017B7F2 /* RoundHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RoundHouse.entitlements; sourceTree = "<group>"; };
 		D2F7BF9B24A16CE50017B7F2 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7BF9F24A16D670017B7F2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		D2F7BFA124A180CA0017B7F2 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		D2F7BFA124A180CA0017B7F2 /* AppSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSidebar.swift; sourceTree = "<group>"; };
 		D2F7BFA324A181410017B7F2 /* TrainsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,7 +169,7 @@
 			children = (
 				D2109A3724A169B800DE0131 /* RoundHouseApp.swift */,
 				D2109A3924A169B800DE0131 /* ContentView.swift */,
-				D2F7BFA124A180CA0017B7F2 /* Sidebar.swift */,
+				D2F7BFA124A180CA0017B7F2 /* AppSidebar.swift */,
 				D25E95E724A3DD7F005721A0 /* PurchasesView.swift */,
 				D2F7BFA324A181410017B7F2 /* TrainsView.swift */,
 				D2109A3B24A169B900DE0131 /* Assets.xcassets */,
@@ -403,7 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2109A3A24A169B800DE0131 /* ContentView.swift in Sources */,
-				D2F7BFA224A180CA0017B7F2 /* Sidebar.swift in Sources */,
+				D2F7BFA224A180CA0017B7F2 /* AppSidebar.swift in Sources */,
 				D2C18F3524A2854D00B3A8F7 /* PreviewContent.swift in Sources */,
 				D25E95E824A3DD7F005721A0 /* PurchasesView.swift in Sources */,
 				D2109A3824A169B800DE0131 /* RoundHouseApp.swift in Sources */,
@@ -435,7 +435,7 @@
 				D25E95E624A3D797005721A0 /* NSImage+Data.swift in Sources */,
 				D2C18F5A24A2F18C00B3A8F7 /* RoundHouseApp.swift in Sources */,
 				D2C18F5824A2F18C00B3A8F7 /* TrainsView.swift in Sources */,
-				D2C18F5724A2F18C00B3A8F7 /* Sidebar.swift in Sources */,
+				D2C18F5724A2F18C00B3A8F7 /* AppSidebar.swift in Sources */,
 				D2C18F5924A2F18C00B3A8F7 /* ContentView.swift in Sources */,
 				D2C18F5524A2F18600B3A8F7 /* PreviewContent.swift in Sources */,
 			);
