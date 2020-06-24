@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    #if os(iOS)
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    #endif
+
     @ViewBuilder var body: some View {
         #if os(iOS)
-        AppSidebarNavigation()
+        if horizontalSizeClass == .compact {
+            AppTabNavigation()
+        } else {
+            AppSidebarNavigation()
+        }
         #elseif os(macOS)
         AppSidebarNavigation()
             .frame(minWidth: 900, maxWidth: .infinity,
