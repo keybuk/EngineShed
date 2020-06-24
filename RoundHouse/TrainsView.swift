@@ -10,6 +10,7 @@ import SwiftUI
 struct TrainsView: View {
     var body: some View {
         Text("Trains")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

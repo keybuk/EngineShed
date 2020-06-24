@@ -10,6 +10,7 @@ import SwiftUI
 struct PurchasesView: View {
     var body: some View {
         Text("Purchases")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
