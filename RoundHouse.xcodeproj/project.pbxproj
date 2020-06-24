@@ -14,6 +14,8 @@
 		D2109A4A24A169B900DE0131 /* RoundHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A4924A169B900DE0131 /* RoundHouseTests.swift */; };
 		D25E95E424A3D359005721A0 /* RoundHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A4924A169B900DE0131 /* RoundHouseTests.swift */; };
 		D25E95E624A3D797005721A0 /* NSImage+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E95E524A3D797005721A0 /* NSImage+Data.swift */; };
+		D25E95E824A3DD7F005721A0 /* PurchasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E95E724A3DD7F005721A0 /* PurchasesView.swift */; };
+		D25E95E924A3DD7F005721A0 /* PurchasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E95E724A3DD7F005721A0 /* PurchasesView.swift */; };
 		D2C18F3524A2854D00B3A8F7 /* PreviewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */; };
 		D2C18F5424A2F18100B3A8F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3B24A169B900DE0131 /* Assets.xcassets */; };
 		D2C18F5524A2F18600B3A8F7 /* PreviewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */; };
@@ -87,6 +89,7 @@
 		D25E95DA24A3D30A005721A0 /* RoundHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25E95DE24A3D30A005721A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D25E95E524A3D797005721A0 /* NSImage+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Data.swift"; sourceTree = "<group>"; };
+		D25E95E724A3DD7F005721A0 /* PurchasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesView.swift; sourceTree = "<group>"; };
 		D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContent.swift; sourceTree = "<group>"; };
 		D2C18F4424A2F0B700B3A8F7 /* RoundHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoundHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C18F4F24A2F0B700B3A8F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 				D2109A3724A169B800DE0131 /* RoundHouseApp.swift */,
 				D2109A3924A169B800DE0131 /* ContentView.swift */,
 				D2F7BFA124A180CA0017B7F2 /* Sidebar.swift */,
+				D25E95E724A3DD7F005721A0 /* PurchasesView.swift */,
 				D2F7BFA324A181410017B7F2 /* TrainsView.swift */,
 				D2109A3B24A169B900DE0131 /* Assets.xcassets */,
 				D2109A3D24A169B900DE0131 /* Preview Content */,
@@ -401,6 +405,7 @@
 				D2109A3A24A169B800DE0131 /* ContentView.swift in Sources */,
 				D2F7BFA224A180CA0017B7F2 /* Sidebar.swift in Sources */,
 				D2C18F3524A2854D00B3A8F7 /* PreviewContent.swift in Sources */,
+				D25E95E824A3DD7F005721A0 /* PurchasesView.swift in Sources */,
 				D2109A3824A169B800DE0131 /* RoundHouseApp.swift in Sources */,
 				D2F7BFA424A181410017B7F2 /* TrainsView.swift in Sources */,
 			);
@@ -426,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D25E95E924A3DD7F005721A0 /* PurchasesView.swift in Sources */,
 				D25E95E624A3D797005721A0 /* NSImage+Data.swift in Sources */,
 				D2C18F5A24A2F18C00B3A8F7 /* RoundHouseApp.swift in Sources */,
 				D2C18F5824A2F18C00B3A8F7 /* TrainsView.swift in Sources */,

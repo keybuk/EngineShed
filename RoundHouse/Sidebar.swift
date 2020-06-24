@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Sidebar: View {
     enum NavigationItem {
+        case purchases
         case trains
     }
 
@@ -16,6 +17,13 @@ struct Sidebar: View {
 
     var body: some View {
         List(selection: $selection) {
+            NavigationLink(
+                destination: PurchasesView()) {
+                Label("Purchases", systemImage: "bag")
+            }
+            .accessibility(label: Text("Purchases"))
+            .tag(NavigationItem.purchases)
+
             NavigationLink(
                 destination: TrainsView()) {
                 Label("Trains", systemImage: "tram.fill")
