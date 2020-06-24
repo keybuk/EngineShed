@@ -27,15 +27,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2B7C95020D4BA30001B51B1"
-            BuildableName = "EngineShed.app"
-            BlueprintName = "EngineShed"
-            ReferencedContainer = "container:EngineShed.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -43,7 +34,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D213DF2B23E0B0F50003C771"
                BuildableName = "DatabaseTests.xctest"
-               BlueprintName = "DatabaseTests"
+               BlueprintName = "DatabaseTests iOS"
                ReferencedContainer = "container:Database.xcodeproj">
             </BuildableReference>
          </TestableReference>

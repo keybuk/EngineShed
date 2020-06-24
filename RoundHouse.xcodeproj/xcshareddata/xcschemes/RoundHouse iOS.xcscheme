@@ -30,7 +30,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D213DF2B23E0B0F50003C771"
                BuildableName = "DatabaseTests.xctest"
-               BlueprintName = "DatabaseTests"
+               BlueprintName = "DatabaseTests iOS"
                ReferencedContainer = "container:Database.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,7 +48,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D213DF2B23E0B0F50003C771"
                BuildableName = "DatabaseTests.xctest"
-               BlueprintName = "DatabaseTests"
+               BlueprintName = "DatabaseTests iOS"
                ReferencedContainer = "container:Database.xcodeproj">
             </BuildableReference>
          </TestableReference>

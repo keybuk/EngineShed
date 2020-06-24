@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D213DF2223E0B0F40003C771"
+               BlueprintIdentifier = "D213DF4323E0B57B0003C771"
                BuildableName = "Database.framework"
-               BlueprintName = "Database"
+               BlueprintName = "Database macOS"
                ReferencedContainer = "container:Database.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D213DF4B23E0B57B0003C771"
+               BuildableName = "DatabaseTests.xctest"
+               BlueprintName = "DatabaseTests macOS"
+               ReferencedContainer = "container:Database.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -50,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D213DF2223E0B0F40003C771"
+            BlueprintIdentifier = "D213DF4323E0B57B0003C771"
             BuildableName = "Database.framework"
-            BlueprintName = "Database"
+            BlueprintName = "Database macOS"
             ReferencedContainer = "container:Database.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

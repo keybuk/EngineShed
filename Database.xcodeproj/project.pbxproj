@@ -342,9 +342,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D213DF2223E0B0F40003C771 /* Database */ = {
+		D213DF2223E0B0F40003C771 /* Database iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D213DF3723E0B0F50003C771 /* Build configuration list for PBXNativeTarget "Database" */;
+			buildConfigurationList = D213DF3723E0B0F50003C771 /* Build configuration list for PBXNativeTarget "Database iOS" */;
 			buildPhases = (
 				D213DF1E23E0B0F40003C771 /* Headers */,
 				D213DF1F23E0B0F40003C771 /* Sources */,
@@ -355,14 +355,14 @@
 			);
 			dependencies = (
 			);
-			name = Database;
+			name = "Database iOS";
 			productName = Database;
 			productReference = D213DF2323E0B0F40003C771 /* Database.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D213DF2B23E0B0F50003C771 /* DatabaseTests */ = {
+		D213DF2B23E0B0F50003C771 /* DatabaseTests iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D213DF3A23E0B0F50003C771 /* Build configuration list for PBXNativeTarget "DatabaseTests" */;
+			buildConfigurationList = D213DF3A23E0B0F50003C771 /* Build configuration list for PBXNativeTarget "DatabaseTests iOS" */;
 			buildPhases = (
 				D213DF2823E0B0F50003C771 /* Sources */,
 				D213DF2923E0B0F50003C771 /* Frameworks */,
@@ -373,14 +373,14 @@
 			dependencies = (
 				D213DF2F23E0B0F50003C771 /* PBXTargetDependency */,
 			);
-			name = DatabaseTests;
+			name = "DatabaseTests iOS";
 			productName = DatabaseTests;
 			productReference = D213DF2C23E0B0F50003C771 /* DatabaseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D213DF4323E0B57B0003C771 /* Database (macOS) */ = {
+		D213DF4323E0B57B0003C771 /* Database macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D213DF5523E0B57B0003C771 /* Build configuration list for PBXNativeTarget "Database (macOS)" */;
+			buildConfigurationList = D213DF5523E0B57B0003C771 /* Build configuration list for PBXNativeTarget "Database macOS" */;
 			buildPhases = (
 				D213DF3F23E0B57B0003C771 /* Headers */,
 				D213DF4023E0B57B0003C771 /* Sources */,
@@ -391,14 +391,14 @@
 			);
 			dependencies = (
 			);
-			name = "Database (macOS)";
+			name = "Database macOS";
 			productName = "Database (macOS)";
 			productReference = D213DF4423E0B57B0003C771 /* Database.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D213DF4B23E0B57B0003C771 /* DatabaseTests (macOS) */ = {
+		D213DF4B23E0B57B0003C771 /* DatabaseTests macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D213DF5823E0B57B0003C771 /* Build configuration list for PBXNativeTarget "DatabaseTests (macOS)" */;
+			buildConfigurationList = D213DF5823E0B57B0003C771 /* Build configuration list for PBXNativeTarget "DatabaseTests macOS" */;
 			buildPhases = (
 				D213DF4823E0B57B0003C771 /* Sources */,
 				D213DF4923E0B57B0003C771 /* Frameworks */,
@@ -409,7 +409,7 @@
 			dependencies = (
 				D213DF4F23E0B57B0003C771 /* PBXTargetDependency */,
 			);
-			name = "DatabaseTests (macOS)";
+			name = "DatabaseTests macOS";
 			productName = "Database (macOS)Tests";
 			productReference = D213DF4C23E0B57B0003C771 /* DatabaseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -452,10 +452,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D213DF2223E0B0F40003C771 /* Database */,
-				D213DF2B23E0B0F50003C771 /* DatabaseTests */,
-				D213DF4323E0B57B0003C771 /* Database (macOS) */,
-				D213DF4B23E0B57B0003C771 /* DatabaseTests (macOS) */,
+				D213DF2223E0B0F40003C771 /* Database iOS */,
+				D213DF4323E0B57B0003C771 /* Database macOS */,
+				D213DF2B23E0B0F50003C771 /* DatabaseTests iOS */,
+				D213DF4B23E0B57B0003C771 /* DatabaseTests macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -611,12 +611,12 @@
 /* Begin PBXTargetDependency section */
 		D213DF2F23E0B0F50003C771 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D213DF2223E0B0F40003C771 /* Database */;
+			target = D213DF2223E0B0F40003C771 /* Database iOS */;
 			targetProxy = D213DF2E23E0B0F50003C771 /* PBXContainerItemProxy */;
 		};
 		D213DF4F23E0B57B0003C771 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D213DF4323E0B57B0003C771 /* Database (macOS) */;
+			target = D213DF4323E0B57B0003C771 /* Database macOS */;
 			targetProxy = D213DF4E23E0B57B0003C771 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -760,7 +760,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.Database;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = Database;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -786,7 +786,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.Database;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = Database;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -806,7 +806,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.DatabaseTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DatabaseTests;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -825,7 +825,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.EngineShed.DatabaseTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DatabaseTests;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -937,7 +937,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D213DF3723E0B0F50003C771 /* Build configuration list for PBXNativeTarget "Database" */ = {
+		D213DF3723E0B0F50003C771 /* Build configuration list for PBXNativeTarget "Database iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D213DF3823E0B0F50003C771 /* Debug */,
@@ -946,7 +946,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D213DF3A23E0B0F50003C771 /* Build configuration list for PBXNativeTarget "DatabaseTests" */ = {
+		D213DF3A23E0B0F50003C771 /* Build configuration list for PBXNativeTarget "DatabaseTests iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D213DF3B23E0B0F50003C771 /* Debug */,
@@ -955,7 +955,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D213DF5523E0B57B0003C771 /* Build configuration list for PBXNativeTarget "Database (macOS)" */ = {
+		D213DF5523E0B57B0003C771 /* Build configuration list for PBXNativeTarget "Database macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D213DF5623E0B57B0003C771 /* Debug */,
@@ -964,7 +964,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D213DF5823E0B57B0003C771 /* Build configuration list for PBXNativeTarget "DatabaseTests (macOS)" */ = {
+		D213DF5823E0B57B0003C771 /* Build configuration list for PBXNativeTarget "DatabaseTests macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D213DF5923E0B57B0003C771 /* Debug */,

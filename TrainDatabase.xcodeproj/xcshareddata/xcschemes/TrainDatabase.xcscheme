@@ -27,15 +27,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D28A4BC31FD67523000768D8"
-            BuildableName = "TrainDatabase.app"
-            BlueprintName = "TrainDatabase"
-            ReferencedContainer = "container:TrainDatabase.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -43,7 +34,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D213DF4B23E0B57B0003C771"
                BuildableName = "DatabaseTests.xctest"
-               BlueprintName = "DatabaseTests (macOS)"
+               BlueprintName = "DatabaseTests macOS"
                ReferencedContainer = "container:Database.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -30,7 +30,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D213DF4B23E0B57B0003C771"
                BuildableName = "DatabaseTests.xctest"
-               BlueprintName = "DatabaseTests (macOS)"
+               BlueprintName = "DatabaseTests macOS"
                ReferencedContainer = "container:Database.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,7 +48,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D213DF4B23E0B57B0003C771"
                BuildableName = "DatabaseTests.xctest"
-               BlueprintName = "DatabaseTests (macOS)"
+               BlueprintName = "DatabaseTests macOS"
                ReferencedContainer = "container:Database.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -57,7 +57,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D25E95D924A3D30A005721A0"
-               BuildableName = "RoundHouseTests macOS.xctest"
+               BuildableName = "RoundHouseTests.xctest"
                BlueprintName = "RoundHouseTests macOS"
                ReferencedContainer = "container:RoundHouse.xcodeproj">
             </BuildableReference>
