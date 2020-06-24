@@ -13,6 +13,7 @@
 		D2109A3F24A169B900DE0131 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3E24A169B900DE0131 /* Preview Assets.xcassets */; };
 		D2109A4A24A169B900DE0131 /* RoundHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A4924A169B900DE0131 /* RoundHouseTests.swift */; };
 		D2109A5524A169B900DE0131 /* RoundHouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A5424A169B900DE0131 /* RoundHouseUITests.swift */; };
+		D2C18F3524A2854D00B3A8F7 /* PreviewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */; };
 		D2F7BF9C24A16CE50017B7F2 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F7BF9B24A16CE50017B7F2 /* Database.framework */; };
 		D2F7BF9D24A16CE50017B7F2 /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2F7BF9B24A16CE50017B7F2 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2F7BFA024A16D670017B7F2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F7BF9F24A16D670017B7F2 /* CloudKit.framework */; };
@@ -64,6 +65,7 @@
 		D2109A5024A169B900DE0131 /* RoundHouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundHouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2109A5424A169B900DE0131 /* RoundHouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundHouseUITests.swift; sourceTree = "<group>"; };
 		D2109A5624A169B900DE0131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContent.swift; sourceTree = "<group>"; };
 		D2F7BF9924A16BCB0017B7F2 /* RoundHouse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RoundHouse.entitlements; sourceTree = "<group>"; };
 		D2F7BF9B24A16CE50017B7F2 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7BF9F24A16D670017B7F2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -137,6 +139,7 @@
 		D2109A3D24A169B900DE0131 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */,
 				D2109A3E24A169B900DE0131 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -301,6 +304,7 @@
 			files = (
 				D2109A3A24A169B800DE0131 /* ContentView.swift in Sources */,
 				D2F7BFA224A180CA0017B7F2 /* Sidebar.swift in Sources */,
+				D2C18F3524A2854D00B3A8F7 /* PreviewContent.swift in Sources */,
 				D2109A3824A169B800DE0131 /* RoundHouseApp.swift in Sources */,
 				D2F7BFA424A181410017B7F2 /* TrainsView.swift in Sources */,
 			);
