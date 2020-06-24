@@ -58,7 +58,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D2109A4424A169B900DE0131"
                BuildableName = "RoundHouseTests.xctest"
-               BlueprintName = "RoundHouseTests"
+               BlueprintName = "RoundHouseTests iOS"
                ReferencedContainer = "container:RoundHouse.xcodeproj">
             </BuildableReference>
          </TestableReference>

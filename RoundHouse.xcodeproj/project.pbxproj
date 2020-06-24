@@ -12,6 +12,7 @@
 		D2109A3C24A169B900DE0131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3B24A169B900DE0131 /* Assets.xcassets */; };
 		D2109A3F24A169B900DE0131 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3E24A169B900DE0131 /* Preview Assets.xcassets */; };
 		D2109A4A24A169B900DE0131 /* RoundHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A4924A169B900DE0131 /* RoundHouseTests.swift */; };
+		D25E95E424A3D359005721A0 /* RoundHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A4924A169B900DE0131 /* RoundHouseTests.swift */; };
 		D2C18F3524A2854D00B3A8F7 /* PreviewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */; };
 		D2C18F5424A2F18100B3A8F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3B24A169B900DE0131 /* Assets.xcassets */; };
 		D2C18F5524A2F18600B3A8F7 /* PreviewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */; };
@@ -37,6 +38,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2109A3324A169B800DE0131;
 			remoteInfo = RoundHouse;
+		};
+		D25E95DF24A3D30A005721A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2109A2C24A169B800DE0131 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2C18F4324A2F0B700B3A8F7;
+			remoteInfo = "RoundHouse macOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -75,6 +83,8 @@
 		D2109A4524A169B900DE0131 /* RoundHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2109A4924A169B900DE0131 /* RoundHouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundHouseTests.swift; sourceTree = "<group>"; };
 		D2109A4B24A169B900DE0131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D25E95DA24A3D30A005721A0 /* RoundHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D25E95DE24A3D30A005721A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContent.swift; sourceTree = "<group>"; };
 		D2C18F4424A2F0B700B3A8F7 /* RoundHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoundHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C18F4F24A2F0B700B3A8F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,6 +115,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D25E95D724A3D30A005721A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2C18F4124A2F0B700B3A8F7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +141,8 @@
 				D2109A4824A169B900DE0131 /* RoundHouseTests */,
 				D2C18F3E24A2F00900B3A8F7 /* RoundHouse iOS */,
 				D2C18F4524A2F0B700B3A8F7 /* RoundHouse macOS */,
+				D25E95D524A3D2C2005721A0 /* RoundHouseTests iOS */,
+				D25E95DB24A3D30A005721A0 /* RoundHouseTests macOS */,
 				D2109A3524A169B800DE0131 /* Products */,
 				D2F7BF9A24A16CE50017B7F2 /* Frameworks */,
 			);
@@ -135,6 +154,7 @@
 				D2109A3424A169B800DE0131 /* RoundHouse.app */,
 				D2109A4524A169B900DE0131 /* RoundHouseTests.xctest */,
 				D2C18F4424A2F0B700B3A8F7 /* RoundHouse.app */,
+				D25E95DA24A3D30A005721A0 /* RoundHouseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,9 +185,24 @@
 			isa = PBXGroup;
 			children = (
 				D2109A4924A169B900DE0131 /* RoundHouseTests.swift */,
-				D2109A4B24A169B900DE0131 /* Info.plist */,
 			);
 			path = RoundHouseTests;
+			sourceTree = "<group>";
+		};
+		D25E95D524A3D2C2005721A0 /* RoundHouseTests iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D2109A4B24A169B900DE0131 /* Info.plist */,
+			);
+			path = "RoundHouseTests iOS";
+			sourceTree = "<group>";
+		};
+		D25E95DB24A3D30A005721A0 /* RoundHouseTests macOS */ = {
+			isa = PBXGroup;
+			children = (
+				D25E95DE24A3D30A005721A0 /* Info.plist */,
+			);
+			path = "RoundHouseTests macOS";
 			sourceTree = "<group>";
 		};
 		D2C18F3E24A2F00900B3A8F7 /* RoundHouse iOS */ = {
@@ -220,9 +255,9 @@
 			productReference = D2109A3424A169B800DE0131 /* RoundHouse.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D2109A4424A169B900DE0131 /* RoundHouseTests */ = {
+		D2109A4424A169B900DE0131 /* RoundHouseTests iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D2109A5C24A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouseTests" */;
+			buildConfigurationList = D2109A5C24A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouseTests iOS" */;
 			buildPhases = (
 				D2109A4124A169B900DE0131 /* Sources */,
 				D2109A4224A169B900DE0131 /* Frameworks */,
@@ -233,9 +268,27 @@
 			dependencies = (
 				D2109A4724A169B900DE0131 /* PBXTargetDependency */,
 			);
-			name = RoundHouseTests;
+			name = "RoundHouseTests iOS";
 			productName = RoundHouseTests;
 			productReference = D2109A4524A169B900DE0131 /* RoundHouseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D25E95D924A3D30A005721A0 /* RoundHouseTests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D25E95E124A3D30A005721A0 /* Build configuration list for PBXNativeTarget "RoundHouseTests macOS" */;
+			buildPhases = (
+				D25E95D624A3D30A005721A0 /* Sources */,
+				D25E95D724A3D30A005721A0 /* Frameworks */,
+				D25E95D824A3D30A005721A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D25E95E024A3D30A005721A0 /* PBXTargetDependency */,
+			);
+			name = "RoundHouseTests macOS";
+			productName = "RoundHouseTests macOS";
+			productReference = D25E95DA24A3D30A005721A0 /* RoundHouseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D2C18F4324A2F0B700B3A8F7 /* RoundHouse macOS */ = {
@@ -272,6 +325,10 @@
 						CreatedOnToolsVersion = 12.0;
 						TestTargetID = D2109A3324A169B800DE0131;
 					};
+					D25E95D924A3D30A005721A0 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = D2C18F4324A2F0B700B3A8F7;
+					};
 					D2C18F4324A2F0B700B3A8F7 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -292,7 +349,8 @@
 			targets = (
 				D2109A3324A169B800DE0131 /* RoundHouse iOS */,
 				D2C18F4324A2F0B700B3A8F7 /* RoundHouse macOS */,
-				D2109A4424A169B900DE0131 /* RoundHouseTests */,
+				D2109A4424A169B900DE0131 /* RoundHouseTests iOS */,
+				D25E95D924A3D30A005721A0 /* RoundHouseTests macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -308,6 +366,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D2109A4324A169B900DE0131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D25E95D824A3D30A005721A0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -346,6 +411,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D25E95D624A3D30A005721A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D25E95E424A3D359005721A0 /* RoundHouseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2C18F4024A2F0B700B3A8F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,6 +438,11 @@
 			isa = PBXTargetDependency;
 			target = D2109A3324A169B800DE0131 /* RoundHouse iOS */;
 			targetProxy = D2109A4624A169B900DE0131 /* PBXContainerItemProxy */;
+		};
+		D25E95E024A3D30A005721A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2C18F4324A2F0B700B3A8F7 /* RoundHouse macOS */;
+			targetProxy = D25E95DF24A3D30A005721A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -540,7 +618,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = RoundHouseTests/Info.plist;
+				INFOPLIST_FILE = "RoundHouseTests iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -548,7 +626,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RoundHouseTests;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoundHouse.app/RoundHouse";
@@ -562,7 +640,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = RoundHouseTests/Info.plist;
+				INFOPLIST_FILE = "RoundHouseTests iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -570,10 +648,54 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RoundHouseTests;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoundHouse.app/RoundHouse";
+			};
+			name = Release;
+		};
+		D25E95E224A3D30A005721A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "RoundHouseTests macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.16;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseTests;
+				PRODUCT_NAME = RoundHouseTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoundHouse.app/Contents/MacOS/RoundHouse";
+			};
+			name = Debug;
+		};
+		D25E95E324A3D30A005721A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 79P776W2YF;
+				INFOPLIST_FILE = "RoundHouseTests macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.16;
+				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseTests;
+				PRODUCT_NAME = RoundHouseTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoundHouse.app/Contents/MacOS/RoundHouse";
 			};
 			name = Release;
 		};
@@ -648,11 +770,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D2109A5C24A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouseTests" */ = {
+		D2109A5C24A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouseTests iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D2109A5D24A169B900DE0131 /* Debug */,
 				D2109A5E24A169B900DE0131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D25E95E124A3D30A005721A0 /* Build configuration list for PBXNativeTarget "RoundHouseTests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D25E95E224A3D30A005721A0 /* Debug */,
+				D25E95E324A3D30A005721A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
