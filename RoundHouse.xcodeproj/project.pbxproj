@@ -12,7 +12,6 @@
 		D2109A3C24A169B900DE0131 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3B24A169B900DE0131 /* Assets.xcassets */; };
 		D2109A3F24A169B900DE0131 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3E24A169B900DE0131 /* Preview Assets.xcassets */; };
 		D2109A4A24A169B900DE0131 /* RoundHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A4924A169B900DE0131 /* RoundHouseTests.swift */; };
-		D2109A5524A169B900DE0131 /* RoundHouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2109A5424A169B900DE0131 /* RoundHouseUITests.swift */; };
 		D2C18F3524A2854D00B3A8F7 /* PreviewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */; };
 		D2C18F5424A2F18100B3A8F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2109A3B24A169B900DE0131 /* Assets.xcassets */; };
 		D2C18F5524A2F18600B3A8F7 /* PreviewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */; };
@@ -33,13 +32,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		D2109A4624A169B900DE0131 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D2109A2C24A169B800DE0131 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D2109A3324A169B800DE0131;
-			remoteInfo = RoundHouse;
-		};
-		D2109A5124A169B900DE0131 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2109A2C24A169B800DE0131 /* Project object */;
 			proxyType = 1;
@@ -83,9 +75,6 @@
 		D2109A4524A169B900DE0131 /* RoundHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2109A4924A169B900DE0131 /* RoundHouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundHouseTests.swift; sourceTree = "<group>"; };
 		D2109A4B24A169B900DE0131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2109A5024A169B900DE0131 /* RoundHouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoundHouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2109A5424A169B900DE0131 /* RoundHouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundHouseUITests.swift; sourceTree = "<group>"; };
-		D2109A5624A169B900DE0131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2C18F3424A2854D00B3A8F7 /* PreviewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContent.swift; sourceTree = "<group>"; };
 		D2C18F4424A2F0B700B3A8F7 /* RoundHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoundHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C18F4F24A2F0B700B3A8F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,13 +105,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2109A4D24A169B900DE0131 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D2C18F4124A2F0B700B3A8F7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,7 +124,6 @@
 				D2109A4824A169B900DE0131 /* RoundHouseTests */,
 				D2C18F3E24A2F00900B3A8F7 /* RoundHouse iOS */,
 				D2C18F4524A2F0B700B3A8F7 /* RoundHouse macOS */,
-				D2109A5324A169B900DE0131 /* RoundHouseUITests */,
 				D2109A3524A169B800DE0131 /* Products */,
 				D2F7BF9A24A16CE50017B7F2 /* Frameworks */,
 			);
@@ -153,7 +134,6 @@
 			children = (
 				D2109A3424A169B800DE0131 /* RoundHouse.app */,
 				D2109A4524A169B900DE0131 /* RoundHouseTests.xctest */,
-				D2109A5024A169B900DE0131 /* RoundHouseUITests.xctest */,
 				D2C18F4424A2F0B700B3A8F7 /* RoundHouse.app */,
 			);
 			name = Products;
@@ -188,15 +168,6 @@
 				D2109A4B24A169B900DE0131 /* Info.plist */,
 			);
 			path = RoundHouseTests;
-			sourceTree = "<group>";
-		};
-		D2109A5324A169B900DE0131 /* RoundHouseUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D2109A5424A169B900DE0131 /* RoundHouseUITests.swift */,
-				D2109A5624A169B900DE0131 /* Info.plist */,
-			);
-			path = RoundHouseUITests;
 			sourceTree = "<group>";
 		};
 		D2C18F3E24A2F00900B3A8F7 /* RoundHouse iOS */ = {
@@ -267,24 +238,6 @@
 			productReference = D2109A4524A169B900DE0131 /* RoundHouseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D2109A4F24A169B900DE0131 /* RoundHouseUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D2109A5F24A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouseUITests" */;
-			buildPhases = (
-				D2109A4C24A169B900DE0131 /* Sources */,
-				D2109A4D24A169B900DE0131 /* Frameworks */,
-				D2109A4E24A169B900DE0131 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D2109A5224A169B900DE0131 /* PBXTargetDependency */,
-			);
-			name = RoundHouseUITests;
-			productName = RoundHouseUITests;
-			productReference = D2109A5024A169B900DE0131 /* RoundHouseUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		D2C18F4324A2F0B700B3A8F7 /* RoundHouse macOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2C18F5124A2F0B700B3A8F7 /* Build configuration list for PBXNativeTarget "RoundHouse macOS" */;
@@ -319,10 +272,6 @@
 						CreatedOnToolsVersion = 12.0;
 						TestTargetID = D2109A3324A169B800DE0131;
 					};
-					D2109A4F24A169B900DE0131 = {
-						CreatedOnToolsVersion = 12.0;
-						TestTargetID = D2109A3324A169B800DE0131;
-					};
 					D2C18F4324A2F0B700B3A8F7 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -344,7 +293,6 @@
 				D2109A3324A169B800DE0131 /* RoundHouse iOS */,
 				D2C18F4324A2F0B700B3A8F7 /* RoundHouse macOS */,
 				D2109A4424A169B900DE0131 /* RoundHouseTests */,
-				D2109A4F24A169B900DE0131 /* RoundHouseUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -360,13 +308,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D2109A4324A169B900DE0131 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D2109A4E24A169B900DE0131 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -405,14 +346,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2109A4C24A169B900DE0131 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D2109A5524A169B900DE0131 /* RoundHouseUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D2C18F4024A2F0B700B3A8F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -432,11 +365,6 @@
 			isa = PBXTargetDependency;
 			target = D2109A3324A169B800DE0131 /* RoundHouse iOS */;
 			targetProxy = D2109A4624A169B900DE0131 /* PBXContainerItemProxy */;
-		};
-		D2109A5224A169B900DE0131 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D2109A3324A169B800DE0131 /* RoundHouse iOS */;
-			targetProxy = D2109A5124A169B900DE0131 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -649,46 +577,6 @@
 			};
 			name = Release;
 		};
-		D2109A6024A169B900DE0131 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = RoundHouseUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = RoundHouse;
-			};
-			name = Debug;
-		};
-		D2109A6124A169B900DE0131 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 79P776W2YF;
-				INFOPLIST_FILE = RoundHouseUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = RoundHouse;
-			};
-			name = Release;
-		};
 		D2C18F5224A2F0B700B3A8F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -765,15 +653,6 @@
 			buildConfigurations = (
 				D2109A5D24A169B900DE0131 /* Debug */,
 				D2109A5E24A169B900DE0131 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D2109A5F24A169B900DE0131 /* Build configuration list for PBXNativeTarget "RoundHouseUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D2109A6024A169B900DE0131 /* Debug */,
-				D2109A6124A169B900DE0131 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -62,16 +62,6 @@
                ReferencedContainer = "container:RoundHouse.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2109A4F24A169B900DE0131"
-               BuildableName = "RoundHouseUITests.xctest"
-               BlueprintName = "RoundHouseUITests"
-               ReferencedContainer = "container:RoundHouse.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
