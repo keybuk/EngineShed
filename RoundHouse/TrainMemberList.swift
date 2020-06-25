@@ -28,7 +28,7 @@ struct TrainMemberList: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 100)
                     } else {
-                        Text("Missing")
+                        Text("??")
                     }
                 }
             }

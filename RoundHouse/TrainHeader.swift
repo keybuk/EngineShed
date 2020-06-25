@@ -18,10 +18,10 @@ struct TrainHeader: View {
                 Text("\(number) — \(name)")
                     .font(.headline)
             } else if let number = train.number {
-                Text("\(number)")
+                Text(number)
                     .font(.headline)
             } else if let name = train.name {
-                Text("\(name)")
+                Text(name)
                     .font(.headline)
             } else {
                 Text("??")
