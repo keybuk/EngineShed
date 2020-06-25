@@ -26,7 +26,7 @@ struct AppSidebar: View {
 
             NavigationLink(
                 destination: TrainsView()) {
-                Label("Trains", systemImage: "tram.fill")
+                Label("Trains", systemImage: "tram")
             }
             .accessibility(label: Text("Trains"))
             .tag(NavigationItem.trains)

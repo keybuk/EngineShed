@@ -21,7 +21,7 @@ struct AppTabNavigation: View {
                 PurchasesView()
             }
             .tabItem {
-                Label("Purchases", systemImage: "bag")
+                Label("Purchases", systemImage: "bag.fill")
                     .accessibility(label: Text("Purchases"))
             }
             .tag(NavigationItem.purchases)
