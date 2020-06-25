@@ -33,7 +33,7 @@ extension PersistentContainer {
             preconditionFailure("Missing persistent store description")
         }
         containerStoreDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-
+        containerStoreDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
         return container
     }()
 
