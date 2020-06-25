@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+import Database
+
 struct TrainsView: View {
     var body: some View {
-        Text("Trains")
+        TrainList(fetchRequest: Train.fetchRequestForTrains())
             .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
@@ -17,5 +19,6 @@ struct TrainsView: View {
 struct TrainsView_Previews: PreviewProvider {
     static var previews: some View {
         TrainsView()
+            .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }

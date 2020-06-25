@@ -68,6 +68,7 @@ struct PreviewContent {
         
         train = Train(context: managedObjectContext)
         train.name = "The Flying Scotsman"
+        train.details = "Typical Hornby train set"
         trains["The Flying Scotsman"] = train
         
         model = purchase.addModel()
