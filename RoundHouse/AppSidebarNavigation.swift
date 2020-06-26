@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct AppSidebarNavigation: View {
+    @Binding var selection: NavigationItem
+
     var body: some View {
         NavigationView {
             #if os(iOS)
-            AppSidebar()
+            AppSidebar(selection: $selection)
             #elseif os(macOS)
-            AppSidebar()
+            AppSidebar(selection: $selection)
                 .frame(minWidth: 100, idealWidth: 150, maxWidth: 200,
                        maxHeight: .infinity)
             #endif
@@ -26,6 +28,6 @@ struct AppSidebarNavigation: View {
 
 struct AppSidebarNavigation_Previews: PreviewProvider {
     static var previews: some View {
-        AppSidebarNavigation()
+        AppSidebarNavigation(selection: .constant(.trains))
     }
 }

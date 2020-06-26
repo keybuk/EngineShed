@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct AppTabNavigation: View {
-    enum NavigationItem {
-        case purchases
-        case trains
-    }
-
-    @State var selection: NavigationItem = .trains
+    @Binding var selection: NavigationItem
 
     var body: some View {
         TabView(selection: $selection) {
@@ -40,6 +35,7 @@ struct AppTabNavigation: View {
 
 struct AppTabNavigation_Previews: PreviewProvider {
     static var previews: some View {
-        AppTabNavigation()
+        AppTabNavigation(selection: .constant(.trains))
+            .environment(\.managedObjectContext, previewContent.managedObjectContext)
     }
 }

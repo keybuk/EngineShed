@@ -8,15 +8,11 @@
 import SwiftUI
 
 struct AppSidebar: View {
-    enum NavigationItem {
-        case purchases
-        case trains
-    }
-
-    @State var selection: Set<NavigationItem> = [.trains]
+    @Binding var selection: NavigationItem
 
     var body: some View {
-        List(selection: $selection) {
+        // Wrap the Binding to an Optional.
+        List(selection: Binding($selection)) {
             NavigationLink(
                 destination: PurchasesView()) {
                 Label("Purchases", systemImage: "bag")
@@ -37,6 +33,6 @@ struct AppSidebar: View {
 
 struct AppSidebar_Previews: PreviewProvider {
     static var previews: some View {
-        AppSidebar()
+        AppSidebar(selection: .constant(.trains))
     }
 }

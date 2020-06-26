@@ -7,20 +7,27 @@
 
 import SwiftUI
 
+enum NavigationItem {
+    case purchases
+    case trains
+}
+
 struct ContentView: View {
     #if os(iOS)
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     #endif
 
+    @State var selection: NavigationItem = .trains
+
     @ViewBuilder var body: some View {
         #if os(iOS)
         if horizontalSizeClass == .compact {
-            AppTabNavigation()
+            AppTabNavigation(selection: $selection)
         } else {
-            AppSidebarNavigation()
+            AppSidebarNavigation(selection: $selection)
         }
         #elseif os(macOS)
-        AppSidebarNavigation()
+        AppSidebarNavigation(selection: $selection)
             .frame(minWidth: 900, maxWidth: .infinity,
                    minHeight: 500, maxHeight: .infinity)
         #endif
