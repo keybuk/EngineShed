@@ -11,8 +11,6 @@ import CoreData
 
 import Database
 
-extension Purchase : Identifiable {}
-
 struct PurchasesList : View {
     var sort: Purchase.Sort = .date
 

@@ -11,8 +11,6 @@ import CoreData
 
 import Database
 
-extension DecoderType : Identifiable {}
-
 struct DecoderTypesList : View {
     @FetchRequest(fetchRequest: DecoderType.fetchRequestForDecoderTypes())
     var decoderTypes: FetchedResults<DecoderType>

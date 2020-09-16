@@ -11,8 +11,6 @@ import CoreData
 
 import Database
 
-extension Model : Identifiable {}
-
 struct ModelsList : View {
     var classification: Model.Classification?
     var sort: Model.Sort = .modelClass
