@@ -722,7 +722,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.16;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseTests;
 				PRODUCT_NAME = RoundHouseTests;
 				SDKROOT = macosx;
@@ -744,7 +744,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.16;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouseTests;
 				PRODUCT_NAME = RoundHouseTests;
 				SDKROOT = macosx;
@@ -771,7 +771,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.16;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouse;
 				PRODUCT_NAME = RoundHouse;
 				SDKROOT = macosx;
@@ -797,7 +797,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.16;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.netsplit.RoundHouse;
 				PRODUCT_NAME = RoundHouse;
 				SDKROOT = macosx;
