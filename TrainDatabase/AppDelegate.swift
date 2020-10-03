@@ -12,12 +12,6 @@ import CloudKit
 
 import Database
 
-extension NSNotification.Name {
-
-    static let saveChanges = NSNotification.Name("saveChanges")
-
-}
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -93,8 +87,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         // Save changes in the application's managed object context before the application terminates.
-        NotificationCenter.default.post(name: .saveChanges, object: sender)
-
         let context = persistentContainer.viewContext
         
         if !context.commitEditing() {

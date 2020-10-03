@@ -56,26 +56,26 @@ extension RecordController {
         
         set {
             guard let newValue = newValue else { fatalError("Current Record cannot be nil") }
+            guard currentRecord != newValue else { return }
 
             let persistentContainer = (NSApplication.shared.delegate! as! AppDelegate).persistentContainer
-            let newViewContextValue: CurrentRecord
-            switch newValue {
-            case .model(let model):
-                newViewContextValue = .model(persistentContainer.viewContext.object(with: model.objectID) as! Model)
-            case .decoderType(let decoderType):
-                newViewContextValue = .decoderType(persistentContainer.viewContext.object(with: decoderType.objectID) as! DecoderType)
+            let managedObjectContext = persistentContainer.viewContext
+            if managedObjectContext.hasChanges {
+                do {
+                    try managedObjectContext.save()
+                } catch let error as NSError {
+                    NSApplication.shared.presentError(error)
+                }
             }
-
-            guard currentRecord != newViewContextValue else { return }
 
             if !recordStack.isEmpty {
                 recordStack = Array(recordStack.prefix(through: recordIndex))
-                while let index = recordStack.firstIndex(of: newViewContextValue) {
+                while let index = recordStack.firstIndex(of: newValue) {
                     recordStack.remove(at: index)
                 }
             }
             
-            recordStack.append(newViewContextValue)
+            recordStack.append(newValue)
             recordIndex = recordStack.index(before: recordStack.endIndex)
             
             recordIndexChanged()

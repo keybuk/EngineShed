@@ -87,9 +87,6 @@ class ModelViewController: NSViewController {
     var modificationsTokenFieldDelegate: SimpleTokenFieldDelegate?
     var tasksTokenFieldDelegate: SimpleTokenFieldDelegate?
 
-    var persistentContainer: PersistentContainer!
-    var managedObjectContext: NSManagedObjectContext?
-
     var model: Model!
     var trainMembers: [TrainMember] = []
 
@@ -98,8 +95,6 @@ class ModelViewController: NSViewController {
         
         trainMemberCollectionView.register(TrainMemberItem.self, forItemWithIdentifier: .trainMemberItem)
         trainMemberCollectionView.registerForDraggedTypes([ .trainMemberItem ])
-
-        persistentContainer = (NSApplication.shared.delegate! as! AppDelegate).persistentContainer
     }
  
     override func viewDidAppear() {
@@ -107,7 +102,6 @@ class ModelViewController: NSViewController {
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(currentRecordChanged), name: .currentRecordChanged, object: view.window)
-        notificationCenter.addObserver(self, selector: #selector(saveChanges), name: .saveChanges, object: NSApplication.shared)
 
         updateCurrentRecord()
         scrollToTop()
@@ -127,29 +121,11 @@ class ModelViewController: NSViewController {
         }
     }
 
-    @objc
-    func saveChanges(_ notification: Notification) {
-        self.saveAnyChanges()
-    }
-
-    func saveAnyChanges() {
-        if let managedObjectContext = managedObjectContext, managedObjectContext.hasChanges {
-            do {
-                try managedObjectContext.save()
-            } catch let error as NSError {
-                NSApplication.shared.presentError(error)
-            }
-        }
-    }
-
     func updateCurrentRecord() {
-        saveAnyChanges()
-
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
 
-        managedObjectContext = persistentContainer.newEditingContext()
-        self.model = managedObjectContext!.object(with: model.objectID) as? Model
+        self.model = model
 
         self.trainMembers = self.model.trainMember?.train?.members() ?? []
 

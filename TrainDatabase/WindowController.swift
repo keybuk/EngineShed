@@ -75,8 +75,7 @@ class WindowController : NSWindowController, RecordController {
         // Clear the current responder first (end editing).
         guard window?.makeFirstResponder(nil) ?? true else { return }
 
-        let managedObjectContext = persistentContainer.newBackgroundContext()
-
+        let managedObjectContext = persistentContainer.viewContext
         managedObjectContext.performAndWait {
             let purchase = Purchase(context: managedObjectContext)
             let model = purchase.addModel()
@@ -92,12 +91,19 @@ class WindowController : NSWindowController, RecordController {
     }
     
     @IBAction func save(_ sender: NSButton) {
-        NotificationCenter.default.post(name: .saveChanges, object: NSApplication.shared)
+        let managedObjectContext = persistentContainer.viewContext
+        if managedObjectContext.hasChanges {
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                NSApplication.shared.presentError(error)
+            }
+        }
     }
 
     @IBAction func backup(_ sender: NSButton) {
-        let context = persistentContainer.viewContext
-        context.performAndWait {
+        let managedObjectContext = persistentContainer.viewContext
+        managedObjectContext.performAndWait {
             let coordinator = self.persistentContainer.persistentStoreCoordinator
             let store = coordinator.persistentStores.last!
 

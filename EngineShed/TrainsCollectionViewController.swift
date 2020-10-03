@@ -27,10 +27,14 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
             fetchRequest = TrainMember.fetchRequestForTrains()
         }
 
-        if let managedObjectContext = persistentContainer?.viewContext {
-            let notificationCenter = NotificationCenter.default
-            notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: managedObjectContext)
-        }
+        persistentContainer = (NSApplication.shared.delegate! as! AppDelegate).persistentContainer
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: persistentContainer!.viewContext)
     }
 
     // MARK: UICollectionViewDataSource
@@ -67,11 +71,9 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
         let trainMember = fetchedResultsController.object(at: sourceIndexPath)
         guard let train = trainMember.train else { preconditionFailure("Train member without a train") }
 
-        guard let managedObjectContext = persistentContainer?.newBackgroundContext() else { preconditionFailure("No database context") }
+        guard let managedObjectContext = train.managedObjectContext else { preconditionFailure("No database context") }
         do {
             try managedObjectContext.performAndWait {
-                let train = managedObjectContext.object(with: train.objectID) as! Train
-
                 train.moveMember(from: sourceIndexPath.row, to: destinationIndexPath.row)
 
                 self.changeIsUserDriven = true

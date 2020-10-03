@@ -41,30 +41,10 @@ class PurchaseViewController: NSViewController {
     var storeComboBoxDataSource: SimpleComboBoxDataSource?
     var conditionComboBoxDataSource: EnumComboBoxDataSource?
 
-    var persistentContainer: PersistentContainer!
-    var managedObjectContext: NSManagedObjectContext?
-
     var purchase: Purchase!
 
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else { return }
-        
-        switch identifier {
-        case .purchaseModelsSegue:
-            purchaseModelsViewController = segue.destinationController as? PurchaseModelsViewController
-            purchaseModelsViewController.managedObjectContext = managedObjectContext
-        case .modelSegue:
-            modelViewController = segue.destinationController as? ModelViewController
-            modelViewController.managedObjectContext = managedObjectContext
-        default:
-            break
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        persistentContainer = (NSApplication.shared.delegate! as! AppDelegate).persistentContainer
     }
     
     override func viewDidAppear() {
@@ -72,7 +52,6 @@ class PurchaseViewController: NSViewController {
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(currentRecordChanged), name: .currentRecordChanged, object: view.window)
-        notificationCenter.addObserver(self, selector: #selector(saveChanges), name: .saveChanges, object: NSApplication.shared)
 
         updateCurrentRecord()
     }
@@ -84,30 +63,12 @@ class PurchaseViewController: NSViewController {
         }
     }
 
-    @objc
-    func saveChanges(_ notification: Notification) {
-        self.saveAnyChanges()
-    }
-
-    func saveAnyChanges() {
-        if let managedObjectContext = managedObjectContext, managedObjectContext.hasChanges {
-            do {
-                try managedObjectContext.save()
-            } catch let error as NSError {
-                NSApplication.shared.presentError(error)
-            }
-        }
-    }
-    
     func updateCurrentRecord() {
-        saveAnyChanges()
-
         guard let currentRecord = recordController?.currentRecord else { return }
         guard case .model(let model) = currentRecord else { return }
         guard let purchase = model.purchase else { return }
 
-        managedObjectContext = persistentContainer.newEditingContext()
-        self.purchase = managedObjectContext!.object(with: purchase.objectID) as? Purchase
+        self.purchase = purchase
 
         reloadData()
         
