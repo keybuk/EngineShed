@@ -27,7 +27,7 @@ class TrainsCollectionViewController : UICollectionViewController, NSFetchedResu
             fetchRequest = TrainMember.fetchRequestForTrains()
         }
 
-        persistentContainer = (NSApplication.shared.delegate! as! AppDelegate).persistentContainer
+        persistentContainer = (UIApplication.shared.delegate! as! AppDelegate).persistentContainer
     }
 
     override func viewDidAppear(_ animated: Bool) {
