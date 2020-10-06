@@ -371,11 +371,15 @@ class ModelViewController: NSViewController {
         if let decoder = (sender.objectValue as? [Decoder])?.first {
             let oldDecoder = model.decoder
             model.decoder = decoder
-            if oldDecoder != decoder { oldDecoder?.deleteIfUnused() }
+            if oldDecoder != decoder {
+                oldDecoder?.updateStock()
+                oldDecoder?.deleteIfUnused()
+            }
         } else {
             // If there is already a decoder attached, and that decoder has a serial number, we actually don't want to change the serial number of the existing decoder and probably want a new record.
             if let oldDecoder = model.decoder, let serialNumber = oldDecoder.serialNumber, !serialNumber.isEmpty {
                 model.decoder = nil
+                oldDecoder.updateStock()
                 oldDecoder.deleteIfUnused()
             }
             
@@ -384,6 +388,7 @@ class ModelViewController: NSViewController {
             model.decoder?.serialNumber = serialNumber
         }
 
+        model.decoder?.updateStock()
         reloadDecoderFields()
     }
     
@@ -415,6 +420,7 @@ class ModelViewController: NSViewController {
         if address != 0 { model.createDecoderIfNeeded() }
         model.decoder?.address = address
 
+        model.decoder?.updateStock()
         model.decoder?.deleteIfEmpty()
     }
 
@@ -422,7 +428,8 @@ class ModelViewController: NSViewController {
         let soundAuthor = sender.stringValue
         if !soundAuthor.isEmpty { model.createDecoderIfNeeded() }
         model.decoder?.soundAuthor = soundAuthor
-        
+
+        model.decoder?.updateStock()
         model.decoder?.deleteIfEmpty()
     }
     
@@ -430,7 +437,8 @@ class ModelViewController: NSViewController {
         let soundProject = sender.stringValue
         if !soundProject.isEmpty { model.createDecoderIfNeeded() }
         model.decoder?.soundProject = soundProject
-        
+
+        model.decoder?.updateStock()
         model.decoder?.deleteIfEmpty()
     }
 
@@ -439,6 +447,7 @@ class ModelViewController: NSViewController {
         if !soundProjectVersion.isEmpty { model.createDecoderIfNeeded() }
         model.decoder?.soundProjectVersion = soundProjectVersion
 
+        model.decoder?.updateStock()
         model.decoder?.deleteIfEmpty()
     }
 
@@ -447,6 +456,7 @@ class ModelViewController: NSViewController {
         if !soundSettings.isEmpty { model.createDecoderIfNeeded() }
         model.decoder?.soundSettings = soundSettings
 
+        model.decoder?.updateStock()
         model.decoder?.deleteIfEmpty()
     }
 

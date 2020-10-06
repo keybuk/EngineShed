@@ -22,4 +22,12 @@ extension Decoder {
 
     /// Returns `true` if the decoder is not allocated to any model or sound file.
     public var isSpare: Bool { !isFitted && !isAllocated }
+
+    public func updateStock() {
+        guard let decoderType = type else { return }
+        let remainingStock = decoderType.makeRemainingStock()
+        if decoderType.remainingStock != remainingStock {
+            decoderType.remainingStock = remainingStock
+        }
+    }
 }
