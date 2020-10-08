@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Algorithms
 
 extension Purchase {
     /// Returns the common catalog number prefix for a catalog number.
@@ -19,12 +20,11 @@ extension Purchase {
     /// - Parameter catalogNumber: full catalog number.
     /// - Returns: `catalogNumber` or the common prefix equivalent, which is always shorter.
     func makeCatalogNumberPrefix(from catalogNumber: String) -> String {
-        let parts = catalogNumber.split(between: {
-            if $0.isWhitespace && $1.isWhitespace { return false }
-            if $0.isLetter && $1.isLetter { return false }
-            if $0.isNumber && $1.isNumber { return false }
-            if $0.isPunctuation && $1.isPunctuation { return false }
-            return true
+        let parts = catalogNumber.chunked(by: {
+            ($0.isWhitespace && $1.isWhitespace)
+                || ($0.isLetter && $1.isLetter)
+                || ($0.isNumber && $1.isNumber)
+                || ($0.isPunctuation && $1.isPunctuation)
         })
 
         if let lastDash = parts.lastIndex(of: "-") {

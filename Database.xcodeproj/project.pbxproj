@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,10 +17,6 @@
 		D22B4D0B23E4E7EE00CB1F6E /* Sequence+CountWhere.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D0923E4E7EE00CB1F6E /* Sequence+CountWhere.swift */; };
 		D22B4D0D23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D0C23E4EA4D00CB1F6E /* CountWhereTests.swift */; };
 		D22B4D0E23E4EA4D00CB1F6E /* CountWhereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D0C23E4EA4D00CB1F6E /* CountWhereTests.swift */; };
-		D22B4D1923E4FA3500CB1F6E /* SplitBetweenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D1823E4FA3500CB1F6E /* SplitBetweenTests.swift */; };
-		D22B4D1A23E4FA3500CB1F6E /* SplitBetweenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D1823E4FA3500CB1F6E /* SplitBetweenTests.swift */; };
-		D22B4D1B23E4FA3900CB1F6E /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D1723E4FA0100CB1F6E /* Collection+SplitBetween.swift */; };
-		D22B4D1C23E4FA3900CB1F6E /* Collection+SplitBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D1723E4FA0100CB1F6E /* Collection+SplitBetween.swift */; };
 		D22B4D2323E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D2223E50CD500CB1F6E /* ConvertibleFromString.swift */; };
 		D22B4D2423E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D2223E50CD500CB1F6E /* ConvertibleFromString.swift */; };
 		D22B4D2623E50E7800CB1F6E /* ConvertibleFromStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22B4D2523E50E7800CB1F6E /* ConvertibleFromStringTests.swift */; };
@@ -77,6 +73,8 @@
 		D2A3A11323E6C3EA00D65C14 /* TrainMembersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A11123E6C3EA00D65C14 /* TrainMembersTests.swift */; };
 		D2BD1A32248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D2BD1A31248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel */; };
 		D2BD1A33248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D2BD1A31248F5695005E89FC /* GaugeCurrencyMigrationModel.xcmappingmodel */; };
+		D2FA76EA252F74E20083F3ED /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = D2FA76E9252F74E20083F3ED /* Algorithms */; };
+		D2FA76F1252F74F80083F3ED /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = D2FA76F0252F74F80083F3ED /* Algorithms */; };
 		D2FF6E6723E63E380063257D /* PurchaseDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */; };
 		D2FF6E6823E63E380063257D /* PurchaseDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */; };
 		D2FF6E6A23E640F40063257D /* Purchase+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF6E6923E640F40063257D /* Purchase+FetchRequests.swift */; };
@@ -128,8 +126,6 @@
 		D213DF4C23E0B57B0003C771 /* DatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DatabaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22B4D0923E4E7EE00CB1F6E /* Sequence+CountWhere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+CountWhere.swift"; sourceTree = "<group>"; };
 		D22B4D0C23E4EA4D00CB1F6E /* CountWhereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountWhereTests.swift; sourceTree = "<group>"; };
-		D22B4D1723E4FA0100CB1F6E /* Collection+SplitBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SplitBetween.swift"; sourceTree = "<group>"; };
-		D22B4D1823E4FA3500CB1F6E /* SplitBetweenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitBetweenTests.swift; sourceTree = "<group>"; };
 		D22B4D2223E50CD500CB1F6E /* ConvertibleFromString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertibleFromString.swift; sourceTree = "<group>"; };
 		D22B4D2523E50E7800CB1F6E /* ConvertibleFromStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleFromStringTests.swift; sourceTree = "<group>"; };
 		D22B4D2923E5102700CB1F6E /* Purchase+Condition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Purchase+Condition.swift"; sourceTree = "<group>"; };
@@ -179,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FA76EA252F74E20083F3ED /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FA76F1252F74F80083F3ED /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +212,7 @@
 				D213DF2523E0B0F40003C771 /* Database */,
 				D213DF3023E0B0F50003C771 /* DatabaseTests */,
 				D213DF2423E0B0F40003C771 /* Products */,
+				D2FA76EF252F74F80083F3ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,7 +247,6 @@
 			children = (
 				D22B4D2523E50E7800CB1F6E /* ConvertibleFromStringTests.swift */,
 				D22B4D0C23E4EA4D00CB1F6E /* CountWhereTests.swift */,
-				D22B4D1823E4FA3500CB1F6E /* SplitBetweenTests.swift */,
 				D22B4D5223E636F900CB1F6E /* CatalogNumberPrefixTests.swift */,
 				D2FF6E6623E63E380063257D /* PurchaseDateTests.swift */,
 				D2FF6E8323E6871C0063257D /* SimilarPurchaseTests.swift */,
@@ -264,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				D22B4D0923E4E7EE00CB1F6E /* Sequence+CountWhere.swift */,
-				D22B4D1723E4FA0100CB1F6E /* Collection+SplitBetween.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -320,6 +317,13 @@
 			path = Migrations;
 			sourceTree = "<group>";
 		};
+		D2FA76EF252F74F80083F3ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -356,6 +360,9 @@
 			dependencies = (
 			);
 			name = "Database iOS";
+			packageProductDependencies = (
+				D2FA76E9252F74E20083F3ED /* Algorithms */,
+			);
 			productName = Database;
 			productReference = D213DF2323E0B0F40003C771 /* Database.framework */;
 			productType = "com.apple.product-type.framework";
@@ -392,6 +399,9 @@
 			dependencies = (
 			);
 			name = "Database macOS";
+			packageProductDependencies = (
+				D2FA76F0252F74F80083F3ED /* Algorithms */,
+			);
 			productName = "Database (macOS)";
 			productReference = D213DF4423E0B57B0003C771 /* Database.framework */;
 			productType = "com.apple.product-type.framework";
@@ -448,6 +458,9 @@
 				Base,
 			);
 			mainGroup = D213DF1923E0B0F40003C771;
+			packageReferences = (
+				D2FA76E8252F74E20083F3ED /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			productRefGroup = D213DF2423E0B0F40003C771 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -522,7 +535,6 @@
 				D2A3A0FD23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift in Sources */,
 				D22B4D2323E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */,
 				D2FF6E6F23E6461B0063257D /* DecoderType+Stock.swift in Sources */,
-				D22B4D1B23E4FA3900CB1F6E /* Collection+SplitBetween.swift in Sources */,
 				D2A3A10923E6A11500D65C14 /* Purchase+Models.swift in Sources */,
 				D2A3A0FA23E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel in Sources */,
 				D22B4D3A23E5167F00CB1F6E /* Purchase+Date.swift in Sources */,
@@ -538,7 +550,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D22B4D2623E50E7800CB1F6E /* ConvertibleFromStringTests.swift in Sources */,
-				D22B4D1923E4FA3500CB1F6E /* SplitBetweenTests.swift in Sources */,
 				D2A3A10C23E6A90A00D65C14 /* PurchaseModelsTests.swift in Sources */,
 				D2A3A11223E6C3EA00D65C14 /* TrainMembersTests.swift in Sources */,
 				D22B4D5423E636F900CB1F6E /* CatalogNumberPrefixTests.swift in Sources */,
@@ -579,7 +590,6 @@
 				D2A3A0FE23E68D4600D65C14 /* ModelIndexMigrationPolicy.swift in Sources */,
 				D22B4D2423E50CD500CB1F6E /* ConvertibleFromString.swift in Sources */,
 				D2FF6E7023E6461B0063257D /* DecoderType+Stock.swift in Sources */,
-				D22B4D1C23E4FA3900CB1F6E /* Collection+SplitBetween.swift in Sources */,
 				D2A3A10A23E6A11500D65C14 /* Purchase+Models.swift in Sources */,
 				D2A3A0FB23E68C2200D65C14 /* IndexMigrationModel.xcmappingmodel in Sources */,
 				D22B4D3B23E5167F00CB1F6E /* Purchase+Date.swift in Sources */,
@@ -595,7 +605,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D22B4D2723E50E7800CB1F6E /* ConvertibleFromStringTests.swift in Sources */,
-				D22B4D1A23E4FA3500CB1F6E /* SplitBetweenTests.swift in Sources */,
 				D2A3A10D23E6A90A00D65C14 /* PurchaseModelsTests.swift in Sources */,
 				D2A3A11323E6C3EA00D65C14 /* TrainMembersTests.swift in Sources */,
 				D22B4D5323E636F900CB1F6E /* CatalogNumberPrefixTests.swift in Sources */,
@@ -976,6 +985,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D2FA76E8252F74E20083F3ED /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D2FA76E9252F74E20083F3ED /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2FA76E8252F74E20083F3ED /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+		D2FA76F0252F74F80083F3ED /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2FA76E8252F74E20083F3ED /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D2E458C223E147FF00EC76E0 /* EngineShed.xcdatamodeld */ = {
