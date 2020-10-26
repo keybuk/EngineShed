@@ -102,11 +102,21 @@ class WindowController : NSWindowController, RecordController {
     }
 
     @IBAction func backup(_ sender: NSButton) {
-        let managedObjectContext = persistentContainer.viewContext
-        managedObjectContext.performAndWait {
-            let coordinator = self.persistentContainer.persistentStoreCoordinator
-            let store = coordinator.persistentStores.last!
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: persistentContainer.managedObjectModel)
+        managedObjectContext.persistentStoreCoordinator = coordinator
 
+        let storeDescription = persistentContainer.persistentStoreDescriptions.last!
+        let options: [AnyHashable: Any] = [
+            NSReadOnlyPersistentStoreOption: true as NSNumber,
+            NSInferMappingModelAutomaticallyOption: false as NSNumber,
+            NSMigratePersistentStoresAutomaticallyOption: false as NSNumber,
+            NSPersistentHistoryTrackingKey: true as NSNumber,
+        ]
+
+        let store = try! managedObjectContext.persistentStoreCoordinator!.addPersistentStore(ofType: storeDescription.type, configurationName: nil, at: storeDescription.url, options: options)
+
+        managedObjectContext.performAndWait {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd HH-mm-ss"
 
