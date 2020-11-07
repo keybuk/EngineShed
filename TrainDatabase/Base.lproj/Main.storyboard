@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -540,23 +541,23 @@
             <objects>
                 <viewController id="21w-BN-HW5" userLabel="Source List View Controller" customClass="SourceListViewController" customModule="TrainDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="5tG-UJ-XF7">
-                        <rect key="frame" x="0.0" y="0.0" width="180" height="299"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="283"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czM-ex-Q7s">
-                                <rect key="frame" x="0.0" y="0.0" width="180" height="289"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="283"/>
                                 <clipView key="contentView" drawsBackground="NO" id="yXg-G5-Wch">
-                                    <rect key="frame" x="0.0" y="0.0" width="180" height="289"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="283"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="BZm-kL-zm2" id="fBK-Sm-P5e">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="289"/>
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="BZm-kL-zm2" id="fBK-Sm-P5e">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="283"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="177" minWidth="16" maxWidth="1000" id="BZm-kL-zm2">
+                                                <tableColumn width="168" minWidth="16" maxWidth="1000" id="BZm-kL-zm2">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -569,7 +570,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="sourceGroupCell" id="ehg-ZE-BbA">
-                                                            <rect key="frame" x="1" y="1" width="177" height="17"/>
+                                                            <rect key="frame" x="11" y="1" width="177" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ye-AO-MBx">
@@ -591,11 +592,11 @@
                                                             </connections>
                                                         </tableCellView>
                                                         <tableCellView identifier="sourceCell" id="r7p-oU-fWK">
-                                                            <rect key="frame" x="1" y="20" width="177" height="17"/>
+                                                            <rect key="frame" x="11" y="20" width="177" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <imageView translatesAutoresizingMaskIntoConstraints="NO" id="9Jj-t5-S0a">
-                                                                    <rect key="frame" x="3" y="1" width="17" height="16"/>
+                                                                <imageView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Jj-t5-S0a">
+                                                                    <rect key="frame" x="3" y="-2" width="17" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="17" id="NhP-62-qjR"/>
                                                                     </constraints>
@@ -638,7 +639,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="180" id="730-Ok-eGV"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="MLx-sd-Rbz">
-                                    <rect key="frame" x="0.0" y="284" width="180" height="16"/>
+                                    <rect key="frame" x="0.0" y="270" width="200" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="v8J-8P-gud">
@@ -694,17 +695,17 @@
             <objects>
                 <viewController storyboardIdentifier="searchViewController" id="CUd-im-GHm" customClass="SearchViewController" customModule="TrainDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="u6x-Vv-Gkr">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="742"/>
+                        <rect key="frame" x="0.0" y="0.0" width="470" height="742"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pe2-1w-w8D">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="742"/>
+                                <rect key="frame" x="0.0" y="0.0" width="470" height="742"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p7k-dW-DFK">
-                                        <rect key="frame" x="0.0" y="712" width="450" height="22"/>
+                                        <rect key="frame" x="0.0" y="711" width="451" height="23"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qap-YD-QB1">
-                                                <rect key="frame" x="6" y="6" width="44" height="16"/>
+                                                <rect key="frame" x="6" y="7" width="45" height="16"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Name:" id="mSl-xp-V0q">
                                                     <font key="font" metaFont="systemMedium" size="13"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -712,7 +713,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cZZ-Rh-cgD">
-                                                <rect key="frame" x="56" y="1" width="386" height="21"/>
+                                                <rect key="frame" x="57" y="2" width="386" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="xaT-iC-nTb">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -731,23 +732,23 @@
                                         </customSpacing>
                                     </stackView>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Nr8-16-KE2">
-                                        <rect key="frame" x="0.0" y="701" width="450" height="5"/>
+                                        <rect key="frame" x="0.0" y="700" width="450" height="5"/>
                                     </box>
                                     <scrollView appearanceType="aqua" borderType="none" autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDC-C7-3H1">
-                                        <rect key="frame" x="0.0" y="37" width="450" height="658"/>
+                                        <rect key="frame" x="0.0" y="36" width="470" height="658"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="QTM-2t-APh">
-                                            <rect key="frame" x="0.0" y="0.0" width="450" height="658"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="470" height="658"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" multipleSelection="NO" autosaveColumns="NO" rowHeight="23" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="16" indentationMarkerFollowsCell="NO" outlineTableColumn="6RC-1S-Fbi" id="cWc-h5-RzL" customClass="SearchOutlineView" customModule="TrainDatabase" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="450" height="658"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="470" height="658"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn width="447" minWidth="40" maxWidth="1000" id="6RC-1S-Fbi">
+                                                        <tableColumn width="438" minWidth="40" maxWidth="1000" id="6RC-1S-Fbi">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -760,14 +761,14 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="searchGroupCell" id="gVv-dU-mc1" userLabel="Search Group Cell" customClass="SearchGroupCellView" customModule="TrainDatabase" customModuleProvider="target">
-                                                                    <rect key="frame" x="1" y="1" width="447" height="23"/>
+                                                                    <rect key="frame" x="11" y="1" width="447" height="23"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Irr-Gh-EwG">
                                                                             <rect key="frame" x="0.0" y="0.0" width="447" height="23"/>
                                                                             <subviews>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qYN-T7-llX">
-                                                                                    <rect key="frame" x="2" y="4" width="46" height="17"/>
+                                                                                    <rect key="frame" x="2" y="4" width="40" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="All" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="6N1-1q-NKR" id="NM9-qi-nAq">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="controlContent" size="11"/>
@@ -783,7 +784,7 @@
                                                                                     </connections>
                                                                                 </popUpButton>
                                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="foq-SK-F6E">
-                                                                                    <rect key="frame" x="54" y="6" width="335" height="14"/>
+                                                                                    <rect key="frame" x="48" y="6" width="343" height="14"/>
                                                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="of the following are true" id="Jbi-xb-QpM">
                                                                                         <font key="font" metaFont="controlContent" size="11"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -791,14 +792,14 @@
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4GH-D1-A40">
-                                                                                    <rect key="frame" x="395" y="4" width="21" height="15"/>
+                                                                                    <rect key="frame" x="397" y="4" width="20" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fJc-9W-qEj">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="label" size="9"/>
                                                                                     </buttonCell>
                                                                                 </button>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B0p-5N-iG3">
-                                                                                    <rect key="frame" x="424" y="4" width="21" height="15"/>
+                                                                                    <rect key="frame" x="425" y="4" width="20" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ku8-v5-zNS">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="label" size="9"/>
@@ -831,14 +832,14 @@
                                                                     </connections>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="textSearchCell" id="c1t-Wl-EID" userLabel="Text Search Cell">
-                                                                    <rect key="frame" x="1" y="26" width="447" height="23"/>
+                                                                    <rect key="frame" x="11" y="26" width="447" height="23"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JO7-qV-ym2">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="451" height="23"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="447" height="23"/>
                                                                             <subviews>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bgA-jp-Qv6">
-                                                                                    <rect key="frame" x="2" y="2" width="60" height="17"/>
+                                                                                    <rect key="frame" x="2" y="2" width="54" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="Item 1" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="eCD-Sz-16r" id="3Bv-h8-Y3c">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="controlContent" size="11"/>
@@ -852,7 +853,7 @@
                                                                                     </popUpButtonCell>
                                                                                 </popUpButton>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EHD-xO-K8n">
-                                                                                    <rect key="frame" x="70" y="2" width="114" height="17"/>
+                                                                                    <rect key="frame" x="64" y="2" width="108" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="contains" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Lbm-b0-CyV" id="f6P-nl-zqd">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="controlContent" size="11"/>
@@ -875,7 +876,7 @@
                                                                                     </popUpButtonCell>
                                                                                 </popUpButton>
                                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="APJ-xd-Vt9">
-                                                                                    <rect key="frame" x="192" y="2" width="199" height="19"/>
+                                                                                    <rect key="frame" x="180" y="2" width="209" height="19"/>
                                                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="TPv-YN-dEG">
                                                                                         <font key="font" metaFont="controlContent" size="11"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -883,14 +884,14 @@
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vov-ce-uXL">
-                                                                                    <rect key="frame" x="399" y="2" width="21" height="15"/>
+                                                                                    <rect key="frame" x="397" y="2" width="20" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sqB-XL-ggu">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="label" size="9"/>
                                                                                     </buttonCell>
                                                                                 </button>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q84-4R-oRC">
-                                                                                    <rect key="frame" x="428" y="2" width="21" height="15"/>
+                                                                                    <rect key="frame" x="425" y="2" width="20" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PIG-pY-h2W">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="label" size="9"/>
@@ -922,14 +923,14 @@
                                                                     </constraints>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="integerSearchCell" id="TSI-d7-7Nu" userLabel="Integer Search Cell">
-                                                                    <rect key="frame" x="1" y="51" width="447" height="23"/>
+                                                                    <rect key="frame" x="11" y="51" width="447" height="23"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tCF-ZC-BLN">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="451" height="23"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="447" height="23"/>
                                                                             <subviews>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dr4-T7-fWZ">
-                                                                                    <rect key="frame" x="2" y="2" width="60" height="17"/>
+                                                                                    <rect key="frame" x="2" y="2" width="54" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="Item 1" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Krv-N1-H96" id="bmZ-kW-Uvm">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="controlContent" size="11"/>
@@ -943,7 +944,7 @@
                                                                                     </popUpButtonCell>
                                                                                 </popUpButton>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GXb-6b-iYn">
-                                                                                    <rect key="frame" x="70" y="2" width="162" height="17"/>
+                                                                                    <rect key="frame" x="64" y="2" width="156" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="is equal to" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="may-KR-xLG" id="k5f-Fw-vQQ">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="controlContent" size="11"/>
@@ -968,7 +969,7 @@
                                                                                     </popUpButtonCell>
                                                                                 </popUpButton>
                                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-wy-Atg">
-                                                                                    <rect key="frame" x="240" y="2" width="151" height="19"/>
+                                                                                    <rect key="frame" x="228" y="2" width="161" height="19"/>
                                                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="jBa-gz-vml">
                                                                                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="m3N-39-fAQ">
                                                                                             <real key="minimum" value="1"/>
@@ -979,14 +980,14 @@
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-qQ-Bzk">
-                                                                                    <rect key="frame" x="399" y="2" width="21" height="15"/>
+                                                                                    <rect key="frame" x="397" y="2" width="20" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SOp-xL-MmX">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="label" size="9"/>
                                                                                     </buttonCell>
                                                                                 </button>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dgg-4R-xsg">
-                                                                                    <rect key="frame" x="428" y="2" width="21" height="15"/>
+                                                                                    <rect key="frame" x="425" y="2" width="20" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rDX-VJ-5VN">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="label" size="9"/>
@@ -1018,14 +1019,14 @@
                                                                     </constraints>
                                                                 </tableCellView>
                                                                 <tableCellView identifier="lookupSearchCell" id="QE2-S7-tbK" userLabel="Lookup Search Cell">
-                                                                    <rect key="frame" x="1" y="76" width="447" height="23"/>
+                                                                    <rect key="frame" x="11" y="76" width="447" height="23"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJx-lC-pTl">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="451" height="23"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="447" height="23"/>
                                                                             <subviews>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lql-5P-scO">
-                                                                                    <rect key="frame" x="2" y="3" width="60" height="17"/>
+                                                                                    <rect key="frame" x="2" y="3" width="54" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="Item 1" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="rIf-EO-kJR" id="rQ0-yf-0hy">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="controlContent" size="11"/>
@@ -1039,7 +1040,7 @@
                                                                                     </popUpButtonCell>
                                                                                 </popUpButton>
                                                                                 <popUpButton horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GUO-Z0-Ip1">
-                                                                                    <rect key="frame" x="70" y="3" width="114" height="17"/>
+                                                                                    <rect key="frame" x="64" y="3" width="108" height="17"/>
                                                                                     <popUpButtonCell key="cell" type="roundRect" title="contains" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="HJQ-KX-bLt" id="mbA-w7-KVu">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="controlContent" size="11"/>
@@ -1062,7 +1063,7 @@
                                                                                     </popUpButtonCell>
                                                                                 </popUpButton>
                                                                                 <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OcS-RT-oyE">
-                                                                                    <rect key="frame" x="192" y="0.0" width="202" height="22"/>
+                                                                                    <rect key="frame" x="180" y="0.0" width="212" height="22"/>
                                                                                     <comboBoxCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" numberOfVisibleItems="5" id="5ef-rk-CQZ">
                                                                                         <font key="font" metaFont="controlContent" size="11"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1075,14 +1076,14 @@
                                                                                     </comboBoxCell>
                                                                                 </comboBox>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cM7-rF-W27">
-                                                                                    <rect key="frame" x="399" y="3" width="21" height="15"/>
+                                                                                    <rect key="frame" x="397" y="3" width="20" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hjt-KC-QeP">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="label" size="9"/>
                                                                                     </buttonCell>
                                                                                 </button>
                                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fii-tC-vCi">
-                                                                                    <rect key="frame" x="428" y="3" width="21" height="15"/>
+                                                                                    <rect key="frame" x="425" y="3" width="20" height="15"/>
                                                                                     <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jt8-Jj-MWg">
                                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                         <font key="font" metaFont="label" size="9"/>
@@ -1133,7 +1134,7 @@
                                         </scroller>
                                     </scrollView>
                                     <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ma0-oy-zHU">
-                                        <rect key="frame" x="378" y="1" width="70" height="32"/>
+                                        <rect key="frame" x="405" y="1" width="64" height="32"/>
                                         <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="TXl-jt-jRX">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1195,12 +1196,12 @@ DQ
         </scene>
     </scenes>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSGoBackTemplate" width="9" height="12"/>
-        <image name="NSGoForwardTemplate" width="9" height="12"/>
-        <image name="NSRemoveTemplate" width="11" height="11"/>
-        <image name="NSTouchBarFolderCopyToTemplate" width="26" height="30"/>
-        <image name="NSTouchBarFolderMoveToTemplate" width="22" height="30"/>
+        <image name="NSActionTemplate" width="15" height="15"/>
+        <image name="NSAddTemplate" width="14" height="13"/>
+        <image name="NSGoBackTemplate" width="10" height="14"/>
+        <image name="NSGoForwardTemplate" width="10" height="14"/>
+        <image name="NSRemoveTemplate" width="14" height="4"/>
+        <image name="NSTouchBarFolderCopyToTemplate" width="19" height="15"/>
+        <image name="NSTouchBarFolderMoveToTemplate" width="18" height="14"/>
     </resources>
 </document>
