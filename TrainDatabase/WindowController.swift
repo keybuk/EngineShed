@@ -12,8 +12,11 @@ import CoreData
 import Database
 
 extension NSStoryboard.SceneIdentifier {
-    
     static let searchViewController = "searchViewController"
+}
+
+extension NSToolbarItem.Identifier {
+    static let trackingSeparatorIdentifier = NSToolbarItem.Identifier(rawValue: "TrackingSeparator")
 }
 
 class WindowController : NSWindowController, RecordController {
@@ -50,12 +53,14 @@ class WindowController : NSWindowController, RecordController {
         
         let splitViewController = contentViewController as! NSSplitViewController
         sourceListViewController = (splitViewController.splitViewItems[0].viewController as! SourceListViewController)
-        tabViewController = (splitViewController.splitViewItems[1].viewController as! NSTabViewController)
+        modelsViewController = (splitViewController.splitViewItems[1].viewController as! ModelsViewController)
+        tabViewController = (splitViewController.splitViewItems[2].viewController as! NSTabViewController)
         
-        let purchaseSplitViewController = tabViewController.children[0] as! NSSplitViewController
-        modelsViewController = (purchaseSplitViewController.splitViewItems[0].viewController as! ModelsViewController)
- 
         sourceListViewController.delegate = self
+
+        DispatchQueue.main.async {
+            self.window?.toolbar?.insertItem(withItemIdentifier: .trackingSeparatorIdentifier, at: 1)
+        }
     }
     
     @IBAction func navigation(_ sender: NSSegmentedControl) {
@@ -165,8 +170,21 @@ extension WindowController : SourceListDelegate {
     }
     
     func sourceListDidSelectDecoders() {
+        modelsViewController.setFilterDecoderTypes()
         tabViewController.selectedTabViewItemIndex = 1
     }
     
 }
 
+extension WindowController : NSToolbarDelegate {
+
+    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+        if itemIdentifier == .trackingSeparatorIdentifier,
+           let splitViewController = contentViewController as? NSSplitViewController {
+            return NSTrackingSeparatorToolbarItem(identifier: itemIdentifier, splitView: splitViewController.splitView, dividerIndex: 1)
+        }
+
+        return nil
+    }
+
+}

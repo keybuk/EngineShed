@@ -1,36 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="qSv-Hs-p2K">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Split View Controller-->
-        <scene sceneID="g0U-EH-NYO">
-            <objects>
-                <customObject id="AN9-R6-fjY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <splitViewController id="qSv-Hs-p2K" sceneMemberID="viewController">
-                    <splitViewItems>
-                        <splitViewItem id="ndj-Xz-aDq"/>
-                        <splitViewItem id="dev-9u-1LS"/>
-                    </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="5a6-6q-qX2">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <outlet property="delegate" destination="qSv-Hs-p2K" id="YIo-eF-0ET"/>
-                        </connections>
-                    </splitView>
-                    <connections>
-                        <outlet property="splitView" destination="5a6-6q-qX2" id="UMf-5u-UQc"/>
-                        <segue destination="Hsu-Sz-goD" kind="relationship" relationship="splitItems" id="62V-1y-vW3"/>
-                        <segue destination="mfM-Sx-3LS" kind="relationship" relationship="splitItems" id="9iD-Rn-r1g"/>
-                    </connections>
-                </splitViewController>
-            </objects>
-            <point key="canvasLocation" x="2474" y="777"/>
-        </scene>
         <!--Decoder Types View Controller-->
         <scene sceneID="GaJ-e2-wHi">
             <objects>
@@ -64,96 +39,6 @@
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                    <prototypeCellViews>
-                                                        <tableCellView identifier="decoderTypeCell" id="3D8-cz-hkw" customClass="DecoderTypeCellView" customModule="TrainDatabase" customModuleProvider="target">
-                                                            <rect key="frame" x="11" y="1" width="317" height="59"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pIC-wY-rCC">
-                                                                    <rect key="frame" x="3" y="3" width="311" height="53"/>
-                                                                    <subviews>
-                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oty-Mp-54Q">
-                                                                            <rect key="frame" x="0.0" y="3" width="48" height="48"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="48" id="724-Al-RBH"/>
-                                                                                <constraint firstAttribute="width" constant="48" id="tcz-gm-gb4"/>
-                                                                            </constraints>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="chip" id="zGS-cA-3jM"/>
-                                                                        </imageView>
-                                                                        <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pzc-8A-3cH">
-                                                                            <rect key="frame" x="56" y="3" width="224" height="48"/>
-                                                                            <subviews>
-                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dmw-8Q-7wC">
-                                                                                    <rect key="frame" x="-2" y="32" width="76" height="16"/>
-                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="DRT 99999" id="h8t-KG-CA6">
-                                                                                        <font key="font" metaFont="systemMedium" size="13"/>
-                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                                    </textFieldCell>
-                                                                                </textField>
-                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Blh-WF-jdI">
-                                                                                    <rect key="frame" x="-2" y="16" width="133" height="16"/>
-                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="MadSound V3.5 Maxi" id="bky-rz-QI4">
-                                                                                        <font key="font" metaFont="system"/>
-                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                                    </textFieldCell>
-                                                                                </textField>
-                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="snF-a9-dkI">
-                                                                                    <rect key="frame" x="-2" y="0.0" width="46" height="16"/>
-                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="21MTC" id="q2R-kG-AYg">
-                                                                                        <font key="font" metaFont="systemLight" size="13"/>
-                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                                    </textFieldCell>
-                                                                                </textField>
-                                                                            </subviews>
-                                                                            <visibilityPriorities>
-                                                                                <integer value="1000"/>
-                                                                                <integer value="1000"/>
-                                                                                <integer value="1000"/>
-                                                                            </visibilityPriorities>
-                                                                            <customSpacing>
-                                                                                <real value="3.4028234663852886e+38"/>
-                                                                                <real value="3.4028234663852886e+38"/>
-                                                                                <real value="3.4028234663852886e+38"/>
-                                                                            </customSpacing>
-                                                                        </stackView>
-                                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xBT-Iv-Bw3">
-                                                                            <rect key="frame" x="288" y="18" width="23" height="18"/>
-                                                                            <buttonCell key="cell" type="inline" title="14" bezelStyle="inline" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iJT-w4-gZK">
-                                                                                <behavior key="behavior" lightByContents="YES"/>
-                                                                                <font key="font" metaFont="smallSystemBold"/>
-                                                                            </buttonCell>
-                                                                        </button>
-                                                                    </subviews>
-                                                                    <visibilityPriorities>
-                                                                        <integer value="1000"/>
-                                                                        <integer value="1000"/>
-                                                                        <integer value="1000"/>
-                                                                    </visibilityPriorities>
-                                                                    <customSpacing>
-                                                                        <real value="3.4028234663852886e+38"/>
-                                                                        <real value="3.4028234663852886e+38"/>
-                                                                        <real value="3.4028234663852886e+38"/>
-                                                                    </customSpacing>
-                                                                </stackView>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="pIC-wY-rCC" secondAttribute="trailing" constant="3" id="DsO-Ei-UQX"/>
-                                                                <constraint firstItem="pIC-wY-rCC" firstAttribute="leading" secondItem="3D8-cz-hkw" secondAttribute="leading" constant="3" id="P9Y-zp-BBd"/>
-                                                                <constraint firstItem="pIC-wY-rCC" firstAttribute="top" secondItem="3D8-cz-hkw" secondAttribute="top" constant="3" id="Q2a-j5-fUa"/>
-                                                                <constraint firstAttribute="bottom" secondItem="pIC-wY-rCC" secondAttribute="bottom" constant="3" id="YBR-ld-P6h"/>
-                                                            </constraints>
-                                                            <connections>
-                                                                <outlet property="countButton" destination="xBT-Iv-Bw3" id="duq-6E-Zek"/>
-                                                                <outlet property="familyField" destination="Blh-WF-jdI" id="w0j-ll-t3r"/>
-                                                                <outlet property="imageView" destination="oty-Mp-54Q" id="dtr-ZB-FuX"/>
-                                                                <outlet property="productField" destination="dmw-8Q-7wC" id="S42-M6-9bG"/>
-                                                                <outlet property="socketField" destination="snF-a9-dkI" id="7bj-y8-O8n"/>
-                                                            </connections>
-                                                        </tableCellView>
-                                                    </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
@@ -208,12 +93,12 @@
                 </windowController>
                 <customObject id="qii-4V-Sur" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3224" y="745"/>
+            <point key="canvasLocation" x="3032" y="718"/>
         </scene>
         <!--Decoder Type View Controller-->
         <scene sceneID="Izu-c5-xcu">
             <objects>
-                <viewController id="mfM-Sx-3LS" customClass="DecoderTypeViewController" customModule="TrainDatabase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="decoderTypeViewController" id="mfM-Sx-3LS" customClass="DecoderTypeViewController" customModule="TrainDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="PPw-H9-Taz">
                         <rect key="frame" x="0.0" y="0.0" width="840" height="379"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -978,12 +863,8 @@
             <point key="canvasLocation" x="3032" y="1267"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="lM1-c6-nq5"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="NSAddTemplate" width="14" height="13"/>
         <image name="NSRemoveTemplate" width="14" height="4"/>
-        <image name="chip" width="48" height="48"/>
     </resources>
 </document>

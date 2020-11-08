@@ -10,18 +10,18 @@ import Cocoa
 
 import Database
 
-private extension NSUserInterfaceItemIdentifier {
-    
-    static let decoderTypeCell = NSUserInterfaceItemIdentifier("decoderTypeCell")
-    
-}
-
-extension NSStoryboard.SceneIdentifier {
-    
-    static let decoderTypeWindowController = "decoderTypeWindowController"
-
-}
-
+//private extension NSUserInterfaceItemIdentifier {
+//
+//    static let decoderTypeCell = NSUserInterfaceItemIdentifier("decoderTypeCell")
+//
+//}
+//
+//extension NSStoryboard.SceneIdentifier {
+//
+//    static let decoderTypeWindowController = "decoderTypeWindowController"
+//
+//}
+//
 class DecoderTypesViewController: NSViewController {
     
     @IBOutlet var tableView: NSTableView!
@@ -119,14 +119,6 @@ class DecoderTypesViewController: NSViewController {
 
 }
 
-class DecoderTypeCellView : NSTableCellView {
-    
-    @IBOutlet var productField: NSTextField!
-    @IBOutlet var familyField: NSTextField!
-    @IBOutlet var socketField: NSTextField!
-    @IBOutlet var countButton: NSButton!
-    
-}
 
 extension DecoderTypesViewController : NSTableViewDataSource {
     

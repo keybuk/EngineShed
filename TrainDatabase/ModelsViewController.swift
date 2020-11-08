@@ -12,15 +12,14 @@ import CoreData
 import Database
 
 extension NSUserInterfaceItemIdentifier {
-    
     static let modelCell = NSUserInterfaceItemIdentifier("modelCell")
     static let modelGroupCell = NSUserInterfaceItemIdentifier("modelGroupCell")
-
+    static let decoderTypeCell = NSUserInterfaceItemIdentifier("decoderTypeCell")
 }
 
 extension NSStoryboard.SceneIdentifier {
-    
     static let purchaseWindowController = "purchaseWindowController"
+    static let decoderTypeWindowController = "decoderTypeWindowController"
 }
 
 class ModelsViewController : NSViewController {
@@ -33,14 +32,22 @@ class ModelsViewController : NSViewController {
     var searchFilter: String?
     
     var models: [Model]!
-    var groups: [Int : String]!
-    
+    var modelGroups: [Int : String]!
+
+    var decoderTypes: [DecoderType]!
+
+    func setFilterDecoderTypes() {
+        classificationFilter = nil
+        reloadData()
+    }
+
     func setFilter(classification: Model.Classification) {
         classificationFilter = classification
         reloadData()
     }
     
     func setFilter(search: String?) {
+        classificationFilter = nil
         searchFilter = search
         reloadData()
     }
@@ -52,11 +59,11 @@ class ModelsViewController : NSViewController {
     }
     
     func rowOf(_ model: Model) -> Int? {
-        return rowOf(model, in: models, groupOffsets: groups.keys.sorted())
+        return rowOf(model, in: models, groupOffsets: modelGroups.keys.sorted())
     }
     
     func modelAt(_ row: Int) -> Model {
-        let groupOffset = groups.count(where: { $0.key < row })
+        let groupOffset = modelGroups.count(where: { $0.key < row })
         let index = row - groupOffset
         return models[index]
     }
@@ -91,27 +98,49 @@ class ModelsViewController : NSViewController {
     }
     
     func reloadData(notification: Notification? = nil) {
-        let fetchRequest: NSFetchRequest<Model>
         if let search = searchFilter {
-            fetchRequest = Model.fetchRequestForModels(matching: search)
+            let fetchRequest = Model.fetchRequestForModels(matching: search)
+            reloadModels(fetchRequest: fetchRequest)
         } else if let classification = classificationFilter {
-            fetchRequest = Model.fetchRequestForModels(classification: classification)
+            let fetchRequest = Model.fetchRequestForModels(classification: classification)
+            reloadModels(fetchRequest: fetchRequest)
         } else {
-            return
+            let fetchRequest = DecoderType.fetchRequestForDecoderTypes()
+            reloadDecoderTypes(fetchRequest: fetchRequest)
         }
+
+        tableView.reloadData()
+
+        if tableView.selectedRow == -1 {
+            selectCurrentRecord()
+        }
+    }
+
+    func reloadModels(fetchRequest: NSFetchRequest<Model>) {
+        decoderTypes = []
 
         persistentContainer.viewContext.performAndWait {
             models = try! fetchRequest.execute()
         }
 
-        groups = [:]
+        modelGroups = [:]
         var lastClass: String? = nil
         for (index, model) in models.enumerated() {
             if lastClass == nil || model.modelClass != lastClass {
-                groups[index + groups.count] = model.modelClass
+                modelGroups[index + modelGroups.count] = model.modelClass
                 lastClass = model.modelClass
             }
         }
+    }
+
+    func reloadDecoderTypes(fetchRequest: NSFetchRequest<DecoderType>) {
+        models = []
+        modelGroups = [:]
+
+        persistentContainer.viewContext.performAndWait {
+            decoderTypes = try! fetchRequest.execute()
+        }
+    }
         
 //        if let notification = notification, let oldGroups = oldGroups, let oldModels = oldModels, groups == oldGroups {
 //            let (inserted, updated, deleted) = Model.changed(in: notification)
@@ -147,13 +176,8 @@ class ModelsViewController : NSViewController {
 //
 //            tableView.endUpdates()
 //        } else {
-            tableView.reloadData()
 //        }
-        
-        if tableView.selectedRow == -1 {
-            selectCurrentRecord()
-        }
-    }
+//    }
     
     func selectCurrentRecord() {
         if let currentRecord = recordController?.currentRecord,
@@ -170,32 +194,53 @@ class ModelsViewController : NSViewController {
                 tableView.scrollRowToVisible(row)
                 return
             }
+        } else if let currentRecord = recordController?.currentRecord,
+                  case .decoderType(let decoderType) = currentRecord,
+                  let row = decoderTypes.firstIndex(of: decoderType) {
+                      tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
+                      tableView.scrollRowToVisible(row)
+        } else {
+            // Fall back to selecting the first item.
+            tableView.selectRowIndexes(IndexSet(integer: classificationFilter == nil ? 0 : 1), byExtendingSelection: false)
         }
-        
-        // Fall back to selecting the first item.
-        tableView.selectRowIndexes(IndexSet(integer: 1), byExtendingSelection: false)
     }
     
     @IBAction func openInNewWindow(_ sender: NSTableView) {
-        guard let window = storyboard?.instantiateController(withIdentifier: .purchaseWindowController) as? PurchaseWindowController else { return }
-        window.currentRecord = recordController?.currentRecord
-        window.showWindow(nil)
+        guard let currentRecord = recordController?.currentRecord else { return }
+        if case .model(_) = currentRecord {
+            guard let window = storyboard?.instantiateController(withIdentifier: .purchaseWindowController) as? PurchaseWindowController else { return }
+            window.currentRecord = recordController?.currentRecord
+            window.showWindow(nil)
+        } else if case .decoderType(_) = currentRecord {
+            guard let window = storyboard?.instantiateController(withIdentifier: .decoderTypeWindowController) as? DecoderTypeWindowController else { return }
+            window.currentRecord = recordController?.currentRecord
+            window.showWindow(nil)
+        }
     }
 
 }
 
 class ModelCellView : NSTableCellView {
-    
     @IBOutlet var numberField: NSTextField?
     @IBOutlet var nameField: NSTextField?
-    
+}
+
+class DecoderTypeCellView : NSTableCellView {
+    @IBOutlet var productField: NSTextField!
+    @IBOutlet var familyField: NSTextField!
+    @IBOutlet var socketField: NSTextField!
+    @IBOutlet var countButton: NSButton!
 }
 
 extension ModelsViewController : NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        // This gets called while the view is still loading, be sure to return 0.
-        return (groups?.count ?? 0) + (models?.count ?? 0)
+        if classificationFilter != nil || searchFilter != nil {
+            // This gets called while the view is still loading, be sure to return 0.
+            return (modelGroups?.count ?? 0) + (modelGroups?.count ?? 0)
+        } else {
+            return decoderTypes?.count ?? 0
+        }
     }
     
 }
@@ -203,40 +248,70 @@ extension ModelsViewController : NSTableViewDataSource {
 extension ModelsViewController : NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        if let _ = groups[row] {
-            return 23
+        if classificationFilter != nil || searchFilter != nil {
+            if let _ = modelGroups[row] {
+                return 23
+            } else {
+                return 51
+            }
         } else {
-            return 51
+            return 59
         }
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if let group = groups[row] {
-            let view = tableView.makeView(withIdentifier: .modelGroupCell, owner: self) as! NSTableCellView
-            view.textField?.stringValue = group
-            return view
+        if classificationFilter != nil || searchFilter != nil {
+            if let group = modelGroups[row] {
+                let view = tableView.makeView(withIdentifier: .modelGroupCell, owner: self) as! NSTableCellView
+                view.textField?.stringValue = group
+                return view
 
+            } else {
+                let model = modelAt(row)
+                let view = tableView.makeView(withIdentifier: .modelCell, owner: self) as! ModelCellView
+
+                view.imageView?.image = model.image
+                view.numberField?.stringValue = model.number ?? ""
+                view.numberField?.isHidden = model.number?.isEmpty ?? true
+                view.nameField?.stringValue = model.name ?? ""
+                view.nameField?.isHidden = model.name?.isEmpty ?? true
+
+                return view
+            }
         } else {
-            let model = modelAt(row)
-            let view = tableView.makeView(withIdentifier: .modelCell, owner: self) as! ModelCellView
-            
-            view.imageView?.image = model.image
-            view.numberField?.stringValue = model.number ?? ""
-            view.numberField?.isHidden = model.number?.isEmpty ?? true
-            view.nameField?.stringValue = model.name ?? ""
-            view.nameField?.isHidden = model.name?.isEmpty ?? true
-            
+            let decoderType = decoderTypes[row]
+
+            let view = tableView.makeView(withIdentifier: .decoderTypeCell, owner: self) as! DecoderTypeCellView
+
+            view.productField.stringValue = [ decoderType.manufacturer, decoderType.productCode ].compactMap({ $0 }).joined(separator: " ")
+
+            view.familyField.stringValue = decoderType.productFamily ?? ""
+            view.familyField.isHidden = decoderType.productFamily?.isEmpty ?? true
+
+            view.socketField.stringValue = decoderType.socket ?? ""
+
+            view.countButton.title = "\(decoderType.remainingStockAsString)"
+            view.countButton.isHidden = !decoderType.isStocked
+
             return view
         }
     }
     
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
-        return groups[row] != nil
+        if classificationFilter != nil || searchFilter != nil {
+            return modelGroups[row] != nil
+        } else {
+            return false
+        }
     }
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        if let _ = groups[row] {
-            return false
+        if classificationFilter != nil || searchFilter != nil {
+            if let _ = modelGroups[row] {
+                return false
+            } else {
+                return true
+            }
         } else {
             return true
         }
@@ -245,10 +320,16 @@ extension ModelsViewController : NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
         guard let tableView = notification.object as? NSTableView else { fatalError("Notification not from table view") }
         guard tableView.selectedRow >= 0 else { return }
+
+        if classificationFilter != nil || searchFilter != nil {
+            let model = modelAt(tableView.selectedRow)
         
-        let model = modelAt(tableView.selectedRow)
-        
-        recordController?.currentRecord = .model(model)
+            recordController?.currentRecord = .model(model)
+        } else {
+            let decoderType = decoderTypes[tableView.selectedRow]
+
+            recordController?.currentRecord = .decoderType(decoderType)
+        }
     }
     
 }
