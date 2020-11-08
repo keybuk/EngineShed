@@ -131,6 +131,29 @@ class ModelsViewController : NSViewController {
                 lastClass = model.modelClass
             }
         }
+
+        switch classificationFilter {
+        case .locomotive:
+            view.window?.title = "Locomotives"
+        case .coach:
+            view.window?.title = "Coaches"
+        case .wagon:
+            view.window?.title = "Wagons"
+        case .multipleUnit:
+            view.window?.title = "Multiple Units"
+        case .departmental:
+            view.window?.title = "Departmentals"
+        case .noPrototype:
+            view.window?.title = "No Prototype"
+        case .accessory:
+            view.window?.title = "Accessories"
+        case .vehicle:
+            view.window?.title = "Vehicles"
+        default:
+            view.window?.title = "Models"
+        }
+
+        view.window?.subtitle = "\(models.count) Model\(models.count == 1 ? "" : "s")"
     }
 
     func reloadDecoderTypes(fetchRequest: NSFetchRequest<DecoderType>) {
@@ -140,6 +163,9 @@ class ModelsViewController : NSViewController {
         persistentContainer.viewContext.performAndWait {
             decoderTypes = try! fetchRequest.execute()
         }
+
+        view.window?.title = classificationFilter?.description ?? "Decoders"
+        view.window?.subtitle = "\(decoderTypes.count) Type\(decoderTypes.count == 1 ? "" : "s")"
     }
         
 //        if let notification = notification, let oldGroups = oldGroups, let oldModels = oldModels, groups == oldGroups {
