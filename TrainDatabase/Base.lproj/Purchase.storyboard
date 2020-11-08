@@ -190,7 +190,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="y69-oI-fya"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.48275862068965519" horizontal="YES" id="ej4-Lg-ue0">
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ej4-Lg-ue0">
                                     <rect key="frame" x="0.0" y="284" width="320" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -2648,7 +2648,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rs1-u0-Ot9"/>
+        <segue reference="O3b-oJ-6Kl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSActionTemplate" width="15" height="15"/>
