@@ -26,7 +26,6 @@
 		D276FF2F1FE5D42700EA087F /* PurchaseModelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D276FF2E1FE5D42700EA087F /* PurchaseModelsViewController.swift */; };
 		D276FF311FE5D43000EA087F /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D276FF301FE5D43000EA087F /* ModelViewController.swift */; };
 		D276FF331FE5F51500EA087F /* DecoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D276FF321FE5F51500EA087F /* DecoderType.swift */; };
-		D27DF7231FF48B1E003C7AAB /* DecoderTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF7221FF48B1E003C7AAB /* DecoderTypesViewController.swift */; };
 		D27DF7261FF48E79003C7AAB /* DecoderTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DF7241FF48E79003C7AAB /* DecoderTypeViewController.swift */; };
 		D27DF72D1FF4E721003C7AAB /* DecoderTypes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27DF72F1FF4E721003C7AAB /* DecoderTypes.storyboard */; };
 		D27DF7321FF4E74F003C7AAB /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D27DF7341FF4E74F003C7AAB /* Purchase.storyboard */; };
@@ -93,7 +92,6 @@
 		D276FF2E1FE5D42700EA087F /* PurchaseModelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModelsViewController.swift; sourceTree = "<group>"; };
 		D276FF301FE5D43000EA087F /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
 		D276FF321FE5F51500EA087F /* DecoderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderType.swift; sourceTree = "<group>"; };
-		D27DF7221FF48B1E003C7AAB /* DecoderTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypesViewController.swift; sourceTree = "<group>"; };
 		D27DF7241FF48E79003C7AAB /* DecoderTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeViewController.swift; sourceTree = "<group>"; };
 		D27DF72E1FF4E721003C7AAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DecoderTypes.storyboard; sourceTree = "<group>"; };
 		D27DF7331FF4E74F003C7AAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Purchase.storyboard; sourceTree = "<group>"; };
@@ -251,7 +249,6 @@
 				D276FF2E1FE5D42700EA087F /* PurchaseModelsViewController.swift */,
 				D276FF301FE5D43000EA087F /* ModelViewController.swift */,
 				D2B548371FEEFEEF00FE7ED0 /* PickerViewController.swift */,
-				D27DF7221FF48B1E003C7AAB /* DecoderTypesViewController.swift */,
 				D27DF7241FF48E79003C7AAB /* DecoderTypeViewController.swift */,
 			);
 			name = "View Controllers";
@@ -383,7 +380,6 @@
 				D2B616891FE0A6110065A84F /* Model+NSImage.swift in Sources */,
 				D26673C71FE99F250069F9C7 /* NSManagedObject+SortedValues.swift in Sources */,
 				D276FF331FE5F51500EA087F /* DecoderType.swift in Sources */,
-				D27DF7231FF48B1E003C7AAB /* DecoderTypesViewController.swift in Sources */,
 				D276FF2B1FE5C5E600EA087F /* WindowController.swift in Sources */,
 				D28A4BC81FD67523000768D8 /* AppDelegate.swift in Sources */,
 				D276FF311FE5D43000EA087F /* ModelViewController.swift in Sources */,

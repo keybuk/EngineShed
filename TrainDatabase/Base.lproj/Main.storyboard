@@ -543,18 +543,18 @@
             <objects>
                 <viewController id="21w-BN-HW5" userLabel="Source List View Controller" customClass="SourceListViewController" customModule="TrainDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="5tG-UJ-XF7">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="czM-ex-Q7s">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="264"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="294"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" drawsBackground="NO" id="yXg-G5-Wch">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="264"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="294"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="BZm-kL-zm2" id="fBK-Sm-P5e">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="264"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="294"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -655,7 +655,7 @@
                 </viewController>
                 <customObject id="icR-Uf-Ua3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="568" y="818"/>
+            <point key="canvasLocation" x="568" y="831"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="ePQ-Ly-vz5">
@@ -1289,8 +1289,8 @@ DQ
                                                                 <outlet property="numberField" destination="XuQ-kf-ufp" id="Rma-XG-Uv1"/>
                                                             </connections>
                                                         </tableCellView>
-                                                        <tableCellView identifier="modelGroupCell" misplaced="YES" id="Hvv-Ek-JCM">
-                                                            <rect key="frame" x="11" y="54" width="326" height="23"/>
+                                                        <tableCellView identifier="modelGroupCell" id="Hvv-Ek-JCM">
+                                                            <rect key="frame" x="11" y="54" width="326" height="22"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="r5y-e4-9Zr">
@@ -1313,7 +1313,7 @@ DQ
                                                             </connections>
                                                         </tableCellView>
                                                         <tableCellView identifier="decoderTypeCell" id="YuH-MO-hUu" customClass="DecoderTypeCellView" customModule="TrainDatabase" customModuleProvider="target">
-                                                            <rect key="frame" x="11" y="79" width="326" height="59"/>
+                                                            <rect key="frame" x="11" y="78" width="326" height="59"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xZq-6j-H6M">
