@@ -394,7 +394,7 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="644" y="311" width="1024" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-                        <value key="minSize" type="size" width="1024" height="600"/>
+                        <value key="minSize" type="size" width="1480" height="800"/>
                         <toolbar key="toolbar" implicitIdentifier="4FD100C5-DECE-476F-8CE9-BBC95603A8AD" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="MKa-nO-Rl0">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="4530C14B-A4E7-4EB9-835E-C018E4F0EB92" label="Navigation" paletteLabel="Navigation" id="Yes-WW-Jtx">
@@ -1199,7 +1199,7 @@ DQ
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="61" horizontalPageScroll="10" verticalLineScroll="61" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="Hpc-qH-KR4">
                                 <rect key="frame" x="0.0" y="0.0" width="349" height="299"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <clipView key="contentView" id="Z2e-LY-Tio">
+                                <clipView key="contentView" drawsBackground="NO" id="Z2e-LY-Tio">
                                     <rect key="frame" x="0.0" y="0.0" width="349" height="299"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
