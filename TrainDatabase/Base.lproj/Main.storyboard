@@ -392,7 +392,7 @@
                 <windowController id="B8D-0N-5wS" customClass="WindowController" customModule="TrainDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Train Database" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
-                        <rect key="contentRect" x="644" y="311" width="1024" height="600"/>
+                        <rect key="contentRect" x="644" y="311" width="1480" height="800"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <value key="minSize" type="size" width="1480" height="800"/>
                         <toolbar key="toolbar" implicitIdentifier="4FD100C5-DECE-476F-8CE9-BBC95603A8AD" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="MKa-nO-Rl0">
