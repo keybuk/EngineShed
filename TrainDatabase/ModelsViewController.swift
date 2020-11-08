@@ -234,12 +234,6 @@ extension ModelsViewController : NSTableViewDelegate {
         return groups[row] != nil
     }
     
-    func tableView(_ tableView: NSTableView, didAdd rowView: NSTableRowView, forRow row: Int) {
-        if let _ = groups[row] {
-            rowView.backgroundColor = .headerColor
-        }
-    }
-
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         if let _ = groups[row] {
             return false

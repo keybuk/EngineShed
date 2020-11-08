@@ -83,7 +83,7 @@
                                                     <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="IDv-qj-Zsy">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
@@ -162,7 +162,7 @@
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="fiz-fr-9mA">
                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
@@ -190,7 +190,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="y69-oI-fya"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ej4-Lg-ue0">
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.48275862068965519" horizontal="YES" id="ej4-Lg-ue0">
                                     <rect key="frame" x="0.0" y="284" width="320" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -2355,17 +2355,17 @@
             <objects>
                 <viewController id="HJh-zT-z3l" userLabel="Purchase Models View Controller" customClass="PurchaseModelsViewController" customModule="TrainDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="F7g-kd-17i">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="244"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="53" horizontalPageScroll="10" verticalLineScroll="53" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qy6-6r-fnf">
-                                <rect key="frame" x="0.0" y="23" width="260" height="277"/>
+                                <rect key="frame" x="0.0" y="23" width="260" height="221"/>
                                 <clipView key="contentView" id="YmB-QI-mSb">
-                                    <rect key="frame" x="0.0" y="0.0" width="260" height="277"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="221"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="51" viewBased="YES" id="Ici-N2-zxB">
-                                            <rect key="frame" x="0.0" y="0.0" width="260" height="277"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="221"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -2562,7 +2562,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="pickerCell" id="fPY-bU-hMp" customClass="PickerCellView" customModule="TrainDatabase" customModuleProvider="target">
-                                                                    <rect key="frame" x="1" y="1" width="380" height="20"/>
+                                                                    <rect key="frame" x="11" y="1" width="380" height="20"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k9g-qv-Zgk">
