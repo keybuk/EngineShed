@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -391,15 +390,15 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="WindowController" customModule="TrainDatabase" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Train Database" subtitle="Test" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titleVisibility="hidden" id="IQv-IB-iLA">
+                    <window key="window" title="Train Database" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="545" height="320"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <value key="minSize" type="size" width="480" height="800"/>
-                        <toolbar key="toolbar" implicitIdentifier="4FD100C5-DECE-476F-8CE9-BBC95603A8AD" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="MKa-nO-Rl0">
+                        <toolbar key="toolbar" implicitIdentifier="4FD100C5-DECE-476F-8CE9-BBC95603A8AD" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="MKa-nO-Rl0">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="4530C14B-A4E7-4EB9-835E-C018E4F0EB92" label="Navigation" paletteLabel="Navigation" id="Yes-WW-Jtx">
+                                <toolbarItem implicitItemIdentifier="4530C14B-A4E7-4EB9-835E-C018E4F0EB92" label="Navigation" paletteLabel="Navigation" navigational="YES" id="Yes-WW-Jtx">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="42" height="24"/>
                                     <size key="maxSize" width="107" height="27"/>
@@ -544,13 +543,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czM-ex-Q7s">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="280"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="276"/>
                                 <clipView key="contentView" drawsBackground="NO" id="yXg-G5-Wch">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="280"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="276"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="BZm-kL-zm2" id="fBK-Sm-P5e">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="280"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="276"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
