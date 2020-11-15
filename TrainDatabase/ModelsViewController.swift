@@ -263,7 +263,7 @@ extension ModelsViewController : NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         if classificationFilter != nil || searchFilter != nil {
             // This gets called while the view is still loading, be sure to return 0.
-            return (modelGroups?.count ?? 0) + (modelGroups?.count ?? 0)
+            return (modelGroups?.count ?? 0) + (models?.count ?? 0)
         } else {
             return decoderTypes?.count ?? 0
         }
