@@ -28,7 +28,7 @@ class WindowController : NSWindowController, RecordController {
 
     var sourceListViewController: SourceListViewController!
     var tabViewController: NSTabViewController!
-    var modelsViewController: ModelsViewController!
+    var recordsViewController: RecordsViewController!
     
     var recordStack: [CurrentRecord] = []
     var recordIndex: Int = 0
@@ -42,18 +42,10 @@ class WindowController : NSWindowController, RecordController {
         super.windowDidLoad()
     
         persistentContainer = (NSApplication.shared.delegate! as! AppDelegate).persistentContainer
-        
-        // View hierarchy:
-        //   Split View
-        //   +- Source List
-        //   +- Tab View
-        //      +- Split View (purchase)
-        //         +- Models View
-        //         +- Purchase View
-        
+                
         let splitViewController = contentViewController as! NSSplitViewController
         sourceListViewController = (splitViewController.splitViewItems[0].viewController as! SourceListViewController)
-        modelsViewController = (splitViewController.splitViewItems[1].viewController as! ModelsViewController)
+        recordsViewController = (splitViewController.splitViewItems[1].viewController as! RecordsViewController)
         tabViewController = (splitViewController.splitViewItems[2].viewController as! NSTabViewController)
         
         sourceListViewController.delegate = self
@@ -151,13 +143,13 @@ class WindowController : NSWindowController, RecordController {
     
     @IBAction func search(_ sender: NSSearchField) {
         guard !sender.stringValue.isEmpty else {
-            modelsViewController.setFilter(search: nil)
+            recordsViewController.show(search: nil)
             return
         }
 
         sourceListViewController.searching()
         tabViewController.selectedTabViewItemIndex = 0
-        modelsViewController.setFilter(search: sender.stringValue)
+        recordsViewController.show(search: sender.stringValue)
     }
     
 }
@@ -166,11 +158,11 @@ extension WindowController : SourceListDelegate {
     
     func sourceListDidSelect(modelClassification: Model.Classification) {
         tabViewController.selectedTabViewItemIndex = 0
-        modelsViewController.setFilter(classification: modelClassification)
+        recordsViewController.show(classification: modelClassification)
     }
     
     func sourceListDidSelectDecoders() {
-        modelsViewController.setFilterDecoderTypes()
+        recordsViewController.showDecoderTypes()
         tabViewController.selectedTabViewItemIndex = 1
     }
     

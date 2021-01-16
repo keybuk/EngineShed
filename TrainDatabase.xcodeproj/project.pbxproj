@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2073150257D794500643936 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207314F257D794500643936 /* RecordsViewController.swift */; };
+		D207315A257D84C100643936 /* ModelItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2073159257D84C100643936 /* ModelItem.xib */; };
+		D207315E257D859D00643936 /* ModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D207315D257D859D00643936 /* ModelItem.swift */; };
+		D2073162257D977400643936 /* RecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2073161257D977400643936 /* RecordHeaderView.swift */; };
+		D2073165257D97AC00643936 /* RecordHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2073164257D97AC00643936 /* RecordHeaderView.xib */; };
+		D2073169257DABF700643936 /* DecoderTypeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2073167257DABF700643936 /* DecoderTypeItem.swift */; };
+		D207316A257DABF700643936 /* DecoderTypeItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2073168257DABF700643936 /* DecoderTypeItem.xib */; };
 		D23132FA23E143FB0001812F /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23132F923E143FB0001812F /* Database.framework */; };
 		D23132FB23E143FB0001812F /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D23132F923E143FB0001812F /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D25B47E91FEFA994008A7EB1 /* TrainMemberItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */; };
@@ -74,6 +81,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D207314F257D794500643936 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
+		D2073159257D84C100643936 /* ModelItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModelItem.xib; sourceTree = "<group>"; };
+		D207315D257D859D00643936 /* ModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelItem.swift; sourceTree = "<group>"; };
+		D2073161257D977400643936 /* RecordHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordHeaderView.swift; sourceTree = "<group>"; };
+		D2073164257D97AC00643936 /* RecordHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordHeaderView.xib; sourceTree = "<group>"; };
+		D2073167257DABF700643936 /* DecoderTypeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderTypeItem.swift; sourceTree = "<group>"; };
+		D2073168257DABF700643936 /* DecoderTypeItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DecoderTypeItem.xib; sourceTree = "<group>"; };
 		D23132F923E143FB0001812F /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainMemberItem.swift; sourceTree = "<group>"; };
 		D25B47E81FEFA994008A7EB1 /* TrainMemberItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainMemberItem.xib; sourceTree = "<group>"; };
@@ -191,6 +205,12 @@
 				D2B548331FEAF70F00FE7ED0 /* TokenFieldDelegates.swift */,
 				D28A4BCE1FD67523000768D8 /* Assets.xcassets */,
 				D28A4BD01FD67523000768D8 /* Main.storyboard */,
+				D207315D257D859D00643936 /* ModelItem.swift */,
+				D2073159257D84C100643936 /* ModelItem.xib */,
+				D2073167257DABF700643936 /* DecoderTypeItem.swift */,
+				D2073168257DABF700643936 /* DecoderTypeItem.xib */,
+				D2073161257D977400643936 /* RecordHeaderView.swift */,
+				D2073164257D97AC00643936 /* RecordHeaderView.xib */,
 				D27DF7341FF4E74F003C7AAB /* Purchase.storyboard */,
 				D27DF72F1FF4E721003C7AAB /* DecoderTypes.storyboard */,
 				D25B47E71FEFA994008A7EB1 /* TrainMemberItem.swift */,
@@ -245,6 +265,7 @@
 			children = (
 				D276FF281FE4F6A600EA087F /* SourceListViewController.swift */,
 				D276FF261FE4B01400EA087F /* ModelsViewController.swift */,
+				D207314F257D794500643936 /* RecordsViewController.swift */,
 				D276FF2C1FE5D40300EA087F /* PurchaseViewController.swift */,
 				D276FF2E1FE5D42700EA087F /* PurchaseModelsViewController.swift */,
 				D276FF301FE5D43000EA087F /* ModelViewController.swift */,
@@ -347,9 +368,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2073165257D97AC00643936 /* RecordHeaderView.xib in Resources */,
 				D28A4BCF1FD67523000768D8 /* Assets.xcassets in Resources */,
 				D27DF7321FF4E74F003C7AAB /* Purchase.storyboard in Resources */,
+				D207316A257DABF700643936 /* DecoderTypeItem.xib in Resources */,
 				D27DF72D1FF4E721003C7AAB /* DecoderTypes.storyboard in Resources */,
+				D207315A257D84C100643936 /* ModelItem.xib in Resources */,
 				D25B47EA1FEFA994008A7EB1 /* TrainMemberItem.xib in Resources */,
 				D28A4BD21FD67523000768D8 /* Main.storyboard in Resources */,
 			);
@@ -371,7 +395,9 @@
 			files = (
 				D276FF2D1FE5D40300EA087F /* PurchaseViewController.swift in Sources */,
 				D2DFF4C3200A9C2E00259284 /* SimpleTokenFieldDelegate.swift in Sources */,
+				D207315E257D859D00643936 /* ModelItem.swift in Sources */,
 				D26673BE1FE8FB9C0069F9C7 /* Purchase.swift in Sources */,
+				D2073169257DABF700643936 /* DecoderTypeItem.swift in Sources */,
 				D2EC18661FFC5D4700DF1ED4 /* PurchaseWindowController.swift in Sources */,
 				D276FF271FE4B01400EA087F /* ModelsViewController.swift in Sources */,
 				D276FF2F1FE5D42700EA087F /* PurchaseModelsViewController.swift in Sources */,
@@ -388,7 +414,9 @@
 				D2DFF4BA200A998E00259284 /* EnterTableView.swift in Sources */,
 				D2B548341FEAF70F00FE7ED0 /* TokenFieldDelegates.swift in Sources */,
 				D2EC18641FFC262100DF1ED4 /* RecordController.swift in Sources */,
+				D2073150257D794500643936 /* RecordsViewController.swift in Sources */,
 				D27DF7261FF48E79003C7AAB /* DecoderTypeViewController.swift in Sources */,
+				D2073162257D977400643936 /* RecordHeaderView.swift in Sources */,
 				D26673BC1FE8F95F0069F9C7 /* TrainMember.swift in Sources */,
 				D2DFF4B8200A977200259284 /* HorizontalScrollView.swift in Sources */,
 				D26673C01FE8FBA10069F9C7 /* Model.swift in Sources */,

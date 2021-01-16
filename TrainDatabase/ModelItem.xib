@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <collectionViewItem id="lLI-qd-PWG" customClass="ModelItem" customModule="TrainDatabase" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="UgX-cS-1Ff" id="ruP-5n-DLE"/>
+                <outlet property="nameTextField" destination="KQl-eA-dqw" id="KLd-oW-UbK"/>
+                <outlet property="numberTextField" destination="pEq-mx-s4u" id="fSJ-Wn-E5K"/>
+                <outlet property="textField" destination="pEq-mx-s4u" id="GUC-O9-wfS"/>
+                <outlet property="view" destination="pIA-7c-Tod" id="LXP-ff-fAj"/>
+            </connections>
+        </collectionViewItem>
+        <customView id="pIA-7c-Tod">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jYN-Tb-kZ8">
+                    <rect key="frame" x="3" y="3" width="294" height="50"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UgX-cS-1Ff">
+                            <rect key="frame" x="0.0" y="0.0" width="89" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="UgX-cS-1Ff" secondAttribute="height" multiplier="16:9" id="hJ6-HJ-OPL"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="ZZL-8N-rhv"/>
+                        </imageView>
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4c-hV-fYu">
+                            <rect key="frame" x="97" y="8" width="197" height="34"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pEq-mx-s4u">
+                                    <rect key="frame" x="-2" y="18" width="39" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="4468" id="VxZ-Qy-kEH">
+                                        <font key="font" metaFont="systemSemibold" size="13"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KQl-eA-dqw">
+                                    <rect key="frame" x="-2" y="0.0" width="49" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Mallard" id="Uee-7X-yfB">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="BwW-An-CpU">
+                    <rect key="frame" x="0.0" y="-2" width="300" height="5"/>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="BwW-An-CpU" secondAttribute="trailing" id="0Qv-71-eHs"/>
+                <constraint firstItem="jYN-Tb-kZ8" firstAttribute="top" secondItem="pIA-7c-Tod" secondAttribute="top" constant="3" id="G3L-IV-gcM"/>
+                <constraint firstAttribute="bottom" secondItem="BwW-An-CpU" secondAttribute="bottom" id="KPM-IA-U2g"/>
+                <constraint firstAttribute="trailing" secondItem="jYN-Tb-kZ8" secondAttribute="trailing" constant="3" id="kWm-P7-aPU"/>
+                <constraint firstItem="jYN-Tb-kZ8" firstAttribute="leading" secondItem="pIA-7c-Tod" secondAttribute="leading" constant="3" id="vLN-kh-N1a"/>
+                <constraint firstAttribute="bottom" secondItem="jYN-Tb-kZ8" secondAttribute="bottom" constant="3" id="xfw-h6-O9D"/>
+                <constraint firstItem="BwW-An-CpU" firstAttribute="leading" secondItem="pIA-7c-Tod" secondAttribute="leading" id="xs3-SF-APC"/>
+            </constraints>
+            <point key="canvasLocation" x="-1247.5" y="-471"/>
+        </customView>
+    </objects>
+</document>
