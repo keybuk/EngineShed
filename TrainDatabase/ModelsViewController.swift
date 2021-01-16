@@ -35,6 +35,7 @@ class ModelsViewController : NSViewController {
     var modelGroups: [Int : String]!
 
     var decoderTypes: [DecoderType]!
+    var decoderTypeGroups: [Int : String ]!
 
     func setFilterDecoderTypes() {
         classificationFilter = nil
@@ -67,7 +68,23 @@ class ModelsViewController : NSViewController {
         let index = row - groupOffset
         return models[index]
     }
-    
+
+    func rowOf(_ decoderType: DecoderType, in decoderTypes: [DecoderType], groupOffsets: [Int]) -> Int? {
+        guard let index = decoderTypes.firstIndex(of: decoderType) else { return nil }
+        let groupOffset = groupOffsets.enumerated().count(where: { $1 - $0 <= index })
+        return index + groupOffset
+    }
+
+    func rowOf(_ decoderType: DecoderType) -> Int? {
+        return rowOf(decoderType, in: decoderTypes, groupOffsets: decoderTypeGroups.keys.sorted())
+    }
+
+    func decoderTypeAt(_ row: Int) -> DecoderType {
+        let groupOffset = decoderTypeGroups.count(where: { $0.key < row })
+        let index = row - groupOffset
+        return decoderTypes[index]
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,6 +135,7 @@ class ModelsViewController : NSViewController {
 
     func reloadModels(fetchRequest: NSFetchRequest<Model>) {
         decoderTypes = []
+        decoderTypeGroups = [:]
 
         persistentContainer.viewContext.performAndWait {
             models = try! fetchRequest.execute()
@@ -163,6 +181,16 @@ class ModelsViewController : NSViewController {
         persistentContainer.viewContext.performAndWait {
             decoderTypes = try! fetchRequest.execute()
         }
+
+        decoderTypeGroups = [:]
+        var lastSocket: String? = nil
+        for (index, decoderType) in decoderTypes.enumerated() {
+            if lastSocket == nil || decoderType.socket != lastSocket {
+                decoderTypeGroups[index + decoderTypeGroups.count] = decoderType.socket
+                lastSocket = decoderType.socket
+            }
+        }
+
 
         view.window?.title = classificationFilter?.description ?? "Decoders"
         view.window?.subtitle = "\(decoderTypes.count) Type\(decoderTypes.count == 1 ? "" : "s")"
@@ -221,10 +249,10 @@ class ModelsViewController : NSViewController {
                 return
             }
         } else if let currentRecord = recordController?.currentRecord,
-                  case .decoderType(let decoderType) = currentRecord,
-                  let row = decoderTypes.firstIndex(of: decoderType) {
-                      tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
-                      tableView.scrollRowToVisible(row)
+              case .decoderType(let decoderType) = currentRecord,
+              let row = rowOf(decoderType) {
+                  tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
+                  tableView.scrollRowToVisible(row)
         } else {
             // Fall back to selecting the first item.
             tableView.selectRowIndexes(IndexSet(integer: classificationFilter == nil ? 0 : 1), byExtendingSelection: false)
@@ -265,7 +293,7 @@ extension ModelsViewController : NSTableViewDataSource {
             // This gets called while the view is still loading, be sure to return 0.
             return (modelGroups?.count ?? 0) + (models?.count ?? 0)
         } else {
-            return decoderTypes?.count ?? 0
+            return (decoderTypeGroups?.count ?? 0) + (decoderTypes?.count ?? 0)
         }
     }
     
@@ -281,7 +309,11 @@ extension ModelsViewController : NSTableViewDelegate {
                 return 51
             }
         } else {
-            return 59
+            if let _ = decoderTypeGroups[row] {
+                return 23
+            } else {
+                return 59
+            }
         }
     }
     
@@ -305,21 +337,27 @@ extension ModelsViewController : NSTableViewDelegate {
                 return view
             }
         } else {
-            let decoderType = decoderTypes[row]
+            if let group = decoderTypeGroups[row] {
+                let view = tableView.makeView(withIdentifier: .modelGroupCell, owner: self) as! NSTableCellView
+                view.textField?.stringValue = group
+                return view
 
-            let view = tableView.makeView(withIdentifier: .decoderTypeCell, owner: self) as! DecoderTypeCellView
+            } else {
+                let decoderType = decoderTypeAt(row)
+                let view = tableView.makeView(withIdentifier: .decoderTypeCell, owner: self) as! DecoderTypeCellView
 
-            view.productField.stringValue = [ decoderType.manufacturer, decoderType.productCode ].compactMap({ $0 }).joined(separator: " ")
+                view.productField.stringValue = [ decoderType.manufacturer, decoderType.productCode ].compactMap({ $0 }).joined(separator: " ")
 
-            view.familyField.stringValue = decoderType.productFamily ?? ""
-            view.familyField.isHidden = decoderType.productFamily?.isEmpty ?? true
+                view.familyField.stringValue = decoderType.productFamily ?? ""
+                view.familyField.isHidden = decoderType.productFamily?.isEmpty ?? true
 
-            view.socketField.stringValue = decoderType.socket ?? ""
+                view.socketField.stringValue = decoderType.socket ?? ""
 
-            view.countButton.title = "\(decoderType.remainingStockAsString)"
-            view.countButton.isHidden = !decoderType.isStocked
+                view.countButton.title = "\(decoderType.remainingStockAsString)"
+                view.countButton.isHidden = !decoderType.isStocked
 
-            return view
+                return view
+            }
         }
     }
     
@@ -327,7 +365,7 @@ extension ModelsViewController : NSTableViewDelegate {
         if classificationFilter != nil || searchFilter != nil {
             return modelGroups[row] != nil
         } else {
-            return false
+            return decoderTypeGroups[row] != nil
         }
     }
     
@@ -339,7 +377,11 @@ extension ModelsViewController : NSTableViewDelegate {
                 return true
             }
         } else {
-            return true
+            if let _ = decoderTypeGroups[row] {
+                return false
+            } else {
+                return true
+            }
         }
     }
     
@@ -352,7 +394,7 @@ extension ModelsViewController : NSTableViewDelegate {
         
             recordController?.currentRecord = .model(model)
         } else {
-            let decoderType = decoderTypes[tableView.selectedRow]
+            let decoderType = decoderTypeAt(tableView.selectedRow)
 
             recordController?.currentRecord = .decoderType(decoderType)
         }
