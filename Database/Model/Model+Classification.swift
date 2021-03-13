@@ -18,6 +18,7 @@ extension Model {
         case noPrototype
         case accessory
         case vehicle
+        case steamLocomotive
     }
 
     public var classification: Classification? {
@@ -37,6 +38,7 @@ extension Model.Classification: CustomStringConvertible, ConvertibleFromString {
         case .noPrototype: return "No Prototype"
         case .accessory: return "Accessory"
         case .vehicle: return "Vehicle"
+        case .steamLocomotive: return "Steam Locomotive"
         }
     }
 }

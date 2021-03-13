@@ -152,7 +152,9 @@ class ModelsViewController : NSViewController {
 
         switch classificationFilter {
         case .locomotive:
-            view.window?.title = "Locomotives"
+            view.window?.title = "Diesel & Electric Locomotives"
+        case .steamLocomotive:
+            view.window?.title = "Steam Locomotives"
         case .coach:
             view.window?.title = "Coaches"
         case .wagon:

@@ -103,7 +103,7 @@ extension SourceListViewController : NSOutlineViewDataSource {
         case let group as Group:
             switch group {
             case .models:
-                return 7
+                return 8
             case .accessories:
                 return 2
             }
@@ -130,16 +130,18 @@ extension SourceListViewController : NSOutlineViewDataSource {
                 case 0:
                     return Model.Classification.locomotive
                 case 1:
-                    return Model.Classification.coach
+                    return Model.Classification.steamLocomotive
                 case 2:
-                    return Model.Classification.wagon
+                    return Model.Classification.coach
                 case 3:
-                    return Model.Classification.multipleUnit
+                    return Model.Classification.wagon
                 case 4:
-                    return Model.Classification.departmental
+                    return Model.Classification.multipleUnit
                 case 5:
-                    return Model.Classification.noPrototype
+                    return Model.Classification.departmental
                 case 6:
+                    return Model.Classification.noPrototype
+                case 7:
                     return Model.Classification.vehicle
                 default:
                     fatalError("Too many children in Models group")
@@ -197,7 +199,9 @@ extension SourceListViewController : NSOutlineViewDelegate {
             let view = outlineView.makeView(withIdentifier: .sourceCell, owner: self) as! NSTableCellView
             switch classification {
             case .locomotive:
-                view.textField?.stringValue = "Locomotives"
+                view.textField?.stringValue = "Diesel & Electric Locomotives"
+            case .steamLocomotive:
+                view.textField?.stringValue = "Steam Locomotives"
             case .coach:
                 view.textField?.stringValue = "Coaches"
             case .wagon:
