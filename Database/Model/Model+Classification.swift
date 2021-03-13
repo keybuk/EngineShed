@@ -30,7 +30,7 @@ extension Model {
 extension Model.Classification: CustomStringConvertible, ConvertibleFromString {
     public var description: String {
         switch self {
-        case .locomotive: return "Locomotive"
+        case .locomotive: return "Diesel & Electric Locomotive"
         case .coach: return "Coach"
         case .wagon: return "Wagon"
         case .multipleUnit: return "Multiple Unit"
