@@ -34,6 +34,7 @@ class ModelViewController: NSViewController {
     @IBOutlet var imageView: NSImageView!
     @IBOutlet var classificationComboBox: NSComboBox!
     @IBOutlet var modelClassTextField: NSTextField!
+    @IBOutlet var wheelArrangementComboBox: NSComboBox!
     @IBOutlet var numberTextField: NSTextField!
     @IBOutlet var nameTextField: NSTextField!
     @IBOutlet var liveryComboBox: NSComboBox!
@@ -67,6 +68,7 @@ class ModelViewController: NSViewController {
     @IBOutlet var notesTextField: NSTextField!
     
     var classificationComboBoxDataSource: EnumComboBoxDataSource?
+    var wheelArrangementComboBoxDataSource: SimpleComboBoxDataSource?
     var liveryComboBoxDataSource: SimpleComboBoxDataSource?
     var eraComboBoxDataSource: EnumComboBoxDataSource?
     var gaugeComboBoxDataSource: SimpleComboBoxDataSource?
@@ -141,6 +143,11 @@ class ModelViewController: NSViewController {
         classificationComboBox.objectValue = model.classification.map(NSArray.init(object:))
         
         modelClassTextField.stringValue = model.modelClass ?? ""
+
+        wheelArrangementComboBoxDataSource = try? SimpleComboBoxDataSource(using: model.sortedValuesForWheelArrangement)
+        wheelArrangementComboBox.dataSource = wheelArrangementComboBoxDataSource
+        wheelArrangementComboBox.stringValue = model.wheelArrangement ?? ""
+
         numberTextField.stringValue = model.number ?? ""
         nameTextField.stringValue = model.name ?? ""
         
@@ -276,8 +283,19 @@ class ModelViewController: NSViewController {
         if tryFill {
             fillFromSimilar()
         }
+
+        if !modelClass.isEmpty {
+            if let wheelArrangement = try! model.suggestedWheelArrangement(for: modelClass) {
+                model.wheelArrangement = wheelArrangement
+                wheelArrangementComboBox.objectValue = model.wheelArrangement
+            }
+        }
     }
-    
+
+    @IBAction func wheelArrangementChanged(_ sender: NSTextField) {
+        model.wheelArrangement = sender.stringValue
+    }
+
     @IBAction func numberChanged(_ sender: NSTextField) {
         model.number = sender.stringValue
     }

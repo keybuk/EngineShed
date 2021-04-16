@@ -43,7 +43,7 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return 9
+        case 1: return 10
         case 2: return 3
         case 3: return 1
         case 4: return 2 + (lastRunPickerVisible ? 1 : 0) + (lastOilPickerVisible ? 1 : 0)
@@ -87,30 +87,34 @@ class ModelEditTableViewController : UITableViewController, UIAdaptivePresentati
                 cell.model = model
                 return cell
             case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "modelNumberEdit", for: indexPath) as! ModelNumberEditTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelWheelArrangementEdit", for: indexPath) as! ModelWheelArrangementEditTableViewCell
                 cell.model = model
                 return cell
             case 3:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "modelNameEdit", for: indexPath) as! ModelNameEditTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelNumberEdit", for: indexPath) as! ModelNumberEditTableViewCell
                 cell.model = model
                 return cell
             case 4:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "modelLiveryEdit", for: indexPath) as! ModelLiveryEditTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelNameEdit", for: indexPath) as! ModelNameEditTableViewCell
                 cell.model = model
                 return cell
             case 5:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "modelDetailsEdit", for: indexPath) as! ModelDetailsEditTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelLiveryEdit", for: indexPath) as! ModelLiveryEditTableViewCell
                 cell.model = model
                 return cell
             case 6:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "modelEraEdit", for: indexPath) as! ModelEraEditTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelDetailsEdit", for: indexPath) as! ModelDetailsEditTableViewCell
                 cell.model = model
                 return cell
             case 7:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "modelGaugeEdit", for: indexPath) as! ModelGaugeEditTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelEraEdit", for: indexPath) as! ModelEraEditTableViewCell
                 cell.model = model
                 return cell
             case 8:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "modelGaugeEdit", for: indexPath) as! ModelGaugeEditTableViewCell
+                cell.model = model
+                return cell
+            case 9:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "modelDispositionEdit", for: indexPath) as! ModelDispositionEditTableViewCell
                 cell.model = model
                 return cell

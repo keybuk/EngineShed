@@ -145,6 +145,28 @@ extension Model {
         return results.compactMap { $0["speaker"] }
     }
 
+    func suggestionsForWheelArrangement(startingWith prefix: String? = nil) -> [String] {
+        guard let managedObjectContext = managedObjectContext else { return [] }
+
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Model.fetchRequest()
+        fetchRequest.resultType = .dictionaryResultType
+        fetchRequest.propertiesToFetch = [ "wheelArrangement" ]
+        fetchRequest.returnsDistinctResults = true
+        fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "wheelArrangement", ascending: true) ]
+
+        if let prefix = prefix, !prefix.isEmpty {
+            fetchRequest.predicate = NSPredicate(format: "wheelArrangement BEGINSWITH %@", prefix)
+        } else {
+            fetchRequest.predicate = NSPredicate(format: "wheelArrangement != NULL AND wheelArrangement != ''")
+        }
+
+        let results = (try? managedObjectContext.performAndWait {
+            return try fetchRequest.execute() as! [[String: String]]
+            }) ?? []
+
+        return results.compactMap { $0["wheelArrangement"] }
+    }
+
     // MARK: List suggestions
 
     func suggestionsForLights(startingWith prefix: String? = nil) -> [String] {

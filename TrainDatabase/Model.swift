@@ -170,7 +170,31 @@ extension Model {
     func sortedValuesForSpeaker(startingWith string: String? = nil) throws -> [String] {
         return try sortedValues(for: "speaker", ascending: true, startingWith: string)
     }
-    
+
+    func sortedValuesForWheelArrangement(startingWith string: String? = nil) throws -> [String] {
+        return try sortedValues(for: "wheelArrangement", ascending: true, startingWith: string)
+    }
+
+    func suggestedWheelArrangement(for modelClass: String) throws -> String? {
+        guard let context = managedObjectContext else { fatalError("No context to make query with") }
+
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Model.fetchRequest()
+        fetchRequest.resultType = .dictionaryResultType
+        fetchRequest.returnsDistinctResults = true
+        fetchRequest.propertiesToFetch = [ "wheelArrangement" ]
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "wheelArrangement", ascending: false)
+        ]
+
+        var predicates: [NSPredicate] = []
+        predicates.append(NSPredicate(format: "modelClass = %@", modelClass))
+
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+
+        let results = try context.fetch(fetchRequest) as! [[String: String?]]
+        return results.first.flatMap({ $0["wheelArrangement"] ?? nil })
+    }
+
     
     func sortedValuesForLights(startingWith string: String? = nil) throws -> [String] {
         return try sortedValues(from: Light.self, for: "title", ascending: true, startingWith: string)
@@ -300,6 +324,7 @@ extension Model {
         }
         if let classification = similarModels.compactMap(\.classification).mostFrequent() { self.classification = classification }
         if let modelClass = similarModels.map(\.modelClass).mostFrequent() { self.modelClass = modelClass }
+        if let wheelArrangement = similarModels.map(\.wheelArrangement).mostFrequent() { self.wheelArrangement = wheelArrangement }
         if exactMatch {
             if let number = similarModels.map(\.number).mostFrequent() { self.number = number }
             if let name = similarModels.map(\.name).mostFrequent() { self.name = name }

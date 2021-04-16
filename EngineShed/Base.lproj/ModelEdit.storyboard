@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a18-FN-0Zt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a18-FN-0Zt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,7 +32,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="YUd-G7-9YF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelImageEdit" id="kLb-ef-zGb" customClass="ModelImageEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="233.5"/>
@@ -121,8 +122,39 @@
                                     <outlet property="textField" destination="3vo-kw-Z6o" id="HbQ-c6-Dyb"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelNumberEdit" id="sBe-tB-1Yd" customClass="ModelNumberEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelWheelArrangementEdit" id="mwk-ZC-ksY" customClass="ModelWheelArrangementEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="377" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mwk-ZC-ksY" id="U0e-P0-wFP">
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wheel Arrangement" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQY-1v-lJO">
+                                            <rect key="frame" x="20" y="0.0" width="355" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="W35-cu-mes"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="mwk-ZC-ksY" id="yt7-fy-Pp9"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="PQY-1v-lJO" firstAttribute="top" secondItem="U0e-P0-wFP" secondAttribute="top" id="1Cl-Xj-L86"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="PQY-1v-lJO" secondAttribute="trailing" id="4UK-rd-Hao"/>
+                                        <constraint firstAttribute="bottom" secondItem="PQY-1v-lJO" secondAttribute="bottom" id="Gpr-Dh-AUC"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="PQY-1v-lJO" secondAttribute="leading" id="YdX-43-dq1"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="PQY-1v-lJO" id="2tS-VY-FPd"/>
+                                    <segue destination="oc5-xa-s3u" kind="show" identifier="modelWheelArrangementPicker" id="3VT-15-hdE"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelNumberEdit" id="sBe-tB-1Yd" customClass="ModelNumberEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="421" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sBe-tB-1Yd" id="Gra-q0-rmD">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -152,7 +184,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelNameEdit" id="PVh-hv-KzS" customClass="ModelNameEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="421" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="465" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PVh-hv-KzS" id="waN-Dh-5Yq">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -182,7 +214,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelLiveryEdit" id="Ttl-Rx-2Gq" customClass="ModelLiveryEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="465" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="509" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ttl-Rx-2Gq" id="i0b-tW-5IM">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -213,7 +245,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelDetailsEdit" id="p1c-Xp-xT6" customClass="ModelDetailsEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="509" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="553" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p1c-Xp-xT6" id="kg9-9V-CVP">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -243,7 +275,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelEraEdit" id="Lm3-z4-GjB" customClass="ModelEraEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="553" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="597" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lm3-z4-GjB" id="Bhk-5f-UvM">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -274,7 +306,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelGaugeEdit" id="QoA-ve-dvZ" customClass="ModelGaugeEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="597" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="641" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QoA-ve-dvZ" id="NGe-lH-XY8">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -305,7 +337,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelDispositionEdit" id="xri-gv-brf" customClass="ModelDispositionEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="641" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="685" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xri-gv-brf" id="AdP-2Q-HpF">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -336,7 +368,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelMotorEdit" id="EUO-r0-tqv" customClass="ModelMotorEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="685" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="729" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EUO-r0-tqv" id="MeB-QY-JMP">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -367,7 +399,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelLightsEdit" id="DfU-An-vTd" customClass="ModelLightsEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="729" width="414" height="128.5"/>
+                                <rect key="frame" x="0.0" y="773" width="414" height="128.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DfU-An-vTd" id="S7K-7u-gAa">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="128.5"/>
@@ -411,7 +443,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelSocketEdit" id="3Zx-HW-d7V" customClass="ModelSocketEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="857.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="901.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Zx-HW-d7V" id="uV1-jL-kPw">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -442,7 +474,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="modelSpeakerEdit" id="oNo-Ns-T0G" customClass="ModelSpeakerEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="901.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="945.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oNo-Ns-T0G" id="wnW-gD-dHq">
                                     <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
@@ -473,7 +505,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLastRunEdit" id="wOl-kX-AeE" customClass="ModelLastRunEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="945.5" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="989.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wOl-kX-AeE" id="uB2-nG-yd6">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -483,13 +515,13 @@
                                             <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" text="Last Run" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fic-Wm-eOI">
-                                                    <rect key="frame" x="0.0" y="12" width="67" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="12" width="66.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n3x-5p-dNV">
-                                                    <rect key="frame" x="83" y="0.5" width="259" height="43.5"/>
+                                                    <rect key="frame" x="82.5" y="0.5" width="259.5" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="D6P-zZ-y8o"/>
                                                     </constraints>
@@ -523,7 +555,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelLastRunPicker" id="Lqt-GR-Lk2" customClass="ModelLastRunPickerTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="989.5" width="414" height="216.5"/>
+                                <rect key="frame" x="0.0" y="1033.5" width="414" height="216.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lqt-GR-Lk2" id="FPH-5c-qhS">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="216.5"/>
@@ -548,7 +580,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLastOilEdit" id="yqw-GL-1K4" customClass="ModelLastOilEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1206" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="1250" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yqw-GL-1K4" id="Q8S-GX-Prv">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -558,13 +590,13 @@
                                             <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" text="Last Oil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bt-ud-uwP">
-                                                    <rect key="frame" x="0.0" y="12" width="57.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="12" width="57" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hEp-D0-21x">
-                                                    <rect key="frame" x="73.5" y="0.5" width="268.5" height="43.5"/>
+                                                    <rect key="frame" x="73" y="0.5" width="269" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="GjZ-dZ-K5n"/>
                                                     </constraints>
@@ -598,7 +630,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelLastOilPicker" id="6E5-zm-gWb" customClass="ModelLastOilPickerTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1250" width="414" height="216.5"/>
+                                <rect key="frame" x="0.0" y="1294" width="414" height="216.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6E5-zm-gWb" id="5Q3-c1-wwe">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="216.5"/>
@@ -623,13 +655,13 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="modelNotesEdit" id="uGR-wA-AT3" customClass="ModelNotesEditTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1466.5" width="414" height="128.5"/>
+                                <rect key="frame" x="0.0" y="1510.5" width="414" height="128.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uGR-wA-AT3" id="j51-Xk-xwX">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="128.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Td-tp-stE">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Td-tp-stE">
                                             <rect key="frame" x="20" y="0.0" width="374" height="128.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -655,13 +687,13 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDelete" id="1Vh-Iz-Nmd" customClass="ModelDeleteTableViewCell" customModule="EngineShed" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1595" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="1639" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Vh-Iz-Nmd" id="ah6-X1-EQL">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Delete Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5On-nB-i6S">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Delete Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5On-nB-i6S">
                                             <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="43.5" id="oKZ-T4-UFe"/>
@@ -716,7 +748,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="VvN-et-q6r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelClassificationCase" textLabel="e1A-u8-F4A" style="IBUITableViewCellStyleDefault" id="6MW-M5-fnh">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -754,7 +786,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="aux-sC-VXe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelLivery" textLabel="Qdx-w5-tDH" style="IBUITableViewCellStyleDefault" id="Ith-ax-nDm">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -791,7 +823,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9d0-Tf-gTH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelEraCase" textLabel="IBG-Nz-fTe" style="IBUITableViewCellStyleDefault" id="eUN-5A-EK2">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -828,7 +860,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="61W-JD-udf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelDispositionCase" textLabel="8Ax-EK-NWU" style="IBUITableViewCellStyleDefault" id="y3D-1j-3X0">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -865,7 +897,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cNc-LZ-nDn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelMotor" textLabel="Fab-a2-WGf" style="IBUITableViewCellStyleDefault" id="Ovi-ij-ejh">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -902,7 +934,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="OGQ-Ac-B8l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelSocket" textLabel="qVX-Ay-PIQ" style="IBUITableViewCellStyleDefault" id="mb3-Yk-ZlD">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -939,7 +971,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="yGK-zt-XnI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelSpeaker" textLabel="WVy-89-XBn" style="IBUITableViewCellStyleDefault" id="FdA-l3-2tc">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -976,7 +1008,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="mJw-HJ-BJt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelGauge" textLabel="m9V-x4-SlV" style="IBUITableViewCellStyleDefault" id="qTM-nK-CKn">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -1007,9 +1039,50 @@
             </objects>
             <point key="canvasLocation" x="8557" y="-80"/>
         </scene>
+        <!--Model Wheel Arrangement Picker Table View Controller-->
+        <scene sceneID="4Yk-tK-fBy">
+            <objects>
+                <tableViewController id="oc5-xa-s3u" customClass="ModelWheelArrangementPickerTableViewController" customModule="EngineShed" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="jaz-cN-8Fn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="modelWheelArrangement" textLabel="kBG-TK-OUN" style="IBUITableViewCellStyleDefault" id="lBI-N6-5px">
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lBI-N6-5px" id="9Gx-qA-xKh">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kBG-TK-OUN">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oc5-xa-s3u" id="fxV-AL-PZk"/>
+                            <outlet property="delegate" destination="oc5-xa-s3u" id="zJz-TV-FeF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="6s5-20-T1x"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rgb-mo-WfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8557" y="591"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Clear Glyph - On Light" width="16" height="16"/>
         <image name="R3612" width="1440" height="810"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
