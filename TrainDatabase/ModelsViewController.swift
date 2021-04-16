@@ -142,11 +142,13 @@ class ModelsViewController : NSViewController {
         }
 
         modelGroups = [:]
-        var lastClass: String? = nil
+        var lastModelGroup: String? = nil
         for (index, model) in models.enumerated() {
-            if lastClass == nil || model.modelClass != lastClass {
-                modelGroups[index + modelGroups.count] = model.modelClass
-                lastClass = model.modelClass
+            let modelGroup = [model.modelClass, model.wheelArrangement].compactMap({ $0 }).joined(separator: " ")
+
+            if lastModelGroup == nil || modelGroup != lastModelGroup {
+                modelGroups[index + modelGroups.count] = modelGroup
+                lastModelGroup = modelGroup
             }
         }
 
