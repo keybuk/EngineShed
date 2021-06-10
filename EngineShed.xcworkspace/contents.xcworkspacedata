@@ -13,4 +13,7 @@
    <FileRef
       location = "group:EngineShed.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:RoundHouse/RoundHouse.xcodeproj">
+   </FileRef>
 </Workspace>
