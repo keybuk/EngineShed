@@ -10,7 +10,7 @@ import Foundation
 
 extension Purchase {
     public override func willSave() {
-        let newCatalogNumberPrefix = makeCatalogNumberPrefix(from: catalogNumber ?? "")
+        let newCatalogNumberPrefix = catalogNumber.map { makeCatalogNumberPrefix(from: $0) }
         if catalogNumberPrefix != newCatalogNumberPrefix { catalogNumberPrefix = newCatalogNumberPrefix }
 
         let newDateForSort = makeDateForSort(from: date)
