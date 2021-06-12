@@ -20,7 +20,7 @@ extension Decoder {
             (soundSettings ?? "") != ""
     }
 
-    /// Returns `true` if the decoder is not allocated to any model or sound file.
+    /// Returns `true` if the decoder is not fitted to any model or allocated a sound file.
     public var isSpare: Bool { !isFitted && !isAllocated }
 
     public func updateStock() {
