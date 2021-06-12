@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D213DF2223E0B0F40003C771"
                BuildableName = "Database.framework"
-               BlueprintName = "Database iOS"
+               BlueprintName = "Database"
                ReferencedContainer = "container:Database.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,7 +62,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D213DF2223E0B0F40003C771"
             BuildableName = "Database.framework"
-            BlueprintName = "Database iOS"
+            BlueprintName = "Database"
             ReferencedContainer = "container:Database.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
