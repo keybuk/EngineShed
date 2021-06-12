@@ -15,6 +15,10 @@
 		D2DE61EE2671AAF100758033 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE61CA2671AAF000758033 /* ContentView.swift */; };
 		D2DE61EF2671AAF100758033 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2DE61CB2671AAF100758033 /* Assets.xcassets */; };
 		D2DE61F02671AAF100758033 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2DE61CB2671AAF100758033 /* Assets.xcassets */; };
+		D2DE620126728F2200758033 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DE620026728F2200758033 /* Database.framework */; };
+		D2DE620226728F2200758033 /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2DE620026728F2200758033 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D2DE620426728F2800758033 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DE620026728F2200758033 /* Database.framework */; };
+		D2DE620526728F2800758033 /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2DE620026728F2200758033 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D2DE620326728F2200758033 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D2DE620226728F2200758033 /* Database.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2DE620626728F2800758033 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D2DE620526728F2800758033 /* Database.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D2DE61C92671AAF000758033 /* RoundHouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundHouseApp.swift; sourceTree = "<group>"; };
 		D2DE61CA2671AAF000758033 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +73,7 @@
 		D2DE61DF2671AAF100758033 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		D2DE61E52671AAF100758033 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DE61E92671AAF100758033 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		D2DE620026728F2200758033 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2DE620126728F2200758033 /* Database.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2DE620426728F2800758033 /* Database.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +117,7 @@
 				D2DE61DE2671AAF100758033 /* Tests iOS */,
 				D2DE61E82671AAF100758033 /* Tests macOS */,
 				D2DE61D12671AAF100758033 /* Products */,
+				D2DE61FF26728F2200758033 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +158,14 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		D2DE61FF26728F2200758033 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2DE620026728F2200758033 /* Database.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +176,7 @@
 				D2DE61CC2671AAF100758033 /* Sources */,
 				D2DE61CD2671AAF100758033 /* Frameworks */,
 				D2DE61CE2671AAF100758033 /* Resources */,
+				D2DE620326728F2200758033 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +194,7 @@
 				D2DE61D22671AAF100758033 /* Sources */,
 				D2DE61D32671AAF100758033 /* Frameworks */,
 				D2DE61D42671AAF100758033 /* Resources */,
+				D2DE620626728F2800758033 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
